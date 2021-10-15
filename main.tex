@@ -1,7 +1,16 @@
 \documentclass[11pt,twoside,a4paper]{article}
-\usepackage[hmargin=2.5cm, vmargin=2.5cm]{geometry}
+\usepackage[hmargin=2cm, vmargin=2cm]{geometry}
 \usepackage{microtype}
 \usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage[
+backend=biber,
+style=authoryear-comp,
+]{biblatex}
+
+
+\addbibresource{RM_bibliography.bib}
+\onehalfspacing
 \parindent=0pt
 
 \begin{document}
@@ -44,5 +53,11 @@
 	Praesent congue felis et volutpat maximus. Phasellus neque diam, commodo hendrerit laoreet ut, condimentum bibendum arcu. Suspendisse placerat lorem at tincidunt condimentum. Curabitur metus arcu, lacinia non velit et, accumsan egestas lacus. Proin ultricies fermentum massa ac imperdiet. Nulla aliquam facilisis nisl at placerat. Ut in volutpat mi. Phasellus tristique nisl nisl, quis maximus velit vulputate quis. Aenean non sapien purus. Quisque eget ipsum quis mi accumsan hendrerit. Nam tincidunt lectus in tellus luctus, eu sodales dolor dictum. Integer erat mauris, ultricies sed ex sit amet, gravida hendrerit nulla. Aliquam eget ultrices justo. Pellentesque congue arcu eget diam varius, at laoreet diam condimentum. Sed imperdiet aliquam placerat.
 	
 	Mauris efficitur, leo vel commodo tristique, arcu ipsum bibendum velit, id accumsan ex nunc tristique ex. Praesent sodales placerat dolor a laoreet. Integer sit amet dignissim sem, non tempus diam. Nam sodales enim dolor, ut condimentum velit tristique eu. Maecenas lorem justo, dignissim quis enim ac, maximus gravida lorem. Vestibulum sit amet urna arcu. Nam tristique mollis arcu non convallis. Duis ut pulvinar erat. Quisque et consequat orci. Nullam et sem mattis, semper purus a, semper lorem. Phasellus tempor aliquet velit. In suscipit, nisi a venenatis viverra, nisi enim finibus quam, ac rutrum nisl purus et erat. Proin vitae erat elit.
+	\cite{kokoszka_introduction_2017}
+	
+	\section{Appendix}
+	
+	\section{Bibliography}
+	\printbibliography	
 	
 \end{document}
