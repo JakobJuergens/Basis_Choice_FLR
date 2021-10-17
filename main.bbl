@@ -34,6 +34,9 @@
            giveni={M\bibinitperiod},
            givenun=0}}%
       }
+      \list{language}{1}{%
+        {Englisch}%
+      }
       \list{location}{1}{%
         {Boca Raton}%
       }
