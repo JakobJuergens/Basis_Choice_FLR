@@ -1,0 +1,66 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{kokoszka_introduction_2017}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=66f98311069b2eb80843b774d51c21c1}{%
+           family={Kokoszka},
+           familyi={K\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=77f3a68b5cbc43878a1ad2403ec8f0e9}{%
+           family={Reimherr},
+           familyi={R\bibinitperiod},
+           given={Matthew},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Boca Raton}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall/CRC}%
+      }
+      \strng{namehash}{10de47ea5b23b4de5b295bb8b3115870}
+      \strng{fullhash}{10de47ea5b23b4de5b295bb8b3115870}
+      \strng{bibnamehash}{10de47ea5b23b4de5b295bb8b3115870}
+      \strng{authorbibnamehash}{10de47ea5b23b4de5b295bb8b3115870}
+      \strng{authornamehash}{10de47ea5b23b4de5b295bb8b3115870}
+      \strng{authorfullhash}{10de47ea5b23b4de5b295bb8b3115870}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Introduction to Functional Data Analysis provides a concise textbook introduction to the field. It explains how to analyze functional data, both at exploratory and inferential levels. It also provides a systematic and accessible exposition of the methodology and the required mathematical framework. The book can be used as textbook for a semester-long course on FDA for advanced undergraduate or MS statistics majors, as well as for MS and PhD students in other disciplines, including applied mathematics, environmental science, public health, medical research, geophysical sciences and economics. It can also be used for self-study and as a reference for researchers in those fields who wish to acquire solid understanding of FDA methodology and practical guidance for its implementation. Each chapter contains plentiful examples of relevant R code and theoretical and data analytic problems. The material of the book can be roughly divided into four parts of approximately equal length: 1) basic concepts and techniques of FDA, 2) functional regression models, 3) sparse and dependent functional data, and 4) introduction to the Hilbert space framework of FDA. The book assumes advanced undergraduate background in calculus, linear algebra, distributional probability theory, foundations of statistical inference, and some familiarity with R programming. Other required statistics background is provided in scalar settings before the related functional concepts are developed. Most chapters end with references to more advanced research for those who wish to gain a more in-depth understanding of a specific topic.}
+      \field{edition}{1}
+      \field{isbn}{978-1-4987-4634-2}
+      \field{month}{8}
+      \field{title}{Introduction to {Functional} {Data} {Analysis}}
+      \field{year}{2017}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
