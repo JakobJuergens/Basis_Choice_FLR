@@ -1,0 +1,8 @@
+This file gives an overview over the code files in this directory.
+Please keep it updated with your work.
+
+### Monte_Carlo_template.R ###
+This file serves as a showcase for how to perform MC-simulations in parallel in R.
+The example used in the script is an approximation of pi.
+
+###
