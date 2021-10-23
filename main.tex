@@ -3,9 +3,10 @@
 \usepackage{microtype}
 \usepackage[english]{babel}
 \usepackage{setspace}
+\usepackage{xcolor}
 \usepackage[
 backend=biber,
-style=authoryear,
+style=authoryear-comp,
 ]{biblatex}
 
 
@@ -14,9 +15,9 @@ style=authoryear,
 \parindent=0pt
 
 \begin{document}
-	\title{{\LARGE RM-PLACEHOLDER TITLE — FDA}}
+	\title{{\LARGE {\color{red}PLACEHOLDER-TITLE:} Functional Linear Regression in a Scalar-on-Function Setting with Applications to SOMETHING}}
 	\author{Jonghun Baek, Jakob Juergens, Jonathan Willnow}
-	\date{whenever}
+	\date{{\color{red}whenever}}
 	\maketitle
 	\vspace{1.5 cm}
 	\begin{center}
@@ -31,29 +32,62 @@ style=authoryear,
 	\newpage
 	
 	\section{Introduction}
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie orci luctus lectus tincidunt rhoncus. In suscipit dolor nec magna cursus sodales. Praesent quam libero, imperdiet sit amet lectus varius, semper pellentesque mauris. Donec rhoncus tincidunt vulputate. Ut volutpat at mauris ac ultricies. Sed faucibus tincidunt suscipit. Phasellus turpis nunc, dignissim sed turpis sit amet, efficitur venenatis risus. Maecenas elementum enim vel facilisis congue. Vestibulum maximus, elit vel pharetra posuere, nulla quam pulvinar felis, ut sodales magna libero id elit. Nullam vitae elit placerat nibh blandit blandit.
 	
-	Aliquam posuere nec mi et consectetur. Nulla nulla tellus, pretium in vehicula non, euismod non odio. Integer venenatis lectus vitae tellus vehicula vehicula. Ut ac euismod augue, eu accumsan lacus. Vestibulum faucibus risus tempus nisi blandit tincidunt eu a turpis. Vivamus fermentum dictum quam, non facilisis mi condimentum sit amet. Suspendisse sed egestas nunc. Ut tortor nisi, consectetur ut luctus nec, volutpat id felis. Vestibulum sed sagittis quam. Nunc lorem quam, malesuada at felis sed, bibendum scelerisque nibh. Nullam id risus a mauris interdum euismod id quis velit.
-	
+	\begin{itemize}
+		\item Describe the idea of regressing a scalar on functional data
+		\item Describing the difference to multiple linear regression intuitively
+		\item Giving an intuitive example
+	\end{itemize}	
+
 	\section{Theory}
-	Vestibulum dui arcu, euismod eget ullamcorper sed, faucibus id ipsum. Ut at augue vitae velit eleifend faucibus. Maecenas sed maximus lectus. Pellentesque ultrices ligula non tristique dictum. Etiam malesuada lacinia varius. Nulla pharetra dui sed felis sagittis auctor. Aenean non justo massa.
 	
-	Praesent congue felis et volutpat maximus. Phasellus neque diam, commodo hendrerit laoreet ut, condimentum bibendum arcu. Suspendisse placerat lorem at tincidunt condimentum. Curabitur metus arcu, lacinia non velit et, accumsan egestas lacus. Proin ultricies fermentum massa ac imperdiet. Nulla aliquam facilisis nisl at placerat. Ut in volutpat mi. Phasellus tristique nisl nisl, quis maximus velit vulputate quis. Aenean non sapien purus. Quisque eget ipsum quis mi accumsan hendrerit. Nam tincidunt lectus in tellus luctus, eu sodales dolor dictum. Integer erat mauris, ultricies sed ex sit amet, gravida hendrerit nulla. Aliquam eget ultrices justo. Pellentesque congue arcu eget diam varius, at laoreet diam condimentum. Sed imperdiet aliquam placerat.
+	\subsection{Draft-Overview}
+	\begin{itemize}
+		\item Introduce the concept of random functions
+		\item Introduce the concept of square integrable deterministic \& random functions
+		\item Explain basis expansions (so basis of the vector space $L^2$ and b-spline basis as an example) 
+		\item Motivate Karhunen-Loeve-Expansion and Eigenbasis from PCA		
+		\item Explain Scalar-on-Function Regression
+		\item Estimation through basis-expansion (incl. Eigenbasis) and estimation with roughness penalty
+		\item Address approximation error due to basis-truncation
+	\end{itemize}
+
+	\subsection{Literature}
+	\begin{itemize}
+		\item \cite{kokoszka_introduction_2017}
+		\item \cite{hsing_theoretical_2015}
+		\item \cite{ramsay_functional_2005}
+		\item \cite{horvath_inference_2012}
+	\end{itemize}
 	
-	Mauris efficitur, leo vel commodo tristique, arcu ipsum bibendum velit, id accumsan ex nunc tristique ex. Praesent sodales placerat dolor a laoreet. Integer sit amet dignissim sem, non tempus diam. Nam sodales enim dolor, ut condimentum velit tristique eu. Maecenas lorem justo, dignissim quis enim ac, maximus gravida lorem. Vestibulum sit amet urna arcu. Nam tristique mollis arcu non convallis. Duis ut pulvinar erat. Quisque et consequat orci. Nullam et sem mattis, semper purus a, semper lorem. Phasellus tempor aliquet velit. In suscipit, nisi a venenatis viverra, nisi enim finibus quam, ac rutrum nisl purus et erat. Proin vitae erat elit.
-	
+	\newpage
 	\section{Simulation}
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam molestie orci luctus lectus tincidunt rhoncus. In suscipit dolor nec magna cursus sodales. Praesent quam libero, imperdiet sit amet lectus varius, semper pellentesque mauris. Donec rhoncus tincidunt vulputate. Ut volutpat at mauris ac ultricies. Sed faucibus tincidunt suscipit. Phasellus turpis nunc, dignissim sed turpis sit amet, efficitur venenatis risus. Maecenas elementum enim vel facilisis congue. Vestibulum maximus, elit vel pharetra posuere, nulla quam pulvinar felis, ut sodales magna libero id elit. Nullam vitae elit placerat nibh blandit blandit.
 	
-	Aliquam posuere nec mi et consectetur. Nulla nulla tellus, pretium in vehicula non, euismod non odio. Integer venenatis lectus vitae tellus vehicula vehicula. Ut ac euismod augue, eu accumsan lacus. Vestibulum faucibus risus tempus nisi blandit tincidunt eu a turpis. Vivamus fermentum dictum quam, non facilisis mi condimentum sit amet. Suspendisse sed egestas nunc. Ut tortor nisi, consectetur ut luctus nec, volutpat id felis. Vestibulum sed sagittis quam. Nunc lorem quam, malesuada at felis sed, bibendum scelerisque nibh. Nullam id risus a mauris interdum euismod id quis velit.
+	\subsection{Draft-Overview}
+	\begin{itemize}
+		\item Motivate Simulation for some data generating process from application
+		\item Describe Simulation Setting from technical standpoint (DGP, set-up for replication, ...)
+		\item Present Results
+		\item Explain relevance for application
+	\end{itemize}
+
+	\subsection{Literature}
+	\begin{itemize}
+		\item \cite{shonkwiler_explorations_2009}
+	\end{itemize}
 	
+	\newpage
 	\section{Application}
-	Vestibulum dui arcu, euismod eget ullamcorper sed, faucibus id ipsum. Ut at augue vitae velit eleifend faucibus. Maecenas sed maximus lectus. Pellentesque ultrices ligula non tristique dictum. Etiam malesuada lacinia varius. Nulla pharetra dui sed felis sagittis auctor. Aenean non justo massa.
+
+	\subsection{Draft-Overview}
+	\begin{itemize}
+		\item 
+	\end{itemize}
 	
-	Praesent congue felis et volutpat maximus. Phasellus neque diam, commodo hendrerit laoreet ut, condimentum bibendum arcu. Suspendisse placerat lorem at tincidunt condimentum. Curabitur metus arcu, lacinia non velit et, accumsan egestas lacus. Proin ultricies fermentum massa ac imperdiet. Nulla aliquam facilisis nisl at placerat. Ut in volutpat mi. Phasellus tristique nisl nisl, quis maximus velit vulputate quis. Aenean non sapien purus. Quisque eget ipsum quis mi accumsan hendrerit. Nam tincidunt lectus in tellus luctus, eu sodales dolor dictum. Integer erat mauris, ultricies sed ex sit amet, gravida hendrerit nulla. Aliquam eget ultrices justo. Pellentesque congue arcu eget diam varius, at laoreet diam condimentum. Sed imperdiet aliquam placerat.
-	
-	Mauris efficitur, leo vel commodo tristique, arcu ipsum bibendum velit, id accumsan ex nunc tristique ex. Praesent sodales placerat dolor a laoreet. Integer sit amet dignissim sem, non tempus diam. Nam sodales enim dolor, ut condimentum velit tristique eu. Maecenas lorem justo, dignissim quis enim ac, maximus gravida lorem. Vestibulum sit amet urna arcu. Nam tristique mollis arcu non convallis. Duis ut pulvinar erat. Quisque et consequat orci. Nullam et sem mattis, semper purus a, semper lorem. Phasellus tempor aliquet velit. In suscipit, nisi a venenatis viverra, nisi enim finibus quam, ac rutrum nisl purus et erat. Proin vitae erat elit.
-	\cite{kokoszka_introduction_2017}
+	\subsection{Literature}
+	\begin{itemize}
+		\item 
+	\end{itemize}
 	
 	\section{Appendix}
 	

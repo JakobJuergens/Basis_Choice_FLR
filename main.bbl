@@ -19,6 +19,88 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{horvath_inference_2012}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2919dcd948c266ae6a5b887d1c3433f1}{%
+           family={Horváth},
+           familyi={H\bibinitperiod},
+           given={Lajos},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=66f98311069b2eb80843b774d51c21c1}{%
+           family={Kokoszka},
+           familyi={K\bibinitperiod},
+           given={Piotr},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{01eb4f83b8ca4777a94bc617db4d348e}
+      \strng{fullhash}{01eb4f83b8ca4777a94bc617db4d348e}
+      \strng{bibnamehash}{01eb4f83b8ca4777a94bc617db4d348e}
+      \strng{authorbibnamehash}{01eb4f83b8ca4777a94bc617db4d348e}
+      \strng{authornamehash}{01eb4f83b8ca4777a94bc617db4d348e}
+      \strng{authorfullhash}{01eb4f83b8ca4777a94bc617db4d348e}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This book presents recently developed statistical methods and theory required for the application of the tools of functional data analysis to problems arising in geosciences, finance, economics and biology. It is concerned with inference based on second order statistics, especially those related to the functional principal component analysis. While it covers inference for independent and identically distributed functional data, its distinguishing feature is an in depth coverage of dependent functional data structures, including functional time series and spatially indexed functions. Specific inferential problems studied include two sample inference, change point analysis, tests for dependence in data and model residuals and functional prediction. All procedures are described algorithmically, illustrated on simulated and real data sets, and supported by a complete asymptotic theory. The book can be read at two levels. Readers interested primarily in methodology will find detailed descriptions of the methods and examples of their application. Researchers interested also in mathematical foundations will find carefully developed theory. The organization of the chapters makes it easy for the reader to choose an appropriate focus. The book introduces the requisite, and frequently used, Hilbert space formalism in a systematic manner. This will be useful to graduate or advanced undergraduate students seeking a self-contained introduction to the subject. Advanced researchers will find novel asymptotic arguments.}
+      \field{isbn}{978-1-4614-3655-3}
+      \field{month}{5}
+      \field{note}{Google-Books-ID: OVezLB\_\_ZpYC}
+      \field{title}{Inference for {Functional} {Data} with {Applications}}
+      \field{year}{2012}
+      \keyw{Business \& Economics / Statistics,Mathematics / Probability \& Statistics / General,Mathematics / Probability \& Statistics / Stochastic Processes}
+    \endentry
+    \entry{hsing_theoretical_2015}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=396cd532137675b4da218b8464d025e8}{%
+           family={Hsing},
+           familyi={H\bibinitperiod},
+           given={Tailen},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=84251f2d50ed9850f6dd83b47cfc0d7f}{%
+           family={Eubank},
+           familyi={E\bibinitperiod},
+           given={Randall},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{8131b5fc038545972a47dc39fe385f9e}
+      \strng{fullhash}{8131b5fc038545972a47dc39fe385f9e}
+      \strng{bibnamehash}{8131b5fc038545972a47dc39fe385f9e}
+      \strng{authorbibnamehash}{8131b5fc038545972a47dc39fe385f9e}
+      \strng{authornamehash}{8131b5fc038545972a47dc39fe385f9e}
+      \strng{authorfullhash}{8131b5fc038545972a47dc39fe385f9e}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Theoretical Foundations of Functional Data Analysis, with an Introduction to Linear Operators provides a uniquely broad compendium of the key mathematical concepts and results that are relevant for the theoretical development of functional data analysis (FDA).The self–contained treatment of selected topics of functional analysis and operator theory includes reproducing kernel Hilbert spaces, singular value decomposition of compact operators on Hilbert spaces and perturbation theory for both self–adjoint and non self–adjoint operators. The probabilistic foundation for FDA is described from the perspective of random elements in Hilbert spaces as well as from the viewpoint of continuous time stochastic processes. Nonparametric estimation approaches including kernel and regularized smoothing are also introduced. These tools are then used to investigate the properties of estimators for the mean element, covariance operators, principal components, regression function and canonical correlations. A general treatment of canonical correlations in Hilbert spaces naturally leads to FDA formulations of factor analysis, regression, MANOVA and discriminant analysis.This book will provide a valuable reference for statisticians and other researchers interested in developing or understanding the mathematical aspects of FDA. It is also suitable for a graduate level special topics course.}
+      \field{isbn}{978-1-118-76256-1}
+      \field{month}{3}
+      \field{note}{Google-Books-ID: om9uBwAAQBAJ}
+      \field{title}{Theoretical {Foundations} of {Functional} {Data} {Analysis}, with an {Introduction} to {Linear} {Operators}}
+      \field{year}{2015}
+      \keyw{Mathematics / Probability \& Statistics / General,Mathematics / Probability \& Statistics / Stochastic Processes}
+    \endentry
     \entry{kokoszka_introduction_2017}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66f98311069b2eb80843b774d51c21c1}{%
@@ -62,6 +144,123 @@
       \field{month}{8}
       \field{title}{Introduction to {Functional} {Data} {Analysis}}
       \field{year}{2017}
+    \endentry
+    \entry{ramsay_functional_2005}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=82c1bfad20df6fc9b773259966b21729}{%
+           family={Ramsay},
+           familyi={R\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ba8bfb9a987a0a24a6602904cb89fe04}{%
+           family={Silverman},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi W.},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{e4205787eb4cc6717da2ed10382e5453}
+      \strng{fullhash}{e4205787eb4cc6717da2ed10382e5453}
+      \strng{bibnamehash}{e4205787eb4cc6717da2ed10382e5453}
+      \strng{authorbibnamehash}{e4205787eb4cc6717da2ed10382e5453}
+      \strng{authornamehash}{e4205787eb4cc6717da2ed10382e5453}
+      \strng{authorfullhash}{e4205787eb4cc6717da2ed10382e5453}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Scientists and others today often collect samples of curves and other functional observations. This monograph presents many ideas and techniques for such data. Included are expressions in the functional domain of such classics as linear regression, principal components analysis, linear modeling, and canonical correlation analysis, as well as specifically functional techniques such as curve registration and principal differential analysis. Data arising in real applications are used throughout for both motivation and illustration, showing how functional approaches allow us to see new things, especially by exploiting the smoothness of the processes generating the data. The data sets exemplify the wide scope of functional data analysis; they are drawn from growth analysis, meteorology, biomechanics, equine science, economics, and medicine. The book presents novel statistical technology, much of it based on the authors’ own research work, while keeping the mathematical level widely accessible. It is designed to appeal to students, to applied data analysts, and to experienced researchers; it will have value both within statistics and across a broad spectrum of other fields. This second edition is aimed at a wider range of readers, and especially those who would like to apply these techniques to their research problems. It complements the authors' other recent volume Applied Functional Data Analysis: Methods and Case Studies. In particular, there is an extended coverage of data smoothing and other matters arising in the preliminaries to a functional data analysis. The chapters on the functional linear model and modeling of the dynamics of systems through the use of differential equations and principal differential analysis have been completely rewritten and extended to include new developments. Other chapters have been revised substantially, often to give more weight to examples and practical considerations. Jim Ramsay is Professor of Psychology at McGill University and is an international authority on many aspects of multivariate analysis. He was President of the Statistical Society of Canada in 2002-3 and holds the Society’s Gold Medal for his work in functional data analysis. Bernard Silverman is Master of St Peter’s College and Professor of Statistics at Oxford University. He was President of the Institute of Mathematical Statistics in 2000–1. He is a Fellow of the Royal Society. His main specialty is in computational statistics, and he is the author or editor of several highly regarded books in this area.}
+      \field{edition}{2}
+      \field{isbn}{978-0-387-40080-8}
+      \field{series}{Springer {Series} in {Statistics}}
+      \field{title}{Functional {Data} {Analysis}}
+      \field{urlday}{23}
+      \field{urlmonth}{10}
+      \field{urlyear}{2021}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/b98888
+      \endverb
+      \verb{file}
+      \verb Snapshot:/home/jjuergens/Zotero/storage/AEUWVL2C/9780387400808.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.springer.com/de/book/9780387400808
+      \endverb
+      \verb{url}
+      \verb https://www.springer.com/de/book/9780387400808
+      \endverb
+    \endentry
+    \entry{shonkwiler_explorations_2009}{book}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=138c8d5acb1f0ecf9a61982c1b0880d1}{%
+           family={Shonkwiler},
+           familyi={S\bibinitperiod},
+           given={Ronald\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9783caeec239744853615b5ccb84f378}{%
+           family={Mendivil},
+           familyi={M\bibinitperiod},
+           given={Franklin},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{6e201426c5ade24c0ad49e2391234db7}
+      \strng{fullhash}{6e201426c5ade24c0ad49e2391234db7}
+      \strng{bibnamehash}{6e201426c5ade24c0ad49e2391234db7}
+      \strng{authorbibnamehash}{6e201426c5ade24c0ad49e2391234db7}
+      \strng{authornamehash}{6e201426c5ade24c0ad49e2391234db7}
+      \strng{authorfullhash}{6e201426c5ade24c0ad49e2391234db7}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Monte Carlo methods are among the most used and useful computational tools available today, providing efficient and practical algorithims to solve a wide range of scientific and engineering problems. Applications covered in this book include optimization, finance, statistical mechanics, birth and death processes, and gambling systems. Explorations in Monte Carlo Methods provides a hands-on approach to learning this subject. Each new idea is carefully motivated by a realistic problem, thus leading from questions to theory via examples and numerical simulations. Programming exercises are integrated throughout the text as the primary vehicle for learning the material. Each chapter ends with a large collection of problems illustrating and directing the material. This book is suitable as a textbook for students of engineering and the sciences, as well as mathematics. The problem-oriented approach makes it ideal for an applied course in basic probability and for a more specialized course in Monte Carlo methods. Topics include probability distributions, counting combinatorial objects, simulated annealing, genetic algorithms, option pricing, gamblers ruin, statistical mechanics, sampling, and random number generation.}
+      \field{isbn}{978-0-387-87836-2}
+      \field{series}{Undergraduate {Texts} in {Mathematics}}
+      \field{title}{Explorations in {Monte} {Carlo} {Methods}}
+      \field{urlday}{23}
+      \field{urlmonth}{10}
+      \field{urlyear}{2021}
+      \field{year}{2009}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1007/978-0-387-87837-9
+      \endverb
+      \verb{file}
+      \verb Submitted Version:/home/jjuergens/Zotero/storage/BET3BDTX/Shonkwiler and Mendivil - 2009 - Explorations in Monte Carlo Methods.pdf:application/pdf;Snapshot:/home/jjuergens/Zotero/storage/FQQKZEY8/9780387878362.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://www.springer.com/gp/book/9780387878362
+      \endverb
+      \verb{url}
+      \verb https://www.springer.com/gp/book/9780387878362
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
