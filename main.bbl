@@ -19,6 +19,150 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{cai_prediction_2006}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=522ba29dd0a27bce6085e7b8942979b9}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={T.\bibnamedelimi Tony},
+           giveni={T\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8922d50f77e8cc98c9ac19d6edca3701}{%
+           family={Hall},
+           familyi={H\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{41911fc61dc24a03ab4786b034f6ac22}
+      \strng{fullhash}{41911fc61dc24a03ab4786b034f6ac22}
+      \strng{bibnamehash}{41911fc61dc24a03ab4786b034f6ac22}
+      \strng{authorbibnamehash}{41911fc61dc24a03ab4786b034f6ac22}
+      \strng{authornamehash}{41911fc61dc24a03ab4786b034f6ac22}
+      \strng{authorfullhash}{41911fc61dc24a03ab4786b034f6ac22}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{There has been substantial recent work on methods for estimating the slope function in linear regression for functional data analysis. However, as in the case of more conventional finite-dimensional regression, much of the practical interest in the slope centers on its application for the purpose of prediction, rather than on its significance in its own right. We show that the problems of slope-function estimation, and of prediction from an estimator of the slope function, have very different characteristics. While the former is intrinsically nonparametric, the latter can be either nonparametric or semiparametric. In particular, the optimal mean-square convergence rate of predictors is n−1, where n denotes sample size, if the predictand is a sufficiently smooth function. In other cases, convergence occurs at a polynomial rate that is strictly slower than n−1. At the boundary between these two regimes, the mean-square convergence rate is less than n−1 by only a logarithmic factor. More generally, the rate of convergence of the predicted value of the mean response in the regression model, given a particular value of the explanatory variable, is determined by a subtle interaction among the smoothness of the predictand, of the slope function in the model, and of the autocovariance function for the distribution of explanatory variables.}
+      \field{issn}{0090-5364, 2168-8966}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{month}{10}
+      \field{note}{Publisher: Institute of Mathematical Statistics}
+      \field{number}{5}
+      \field{title}{Prediction in functional linear regression}
+      \field{urlday}{24}
+      \field{urlmonth}{10}
+      \field{urlyear}{2021}
+      \field{volume}{34}
+      \field{year}{2006}
+      \field{urldateera}{ce}
+      \field{pages}{2159\bibrangedash 2179}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1214/009053606000000830
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/home/jjuergens/Zotero/storage/7CC7733R/Cai and Hall - 2006 - Prediction in functional linear regression.pdf:application/pdf;Snapshot:/home/jjuergens/Zotero/storage/TFP58STD/009053606000000830.html:text/html
+      \endverb
+      \verb{urlraw}
+      \verb https://projecteuclid.org/journals/annals-of-statistics/volume-34/issue-5/Prediction-in-functional-linear-regression/10.1214/009053606000000830.full
+      \endverb
+      \verb{url}
+      \verb https://projecteuclid.org/journals/annals-of-statistics/volume-34/issue-5/Prediction-in-functional-linear-regression/10.1214/009053606000000830.full
+      \endverb
+      \keyw{62G20,62J05,bootstrap,Covariance,Dimension reduction,eigenfunction,eigenvalue,eigenvector,Functional data analysis,intercept,minimax,optimal convergence rate,principal components analysis,rate of convergence,slope,smoothing,spectral decomposition}
+    \endentry
+    \entry{carey_life_2002}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=2b3e6f89abb212aea01168497597c94a}{%
+           family={Carey},
+           familyi={C\bibinitperiod},
+           given={James\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ac90ace88925185ece0cf0116488f0fb}{%
+           family={Liedo},
+           familyi={L\bibinitperiod},
+           given={Pablo},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=26257821dc294941b855cb23d251af06}{%
+           family={Harshman},
+           familyi={H\bibinitperiod},
+           given={Lawrence},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f5acec98b29ee91fa6b08b85a6a0adad}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ying},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9ad62fbb452f711d6f27e73e9b612ebe}{%
+           family={Müller},
+           familyi={M\bibinitperiod},
+           given={Hans-Georg},
+           giveni={H\bibinithyphendelim G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bf2d5acde626d5ec3acf23697700df7d}{%
+           family={Partridge},
+           familyi={P\bibinitperiod},
+           given={Linda},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=aa884172ef3f1964c2ce99286817647e}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jane-Ling},
+           giveni={J\bibinithyphendelim L\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{7e5c26b84c274e113a7d431b512a8f19}
+      \strng{fullhash}{ee8f6192a7d58e417cdce2434d569199}
+      \strng{bibnamehash}{7e5c26b84c274e113a7d431b512a8f19}
+      \strng{authorbibnamehash}{7e5c26b84c274e113a7d431b512a8f19}
+      \strng{authornamehash}{7e5c26b84c274e113a7d431b512a8f19}
+      \strng{authorfullhash}{ee8f6192a7d58e417cdce2434d569199}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The purpose of this study was to investigate medfly longevity and reproduction across a broad spectrum of diet restriction using a protocol similar to those applied in most rodent studies. Age-specific reproduction and age of death were monitored for 1200 adult males and 1200 females, each individually maintained on one of 12 diets from ad libitum to 30\% of ad libitum. Diet was provided in a fixed volume of solution that was fully consumed each day, ensuring control of total nutrient consumption for every fly. Contrary to expectation and precedence, increased longevity was not observed at any level of diet restriction. Among females, reproduction continued across all diet levels despite the cost in terms of increased mortality. Among males, life expectancy exceeded that of females at most diet levels. However, in both sexes, mortality increased more sharply and the pattern of survival changed abruptly once the diet level fell to 50\% of ad libitum or below, even though the energetic demands of egg production has no obvious counterpart in males. We believe that a more complete picture of the life table response to dietary restriction will emerge when studies are conducted on a wider range of species and include both sexes, more levels of diet, and the opportunity for mating and reproduction.}
+      \field{issn}{1474-9726}
+      \field{journaltitle}{Aging Cell}
+      \field{note}{\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1046/j.1474-9728.2002.00019.x}
+      \field{number}{2}
+      \field{title}{Life history response of {Mediterranean} fruit flies to dietary restriction}
+      \field{urlday}{24}
+      \field{urlmonth}{10}
+      \field{urlyear}{2021}
+      \field{volume}{1}
+      \field{year}{2002}
+      \field{urldateera}{ce}
+      \field{pages}{140\bibrangedash 148}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1046/j.1474-9728.2002.00019.x
+      \endverb
+      \verb{file}
+      \verb Snapshot:/home/jjuergens/Zotero/storage/QH2SR9WQ/j.1474-9728.2002.00019.html:text/html;Full Text PDF:/home/jjuergens/Zotero/storage/SGDFHJAD/Carey et al. - 2002 - Life history response of Mediterranean fruit flies.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1474-9728.2002.00019.x
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1474-9728.2002.00019.x
+      \endverb
+      \keyw{cost of reproduction,life span,life table,longevity extension,male–female mortality,sex–mortality differentials}
+    \endentry
     \entry{horvath_inference_2012}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=2919dcd948c266ae6a5b887d1c3433f1}{%
@@ -101,6 +245,51 @@
       \field{year}{2015}
       \keyw{Mathematics / Probability \& Statistics / General,Mathematics / Probability \& Statistics / Stochastic Processes}
     \endentry
+    \entry{James.2009}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=99aae259be3fa32199b53729788b3d79}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Gareth\bibnamedelima M.},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=49a19e08791a3dc09c932ff975949361}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=885c2d20b53bf31151fa702f9fadcfe5}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Ji},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e0f314c4bc819c75b07654aa7f754ff0}
+      \strng{fullhash}{e0f314c4bc819c75b07654aa7f754ff0}
+      \strng{bibnamehash}{e0f314c4bc819c75b07654aa7f754ff0}
+      \strng{authorbibnamehash}{e0f314c4bc819c75b07654aa7f754ff0}
+      \strng{authornamehash}{e0f314c4bc819c75b07654aa7f754ff0}
+      \strng{authorfullhash}{e0f314c4bc819c75b07654aa7f754ff0}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Annals of Statistics, 2009, Vol.37, No.5A, 2083-2108}
+      \field{issn}{0090-5364}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{number}{5A}
+      \field{title}{Functional linear regression that's interpretable}
+      \field{volume}{37}
+      \field{year}{2009}
+      \verb{doi}
+      \verb 10.1214/08-AOS641
+      \endverb
+      \keyw{62J99;Dantzig selector;functional linear regression;Interpretable regression;lasso}
+    \endentry
     \entry{kokoszka_introduction_2017}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=66f98311069b2eb80843b774d51c21c1}{%
@@ -144,6 +333,60 @@
       \field{month}{8}
       \field{title}{Introduction to {Functional} {Data} {Analysis}}
       \field{year}{2017}
+    \endentry
+    \entry{levitin_introduction_2007}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=0fe4f4d75505b28832a12edf913a1e3e}{%
+           family={Levitin},
+           familyi={L\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a3232b31c3c41fa79bf0364699929fba}{%
+           family={Nuzzo},
+           familyi={N\bibinitperiod},
+           given={Regina},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2d8d81356ac313f93badaab5e02a2bf0}{%
+           family={Vines},
+           familyi={V\bibinitperiod},
+           given={Bradley},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=82c1bfad20df6fc9b773259966b21729}{%
+           family={Ramsay},
+           familyi={R\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{545ad77e42309b976e8795f6b15f53bf}
+      \strng{fullhash}{dc5fbb56a8061d85f11f437001df1ceb}
+      \strng{bibnamehash}{545ad77e42309b976e8795f6b15f53bf}
+      \strng{authorbibnamehash}{545ad77e42309b976e8795f6b15f53bf}
+      \strng{authornamehash}{545ad77e42309b976e8795f6b15f53bf}
+      \strng{authorfullhash}{dc5fbb56a8061d85f11f437001df1ceb}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Psychologists and behavioural scientists are increasingly collecting data that are drawn from continuous underlying processes. We describe a set of quantitative methods, Functional Data Analysis (FDA), which can answer a number of questions that traditional statistical approaches cannot. These methods are applicable for analyzing many datasets that are common in experimental psychology, including time series data, repeated measures, and data distributed over time or space as in neuroimaging experiments. The primary advantage of FDA is that it allows the researcher to ask questions about when in a time series differences may exist between two or more sets of observations. We discuss functional correlations, principal components, the derivatives of functional curves, and analysis of variances models. (PsycINFO Database Record (c) 2012 APA, all rights reserved)}
+      \field{journaltitle}{Canadian Psychology/Psychologie canadienne}
+      \field{month}{8}
+      \field{title}{Introduction to {Functional} {Data} {Analysis}}
+      \field{volume}{48}
+      \field{year}{2007}
+      \field{pages}{135\bibrangedash 155}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1037/cp2007014
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/home/jjuergens/Zotero/storage/LBCJRPIW/Levitin et al. - 2007 - Introduction to Functional Data Analysis.pdf:application/pdf
+      \endverb
     \endentry
     \entry{ramsay_functional_2005}{book}{}
       \name{author}{2}{}{%
@@ -193,9 +436,6 @@
       \field{urldateera}{ce}
       \verb{doi}
       \verb 10.1007/b98888
-      \endverb
-      \verb{file}
-      \verb Snapshot:/home/jjuergens/Zotero/storage/AEUWVL2C/9780387400808.html:text/html
       \endverb
       \verb{urlraw}
       \verb https://www.springer.com/de/book/9780387400808
@@ -251,9 +491,6 @@
       \field{urldateera}{ce}
       \verb{doi}
       \verb 10.1007/978-0-387-87837-9
-      \endverb
-      \verb{file}
-      \verb Submitted Version:/home/jjuergens/Zotero/storage/BET3BDTX/Shonkwiler and Mendivil - 2009 - Explorations in Monte Carlo Methods.pdf:application/pdf;Snapshot:/home/jjuergens/Zotero/storage/FQQKZEY8/9780387878362.html:text/html
       \endverb
       \verb{urlraw}
       \verb https://www.springer.com/gp/book/9780387878362

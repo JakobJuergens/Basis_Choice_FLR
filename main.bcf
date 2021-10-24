@@ -2349,7 +2349,11 @@
     <bcf:citekey order="2">hsing_theoretical_2015</bcf:citekey>
     <bcf:citekey order="3">ramsay_functional_2005</bcf:citekey>
     <bcf:citekey order="4">horvath_inference_2012</bcf:citekey>
-    <bcf:citekey order="5">shonkwiler_explorations_2009</bcf:citekey>
+    <bcf:citekey order="5">cai_prediction_2006</bcf:citekey>
+    <bcf:citekey order="6">levitin_introduction_2007</bcf:citekey>
+    <bcf:citekey order="7">shonkwiler_explorations_2009</bcf:citekey>
+    <bcf:citekey order="8">carey_life_2002</bcf:citekey>
+    <bcf:citekey order="9">James.2009</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

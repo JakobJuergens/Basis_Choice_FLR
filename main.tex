@@ -1,6 +1,7 @@
 \documentclass[11pt,twoside,a4paper]{article}
 \usepackage[hmargin=2cm, vmargin=2cm]{geometry}
 \usepackage{microtype}
+\usepackage{hyperref}
 \usepackage[english]{babel}
 \usepackage{setspace}
 \usepackage{xcolor}
@@ -48,7 +49,7 @@ style=authoryear-comp,
 		\item Explain basis expansions (so basis of the vector space $L^2$ and b-spline basis as an example) 
 		\item Motivate Karhunen-Loeve-Expansion and Eigenbasis from PCA		
 		\item Explain Scalar-on-Function Regression
-		\item Estimation through basis-expansion (incl. Eigenbasis) and estimation with roughness penalty
+		\item Estimation through basis-expansion (incl. Eigenbasis) [and estimation with roughness penalty]
 		\item Address approximation error due to basis-truncation
 	\end{itemize}
 
@@ -58,6 +59,8 @@ style=authoryear-comp,
 		\item \cite{hsing_theoretical_2015}
 		\item \cite{ramsay_functional_2005}
 		\item \cite{horvath_inference_2012}
+		\item \cite{cai_prediction_2006}
+		\item \cite{levitin_introduction_2007}
 	\end{itemize}
 	
 	\newpage
@@ -67,6 +70,7 @@ style=authoryear-comp,
 	\begin{itemize}
 		\item Motivate Simulation for some data generating process from application
 		\item Describe Simulation Setting from technical standpoint (DGP, set-up for replication, ...)
+		\item Prediction not Inference
 		\item Present Results
 		\item Explain relevance for application
 	\end{itemize}
@@ -74,6 +78,7 @@ style=authoryear-comp,
 	\subsection{Literature}
 	\begin{itemize}
 		\item \cite{shonkwiler_explorations_2009}
+		\item R-packages: fda, refund, mgcv
 	\end{itemize}
 	
 	\newpage
@@ -81,15 +86,28 @@ style=authoryear-comp,
 
 	\subsection{Draft-Overview}
 	\begin{itemize}
-		\item 
+		\item Prediction not Inference
+		\item IID data set (no dependence between the curves, don't want to do functional time series)
+		\item Not necessarily data from economics (like biology, sports, whatever)
+		\item Smooth curves or random walk (both fine)
+		\item \href{https://functionaldata.wordpress.ncsu.edu/resources/}{https://functionaldata.wordpress.ncsu.edu/resources/}
 	\end{itemize}
 	
 	\subsection{Literature}
 	\begin{itemize}
-		\item 
+		\item \cite{carey_life_2002}
+	\end{itemize}
+
+	\section{Outlook}
+	
+	\subsection{Literature}
+	\begin{itemize}
+		\item \cite{James.2009} (shape-restrictions)
 	\end{itemize}
 	
 	\section{Appendix}
+	
+	\newpage
 	
 	\section{Bibliography}
 	\printbibliography[heading=none]	
