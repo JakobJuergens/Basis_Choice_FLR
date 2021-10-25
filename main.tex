@@ -70,7 +70,14 @@ style=authoryear-comp,
 	\begin{itemize}
 		\item Motivate Simulation for some data generating process from application
 		\item Describe Simulation Setting from technical standpoint (DGP, set-up for replication, ...)
-		\item Prediction not Inference
+		
+		\item Compare estimation with \begin{enumerate}
+			\item b-spline basis without addressing approximation error
+			\item ... including proper treatment of approximation error
+			\item Eigenbasis constructed from observations
+			\end{enumerate}
+	
+		\item Prediction not Inference (Alternative: Focused on a testing procedure motivated by the application)
 		\item Present Results
 		\item Explain relevance for application
 	\end{itemize}
@@ -86,7 +93,7 @@ style=authoryear-comp,
 
 	\subsection{Draft-Overview}
 	\begin{itemize}
-		\item Prediction not Inference
+		\item Prediction not Inference (Alternative: Focused on a testing procedure motivated by the data set)
 		\item IID data set (no dependence between the curves, don't want to do functional time series)
 		\item Not necessarily data from economics (like biology, sports, whatever)
 		\item Smooth curves or random walk (both fine)
