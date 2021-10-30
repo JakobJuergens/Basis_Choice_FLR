@@ -39,17 +39,43 @@ style=authoryear-comp,
 		\item Describing the difference to multiple linear regression intuitively
 		\item Giving an intuitive example
 	\end{itemize}	
-	Function Data Analysis (FDA) is a relatively new field which is getting more attention as researchers from different fields collect more data from an continuous underlying process. This data still can be processed by classical statistical methods, but only FDA allows to answer questions that are tied to the information given by the smoothness of the underlying continuous process. (see \cite{levitin_introduction_2007})\\
-	 As Kokoszka and Reimherr (2017) describe, FDA should be considered when one can view one or more of the variables or units of a given data set as a smooth curve or function and the interest is in analyzing samples of curves (see \cite[S.~17]{kokoszka_introduction_2017}.
-	 To motivate the use of scalar-on-function regression, consider the case of a data set containing a scalar response and observations of an continuous underlying process. In economics, on application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (see~\cite{Das_2019}). 
+	Function Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is getting more attention as researchers from different fields collect more data from a continuous underlying process. This data still can be processed by classical statistical methods, but only FDA allows answering questions that are tied to the information given by the smoothness of the underlying continuous process. (cf. \cite{levitin_introduction_2007})\\
+	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view one or more of the variables or units of a given data set as a smooth curve or function and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).
+	 To motivate scalar-on-function regression, consider the case of a data set containing a scalar response and observations of a continuous underlying process. In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}). 
 
 	\section{Theory}
 	
+	\subsection{Detailed Draft}
+	\begin{itemize}
+		\item Motivate random functions from introduction and the general concept of random variables
+		\item Formalize random function in this context as random variables realizing in a Hilbert space
+		\item Introduce $\mathbf{L}^2[0,1]$ as the Hilbert space of square integrable functions on $[0,1]$
+		\item Specialize to Hilbert space being $\mathbf{L}^2[0,1]$ for this context
+		\item Define mean and covariance function of a random function realizing in $\mathbf{L}^2[0,1]$
+		\item Introduce the concept of a basis of a Hilbert space and specialize to $\mathbf{L}^2[0,1]$
+		\item Introduce b-spline and Fourier bases
+		\item Introduce eigenfunctions and FPCA on the basis of covariance function (Karhunen-Lo\'{e}ve expansion)
+		\item explain similarities to Eigenvalues and Eigenvectors of matrix + PCA (fraction of explained variance etc...)
+		\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbf{L}^2[0,1]$
+		\item Explain the concept of iid data in a functional setting
+		\item Define point-wise mean (sample), point-wise standard deviation (sample) and sample covariance function
+		\item Explain approximations of functional observations using truncated basis representations
+		\item Introduce linear operator $L_1$ and sufficient condition associated with it
+		\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
+		\item Explain problem of naively extending multivariate linear regression to infinite dimensions
+		\item Solution: estimation using truncated basis expansion to approximate data (theoretical description)
+		\item Problem: truncation error $\delta$ and how to deal with it?
+		\item Explain how to address truncation error in standard errors
+		\item Motivate three estimation procedures
+		\begin{enumerate}
+			\item truncated b-spline basis expansion without addressing truncation error
+			\item truncated b-spline basis expansion WITH addressing truncation error
+			\item truncated Eigenbasis expansion (advantages: low number of basis functions get low approximation error)
+		\end{enumerate}
+	\end{itemize}
+	
 	\subsection{Draft-Overview}
 	\begin{itemize}
-		\item Introduce the concept of random functions
-		\item Introduce the concept of square integrable deterministic \& random functions
-		\item Explain basis expansions (so basis of the vector space $L^2$ and b-spline basis as an example) 
 		\item Motivate Karhunen-Loeve-Expansion and Eigenbasis from PCA		
 		\item Explain Scalar-on-Function Regression
 		\item Estimation through basis-expansion (incl. Eigenbasis) [and estimation with roughness penalty]
