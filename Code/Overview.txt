@@ -5,4 +5,10 @@ Please keep it updated with your work.
 This file serves as a showcase for how to perform MC-simulations in parallel in R.
 The example used in the script is an approximation of pi.
 
-###
+### application_fdapackage_gasoline ###
+sandbox for trying out the fda package to apply functional linear regression on the gasilone data
+
+### application_refundpackage_gasoline ###
+sandbox for trying out the refund package to apply functional linear regression on the gasilone data
+As you can see, ther are major differences in the interface and the result, which need to be understood
+
