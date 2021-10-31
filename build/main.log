@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  31 OCT 2021 21:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  31 OCT 2021 21:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -657,7 +657,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 655F10E60AF4545FFF8CF4CDB53FE697;1576.
+(rerunfilecheck)             Checksum: E3480AA09D40E8BDA68C73B511599FD9;1804.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
@@ -668,11 +668,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18529 strings out of 478599
- 316260 string characters out of 5858101
+ 18530 strings out of 478599
+ 316286 string characters out of 5858101
  1101977 words of memory out of 5000000
- 36072 multiletter control sequences out of 15000+600000
- 413707 words of font info for 105 fonts, out of 8000000 for 9000
+ 36073 multiletter control sequences out of 15000+600000
+ 413656 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,6n,66p,2668b,1725s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
@@ -691,10 +691,10 @@ blic/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
 c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on build/main.pdf (9 pages, 225804 bytes).
+Output written on build/main.pdf (9 pages, 227777 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 49 named destinations out of 1000 (max. 500000)
- 29305 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 29313 words of extra memory for PDF output out of 29859 (max. 10000000)
 
