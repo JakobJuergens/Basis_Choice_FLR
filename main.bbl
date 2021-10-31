@@ -41,7 +41,7 @@
       \strng{authornamehash}{41911fc61dc24a03ab4786b034f6ac22}
       \strng{authorfullhash}{41911fc61dc24a03ab4786b034f6ac22}
       \field{sortinit}{C}
-      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -130,7 +130,7 @@
       \strng{authornamehash}{7e5c26b84c274e113a7d431b512a8f19}
       \strng{authorfullhash}{ee8f6192a7d58e417cdce2434d569199}
       \field{sortinit}{C}
-      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -197,7 +197,7 @@
       \strng{authornamehash}{1add6486a5635ae27d1bbc76cbb18131}
       \strng{authorfullhash}{62350e6d75613e41b9c70b6b9b303fad}
       \field{sortinit}{D}
-      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -250,7 +250,7 @@
       \strng{authornamehash}{01eb4f83b8ca4777a94bc617db4d348e}
       \strng{authorfullhash}{01eb4f83b8ca4777a94bc617db4d348e}
       \field{sortinit}{H}
-      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -291,7 +291,7 @@
       \strng{authornamehash}{8131b5fc038545972a47dc39fe385f9e}
       \strng{authorfullhash}{8131b5fc038545972a47dc39fe385f9e}
       \field{sortinit}{H}
-      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -332,7 +332,7 @@
       \strng{authornamehash}{e0f314c4bc819c75b07654aa7f754ff0}
       \strng{authorfullhash}{e0f314c4bc819c75b07654aa7f754ff0}
       \field{sortinit}{J}
-      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -381,7 +381,7 @@
       \strng{authornamehash}{10de47ea5b23b4de5b295bb8b3115870}
       \strng{authorfullhash}{10de47ea5b23b4de5b295bb8b3115870}
       \field{sortinit}{K}
-      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -427,7 +427,7 @@
       \strng{authornamehash}{545ad77e42309b976e8795f6b15f53bf}
       \strng{authorfullhash}{dc5fbb56a8061d85f11f437001df1ceb}
       \field{sortinit}{L}
-      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -478,7 +478,7 @@
       \strng{authornamehash}{e4205787eb4cc6717da2ed10382e5453}
       \strng{authorfullhash}{e4205787eb4cc6717da2ed10382e5453}
       \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
@@ -534,7 +534,7 @@
       \strng{authornamehash}{6e201426c5ade24c0ad49e2391234db7}
       \strng{authorfullhash}{6e201426c5ade24c0ad49e2391234db7}
       \field{sortinit}{S}
-      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}

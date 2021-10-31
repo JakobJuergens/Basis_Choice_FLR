@@ -62,7 +62,40 @@ style=authoryear-comp,
 		\item Explain approximations of functional observations using truncated basis representations
 		\item Introduce linear operator $L_1$ and sufficient condition associated with it
 		\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
+	\end{itemize}
+\subsection{Kokoszka Reimherr (2017) p51-53}
+There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to Kokoszka and Reimherr (2017): In functional regression, the aim is not only to compute an estimate of the function $\beta$ because this function needs also to have an useful interpretation. Without this useful interpretation, there can be no effective and feasible prediction of the scalar responses from new explanatory functions. Hereby applies, that intervals with larger values of $|\beta(s)|$ are contributing more to to the response than small values of  $|\beta(s)|$. The sign of $\beta(s)$ within the intervals of the value s show either negative or positive association of  $|\beta(s)|$ for this interval. To get an useful interpretation, the estimate $\beta$ cannot jump in a seemingly random fashion, because then an useful interpretation is not possible and predictions from this model tend to have large variances and center around the mean of the responses. (see ~\cite{kokoszka_introduction_2017})
+	
+	\begin{itemize}
 		\item Explain problem of naively extending multivariate linear regression to infinite dimensions
+	\end{itemize}
+	Considering the population model of scalar-on-function linear regression
+	\begin{equation}
+     Y =  \int \beta(s)X(s) \,dt \ +\epsilon
+    \end{equation}
+    it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because there are infinitely many solutions for finding the minimizing argument for $\hat{\beta}$. Define 
+    \begin{equation}
+  	c_{X}(t,s) = E[X(t)X(s)],\: c_{XY}(t) = E[X(t)Y], 
+    \end{equation}
+   Under the assumption that $X$ is independent from $\epsilon$ we obtain
+   \begin{equation}
+     c_{XY}(t) = E[X(t)\int \beta(t)X(s) \,dt \ +\epsilon
+   \end{equation}
+    \begin{equation}
+     c_{XY}(t) = \int \beta(s)\,dt \: E[X(s)X(t)| X] + E[\epsilon |X]
+  	\end{equation}
+   	\begin{equation}
+    	c_{XY}(t) = \int c_{X}(t,s) \beta(s) \,ds 
+   \end{equation}
+   
+  This results in practice in a large number of equations, which are difficult to solve. Even if solved, this results in a noisy function $\beta(\dot{•})$ that is not useful for interpretation since it does bot utilize the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity. Approximate the scalar-on-functional regression as
+  	\begin{equation}
+     Y_i = \sum_{i = 1}^{n} \beta(t_{i})X_1(t_{i}) + \epsilon_{i}
+    \end{equation}, it becomes obvious that if $t_{i}$ is close to $t_{i'}$, $X_{i}(t_{i})$ is close to $X_{i}(t_{i'})$, so there will be vectors $X_{i}$ thatare stronlgx correlated and thus lead to large variances and not feasible estimation.
+   
+    
+	
+	\begin{itemize}
 		\item Solution: estimation using truncated basis expansion to approximate data (theoretical description)
 		\item Problem: truncation error $\delta$ and how to deal with it?
 		\item Explain how to address truncation error in standard errors
