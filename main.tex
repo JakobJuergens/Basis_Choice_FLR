@@ -70,12 +70,18 @@ style=authoryear-comp,
 		\item Introduce linear operator $L_1$ and sufficient condition associated with it
 		\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
 	\end{itemize}
+\subsection{Kokoszka Reimherr (2017) p51-53}
+There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ — this estimate also needs to have a useful interpretation. Without it, there might be prediction, but the increase in understanding of the underlying question will be minimal. One aspect of a useful interpretation is that the estimate $\beta$ should not jump in a seemingly random fashion, because an interpretation of this erratic behavior will often be impossible.
 
-There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ because this function also needs to have a useful interpretation. Without it, there might be prediction of the scalar responses from new explanatory functions, but the increase in understanding of the underlying question will be minimal. Thereby, intervals with larger values of $|\beta(s)|$ will contribute more to the response than small values of  $|\beta(s)|$. The sign of $\beta(s)$ indicates either negative or positive influence of $X(s)$ for a specific value of s. To get a useful interpretation, the estimate $\beta$ should not jump in a seemingly random fashion, because a useful interpretation of this erratic behavior will often be impossible and predictions from these model tend to have larger variances and to center around the mean of the responses. 
-	
 	\begin{itemize}
 		\item Explain problem of naively extending multivariate linear regression to infinite dimensions
 	\end{itemize}
+	A common setting in non-functional regression is akin to the following. Assume a data generating as follows:
+	\begin{equation}
+		Y = X\beta + \epsilon
+	\end{equation}
+	where $X$ is a vector of random variables, $\beta = (\beta_0, \dots, \beta_J)'$ is a coefficient vector and $epsilon$ is an 
+
 	Assuming a data generating process of the form:
 	\begin{equation}
      Y =  \int \beta(s)X(s) \,dt \ +\epsilon
