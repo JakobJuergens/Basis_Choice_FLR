@@ -47,7 +47,7 @@ style=authoryear-comp,
 	 	Y_{i} = \beta_{0} + \int{X_{i}(s)\beta(s)ds} + \epsilon_{i},
 	 	\qquad i = 1, ..., n
 	 \end{equation}
-	 where the $X_{i}$ are observations of a random function $X$, $Y_i$ are realizations of the response variable and $\beta(s)$ is the coefficient function. The distinct feature of this framework is that the regressor is a function, which necessitates a different approach to estimation. As in the well-known framework of scalar linear regression, this is motivated by an interest in $\beta(s)$ for prediction. For instance, fluctuation in $X$ at a point $s_0$ will not have any effect on $Y$ if $\beta(s_0)$ = 0. \\
+	 where the $X_{i}$ are realizations of a random function $\mathbf{X}$, $Y_i$ are the corresponding realizations of the response variable and $\beta(s)$ is the coefficient function. The distinct feature of this framework is that the regressor is a function, which necessitates a different approach to estimation. As in the well-known framework of scalar linear regression, this is motivated by an interest in $\beta(s)$ for prediction. For instance, fluctuation in $X_i(s)$ at a point $s_0$ will not have any effect on $Y_i$ if $\beta(s_0)$ = 0. \\
 	 Estimation of $\beta(s)$ is inherently an infinite dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. The results of the Monte-Carlo simulation regarding these three different methods are reported in Section 3. Finally, in Section 4, we test the prediction of FLR in a real world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
 
 	\section{Theory}
@@ -82,25 +82,25 @@ There are several important aspects of functional regression in this functional 
     \end{equation}
     it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Define therefore
     \begin{equation}
-  	c_{X}(t,s) = E[X(t)X(s)],\: c_{XY}(t) = E[X(t)Y].
+  	c_{\mathbf{X}}(t,s) = E[\mathbf{X}(t)\mathbf{X}(s)],\: c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\mathbf{Y}], 
     \end{equation}
    Under the assumption that $X$ is independent from $\epsilon$ we obtain
    \begin{equation}
-     c_{XY}(t) = E[X(t)\int \beta(s)X(s) \,ds \ +\epsilon]
+     c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\int \beta(t)\mathbf{X}(s) \,ds \ +\epsilon]
    \end{equation}
     \begin{equation}
-     c_{XY}(t) =  E[\int \beta(s)X(s)X(t)\,ds\:|\: X] + E[\epsilon |X]
+     c_{\mathbf{X}\mathbf{Y}}(t) = E[\int \beta(s) \: \mathbf{X}(s)\mathbf{X}(t) \, ds \: | \: X]  + E[\epsilon |\mathbf{X}]
   	\end{equation}
    	\begin{equation}
-    	c_{XY}(t) = \int c_{X}(t,s) \beta(s) \,ds 
+    	c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,ds
    \end{equation}
    
    In practice, this results in a large and often difficult to solve system of equations. Even if solved, the result is often a noisy function $\beta(\dot{•})$ that is not useful for interpretation since it does not utilize the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity. \\
    
    If we approximate the scalar-on-functional regression as
   	\begin{equation}
-     Y_i = \sum_{i = 1}^{n} \beta(t_{i})X_1(t_{i}) + \epsilon_{i}
-    \end{equation}, it becomes clear that if $t_{i}$ is close to $t_{i'}$, $X_{i}(t_{i})$ is close to $X_{i}(t_{i'})$ there will be vectors $X_{i}$ that are highly correlated and thus lead to large variances.
+     Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{j}
+    \end{equation}, it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$ there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances. {\color{red} isn't something missing here? Like "and employ standard multivariate linear regression"}
    
     
 	
