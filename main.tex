@@ -80,14 +80,14 @@ There are several important aspects of functional regression in this functional 
     \end{equation}
     it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because there are infinitely many solutions for finding the minimizing argument for $\hat{\beta}$. Define 
     \begin{equation}
-  	c_{X}(t,s) = E[X(t)X(s)],\: c_{XY}(t) = E[X(t)Y], 
+  	c_{X}(t,s) = E[X(t)X(s)],\: c_{XY}(t) = E[X(t)Y].
     \end{equation}
    Under the assumption that $X$ is independent from $\epsilon$ we obtain
    \begin{equation}
-     c_{XY}(t) = E[X(t)\int \beta(t)X(s) \,dt \ +\epsilon
+     c_{XY}(t) = E[X(t)\int \beta(s)X(s) \,ds \ +\epsilon]
    \end{equation}
     \begin{equation}
-     c_{XY}(t) = \int \beta(s)\,dt \: E[X(s)X(t)| X] + E[\epsilon |X]
+     c_{XY}(t) =  E[\int \beta(s)X(s)X(t)\,ds\:|\: X] + E[\epsilon |X]
   	\end{equation}
    	\begin{equation}
     	c_{XY}(t) = \int c_{X}(t,s) \beta(s) \,ds 
@@ -95,8 +95,8 @@ There are several important aspects of functional regression in this functional 
    
   This results in practice in a large number of equations, which are difficult to solve. Even if solved, this results in a noisy function $\beta(\dot{•})$ that is not useful for interpretation since it does bot utilize the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity. Approximate the scalar-on-functional regression as
   	\begin{equation}
-     Y_i = \sum_{i = 1}^{n} \beta(t_{i})X_1(t_{i}) + \epsilon_{i}
-    \end{equation}, it becomes obvious that if $t_{i}$ is close to $t_{i'}$, $X_{i}(t_{i})$ is close to $X_{i}(t_{i'})$, so there will be vectors $X_{i}$ thatare stronlgx correlated and thus lead to large variances and not feasible estimation.
+     Y_i = \sum_{i = 1}^{n} \beta(t_{i})X_1(t_{i}) + \epsilon_{i}.
+    \end{equation}It becomes obvious that if $t_{i}$ is close to $t_{i'}$, $X_{i}(t_{i})$ is close to $X_{i}(t_{i'})$, so there will be vectors $X_{i}$ thatare stronlgx correlated and thus lead to large variances and not feasible estimation.
    
     
 	
