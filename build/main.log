@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  31 OCT 2021 18:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  31 OCT 2021 18:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,18 +647,19 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [2]
+ [2] [3] [4]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 48.
-
-[3] [4]
-
-LaTeX Warning: Command \textbullet invalid in math mode on input line 96.
+LaTeX Warning: Command \textbullet invalid in math mode on input line 98.
 
 
-LaTeX Warning: Command \textbullet invalid in math mode on input line 96.
+LaTeX Warning: Command \textbullet invalid in math mode on input line 98.
 
 Missing character: There is no ˆ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
 [5] [6] [7] [8]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
@@ -680,11 +681,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18524 strings out of 478599
- 316239 string characters out of 5858101
+ 18526 strings out of 478599
+ 316249 string characters out of 5858101
  1101973 words of memory out of 5000000
- 36073 multiletter control sequences out of 15000+600000
- 413554 words of font info for 102 fonts, out of 8000000 for 9000
+ 36072 multiletter control sequences out of 15000+600000
+ 413605 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,6n,66p,2668b,1725s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
@@ -702,10 +703,10 @@ s/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm
 1095.pfb>
-Output written on build/main.pdf (9 pages, 211390 bytes).
+Output written on build/main.pdf (9 pages, 209982 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 226 compressed objects within 3 object streams
- 49 named destinations out of 1000 (max. 500000)
+ 272 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
+ 50 named destinations out of 1000 (max. 500000)
  29313 words of extra memory for PDF output out of 29859 (max. 10000000)
 
