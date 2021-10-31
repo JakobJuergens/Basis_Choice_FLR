@@ -95,8 +95,8 @@ There are several important aspects of functional regression in this functional 
     	c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,ds
    \end{equation}
    
-   In practice, this results in a large and often difficult to solve system of equations. Even if solved, the result is often a noisy function $\beta(\dot{•})$ that is not useful for interpretation since it does not utilize the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
-   If we approximate the scalar-on-functional regression as
+   In practice, this results in a large and often difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
+   If we approximate the scalar-on-functional regression by assuming a set of discrete observation points for all realizations of the data generating process as
   	\begin{equation}
      Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{j}
     \end{equation}, it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$ there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances. {\color{red} isn't something missing here? Like "and employ standard multivariate linear regression"}
