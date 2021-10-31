@@ -39,14 +39,16 @@ style=authoryear-comp,
 		\item Describing the difference to multiple linear regression intuitively
 		\item Giving an intuitive example
 	\end{itemize}	
-	Functional Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is getting more attention as researchers from different fields collect more data from a continuous underlying process. This data still can be processed by classical statistical methods, but only FDA allows answering questions that are tied to the information given by the smoothness of the underlying continuous process (cf. \cite{levitin_introduction_2007}).\\
-	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view one or more of the variables or units of a given data set as a smooth curve or function and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).
-	 To motivate scalar-on-function regression, consider the case of a data set containing a scalar response and observations of a continuous underlying process. In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
-	 The focus of this paper is to introduce Functional Linear Regression (FLR) in terms of scalar-on-function. We will be importing the standard FLR model, which shows functional predictors to a scalar response as follows:  {\color{red} (I don't set up any interval for s here we might do later...)}
-	 $$Y_{i} = \beta_{0} + \int{X_{i}(s)\beta(s)ds} + \epsilon_{i},
-	 \qquad i = 1, ..., n,$$
-	 where $\{(X_{1}, Y_{1}), …, (X_{n}, Y_{n})\}$ is the realization of data, where $X_{i}$’s are independent and identically distributed random function X and $\beta(s)$ is the coefficient function. The distinct is that the estimator is not a scalar but a function, which leads to compelling interest in $\beta(s)$ for prediction. The information about the function comes up with how large or small a future observation $x$ of $X$ will influence the response with the leverage on $\int{\beta(s)xds}$. For instance, fluctuation in $X$ does not have any effect on $Y$, where $\beta(s)$ = 0, or has a greater effect on $Y$ with larger $\beta(s)$. Additionally, assume that $\beta(s)$ is exactly a linear function for any interval. The effect of X is, then, constant on that interval.\\
-	 Estimation of $\beta(s)$ is inherent in a problem of infinite dimension. In Section 2, after constructing necessary theoretical properties to understand FDA, we progress to reduce dimension by utilizing smoothing with two types of basis function, namely, b-spline and eigenfunction. The results of the Monte-Carlo simulation regarding three different situations are reported in Section 3. Finally, in Section 4, we test the prediction of FLR with the actual data set. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
+	Functional Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is gaining more attention as researchers from different fields collect data that is functional in nature. This data can often be processed by classical statistical methods, but only FDA allows extracting information given by the smoothness of the underlying process (cf. \cite{levitin_introduction_2007}).
+	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).\\
+	 To motivate scalar-on-function regression, consider the case of a data set containing a scalar response and observations of an underlying continuous process. In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
+	 The focus of this paper is to introduce Functional Linear Regression (FLR) in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:  {\color{red} (I don't set up any interval for s here we might do later...)}
+	 \begin{equation}
+	 	Y_{i} = \beta_{0} + \int{X_{i}(s)\beta(s)ds} + \epsilon_{i},
+	 	\qquad i = 1, ..., n
+	 \end{equation}
+	 where the $X_{i}$ are observations of a random function $X$, $Y_i$ are realizations of the response variable and $\beta(s)$ is the coefficient function. The distinct feature of this framework is that the regressor is a function, which necessitates a different approach to estimation. As in the well-known framework of scalar linear regression, this is motivated by an interest in $\beta(s)$ for prediction. For instance, fluctuation in $X$ at a point $s_0$ will not have any effect on $Y$ if $\beta(s_0)$ = 0. \\
+	 Estimation of $\beta(s)$ is inherently an infinite dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. The results of the Monte-Carlo simulation regarding these three different methods are reported in Section 3. Finally, in Section 4, we test the prediction of FLR in a real world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
 
 	\section{Theory}
 	
@@ -69,16 +71,16 @@ style=authoryear-comp,
 		\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
 	\end{itemize}
 \subsection{Kokoszka Reimherr (2017) p51-53}
-There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to Kokoszka and Reimherr (2017): In functional regression, the aim is not only to compute an estimate of the function $\beta$ because this function needs also to have an useful interpretation. Without this useful interpretation, there can be no effective and feasible prediction of the scalar responses from new explanatory functions. Hereby applies, that intervals with larger values of $|\beta(s)|$ are contributing more to to the response than small values of  $|\beta(s)|$. The sign of $\beta(s)$ within the intervals of the value s show either negative or positive association of  $|\beta(s)|$ for this interval. To get an useful interpretation, the estimate $\beta$ cannot jump in a seemingly random fashion, because then an useful interpretation is not possible and predictions from this model tend to have large variances and center around the mean of the responses. (see ~\cite{kokoszka_introduction_2017})
+There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ because this function also needs to have a useful interpretation. Without it, there might be prediction of the scalar responses from new explanatory functions, but the increase in understanding of the underlying question will be minimal. Thereby, intervals with larger values of $|\beta(s)|$ will contribute more to the response than small values of  $|\beta(s)|$. The sign of $\beta(s)$ indicates either negative or positive influence of $X(s)$ for a specific value of s. To get a useful interpretation, the estimate $\beta$ should not jump in a seemingly random fashion, because a useful interpretation of this erratic behavior will often be impossible and predictions from these model tend to have larger variances and to center around the mean of the responses. (see ~\cite{kokoszka_introduction_2017})
 	
 	\begin{itemize}
 		\item Explain problem of naively extending multivariate linear regression to infinite dimensions
 	\end{itemize}
-	Considering the population model of scalar-on-function linear regression
+	Assuming a data generating process of the form:
 	\begin{equation}
      Y =  \int \beta(s)X(s) \,dt \ +\epsilon
     \end{equation}
-    it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because there are infinitely many solutions for finding the minimizing argument for $\hat{\beta}$. Define 
+    it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Define therefore
     \begin{equation}
   	c_{X}(t,s) = E[X(t)X(s)],\: c_{XY}(t) = E[X(t)Y].
     \end{equation}
@@ -93,10 +95,12 @@ There are several important aspects of functional regression in this functional 
     	c_{XY}(t) = \int c_{X}(t,s) \beta(s) \,ds 
    \end{equation}
    
-  This results in practice in a large number of equations, which are difficult to solve. Even if solved, this results in a noisy function $\beta(\dot{•})$ that is not useful for interpretation since it does bot utilize the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity. Approximate the scalar-on-functional regression as
+   In practice, this results in a large and often difficult to solve system of equations. Even if solved, the result is often a noisy function $\beta(\dot{•})$ that is not useful for interpretation since it does not utilize the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity. \\
+   
+   If we approximate the scalar-on-functional regression as
   	\begin{equation}
-     Y_i = \sum_{i = 1}^{n} \beta(t_{i})X_1(t_{i}) + \epsilon_{i}.
-    \end{equation}It becomes obvious that if $t_{i}$ is close to $t_{i'}$, $X_{i}(t_{i})$ is close to $X_{i}(t_{i'})$, so there will be vectors $X_{i}$ thatare stronlgx correlated and thus lead to large variances and not feasible estimation.
+     Y_i = \sum_{i = 1}^{n} \beta(t_{i})X_1(t_{i}) + \epsilon_{i}
+    \end{equation}, it becomes clear that if $t_{i}$ is close to $t_{i'}$, $X_{i}(t_{i})$ is close to $X_{i}(t_{i'})$ there will be vectors $X_{i}$ that are highly correlated and thus lead to large variances.
    
     
 	
