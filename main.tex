@@ -5,6 +5,7 @@
 \usepackage[english]{babel}
 \usepackage{setspace}
 \usepackage{xcolor}
+\usepackage{amssymb}
 \usepackage[
 backend=biber,
 style=authoryear-comp,
@@ -56,14 +57,14 @@ style=authoryear-comp,
 	\begin{itemize}
 		\item Motivate random functions from introduction and the general concept of random variables
 		\item Formalize random function in this context as random variables realizing in a Hilbert space
-		\item Introduce $\mathbf{L}^2[0,1]$ as the Hilbert space of square integrable functions on $[0,1]$
-		\item Specialize to Hilbert space being $\mathbf{L}^2[0,1]$ for this context
-		\item Define mean and covariance function of a random function realizing in $\mathbf{L}^2[0,1]$
-		\item Introduce the concept of a basis of a Hilbert space and specialize to $\mathbf{L}^2[0,1]$
+		\item Introduce $\mathbb{L}^2[0,1]$ as the Hilbert space of square integrable functions on $[0,1]$
+		\item Specialize to Hilbert space being $\mathbb{L}^2[0,1]$ for this context
+		\item Define mean and covariance function of a random function realizing in $\mathbb{L}^2[0,1]$
+		\item Introduce the concept of a basis of a Hilbert space and specialize to $\mathbb{L}^2[0,1]$
 		\item Introduce b-spline and Fourier bases
 		\item Introduce eigenfunctions and FPCA on the basis of covariance function (Karhunen-Lo\'{e}ve expansion)
 		\item explain similarities to Eigenvalues and Eigenvectors of matrix + PCA (fraction of explained variance etc...)
-		\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbf{L}^2[0,1]$
+		\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbb{L}^2[0,1]$
 		\item Explain the concept of iid data in a functional setting
 		\item Define point-wise mean (sample), point-wise standard deviation (sample) and sample covariance function
 		\item Explain approximations of functional observations using truncated basis representations
@@ -71,22 +72,36 @@ style=authoryear-comp,
 		\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
 	\end{itemize}
 \subsection{Kokoszka Reimherr (2017) p51-53}
-There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ — this estimate also needs to have a useful interpretation. Without it, there might be prediction, but the increase in understanding of the underlying question will be minimal. One aspect of a useful interpretation is that the estimate $\beta$ should not jump in a seemingly random fashion, because an interpretation of this erratic behavior will often be impossible.
+There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ — this estimate also needs to have a useful interpretation. Without it, there might be prediction, but the increase in understanding of the underlying question will be minimal. One aspect of a useful interpretation is that the estimate $\beta(s)$ should not jump in a seemingly random fashion, because an interpretation of this erratic behavior will often be impossible.
 
 	\begin{itemize}
 		\item Explain problem of naively extending multivariate linear regression to infinite dimensions
 	\end{itemize}
-	A common setting in non-functional regression is akin to the following. Assume a data generating as follows:
+	A common setting in non-functional regression is akin to the following. Assume a model as follows:
 	\begin{equation}
-		Y = X\beta + \epsilon
+		Y = X'\beta + \epsilon
 	\end{equation}
-	where $X$ is a vector of random variables, $\beta = (\beta_0, \dots, \beta_J)'$ is a coefficient vector and $epsilon$ is an 
-
+	where $X \in \mathbb{R}^{n\times J}$ is a matrix containing the regressors, $\beta \in \mathbb{R}^J$ is a coefficient vector and $epsilon$ is a vector containing the error term. For simplicity, assume that the data generating process fulfills the Markov assumptions. Then the famous OLS-estimator is given by:
+	\begin{equation}
+		\hat{\beta}_{OLS} = (X'X)^{-1}X'Y
+	\end{equation}
+	A naive approach to FLR would be to try to generalize this to the functional setting.
 	Assuming a data generating process of the form:
 	\begin{equation}
      Y =  \int \beta(s)X(s) \,dt \ +\epsilon
     \end{equation}
-    it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Define therefore
+    it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Where in the finite dimensional setting the OLS estimator can be derived as a method of moments estimator by solving a system of equations of sample moment restrictions, this leads to a system of infinitely many equations in the functional setting. 
+    In practice, functional observations are never truly continuously observed. If we assume that the functional observations are observed at a finite set of points $\{t_1, \dots, t_J\}$ this makes the derivation of an OLS estimator possible as before.
+    
+    \begin{equation}\label{discrete_time_model}
+    	Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{i},
+    \end{equation}
+
+    However, this often still results in a large and difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
+    Looking at equation \ref{discrete_time_model} and assuming continuous functions $X_i$ it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$. Thereby, there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances of $\beta$. (cf. ~\cite{kokoszka_introduction_2017})\\
+    A different approach is necessary.
+    
+    Define therefore
     \begin{equation}
   	c_{\mathbf{X}}(t,s) = E[\mathbf{X}(t)\mathbf{X}(s)],\: c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\mathbf{Y}], 
     \end{equation}
@@ -100,22 +115,14 @@ There are several important aspects of functional regression in this functional 
    	\begin{equation}
     	c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,ds
    \end{equation}
-   
-   In practice, this results in a large and often difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
-   If we approximate the scalar-on-functional regression by assuming a set of discrete observation points for all realizations of the data generating process as
-  	\begin{equation}
-     Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{i},
-    \end{equation} it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$ there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances of $\beta$. (cf. ~\cite{kokoszka_introduction_2017}) {\color{red} isn't something missing here? Like "and employ standard multivariate linear regression"}
-   
-    
-	
+   	
 	\begin{itemize}
 		\item Solution: estimation using truncated basis expansion to approximate data (theoretical description)
 	\end{itemize}
 	\begin{itemize}
 		\item Problem: truncation error $\delta$ and how to deal with it?
 	\end{itemize}
-		
+	\begin{itemize}	
 		\item Explain how to address truncation error in standard errors
 		\item Motivate three estimation procedures
 		\begin{enumerate}
