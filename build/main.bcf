@@ -2351,16 +2351,18 @@
     <bcf:citekey order="4">Das_2019</bcf:citekey>
     <bcf:citekey order="5">kokoszka_introduction_2017</bcf:citekey>
     <bcf:citekey order="6">kokoszka_introduction_2017</bcf:citekey>
-    <bcf:citekey order="7">kokoszka_introduction_2017</bcf:citekey>
+    <bcf:citekey order="7">horvath_inference_2012</bcf:citekey>
     <bcf:citekey order="8">kokoszka_introduction_2017</bcf:citekey>
-    <bcf:citekey order="9">hsing_theoretical_2015</bcf:citekey>
-    <bcf:citekey order="10">ramsay_functional_2005</bcf:citekey>
-    <bcf:citekey order="11">horvath_inference_2012</bcf:citekey>
-    <bcf:citekey order="12">cai_prediction_2006</bcf:citekey>
-    <bcf:citekey order="13">levitin_introduction_2007</bcf:citekey>
-    <bcf:citekey order="14">shonkwiler_explorations_2009</bcf:citekey>
-    <bcf:citekey order="15">carey_life_2002</bcf:citekey>
-    <bcf:citekey order="16">James.2009</bcf:citekey>
+    <bcf:citekey order="9">kokoszka_introduction_2017</bcf:citekey>
+    <bcf:citekey order="10">kokoszka_introduction_2017</bcf:citekey>
+    <bcf:citekey order="11">hsing_theoretical_2015</bcf:citekey>
+    <bcf:citekey order="12">ramsay_functional_2005</bcf:citekey>
+    <bcf:citekey order="13">horvath_inference_2012</bcf:citekey>
+    <bcf:citekey order="14">cai_prediction_2006</bcf:citekey>
+    <bcf:citekey order="15">levitin_introduction_2007</bcf:citekey>
+    <bcf:citekey order="16">shonkwiler_explorations_2009</bcf:citekey>
+    <bcf:citekey order="17">carey_life_2002</bcf:citekey>
+    <bcf:citekey order="18">James.2009</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

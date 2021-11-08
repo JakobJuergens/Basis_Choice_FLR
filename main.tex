@@ -66,6 +66,9 @@ style=authoryear-comp,
 		\item explain similarities to Eigenvalues and Eigenvectors of matrix + PCA (fraction of explained variance etc...)
 		\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbb{L}^2[0,1]$
 		\item Explain the concept of iid data in a functional setting
+		
+-----------------------------------		
+		
 		\item Define point-wise mean (sample), point-wise standard deviation (sample) and sample covariance function
 		\item Explain approximations of functional observations using truncated basis representations
 		\item Introduce linear operator $L_1$ and sufficient condition associated with it
@@ -116,7 +119,7 @@ There are several important aspects of functional regression in this functional 
     	c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,ds
    \end{equation}
    
-   In practice, this results in a large and often difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
+   In practice, this results in a large and often difficult to solve system of equations. If solved, a  perfect fit is possible,but results in a noisy and erratic function $\hat{\beta}(s)$ that is not useful for interpretation since it does not utilize the intuition of smooth functions (cf.~\cite{horvath_inference_2012}). Another reason why estimation is not feasible using this approach is colinearity.
    If we approximate the scalar-on-functional regression by assuming a set of discrete observation points for all realizations of the data generating process as
   	\begin{equation}
      Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{i},
@@ -128,6 +131,22 @@ There are several important aspects of functional regression in this functional 
 	\begin{itemize}
 		\item Solution: estimation using truncated basis expansion to approximate data (theoretical description)
 	\end{itemize}
+	
+	
+The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to expand it with deterministic basis function. Assume 
+	\begin{equation}
+     \beta(t) =  \sum_{k=1}^{K} c_{k}B_{k}(t)
+    \end{equation}
+    to expand
+    \begin{equation}
+    \int \beta(s)X(s) \,dt \ = \sum_{k=1}^{K} c_{k} \int B_{k}(t)X_{i}(t)\,dt =: \sum_{k=1}^{K} x_{ik} c_{k} 
+    \end{equation}
+    to the linear model of equation 2 with $\mathbf{c} = [\alpha, c_1, c_2,...,c_K]^T$ (corresponding to $\mathbf{\beta}$) estimated by $\mathbf{\hat{c}} = \mathbf{(X^{T}X)^{-1}X^{T}Y}$. Hence, the estimate $\hat{\beta}$ depends on the basis function $B_{k}$ and its corresponding shape, where $K$ is a subjective choice of the researcher. This subjective choice highly depends on the researchers intuition of the smoothness of the estimate. It is best practice to use the same basis functions as in {\color{red} add link to smoothing} (cf. ~\cite{kokoszka_introduction_2017})
+    
+    {\color{red} include Part about CI´s? its about inference and not about prediction}
+    
+	
+
 	\begin{itemize}
 		\item Problem: truncation error $\delta$ and how to deal with it?
 	\end{itemize}
