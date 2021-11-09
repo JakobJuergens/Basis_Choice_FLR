@@ -1,5 +1,5 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\babel@toc {english}{}\relax 
+\babel@toc {english}{}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \defcounter {refsection}{0}\relax 
@@ -7,11 +7,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Detailed Draft}{3}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Kokoszka Reimherr (2017) p51-53}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Draft-Overview}{6}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Draft-Overview}{6}{subsection.2.3}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Literature}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.3}Literature}{6}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Simulation}{7}{section.3}%
 \defcounter {refsection}{0}\relax 
