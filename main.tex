@@ -5,6 +5,7 @@
 \usepackage[english]{babel}
 \usepackage{setspace}
 \usepackage{xcolor}
+\usepackage{multicol}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[
@@ -55,11 +56,43 @@ style=authoryear-comp,
 	\section{Theory}
 	
 	To understand functional linear regression and the differences between the methods presented in this paper, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
-	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers, but as a function in a function space. A formalization of this idea makes some measure theoretical considerations necessary.
+	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers, but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. 
 	
-	\subsection{Hilbert Spaces}
+	\subsection{Inner Products and Hilbert Spaces}
+	The following definitions follow \cite{hsing_theoretical_2015} {\color{red}[chapters 2.3 and 2.4]}. \\
+	A function $\langle \cdot, \cdot \rangle$ on a vector space $\mathbb{V}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
+	\begin{multicols}{2}
+			\begin{enumerate}
+			\item $\langle v, v \rangle \geq 0$
+			\item $\langle v, v \rangle = 0$ if $v = 0$
+			\item $\langle a_1 v_1 = a_2 v_2, v \rangle = a_1 \langle v_1, v \rangle + a_2 \langle v_2, v \rangle$
+			\item $\langle v_1, v_2 \rangle = \langle v_2, v_1 \rangle$
+		\end{enumerate}
+	\end{multicols}
+	A vector space with an associated inner product is called an inner product space. {\color{red}[verbatim quote!]}
+	The inner product naturally defines a norm and an associated distance on the vector space as follows.
 	
+	\begin{equation}
+		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}}
+	\end{equation}
+	\begin{equation}
+	d(v_1, v_2) = {\langle v_2 - v_1, v_2 - v_1 \rangle}^{\frac{1}{2}}
+	\end{equation}
 	
+	If the inner product space is complete with respect to the induced distance, it is called a Hilbert space, denoted $\mathbb{H}$ in the following. To extend the known concept of a basis in a finite dimensional space to the potentially infinite Hilbert spaces, it is necessary to define the closed span of a sequence of elements of $\mathbb{H}$. Recall that the span of a set of vectors $S \subseteq \mathbb{R}^P$ is given by
+	
+	\begin{equation}
+		span(S) = \left\{\sum_{i = 1}^{k} \lambda_i v_i \: \bigg\vert \: k \in \mathbb{N}, \: v_i \in S, \: \lambda_i \in \mathbb{R} \right\}
+	\end{equation}
+			
+	The closed span $\overline{span}(S)$ of a sequence $S$ in $\mathbb{H}$ is defined as the closure of the span with respect to the distance induced by the norm. $S$ is called a basis of $\mathbb{H}$ if $\overline{span}(S) = \mathbb{H}$. \\
+	It is called an orthonornal basis, if the following properties hold. 
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $\langle v_i, v_j \rangle = 0 \quad \forall v_i, v_j \in S \quad i \neq j$
+			\item $\lvert \lvert v \rvert \rvert = 1 \quad \forall v \in S$
+		\end{enumerate}
+	\end{multicols}
 	
 	\subsection{Detailed Draft}
 	\begin{itemize}
