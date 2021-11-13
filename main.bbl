@@ -19,6 +19,57 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{bauer_wahrscheinlichkeitstheorie_2020}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=3c0199f43b68ebb6f516edde6e094567}{%
+           family={Bauer},
+           familyi={B\bibinitperiod},
+           given={Heinz},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {de}%
+      }
+      \list{publisher}{1}{%
+        {De Gruyter}%
+      }
+      \strng{namehash}{3c0199f43b68ebb6f516edde6e094567}
+      \strng{fullhash}{3c0199f43b68ebb6f516edde6e094567}
+      \strng{bibnamehash}{3c0199f43b68ebb6f516edde6e094567}
+      \strng{authorbibnamehash}{3c0199f43b68ebb6f516edde6e094567}
+      \strng{authornamehash}{3c0199f43b68ebb6f516edde6e094567}
+      \strng{authorfullhash}{3c0199f43b68ebb6f516edde6e094567}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Wahrscheinlichkeitstheorie und Grundzüge der Maßtheorie von Heinz Bauer wurde am 18. Mai 2020 von De Gruyter veröffentlicht.}
+      \field{isbn}{978-3-11-231316-9}
+      \field{month}{5}
+      \field{note}{Publication Title: Wahrscheinlichkeitstheorie und Grundzüge der Maßtheorie}
+      \field{title}{Wahrscheinlichkeitstheorie und {Grundzüge} der {Maßtheorie}}
+      \field{urlday}{13}
+      \field{urlmonth}{11}
+      \field{urlyear}{2021}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.1515/9783112313169
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/home/jjuergens/Zotero/storage/FMYVVQ2R/Bauer - 2020 - Wahrscheinlichkeitstheorie und Grundzüge der Maßth.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.degruyter.com/document/doi/10.1515/9783112313169/html
+      \endverb
+      \verb{url}
+      \verb https://www.degruyter.com/document/doi/10.1515/9783112313169/html
+      \endverb
+      \keyw{Maßtheorie,Messtheorie,Wahrscheinlichkeitsrechnung,Wahrscheinlichkeitstheorie}
+    \endentry
     \entry{cai_prediction_2006}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=522ba29dd0a27bce6085e7b8942979b9}{%

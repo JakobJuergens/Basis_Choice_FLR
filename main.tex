@@ -5,6 +5,7 @@
 \usepackage[english]{babel}
 \usepackage{setspace}
 \usepackage{xcolor}
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[
 backend=biber,
@@ -52,6 +53,13 @@ style=authoryear-comp,
 	 Estimation of $\beta(s)$ is inherently an infinite dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. The results of the Monte-Carlo simulation regarding these three different methods are reported in Section 3. Finally, in Section 4, we test the prediction of FLR in a real world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
 
 	\section{Theory}
+	
+	To understand functional linear regression and the differences between the methods presented in this paper, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
+	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers, but as a function in a function space. A formalization of this idea makes some measure theoretical considerations necessary.
+	
+	\subsection{Hilbert Spaces}
+	
+	
 	
 	\subsection{Detailed Draft}
 	\begin{itemize}
