@@ -42,7 +42,7 @@ style=authoryear-comp,
 		\item Describing the difference to multiple linear regression intuitively
 		\item Giving an intuitive example
 	\end{itemize}	
-	Functional Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is gaining more attention as researchers from different fields collect data that is functional in nature. This data can often be processed by classical statistical methods, but only FDA allows extracting information given by the smoothness of the underlying process (cf. \cite{levitin_introduction_2007}).
+	Functional Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is gaining more attention as researchers from different fields collect data that is functional in nature. Classical statistical methods can often process this data, but only FDA allows extracting information given by the smoothness of the underlying process (cf. \cite{levitin_introduction_2007}).
 	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).\\
 	 To motivate scalar-on-function regression, consider the case of a data set containing a scalar response and observations of an underlying continuous process. In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
 	 The focus of this paper is to introduce Functional Linear Regression (FLR) in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:  {\color{red} (I don't set up any interval for s here we might do later...)}
@@ -51,15 +51,14 @@ style=authoryear-comp,
 	 	\qquad i = 1, ..., n
 	 \end{equation}
 	 where the $X_{i}$ are realizations of a random function $\mathbf{X}$, $Y_i$ are the corresponding realizations of the response variable and $\beta(s)$ is the coefficient function. The distinct feature of this framework is that the regressor is a function, which necessitates a different approach to estimation. As in the well-known framework of scalar linear regression, this is motivated by an interest in $\beta(s)$ for prediction. For instance, fluctuation in $X_i(s)$ at a point $s_0$ will not have any effect on $Y_i$ if $\beta(s_0)$ = 0. \\
-	 Estimation of $\beta(s)$ is inherently an infinite dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. The results of the Monte-Carlo simulation regarding these three different methods are reported in Section 3. Finally, in Section 4, we test the prediction of FLR in a real world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
+	 Estimation of $\beta(s)$ is inherently an infinite-dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. We report the results of the Monte-Carlo simulation regarding these three different methods in Section 3. Finally, in Section 4, we test the prediction of FLR in a real-world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
 
 	\section{Theory}
 	
 	To understand functional linear regression and the differences between the methods presented in this paper, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
-	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers, but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. 
+	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	The following definitions follow \cite{hsing_theoretical_2015} {\color{red}[chapters 2.3 and 2.4]}. \\
 	A function $\langle \cdot, \cdot \rangle$ on a vector space $\mathbb{V}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
 	\begin{multicols}{2}
 			\begin{enumerate}
@@ -93,6 +92,20 @@ style=authoryear-comp,
 			\item $\lvert \lvert v \rvert \rvert = 1 \quad \forall v \in S$
 		\end{enumerate}
 	\end{multicols}
+
+	\subsection{Hilbert Space of Square-Integrable Functions}
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure.\\
+	Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
+	
+	\begin{equation}
+		\int_{0}^{1} \lvert f \rvert^2 d\mu < \infty
+	\end{equation}
+	
+	Its inner product is defined as
+	
+	\begin{equation}
+		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 d\mu.
+	\end{equation}
 	
 	\subsection{Detailed Draft}
 	\begin{itemize}

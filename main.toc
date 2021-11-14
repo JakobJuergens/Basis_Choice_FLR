@@ -7,28 +7,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Inner Products and Hilbert Spaces}{4}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Detailed Draft}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Hilbert Space of Square-Integrable Functions}{4}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Draft-Overview}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Detailed Draft}{5}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Literature}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Draft-Overview}{7}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Simulation}{8}{section.3}%
+\contentsline {subsection}{\numberline {2.5}Literature}{8}{subsection.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Draft-Overview}{8}{subsection.3.1}%
+\contentsline {section}{\numberline {3}Simulation}{9}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Literature}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.1}Draft-Overview}{9}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Application}{9}{section.4}%
+\contentsline {subsection}{\numberline {3.2}Literature}{9}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Draft-Overview}{9}{subsection.4.1}%
+\contentsline {section}{\numberline {4}Application}{10}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Literature}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.1}Draft-Overview}{10}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Outlook}{9}{section.5}%
+\contentsline {subsection}{\numberline {4.2}Literature}{10}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Literature}{9}{subsection.5.1}%
+\contentsline {section}{\numberline {5}Outlook}{10}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Appendix}{9}{section.6}%
+\contentsline {subsection}{\numberline {5.1}Literature}{10}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Bibliography}{10}{section.7}%
+\contentsline {section}{\numberline {6}Appendix}{10}{section.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Bibliography}{11}{section.7}%
