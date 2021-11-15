@@ -59,7 +59,8 @@ style=authoryear-comp,
 	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	A function $\langle \cdot, \cdot \rangle$ on a vector space $\mathbb{V}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
+	Data for simple regression and multivariate regression are constructed by either random variable or random vector so that statistics are possibly defined on Euclidean space, $\mathbb{R}^n$. However, the statistics derived from the random function which has infinite dimension cannot be defined on the space. It leads to motivating to import a new space, Hilbert space.\\
+	In this paper, the field of scalars to define inner product is limited to the field of real numbers $\mathbb{R}$. Let $\mathbb{V}$ be a vector space. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{R}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
 	\begin{multicols}{2}
 			\begin{enumerate}
 			\item $\langle v, v \rangle \geq 0$
@@ -85,7 +86,7 @@ style=authoryear-comp,
 	\end{equation}
 			
 	The closed span $\overline{span}(S)$ of a sequence $S$ in $\mathbb{H}$ is defined as the closure of the span with respect to the distance induced by the norm. $S$ is called a basis of $\mathbb{H}$ if $\overline{span}(S) = \mathbb{H}$. \\
-	It is called an orthonornal basis, if in addition the following properties hold. 
+	It is called an orthonormal basis, if in addition the following properties hold. 
 	\begin{multicols}{2}
 		\begin{enumerate}
 			\item $\langle v_i, v_j \rangle = 0 \quad \forall v_i, v_j \in S \quad i \neq j$
