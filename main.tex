@@ -54,13 +54,11 @@ style=authoryear-comp,
 	 Estimation of $\beta(s)$ is inherently an infinite-dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. We report the results of the Monte-Carlo simulation regarding these three different methods in Section 3. Finally, in Section 4, we test the prediction of FLR in a real-world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
 
 	\section{Theory}
-	
-	To understand functional linear regression and the differences between the methods presented in this paper, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
+	In multivariate regression, data is often observed in the form of elements from Euclidean space, $\mathbb{R}^p$. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite dimensional space. To understand functional linear regression and the differences between the methods presented in this paper, it is therefore necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
 	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	Data for simple regression and multivariate regression are constructed by either random variable or random vector so that statistics are possibly defined on Euclidean space, $\mathbb{R}^n$. However, the statistics derived from the random function which has infinite dimension cannot be defined on the space. It leads to motivating to import a new space, Hilbert space.\\
-	In this paper, the field of scalars to define inner product is limited to the field of real numbers $\mathbb{R}$. Let $\mathbb{V}$ be a vector space. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{R}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
+	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
 	\begin{multicols}{2}
 			\begin{enumerate}
 			\item $\langle v, v \rangle \geq 0$
@@ -70,7 +68,7 @@ style=authoryear-comp,
 		\end{enumerate}
 	\end{multicols}
 	A vector space with an associated inner product is called an inner product space. {\color{red}[verbatim quote!]}
-	The inner product naturally defines a norm and an associated distance on the vector space as follows.
+	The inner product naturally defines a norm and an associated distance on the vector space as follows. In the following we will restrict our analysis to the case of $\mathbb{F} = \mathbb{R}$.
 	
 	\begin{equation}
 		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}}
