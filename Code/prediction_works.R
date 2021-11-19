@@ -53,11 +53,12 @@ betafdPar2  <- fdPar(betafd2)
 betalist <- list(const=betafdPar1, gasoline_fd=betafdPar2)
 
 f_regress <- fRegress(y = octane_train, 
-                      xfdlist = list(const = rep(1, 30), gasoline_fd = gasoline_fd_train),
-                      betalist = betalist)
+                      xfdlist = list(#const = rep(1, 30), 
+                        gasoline_fd = gasoline_fd_train),
+                      betalist = list(gasoline_fd = betafdPar2)) #betalist)
 
 prec <- predict(object = f_regress, 
-                newdata = list(const = fd(matrix(rep(1, 30), 1, 30), betabasis1), 
+                newdata = list(#const = fd(matrix(rep(1, 30), 1, 30), betabasis1), 
                                gasoline_fd = gasoline_fd_test))
 
 #  plot the data and the fit
