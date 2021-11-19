@@ -48,14 +48,12 @@ gasoline_pcaObj <- pca.fd(fdobj = gasoline_fd_train,
 betabasis1 <- create.constant.basis(c(0, 30))
 betafd1    <- fd(0, betabasis1)
 betafdPar1 <- fdPar(betafd1)
-betafd2    <- create.bspline.basis(rangeval = c(0, 1700), nbasis = 20, 5)
-betafdPar2  <- fdPar(betafd2)
 betalist <- list(const=betafdPar1, gasoline_fd=betafdPar2)
 
 f_regress <- fRegress(y = octane_train, 
                       xfdlist = list(#const = rep(1, 30), 
                         gasoline_fd = gasoline_fd_train),
-                      betalist = list(gasoline_fd = betafdPar2)) #betalist)
+                      betalist = list(gasoline_fd = harmFdpar)) #betalist)
 
 prec <- predict(object = f_regress, 
                 newdata = list(#const = fd(matrix(rep(1, 30), 1, 30), betabasis1), 
