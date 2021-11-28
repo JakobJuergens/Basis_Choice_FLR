@@ -1,32 +1,31 @@
-m(list=ls())
+rm(list=ls())
 
-## currently not used, question for dominik
-# data_generation <-function(fun){
-#     var1 = 1
-#     var2 = 2
-#     var3 = 0.2
+data_generation <-function(fun){
+    var1 = 1
+    var2 = 2
+    var3 = 0.2
 
-#     X <- matrix(0, nrow=n_obs, ncol=length(grid))
-#     for(i2 in 1:n_obs){
-#         X[i2,]=X[i2,]+rnorm(length(grid), 2, var1)
-#         X[i2,]=X[i2,]+runif(1, 0, var2)
-#         X[i2,]=X[i2,]+rnorm(1, 0, var3)*grid
-#         X[i2,]=X[i2,]*fun
+    X <- matrix(0, nrow=n_obs, ncol=length(grid))
+    for(i2 in 1:n_obs){
+        X[i2,]=X[i2,]+rnorm(length(grid), 2, var1)
+        X[i2,]=X[i2,]+runif(1, 0, var2)
+        X[i2,]=X[i2,]+rnorm(1, 0, var3)*grid
+        X[i2,]=X[i2,]*fun
 
-#         for(j2 in 1:5){
-#            e =abs(rnorm(2, 0, var1/j2^(2)))
-#            X[i2,]=X[i2,]+e[1]*sin((2*pi)*grid*j2)
-#            X[i2,]=X[i2,]+e[2]*cos((2*pi)*grid*j2)
-#         }
+        for(j2 in 1:5){
+           e =abs(rnorm(2, 0, var1/j2^(2)))
+           X[i2,]=X[i2,]+e[1]*sin((2*pi)*grid*j2)
+           X[i2,]=X[i2,]+e[2]*cos((2*pi)*grid*j2)
+        }
         
-#     }
-#     return(X)
-# }
+    }
+    return(X)
+}
 
 data(gasoline)
 octane <- (gasoline$octane)
 NIR    <- as.matrix(gasoline$NIR)
-test = seq(1,20,1)
+test_size = 20
 
 # set up "global" variables
 set.seed(100)
@@ -41,18 +40,22 @@ f2 <- 1.5*exp(-0.5*(grid-0.3)^2/0.02^2) -  4*exp(-0.5*(grid-0.45)^2/0.015^2) +  
 
 #two different variances of error
 #sigma_eps_squared1 = as.numeric(2/3*var(NIR %*% f1))
-sigma_eps_squared1_1 = as.numeric((var(NIR %*% f1)/0.9) - var(NIR %*% f1))
 #sigma_eps_squared2 = as.numeric(1/9*var(NIR %*% f1))
+sigma_eps_squared1_1 = as.numeric((var(NIR %*% f1)/0.9) - var(NIR %*% f1))
 sigma_eps_squared1_2 = as.numeric((var(NIR %*% f1)/0.6) - var(NIR %*% f1) )
 sigma_eps_squared2_1 = as.numeric((var(NIR %*% f2)/0.9) - var(NIR %*% f2))
 sigma_eps_squared2_2 = as.numeric((var(NIR %*% f2)/0.6) - var(NIR %*% f2) )
 
-rep      <- 300
-MSE      <- matrix(NaN, nrow = rep, ncol = 8)
+rep      <- 500
+MSE      <- matrix(NaN, nrow = rep, ncol = 9)
 MSE_avrg = c()
 
-for(j in c(10,15,20)){
+
+for(j in seq(10,20,1)){
   for(i in 1 : rep){
+
+    test = sample(1:n_obs, size = test_size, replace = FALSE)
+
     #each true beta and variance
     Y1_1 <- NIR %*% f1 + rnorm(n_obs, 0, sigma_eps_squared1_1)
     Y1_2 <- NIR %*% f1 + rnorm(n_obs, 0, sigma_eps_squared1_2)
@@ -148,11 +151,12 @@ for(j in c(10,15,20)){
     for (i in seq(2,8,2)){
         scaled_MSE[i] = scaled_MSE[i] / var(NIR %*% f2)
     }
+    scaled_MSE[9] = j
     
     
   
     MSE_avrg <- rbind(MSE_avrg, scaled_MSE)
   
 }
-
+colnames(MSE_avrg) = c("f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline", "f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr", "n_basis")
 MSE_avrg
