@@ -140,7 +140,6 @@ for(j in seq(10,20,1)){
     MSE[i,8] <- mean((prediction2_2 - Y2_2test)^2)
     
     
-    #var(NIR %*% f2)
   }#end of reps
 
     scaled_MSE <- colMeans(MSE)
