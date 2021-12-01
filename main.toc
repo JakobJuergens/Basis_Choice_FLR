@@ -11,11 +11,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Hilbert Space of Square-Integrable Functions}{5}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Detailed Draft}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Different Bases of $\mathbb {L}^2$}{5}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Draft-Overview}{8}{subsection.3.4}%
+\contentsline {paragraph}{b-spline Basis}{5}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}Literature}{8}{subsection.3.5}%
+\contentsline {paragraph}{Fourier Basis}{5}{section*.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4}Detailed Draft}{5}{subsection.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5}Draft-Overview}{8}{subsection.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6}Literature}{8}{subsection.3.6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Simulation}{9}{section.4}%
 \defcounter {refsection}{0}\relax 

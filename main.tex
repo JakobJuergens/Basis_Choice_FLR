@@ -114,6 +114,14 @@ style=authoryear-comp,
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 d\mu.
 	\end{equation}
 	
+	The Hilbert space of square integrable functions on $[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
+	
+	\subsection{Different Bases of $\mathbb{L}^2$}
+	
+	\paragraph{b-spline Basis}
+	
+	\paragraph{Fourier Basis}
+	
 	\subsection{Detailed Draft}
 	\begin{itemize}
 		\item Motivate random functions from introduction and the general concept of random variables
@@ -261,7 +269,7 @@ The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to
 	\subsection{Motivate Simulation for some data generating process from application}
 	For the simulation study, we use Reiss and Ogden (2007) as a guideline. Similar to them, we will use the gasoline dataset in order to predict the octane rating of gasoline samples by relying on the introduced methods. This has become more relevant as modern internal combustion engines become more complex and rely on precisely tuned fuels. The dataset, which contains 60 observations with each 400 measurements was constructed using Near infra-red (NIR) spectroscopy, which allows to analyse samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). Similar to Reiss and Ogden (2007), two different true coefficient functions $f_1$ and $f_2$ were chosen that differ in their smoothness: 
 \begin{equation}
-    f_1 = 2\sin(0.5\pi*t) + 4\sin(1.5\pi*t) + 5*\sin(2.5*\pi*t) 
+    f_1 = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t) 
     \end{equation}
     \begin{equation}
     f_2 = 1.5^{\frac{-0,5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0,5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0,5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0,5(t-0.8)^2}{0.03^2}}
