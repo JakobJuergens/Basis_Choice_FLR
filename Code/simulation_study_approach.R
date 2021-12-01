@@ -60,30 +60,23 @@ Y_train <- Y[-test]
 X_test <- final_X[, test]
 Y_test <- Y[test]
 
-smallbasis <- create.bspline.basis(rangeval = c(0, length(grid)), 
-                                   nbasis = 12, 7)
+largebasis <- create.bspline.basis(rangeval = c(0, length(grid)),
+                                   nbasis = 100, 7)
 
-harmFdpar <- fdPar(smallbasis)
+harmFdpar <- fdPar(largebasis)
 
-smooth_basis_train <- smooth.basis(y = X_train, 
-                                   fdParobj = smallbasis)
+smooth_basis_train <- smooth.basis(y = X_train,
+                                   fdParobj = largebasis)
 
 smooth_basis_train_fd <- smooth_basis_train$fd
-
-smooth_basis_test <- smooth.basis(y = X_test, 
-                                  fdParobj = smallbasis)
-
-smooth_basis_test_fd <- smooth_basis_test$fd
 
 simulated_pcaObj_train <- pca.fd(smooth_basis_train_fd, 
                                  nharm = nharm, 
                                  harmfdPar = harmFdpar, 
-                                 centerfns = FALSE)
+                                 centerfns = TRUE)
 
-simulated_pcaObj_test <- pca.fd(smooth_basis_test_fd, 
-                                nharm = nharm, 
-                                harmfdPar = harmFdpar, 
-                                centerfns = FALSE)
+test_in_train_basis <- smooth.basis(y = X_test, 
+                                    fdParobj = simulated_pcaObj_train$harmonics)
 
 xfdlist <- list(smooth_basis = smooth_basis_train_fd)
 betalist <- list(smooth_basis_fd = smallbasis)
