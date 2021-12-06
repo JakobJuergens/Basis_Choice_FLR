@@ -249,7 +249,7 @@ The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to
 	\end{itemize}
 	
 	\newpage
-	\section{Simulation}
+	\section{Simulation Study}
 	
 	\subsection{Draft-Overview}
 	\begin{itemize}
@@ -267,7 +267,7 @@ The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to
 		\item Explain relevance for application
 	\end{itemize}
 	\subsection{Motivate Simulation for some data generating process from application}
-	For the simulation study, we use Reiss and Ogden (2007) as a guideline. Similar to them, we will use the gasoline dataset in order to predict the octane rating of gasoline samples by relying on the introduced methods. This has become more relevant as modern internal combustion engines become more complex and rely on precisely tuned fuels. The dataset, which contains 60 observations with each 400 measurements was constructed using Near infra-red (NIR) spectroscopy, which allows to analyse samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). Similar to Reiss and Ogden (2007), two different true coefficient functions $f_1$ and $f_2$ were chosen that differ in their smoothness: 
+	For the simulation study, we use the gasoline dataset to predict the octane ratings of gasoline samples relying on the introduced methods. This has become more relevant as modern internal combustion engines become more complex and rely on precisely tuned fuels. The dataset, which contains 60 i.i.d. observations with each 400 measurements, was constructed using Near infra-red (NIR) spectroscopy, which allows to analyse samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). The study follows Reiss and Ogden (2007) as a guideline. Similar to Reiss and Ogden (2007), two different true coefficient functions $f_1$ and $f_2$ were chosen that differ in their smoothness: 
 \begin{equation}
     f_1 = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t) 
     \end{equation}
@@ -275,7 +275,11 @@ The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to
     f_2 = 1.5^{\frac{-0,5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0,5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0,5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0,5(t-0.8)^2}{0.03^2}}
     \end{equation}
 
-Two different error-terms $\epsilon $ were created by first generating iid standard normal error and then multiplying them by $\sigma_e $ which is calculated such that the squared multiple correlation coefficient $R^2 = var(X\omega) / (var(X\omega) + \sigma^2_{e})$ is equal to 0.9 and 0.6. These two error-terms are than computed to generate two sets of responses with different signal-to-noise ratios for each true function, using the gasoline dataset. These four combinations are then used with different number of basis-function $(5,6,...,25)$ of the order 5 to predict the responses using the b-spline basis approach and the FPCR approach. Within one repetition, the data is randomly sampled into a training and a test set to calculate the reported test MSE. In total we carried out 2000 simulations for each combination of data and number of basis functions.
+Two different error-terms $\epsilon $ were created by first generating iid standard normal error and then multiplying them by $\sigma_e $ which is calculated such that the squared multiple correlation coefficient $R^2 = var(Xf) / (var(Xf) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error-terms are then computed to generate two sets of responses with different signal-to-noise ratios for each true function, using the gasoline dataset. These four combinations are then used with different number of basis-function $(5,6,...,25)$ of the order 5 to predict the responses using the b-spline basis approach and the FPCR approach. Within one repetition, the data is randomly sampled into a training and a test set to calculate the reported test MSE. The simulation was done with R (version...). In total we carried out 2000 simulations for each combination of data and number of basis functions. {\color{green} Information about version and link to repo / package in footnote??}
+
+\subsection{Results}
+
+\subsubsection{Interpretation and Relevance for Application}
 
 
 	\subsection{Literature}
@@ -286,6 +290,16 @@ Two different error-terms $\epsilon $ were created by first generating iid stand
 	
 	\newpage
 	\section{Application}
+The application uses the insights from the previous sections to predict the octane ratings of the introduced gasoline dataset. Following the results from the simulation study,... 
+\begin{itemize}
+\item
+{\color{green} incorporate results of simulation study: number of basis, components, etc...}
+\item
+point out difficulties estimating sderror
+\item
+describe setup and results
+\end{itemize}
+
 
 	\subsection{Draft-Overview}
 	\begin{itemize}
