@@ -30,11 +30,11 @@ plot_tibble <- res_tibble %>%
 # generate plot
 bspline_plot <- ggplot(data = plot_tibble) +
   geom_line(aes(x = x, y = Value, col = Function)) +
-  ggtitle("B-spline Basis") +
+  #ggtitle("B-spline Basis") +
   theme_light() +
   #scale_colour_brewer(palette="Set1") + 
-  theme(legend.position="bottom",
-        plot.title = element_text(size = 30),
+  theme(legend.position = "none",
+        #plot.title = element_text(size = 30),
         axis.title = element_text(size = 20),
         axis.text = element_text(size = 20),
         legend.title = element_text(size = 24),

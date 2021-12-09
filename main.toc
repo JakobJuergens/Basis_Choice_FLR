@@ -15,7 +15,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{B-spline Basis}{5}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{6}{section*.3}%
+\contentsline {paragraph}{Fourier Basis}{6}{section*.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.4}Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}{6}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 

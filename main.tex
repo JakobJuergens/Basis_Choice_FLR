@@ -7,8 +7,10 @@
 \usepackage{setspace}
 \usepackage{xcolor}
 \usepackage{multicol}
+\usepackage{float}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage[font=small,skip=2pt]{caption}
 \usepackage[
 backend=biber,
 style=authoryear-comp,
@@ -136,7 +138,10 @@ style=authoryear-comp,
 	
 	{\color{red}Explain what happens when $l+m+1 > L$ !!!}
 	
+	\begin{figure}[H]
 	\includegraphics[width = \textwidth]{Graphics/Bspline_Basis.pdf}
+	\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
+	\end{figure}
 	
 	\paragraph{Fourier Basis}
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
@@ -147,9 +152,12 @@ style=authoryear-comp,
 			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
 		\end{cases}
 	\end{equation}
-
+	
+	\begin{figure}[H]
 	\includegraphics[width = \textwidth]{Graphics/Fourier_Basis.pdf}
-
+	\caption{Fourier Basis functions for $i = 1,\dots,6$}
+	\end{figure}
+	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}
 
 	\subsection{Detailed Draft}
