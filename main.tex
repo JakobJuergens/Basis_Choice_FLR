@@ -117,11 +117,21 @@ style=authoryear-comp,
 	The Hilbert space of square integrable functions on $[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
 	
 	\subsection{Different Bases of $\mathbb{L}^2$}
-	
+	Two examples of orthonormal bases of $\mathbb{L}^2[0,1]$ that are often used in practice are explained in the following.
 	\paragraph{b-spline Basis}
 	
 	\paragraph{Fourier Basis}
-	
+	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions.
+	\begin{equation}
+		S_{FB, i}(x) = \begin{cases}
+			1 & \text{if} \quad i = 1\\
+			\sqrt{2} \cos(\pi i x) & \text{if} \quad i \quad \text{is even} \\
+			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
+		\end{cases}
+	\end{equation}
+
+	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}
+
 	\subsection{Detailed Draft}
 	\begin{itemize}
 		\item Motivate random functions from introduction and the general concept of random variables
