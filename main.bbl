@@ -70,6 +70,42 @@
       \endverb
       \keyw{Maßtheorie,Messtheorie,Wahrscheinlichkeitsrechnung,Wahrscheinlichkeitstheorie}
     \endentry
+    \entry{de_boor_practical_1978}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=11c4e53ad7afb115a36f6c81c99701de}{%
+           family={Boor},
+           familyi={B\bibinitperiod},
+           given={Carl},
+           giveni={C\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod},
+           prefixun=0}}%
+      }
+      \strng{namehash}{11c4e53ad7afb115a36f6c81c99701de}
+      \strng{fullhash}{11c4e53ad7afb115a36f6c81c99701de}
+      \strng{bibnamehash}{11c4e53ad7afb115a36f6c81c99701de}
+      \strng{authorbibnamehash}{11c4e53ad7afb115a36f6c81c99701de}
+      \strng{authornamehash}{11c4e53ad7afb115a36f6c81c99701de}
+      \strng{authorfullhash}{11c4e53ad7afb115a36f6c81c99701de}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{note}{Journal Abbreviation: Applied Mathematical Sciences, New York: Springer, 1978 Publication Title: Applied Mathematical Sciences, New York: Springer, 1978}
+      \field{title}{A {Practical} {Guide} to {Spline}}
+      \field{volume}{Volume 27}
+      \field{year}{1978}
+      \verb{doi}
+      \verb 10.2307/2006241
+      \endverb
+      \verb{file}
+      \verb Full Text PDF:/home/jjuergens/Zotero/storage/ARNZI28H/de Boor - 1978 - A Practical Guide to Spline.pdf:application/pdf
+      \endverb
+    \endentry
     \entry{cai_prediction_2006}{article}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=522ba29dd0a27bce6085e7b8942979b9}{%

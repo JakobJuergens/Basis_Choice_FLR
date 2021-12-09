@@ -13,7 +13,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Different Bases of $\mathbb {L}^2$}{5}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{b-spline Basis}{5}{section*.2}%
+\contentsline {paragraph}{B-spline Basis}{5}{section*.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Fourier Basis}{5}{section*.3}%
 \defcounter {refsection}{0}\relax 
@@ -21,7 +21,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.5}Detailed Draft}{6}{subsection.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6}Draft-Overview}{8}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.6}Draft-Overview}{9}{subsection.3.6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.7}Literature}{9}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 

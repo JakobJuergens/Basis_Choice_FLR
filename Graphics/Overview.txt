@@ -1,0 +1,2 @@
+# Fourier_Basis.pdf
+Plot of several basis funtions from the Fourier basis for L^2[0,1]

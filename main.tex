@@ -119,12 +119,25 @@ style=authoryear-comp,
 	
 	\subsection{Different Bases of $\mathbb{L}^2$}
 	Two examples of orthonormal bases of $\mathbb{L}^2[0,1]$ that are often used in practice are explained in the following.
-	\paragraph{b-spline Basis}
+	
+	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
+	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $S_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
+	
+	\begin{equation}
+	\begin{split}
+		S_{l,0}^{BS}(x) = &
+		\begin{cases}
+			1 & \text{if} \quad x \in \left[\tau_l, \tau_{l+1}\right)\\
+			0 & \text{otherwise}
+		\end{cases}\\ \\
+		S_{l,m}^{BS}(x) = &\frac{x - \tau_l}{\tau_{l+m} - \tau_l} S_{l,m-1}^{BS}(x) + \frac{\tau_{l+m+1} - x}{\tau_{l+m+1} - \tau_{l+1}} S_{l+1,m-1}^{BS}(x)
+	\end{split}
+	\end{equation}
 	
 	\paragraph{Fourier Basis}
-	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions.
+	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
 	\begin{equation}
-		S_{FB, i}(x) = \begin{cases}
+		S_{i}^{FB}(x) = \begin{cases}
 			1 & \text{if} \quad i = 1\\
 			\sqrt{2} \cos(\pi i x) & \text{if} \quad i \quad \text{is even} \\
 			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
