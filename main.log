@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.20)  9 DEC 2021 23:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.20)  9 DEC 2021 23:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,18 +837,28 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 120.
 
-<Graphics/Fourier_Basis.pdf, id=175, 1445.4pt x 578.16pt>
+<Graphics/Bspline_Basis.pdf, id=175, 1445.4pt x 578.16pt>
+File: Graphics/Bspline_Basis.pdf Graphic file (type pdf)
+<use Graphics/Bspline_Basis.pdf>
+Package pdftex.def Info: Graphics/Bspline_Basis.pdf  used on input line 139.
+(pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+<Graphics/Fourier_Basis.pdf, id=186, 1445.4pt x 578.16pt>
 File: Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: Graphics/Fourier_Basis.pdf  used on input line 147.
+Package pdftex.def Info: Graphics/Fourier_Basis.pdf  used on input line 151.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-[5] [6 <./Graphics/Fourier_Basis.pdf>] [7] [8] [9] [10] [11] [12]
+
+[6 <./Graphics/Bspline_Basis.pdf> <./Graphics/Fourier_Basis.pdf>] [7] [8]
+[9] [10] [11] [12]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [13]
-(./main.aux)
+ [13] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C0BA90CE532A1BA1E53C307B6B9AA1FB;3551.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -856,10 +866,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 19951 strings out of 478994
- 329322 string characters out of 5864750
+ 19957 strings out of 478994
+ 329512 string characters out of 5864750
  1117642 words of memory out of 5000000
- 36963 multiletter control sequences out of 15000+600000
+ 36968 multiletter control sequences out of 15000+600000
  416986 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,23n,74p,2668b,1717s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -881,10 +891,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1095.pfb>
-Output written on main.pdf (13 pages, 306003 bytes).
+Output written on main.pdf (13 pages, 336022 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 340 compressed objects within 4 object streams
+ 387 PDF objects out of 1000 (max. 8388607)
+ 344 compressed objects within 4 object streams
  86 named destinations out of 1000 (max. 500000)
- 29374 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 29379 words of extra memory for PDF output out of 29859 (max. 10000000)
 
