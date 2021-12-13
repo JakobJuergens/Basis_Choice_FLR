@@ -140,27 +140,6 @@ style=authoryear-comp,
 	\subsection{Different Bases of $\mathbb{L}^2$}
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of orthonormal bases of $\mathbb{L}^2[0,1]$ that are often used in practice are explained in the following.
 	
-	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
-	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $S_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
-	
-	\begin{equation}
-		\begin{split}
-			S_{l,0}^{BS}(x) = &
-			\begin{cases}
-				1 & \text{if} \quad x \in \left[\tau_l, \tau_{l+1}\right)\\
-				0 & \text{otherwise}
-			\end{cases}\\ \\
-			S_{l,m}^{BS}(x) = &\frac{x - \tau_l}{\tau_{l+m} - \tau_l} S_{l,m-1}^{BS}(x) + \frac{\tau_{l+m+1} - x}{\tau_{l+m+1} - \tau_{l+1}} S_{l+1,m-1}^{BS}(x)
-		\end{split}
-	\end{equation}
-	
-	{\color{red}Explain what happens when $l+m+1 > L$ !!!}
-	
-	\begin{figure}[H]\label{bspline_basis}
-		\includegraphics[width = \textwidth]{Graphics/Bspline_Basis.pdf}
-		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
-	\end{figure}
-	
 	\paragraph{Fourier Basis}
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
 	\begin{equation}
@@ -176,6 +155,31 @@ style=authoryear-comp,
 	\includegraphics[width = \textwidth]{Graphics/Fourier_Basis.pdf}
 	\caption{Fourier basis functions for $i = 1,\dots,6$}
 	\end{figure}
+
+	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
+	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $S_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
+
+	\begin{equation}
+		\begin{split}
+			S_{l,0}^{BS}(x) = &
+			\begin{cases}
+				1 & \text{if} \quad x \in \left[\tau_l, \tau_{l+1}\right)\\
+				0 & \text{otherwise}
+			\end{cases}\\ \\
+			S_{l,m}^{BS}(x) = &\frac{x - \tau_l}{\tau_{l+m} - \tau_l} S_{l,m-1}^{BS}(x) + \frac{\tau_{l+m+1} - x}{\tau_{l+m+1} - \tau_{l+1}} S_{l+1,m-1}^{BS}(x)
+		\end{split}
+	\end{equation}
+	
+	This, however, does not really yield a basis of $\mathbb{L}^2$ as the closed span of this finite sequence of functions is not equal to $\mathbb{L}^2$. To really obtain a basis of $\mathbb{L}^2$ from B-splines, further theoretical considerations about, for example, infinite series of B-splines and specific knot choices would have to be made. As this is out of the scope of this paper, for the sake of simplicity, we will assume that a B-spline basis representation of a function in $\mathbb{L}^2$ will serve as a sufficient approximation for an appropriately chosen B-spline basis. 
+	Even though, this approach is not theoretically exact, in practice, this is often a reasonable approach and yields satisfactory results in cases where the functional form of B-splines makes them an appropriate approximation tool. 
+	
+	{\color{red}Explain what happens when $l+m+1 > L$ !!!\\
+		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.}
+
+\begin{figure}[H]\label{bspline_basis}
+	\includegraphics[width = \textwidth]{Graphics/Bspline_Basis.pdf}
+	\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
+\end{figure}
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}
 
