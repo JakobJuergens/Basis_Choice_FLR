@@ -176,12 +176,17 @@ style=authoryear-comp,
 	{\color{red}Explain what happens when $l+m+1 > L$ !!!\\
 		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.}
 
-\begin{figure}[H]\label{bspline_basis}
-	\includegraphics[width = \textwidth]{Graphics/Bspline_Basis.pdf}
-	\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
-\end{figure}
+	\begin{figure}[H]\label{bspline_basis}
+		\includegraphics[width = \textwidth]{Graphics/Bspline_Basis.pdf}
+		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
+	\end{figure}
+	
+	\subsection{Functional Data Sets}
+	In functional data analysis the concept of a data set can include not only realizations of scalar random variables, but also realizations of random functions. In the following, all random functions are assumed to realize in $\mathbb{L}^2$. As in the finite dimensional setting the concept of identically distributed and independent data is important. This concept generalizes intuitively to the case of functional data using the concepts for general random variables. {\color{red} Explain this better!}\\
+	An example of one such data set could be a set of $n$ independent realizations of a Wiener-process and $n$ associated scalar variables that could be subject of a regression analysis with respect to the corresponding realizations of the Wiener process. A definition and a plotted example for the Wiener process are given in \ref{Wiener}.
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}
+	Given a set of i.i.d. functional observations, it is possible to represent them in terms of their generating stochastic process.
 
 	\subsection{Detailed Draft}
 	\begin{itemize}
@@ -400,6 +405,24 @@ describe setup and results
 	
 	\section{Appendix}
 	
+	\subsection{Wiener Process}\label{Wiener}
+	A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
+	It is characterized by the following properties.
+	
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $W_0 = 0$
+			\item $\forall t > 0 W_{t+u} - W_t \perp\!\!\!\perp W_s \forall s \leq t$
+			\item $W_{t+u} - W_t \sim \mathcal{N}(0,u)$
+			\item $W_t$ is continuous in $t$
+		\end{enumerate}
+	\end{multicols}
+
+	\begin{figure}[H]\label{Wiener_plot}
+		\includegraphics[width = \textwidth]{Graphics/Wiener_plot.pdf}
+		\caption{25 i.i.d. realizations of a Wiener Process on $[0,1]$}
+	\end{figure}
+
 	\newpage
 	
 	\section{Bibliography}
