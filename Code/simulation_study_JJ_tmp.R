@@ -3,9 +3,10 @@ rm(list = ls())
 
 # load libraries
 library(fda)
+library(caret)
 
 # Define Data generator
-data_generation <- function(fun) {
+data_generation <- function(fun, n_obs, grid) {
   # Variables for the data generation
   var1 <- 1
   var2 <- 2
@@ -49,7 +50,7 @@ grid <- seq(0, 1, length = n_var + 1) # why do we use exactly n_var = 1? (Jakob)
 
 # smooth
 f1 <- 2 * sin(0.5 * pi * grid) + 4 * sin(1.5 * pi * grid) + 5 * sin(2.5 * pi * grid)
-# bumpy
+# bumpy (where does it come from?)
 f2 <- {
   1.5 * exp(-0.5 * (grid - 0.3)^2 / 0.02^2)
   -4 * exp(-0.5 * (grid - 0.45)^2 / 0.015^2)
@@ -58,6 +59,7 @@ f2 <- {
 }
 
 # two different variances of error
+# noise for dependent variable in bootstrapping approach
 sigma_eps_squared1_1 <- as.numeric((var(NIR %*% f1) / 0.9) - var(NIR %*% f1))
 sigma_eps_squared1_2 <- as.numeric((var(NIR %*% f1) / 0.6) - var(NIR %*% f1))
 sigma_eps_squared2_1 <- as.numeric((var(NIR %*% f2) / 0.9) - var(NIR %*% f2))
@@ -145,10 +147,14 @@ fpcr_function <- function(rep) {
         data <- t(NIR)
 
         # print(dim(NIR))
-        smallbasis <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = as.numeric(order))
+        smallbasis <- create.bspline.basis(
+          rangeval = c(0, length(grid)), nbasis = as.numeric(j), 
+          norder = as.numeric(order))
+        
         smooth_basis_fd <- smooth.basis(y = data, fdParobj = smallbasis)$fd
 
-        simulated_pcaObj <- pca.fd(smooth_basis_fd, nharm = nharm, centerfns = TRUE)
+        simulated_pcaObj <- pca.fd(smooth_basis_fd, nharm = nharm, 
+                                   centerfns = TRUE)
 
 
         dataframe1_1 <- data.frame(Y1_1, simulated_pcaObj$scores)
