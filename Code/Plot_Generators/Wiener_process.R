@@ -24,7 +24,7 @@ data_tibble <- cbind(tibble(x = points), as_tibble(data_mat, .name_repair = 'uni
 names(data_tibble) <- c('t', paste0('Realization_', 1:realizations))
 
 plot_tibble <- data_tibble %>% 
-  pivot_longer(cols = !x, names_to = 'Realization', values_to = 'Value')
+  pivot_longer(cols = !t, names_to = 'Realization', values_to = 'Value')
 
 # generate plot
 Wiener_plot <- ggplot(data = plot_tibble) +
