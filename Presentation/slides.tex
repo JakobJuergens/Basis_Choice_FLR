@@ -1,0 +1,54 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Berlin}
+\usecolortheme{seahorse}
+
+% packages
+%\usepackage[hmargin=2cm, vmargin=2cm]{geometry}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{setspace}
+%\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[font=small,skip=2pt]{caption}
+\usepackage[
+backend=biber,
+style=authoryear-comp,
+]{biblatex}
+
+\addbibresource{../RMbibliography.bib}
+\parindent=0pt
+
+% Title page details: 
+\title{{\color{red} TEMPORARY TITLE}}
+\author{Jona Willnow, Jakob Juergens, Jonghun Baek}
+\date{{\color{red}}Presentation Day}
+
+\begin{document}
+	
+	% Title page frame
+	\begin{frame}
+		\titlepage 
+	\end{frame}
+	
+	% Remove logo from the next slides
+	\logo{}
+	
+	% I'm not really a fan of a table of contents in short presenations (Jakob)
+	% Outline frame
+	%\begin{frame}{Outline}
+	%	\tableofcontents
+	%\end{frame}
+	
+	\begin{frame}{Lorem Ipsum}
+		Lorem Ipsum dolor sit amet.
+	\end{frame}
+	
+\end{document}
