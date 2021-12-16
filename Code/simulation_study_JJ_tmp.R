@@ -4,6 +4,7 @@ rm(list = ls())
 # load libraries
 library(fda)
 library(caret)
+library(refund)
 
 # Define Data generator
 data_generation <- function(fun, n_obs, grid) {
