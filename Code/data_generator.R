@@ -59,7 +59,7 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
 
   # get new realizations with realizations of scores
   new_realizations <- cbind(
-    tibble(observation = paste0('Observation_', 1:n)),
+    tibble(observation = paste0("Observation_", 1:n)),
     as_tibble(
       (scores_realizations %*% t(pc_grid_vals)) +
         matrix(data = rep(mean_function, times = n), nrow = n, byrow = TRUE)
@@ -71,33 +71,34 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
   # if plot == TRUE plot the new observations
   if (plot) {
     new_realizations_plot <- new_realizations %>%
-      pivot_longer(cols = !observation, names_to = "wavelength", values_to = 'value') %>% 
+      pivot_longer(cols = !observation, names_to = "wavelength", values_to = "value") %>%
       mutate(wavelength = as.numeric(str_split(wavelength, " ") %>% map_chr(., 1)))
-    
-    ggplot(data = new_realizations_plot) +
+
+    print(ggplot(data = new_realizations_plot) +
       geom_line(aes(x = wavelength, y = value, col = observation)) +
-      theme_light() + 
-      theme(legend.position = 'none') 
+      theme_light() +
+      theme(legend.position = "none"))
   }
-  
+
   return(new_realizations)
-  
 }
 
 ##### plot original data #####
 plot_original <- FALSE
-if(plot_original){
-  NIR_tibble <- cbind(tibble(observation = paste0('Observation_', 1:(dim(NIR)[1]))),
-                      as_tibble(NIR))
-  
-  names(NIR_tibble) <- c('observation', colnames(NIR))
-  
+if (plot_original) {
+  NIR_tibble <- cbind(
+    tibble(observation = paste0("Observation_", 1:(dim(NIR)[1]))),
+    as_tibble(NIR)
+  )
+
+  names(NIR_tibble) <- c("observation", colnames(NIR))
+
   NIR_plot <- NIR_tibble %>%
-    pivot_longer(cols = !observation, names_to = "wavelength", values_to = 'value') %>% 
+    pivot_longer(cols = !observation, names_to = "wavelength", values_to = "value") %>%
     mutate(wavelength = as.numeric(str_split(wavelength, " ") %>% map_chr(., 1)))
-  
+
   ggplot(data = NIR_plot) +
     geom_line(aes(x = wavelength, y = value, col = observation)) +
-    theme_light() + 
-    theme(legend.position = 'none') 
+    theme_light() +
+    theme(legend.position = "none")
 }
