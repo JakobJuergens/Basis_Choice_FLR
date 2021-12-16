@@ -139,3 +139,24 @@ fpcr_function <- function(rep){
     colnames(CV_container_spline) = c("f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr","varprop" ,"n_basis", "n_order")
     return(CV_container_spline)
 }
+
+
+aic_calculation = function(fregress_obj, params, gridlength){
+#' Computes AIC for a fRegress object
+#' Inputs: 
+#' fregress_obj (obj): Object of class fda::fRegress, 
+#' params (int): number of parameters of the model, 
+#' gridlength (int): greidlength on which the function is evaluated
+    mu_ml = mean(fregress_obj$yfdobj - fregress_obj$yhatfdobj)
+    print(mu_ml)
+    sig_sq = (1/length(fregress_obj$yfdobj))*sum(((fregress_obj$yfdobj - fregress_obj$yhatfdobj) - mu_ml)^2)
+    #sig_sq = mean((f_regress_obj$yfdobj - mean(f_regress_obj$yhatfdobj))^2)
+    AIC = 0
+    for(i in 1:length(fregress_obj$yfdobj)){
+        AIC = AIC -((gridlength/2)*log(2*pi) -(gridlength/2)*log(sig_sq) 
+            -(1/2*sig_sq)*t(fregress_obj$yfdobj[i] - fregress_obj$yhatfdobj[i]) %*% 
+            (fregress_obj$yfdobj[i] - fregress_obj$yhatfdobj[i]))
+    }
+    return(-AIC + params)
+    }
+#aic_calculation(f_regress, 15, 150)
