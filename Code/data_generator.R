@@ -79,6 +79,9 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
       theme_light() + 
       theme(legend.position = 'none') 
   }
+  
+  return(new_realizations)
+  
 }
 
 ##### plot original data #####
