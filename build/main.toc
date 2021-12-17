@@ -13,38 +13,44 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Different Bases of $\mathbb {L}^2$}{5}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{b-spline Basis}{5}{section*.2}%
+\contentsline {paragraph}{Fourier Basis}{5}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{5}{section*.3}%
+\contentsline {paragraph}{B-spline Basis}{6}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Detailed Draft}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}Functional Data Sets}{7}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}Draft-Overview}{8}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.5}Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}{7}{subsection.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6}Literature}{8}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.6}Detailed Draft}{7}{subsection.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Simulation Study}{9}{section.4}%
+\contentsline {subsection}{\numberline {3.7}Draft-Overview}{10}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Draft-Overview}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {3.8}Literature}{10}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Motivate Simulation for some data generating process from application}{9}{subsection.4.2}%
+\contentsline {section}{\numberline {4}Simulation Study}{11}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Results}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.1}Draft-Overview}{11}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.3.1}Interpretation and Relevance for Application}{10}{subsubsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.2}Motivate Simulation for some data generating process from application}{11}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Literature}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.3}Results}{12}{subsection.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Application}{11}{section.5}%
+\contentsline {subsubsection}{\numberline {4.3.1}Interpretation and Relevance for Application}{12}{subsubsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Draft-Overview}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {4.4}Literature}{12}{subsection.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Literature}{11}{subsection.5.2}%
+\contentsline {section}{\numberline {5}Application}{13}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Outlook}{11}{section.6}%
+\contentsline {subsection}{\numberline {5.1}Draft-Overview}{13}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Literature}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {5.2}Literature}{13}{subsection.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Appendix}{11}{section.7}%
+\contentsline {section}{\numberline {6}Outlook}{13}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Bibliography}{12}{section.8}%
+\contentsline {subsection}{\numberline {6.1}Literature}{13}{subsection.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Appendix}{13}{section.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.1}Wiener Process}{13}{subsection.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Bibliography}{15}{section.8}%
