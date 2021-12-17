@@ -160,3 +160,19 @@ aic_calculation = function(fregress_obj, params, gridlength){
     return(-AIC + params)
     }
 #aic_calculation(f_regress, 15, 150)
+
+mellow_cp = function(fregress_obj, fregress_obj_max_p, n_obs, p){
+#' Computes MellowCP for a fRegress object
+#' Inputs: 
+#' fregress_obj (obj): Object to evaluate of class fda::fRegress, 
+#' fregress_obj_max_p (obj): Object constructed using max number of bsplines
+#' nobs (int): number of observations 
+#' p (int): number of splines used to construct fregress_obj
+
+    rsqr = sum((fregress_obj$yfdobj - fregress_obj$yhatfdobj)^2)
+    mse50 = mean((fregress_obj_max_p$yfdobj - fregress_obj_max_p$yhatfdobj)^2) #mse with max K
+
+    MellowCP = (rsqr/mse50) - n_obs +2*p
+    return(MellowCP)
+}
+#mellow_cp(f_regress, f_regress2, n_obs, p)
