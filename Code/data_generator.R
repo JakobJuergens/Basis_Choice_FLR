@@ -13,7 +13,7 @@ n_wl <- dim(NIR)[2]
 
 # define curve-generator function
 NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
-                                n_knots = 20, plot = FALSE) {
+                                n_knots = 50, plot = FALSE) {
 
   # define container for output
   curve_matrix <- matrix(data = NA, ncol = n_wl, nrow = n)
