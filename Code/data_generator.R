@@ -36,7 +36,7 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
   )
 
   # extract eigenvalues
-  eigenvalues <- NIR_pcaObj$varprop
+  eigenvalues <- NIR_pcaObj$values[1:n_harmonics]
   var_mat <- diag(eigenvalues)
 
   # draw realizations of scores
