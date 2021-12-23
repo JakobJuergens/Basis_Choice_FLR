@@ -43,14 +43,17 @@ sigma_eps_squared2_2 = as.numeric((var(NIR %*% f2)/0.6) - var(NIR %*% f2) )
 
 
 
-bspline_function <- function(rep){
+bspline_function <- function(rep, NIR, n_obs){
     CV_container_spline  <- c()
-    for(order in seq(8,9,1)){
         for(j in seq(11,12,1)){
 
             CV_container  <- matrix(NaN, nrow = rep, ncol = 4)
 
             for(i in 1 : rep){
+
+                #########
+                # Divide in test / training!
+                #########
                 #each true beta and variance
                 Y1_1 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
                 Y1_2 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
@@ -60,7 +63,7 @@ bspline_function <- function(rep){
                 data = t(NIR)
 
                 #print(dim(NIR))
-                smallbasis      <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = as.numeric(order))
+                smallbasis      <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = 4)
                 smooth_basis_fd <- smooth.basis(y = data, fdParobj=smallbasis)$fd
                 xfdlist = list(smooth_basis=smooth_basis_fd)
                 betabasis1 <- create.constant.basis(c(0, 60))
@@ -85,21 +88,24 @@ bspline_function <- function(rep){
             scaled_MSE[5] = j
             scaled_MSE[6] = order
             CV_container_spline <- rbind(CV_container_spline, scaled_MSE)
-        }
+        
     }
-    colnames(CV_container_spline) = c("f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline", "n_basis", "n_order")
+    colnames(CV_container_spline) = c("f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline", "n_basis")
     return(CV_container_spline)
 }
 
-fpcr_function <- function(rep){
+fpcr_function <- function(rep, NIR, n_obs){
     CV_container_spline  <- c()
     train.control <- trainControl(method = "cv", number = 10)
-    for(order in seq(8,9,1)){
         for(j in seq(11,12,1)){
 
             CV_container  <- matrix(NaN, nrow = rep, ncol = 5)
 
             for(i in 1 : rep){
+
+                #########
+                # Divide in test / training!
+                #########
                 #each true beta and variance
                 Y1_1 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
                 Y1_2 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
@@ -109,7 +115,7 @@ fpcr_function <- function(rep){
                 data = t(NIR)
                 
                 #print(dim(NIR))
-                smallbasis      <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = as.numeric(order))
+                smallbasis      <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = 4)
                 smooth_basis_fd <- smooth.basis(y = data, fdParobj=smallbasis)$fd
 
                 simulated_pcaObj = pca.fd(smooth_basis_fd, nharm = nharm, centerfns = TRUE)
@@ -134,13 +140,18 @@ fpcr_function <- function(rep){
             scaled_MSE[6] = j
             scaled_MSE[7] = order
             CV_container_spline <- rbind(CV_container_spline, scaled_MSE)
-        }
+        
     }
-    colnames(CV_container_spline) = c("f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr","varprop" ,"n_basis", "n_order")
+    colnames(CV_container_spline) = c("f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr","varprop" ,"n_basis")
     return(CV_container_spline)
 }
 
 
+
+################
+# AIC and Mallows CP are not as expected!
+# When using GCV / 10fcv, I got results as in validation set approach, so maybe we should stick with that!
+################
 aic_calculation = function(fregress_obj, params, gridlength){
 #' Computes AIC for a fRegress object
 #' Inputs: 
@@ -165,14 +176,14 @@ mellow_cp = function(fregress_obj, fregress_obj_max_p, n_obs, p){
 #' Computes MellowCP for a fRegress object
 #' Inputs: 
 #' fregress_obj (obj): Object to evaluate of class fda::fRegress, 
-#' fregress_obj_max_p (obj): Object constructed using max number of bsplines
+#' fregress_obj_max_p (obj): Object constructed using max number, default = 40, of bsplines
 #' nobs (int): number of observations 
 #' p (int): number of splines used to construct fregress_obj
 
     rsqr = sum((fregress_obj$yfdobj - fregress_obj$yhatfdobj)^2)
-    mse50 = mean((fregress_obj_max_p$yfdobj - fregress_obj_max_p$yhatfdobj)^2) #mse with max K
+    mse40splines = mean((fregress_obj_max_p$yfdobj - fregress_obj_max_p$yhatfdobj)^2) #mse with max K
 
-    MellowCP = (rsqr/mse50) - n_obs +2*p
+    MellowCP = (rsqr/mse40splines) - n_obs +2*(p+1)
     return(MellowCP)
 }
 #mellow_cp(f_regress, f_regress2, n_obs, p)
