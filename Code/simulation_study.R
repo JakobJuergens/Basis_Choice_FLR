@@ -200,27 +200,35 @@ mellow_cp = function(fregress_obj, fregress_obj_max_p, n_obs, p){
 # Jona, if you wanna use it before my correction, please remove the replecated columns.
 scores <- function(test, train, nharms, accvarprop, startingpoint, endpoint, test_num){
   
+  #Change smooth function to pca
   train.fd <- pca.fd(train, nharm = nharms,  centerfns = FALSE)
   
+  #Containers
   acc_varprop <- 0
   scores_vec  <- c()
   scores_mat  <- matrix(NA, nrow = test_num, ncol = nharms)
   
+  #function to estimate scores of each harmonic(eigenfunction)
   sc <- function(x){
     
     for(i in 1 : nharms){
       
       acc_varprop <- acc_varprop + train.fd$varprop[i]
       
+      #Stop this loop if accumulated variance proportion of elements is higher than the standard
       if (acc_varprop > accvarprop) break
       
       newfun        <- (test[x]-train.fd$meanfd)*train.fd$harmonics[i]
+      
       newfun_points <- eval.fd(seq(startingpoint, endpoint, len = 10000), newfun, int2Lfd(0))
+      
+      #Get estimated scores
       score         <- integrate(function(t){
         approx(x = seq(startingpoint, endpoint, len = 10000), 
                y = newfun_points, xout=t)$y
       },
       startingpoint, endpoint)$value
+      
       scores_vec    <- c(scores_vec, score)
       
     }
@@ -230,7 +238,9 @@ scores <- function(test, train, nharms, accvarprop, startingpoint, endpoint, tes
   }
   
   for (i in 1 : test_num){
+    
     scores_mat[i,] <- sc(i)
+    
   }
   
   return(scores_mat)
