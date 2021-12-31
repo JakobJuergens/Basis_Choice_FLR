@@ -27,8 +27,8 @@ style=authoryear-comp,
 \parindent=0pt
 
 % Title page details: 
-\title{{\color{red} TEMPORARY TITLE}}
-\author{Jona Willnow, Jakob Juergens, Jonghun Baek}
+\title{Scalar on Function Regression}
+\author{Jonathan Willnow, Jakob Juergens, Jonghun Baek}
 \date{{\color{red}}Presentation Day}
 
 \begin{document}
@@ -41,14 +41,78 @@ style=authoryear-comp,
 	% Remove logo from the next slides
 	\logo{}
 	
-	% I'm not really a fan of a table of contents in short presenations (Jakob)
+	% I'm not really a fan of a table of contents in short presentations (Jakob)
 	% Outline frame
 	%\begin{frame}{Outline}
 	%	\tableofcontents
 	%\end{frame}
 	
-	\begin{frame}{Lorem Ipsum}
-		Lorem Ipsum dolor sit amet.
+	\begin{frame}{Introduction}
+		Jona \\
+		Introductory Example $\rightarrow$ Octane/NIR-spectrum
+	\end{frame}
+	
+	\begin{frame}{Theory}
+		Jona \\
+		Motivation from multivariate regression (multivariate dgp).
+	\end{frame}
+
+	\begin{frame}{Theory}
+		Jonghun
+		\begin{itemize}
+			\item Random Functions (name square integrable functions)
+			\item Motivate continuous stochastic processes (growth curves/electricity consumption/yield curves/stonks)
+			\item Use curves to predict a scalar response (show typical dgp)
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Theory}
+		Jonghun
+		\begin{itemize}
+			\item Basis expansions (b-splines and fourier)
+			\item Talk about purposes
+			\item Plots and show bias variance tradeoff
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Theory}
+		Jakob
+		\begin{itemize}
+			\item Random function represented as linear combination of basis functions
+			\item Just transform to multiple linear regression setting
+			\item You already know that from the beginning
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Theory - FPCA}
+		Jakob
+		\begin{itemize}
+			\item Let's assume you know the theory of PCA (pc from varcov matrix)
+			\item Introduce mean and covariance functions of random functions
+			\item There is another cool basis $\rightarrow$ Eigenbasis (Karhunen-Loeve Expansion)
+			\item Sample Analog! (create a basis from observations and use for basis regression)
+			\item Plot fpcs and approximation of function realization
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Simulation Setup \& Application}
+		Jona
+		\begin{itemize}
+			\item Compare b-spline / fourier regression chosen via criterion (cv/aic/...)
+			\item Similar for fpca
+			\item generate new curves from observed curves motivated by Karhunen-Loeve expansion
+			\item Compare optimal variants with test and training sets
+			\item Connect to Application
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Summary}
+		Jona \\
+		Just summarize what we have done...
+	\end{frame}
+
+	\begin{frame}{further reading}
+		Put footnotes here!
 	\end{frame}
 	
 \end{document}
