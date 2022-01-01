@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.10)  1 JAN 2022 14:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.10)  1 JAN 2022 19:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -866,13 +866,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 140.
 
-<Graphics/Fourier_Basis.pdf, id=193, 1445.4pt x 578.16pt>
+<Graphics/Fourier_Basis.pdf, id=198, 1445.4pt x 578.16pt>
 File: Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use Graphics/Fourier_Basis.pdf>
 Package pdftex.def Info: Graphics/Fourier_Basis.pdf  used on input line 155.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 [5]
-<Graphics/Bspline_Basis.pdf, id=206, 1445.4pt x 578.16pt>
+<Graphics/Bspline_Basis.pdf, id=211, 1445.4pt x 578.16pt>
 File: Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use Graphics/Bspline_Basis.pdf>
 Package pdftex.def Info: Graphics/Bspline_Basis.pdf  used on input line 180.
@@ -883,10 +883,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [6 <./Graphics/Fourier_Basis.pdf>] [7 <./Graphics/Bspline_Basis.pdf>] [8] [9] 
 [10]
 [11] [12] [13] [14]
-<Graphics/Wiener_plot.pdf, id=316, 1445.4pt x 578.16pt>
+<Graphics/Wiener_plot.pdf, id=323, 1445.4pt x 578.16pt>
 File: Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: Graphics/Wiener_plot.pdf  used on input line 487.
+Package pdftex.def Info: Graphics/Wiener_plot.pdf  used on input line 499.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [15] [16 <./Graphics/Wiener_plot.pdf>]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -895,17 +895,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  [17] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 54B1E1D6A84785961B5335DB047CFEC1;4241.
+(rerunfilecheck)             Checksum: 5656312C5513C7F79BA332C4D56E46E5;4481.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21314 strings out of 478994
- 355068 string characters out of 5864750
- 1135648 words of memory out of 5000000
- 38257 multiletter control sequences out of 15000+600000
- 420326 words of font info for 154 fonts, out of 8000000 for 9000
+ 21320 strings out of 478994
+ 355140 string characters out of 5864750
+ 1135650 words of memory out of 5000000
+ 38258 multiletter control sequences out of 15000+600000
+ 420377 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,23n,74p,2668b,1717s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
@@ -926,10 +926,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1095.pfb>
-Output written on main.pdf (17 pages, 1671968 bytes).
+Output written on main.pdf (17 pages, 1674361 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 405 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
- 41704 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 463 PDF objects out of 1000 (max. 8388607)
+ 413 compressed objects within 5 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 41712 words of extra memory for PDF output out of 42996 (max. 10000000)
 

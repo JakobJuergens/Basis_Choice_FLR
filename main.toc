@@ -23,11 +23,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.6}Scalar-on-Function Regression}{8}{subsection.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7}Detailed Draft}{8}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.7}Estimation via Basis-Representation}{9}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8}Draft-Overview}{11}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.8}Detailed Draft}{9}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9}Literature}{11}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.9}Draft-Overview}{12}{subsection.3.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.10}Literature}{12}{subsection.3.10}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Simulation Study}{13}{section.4}%
 \defcounter {refsection}{0}\relax 

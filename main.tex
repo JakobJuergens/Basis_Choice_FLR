@@ -235,22 +235,38 @@ style=authoryear-comp,
 	\end{equation}
 	
 	\subsection{Scalar-on-Function Regression}
-	In the simple scalar setting one of the most important tools in econometrics is the linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. This approach has two main purposes: inference and prediction. 
+	In the simple scalar setting one of the most important tools in econometrics is the linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. For reference assume a data generating process as follows. {\color{red} Structure is bad... This will be changed.}
+	
+	\begin{equation}
+		Y = X\beta + \epsilon
+	\end{equation}
+	
+	Where $Y$ is the vector of response variables, $X$ is the matrix containing the corresponding regressors in its columns and $\beta = (\beta_0, \beta_1, \: \dots, \beta_p)'$ is the vector containing the unknown coefficients.
+	In this finite dimensional setting one important question is how to estimate the unknown coefficients $\beta$. The most well known estimator in all of econometrics, the Ordinary Least Squares (OLS) estimator, fulfills this purpose under a set of assumptions. {\color{red}List Assumptions? Then we need to list the assumptions for functional linear regression as well I think.}
+	
+	\begin{equation}
+		\hat{\beta}_{OLS} = (X'X)^{-1}X'Y
+	\end{equation}
+	
 	The concept of linear regression can be extended to a setting of functional data, where a scalar response variable is supposed to be predicted from a functional variable. 
-	A general data generating process in this scenario could look like the following equation.
+	A general data generating process in this functional scenario could look like the following equation.
 	
 	\begin{equation}
 		y = \alpha + \Psi(f) + \epsilon
 	\end{equation}
 	
 	Here $\Psi$ is a functional that maps a realization of a random function in $\mathbb{L}^2[0,1]$ into $\mathbb{R}$. One simple example to illustrate the principle is the maximum $\Psi(f) = \max_{x \in [0,1]}f(x)$.
-	However, the typical setup is often as follows mimicking the structure of the multivariate linear model extended from summation to integration.
+	However, the typical setup is often as follows mimicking the structure of the multivariate linear model extended from summation to integration. This structure is crucial for the extension of linear regression to the case of functional regressors. Therefore, in this paper we always implicitly assume that a data generating process has the following structure. {\color{red} maybe a better motivation is the one Jona gave: from very dense observations that run into problems of colinearity when using the original OLS estimator}
 	
 	\begin{equation}
 		y = \alpha + \int_{0}^{1} \beta(s)f(s) \mathrm{d}s + \epsilon
 	\end{equation}
 	
-	Where $f(s)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(s)$ is a coefficient function. 
+	Where $f(s)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(s)$ is an unknown coefficient function. 
+	Similar to the finite dimensional setting, an interesting question is how to estimate the unknown function $\beta(s)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite dimensional objects is not possible. Therefore, other options have to be considered.
+	
+	\subsection{Estimation via Basis-Representation}
+	The most common way to make this problem tractable is via a basis representation of the originally observed function.
 	
 	\subsection{Detailed Draft}
 	\begin{itemize}
@@ -272,10 +288,6 @@ style=authoryear-comp,
 	\end{itemize}
 
 There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ — this estimate also needs to have a useful interpretation. Without it, there might be prediction, but the increase in understanding of the underlying question will be minimal. One aspect of a useful interpretation is that the estimate $\beta(s)$ should not jump in a seemingly random fashion, because an interpretation of this erratic behavior will often be impossible.
-
-	\begin{itemize}
-		\item Explain problem of naively extending multivariate linear regression to infinite dimensions
-	\end{itemize}
 
 	A common setting in non-functional regression is akin to the following. Assume a model as follows:
 	
