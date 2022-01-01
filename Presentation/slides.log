@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.10)  31 DEC 2021 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.10)  1 JAN 2022 21:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1398,9 +1398,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ] [8
 
-] [9
+] (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+[9
 
 ] [10
+
+] [11
+
+] [12
+
+] [13
 
 ]
 \tf@nav=\write7
@@ -1420,21 +1430,27 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 30958 strings out of 478994
- 578711 string characters out of 5864750
+ 31082 strings out of 478994
+ 580869 string characters out of 5864750
  1335718 words of memory out of 5000000
- 47829 multiletter control sequences out of 15000+600000
- 410804 words of font info for 61 fonts, out of 8000000 for 9000
+ 47925 multiletter control sequences out of 15000+600000
+ 412118 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  131i,15n,132p,739b,1648s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb>
-Output written on slides.pdf (10 pages, 59496 bytes).
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mss12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on slides.pdf (13 pages, 130965 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 277 compressed objects within 3 object streams
- 21 named destinations out of 1000 (max. 500000)
- 11819 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 378 compressed objects within 4 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 20011 words of extra memory for PDF output out of 20736 (max. 10000000)
 
