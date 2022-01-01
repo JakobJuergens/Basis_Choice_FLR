@@ -234,7 +234,23 @@ style=authoryear-comp,
 		f_i(t) = \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i,j} \hat{\nu}(t)
 	\end{equation}
 	
-	\subsection{Generating Similar Curves}
+	\subsection{Scalar-on-Function Regression}
+	In the simple scalar setting one of the most important tools in econometrics is the linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. This approach has two main purposes: inference and prediction. 
+	The concept of linear regression can be extended to a setting of functional data, where a scalar response variable is supposed to be predicted from a functional variable. 
+	A general data generating process in this scenario could look like the following equation.
+	
+	\begin{equation}
+		y = \alpha + \Psi(f) + \epsilon
+	\end{equation}
+	
+	Here $\Psi$ is a functional that maps a realization of a random function in $\mathbb{L}^2[0,1]$ into $\mathbb{R}$. One simple example to illustrate the principle is the maximum $\Psi(f) = \max_{x \in [0,1]}f(x)$.
+	However, the typical setup is often as follows mimicking the structure of the multivariate linear model extended from summation to integration.
+	
+	\begin{equation}
+		y = \alpha + \int_{0}^{1} \beta(s)f(s) \mathrm{d}s + \epsilon
+	\end{equation}
+	
+	Where $f(s)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(s)$ is a coefficient function. 
 	
 	\subsection{Detailed Draft}
 	\begin{itemize}
@@ -248,10 +264,7 @@ style=authoryear-comp,
 		\item Introduce eigenfunctions and FPCA on the basis of covariance function (Karhunen-Lo\'{e}ve expansion)
 		\item explain similarities to Eigenvalues and Eigenvectors of matrix + PCA (fraction of explained variance etc...)
 		\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbb{L}^2[0,1]$
-		\item Explain the concept of iid data in a functional setting
-		
------------------------------------		
-		
+		\item Explain the concept of iid data in a functional setting		
 		\item Define point-wise mean (sample), point-wise standard deviation (sample) and sample covariance function
 		\item Explain approximations of functional observations using truncated basis representations
 		\item Introduce linear operator $L_1$ and sufficient condition associated with it
@@ -327,7 +340,7 @@ There are several important aspects of functional regression in this functional 
 		\item Solution: estimation using truncated basis expansion to approximate data (theoretical description)
 	\end{itemize}
 		
-The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to expand it with deterministic basis function. Assume 
+	The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to expand it with deterministic basis function. Assume 
 
 	\begin{equation}
      	\beta(t) =  \sum_{k=1}^{K} c_{k}B_{k}(t)
@@ -407,9 +420,13 @@ The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to
 
 Two different error-terms $\epsilon $ were created by first generating iid standard normal error and then multiplying them by $\sigma_e $ which is calculated such that the squared multiple correlation coefficient $R^2 = var(Xf) / (var(Xf) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error-terms are then computed to generate two sets of responses with different signal-to-noise ratios for each true function, using the gasoline dataset. These four combinations are then used with different number of basis-function $(5,6,...,25)$ of the order 5 to predict the responses using the b-spline basis approach and the FPCR approach. Within one repetition, the data is randomly sampled into a training and a test set to calculate the reported test MSE. The simulation was done with R (version...). In total we carried out 2000 simulations for each combination of data and number of basis functions. {\color{green} Information about version and link to repo / package in footnote??}
 
-\subsection{Results}
 
-\subsubsection{Interpretation and Relevance for Application}
+	\subsection{Generating Similar Curves}
+    {\color{blue} I shifted this from theory to over here, as it makes more sense in the simulation part.\\
+    Very short summary: take fpc's and eigenvalues, use that the scores are independent from each other. Use the eigenvalues as variances and draw from a multivariate normal with the right varcov matrix (normal just because of convenience... No theoretical reasoning)}
+	\subsection{Results}
+
+		\subsubsection{Interpretation and Relevance for Application}
 
 	\subsection{Literature}
 	\begin{itemize}
