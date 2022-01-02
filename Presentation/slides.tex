@@ -95,12 +95,40 @@ style=authoryear-comp,
 		\end{itemize}
 	\end{frame}
 
-	\begin{frame}{Principal Component Analysis}
-		Setting: $Y = X\beta + \epsilon$ \: with standardized regressors in $X$ \\
-		Goal: \textbf{Dimension Reduction} 
-		\vspace{0.3cm}
+	\begin{frame}{Spectral Representation of Random Vectors}
+		Let $X(\omega)$ be a random vector realizing in $\mathbb{R}^p$.
+
+		\begin{itemize}
+			\item Let $\mu_x = \mathbb{E}(X)$ and $\Sigma_X = Cov(X)$
+			\item Let $\{\gamma_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\Sigma_X$
+			\item Let $\{\lambda_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\Sigma_X$
+		\end{itemize}
+	
+		\vspace{0.2cm}
+		Then $X$ can also be represented as
+		$$X(\omega) = \mu_x + \sum_{i = 1}^{p} \xi_i(\omega) \gamma_i$$
+		where the $\xi_i(\omega)$ have the following properties
 		
-		Let $\Sigma_X = Cov(x)$ and let $\{\lambda_i\}_{i \in \mathcal{I}}$ be the \textbf{Eigenvalues} of $\Sigma_X$ and $\{\gamma_i\}_{i \in \mathcal{I}}$ be the \textbf{Eigenvectors} of $\Sigma_X$.
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[\xi_i(\omega)] = 0$
+				\item $var(\xi_i(\omega)) = \lambda_i$
+				\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
+	\end{frame}
+
+	\begin{frame}{Principal Component Analysis}
+		$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
+		
+		\begin{itemize}
+			\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ be the matrix containing the standardized regressors in the usual configuration.
+			\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
+			\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
+			\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
+		\end{itemize}
+		
+		
 	\end{frame}
 
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
@@ -117,7 +145,15 @@ style=authoryear-comp,
 		A random function $F$ can be expressed in terms of its mean function and its Eigenfunctions:
 		$$F(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)$$
 		
-		Where the $\xi_j$ are scalar-valued random variables with variance $\lambda_j$.\\
+		Where the $\xi_j$ are scalar-valued random variables with the following properties.
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[\xi_i(\omega)] = 0$
+				\item $var(\xi_i(\omega)) = \lambda_i$
+				\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
+		
 		This representation is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of the random function $F$ and the Eigenfunctions can serve as a basis to represent the function.
 	\end{frame}
 	
