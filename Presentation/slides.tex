@@ -118,19 +118,6 @@ style=authoryear-comp,
 		\end{multicols}
 	\end{frame}
 
-	\begin{frame}{Principal Component Analysis}
-		$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
-		
-		\begin{itemize}
-			\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ be the matrix containing the standardized regressors in the usual configuration.
-			\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
-			\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
-			\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
-		\end{itemize}
-		
-		
-	\end{frame}
-
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
 		
 		\textbf{Mean Function}: $$\mu(t) = \mathbb{E}\left[ F(\omega)(t) \right]$$
@@ -155,6 +142,53 @@ style=authoryear-comp,
 		\end{multicols}
 		
 		This representation is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of the random function $F$ and the Eigenfunctions can serve as a basis to represent the function.
+	\end{frame}
+
+	\begin{frame}{Principal Component Analysis}
+		A related concept is \textbf{Principal Component Analysis} (PCA).
+		\vspace{0.2cm}
+		
+		$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
+	
+		\begin{itemize}
+			\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ contain the standardized regressors
+			\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
+			\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
+			\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
+		\end{itemize}
+		\vspace{0.2cm} 
+		
+		Then $Z_i(\omega) = \hat{\gamma}_i' X(\omega)$ is called the i'th principal component and
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[Z_i(\omega)] = 0$
+				\item $Var(Z_i(\omega)) = \hat{\lambda}_i$
+				\item $Cov(Z_i(\omega), Z_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
+	\end{frame}
+
+	\begin{frame}{Functional Principal Component Analysis}
+		This idea can be extended to functional regressors in the form of \textbf{Functional Principal Component Analysis} (FPCA).
+		\vspace{0.2cm}
+		
+		\textbf{Empirical Mean Function}:
+		$$\hat{\mu}(t) = \frac{1}{n}\sum_{j = 1}^{n}f_j(t)$$
+
+		\textbf{Empirical Autocovariance Function}:
+		$$\hat{c}(t,s) = \frac{1}{n} \sum_{j = 1}^{n} \left(f_j(t) - \hat{\mu}(t)\right) \left(f_j(s) - \hat{\mu}(s)\right)$$
+
+	\end{frame}
+
+	\begin{frame}{Functional Principal Component Analysis}
+	
+		The \textbf{Eigenvalues} and \textbf{Eigenfunctions}: $\{(\hat{\lambda}_i, \hat{\nu}_i) \: \vert \: i \in \mathcal{I}\}$  are solutions of the following equation:
+		$$ \int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t) $$
+		\vspace{0.2cm}
+		
+		The principal components are then defined analogously to before:
+		$$Z_j(\omega) = \int_{0}^{1} (F(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
+		
 	\end{frame}
 	
 	\begin{frame}{Simulation Setup \& Application}
