@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.10)  3 JAN 2022 14:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.10)  3 JAN 2022 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1412,27 +1412,31 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 
 ] [13
 
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 205.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 205.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 205.
-
- [14
+] [14
 
 ] [15
 
-] [16
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 231.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 231.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 231.
+
+ [16
 
 ] [17
 
 ] [18
 
 ] [19
+
+] [20
+
+] [21
 
 ]
 \tf@nav=\write7
@@ -1444,7 +1448,8 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 \tf@snm=\write9
 \openout9 = `slides.snm'.
 
- (./slides.aux)
+
+(./slides.aux)
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'slides.run.xml'.
@@ -1452,29 +1457,30 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31169 strings out of 478994
- 582351 string characters out of 5864750
+ 31175 strings out of 478994
+ 582405 string characters out of 5864750
  1339718 words of memory out of 5000000
- 47982 multiletter control sequences out of 15000+600000
+ 47984 multiletter control sequences out of 15000+600000
  414782 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  131i,18n,132p,739b,1648s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf
--dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (19 pages, 165134 bytes).
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb>
+Output written on slides.pdf (21 pages, 177574 bytes).
 PDF statistics:
- 587 PDF objects out of 1000 (max. 8388607)
- 539 compressed objects within 6 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 644 PDF objects out of 1000 (max. 8388607)
+ 593 compressed objects within 6 object streams
+ 43 named destinations out of 1000 (max. 500000)
  30763 words of extra memory for PDF output out of 35830 (max. 10000000)
 
