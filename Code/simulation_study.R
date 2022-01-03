@@ -189,24 +189,21 @@ mellow_cp = function(fregress_obj, fregress_obj_max_p, n_obs, p){
 #mellow_cp(f_regress, f_regress2, n_obs, p)
 
 
-###This is not perfect since the scores are iterated on the next columns when the accumulated variance proportion is
-###larger than the benchmark (like 90 or 85). I'll fix it.
 
 # test and train are smooth function
 # nharms is the number of harmonics we use
 # accvarprop is the benchmark we use like 85 or 90
 # startingpoint and endpoint are the range of the grid (possibly 0 and 1 in our case)
 # test_num is the number of test data set
-# Jona, if you wanna use it before my correction, please remove the replecated columns.
+# The scores of test set is quite far away compared to ones of train set.
 scores <- function(test, train, nharms, accvarprop, startingpoint, endpoint, test_num){
   
   #Change smooth function to pca
-  train.fd <- pca.fd(train, nharm = nharms,  centerfns = FALSE)
+  train.fd <- pca.fd(train, nharm = nharms,  centerfns = TRUE)
   
   #Containers
   acc_varprop <- 0
   scores_vec  <- c()
-  scores_mat  <- matrix(NA, nrow = test_num, ncol = nharms)
   
   #function to estimate scores of each harmonic(eigenfunction)
   sc <- function(x){
@@ -236,6 +233,8 @@ scores <- function(test, train, nharms, accvarprop, startingpoint, endpoint, tes
     return(scores_vec)
     
   }
+  
+  scores_mat  <- matrix(NA, nrow = test_num, ncol = length(sc(1)))
   
   for (i in 1 : test_num){
     
