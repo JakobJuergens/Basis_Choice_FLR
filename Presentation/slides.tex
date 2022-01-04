@@ -78,9 +78,9 @@ style=authoryear-comp,
 	\begin{frame}{Theory}
 		Jakob
 		\begin{itemize}
-			\item Random function represented as linear combination of basis functions
-			\item Just transform to multiple linear regression setting
-			\item You already know that from the beginning
+			\item Random function represented as linear combination of basis functions $\checkmark$
+			\item Just transform to multiple linear regression setting $\checkmark$
+			\item You already know that from the beginning $\checkmark$
 		\end{itemize}
 	\end{frame}
 
@@ -117,10 +117,10 @@ style=authoryear-comp,
 
 	\begin{frame}{Estimation via Basis Representation}
 		$$Z_j(\omega) = \int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s$$ 
-		This is a scalar random variable for which we can calculate a realization for each observation $f_i(t)$ and for each deterministic basis function $b_j(t)$.
-		$$Z_{i,j} = \int_{0}^{1} f_i(s) b_j(s)\mathrm{d}s$$
-		Leading to the following transformation
+		This is a scalar random variable leading to the following transformation
 		$$Y(\omega) = \alpha + \sum_{j = 1}^{\infty} \psi_j Z_j(\omega) + \epsilon(\omega)$$
+		Each combination of observation $f_i(t)$ and deterministic basis function $b_j(t)$ effectively gives us a realization of this random variable.
+		$$Z_{i,j} = \int_{0}^{1} f_i(s) b_j(s)\mathrm{d}s$$
 		
 	\end{frame}
 
