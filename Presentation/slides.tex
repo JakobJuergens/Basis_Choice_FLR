@@ -97,19 +97,81 @@ style=authoryear-comp,
 	\begin{frame}{Theory}
 		Jakob
 		\begin{itemize}
-			\item Random function represented as linear combination of basis functions
-			\item Just transform to multiple linear regression setting
-			\item You already know that from the beginning
+			\item Random function represented as linear combination of basis functions $\checkmark$
+			\item Just transform to multiple linear regression setting $\checkmark$
+			\item You already know that from the beginning $\checkmark$
 		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		Assume the following data generating process
+		$$Y(\omega) = \alpha + \int_{0}^{1} \beta(s) F(\omega)(s) \mathrm{d}s + \epsilon(\omega)$$
+		\begin{itemize}
+			\item $Y$ and $\epsilon$ realize in $\mathbb{R}$ and $F$ realizes in $\mathbb{L}^2[0,1]$
+		\end{itemize}
+		\vspace{0.2cm}
+		
+		Assume that we have a data set containing observations each of which is made up of:
+		\begin{itemize}
+			\item $y_i$: a scalar realization of $Y$
+			\item $f_i(t)$: a realization of $F$
+		\end{itemize}
+
+	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		Let $\{b_i(t) \: \vert \: i = 1, \dots, \infty\}$ be a basis of $\mathbb{L}^2[0,1]$
+		\vspace{0.2cm}
+		
+		Then we have the following representation of $\beta(t)$
+		$$\beta(t) = \sum_{j = 1}^{\infty} \psi_j b_j(t) = \sum_{j = 1}^{L} \psi_j b_j(t) + \delta(t) \approx \sum_{j = 1}^{L} \psi_j b_j(t)$$
+		and we can transform the data generating process into:
+		\begin{equation}\notag
+			\begin{split}
+				Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} \psi_j  b_j(s)\right) F(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+						  & = \alpha + \sum_{j = 1}^{\infty} \left[\psi_j \textcolor{red}{\int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s}\right] + \epsilon(\omega)	  
+			\end{split}
+		\end{equation}
+	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		$$Z_j(\omega) = \int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s$$ 
+		This is a scalar random variable leading to the following transformation
+		$$Y(\omega) = \alpha + \sum_{j = 1}^{\infty} \psi_j Z_j(\omega) + \epsilon(\omega)$$
+		Each combination of observation $f_i(t)$ and deterministic basis function $b_j(t)$ effectively gives us a realization of this random variable.
+		$$Z_{i,j} = \int_{0}^{1} f_i(s) b_j(s)\mathrm{d}s$$
+		
+	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		This allows us to write each observation in the data set as
+		\begin{itemize}
+			\item $y_i$: a scalar realization of $Y$
+			\item $\left(Z_{i,j}\right)_{j \in \mathbb{N}}$: a countably infinite sequence of scalars
+		\end{itemize}
+		\vspace{0.2cm}
+		
+		Truncating the functional basis allows us to approximate the data set in the usual multivariate form.
+		\begin{itemize}
+			\item $y_i$: a scalar realization of $Y$
+			\item $\left(Z_{i,1} \: \dots \:  Z_{i,L} \right)'$: a vector of scalar regressors
+		\end{itemize}
+		\vspace{0.2cm}
+		
+		Coefficients can then be estimated using theory from multivariate regression leading to an estimated coefficient vector $\hat{\beta}_L \in \mathbb{R}^L$.
+	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		This can then be translated into an estimated coefficient function $\hat{\beta}(t)$ via:
 	\end{frame}
 
 	\begin{frame}{Theory - FPCA}
 		Jakob
 		\begin{itemize}
-			\item Let's assume you know the theory of PCA (pc from varcov matrix)
-			\item Introduce mean and covariance functions of random functions
-			\item There is another cool basis $\rightarrow$ Eigenbasis (Karhunen-Loeve Expansion)
-			\item Sample Analog! (create a basis from observations and use for basis regression)
+			\item Let's assume you know the theory of PCA (pc from varcov matrix) $\checkmark$
+			\item Introduce mean and covariance functions of random functions $\checkmark$
+			\item There is another cool basis $\rightarrow$ Eigenbasis (Karhunen-Loeve Expansion) $\checkmark$
+			\item Sample Analog! (create a basis from observations and use for basis regression) $\checkmark$
 			\item Plot fpcs and approximation of function realization
 		\end{itemize}
 	\end{frame}
@@ -205,11 +267,23 @@ style=authoryear-comp,
 		$$ \int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t) $$
 		\vspace{0.2cm}
 		
-		The $\{\hat{\nu}_i(s) \: \vert \: i \in \mathcal{I}\}$ are then called the functional principal components and the corresponding scores $\xi_i$ can be derived using the following equation.
-		$$\xi_j(\omega) = \int_{0}^{1} (F(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
+		The $\{\hat{\nu}_i(s) \: \vert \: i \in \mathcal{I}\}$ are called \textbf{Functional Principal Components} and can serve as a basis for representing the original curves. 
+		\vspace{0.2cm}
+		
+		The corresponding scores $\hat{\xi}_i$ can be derived as
+		$$\hat{\xi}_j(\omega) = \int_{0}^{1} (F(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
 		
 	\end{frame}
 
+	\begin{frame}{FPCA - Plots}
+		\begin{minipage}[t]{0.79\textwidth}
+			\includegraphics[width = \textwidth]{../Graphics/principal_components.pdf}
+			\includegraphics[width = \textwidth]{../Graphics/pc_approx.pdf}
+		\end{minipage}
+		\begin{minipage}[t]{0.19\textwidth}
+			Lorem Ipsum Dolor Sit Amet
+		\end{minipage}
+	\end{frame}
 	
 
 	\begin{frame}{Simulation Setup \& Application}
