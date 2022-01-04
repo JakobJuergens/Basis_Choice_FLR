@@ -87,18 +87,30 @@ ggsave(
 )
 
 ### from here on out it's about the approximated curves ###
+# get mean function as vector values
+mean_func <- colMeans(NIR)
+
+# represent mean function using basis from above
+mean_func_fd <- smooth.basis(y = mean_func, fdParobj = smallbasis)$fd
+
+# get mean function coefs
+mean_func_coefs <- mean_func_fd$coefs
+
+# get mean func at grid points
+mean_func_values <- basis_values %*% mean_func_coefs
+
 # extract scores - weights for the approximation
 NIR_pc_scores <- NIR_pcaObj$scores
 
 # define helper function to get matrix format as wanted for further processing
-approx_helper <- function(obs_index, score_mat, pc_value_mat) {
+approx_helper <- function(obs_index, score_mat, pc_value_mat, mean_function) {
   # get scores for current observation
   obs_scores <- score_mat[obs_index, ]
   # create matrix container for approximations
   approx_mat <- matrix(data = NA, nrow = dim(pc_value_mat)[1], ncol = dim(pc_value_mat)[2])
   # fill in approximations
   for (i in 1:dim(pc_value_mat)[2]) {
-    approx_mat[, i] <- colSums(obs_scores[1:i] %*% t(pc_value_mat[, 1:i]))
+    approx_mat[, i] <- colSums(obs_scores[1:i] %*% t(pc_value_mat[, 1:i])) + mean_function
   }
   # return matrix
   return(approx_mat)
@@ -109,7 +121,8 @@ NIR_approx <- map(
   .x = 1:dim(NIR)[1],
   .f = function(i) {
     approx_helper(
-      obs_index = i, score_mat = NIR_pc_scores, pc_value_mat = NIR_pc_values
+      obs_index = i, score_mat = NIR_pc_scores, pc_value_mat = NIR_pc_values, 
+      mean_function = mean_func_values
     )
   }
 )
