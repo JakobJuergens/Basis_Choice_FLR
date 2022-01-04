@@ -119,7 +119,7 @@ approx_obs_tibble <- cbind(
   nm, as_tibble(NIR_approx[[1]], .name_repair = "unique")
 )
 
-names(approx_obs_tibble) <- c("nm", paste0("Num_pcs: ", 1:n_harm))
+names(approx_obs_tibble) <- c("nm", 1:n_harm)
 
 # bring into format for plotting with ggplot
 plotting_approx_obs_tibble <- approx_obs_tibble %>%
