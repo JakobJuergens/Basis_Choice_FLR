@@ -48,13 +48,32 @@ style=authoryear-comp,
 	%\end{frame}
 	
 	\begin{frame}{Introduction}
-		Jona \\
-		Introductory Example $\rightarrow$ Octane/NIR-spectrum
+		Jona \\	
+		\begin{itemize}
+			\item Near-infrared (NIR) spectroscopy enables fast diagnostics by using the NIR region of the electromagnetic spectrum
+			\item Suited for field-monitoring / on-line analysis and diagnostics of e.g: prediction of octane ratings!
+			
+			\item Spectroscopy results in high-dimensional dataset.
+			\item
+			This set of measurements along a continuum can be viewed as set of smooth spectral curves
+			\item
+			Regression to determine relationship between octane rating and spectral curves
+			\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Theory}
-		Jona \\
+		
 		Motivation from multivariate regression (multivariate dgp).
+		
+		\begin{itemize}
+			\item
+			A simple functional dataset is given by $x_{n}(t_{j,n}) \in \mathbb{R}, t_{j,n} \in [T_1, T_2], n = 1,2,...,N, j = 1,2,..., J_n  $
+			\item Continuous underlying process, where $x_n(t)$ exists at any point $t$, but is only observed at $x_{n}(t_{j,n})$
+			\item NIR-spectroscopy measurements, financial data, medical data, human perception (musical pitch, ...)
+			
+			\item To abstract information from the curves, they must be interpretable!
+			
+			\end{itemize}
 	\end{frame}
 
 	\begin{frame}{Theory}
@@ -190,17 +209,96 @@ style=authoryear-comp,
 		$$\xi_j(\omega) = \int_{0}^{1} (F(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
 		
 	\end{frame}
+
 	
+
 	\begin{frame}{Simulation Setup \& Application}
-		Jona
 		\begin{itemize}
-			\item Compare b-spline / fourier regression chosen via criterion (cv/aic/...)
-			\item Similar for fpca
-			\item generate new curves from observed curves motivated by Karhunen-Loeve expansion
-			\item Compare optimal variants with test and training sets
-			\item Connect to Application
+		\item
+		 Use the gasoline dataset (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
+		\item 
+		Generate new curves from gasoline dataset, motivated by Karhunen-Loeve expansion:
+		
+		$$F^{new}(\omega)(t) = \mu^{NIR}(t) + \sum_{j = 1}^{\infty} \xi_j^{new} \nu_j(t)^{new}$$ \\
+		where \\
+		 \vspace{0.1cm}
+		$$\xi_{j}^{new} \in  \mathcal{N}_{n}(0,\Sigma)$$ \\
+		and $\nu_j(t)^{new}$ be a $grid \times n_{FPC}$ matrix.
+		
+    		
 		\end{itemize}
 	\end{frame}
+	
+	
+	\begin{frame}{Simulation Setup \& Application cont.}
+		\begin{itemize}
+		\item
+		Following Reiss and Ogden (2007), let $f_1$ and $f_2$ be two true coefficient functions that differ in smoothness: 
+		\vspace{0.4cm}
+	
+
+   $f_1 = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t)$\\
+   \vspace{0.1cm}
+   
+
+    
+    $	f_2 = 1.5^{\frac{-0,5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0,5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0,5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0,5(t-0.8)^2}{0.03^2}}$
+   
+    		
+		\end{itemize}
+		\vspace{0.1cm}
+		\begin{figure}
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=3cm]{smooth_function.png}
+  \captionof{figure}{$f_1$, smooth function}
+  \label{fig:test1}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[height=3cm]{bumpy_function.png}
+  \captionof{figure}{$f_2$, bumpy function}
+  \label{fig:test2}
+\end{minipage}
+\end{figure}
+		
+	\end{frame}	
+
+	
+	\begin{frame}{Simulation Setup \& Application cont.}
+		\begin{itemize}
+		\item
+    		Let \\
+    		 \vspace{0.1cm}
+    		
+    		$Y_{1,f} = NIR \times f + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$, \\
+    		  $Y_{2,f} = NIR \times f + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$ be two responses for $f \in f_1, f_2$.		
+    		 	\item
+    		 	 Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
+			\item Compare results via criteria (CV, Mallows CP,...)
+			\item 
+			{\color{green} add results here!}
+			
+    		
+		\end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Simulation Setup \& Application cont.}
+		\begin{itemize}
+		\item
+    		Use insights from the simulation study to uncover dependence.
+    		\item
+    		Same setup, but without generated curves.
+    		\item
+    		Validation set approach:	Scores of testdata needs to be estimated by the trainingdata.  {\color{green} explain in detail?}
+    		\item
+    		Report results by MSE scaled by variance.
+		\end{itemize}
+	\end{frame}
+	
+	
 
 	\begin{frame}{Summary}
 		Jona \\
