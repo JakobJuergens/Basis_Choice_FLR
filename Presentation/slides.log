@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  4 JAN 2022 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  4 JAN 2022 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1281,8 +1281,10 @@ Package biblatex Info: Reference segment=0 on input line 34.
 
 (./slides.nav) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 53.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1291,7 +1293,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 53.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1301,7 +1303,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 53.
+ut line 77.
 
 (/usr/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1311,12 +1313,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `mathkerncmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2
+ [3
 
 ]
-[3
-
-] [4
+[4
 
 ] [5
 
@@ -1327,10 +1327,10 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 ) [7
 
-]
-[8
+] [8
 
-] [9
+]
+[9
 
 ] [10
 
@@ -1346,13 +1346,13 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 231.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 250.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 231.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 250.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 231.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 250.
 
  [16
 
@@ -1365,15 +1365,15 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 File: ../Graphics/principal_components.pdf Graphic file (type pdf)
 <use ../Graphics/principal_components.pdf>
 Package pdftex.def Info: ../Graphics/principal_components.pdf  used on input li
-ne 267.
+ne 286.
 (pdftex.def)             Requested size: 242.75693pt x 97.09492pt.
 <../Graphics/pc_approx.pdf, id=507, 1445.4pt x 578.16pt>
 File: ../Graphics/pc_approx.pdf Graphic file (type pdf)
 <use ../Graphics/pc_approx.pdf>
-Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 267.
+Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 286.
 (pdftex.def)             Requested size: 242.75693pt x 97.09492pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--267
+Underfull \hbox (badness 10000) in paragraph at lines 286--286
 \OT1/cmss/m/n/10.95 (+20) Do-lor Sit
  []
 
@@ -1382,9 +1382,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 267--267
  <../Graphics/principal_components.pdf> <../Graphics/pc_approx.pdf>]
 [20
 
-] [21
+]
+<smooth_function.png, id=572, 509.65407pt x 324.46219pt>
+File: smooth_function.png Graphic file (type png)
+<use smooth_function.png>
+Package pdftex.def Info: smooth_function.png  used on input line 340.
+(pdftex.def)             Requested size: 134.07782pt x 85.35826pt.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 340.
 
-] [22
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 340.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 340.
+
+<bumpy_function.png, id=573, 509.65407pt x 324.46219pt>
+File: bumpy_function.png Graphic file (type png)
+<use bumpy_function.png>
+Package pdftex.def Info: bumpy_function.png  used on input line 340.
+(pdftex.def)             Requested size: 134.07782pt x 85.35826pt.
+ [21
+
+ <./smooth_function.png> <./bumpy_function.png>] [22
+
+] [23
+
+] [24
+
+]
+[25
 
 ]
 \tf@nav=\write7
@@ -1404,30 +1431,31 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32797 strings out of 478353
- 640119 string characters out of 5854636
- 1353420 words of memory out of 5000000
- 50246 multiletter control sequences out of 15000+600000
- 414847 words of font info for 89 fonts, out of 8000000 for 9000
+ 32925 strings out of 478353
+ 642155 string characters out of 5854636
+ 1353513 words of memory out of 5000000
+ 50325 multiletter control sequences out of 15000+600000
+ 419308 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,122p,1003b,1644s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 128i,18n,122p,1003b,1650s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ss10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/f
-onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (22 pages, 420692 bytes).
+ts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
+ts/symbols/msbm10.pfb>
+Output written on slides.pdf (25 pages, 447319 bytes).
 PDF statistics:
- 698 PDF objects out of 1000 (max. 8388607)
- 626 compressed objects within 7 object streams
- 45 named destinations out of 1000 (max. 500000)
- 30773 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 790 PDF objects out of 1000 (max. 8388607)
+ 708 compressed objects within 8 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 46143 words of extra memory for PDF output out of 51595 (max. 10000000)
 
