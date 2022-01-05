@@ -3,9 +3,10 @@ suppressMessages(library(ggplot2))
 suppressMessages(library(dplyr))
 suppressMessages(library(reshape2)) 
 suppressMessages(library(fda))
-suppressMessages(library(fdaACF))
+#suppressMessages(library(fdaACF))
 suppressMessages(library(fpca))
-library(caret)
+suppressMessages(library(caret))
+
 
 source("C:/Users/Jonathan/Desktop/RM_Stats/Code/data_generator.R") 
 source("C:/Users/Jonathan/Desktop/RM_Stats/Code/auxiliary_functions.R") 
@@ -259,21 +260,20 @@ input_data = as.matrix(generated_curves[,-1])
 ###             Run function using the NIR data          ###
 ############################################################
 
+
+test_bspline_function = bspline_function(500, NIR, 60)
+write.table(test_bspline_function,file="Results/test_bspline_expansion_NIR.csv")
+test_bspline_function
+
 test_fourier_function = fourier_function(500, NIR, 60)
 write.table(test_fourier_function,file="Results/test_fourier_expansion_NIR.csv")
 test_fourier_function
 
-
-test_bspline_function = bspline_function(2, input_data, 100)
-write.table(test_bspline_function,file="Results/test_bspline_expansion_NIR.csv")
-test_bspline_function
-
-
-test_fpcr = fpcr_function(2, NIR, 60)
+test_fpcr = fpcr_function(500, NIR, 60)
 write.table(test_fpcr,file="Results/test_fpcr_bsplines_NIR.csv")
 test_fpcr
 
-test_fpcr2 = fpcr_fourier_function(2, NIR, 60)
+test_fpcr2 = fpcr_fourier_function(500, NIR, 60)
 write.table(test_fpcr2,file="Results/test_fpcr_fourier_NIR.csv")
 test_fpcr2
 
