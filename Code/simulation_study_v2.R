@@ -216,7 +216,7 @@ fpcr_fourier_function <- function(rep, NIR, n_obs){
         data = t(NIR)
         
         #print(dim(NIR))
-        smallbasis      <- create.fourier.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = 4)
+        smallbasis      <- create.fourier.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j))
         smooth_basis_fd <- smooth.basis(y = data, fdParobj=smallbasis)$fd
         
         simulated_pcaObj = pca.fd(smooth_basis_fd, nharm = nharm, centerfns = TRUE)
@@ -255,35 +255,31 @@ generated_curves = NIR_curve_generator(n=100)
 input_data = as.matrix(generated_curves[,-1])
 #############
 
-test_fourier_function = fourier_function(50, input_data, 100)
-#write.table(test_fourier_function,file="Results/test.csv")
+############################################################
+###             Run function using the NIR data          ###
+############################################################
+
+test_fourier_function = fourier_function(500, NIR, 60)
+write.table(test_fourier_function,file="Results/test_fourier_expansion_NIR.csv")
 test_fourier_function
 
 
 test_bspline_function = bspline_function(2, input_data, 100)
-#write.table(test_fourier_function,file="Results/test.csv")
+write.table(test_bspline_function,file="Results/test_bspline_expansion_NIR.csv")
 test_bspline_function
 
 
 test_fpcr = fpcr_function(2, NIR, 60)
-#write.table(test_fourier_function,file="Results/test.csv")
-test_fpcr_function
+write.table(test_fpcr,file="Results/test_fpcr_bsplines_NIR.csv")
+test_fpcr
 
-#cc = list()
-#cc[[1]] = c(1:100)
-#cc[[2]] = c(100:200)
-#M <- length(cc)
-#for (m in 1:M) {
-#  i = cc[m]
-#  print(i)
-#}
-#
-#seq(1:1000)[-(200:300)]
-##############
-source("C:/Users/Jonathan/Desktop/RM_Stats/Code/data_generator.R") 
-source("C:/Users/Jonathan/Desktop/RM_Stats/Code/auxiliary_functions.R") 
+test_fpcr2 = fpcr_fourier_function(2, NIR, 60)
+write.table(test_fpcr2,file="Results/test_fpcr_fourier_NIR.csv")
+test_fpcr2
 
-
+#######################################
+###             Test-Area          ###
+#######################################
 data = t(NIR)
 Y1_1 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
 smallbasis      <- create.fourier.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(4))
@@ -306,10 +302,3 @@ f_regress1_1original$SSE.CV
 
 f_regressn<- fRegress(y = Y1_1, xfdlist, betalist)
 
-tuuuuu = f_regressn$betalist[[1]][10:20]
-
-ddd = xfdlist[[1]][1]
-
-d = c()
-d = c(d,3)
-d = c(d,3)
