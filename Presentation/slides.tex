@@ -48,7 +48,7 @@ style=authoryear-comp,
 	%\end{frame}
 	
 	\begin{frame}{Introduction}
-		Jona \\	
+	
 		\begin{itemize}
 			\item Near-infrared (NIR) spectroscopy enables fast diagnostics by using the NIR region of the electromagnetic spectrum
 			\item Suited for field-monitoring / on-line analysis and diagnostics of e.g: prediction of octane ratings!
@@ -63,13 +63,12 @@ style=authoryear-comp,
 	
 	\begin{frame}{Theory}
 		
-		Motivation from multivariate regression (multivariate dgp).
+
 		
 		\begin{itemize}
 			\item
 			A simple functional dataset is given by $x_{n}(t_{j,n}) \in \mathbb{R}, t_{j,n} \in [T_1, T_2], n = 1,2,...,N, j = 1,2,..., J_n  $
-			\item Continuous underlying process, where $x_n(t)$ exists at any point $t$, but is only observed at $x_{n}(t_{j,n})$
-			\item NIR-spectroscopy measurements, financial data, medical data, human perception (musical pitch, ...)
+			\item Continuous underlying process, where $x_n(t)$ exists at any point $t$, but is only observed at $x_{n}(t_{j,n})$, eg.: growth curves, financial data, human perception (music pitch,...).
 			
 			\item To abstract information from the curves, they must be interpretable!
 			
@@ -346,8 +345,8 @@ style=authoryear-comp,
     		Let \\
     		 \vspace{0.1cm}
     		
-    		$Y_{1,f} = NIR \times f + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$, \\
-    		  $Y_{2,f} = NIR \times f + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$ be two responses for $f \in f_1, f_2$.		
+    		$Y_{1,f} = \mathbf{NIR \times f}  + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$, \\
+    		  $Y_{2,f} = \mathbf{NIR \times f} + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$ be two responses for $f \in f_1, f_2$.		
     		 	\item
     		 	 Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
 			\item Compare results via criteria (CV, Mallows CP,...)
@@ -364,7 +363,7 @@ style=authoryear-comp,
 		\item
     		Use insights from the simulation study to uncover dependence.
     		\item
-    		Same setup, but without generated curves.
+    		Similar setup, but using only bsplie basis expansion and initial 60 spectral curves.
     		\item
     		Validation set approach:	Scores of testdata needs to be estimated by the trainingdata.  {\color{green} explain in detail?}
     		\item
