@@ -122,7 +122,7 @@ NIR_approx <- map(
   .f = function(i) {
     approx_helper(
       obs_index = i, score_mat = NIR_pc_scores, pc_value_mat = NIR_pc_values, 
-      mean_function = mean_func_values
+      mean_function = 0 #mean_func_values
     )
   }
 )
