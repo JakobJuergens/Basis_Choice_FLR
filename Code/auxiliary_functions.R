@@ -3,11 +3,11 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
 {
   
   # FREGRESS.CV computes cross-validated error sum of squares
-  # for scalar or functional responses. NOTE: ordinary and
-  # generalized cross validation scores are now returned by fRegress
-  # when scalar responses are used.
+  # for scalar or functional responses.
   
-  # last modified 16 December 2020 by Jim Ramsay
+  # This function is a modified version of the function by Jim Ramsay
+  # Original function: https://github.com/cran/fda/blob/master/R/fRegress.CV.R
+  # Modification was done to use kfold CV, with the default of 10 folds
   
   #  check the arguments
   
@@ -97,7 +97,7 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
 }
 
 
-
+# fRegressArgCheck is copied from the fda package, found here: https://github.com/cran/fda/blob/master/R/fRegressArgCheck.R
 fRegressArgCheck <- function(yfd, xfdlist, betalist, wt=NULL) 
 {
   #  FREGRESS_ARGCHECK checks the first four arguments for the functions
@@ -250,7 +250,9 @@ fRegressArgCheck <- function(yfd, xfdlist, betalist, wt=NULL)
 }
 ############################
 
-
+# This is the origional function from here: https://github.com/cran/fda/blob/master/R/fRegress.CV.R
+# We use it for testing the modified function
+# May be removed in the future
 fRegress.CVoriginal <- function(y, xfdlist, betalist, wt=NULL, CVobs=1:N,
                                 returnMatrix=FALSE, ...)
 {
