@@ -53,27 +53,20 @@ style=authoryear-comp,
 			\item Near-infrared (NIR) spectroscopy enables fast diagnostics by using the NIR region of the electromagnetic spectrum
 			\item Suited for field-monitoring / on-line analysis and diagnostics of e.g: prediction of octane ratings!
 			\item Spectroscopy results in high-dimensional dataset.	
-
-			\item
-			This set of measurements along a continuum can be viewed as set of smooth spectral curves
-			
-
-			\item
-			Regression to determine relationship between octane rating and spectral curves
+			\item This set of measurements along a continuum can be viewed as set of smooth spectral curves
+			\item Regression to determine relationship between octane rating and spectral curves
 			\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Theory}
-		
-
+		A simple functional dataset is given by 
+		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \:  t_{j,n} \in [T_1, T_2], \; i = 1,2,...,N, \; j = 1,2,..., J_i  \}$$
 		
 		\begin{itemize}
-			\item
-			A simple functional dataset is given by $x_{n}(t_{j,n}) \in \mathbb{R}, t_{j,n} \in [T_1, T_2], n = 1,2,...,N, j = 1,2,..., J_n  $
-			\item Continuous underlying process, where $x_n(t)$ exists at any point $t$, but is only observed at $x_{n}(t_{j,n})$, eg.: growth curves, financial data, human perception (music pitch,...).
-			
+			\item Continuous underlying process, where $x_n(t)$ exists $\forall t \in [T_1, T_2]$
+			\item Only observed at $x_{n}(t_{j,n})$
+			\item Growth curves, financial data, human perception (pitch), ...
 			\item To abstract information from the curves, they must be interpretable!
-			
 			\end{itemize}
 	\end{frame}
 
@@ -105,17 +98,17 @@ style=authoryear-comp,
 	%\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		Assume the following data generating process
+		Assume the following \textbf{data generating process}
 		$$Y(\omega) = \alpha + \int_{0}^{1} \beta(s) F(\omega)(s) \mathrm{d}s + \epsilon(\omega)$$
 		\begin{itemize}
-			\item $Y$ and $\epsilon$ realize in $\mathbb{R}$ and $F$ realizes in $\mathbb{L}^2[0,1]$
+			\item $Y(\omega)$ and $\epsilon(\omega)$ realize in $\mathbb{R}$ and $F(\omega)$ realizes in $\mathbb{L}^2[0,1]$
 		\end{itemize}
 		\vspace{0.2cm}
 		
 		Assume that we have a data set containing observations each of which is made up of:
 		\begin{itemize}
-			\item $y_i$: a scalar realization of $Y$
-			\item $f_i(t)$: a realization of $F$
+			\item $y_i$: a scalar realization of $Y(\omega)$
+			\item $f_i(t)$: a realization of $F(\omega)$
 		\end{itemize}
 
 	\end{frame}
@@ -137,7 +130,7 @@ style=authoryear-comp,
 
 	\begin{frame}{Estimation via Basis Representation}
 		$$Z_j(\omega) = \int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s$$ 
-		This is a scalar random variable leading to the following transformation
+		This is a \textbf{scalar random variable} leading to the following transformation
 		$$Y(\omega) = \alpha + \sum_{j = 1}^{\infty} \psi_j Z_j(\omega) + \epsilon(\omega)$$
 		Each combination of observation $f_i(t)$ and deterministic basis function $b_j(t)$ effectively gives us a realization of this random variable.
 		$$Z_{i,j} = \int_{0}^{1} f_i(s) b_j(s)\mathrm{d}s$$
@@ -159,7 +152,7 @@ style=authoryear-comp,
 		\end{itemize}
 		\vspace{0.2cm}
 		
-		Coefficients can then be estimated using theory from multivariate regression leading to an estimated coefficient vector $\hat{\psi}_L \in \mathbb{R}^L$.
+		Coefficients can then be estimated using theory from \textbf{multivariate regression} leading to an estimated coefficient vector $\hat{\psi}_L \in \mathbb{R}^L$.
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
@@ -222,7 +215,7 @@ style=authoryear-comp,
 	\end{frame}
 	
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
-		A random function $F$ can be expressed in terms of its mean function and its Eigenfunctions:
+		A random function $F(\omega)$ can be expressed in terms of its mean function and its Eigenfunctions:
 		$$F(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)$$
 		
 		Where the $\xi_j$ are scalar-valued random variables with the following properties.
@@ -288,85 +281,74 @@ style=authoryear-comp,
 	\end{frame}
 
 	\begin{frame}{FPCA - Plots}
-		\begin{minipage}[t]{0.79\textwidth}
+		\begin{minipage}[c]{0.78\textwidth}
 			\includegraphics[width = \textwidth]{../Graphics/principal_components.pdf}
 			\includegraphics[width = \textwidth]{../Graphics/pc_approx.pdf}
 		\end{minipage}
-		\begin{minipage}[t]{0.19\textwidth}
-			Lorem Ipsum Dolor Sit Amet
+		\begin{minipage}[c]{0.19\textwidth}
+			The math is for intuition. In practice there are problems and the fpc's are derived differently.
 		\end{minipage}
 	\end{frame}
 	
 
 	\begin{frame}{Simulation Setup \& Application}
 		\begin{itemize}
-		\item
-		 Use the gasoline dataset (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
-		\item 
-		Generate new curves from gasoline dataset, motivated by Karhunen-Loeve expansion:
-		
-		$$F^{new}(\omega)(t) = \mu^{NIR}(t) + \sum_{j = 1}^{\infty} \xi_j^{new} \nu_j(t)^{new}$$ \\
-		where \\
-		 \vspace{0.1cm}
-		$$\xi_{j}^{new} \in  \mathcal{N}_{n}(0,\Sigma)$$ \\
-		and $\nu_j(t)^{new}$ be a $grid \times n_{FPC}$ matrix.
-		
-    		
+			\item Use the \textbf{gasoline dataset} (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
+			\item Generate \textbf{similar curves} from gasoline dataset:
 		\end{itemize}
+	
+		$$\tilde{F}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{\infty} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
+
+		\begin{itemize}
+			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ (simplification - the $\xi_{j}$ do not follow a normal)
+			\item $\tilde{F}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
+		\end{itemize}
+		
 	\end{frame}
 	
 	
 	\begin{frame}{Simulation Setup \& Application cont.}
-		\begin{itemize}
-		\item
-		Following Reiss and Ogden (2007), let $f_1$ and $f_2$ be two true coefficient functions that differ in smoothness: 
-		\vspace{0.4cm}
-	
+		%\begin{itemize}
+		%\item
+		Following \textbf{Reiss and Ogden (2007)}, let $f_1(t)$ and $f_2(t)$ be two coefficient functions: 
+		%\vspace{0.2cm}
 
-   $f_1 = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t)$\\
-   \vspace{0.1cm}
+   		%$f_1(t) = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t)$\\
+   		%\vspace{0.1cm}
    
-
-    
-    $	f_2 = 1.5^{\frac{-0,5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0,5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0,5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0,5(t-0.8)^2}{0.03^2}}$
-   
-    		
-		\end{itemize}
+        %$f_2(t) = 1.5 \exp(\frac{-0.5(t-0.3)^2}{0.02^2}) - 4 \exp(\frac{-0.5(t-0.45)^2}{0.015^2}) +  8 \exp(\frac{-0.5(t-0.6)^2}{0.02^2}) - \exp(\frac{-0.5(t-0.8)^2}{0.03^2})$
+		
+		%\end{itemize}
 		\vspace{0.1cm}
 		\begin{figure}
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[height=3cm]{smooth_function.png}
-  \captionof{figure}{$f_1$, smooth function}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[height=3cm]{bumpy_function.png}
-  \captionof{figure}{$f_2$, bumpy function}
-  \label{fig:test2}
-\end{minipage}
-\end{figure}
+			\centering
+			\begin{minipage}{.5\textwidth}
+				\centering
+  				\includegraphics[width=\textwidth]{smooth_function.png}
+  				\caption{$f_1(t)$, smooth function}
+  				\label{fig:test1}
+			\end{minipage}%
+			\begin{minipage}{.5\textwidth}
+	  			\centering
+  				\includegraphics[width=\textwidth]{bumpy_function.png}
+  				\caption{$f_2(t)$, bumpy function}
+  				\label{fig:test2}
+			\end{minipage}
+		\end{figure}
 		
 	\end{frame}	
 
 	
 	\begin{frame}{Simulation Setup \& Application cont.}
+		Let 
+		$$Y_{1,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)$$ 
+		$$Y_{2,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)$$
+		
+		where $Z \sim \mathcal{N}(0,1)$ be two responses for $f \in \{f_1(t), f_2(t)\}$.	
 		\begin{itemize}
-		\item
-    		Let \\
-    		 \vspace{0.1cm}
-    		
-    		$Y_{1,f} = \mathbf{NIR \times f}  + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$, \\
-    		  $Y_{2,f} = \mathbf{NIR \times f} + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$ be two responses for $f \in f_1, f_2$.		
-    		 	\item
-    		 	 Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
+    		\item Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
 			\item Compare results via criteria (CV, Mallows CP,...)
-			\item 
-			{\color{green} add results here!}
-			
-    		
+			\item {\color{green} add results here!}
 		\end{itemize}
 	\end{frame}
 	
