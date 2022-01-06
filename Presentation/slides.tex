@@ -26,6 +26,8 @@ style=authoryear-comp,
 \addbibresource{../RMbibliography.bib}
 \parindent=0pt
 
+ \newcommand{\independent}{\perp\!\!\!\!\perp} 
+
 % Title page details: 
 \title{Scalar on Function Regression}
 \author{Jonathan Willnow, Jakob Juergens, Jonghun Baek}
@@ -63,8 +65,8 @@ style=authoryear-comp,
 		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \: i = 1,2,...,N, \; j = 1,2,..., J_i, \; t_{j,i} \in [T_1, T_2] \}$$
 		
 		\begin{itemize}
-			\item Continuous underlying process, where $x_n(t)$ exists $\forall t \in [T_1, T_2]$
-			\item Only observed at $x_{n}(t_{j,n})$
+			\item Continuous underlying process, where $x_i(t)$ exists $\forall t \in [T_1, T_2]$
+			\item Only observed at $x_{i}(t_{j,i})$
 			\item Growth curves, financial data, human perception (pitch), ...
 			\item To abstract information from the curves, they must be interpretable!
 			\end{itemize}
@@ -300,7 +302,8 @@ style=authoryear-comp,
 		$$\tilde{F}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{\infty} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
 
 		\begin{itemize}
-			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ (simplification - the $\xi_{j}$ do not follow a normal)
+			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j} \independent \tilde{\xi}_{k}$ for $j \neq k$
+			\item Simplification: the $\xi_{j}$ do not follow a normal
 			\item $\tilde{F}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
 		\end{itemize}
 		
@@ -315,7 +318,7 @@ style=authoryear-comp,
 
    		%$f_1(t) = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t)$\\
    		%\vspace{0.1cm}
-   
+   		
         %$f_2(t) = 1.5 \exp(\frac{-0.5(t-0.3)^2}{0.02^2}) - 4 \exp(\frac{-0.5(t-0.45)^2}{0.015^2}) +  8 \exp(\frac{-0.5(t-0.6)^2}{0.02^2}) - \exp(\frac{-0.5(t-0.8)^2}{0.03^2})$
 		
 		%\end{itemize}
