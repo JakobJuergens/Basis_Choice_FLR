@@ -159,13 +159,24 @@ style=authoryear-comp,
 		\end{itemize}
 		\vspace{0.2cm}
 		
-		Coefficients can then be estimated using theory from multivariate regression leading to an estimated coefficient vector $\hat{\beta}_L \in \mathbb{R}^L$.
+		Coefficients can then be estimated using theory from multivariate regression leading to an estimated coefficient vector $\hat{\psi}_L \in \mathbb{R}^L$.
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		This can then be translated into an estimated coefficient function $\hat{\beta}(t)$ via:
+		This can be translated into an estimated coefficient function $\hat{\beta}(t)$:
+		
+		$$\hat{\beta}_L(t) = \sum_{j = 1}^{L} \hat{\psi}_{L,j} b_j(t)$$
+		\vspace{0.2cm}
+	
+		This is dependent on...
+		\begin{itemize}
+			\item The functional basis $(b_j(t))_{j \in \mathcal{I}}$ for the estimation of $\beta(t)$
+			\item The truncation parameter $L$
+			\item (The functional basis used to approximate the observations)
+			\item (The truncation parameter in the approximation of the observations)
+		\end{itemize}
 	\end{frame}
-
+	
 	\begin{frame}{Theory - FPCA}
 		Jakob
 		\begin{itemize}

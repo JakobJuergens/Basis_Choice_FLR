@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  4 JAN 2022 22:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  6 JAN 2022 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1284,7 +1284,7 @@ Package biblatex Info: Reference segment=0 on input line 34.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1293,7 +1293,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1303,7 +1303,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 77.
+ut line 78.
 
 (/usr/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1346,13 +1346,13 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 250.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 262.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 250.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 262.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 250.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 262.
 
  [16
 
@@ -1365,15 +1365,15 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 File: ../Graphics/principal_components.pdf Graphic file (type pdf)
 <use ../Graphics/principal_components.pdf>
 Package pdftex.def Info: ../Graphics/principal_components.pdf  used on input li
-ne 286.
+ne 298.
 (pdftex.def)             Requested size: 242.75693pt x 97.09492pt.
 <../Graphics/pc_approx.pdf, id=507, 1445.4pt x 578.16pt>
 File: ../Graphics/pc_approx.pdf Graphic file (type pdf)
 <use ../Graphics/pc_approx.pdf>
-Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 286.
+Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 298.
 (pdftex.def)             Requested size: 242.75693pt x 97.09492pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--286
+Underfull \hbox (badness 10000) in paragraph at lines 298--298
 \OT1/cmss/m/n/10.95 (+20) Do-lor Sit
  []
 
@@ -1386,21 +1386,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 286--286
 <smooth_function.png, id=572, 509.65407pt x 324.46219pt>
 File: smooth_function.png Graphic file (type png)
 <use smooth_function.png>
-Package pdftex.def Info: smooth_function.png  used on input line 340.
+Package pdftex.def Info: smooth_function.png  used on input line 352.
 (pdftex.def)             Requested size: 134.07782pt x 85.35826pt.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 340.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 352.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 340.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 352.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 340.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 352.
 
 <bumpy_function.png, id=573, 509.65407pt x 324.46219pt>
 File: bumpy_function.png Graphic file (type png)
 <use bumpy_function.png>
-Package pdftex.def Info: bumpy_function.png  used on input line 340.
+Package pdftex.def Info: bumpy_function.png  used on input line 352.
 (pdftex.def)             Requested size: 134.07782pt x 85.35826pt.
  [21
 
@@ -1431,11 +1431,11 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32925 strings out of 478353
- 642155 string characters out of 5854636
+ 32927 strings out of 478353
+ 642173 string characters out of 5854636
  1353513 words of memory out of 5000000
  50325 multiletter control sequences out of 15000+600000
- 419308 words of font info for 120 fonts, out of 8000000 for 9000
+ 419373 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,122p,1003b,1650s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
@@ -1452,7 +1452,7 @@ re/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on slides.pdf (25 pages, 447319 bytes).
+Output written on slides.pdf (25 pages, 448456 bytes).
 PDF statistics:
  790 PDF objects out of 1000 (max. 8388607)
  708 compressed objects within 8 object streams
