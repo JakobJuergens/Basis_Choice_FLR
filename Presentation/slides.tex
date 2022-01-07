@@ -142,7 +142,19 @@ style=authoryear-comp,
 	\end{frame}
 	
 	\begin{frame}{Plots}
-		Two plots of stock and human growth
+		\begin{figure}
+			\centering
+			\begin{minipage}{.5\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{../Graphics/Growth_curves.png}
+				\caption{\tiny Growth curves of 54 girls age 1-18}
+			\end{minipage}%
+			\begin{minipage}{.5\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{../Graphics/NIR.png}
+				\caption {\tiny NIR spectrum of 60 gasoline samples}
+			\end{minipage}
+		\end{figure}
 	\end{frame}
 	
 	\begin{frame}{Plots}
@@ -166,11 +178,19 @@ style=authoryear-comp,
 		Each B-spline basis function, $i$-th B-spline basis function of degree $p$, $N_{i,p}(u)$ is defined on Cox-de Boor recursion formula.(Do you think I need to put the formula?)
 	\end{frame}
 	
-	\begin{frame}{Plots of Basis Functions }
-		\begin{minipage}[t]{\textwidth}
-			\includegraphics[height = 3.5cm]{../Graphics/Bspline_Basis.pdf}
-			\includegraphics[height = 3.5cm]{../Graphics/Fourier_Basis.pdf}
-		\end{minipage}
+	\begin{frame}{Plots of Basis Functions}
+		\begin{figure}
+			\includegraphics[height = 4.5cm]{../Graphics/Fourier_Basis.pdf}
+			\caption {Fourier basis functions with order 9}
+		\end{figure}
+			
+	\end{frame}
+	
+	\begin{frame}{Plots of Basis Functions}
+		\begin{figure}
+			\includegraphics[height = 4.5cm]{../Graphics/Bspline_Basis.pdf}
+			\caption {Bspline Basis with order 9}
+		\end{figure}
 	\end{frame}
 	
 	\begin{frame}{Trade Off between Bias and Variance}
@@ -193,7 +213,7 @@ style=authoryear-comp,
 	
 	\begin{frame}{Trade Off between Bias and Variance}
 		\begin{minipage}[t]{\textwidth}
-			\includegraphics[height = 7cm]{../Graphics/Trade_off.png}
+			\includegraphics[height = 7cm]{../Graphics/Tradeoff.png}
 		\end{minipage}
 	\end{frame}
 
