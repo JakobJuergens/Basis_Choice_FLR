@@ -138,7 +138,13 @@ style=authoryear-comp,
 	The Hilbert space of square integrable functions on $[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
 	
 	\subsection{Different Bases of $\mathbb{L}^2$}
-	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of orthonormal bases of $\mathbb{L}^2[0,1]$ that are often used in practice are explained in the following.
+	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
+	
+	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $F(\omega') = f(t)$ of $F(\omega)$.
+	
+	\begin{equation}
+		F(\omega') = f(t) = \sum_{j \in \mathcal{I}} \psi_j(\omega') b_j(t)
+	\end{equation}
 	
 	\paragraph{Fourier Basis}
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
@@ -186,7 +192,13 @@ style=authoryear-comp,
 	An example of one such data set could be a set of $n$ independent realizations of a Wiener-process and $n$ associated scalar variables that could be subject of a regression analysis with respect to the corresponding realizations of the Wiener process. A definition and a plotted example for the Wiener process are given in \ref{Wiener}.
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}
-	Given a realization of a random function realizing in $\mathbb{L}^2$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2$. Therefore, let $F: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function.
+	Given a realization of a random function realizing in $\mathbb{L}^2$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix.
+	
+	\begin{equation}
+		\text{{\color{red} Introduce spectral representation of random vector here.}}
+	\end{equation}
+	
+	To obtain the analogous concept for a random function, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2$. Therefore, let $F: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function.
 	Then the mean and covariance functions of $F$ are defined as follows.
 	
 	\begin{equation}\label{MeanFunction}
@@ -203,7 +215,7 @@ style=authoryear-comp,
 		F(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)
 	\end{equation}
 
-	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathcal{I}\}$ of the following equation.
+	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathbb{N}\}$ of the following equation.
 	
 	\begin{equation}
 		\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
@@ -222,7 +234,7 @@ style=authoryear-comp,
 		\hat{c}(t,s) = \frac{1}{n} \sum_{j = 1}^{n} \left(f_j(t) - \hat{\mu}(t)\right) \left(f_j(s) - \hat{\mu}(s)\right)
 	\end{equation}
 
-	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}_i, \hat{\nu}_i) \: \vert \: i \in \mathcal{I}\}$ for $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathcal{I}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{I}$.}
+	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}_i, \hat{\nu}_i) \: \vert \: i \in \mathbb{N}\}$ for $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathbb{N}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathbb{N}$.}
 	
 	\begin{equation}
 		\int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t)
@@ -252,21 +264,36 @@ style=authoryear-comp,
 	A general data generating process in this functional scenario could look like the following equation.
 	
 	\begin{equation}
-		y = \alpha + \Psi(f) + \epsilon
+		Y(\omega) = \alpha + \Psi\left(F(\omega)\right) + \epsilon(\omega)
 	\end{equation}
 	
 	Here $\Psi$ is a functional that maps a realization of a random function in $\mathbb{L}^2[0,1]$ into $\mathbb{R}$. One simple example to illustrate the principle is the maximum $\Psi(f) = \max_{x \in [0,1]}f(x)$.
 	However, the typical setup is often as follows mimicking the structure of the multivariate linear model extended from summation to integration. This structure is crucial for the extension of linear regression to the case of functional regressors. Therefore, in this paper we always implicitly assume that a data generating process has the following structure. {\color{red} maybe a better motivation is the one Jona gave: from very dense observations that run into problems of colinearity when using the original OLS estimator}
 	
-	\begin{equation}
-		y = \alpha + \int_{0}^{1} \beta(s)f(s) \mathrm{d}s + \epsilon
+	\begin{equation}\label{DGP}
+		Y(\omega) = \alpha + \int_{0}^{1} \beta(s)F(\omega)(s) \mathrm{d}s + \epsilon(\omega)
 	\end{equation}
 	
-	Where $f(s)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(s)$ is an unknown coefficient function. 
-	Similar to the finite dimensional setting, an interesting question is how to estimate the unknown function $\beta(s)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite dimensional objects is not possible. Therefore, other options have to be considered.
+	Where $f(t)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(t)$ is an unknown coefficient function. 
+	Similar to the finite dimensional setting, an interesting question is how to estimate the unknown function $\beta(t)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite dimensional objects is not possible. Therefore, other options have to be considered.
 	
 	\subsection{Estimation via Basis-Representation}
-	The most common way to make this problem tractable is via a basis representation of the originally observed function.
+	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathbb{N}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
+	
+	\begin{equation}
+		\beta(t) = \sum_{j = 1}^{\infty} \psi_j b_j(t)
+	\end{equation}
+	
+	This enables us to write equation \ref{DGP} with $\beta(t)$ represented in this way to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.
+	
+	\begin{equation}
+		\begin{split}
+			Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} \psi_j  b_j(s)\right) F(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j = 1}^{\infty} \left[\psi_j \textcolor{red}{\int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s}\right] + \epsilon(\omega) \\
+			& = \alpha + \sum_{j = 1}^{\infty} \psi_j \textcolor{red}{\langle F(\omega), b_j \rangle} + \epsilon(\omega) 
+			  = \alpha + \sum_{j = 1}^{\infty} \psi_j \textcolor{red}{Z_j(\omega)} + \epsilon(\omega)
+		\end{split}
+	\end{equation}
 	
 	\subsection{Detailed Draft}
 	\begin{itemize}
