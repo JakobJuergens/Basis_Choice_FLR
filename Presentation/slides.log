@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.31)  6 JAN 2022 23:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.31)  7 JAN 2022 01:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1309,66 +1309,66 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ] [13
 
+] [14
+
 ]
-<../Graphics/Bspline_Basis.pdf, id=371, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=397, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 162.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 174.
 
 (pdftex.def)             Requested size: 248.95683pt x 99.58464pt.
-<../Graphics/Fourier_Basis.pdf, id=372, 1445.4pt x 578.16pt>
+<../Graphics/Fourier_Basis.pdf, id=398, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 162.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 174.
 
 (pdftex.def)             Requested size: 248.95683pt x 99.58464pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 174--174
 [][]
  []
 
 
-Overfull \vbox (4.43193pt too high) detected at line 162
+Overfull \vbox (4.43193pt too high) detected at line 174
  []
 
-[14
+[15
 
- <../Graphics/Bspline_Basis.pdf> <../Graphics/Fourier_Basis.pdf>] [15
-
-]
-[16
+ <../Graphics/Bspline_Basis.pdf> <../Graphics/Fourier_Basis.pdf>] [16
 
 ]
-<../Graphics/Trade_off.png, id=463, 602.25pt x 364.36125pt>
+[17
+
+]
+<../Graphics/Trade_off.png, id=489, 602.25pt x 364.36125pt>
 File: ../Graphics/Trade_off.png Graphic file (type png)
 <use ../Graphics/Trade_off.png>
-Package pdftex.def Info: ../Graphics/Trade_off.png  used on input line 186.
+Package pdftex.def Info: ../Graphics/Trade_off.png  used on input line 198.
 (pdftex.def)             Requested size: 329.19843pt x 199.16928pt.
 
-Overfull \hbox (21.90855pt too wide) in paragraph at lines 186--186
+Overfull \hbox (21.90855pt too wide) in paragraph at lines 198--198
 [][] 
  []
 
 
-Overfull \vbox (3.43193pt too high) detected at line 186
+Overfull \vbox (3.43193pt too high) detected at line 198
  []
 
-[17
+[18
 
  <../Graphics/Trade_off.png>]
 (c:/texlive/2021/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
-) [18
-
-] [19
+) [19
 
 ] [20
 
-]
-[21
+] [21
 
-] [22
+]
+[22
 
 ] [23
 
@@ -1376,89 +1376,91 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 
 ] [25
 
+] [26
+
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 352.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 364.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 352.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 364.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 352.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 364.
 
- [26
-
-] [27
+ [27
 
 ] [28
 
+] [29
+
 ]
-<../Graphics/principal_components.pdf, id=784, 1445.4pt x 578.16pt>
+<../Graphics/principal_components.pdf, id=810, 1445.4pt x 578.16pt>
 File: ../Graphics/principal_components.pdf Graphic file (type pdf)
 <use ../Graphics/principal_components.pdf>
 Package pdftex.def Info: ../Graphics/principal_components.pdf  used on input li
-ne 388.
+ne 400.
 (pdftex.def)             Requested size: 239.68571pt x 95.86867pt.
-<../Graphics/pc_approx.pdf, id=785, 1445.4pt x 578.16pt>
+<../Graphics/pc_approx.pdf, id=811, 1445.4pt x 578.16pt>
 File: ../Graphics/pc_approx.pdf Graphic file (type pdf)
 <use ../Graphics/pc_approx.pdf>
-Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 388.
+Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 400.
 (pdftex.def)             Requested size: 239.68571pt x 95.86867pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--388
+Underfull \hbox (badness 10000) in paragraph at lines 400--400
 \OT1/cmss/m/n/10.95 (+20) In prac-tice
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--388
+Underfull \hbox (badness 10000) in paragraph at lines 400--400
 \OT1/cmss/m/n/10.95 (+20) there are
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--388
+Underfull \hbox (badness 10000) in paragraph at lines 400--400
 \OT1/cmss/m/n/10.95 (+20) prob-lems
  []
 
 
-Underfull \hbox (badness 7759) in paragraph at lines 388--388
+Underfull \hbox (badness 7759) in paragraph at lines 400--400
 \OT1/cmss/m/n/10.95 (+20) are de-rived
  []
 
-[29
-
- <../Graphics/principal_components.pdf> <../Graphics/pc_approx.pdf>]
 [30
 
+ <../Graphics/principal_components.pdf> <../Graphics/pc_approx.pdf>]
+[31
+
 ]
-<smooth_function.png, id=848, 509.65407pt x 324.46219pt>
+<smooth_function.png, id=875, 509.65407pt x 324.46219pt>
 File: smooth_function.png Graphic file (type png)
 <use smooth_function.png>
-Package pdftex.def Info: smooth_function.png  used on input line 437.
+Package pdftex.def Info: smooth_function.png  used on input line 449.
 (pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 437.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 449.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 437.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 449.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 437.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 449.
 
-<bumpy_function.png, id=849, 509.65407pt x 324.46219pt>
+<bumpy_function.png, id=876, 509.65407pt x 324.46219pt>
 File: bumpy_function.png Graphic file (type png)
 <use bumpy_function.png>
-Package pdftex.def Info: bumpy_function.png  used on input line 437.
+Package pdftex.def Info: bumpy_function.png  used on input line 449.
 (pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
- [31
+ [32
 
- <./smooth_function.png> <./bumpy_function.png>] [32
-
-] [33
+ <./smooth_function.png> <./bumpy_function.png>] [33
 
 ] [34
 
+] [35
+
 ]
-[35
+[36
 
 ]
 \tf@nav=\write7
@@ -1478,10 +1480,10 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31676 strings out of 480539
- 596028 string characters out of 5903068
- 1344127 words of memory out of 5000000
- 48559 multiletter control sequences out of 15000+600000
+ 31680 strings out of 480539
+ 596063 string characters out of 5903068
+ 1344126 words of memory out of 5000000
+ 48561 multiletter control sequences out of 15000+600000
  421397 words of font info for 138 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,18n,108p,739b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1498,10 +1500,10 @@ ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (35 pages, 526847 bytes).
+Output written on slides.pdf (36 pages, 529583 bytes).
 PDF statistics:
- 1062 PDF objects out of 1200 (max. 8388607)
- 966 compressed objects within 10 object streams
- 73 named destinations out of 1000 (max. 500000)
+ 1088 PDF objects out of 1200 (max. 8388607)
+ 991 compressed objects within 10 object streams
+ 75 named destinations out of 1000 (max. 500000)
  59470 words of extra memory for PDF output out of 61914 (max. 10000000)
 

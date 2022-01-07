@@ -91,7 +91,7 @@ style=authoryear-comp,
 	\end{frame}
 
 	\begin{frame}{Random Function}
-		Random element is a function $X : \Omega \rightarrow \mathcal{S}$ which is defined on a common probability space $(\Omega, \mathcal{F}, \mathbb{P})$ where $\Omega$ is a probability space with a $\sigma$-algebra $\mathcal{F}$ and a probability measure $\mathbb{{P}}$
+		Random element is a function $X : \Omega \rightarrow \mathcal{S}$ which is defined on a common probability space $(\Omega, \mathcal{F}, \mathbb{P})$ where $\Omega$ is a probability space with a $\sigma$-algebra $\mathcal{F}$ and a probability measure $\mathbb{{P}}.$
 		\begin{itemize}
 			\item If $\mathcal{S} = \mathbb{R}$ $\rightarrow$ X is a random variable
 			\item If $\mathcal{S} = \mathbb{R}^{n}$ $\rightarrow$ X is a random vector
@@ -102,7 +102,7 @@ style=authoryear-comp,
 	\begin{frame}{Random Function}
 		Let $E$ be the index set and this can be described as
 		$${\{X(t,\omega) : t \in E, \omega \in \Omega\},}$$
-		where $X(t, \cdot)$ is $\mathcal{F}$-measurable function on the sample space $\Omega$\\
+		where $X(t, \cdot)$ is $\mathcal{F}$-measurable function on the sample space $\Omega$.\\
 		\begin{itemize}
 			\item It can be shortened to $X(t)$ by omitting $\omega$
 			\item The function is realized when the $X(t)$ have been observed for every $t \in E$
@@ -120,8 +120,20 @@ style=authoryear-comp,
 		\end{itemize}
 	\end{frame}
 	
+	\begin{frame}{Square Integrable Function}
+		If $f, g \in \mathbb{L}^{2}$,
+		$$(ab + bg)(t) = af(t) + bg(t), \quad t \in [0,1] and \forall a,b$$
+		, where $a$ and $b$ are scalars. (Maybe don't need)\\
+		We can additionally define the inner product as follows:
+		$$\langle f,g \rangle = \int_{0}^{1} f(t)g(t)dt$$
+		\begin{itemize}
+			\item Orthogonolality of two different functions
+			\item Distance between functions
+		\end{itemize}
+	\end{frame}
+	
 	\begin{frame}{Stochastic Process Perspective}
-		Functional data are the sample curves observed from continuous time stochastic precess\\
+		Functional data are the sample curves observed from continuous time stochastic precess.\\
 		\begin{itemize}
 			\item From this perspective, $X(t)$ is a random variable (?)\\
 			\item $X(\cdot)$ is a collection of random variables by each time index(?)\\
@@ -139,7 +151,7 @@ style=authoryear-comp,
 	\begin{frame}{Basis Expansion}
 		Basis expansion is a linear combination of functions defining a function as described:
 		$$X_{i}(t) \approx \sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad 1\leq i \leq n, \forall t \in E$$
-		, where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion and $c_{ik}$ is the corresponding coefficient
+		, where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion and $c_{ik}$ is the corresponding coefficient.
 		\begin{itemize}
 			\item To make the function smoother
 			\item To replace the original scalar data $X_{n}(t_{jn})$ by a smaller collection of $c_{nm}$
@@ -150,8 +162,8 @@ style=authoryear-comp,
 		Fourier basis function is written as
 		$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
 		\vspace{2\baselineskip}
-		B-spline basis function is a flexible curve defined by degree and knots \\
-		Each B-spline basis function, $i$-th B-spline basis function of degree $p$, $N_{i,p}(u)$ is defined on Cox-de Boor recursion formula(Do you think I need to put the formula?)
+		B-spline basis function is a flexible curve defined by degree and knots. \\
+		Each B-spline basis function, $i$-th B-spline basis function of degree $p$, $N_{i,p}(u)$ is defined on Cox-de Boor recursion formula.(Do you think I need to put the formula?)
 	\end{frame}
 	
 	\begin{frame}{Plots of Basis Functions }

@@ -138,8 +138,12 @@
 \headcommand {\slideentry {0}{0}{35}{35/35}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\beamer@partpages {1}{35}}
-\headcommand {\beamer@subsectionpages {1}{35}}
-\headcommand {\beamer@sectionpages {1}{35}}
-\headcommand {\beamer@documentpages {35}}
-\headcommand {\gdef \inserttotalframenumber {35}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {0}{0}{36}{36/36}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\beamer@partpages {1}{36}}
+\headcommand {\beamer@subsectionpages {1}{36}}
+\headcommand {\beamer@sectionpages {1}{36}}
+\headcommand {\beamer@documentpages {36}}
+\headcommand {\gdef \inserttotalframenumber {36}}
