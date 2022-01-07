@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.31)  7 JAN 2022 02:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.31)  7 JAN 2022 02:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1495,11 +1495,11 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31698 strings out of 480539
- 596465 string characters out of 5903068
+ 31696 strings out of 480539
+ 596449 string characters out of 5903068
  1344126 words of memory out of 5000000
  48575 multiletter control sequences out of 15000+600000
- 421397 words of font info for 138 fonts, out of 8000000 for 9000
+ 421332 words of font info for 137 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,18n,108p,739b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/tex
@@ -1515,7 +1515,7 @@ ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/amsfonts/symbols/msbm10.pfb>
-Output written on slides.pdf (37 pages, 547215 bytes).
+Output written on slides.pdf (37 pages, 547234 bytes).
 PDF statistics:
  1122 PDF objects out of 1200 (max. 8388607)
  1019 compressed objects within 11 object streams
