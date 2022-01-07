@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  7 JAN 2022 12:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  7 JAN 2022 21:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -882,20 +882,33 @@ File: Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use Graphics/Bspline_Basis.pdf>
 Package pdftex.def Info: Graphics/Bspline_Basis.pdf  used on input line 186.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
- [7 <./Graphics/Bspline_Basis.pdf>]
-[8] [9] [10] [11] [12] [13] [14] [15]
-<Graphics/Wiener_plot.pdf, id=332, 1445.4pt x 578.16pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
+
+ []
+
+[7 <./Graphics/Bspline_Basis.pdf>] [8]
+Underfull \vbox (badness 1990) has occurred while \output is active []
+
+ [9]
+[10] [11] [12] [13] [14] [15]
+<Graphics/Wiener_plot.pdf, id=335, 1445.4pt x 578.16pt>
 File: Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: Graphics/Wiener_plot.pdf  used on input line 526.
+Package pdftex.def Info: Graphics/Wiener_plot.pdf  used on input line 538.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [16] [17 <./Graphics/Wiener_plot.pdf>]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-[18] (./main.aux)
+ [18]
+(./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5656312C5513C7F79BA332C4D56E46E5;4481.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -903,8 +916,8 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22325 strings out of 478353
- 386499 string characters out of 5854636
+ 22328 strings out of 478353
+ 386520 string characters out of 5854636
  1148255 words of memory out of 5000000
  39905 multiletter control sequences out of 15000+600000
  420377 words of font info for 155 fonts, out of 8000000 for 9000
@@ -928,10 +941,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1095.pfb>
-Output written on main.pdf (18 pages, 1694363 bytes).
+Output written on main.pdf (18 pages, 1698230 bytes).
 PDF statistics:
- 493 PDF objects out of 1000 (max. 8388607)
- 422 compressed objects within 5 object streams
- 121 named destinations out of 1000 (max. 500000)
+ 496 PDF objects out of 1000 (max. 8388607)
+ 425 compressed objects within 5 object streams
+ 124 named destinations out of 1000 (max. 500000)
  41712 words of extra memory for PDF output out of 42996 (max. 10000000)
 
