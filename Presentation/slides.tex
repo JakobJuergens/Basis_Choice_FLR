@@ -112,7 +112,8 @@ style=authoryear-comp,
 	\begin{frame}{Square Integrable Function}
 		If a function $f$ satisfies:
 		$$\int_{0}^{1} \{f(t)\}^{2}dt < \infty$$
-		the function $f$ is called square integrable function
+		the function $f$ is called square integrable function\\
+		and in the set $\mathbb{L}^{2}[0,1]$.
 		\begin{itemize}
 			\item Without loss of generality, the interval is defined in $[0,1] $
 			\item $\mathbb{L}^{2}$ is the set of all square integrable functions
@@ -121,7 +122,7 @@ style=authoryear-comp,
 	\end{frame}
 	
 	\begin{frame}{Square Integrable Function}
-		If $f, g \in \mathbb{L}^{2}$,
+		If $f, g \in \mathbb{L}^{2}[0,1]$,
 		$$(ab + bg)(t) = af(t) + bg(t), \quad t \in [0,1] and \forall a,b$$
 		, where $a$ and $b$ are scalars. (Maybe don't need)\\
 		We can additionally define the inner product as follows:
@@ -157,9 +158,11 @@ style=authoryear-comp,
 		\end{figure}
 	\end{frame}
 	
-	\begin{frame}{Plots}
-		point plots to link basis expansion
+	\begin{frame}{Data Generating Process}
+		With $X_{i}(t_{ij}) \in \mathbb{L}^{2}[0,1]$, the measurement of $X_{ij}$ is assumed to have noise with $\mathbb{E}(\epsilon)_{ij}=0$ and $\textbf{Var}(\epsilon_{ij}^{2})$, which are independent across $i$ and $j$.\\
+		When the functional data has the same grid of domain, (SKIP)	
 	\end{frame}
+
 	\begin{frame}{Basis Expansion}
 		Basis expansion is a linear combination of functions defining a function as described:
 		$$X_{i}(t) \approx \sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad 1\leq i \leq n, \forall t \in E$$
