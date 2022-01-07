@@ -18,6 +18,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[font=small,skip=2pt]{caption}
+\captionsetup[figure]{labelformat=empty}
 \usepackage[
 backend=biber,
 style=authoryear-comp,
@@ -111,26 +112,24 @@ with Applications to Near-Infrared Spectography}
 	\end{frame}
 
 	\begin{frame}{Plots}
-		\begin{figure}
-			\centering
-			\begin{minipage}{.5\textwidth}
-				\centering
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
 				\includegraphics[width=\textwidth]{../Graphics/Growth_curves.png}
-				\caption{\tiny Growth curves of 54 girls age 1-18}
-			\end{minipage}%
-			\begin{minipage}{.5\textwidth}
-				\centering
+				\caption{Growth curves of \\ 54 girls age 1-18}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
 				\includegraphics[width=\textwidth]{../Graphics/NIR.png}
-				\caption {\tiny NIR spectrum of 60 gasoline samples}
-			\end{minipage}
-		\end{figure}
+				\caption{NIR spectrum of 60 \\ gasoline samples}
+			\end{figure}
+		\end{minipage}
 	\end{frame}
 	
 	\begin{frame}{Square Integrable Function}
-		If a function $f(t)$ satisfies:
-		$$\int_{0}^{1} \{f(t)\}^{2}dt < \infty$$
-		the function $f$ is called \textbf{Square Integrable Function}\\
-		and in the set $\mathbb{L}^{2}[0,1]$.
+		If a function $f(t)$ satisfies
+		$$\int_{0}^{1} \left(f(t)\right)^{2}dt < \infty$$
+		the function $f(t)$ is called \textbf{Square Integrable Function} written $f(t) \in \mathbb{L}^{2}[0,1]$.
 		\begin{itemize}
 			\item Without loss of generality, the interval is defined in $[0,1] $
 			\item $\mathbb{L}^{2}$ is the set of all square integrable functions
@@ -214,15 +213,6 @@ with Applications to Near-Infrared Spectography}
 		\end{minipage}
 	\end{frame}
 
-	%\begin{frame}{Theory}
-	%	Jakob
-	%	\begin{itemize}
-	%		\item Random function represented as linear combination of basis functions $\checkmark$
-	%		\item Just transform to multiple linear regression setting $\checkmark$
-	%		\item You already know that from the beginning $\checkmark$
-	%	\end{itemize}
-	%\end{frame}
-
 	\begin{frame}{Estimation via Basis Representation}
 		Assume the following \textbf{Data Generating Process}
 		$$Y(\omega) = \alpha + \int_{0}^{1} \beta(s) X(\omega)(s) \mathrm{d}s + \epsilon(\omega)$$
@@ -261,8 +251,8 @@ with Applications to Near-Infrared Spectography}
 		$$Z_{i,j} = \int_{0}^{1} x_i(s) b_j(s)\mathrm{d}s$$
 		
 		\begin{itemize}
-			\item This allows us to write each observation in the data set as $\{y_i, Z_{i,1}, Z_{i,2}, \dots\}$
-			\item Truncating the functional basis yields an approximation $\{y_i, Z_{i,1}, Z_{i,2}, \dots, Z_{i,L}\}$
+			\item This allows us to write each observation in the data set as $\left(y_i, Z_{i,1}, Z_{i,2}, \dots \right)$
+			\item Truncating the functional basis yields an approximation $\left(y_i, Z_{i,1}, Z_{i,2}, \dots, Z_{i,L}\right)$
 		\end{itemize}
 		
 		Coefficients can then be estimated using theory from \textbf{multivariate regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$.
@@ -282,39 +272,8 @@ with Applications to Near-Infrared Spectography}
 		\end{itemize}
 	\end{frame}
 	
-	%\begin{frame}{Theory - FPCA}
-	%	Jakob
-	%	\begin{itemize}
-	%		\item Let's assume you know the theory of PCA (pc from varcov matrix) $\checkmark$
-	%		\item Introduce mean and covariance functions of random functions $\checkmark$
-	%		\item There is another cool basis $\rightarrow$ Eigenbasis (Karhunen-Loeve Expansion) $\checkmark$
-	%		\item Sample Analog! (create a basis from observations and use for basis regression) $\checkmark$
-	%		\item Plot fpcs and approximation of function realization
-	%	\end{itemize}
-	%\end{frame}
 
-	%\begin{frame}{Spectral Representation of Random Vectors}
-	%	Let $X(\omega)$ be a random vector realizing in $\mathbb{R}^p$.
 
-	%	\begin{itemize}
-	%		\item Let $\mu_x = \mathbb{E}(X)$ and $\Sigma_X = Cov(X)$
-	%		\item Let $\{\gamma_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\Sigma_X$
-	%		\item Let $\{\lambda_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\Sigma_X$
-	%	\end{itemize}
-	
-	%	\vspace{0.2cm}
-	%	Then $X$ can also be represented as
-	%	$$X(\omega) = \mu_x + \sum_{i = 1}^{p} \xi_i(\omega) \gamma_i$$
-	%	where the $\xi_i(\omega)$ have the following properties
-		
-	%	\begin{multicols}{2}
-	%		\begin{enumerate}
-	%			\item $\mathbb{E}[\xi_i(\omega)] = 0$
-	%			\item $Var(\xi_i(\omega)) = \lambda_i$
-	%			\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
-	%		\end{enumerate}
-	%	\end{multicols}
-	%\end{frame}
 
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
 		
@@ -342,33 +301,9 @@ with Applications to Near-Infrared Spectography}
 		This is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of $X(\omega)$ and the Eigenfunctions can serve as a basis.
 	\end{frame}
 
-	%\begin{frame}{Principal Component Analysis}
-	%	A related concept is \textbf{Principal Component Analysis} (PCA).
-	%	\vspace{0.2cm}
-	%	
-	%	$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
-	%
-	%	\begin{itemize}
-	%		\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ contain the standardized regressors
-	%		\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
-	%		\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
-	%		\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
-	%	\end{itemize}
-	%	\vspace{0.2cm} 
-		
-	%	Then $Z_i(\omega) = \hat{\gamma}_i' X(\omega)$ is called the i'th principal component and
-	%	\begin{multicols}{2}
-	%		\begin{enumerate}
-	%			\item $\mathbb{E}[Z_i(\omega)] = 0$
-	%			\item $Var(Z_i(\omega)) = \hat{\lambda}_i$
-	%			\item $Cov(Z_i(\omega), Z_j(\omega)) = 0$ for $i \neq j$
-	%		\end{enumerate}
-	%	\end{multicols}
-	%\end{frame}
-
 	\begin{frame}{Functional Principal Component Analysis}
-		{\color{red} Rephrase this!} This idea can be extended to functional regressors in the form of \textbf{Functional Principal Component Analysis} (FPCA).
-		\vspace{0.2cm}
+		\textbf{Principal Component Analysis} can be extended to functional regressors in the form of \textbf{Functional Principal Component Analysis} (FPCA).
+		\vspace{0.4cm}
 		
 		\textbf{Empirical Mean Function}:
 		$$\hat{\mu}(t) = \frac{1}{n}\sum_{j = 1}^{n}f_j(t)$$
@@ -421,17 +356,9 @@ with Applications to Near-Infrared Spectography}
 	
 	
 	\begin{frame}{Simulation Setup \& Application cont.}
-		%\begin{itemize}
-		%\item
-		Following \textbf{Reiss and Ogden (2007)}, let $f_1(t)$ and $f_2(t)$ be two coefficient functions: 
-		%\vspace{0.2cm}
 
-   		%$f_1(t) = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t)$\\
-   		%\vspace{0.1cm}
-   		
-        %$f_2(t) = 1.5 \exp(\frac{-0.5(t-0.3)^2}{0.02^2}) - 4 \exp(\frac{-0.5(t-0.45)^2}{0.015^2}) +  8 \exp(\frac{-0.5(t-0.6)^2}{0.02^2}) - \exp(\frac{-0.5(t-0.8)^2}{0.03^2})$
-		
-		%\end{itemize}
+		Following \textbf{Reiss and Ogden (2007)}, let $f_1(t)$ and $f_2(t)$ be two coefficient functions: 
+
 		\vspace{0.1cm}
 		\begin{figure}
 			\centering
@@ -479,15 +406,72 @@ with Applications to Near-Infrared Spectography}
 		\end{itemize}
 	\end{frame}
 	
-	
-
 	\begin{frame}{Summary}
 		Jona \\
 		Just summarize what we have done...
 	\end{frame}
+	
+	\begin{frame}
+		\topskip0pt
+		\vspace*{\fill}
+		\begin{center}
+			{\LARGE Thank you for your time!}
+		\end{center}	
+		\vspace*{\fill}
+		%
+	\end{frame}
+	
+	\begin{frame}{Further Reading}
+		 Put footnotes here!
+	\end{frame}
+	
+	% From here on out are the supplementary slides.
+	
+	\begin{frame}{Spectral Representation of Random Vectors}
+		Let $X(\omega)$ be a random vector realizing in $\mathbb{R}^p$.
+		
+		\begin{itemize}
+			\item Let $\mu_x = \mathbb{E}(X)$ and $\Sigma_X = Cov(X)$
+			\item Let $\{\gamma_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\Sigma_X$
+			\item Let $\{\lambda_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\Sigma_X$
+		\end{itemize}
+		
+		\vspace{0.2cm}
+		Then $X$ can also be represented as
+		$$X(\omega) = \mu_x + \sum_{i = 1}^{p} \xi_i(\omega) \gamma_i$$
+		where the $\xi_i(\omega)$ have the following properties
+		
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[\xi_i(\omega)] = 0$
+				\item $Var(\xi_i(\omega)) = \lambda_i$
+				\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
+	\end{frame}
 
-	\begin{frame}{further reading}
-		Put footnotes here!
+	\begin{frame}{Principal Component Analysis}
+		A related concept is \textbf{Principal Component Analysis} (PCA).
+		\vspace{0.2cm}
+		
+		$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
+		
+		\begin{itemize}
+			\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ contain the standardized regressors
+			\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
+			\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
+			\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
+		\end{itemize}
+		\vspace{0.2cm} 
+		
+		Then $Z_i(\omega) = \hat{\gamma}_i' X(\omega)$ is called the i'th principal component and
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[Z_i(\omega)] = 0$
+				\item $Var(Z_i(\omega)) = \hat{\lambda}_i$
+				\item $Cov(Z_i(\omega), Z_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
 	\end{frame}
 	
 \end{document}
