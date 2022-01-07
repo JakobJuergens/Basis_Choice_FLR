@@ -56,10 +56,10 @@ style=authoryear-comp,
 	Functional Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is gaining more attention as researchers from different fields collect data that is functional in nature. Classical statistical methods can often process this data, but only FDA allows extracting information given by the smoothness of the underlying process (cf. \cite{levitin_introduction_2007}).
 	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).\\
 	 To motivate scalar-on-function regression, consider the case of a data set containing a scalar response and observations of an underlying continuous process. In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
-	 The focus of this paper is to introduce Functional Linear Regression (FLR) in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:  {\color{red} (I don't set up any interval for s here we might do later...)}
+	 The focus of this paper is to introduce Functional Linear Regression (FLR) in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:
 	 
 	 \begin{equation}
-	 	Y_{i} = \beta_{0} + \int{X_{i}(s)\beta(s)ds} + \epsilon_{i},
+	 	Y(\omega) = \alpha + \int_{0}^{1}{X(\omega)(s)\beta(s) \mathrm{d}s} + \epsilon(\omega),
 	 	\qquad i = 1, ..., n
 	 \end{equation}
  
@@ -126,18 +126,18 @@ style=authoryear-comp,
 	Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
 	
 	\begin{equation}
-		\int_{0}^{1} \lvert f \rvert^2 d\mu < \infty
+		\int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
 	Its inner product is defined as
 	
 	\begin{equation}
-		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 d\mu.
+		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
 	The Hilbert space of square integrable functions on $[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
 	
-	\subsection{Different Bases of $\mathbb{L}^2$}
+	\subsection{Bases of $\mathbb{L}^2$}
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
 	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $F(\omega_0) = f(t)$ of $F(\omega)$.
@@ -176,7 +176,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
-	This, however, does not really yield a basis of $\mathbb{L}^2$ as the closed span of this finite sequence of functions is not equal to $\mathbb{L}^2$. To really obtain a basis of $\mathbb{L}^2$ from B-splines, further theoretical considerations about, for example, infinite series of B-splines and specific knot choices would have to be made. As this is out of the scope of this paper, for the sake of simplicity, we will assume that a B-spline basis representation of a function in $\mathbb{L}^2$ will serve as a sufficient approximation for an appropriately chosen B-spline basis. 
+	This, however, does not really yield a basis of $\mathbb{L}^2[0,1]$ as the closed span of this finite sequence of functions is not equal to $\mathbb{L}^2[0,1]$. To really obtain a basis of $\mathbb{L}^2[0,1]$ from B-splines, further theoretical considerations about, for example, infinite series of B-splines and specific knot choices would have to be made. As this is out of the scope of this paper, for the sake of simplicity, we will assume that a B-spline basis representation of a function in $\mathbb{L}^2[0,1]$ will serve as a sufficient approximation for an appropriately chosen B-spline basis. 
 	Even though, this approach is not theoretically exact, in practice, this is often a reasonable approach and yields satisfactory results in cases where the functional form of B-splines makes them an appropriate approximation tool. 
 	
 	{\color{red}Explain what happens when $l+m+1 > L$ !!!\\
@@ -186,6 +186,14 @@ style=authoryear-comp,
 		\includegraphics[width = \textwidth]{Graphics/Bspline_Basis.pdf}
 		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
 	\end{figure}
+	
+	
+	\subsection{Approximation and Smoothing via Basis Truncation}
+	{\color{red} Write something about how to approximate functions by truncating the basis.}
+	
+	\begin{equation}
+		F(\omega_0) = f(t) = \sum_{j \in \mathcal{I}} \psi_j(\omega_0) b_j(t) = \sum_{j = 1}^{L} \psi_j(\omega_0) b_j(t) + \delta(t) \approx \sum_{j = 1}^{L} \psi_j(\omega_0) b_j(t)
+	\end{equation}
 	
 	\subsection{Functional Data Sets}
 	In functional data analysis the concept of a data set can include not only realizations of scalar random variables, but also realizations of random functions. In the following, all random functions are assumed to realize in $\mathbb{L}^2$. As in the finite dimensional setting the concept of identically distributed and independent data is important. This concept generalizes intuitively to the case of functional data using the concepts for general random variables. {\color{red} Explain this better!}\\
@@ -307,6 +315,12 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
+	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $L$ can be used to make this problem tractable with typical theory from multivariate regression while staying reasonably accurate.
+	
+	\begin{equation}
+			Y(\omega) \approx \alpha + \sum_{j = 1}^{L} \psi_j Z_j(\omega) + \epsilon(\omega)
+	\end{equation}
+	
 	\subsection{Detailed Draft}
 	\begin{itemize}
 		\item Motivate random functions from introduction and the general concept of random variables
@@ -344,7 +358,7 @@ There are several important aspects of functional regression in this functional 
 	Assuming a data generating process of the form:
 	
 	\begin{equation}
-    	 Y =  \int \beta(s)X(s) \,dt \ +\epsilon
+    	 Y =  \int \beta(s)X(s) \,\mathrm{d}t \ +\epsilon
     \end{equation}
 
     it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Where in the finite dimensional setting the OLS estimator can be derived as a method of moments estimator by solving a system of equations of sample moment restrictions, this leads to a system of infinitely many equations in the functional setting. 
@@ -367,15 +381,15 @@ There are several important aspects of functional regression in this functional 
    Under the assumption that $X$ is independent from $\epsilon$ we obtain
 
    \begin{equation}
-	   c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\int \beta(t)\mathbf{X}(s) \,ds \ +\epsilon]
+	   c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\int \beta(t)\mathbf{X}(s) \,\mathrm{d}s \ +\epsilon]
    \end{equation}
 
    \begin{equation}
- 	  c_{\mathbf{X}\mathbf{Y}}(t) = E[\int \beta(s) \: \mathbf{X}(s)\mathbf{X}(t) \, ds \: | \: X]  + E[\epsilon |\mathbf{X}]
+ 	  c_{\mathbf{X}\mathbf{Y}}(t) = E[\int \beta(s) \: \mathbf{X}(s)\mathbf{X}(t) \, \mathrm{d}s \: | \: X]  + E[\epsilon |\mathbf{X}]
    \end{equation}
   
    \begin{equation}
-      c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,ds
+      c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,\mathrm{d}s
    \end{equation}
    
    In practice, this results in a large and often difficult to solve system of equations. If solved, a  perfect fit is possible,but results in a noisy and erratic function $\hat{\beta}(s)$ that is not useful for interpretation since it does not utilize the intuition of smooth functions (cf.~\cite{horvath_inference_2012}). Another reason why estimation is not feasible using this approach is colinearity.
@@ -400,7 +414,7 @@ There are several important aspects of functional regression in this functional 
     to expand
     
     \begin{equation}
-    	\int \beta(s)X(s) \,dt \ = \sum_{k=1}^{K} c_{k} \int B_{k}(t)X_{i}(t)\,dt =: \sum_{k=1}^{K} x_{ik} c_{k} 
+    	\int \beta(s)X(s) \,\mathrm{d}t \ = \sum_{k=1}^{K} c_{k} \int B_{k}(t)X_{i}(t)\,\mathrm{d}t =: \sum_{k=1}^{K} x_{ik} c_{k} 
     \end{equation}
 
     to the linear model of equation 2 with $\mathbf{c} = [\alpha, c_1, c_2,...,c_K]^T$ (corresponding to $\mathbf{\beta}$) estimated by $\mathbf{\hat{c}} = \mathbf{(X^{T}X)^{-1}X^{T}Y}$. Hence, the estimate $\hat{\beta}$ depends on the basis function $B_{k}$ and its corresponding shape, where $K$ is a subjective choice of the researcher. This subjective choice highly depends on the researchers intuition of the smoothness of the estimate. It is best practice to use the same basis functions as in {\color{red} add link to smoothing} (cf. ~\cite{kokoszka_introduction_2017})
@@ -466,7 +480,7 @@ There are several important aspects of functional regression in this functional 
     \end{equation}
 
     \begin{equation}
-    	f_2 = 1.5^{\frac{-0,5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0,5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0,5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0,5(t-0.8)^2}{0.03^2}}
+    	f_2 = 1.5^{\frac{-0.5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0.5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0.5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0.5(t-0.8)^2}{0.03^2}}
     \end{equation}
 
 Two different error-terms $\epsilon $ were created by first generating iid standard normal error and then multiplying them by $\sigma_e $ which is calculated such that the squared multiple correlation coefficient $R^2 = var(Xf) / (var(Xf) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error-terms are then computed to generate two sets of responses with different signal-to-noise ratios for each true function, using the gasoline dataset. These four combinations are then used with different number of basis-function $(5,6,...,25)$ of the order 5 to predict the responses using the b-spline basis approach and the FPCR approach. Within one repetition, the data is randomly sampled into a training and a test set to calculate the reported test MSE. The simulation was done with R (version...). In total we carried out 2000 simulations for each combination of data and number of basis functions. {\color{green} Information about version and link to repo / package in footnote??}
