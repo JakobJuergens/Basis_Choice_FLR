@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  7 JAN 2022 22:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  8 JAN 2022 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -893,10 +893,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--212
  []
 
 [8] [9] [10] [11] [12] [13] [14] [15]
-<Graphics/Wiener_plot.pdf, id=342, 1445.4pt x 578.16pt>
+<Graphics/Wiener_plot.pdf, id=341, 1445.4pt x 578.16pt>
 File: Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: Graphics/Wiener_plot.pdf  used on input line 552.
+Package pdftex.def Info: Graphics/Wiener_plot.pdf  used on input line 555.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [16] [17 <./Graphics/Wiener_plot.pdf>]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -912,11 +912,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22332 strings out of 478353
- 386578 string characters out of 5854636
+ 22334 strings out of 478353
+ 386594 string characters out of 5854636
  1148255 words of memory out of 5000000
  39906 multiletter control sequences out of 15000+600000
- 420377 words of font info for 155 fonts, out of 8000000 for 9000
+ 420428 words of font info for 156 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
@@ -925,22 +925,21 @@ ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmbx8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
 sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf
--dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
-b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6
-.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
-per/sfrm1095.pfb>
-Output written on main.pdf (18 pages, 1698849 bytes).
+-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
+b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
+.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1095.pfb>
+Output written on main.pdf (18 pages, 1689613 bytes).
 PDF statistics:
- 504 PDF objects out of 1000 (max. 8388607)
- 433 compressed objects within 5 object streams
+ 499 PDF objects out of 1000 (max. 8388607)
+ 430 compressed objects within 5 object streams
  127 named destinations out of 1000 (max. 500000)
  41720 words of extra memory for PDF output out of 42996 (max. 10000000)
 
