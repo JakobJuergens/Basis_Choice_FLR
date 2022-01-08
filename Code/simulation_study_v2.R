@@ -92,7 +92,7 @@ bspline_function <- function(rep, NIR, n_obs){
 fourier_function <- function(rep, NIR, n_obs){
   CV_container_spline  <- c()
   
-  for(j in seq(1,10,1)){
+  for(j in seq(1,25,1)){
     success_count = 0
     CV_container  <- matrix(NaN, nrow = rep, ncol = 4)
     
@@ -199,7 +199,7 @@ fpcr_function <- function(rep, NIR, n_obs){
 fpcr_fourier_function <- function(rep, NIR, n_obs){
   CV_container_spline  <- c()
   train.control <- caret::trainControl(method = "cv", number = 10)
-  for(j in seq(1,10,1)){
+  for(j in seq(1,25,1)){
     success_count = 0
     CV_container  <- matrix(NaN, nrow = rep, ncol = 5)
     
@@ -252,28 +252,44 @@ fpcr_fourier_function <- function(rep, NIR, n_obs){
 
 
 #############
-generated_curves = NIR_curve_generator(n=100)
+generated_curves = NIR_curve_generator(n=1000, n_harmonics = 30)
 input_data = as.matrix(generated_curves[,-1])
 #############
 
-############################################################
-###             Run function using the NIR data          ###
-############################################################
+#############################################################################
+###             Run function using the NIR data / generated data          ###
+#############################################################################
 
 
-test_bspline_function = bspline_function(500, NIR, 60)
-write.table(test_bspline_function,file="Results/test_bspline_expansion_NIR.csv")
+test_bspline_function = bspline_function(1000, input_data, 1000)
+#write.table(test_bspline_function,file="Results/test_bspline_expansion_1000.csv")
 test_bspline_function
 
-test_fourier_function = fourier_function(500, NIR, 60)
-write.table(test_fourier_function,file="Results/test_fourier_expansion_NIR.csv")
+test_fourier_function = fourier_function(1000, input_data, 1000)
+#write.table(test_fourier_function,file="Results/test_fourier_expansion_1000.csv")
 test_fourier_function
 
-test_fpcr = fpcr_function(500, NIR, 60)
-write.table(test_fpcr,file="Results/test_fpcr_bsplines_NIR.csv")
+test_fpcr = fpcr_function(1000, input_data, 1000)
+#write.table(test_fpcr,file="Results/test_fpcr_bsplines_1000.csv")
 test_fpcr
 
-test_fpcr2 = fpcr_fourier_function(500, NIR, 60)
+test_fpcr2 = fpcr_fourier_function(1000, input_data, 1000)
+write.table(test_fpcr2,file="Results/test_fpcr_fourier_1000.csv")
+test_fpcr2
+
+test_bspline_function = bspline_function(1000, NIR, 60)
+#write.table(test_bspline_function,file="Results/test_bspline_expansion_NIR.csv")
+test_bspline_function
+
+test_fourier_function = fourier_function(1000, NIR, 60)
+#write.table(test_fourier_function,file="Results/test_fourier_expansion_NIR.csv")
+test_fourier_function
+
+test_fpcr = fpcr_function(1000, NIR, 60)
+#write.table(test_fpcr,file="Results/test_fpcr_bsplines_NIR.csv")
+test_fpcr
+
+test_fpcr2 = fpcr_fourier_function(1000, NIR, 60)
 write.table(test_fpcr2,file="Results/test_fpcr_fourier_NIR.csv")
 test_fpcr2
 
