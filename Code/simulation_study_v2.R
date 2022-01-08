@@ -45,33 +45,65 @@ sigma_eps_squared2_2 <- as.numeric((var(NIR %*% f2) / 0.6) - var(NIR %*% f2))
 
 ##### Define Simulation Functions #####
 ### b_spline simulation function
-bspline_function <- function(rep, NIR = NULL, n_obs) {
+bspline_function <- function(rep, NIR = NULL, n_obs, debug = FALSE) {
   # check if data (NIR) is provided
   if (is.null(NIR)) {
     data_cond <- FALSE
   } else {
     data_cond <- TRUE
   }
-
+  
+  # specfiy number of basis functions that should be considered
+  n_basis <- seq(from = 5, to = 25, by = 1)
+  
   # set up container for averaged cross validation scores
-  CV_container_spline <- c()
-
-  # loop over number of basis functions
-  for (j in seq(5, 25, 1)) {
-    # create container for cross validation scores for each iteration
-    CV_container <- matrix(NaN, nrow = rep, ncol = 4)
-    success_count <- 0
-
+  CV_container <- as.data.frame(
+    matrix(data = 0, nrow = length(n_basis), ncol = 6)
+  )
+  
+  colnames(CV_container) <- c(
+    "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
+    "n_basis", "success_count"
+  )
+  
+  CV_container$n_basis <- n_basis
+  CV_container$success_count <- rep(x = 0, times = length(n_basis))
+  
+  # create basis functions
+  basis_functions <- map(
+    .x = n_basis,
+    .f = function(j) create.bspline.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+  )
+  
+  # prepare objects for functional linear regression
+  betafdPar2_list <- map(
+    .x = 1:length(n_basis),
+    .f = function(i) fdPar(basis_functions[[i]])
+  )
+  
+  betalist_list <- map(
+    .x = 1:length(n_basis),
+    .f = function(i) list(smooth_basis_fd_data = betafdPar2_list[[i]])
+  )
+  
+  # loop over repetitions
+  for (i in 1:rep) {    
+    if(debug){print(paste0('Repetition: ', i, ' out of ', rep))}
+    
+    # if no data (NIR) is provided generate new curves
+    if (data_cond == FALSE) {
+      generated_curves <- NIR_curve_generator(n = n_obs, n_harmonics = 30)
+      NIR <- as.matrix(generated_curves[, -1])
+    }
+    
+    # transpose data for use with fda package
+    data <- t(NIR)
+    
     # loop over repetitions
-    for (i in 1:rep) {
-      print(paste0("Current number of basis functions: ", j, " Success_count: ", success_count))
-
-      # if no data (NIR) is provided generate new curves
-      if (data_cond == FALSE) {
-        generated_curves <- NIR_curve_generator(n = n_obs, n_harmonics = 30)
-        NIR <- as.matrix(generated_curves[, -1])
-      }
-
+    for (j in 1:length(n_basis)) { 
+      
+      if(debug){print(paste0('Basis specification: ', j, ' out of ', length(n_basis)))}
+      
       tryCatch(
         {
           # calculate responses
@@ -79,94 +111,109 @@ bspline_function <- function(rep, NIR = NULL, n_obs) {
           Y1_2 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
           Y2_1 <- as.numeric(NIR %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
           Y2_2 <- as.numeric(NIR %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
-
-          # transpose data for use in fda package
-          data <- t(NIR)
-
+          
           # construct basis for functional representation
-          smallbasis <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = 4)
-
+          smallbasis <- basis_functions[[j]]
+          
           # express NIR data in functional basis
           smooth_basis_fd <- smooth.basis(y = data, fdParobj = smallbasis)$fd
-
+          
           # prepare objects for functional regression
           xfdlist <- list(smooth_basis = smooth_basis_fd)
-          # betabasis1 <- create.constant.basis(c(0, 60))
-          # betafd1 <- fd(0, betabasis1)
-          # betafdPar1 <- fdPar(betafd1)
-          # betafd2    <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = as.numeric(order) )
-          betafdPar2 <- fdPar(smallbasis)
-          betalist <- list(smooth_basis_fd_data = betafdPar2)
-
+          
           # perform functional regression with cross validation for all 4 scenarios
-          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist, betalist)
-          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist, betalist)
-          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist, betalist)
-          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist, betalist)
-
+          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          
+          # generate tmp variable for current number of succesful runs
+          tmp_sr <- CV_container$success_count[j]
+          
           # save Cross validation criterion in provided container
-          CV_container[i, 1] <- f_regress1_1$SSE.CV
-          CV_container[i, 2] <- f_regress1_2$SSE.CV
-          CV_container[i, 3] <- f_regress2_1$SSE.CV
-          CV_container[i, 4] <- f_regress2_2$SSE.CV
-
+          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress1_1$SSE.CV * 1/(tmp_sr + 1)
+          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress1_2$SSE.CV * 1/(tmp_sr + 1)
+          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress2_1$SSE.CV * 1/(tmp_sr + 1)
+          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress2_2$SSE.CV * 1/(tmp_sr + 1)
+          
           # count succesfull runs
-          success_count <- success_count + 1
+          CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", j, " b-spline basis functions.",
+            "Problem occured in run ", i, " for ", n_basis[j], " b-spline basis functions.",
             " Error message: ", cond
           ))
         }
       )
     }
-
-    # calculate average cv-scores and combine in container with other information
-    scaled_MSE <- colMeans(CV_container)
-    scaled_MSE[5] <- j
-    scaled_MSE[6] <- success_count
-    CV_container_spline <- rbind(CV_container_spline, scaled_MSE)
   }
-  colnames(CV_container_spline) <- c(
-    "f1_e1_spline", "f1_e2_spline",
-    "f2_e1_spline", "f2_e2_spline",
-    "n_basis", "success_count"
-  )
-
+  
   # return object containing averaged cv_scores
-  return(CV_container_spline)
+  return(CV_container)
 }
 
 ### Fourier simulation function
-fourier_function <- function(rep, NIR = NULL, n_obs) {
+fourier_function <- function(rep, NIR = NULL, n_obs, debug = FALSE) {
   # check if data (NIR) is provided
   if (is.null(NIR)) {
     data_cond <- FALSE
   } else {
     data_cond <- TRUE
   }
-
-  # set up container for cross validation scores
-  CV_container_spline <- c()
-
-  # loop over number of basis functions
-  for (j in seq(1, 25, 1)) {
-    # create container for cross validation scores for each iteration
-    CV_container <- matrix(NaN, nrow = rep, ncol = 4)
-    success_count <- 0
-
+  
+  # specfiy number of basis functions that should be considered
+  n_basis <- seq(from = 5, to = 25, by = 1)
+  
+  # set up container for averaged cross validation scores
+  CV_container <- as.data.frame(
+    matrix(data = 0, nrow = length(n_basis), ncol = 6)
+  )
+  
+  colnames(CV_container) <- c(
+    "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
+    "n_basis", "success_count"
+  )
+  
+  CV_container$n_basis <- n_basis
+  CV_container$success_count <- rep(x = 0, times = length(n_basis))
+  
+  # create basis functions
+  basis_functions <- map(
+    .x = n_basis,
+    .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+  )
+  
+  # prepare objects for functional linear regression
+  betafdPar2_list <- map(
+    .x = 1:length(n_basis),
+    .f = function(i) fdPar(basis_functions[[i]])
+  )
+  
+  betalist_list <- map(
+    .x = 1:length(n_basis),
+    .f = function(i) list(smooth_basis_fd_data = betafdPar2_list[[i]])
+  )
+  
+  # loop over repetitions
+  for (i in 1:rep) {    
+    if(debug){print(paste0('Repetition: ', i, ' out of ', rep))}
+    
+    # if no data (NIR) is provided generate new curves
+    if (data_cond == FALSE) {
+      generated_curves <- NIR_curve_generator(n = n_obs, n_harmonics = 30)
+      NIR <- as.matrix(generated_curves[, -1])
+    }
+    
+    # transpose data for use with fda package
+    data <- t(NIR)
+    
     # loop over repetitions
-    for (i in 1:rep) {
-      print(paste0("Current number of basis functions: ", j, " Success_count: ", success_count))
-
-      # if no data (NIR) is provided generate new curves
-      if (data_cond == FALSE) {
-        generated_curves <- NIR_curve_generator(n = n_obs, n_harmonics = 30)
-        NIR <- as.matrix(generated_curves[, -1])
-      }
-
+    for (j in 1:length(n_basis)) { 
+      
+      if(debug){print(paste0('Basis specification: ', j, ' out of ', length(n_basis)))}
+      
       tryCatch(
         {
           # calculate responses
@@ -174,62 +221,47 @@ fourier_function <- function(rep, NIR = NULL, n_obs) {
           Y1_2 <- as.numeric(NIR %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
           Y2_1 <- as.numeric(NIR %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
           Y2_2 <- as.numeric(NIR %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
-
-          # transpose data for use in fda package
-          data <- t(NIR)
-
+          
           # construct basis for functional representation
-          smallbasis <- create.fourier.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j))
-
+          smallbasis <- basis_functions[[j]]
+          
           # express NIR data in functional basis
           smooth_basis_fd <- smooth.basis(y = data, fdParobj = smallbasis)$fd
-
+          
           # prepare objects for functional regression
           xfdlist <- list(smooth_basis = smooth_basis_fd)
-          # betabasis1 <- create.constant.basis(c(0, 60))
-          # betafd1 <- fd(0, betabasis1)
-          # betafdPar1 <- fdPar(betafd1)
-          # betafd2    <- create.bspline.basis(rangeval = c(0, length(grid)), nbasis = as.numeric(j), norder = as.numeric(order) )
-          betafdPar2 <- fdPar(smallbasis)
-          betalist <- list(smooth_basis_fd_data = betafdPar2)
-
+          
           # perform functional regression with cross validation for all 4 scenarios
-          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist, betalist)
-          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist, betalist)
-          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist, betalist)
-          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist, betalist)
-
+          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          
+          # generate tmp variable for current number of succesful runs
+          tmp_sr <- CV_container$success_count[j]
+          
           # save Cross validation criterion in provided container
-          CV_container[i, 1] <- f_regress1_1$SSE.CV
-          CV_container[i, 2] <- f_regress1_2$SSE.CV
-          CV_container[i, 3] <- f_regress2_1$SSE.CV
-          CV_container[i, 4] <- f_regress2_2$SSE.CV
-          success_count <- success_count + 1
+          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress1_1$SSE.CV * 1/(tmp_sr + 1)
+          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress1_2$SSE.CV * 1/(tmp_sr + 1)
+          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress2_1$SSE.CV * 1/(tmp_sr + 1)
+          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr/(tmp_sr + 1) + f_regress2_2$SSE.CV * 1/(tmp_sr + 1)
+          
+          # count succesfull runs
+          CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", j, " Fourier basis functions.",
+            "Problem occured in run ", i, " for ", n_basis[j], " b-spline basis functions.",
             " Error message: ", cond
           ))
         }
       )
     }
-
-    # calculate average cv-scores and combine in container with other information
-    scaled_MSE <- colMeans(CV_container)
-    scaled_MSE[5] <- j
-    scaled_MSE[6] <- success_count
-    CV_container_spline <- rbind(CV_container_spline, scaled_MSE)
   }
-  colnames(CV_container_spline) <- c(
-    "f1_e1_fourier", "f1_e2_fourier",
-    "f2_e1_fourier", "f2_e2_fourier",
-    "n_basis", "success_count"
-  )
-
+  
   # return object containing averaged cv_scores
-  return(CV_container_spline)
+  return(CV_container)
 }
 
 ### FPCA simulation function - bspline basis
@@ -454,7 +486,7 @@ bspline_function_par <- function(cl, rep, NIR = NULL, n_obs) {
   par_results <- clusterApply(
     cl = cl, x = core_reps,
     fun = function(tmp_rep) {
-      bspline_function(rep = tmp_rep, NIR = NIR, n_obs = n_obs)
+      bspline_function(rep = tmp_rep, NIR = NIR, n_obs = n_obs, debug = FALSE)
     }
   )
 
@@ -512,7 +544,7 @@ fourier_function_par <- function(clrep, NIR, n_obs) {
   par_results <- clusterApply(
     cl = cl, x = core_reps,
     fun = function(tmp_rep) {
-      fourier_function(rep = tmp_rep, NIR = NIR, n_obs = n_obs)
+      fourier_function(rep = tmp_rep, NIR = NIR, n_obs = n_obs, debug = FALSE)
     }
   )
   
