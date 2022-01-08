@@ -18,6 +18,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[font=small,skip=2pt]{caption}
+\captionsetup[figure]{labelformat=empty}
 \usepackage[
 backend=biber,
 style=authoryear-comp,
@@ -26,8 +27,11 @@ style=authoryear-comp,
 \addbibresource{../RMbibliography.bib}
 \parindent=0pt
 
+ \newcommand{\independent}{\perp\!\!\!\!\perp} 
+
 % Title page details: 
-\title{Scalar on Function Regression}
+\title{Scalar on Function Regression \\
+with Applications to Near-Infrared Spectography}
 \author{Jonathan Willnow, Jakob Juergens, Jonghun Baek}
 \date{{\color{red}}Presentation Day}
 
@@ -50,169 +54,240 @@ style=authoryear-comp,
 	\begin{frame}{Introduction}
 	
 		\begin{itemize}
-			\item Near-infrared (NIR) spectroscopy enables fast diagnostics by using the NIR region of the electromagnetic spectrum
-			\item Suited for field-monitoring / on-line analysis and diagnostics of e.g: prediction of octane ratings!
+			\item \textbf{Near-Infrared} (NIR) \textbf{Spectroscopy} enables fast diagnostics by using the NIR region of the electromagnetic spectrum (from 780 nm to 2500 nm)
+			\item Suited for field-monitoring / on-line analysis
 			\item Spectroscopy results in high-dimensional dataset.	
-
-			\item
-			This set of measurements along a continuum can be viewed as set of smooth spectral curves
-			
-
-			\item
-			Regression to determine relationship between octane rating and spectral curves
+			\item This set of measurements serves as set of discretized approximations of smooth spectral curves
+			\item Regression to determine relationship between octane rating and spectral curves
 			\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Theory}
-		
-
+		A simple functional dataset is given by 
+		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \: i = 1,2,...,N, \; j = 1,2,..., J_i, \; t_{j,i} \in [T_1, T_2] \}$$
 		
 		\begin{itemize}
-			\item
-			A simple functional dataset is given by $x_{n}(t_{j,n}) \in \mathbb{R}, t_{j,n} \in [T_1, T_2], n = 1,2,...,N, j = 1,2,..., J_n  $
-			\item Continuous underlying process, where $x_n(t)$ exists at any point $t$, but is only observed at $x_{n}(t_{j,n})$, eg.: growth curves, financial data, human perception (music pitch,...).
-			
+			\item Continuous underlying process, where $x_i(t)$ exists $\forall t \in [T_1, T_2]$
+			\item Only observed at $x_{i}(t_{j,i})$
+			\item Growth curves, financial data, human perception (pitch), ...
 			\item To abstract information from the curves, they must be interpretable!
+		\end{itemize}
+	\end{frame}
+
+	%\begin{frame}{Theory}
+	%	Jonghun
+	%	\begin{itemize}
+	%		\item Random Functions (name square integrable functions)
+	%		\item Motivate continuous stochastic processes (growth curves/electricity consumption/yield curves/stonks)
+	%		\item Use curves to predict a scalar response (show typical dgp)
+	%	\end{itemize}
+	%\end{frame}
+
+	%\begin{frame}{Theory}
+	%	Jonghun
+	%	\begin{itemize}
+	%		\item Basis expansions (b-splines and fourier)
+	%		\item Talk about purposes
+	%		\item Plots and show bias variance tradeoff
+	%	\end{itemize}
+	%\end{frame}
+
+	\begin{frame}{Random Function}
+		A \textbf{Random Variable} is a function $X : \Omega \rightarrow \mathcal{S}$ which is defined on a common probability space $(\Omega, \mathcal{F}, \mathbb{P})$ where $\Omega$ is a probability space with a $\sigma$-algebra $\mathcal{F}$ and a probability measure $\mathbb{{P}}.$
+		\begin{itemize}
+			\item If $\mathcal{S} = \mathbb{R}$ then $X$ is a random variable
+			\item If $\mathcal{S} = \mathbb{R}^{n}$ then $X$ is a random vector
+			\item If $\mathcal{S}$ is a space of functions, $X$ is called a \textbf{Random Function}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Random Function}
+		Let $\mathbb{E}$ be the index set and this can be described as
+		$${\{X(t,\omega) : t \in \mathbb{E}, \omega \in \Omega\},}$$
+		where $X(t, \cdot)$ is $\mathcal{F}$-measurable function on the sample space $\Omega$.\\
+		\begin{itemize}
+			\item It can be shortened to $X(t)$ by omitting $\omega$
+			\item The function is realized when the $X(t)$ exists $\forall t \in \mathbb{E}$
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Plots}
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{../Graphics/Growth_curves.png}
+				\caption{Growth curves of \\ 54 girls age 1-18}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{../Graphics/NIR.png}
+				\caption{NIR spectrum of 60 \\ gasoline samples}
+			\end{figure}
+		\end{minipage}
+	\end{frame}
+	
+	\begin{frame}{Square Integrable Function}
+		If a function $f(t)$ satisfies
+		$$\int_{0}^{1} \left(f(t)\right)^{2}dt < \infty$$
+		the function $f(t)$ is called \textbf{Square Integrable Function} written $f(t) \in \mathbb{L}^{2}[0,1]$.
+		\begin{itemize}
+			\item Without loss of generality, the interval is defined in $[0,1] $
+			\item $\mathbb{L}^{2}$ is the set of all square integrable functions
+			\item We focus on $\mathbb{L}^{2} [0,1]$ since the domain of our function is on the real line.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Square Integrable Function}
+		Let $f, g \in \mathbb{L}^{2}[0,1]$, then
+		%$$(ab + bg)(t) = af(t) + bg(t), \quad t \in [0,1] and \forall a,b$$
+		%, where $a$ and $b$ are scalars. (Maybe don't need)\\
+		%We can additionally define the inner product as follows:
+		$$\langle f,g \rangle = \int_{0}^{1} f(t)g(t)dt$$
+		%\begin{itemize}
+		%	\item 
+		Orthogonality of two different functions $\langle f,g \rangle = 0$
+			%\item Distance between functions
+		%\end{itemize}
+	\end{frame}
+	
+	%\begin{frame}{Stochastic Process Perspective}
+	%	Functional data are the sample curves observed from continuous time stochastic precess.\\
+	%	\begin{itemize}
+	%		\item From this perspective, $X(t)$ is a random variable (?)\\
+	%		\item $X(\cdot)$ is a collection of random variables by each time index(?)\\
+	%		\item Realizations of a random function belong in large collection of functions
+	%	\end{itemize}		
+	%\end{frame}
+	
+
+	\begin{frame}{Basis Expansion}
+		\textbf{Basis Expansion} is a linear combination of functions defining a function as described:
+		$$X_{i}(t) = \sum_{k=1}^{\infty} c_{ik}\phi_{k}(t) \approx \sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad i = 1, \dots, n, \quad \forall t \in \mathbb{E}$$
+		where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion and $c_{ik}$ is the corresponding coefficient. We truncate the basis at $K$ to:
+		\vspace{0.2cm}
+		
+		\begin{itemize}
+			\item make the function smoother
+			\item replace the original curves $X_{i}(t)$ by a smaller collection of $c_{nm}$
+			%\item replace the original scalar data $X_{n}(t_{jn})$ by a smaller collection of $c_{nm}$
+		\end{itemize}		
+	\end{frame}
+	
+	\begin{frame}{Two Typical Types of Basis Function}
+		\textbf{Fourier Basis Function} is written as
+		$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
+		\vspace{2\baselineskip}
+		\textbf{B-spline Basis Function} is a flexible curve defined by degree and knots. \\
+		Each B-spline basis function, $i$-th B-spline basis function of degree $p$, $N_{i,p}(u)$ is defined on Cox-de Boor recursion formula.
+	\end{frame}
+	
+	\begin{frame}{Plots of Basis Functions}
+		\begin{figure}
+			\includegraphics[height = 4.5cm]{../Graphics/Fourier_Basis.pdf}
+			\caption {Fourier basis functions with order 9}
+		\end{figure}
 			
-			\end{itemize}
 	\end{frame}
-
-	\begin{frame}{Theory}
-		Jonghun
+	
+	\begin{frame}{Plots of Basis Functions}
+		\begin{figure}
+			\includegraphics[height = 4.5cm]{../Graphics/Bspline_Basis.pdf}
+			\caption {Bspline basis functions with order 9}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}{Trade Off between Bias and Variance}
+		How do we choose the number $K$ of basis functions?
+		$$\textbf{MSE}[\hat{x}(t)] = \textbf{Bias}^2[\hat{x}(t)] + \textbf{Var}[\hat{x}(t)]$$
+		
+		{\color{red} Integrated Mean Squared Error}
 		\begin{itemize}
-			\item Random Functions (name square integrable functions)
-			\item Motivate continuous stochastic processes (growth curves/electricity consumption/yield curves/stonks)
-			\item Use curves to predict a scalar response (show typical dgp)
+			\item The larger $K$, the better fit to the data with also fitting noise
+			\item If $K$ is too small, it would miss some significant information that we want to estimate 
 		\end{itemize}
 	\end{frame}
-
-	\begin{frame}{Theory}
-		Jonghun
-		\begin{itemize}
-			\item Basis expansions (b-splines and fourier)
-			\item Talk about purposes
-			\item Plots and show bias variance tradeoff
-		\end{itemize}
-	\end{frame}
-
-	\begin{frame}{Theory}
-		Jakob
-		\begin{itemize}
-			\item Random function represented as linear combination of basis functions $\checkmark$
-			\item Just transform to multiple linear regression setting $\checkmark$
-			\item You already know that from the beginning $\checkmark$
-		\end{itemize}
+	
+	\begin{frame}{Trade Off between Bias and Variance}
+		\begin{minipage}[t]{\textwidth}
+			\includegraphics[height = 7cm]{../Graphics/Tradeoff.png}
+		\end{minipage}
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		Assume the following data generating process
-		$$Y(\omega) = \alpha + \int_{0}^{1} \beta(s) F(\omega)(s) \mathrm{d}s + \epsilon(\omega)$$
+		Assume the following \textbf{Data Generating Process}
+		$$Y(\omega) = \alpha + \int_{0}^{1} \beta(s) X(\omega)(s) \mathrm{d}s + \epsilon(\omega)$$
+		\vspace{-0.6cm}
 		\begin{itemize}
-			\item $Y$ and $\epsilon$ realize in $\mathbb{R}$ and $F$ realizes in $\mathbb{L}^2[0,1]$
+			\item $Y(\omega)$ and $\epsilon(\omega)$ realize in $\mathbb{R}$ and $X(\omega)$ realizes in $\mathbb{L}^2[0,1]$
 		\end{itemize}
-		\vspace{0.2cm}
+		\vspace{0.3cm}
+					
+		Let $\{\phi_i(t) \: \vert \: i = 1, \dots, \infty\}$ be a basis of $\mathbb{L}^2[0,1]$ leading to the following representation of $\beta(t)$
 		
-		Assume that we have a data set containing observations each of which is made up of:
-		\begin{itemize}
-			\item $y_i$: a scalar realization of $Y$
-			\item $f_i(t)$: a realization of $F$
-		\end{itemize}
+		$$\beta(t) = \sum_{j = 1}^{\infty} c_j \phi_j(t) \approx \sum_{j = 1}^{L} c_j b_j(t)$$
+		%Assume that we have a data set containing observations each of which is made up of:
+		%\begin{itemize}
+		%	\item $y_i$: a scalar realization of $Y(\omega)$ - the octane rating of gasoline
+		%	\item $x_i(t)$: a realization of $X(\omega)$ - the measured NIR spectrum
+		%\end{itemize}
 
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		Let $\{b_i(t) \: \vert \: i = 1, \dots, \infty\}$ be a basis of $\mathbb{L}^2[0,1]$
-		\vspace{0.2cm}
-		
-		Then we have the following representation of $\beta(t)$
-		$$\beta(t) = \sum_{j = 1}^{\infty} \psi_j b_j(t) = \sum_{j = 1}^{L} \psi_j b_j(t) + \delta(t) \approx \sum_{j = 1}^{L} \psi_j b_j(t)$$
-		and we can transform the data generating process into:
+		We can transform the data generating process into:
 		\begin{equation}\notag
 			\begin{split}
-				Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} \psi_j  b_j(s)\right) F(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
-						  & = \alpha + \sum_{j = 1}^{\infty} \left[\psi_j \textcolor{red}{\int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s}\right] + \epsilon(\omega)	  
+				Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} c_j  \phi_j(s)\right) X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+						  & = \alpha + \sum_{j = 1}^{\infty} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)	 \\
+						  & = \alpha + \sum_{j = 1}^{\infty} c_j {\color{red}Z_j(\omega)} + \epsilon(\omega)  
 			\end{split}
 		\end{equation}
-	\end{frame}
-
-	\begin{frame}{Estimation via Basis Representation}
-		$$Z_j(\omega) = \int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s$$ 
-		This is a scalar random variable leading to the following transformation
-		$$Y(\omega) = \alpha + \sum_{j = 1}^{\infty} \psi_j Z_j(\omega) + \epsilon(\omega)$$
-		Each combination of observation $f_i(t)$ and deterministic basis function $b_j(t)$ effectively gives us a realization of this random variable.
-		$$Z_{i,j} = \int_{0}^{1} f_i(s) b_j(s)\mathrm{d}s$$
-		
-	\end{frame}
-
-	\begin{frame}{Estimation via Basis Representation}
-		This allows us to write each observation in the data set as
-		\begin{itemize}
-			\item $y_i$: a scalar realization of $Y$
-			\item $\left(Z_{i,j}\right)_{j \in \mathbb{N}}$: a countably infinite sequence of scalars
-		\end{itemize}
-		\vspace{0.2cm}
-		
-		Truncating the functional basis allows us to approximate the data set in the usual multivariate form.
-		\begin{itemize}
-			\item $y_i$: a scalar realization of $Y$
-			\item $\left(Z_{i,1} \: \dots \:  Z_{i,L} \right)'$: a vector of scalar regressors
-		\end{itemize}
-		\vspace{0.2cm}
-		
-		Coefficients can then be estimated using theory from multivariate regression leading to an estimated coefficient vector $\hat{\beta}_L \in \mathbb{R}^L$.
-	\end{frame}
-
-	\begin{frame}{Estimation via Basis Representation}
-		This can then be translated into an estimated coefficient function $\hat{\beta}(t)$ via:
-	\end{frame}
-
-	\begin{frame}{Theory - FPCA}
-		Jakob
-		\begin{itemize}
-			\item Let's assume you know the theory of PCA (pc from varcov matrix) $\checkmark$
-			\item Introduce mean and covariance functions of random functions $\checkmark$
-			\item There is another cool basis $\rightarrow$ Eigenbasis (Karhunen-Loeve Expansion) $\checkmark$
-			\item Sample Analog! (create a basis from observations and use for basis regression) $\checkmark$
-			\item Plot fpcs and approximation of function realization
-		\end{itemize}
-	\end{frame}
-
-	\begin{frame}{Spectral Representation of Random Vectors}
-		Let $X(\omega)$ be a random vector realizing in $\mathbb{R}^p$.
-
-		\begin{itemize}
-			\item Let $\mu_x = \mathbb{E}(X)$ and $\Sigma_X = Cov(X)$
-			\item Let $\{\gamma_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\Sigma_X$
-			\item Let $\{\lambda_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\Sigma_X$
-		\end{itemize}
 	
-		\vspace{0.2cm}
-		Then $X$ can also be represented as
-		$$X(\omega) = \mu_x + \sum_{i = 1}^{p} \xi_i(\omega) \gamma_i$$
-		where the $\xi_i(\omega)$ have the following properties
-		
-		\begin{multicols}{2}
-			\begin{enumerate}
-				\item $\mathbb{E}[\xi_i(\omega)] = 0$
-				\item $Var(\xi_i(\omega)) = \lambda_i$
-				\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
-			\end{enumerate}
-		\end{multicols}
+		Where a $Z_j(\omega)$ is a \textbf{scalar random variable}.
 	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		Each combination of $x_i(t)$ and $\phi_j(t)$ gives us
+		$$Z_{i,j} = \int_{0}^{1} x_i(s) b_j(s)\mathrm{d}s$$
+		
+		\begin{itemize}
+			\item This allows us to write each observation in the data set as $\left(y_i, Z_{i,1}, Z_{i,2}, \dots \right)$
+			\item Truncating the functional basis yields an approximation $\left(y_i, Z_{i,1}, Z_{i,2}, \dots, Z_{i,L}\right)$
+		\end{itemize}
+		
+		Coefficients can then be estimated using theory from \textbf{multivariate regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$.
+	\end{frame}
+
+	\begin{frame}{Estimation via Basis Representation}
+		This can be translated into an estimated coefficient function $\hat{\beta}(t)$:
+		
+		$$\hat{\beta}_L(t) = \sum_{j = 1}^{L} \hat{c}_{L,j} \phi_j(t)$$
+	
+		This is dependent on...
+		\begin{itemize}
+			\item The basis $(\phi_j(t))_{j \in \mathcal{I}}$ for the estimation of $\beta(t)$
+			\item The truncation parameter $L$
+			\item The basis $(\psi_j(t))_{j \in \mathcal{I}}$ used for the expansion of the observations
+			\item The truncation parameter in the approximation of the observations $K$
+		\end{itemize}
+	\end{frame}
+	
+
+
 
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
 		
-		\textbf{Mean Function}: $$\mu(t) = \mathbb{E}\left[ F(\omega)(t) \right]$$
+		\textbf{Mean Function}: $$\mu(t) = \mathbb{E}\left[ X(\omega)(t) \right]$$
 
-		\textbf{Autocovariance Function}: $$c(t,s) = \mathbb{E}\big[ \left( F(\omega)(t) - \mu(t) \right) \left( F(\omega)(s) - \mu(s) \right) \big]$$
+		\textbf{Autocovariance Function}: $$c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]$$
 		
 		The \textbf{Eigenvalues} and \textbf{Eigenfunctions}: $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathcal{I}\}$  are solutions of the following equation:
 		$$ \int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t) $$
 	\end{frame}
 	
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
-		A random function $F$ can be expressed in terms of its mean function and its Eigenfunctions:
-		$$F(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)$$
+		A random function $X(\omega)$ can be expressed in terms of its mean function and its Eigenfunctions:
+		$$X(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)$$
 		
 		Where the $\xi_j$ are scalar-valued random variables with the following properties.
 		\begin{multicols}{2}
@@ -223,36 +298,12 @@ style=authoryear-comp,
 			\end{enumerate}
 		\end{multicols}
 		
-		This representation is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of the random function $F$ and the Eigenfunctions can serve as a basis to represent the function.
-	\end{frame}
-
-	\begin{frame}{Principal Component Analysis}
-		A related concept is \textbf{Principal Component Analysis} (PCA).
-		\vspace{0.2cm}
-		
-		$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
-	
-		\begin{itemize}
-			\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ contain the standardized regressors
-			\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
-			\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
-			\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
-		\end{itemize}
-		\vspace{0.2cm} 
-		
-		Then $Z_i(\omega) = \hat{\gamma}_i' X(\omega)$ is called the i'th principal component and
-		\begin{multicols}{2}
-			\begin{enumerate}
-				\item $\mathbb{E}[Z_i(\omega)] = 0$
-				\item $Var(Z_i(\omega)) = \hat{\lambda}_i$
-				\item $Cov(Z_i(\omega), Z_j(\omega)) = 0$ for $i \neq j$
-			\end{enumerate}
-		\end{multicols}
+		This is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of $X(\omega)$ and the Eigenfunctions can serve as a basis.
 	\end{frame}
 
 	\begin{frame}{Functional Principal Component Analysis}
-		This idea can be extended to functional regressors in the form of \textbf{Functional Principal Component Analysis} (FPCA).
-		\vspace{0.2cm}
+		\textbf{Principal Component Analysis} can be extended to functional regressors in the form of \textbf{Functional Principal Component Analysis} (FPCA).
+		\vspace{0.4cm}
 		
 		\textbf{Empirical Mean Function}:
 		$$\hat{\mu}(t) = \frac{1}{n}\sum_{j = 1}^{n}f_j(t)$$
@@ -277,85 +328,67 @@ style=authoryear-comp,
 	\end{frame}
 
 	\begin{frame}{FPCA - Plots}
-		\begin{minipage}[t]{0.79\textwidth}
+		\begin{minipage}[c]{0.78\textwidth}
 			\includegraphics[width = \textwidth]{../Graphics/principal_components.pdf}
 			\includegraphics[width = \textwidth]{../Graphics/pc_approx.pdf}
 		\end{minipage}
-		\begin{minipage}[t]{0.19\textwidth}
-			Lorem Ipsum Dolor Sit Amet
+		\begin{minipage}[c]{0.19\textwidth}
+			The math is for intuition. In practice there are problems and the fpc's are derived differently.
 		\end{minipage}
 	\end{frame}
 	
 
 	\begin{frame}{Simulation Setup \& Application}
 		\begin{itemize}
-		\item
-		 Use the gasoline dataset (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
-		\item 
-		Generate new curves from gasoline dataset, motivated by Karhunen-Loeve expansion:
-		
-		$$F^{new}(\omega)(t) = \mu^{NIR}(t) + \sum_{j = 1}^{\infty} \xi_j^{new} \nu_j(t)^{new}$$ \\
-		where \\
-		 \vspace{0.1cm}
-		$$\xi_{j}^{new} \in  \mathcal{N}_{n}(0,\Sigma)$$ \\
-		and $\nu_j(t)^{new}$ be a $grid \times n_{FPC}$ matrix.
-		
-    		
+			\item Use the \textbf{Gasoline Dataset} (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
+			\item Generate \textbf{similar curves} from gasoline dataset:
 		\end{itemize}
+	
+		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
+
+		\begin{itemize}
+			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j} \independent \tilde{\xi}_{k}$ for $j \neq k$
+			\item Simplification: the $\xi_{j}$ do not follow a normal
+			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
+		\end{itemize}
+		
 	\end{frame}
 	
 	
 	\begin{frame}{Simulation Setup \& Application cont.}
-		\begin{itemize}
-		\item
-		Following Reiss and Ogden (2007), let $f_1$ and $f_2$ be two true coefficient functions that differ in smoothness: 
-		\vspace{0.4cm}
-	
 
-   $f_1 = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t)$\\
-   \vspace{0.1cm}
-   
+		Following \textbf{Reiss and Ogden (2007)}, let $f_1(t)$ and $f_2(t)$ be two coefficient functions: 
 
-    
-    $	f_2 = 1.5^{\frac{-0,5(t-0.3)^2}{0.02^2}} - 4^{\frac{-0,5(t-0.45)^2}{0.015^2}} +  8^{\frac{-0,5(t-0.6)^2}{0.02^2}} -  1^{\frac{-0,5(t-0.8)^2}{0.03^2}}$
-   
-    		
-		\end{itemize}
 		\vspace{0.1cm}
 		\begin{figure}
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[height=3cm]{smooth_function.png}
-  \captionof{figure}{$f_1$, smooth function}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[height=3cm]{bumpy_function.png}
-  \captionof{figure}{$f_2$, bumpy function}
-  \label{fig:test2}
-\end{minipage}
-\end{figure}
+			\centering
+			\begin{minipage}{.5\textwidth}
+				\centering
+  				\includegraphics[width=\textwidth]{smooth_function.png}
+  				\caption{$f_1(t)$, smooth function}
+  				\label{fig:test1}
+			\end{minipage}%
+			\begin{minipage}{.5\textwidth}
+	  			\centering
+  				\includegraphics[width=\textwidth]{bumpy_function.png}
+  				\caption{$f_2(t)$, bumpy function}
+  				\label{fig:test2}
+			\end{minipage}
+		\end{figure}
 		
 	\end{frame}	
 
 	
 	\begin{frame}{Simulation Setup \& Application cont.}
+		Let 
+		$$Y_{1,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)$$ 
+		$$Y_{2,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)$$
+		
+		where $Z \sim \mathcal{N}(0,1)$ be two responses for $f \in \{f_1(t), f_2(t)\}$.	
 		\begin{itemize}
-		\item
-    		Let \\
-    		 \vspace{0.1cm}
-    		
-    		$Y_{1,f} = \mathbf{NIR \times f}  + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$, \\
-    		  $Y_{2,f} = \mathbf{NIR \times f} + \mathcal{N}(0,1) \times var(NIR \times f)/0.9 - var(NIR \times f)$ be two responses for $f \in f_1, f_2$.		
-    		 	\item
-    		 	 Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
+    		\item Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
 			\item Compare results via criteria (CV, Mallows CP,...)
-			\item 
-			{\color{green} add results here!}
-			
-    		
+			\item {\color{green} add results here!}
 		\end{itemize}
 	\end{frame}
 	
@@ -373,15 +406,72 @@ style=authoryear-comp,
 		\end{itemize}
 	\end{frame}
 	
-	
-
 	\begin{frame}{Summary}
 		Jona \\
 		Just summarize what we have done...
 	\end{frame}
+	
+	\begin{frame}
+		\topskip0pt
+		\vspace*{\fill}
+		\begin{center}
+			{\LARGE Thank you for your time!}
+		\end{center}	
+		\vspace*{\fill}
+		%
+	\end{frame}
+	
+	\begin{frame}{Further Reading}
+		 Put footnotes here!
+	\end{frame}
+	
+	% From here on out are the supplementary slides.
+	
+	\begin{frame}{Spectral Representation of Random Vectors}
+		Let $X(\omega)$ be a random vector realizing in $\mathbb{R}^p$.
+		
+		\begin{itemize}
+			\item Let $\mu_x = \mathbb{E}(X)$ and $\Sigma_X = Cov(X)$
+			\item Let $\{\gamma_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\Sigma_X$
+			\item Let $\{\lambda_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\Sigma_X$
+		\end{itemize}
+		
+		\vspace{0.2cm}
+		Then $X$ can also be represented as
+		$$X(\omega) = \mu_x + \sum_{i = 1}^{p} \xi_i(\omega) \gamma_i$$
+		where the $\xi_i(\omega)$ have the following properties
+		
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[\xi_i(\omega)] = 0$
+				\item $Var(\xi_i(\omega)) = \lambda_i$
+				\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
+	\end{frame}
 
-	\begin{frame}{further reading}
-		Put footnotes here!
+	\begin{frame}{Principal Component Analysis}
+		A related concept is \textbf{Principal Component Analysis} (PCA).
+		\vspace{0.2cm}
+		
+		$\Sigma_X$ unknown $\rightarrow$ \textbf{sample analogues}
+		
+		\begin{itemize}
+			\item Let $\mathbf{X} \in \mathbb{R}^{n \times p}$ contain the standardized regressors
+			\item Let $\hat{\Sigma}_X = \frac{\mathbf{X}'\mathbf{X}}{n}$
+			\item Let $\{\hat{\gamma}_i \: \vert \: i = 1, \dots, p\}$ be the orthonormal \textbf{Eigenvectors} of $\hat{\Sigma}_X$
+			\item Let $\{\hat{\lambda}_i \: \vert \: i = 1, \dots, p\}$ be the corresponding \textbf{Eigenvalues} of $\hat{\Sigma}_X$
+		\end{itemize}
+		\vspace{0.2cm} 
+		
+		Then $Z_i(\omega) = \hat{\gamma}_i' X(\omega)$ is called the i'th principal component and
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item $\mathbb{E}[Z_i(\omega)] = 0$
+				\item $Var(Z_i(\omega)) = \hat{\lambda}_i$
+				\item $Cov(Z_i(\omega), Z_j(\omega)) = 0$ for $i \neq j$
+			\end{enumerate}
+		\end{multicols}
 	\end{frame}
 	
 \end{document}
