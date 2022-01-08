@@ -182,7 +182,7 @@ fourier_function <- function(rep, NIR = NULL, n_obs, debug = FALSE) {
   # create basis functions
   basis_functions <- map(
     .x = n_basis,
-    .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+    .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
   )
   
   # prepare objects for functional linear regression
