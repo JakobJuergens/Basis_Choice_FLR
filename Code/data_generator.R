@@ -4,17 +4,17 @@ library(refund)
 library(MASS)
 library(tidyverse)
 
-# gasoline load data set
-data(gasoline)
-NIR <- as.matrix(gasoline$NIR)
-
-# get dimensions
-n_wl <- dim(NIR)[2]
-
 # define curve-generator function
 NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
                                 n_knots = 50, plot = FALSE) {
 
+  # gasoline load data set
+  data(gasoline)
+  NIR <- as.matrix(gasoline$NIR)
+  
+  # get dimensions
+  n_wl <- dim(NIR)[2]
+  
   # define container for output
   curve_matrix <- matrix(data = NA, ncol = n_wl, nrow = n)
 
@@ -62,43 +62,44 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
     tibble(observation = paste0("Observation_", 1:n)),
     as_tibble(
       (scores_realizations %*% t(pc_grid_vals)) +
-        matrix(data = rep(mean_function, times = n), nrow = n, byrow = TRUE)
+        matrix(data = rep(mean_function, times = n), nrow = n, byrow = TRUE),
+      .name_repair = 'unique'
     )
   )
 
   names(new_realizations) <- c("observation", colnames(NIR))
 
   # if plot == TRUE plot the new observations
-  if (plot) {
-    new_realizations_plot <- new_realizations %>%
-      pivot_longer(cols = !observation, names_to = "wavelength", values_to = "value") %>%
-      mutate(wavelength = as.numeric(str_split(wavelength, " ") %>% map_chr(., 1)))
-
-    print(ggplot(data = new_realizations_plot) +
-      geom_line(aes(x = wavelength, y = value, col = observation)) +
-      theme_light() +
-      theme(legend.position = "none"))
-  }
+  # if (plot) {
+  #   new_realizations_plot <- new_realizations %>%
+  #     pivot_longer(cols = !observation, names_to = "wavelength", values_to = "value") %>%
+  #     mutate(wavelength = as.numeric(str_split(wavelength, " ") %>% map_chr(., 1)))
+  # 
+  #   print(ggplot(data = new_realizations_plot) +
+  #     geom_line(aes(x = wavelength, y = value, col = observation)) +
+  #     theme_light() +
+  #     theme(legend.position = "none"))
+  # }
 
   return(new_realizations)
 }
 
 ##### plot original data #####
-plot_original <- FALSE
-if (plot_original) {
-  NIR_tibble <- cbind(
-    tibble(observation = paste0("Observation_", 1:(dim(NIR)[1]))),
-    as_tibble(NIR)
-  )
-
-  names(NIR_tibble) <- c("observation", colnames(NIR))
-
-  NIR_plot <- NIR_tibble %>%
-    pivot_longer(cols = !observation, names_to = "wavelength", values_to = "value") %>%
-    mutate(wavelength = as.numeric(str_split(wavelength, " ") %>% map_chr(., 1)))
-
-  ggplot(data = NIR_plot) +
-    geom_line(aes(x = wavelength, y = value, col = observation)) +
-    theme_light() +
-    theme(legend.position = "none")
-}
+# plot_original <- FALSE
+# if (plot_original) {
+#   NIR_tibble <- cbind(
+#     tibble(observation = paste0("Observation_", 1:(dim(NIR)[1]))),
+#     as_tibble(NIR)
+#   )
+# 
+#   names(NIR_tibble) <- c("observation", colnames(NIR))
+# 
+#   NIR_plot <- NIR_tibble %>%
+#     pivot_longer(cols = !observation, names_to = "wavelength", values_to = "value") %>%
+#     mutate(wavelength = as.numeric(str_split(wavelength, " ") %>% map_chr(., 1)))
+# 
+#   ggplot(data = NIR_plot) +
+#     geom_line(aes(x = wavelength, y = value, col = observation)) +
+#     theme_light() +
+#     theme(legend.position = "none")
+# }
