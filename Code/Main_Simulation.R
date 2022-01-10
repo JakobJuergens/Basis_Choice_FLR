@@ -40,8 +40,8 @@ source("k_fold_CV_function.R")
 
 ##### Perform Simulations #####
 
-test_bspline_function <- bspline_function(rep = 500, my_data = NULL, n_obs = 200, seed = 10, debug = TRUE)
-saveRDS(test_bspline_function,file = "Results/bspline_sim_partial/rep500_n_obs200_seed102.RDS")
+test_bspline_function <- bspline_function(rep = 1000, my_data = NULL, n_obs = 200, seed = 103, debug = TRUE)
+saveRDS(test_bspline_function,file = "Results/bspline_sim_partial/rep1000_n_obs200_seed103.RDS")
 
 test_fourier_function <- fourier_function(rep = 1000, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
 saveRDS(test_fourier_function,file = "Results/fourier_sim_partial/n_obs200_seed100.RDS")
