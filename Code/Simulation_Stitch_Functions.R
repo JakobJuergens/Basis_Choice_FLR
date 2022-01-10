@@ -3,40 +3,50 @@
 ### b_spline simulation function
 simulation_stitch <- function(path) {
 
+  # get files in path
+  path_files <- list.files(path = path)
+  
+  # read into list
+  output_dfs <- map(.x = path_files,
+                    .f = function(obj) readRDS(obj))
+  
   # Generate object for the results
-  n_row <- dim(par_results[[1]])[1]
-  n_col <- dim(par_results[[1]])[2]
+  n_row <- dim(output_dfs[[1]])[1]
+  n_col <- dim(output_dfs[[1]])[2]
   results <- as.data.frame(
     matrix(data = NA, nrow = n_row, ncol = n_col)
   )
-  rownames(results) <- rownames(par_results[[1]])
-  colnames(results) <- colnames(par_results[[1]])
-  results$n_basis <- par_results[[1]]$n_basis
+  rownames(results) <- rownames(output_dfs[[1]])
+  colnames(results) <- colnames(output_dfs[[1]])
+  results$n_basis <- output_dfs[[1]]$n_basis
   
   # Combine elements of the list par_results to be one result.
-  # for cv_scores do weighted averaging
-  for (i in 1:4) {
-    for (j in 1:n_row) {
-      tmp <- unlist(
-        map(
-          .x = 1:n_cores,
-          .f = function(index) par_results[[index]][j, i]
-        )
-      )
-      results[j, i] <- sum(tmp * core_weights)
-    }
-  }
-  
   # for success_count do summation
   for (j in 1:n_row) {
     results$success_count[j] <- sum(
       unlist(
         map(
           .x = 1:n_cores,
-          .f = function(index) par_results[[index]]$success_count[j]
+          .f = function(index) output_dfs[[index]]$success_count[j]
         )
       )
     )
+  }
+  
+  # for cv_scores do weighted averaging
+  for (i in 1:4) {
+    for (j in 1:n_row) {
+      results[j, i] <- sum(
+        unlist(
+          map(
+            .x = 1:n_cores,
+            .f = function(index){
+             output_dfs[[index]][j, i] * (output_dfs[[index]]$success_count[j] / results$success_count[j])
+            }
+          )
+        )
+      )
+    }
   }
   
   # return averaged object
@@ -46,29 +56,24 @@ simulation_stitch <- function(path) {
 ### FPCA simulation function - bspline basis
 fpcr_simulation_stitch <- function(path) {
 
+  # get files in path
+  path_files <- list.files(path = path)
+  
+  # read into list
+  output_dfs <- map(.x = path_files,
+                    .f = function(obj) readRDS(obj))
+  
   # Generate object for the results
-  n_row <- dim(par_results[[1]])[1]
-  n_col <- dim(par_results[[1]])[2]
+  n_row <- dim(output_dfs[[1]])[1]
+  n_col <- dim(output_dfs[[1]])[2]
   results <- as.data.frame(
     matrix(data = NA, nrow = n_row, ncol = n_col)
   )
-  rownames(results) <- rownames(par_results[[1]])
-  colnames(results) <- colnames(par_results[[1]])
-  results$n_basis <- par_results[[1]]$n_basis
+  rownames(results) <- rownames(output_dfs[[1]])
+  colnames(results) <- colnames(output_dfs[[1]])
+  results$n_basis <- output_dfs[[1]]$n_basis
   
   # Combine elements of the list par_results to be one result.
-  # for cv_scores do weighted averaging
-  for (i in 1:5) {
-    for (j in 1:n_row) {
-      tmp <- unlist(
-        map(
-          .x = 1:n_cores,
-          .f = function(index) par_results[[index]][j, i]
-        )
-      )
-      results[j, i] <- sum(tmp * core_weights)
-    }
-  }
   # for success_count do summation
   for (j in 1:n_row) {
     results$success_count[j] <- sum(
@@ -81,6 +86,22 @@ fpcr_simulation_stitch <- function(path) {
     )
   }
   
+  # for cv_scores do weighted averaging
+  for (i in 1:5) {
+    for (j in 1:n_row) {
+      results[j, i] <- sum(
+        unlist(
+          map(
+            .x = 1:n_cores,
+            .f = function(index){
+              output_dfs[[index]][j, i] * (output_dfs[[index]]$success_count[j] / results$success_count[j])
+            }
+          )
+        )
+      )
+    }
+  }
+
   # return averaged object
   return(results)
 }
