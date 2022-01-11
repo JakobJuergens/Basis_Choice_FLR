@@ -40,13 +40,13 @@ source("k_fold_CV_function.R")
 
 ##### Perform Simulations #####
 
-# How to safe files? --> Please safe them accrondingly in their folder and name them with reps, obs, seed!
+# How to safe files? --> Please safe them accordingly in their folder and name them with reps, obs, seed!
 # conduct 5x500 reps for seed 100-seed 104
 
 
 # Jakob 5x500
 test_bspline_function <- bspline_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
-saveRDS(test_bspline_function,file = "Results/bspline_sim_partial/rep1000_n_obs200_seed103.RDS")
+saveRDS(test_bspline_function,file = "Results/bspline_sim_partial/rep500_n_obs200_seed103.RDS")
 
 # Jonghun 5x500
 test_fourier_function <- fourier_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
@@ -54,11 +54,11 @@ saveRDS(test_fourier_function,file = "Results/fourier_sim_partial/rep500_n_obs20
 
 # Jona 5x500
 test_fpcr <- fpcr_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
-saveRDS(test_fpcr,file="Results/pca_bspline_sim_partial/reps500_n_obs200_seed100.RDS")
+saveRDS(test_fpcr,file="Results/pca_bspline_sim_partial/rep500_n_obs200_seed100.RDS")
 
 # Jakob 5x500
 test_fpcr2 <- fpcr_fourier_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
-saveRDS(test_fpcr2, file = "Results/pca_fourier_sim_partial/reps_n_obs200_seed100.RDS")
+saveRDS(test_fpcr2, file = "Results/pca_fourier_sim_partial/rep500_n_obs200_seed100.RDS")
 
 ################################################################
 ##### The following simulations use the original NIR data ######
