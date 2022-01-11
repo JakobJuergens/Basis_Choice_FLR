@@ -20,7 +20,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   }
   
   # specify number of basis functions that should be considered
-  n_basis <- seq(from = 5, to = 25, by = 1)
+  n_basis <- seq(from = 1, to = 25, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -145,7 +145,7 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   }
   
   # specfiy number of basis functions that should be considered
-  n_basis <- seq(from = 5, to = 25, by = 1)
+  n_basis <- seq(from = 1, to = 25, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -270,7 +270,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   }
   
   # specfiy number of basis functions that should be considered
-  n_basis <- seq(from = 5, to = 25, by = 1)
+  n_basis <- seq(from = 1, to = 25, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -406,7 +406,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALS
   }
   
   # specfiy number of basis functions that should be considered
-  n_basis <- seq(from = 5, to = 25, by = 1)
+  n_basis <- seq(from = 1, to = 25, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
