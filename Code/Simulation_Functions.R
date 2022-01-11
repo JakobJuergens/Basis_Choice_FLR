@@ -266,7 +266,7 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
 }
 
 ### FPCA simulation function - bspline basis
-fpcr_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
+fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE) {
   set.seed(seed)
   ### set up coefficient "functions" / error terms
   # smooth
@@ -402,7 +402,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
 }
 
 ### FPCA simulation function - Fourier basis
-fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALSE, debug = FALSE) {
+fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_basis = FALSE, debug = FALSE) {
   set.seed(seed)
   ### set up coefficient "functions" / error terms
   # smooth

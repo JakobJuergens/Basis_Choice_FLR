@@ -54,12 +54,12 @@ test_fourier_function <- fourier_function(rep = 500, my_data = NULL, n_obs = 200
 saveRDS(test_fourier_function, file = "Results/fourier_sim_partial/rep500_n_obs200_seed100.RDS")
 
 # Jona 5x500
-test_fpcr <- fpcr_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
+test_fpcr <- fpcr_function(rep = 500, my_data = NULL, n_obs = 200, nharm = 4, seed = 100, debug = TRUE)
 saveRDS(test_fpcr, file="Results/pca_bspline_sim_partial/rep500_n_obs200_seed100.RDS")
 
 # Jakob 5x500
 for(i in 100:104){
-  test_fpcr2 <- fpcr_fourier_function(rep = 500, my_data = NULL, n_obs = 200, seed = i, even_basis = TRUE, debug = TRUE)
+  test_fpcr2 <- fpcr_fourier_function(rep = 500, my_data = NULL, nharm = 4, n_obs = 200, seed = i, even_basis = TRUE, debug = TRUE)
   saveRDS(test_fpcr2, file = paste0("Results/pca_fourier_sim_partial/rep500_n_obs200_seed", i, ".RDS"))
 }
 ################################################################
