@@ -67,6 +67,12 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
     # transpose data for use with fda package
     data <- t(my_data)
     
+    # calculate responses
+    Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
+    Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
+    Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
+    Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
+    
     # loop over diferent number of basis functions
     for (j in 1:length(n_basis)) {
       if (debug) {
@@ -75,12 +81,6 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
       
       tryCatch(
       {
-      # calculate responses
-      Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
-      Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
-      Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
-      Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
-      
       # construct basis for functional representation
       smallbasis <- basis_functions[[j]]
       
@@ -192,6 +192,12 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
     # transpose data for use with fda package
     data <- t(my_data)
     
+    # calculate responses
+    Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
+    Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
+    Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
+    Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
+    
     # loop over repetitions
     for (j in 1:length(n_basis)) {
       if (debug) {
@@ -200,12 +206,6 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
       
       tryCatch(
         {
-          # calculate responses
-          Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
-          Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
-          Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
-          Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
-          
           # construct basis for functional representation
           smallbasis <- basis_functions[[j]]
           
@@ -309,6 +309,12 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
     # transpose data for use with fda package
     data <- t(my_data)
     
+    # calculate responses
+    Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
+    Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
+    Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
+    Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
+    
     # loop over repetitions
     for (j in 1:length(n_basis)) {
       if (debug) {
@@ -317,12 +323,6 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
       
       tryCatch(
         {
-          # calculate responses
-          Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
-          Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
-          Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
-          Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
-          
           # construct basis for functional representation
           smallbasis <- basis_functions[[j]]
           
@@ -445,6 +445,12 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALS
     # transpose data for use with fda package
     data <- t(my_data)
     
+    # calculate responses
+    Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
+    Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
+    Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
+    Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
+    
     # loop over repetitions
     for (j in 1:length(n_basis)) {
       if (debug) {
@@ -453,12 +459,6 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALS
       
       tryCatch(
         {
-          # calculate responses
-          Y1_1 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_1)
-          Y1_2 <- as.numeric(my_data %*% f1 + rnorm(n_obs, 0, 1) * sigma_eps_squared1_2)
-          Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
-          Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
-          
           # construct basis for functional representation
           smallbasis <- basis_functions[[j]]
           
