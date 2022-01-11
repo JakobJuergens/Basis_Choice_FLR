@@ -45,8 +45,10 @@ source("k_fold_CV_function.R")
 
 
 # Jakob 5x500
-test_bspline_function <- bspline_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
-saveRDS(test_bspline_function,file = "Results/bspline_sim_partial/rep500_n_obs200_seed103.RDS")
+for(i in 100:104){
+  test_bspline_function <- bspline_function(rep = 500, my_data = NULL, n_obs = 200, seed = 103, debug = TRUE)
+  saveRDS(test_bspline_function,file = paste0("Results/bspline_sim_partial/rep500_n_obs200_seed", i, ".RDS"))
+}
 
 # Jonghun 5x500
 test_fourier_function <- fourier_function(rep = 500, my_data = NULL, n_obs = 200, seed = 100, debug = TRUE)
