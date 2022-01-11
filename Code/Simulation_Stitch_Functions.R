@@ -8,7 +8,7 @@ simulation_stitch <- function(path) {
   
   # read into list
   output_dfs <- map(.x = path_files,
-                    .f = function(obj) readRDS(obj))
+                    .f = function(obj) readRDS(paste0(path, obj)))
   
   # Generate object for the results
   n_row <- dim(output_dfs[[1]])[1]
@@ -26,7 +26,7 @@ simulation_stitch <- function(path) {
     results$success_count[j] <- sum(
       unlist(
         map(
-          .x = 1:n_cores,
+          .x = 1:length(output_dfs),
           .f = function(index) output_dfs[[index]]$success_count[j]
         )
       )
@@ -39,7 +39,7 @@ simulation_stitch <- function(path) {
       results[j, i] <- sum(
         unlist(
           map(
-            .x = 1:n_cores,
+            .x = 1:length(output_dfs),
             .f = function(index){
              output_dfs[[index]][j, i] * (output_dfs[[index]]$success_count[j] / results$success_count[j])
             }
@@ -61,7 +61,7 @@ fpcr_simulation_stitch <- function(path) {
   
   # read into list
   output_dfs <- map(.x = path_files,
-                    .f = function(obj) readRDS(obj))
+                    .f = function(obj) readRDS(paste0(path, obj)))
   
   # Generate object for the results
   n_row <- dim(output_dfs[[1]])[1]
@@ -79,7 +79,7 @@ fpcr_simulation_stitch <- function(path) {
     results$success_count[j] <- sum(
       unlist(
         map(
-          .x = 1:n_cores,
+          .x = 1:length(output_dfs),
           .f = function(index) par_results[[index]]$success_count[j]
         )
       )
@@ -92,7 +92,7 @@ fpcr_simulation_stitch <- function(path) {
       results[j, i] <- sum(
         unlist(
           map(
-            .x = 1:n_cores,
+            .x = 1:length(output_dfs),
             .f = function(index){
               output_dfs[[index]][j, i] * (output_dfs[[index]]$success_count[j] / results$success_count[j])
             }
