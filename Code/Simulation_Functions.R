@@ -253,7 +253,7 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", n_basis[j], " b-spline basis functions.",
+            "Problem occured in run ", i, " for ", n_basis[j], " fourier basis functions.",
             " Error message: ", cond
           ))
         }
@@ -542,7 +542,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis =
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", j, " bspline basis functions for FPCA Run.",
+            "Problem occured in run ", i, " for ", j, " fourier basis functions for FPCA Run.",
             " Error message: ", cond
           ))
         }
