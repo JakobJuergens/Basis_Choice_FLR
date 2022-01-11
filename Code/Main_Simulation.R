@@ -40,9 +40,8 @@ source("k_fold_CV_function.R")
 
 ##### Perform Simulations #####
 
-# How to safe files? --> Please safe them accordingly in their folder and name them with reps, obs, seed!
+# How to save files? --> Please safe them accordingly in their folder and name them with reps, obs, seed!
 # conduct 5x500 reps for seed 100-seed 104
-
 
 # Jakob 5x500
 for(i in 100:104){

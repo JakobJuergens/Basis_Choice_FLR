@@ -124,7 +124,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
 }
 
 ### Fourier simulation function
-fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
+fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALSE, debug = FALSE) {
   set.seed(seed)
   ### set up coefficient "functions" / error terms
   # smooth
@@ -145,7 +145,11 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   }
   
   # specfiy number of basis functions that should be considered
-  n_basis <- seq(from = 1, to = 25, by = 1)
+  if(even_basis == TRUE){
+    n_basis <- seq(from = 1, to = 25, by = 1)
+  } else{
+    n_basis <- seq(from = 1, to = 25, by = 2)
+  }
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -161,11 +165,24 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   CV_container$success_count <- rep(x = 0, times = length(n_basis))
   
   # create basis functions
-  basis_functions <- map(
-    .x = n_basis,
-    .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
-  )
-  
+  if(even_basis == TRUE){
+    basis_functions <- map(
+      .x = n_basis,
+      .f = function(j) {
+        if(j %% 2 == 1){
+          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j))
+        } else{
+          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, dropind = j))
+        }
+      }
+    )
+  } else{
+    basis_functions <- map(
+      .x = n_basis,
+      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+    )
+  }
+
   # prepare objects for functional linear regression
   betafdPar2_list <- map(
     .x = 1:length(n_basis),
@@ -385,7 +402,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
 }
 
 ### FPCA simulation function - Fourier basis
-fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
+fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALSE, debug = FALSE) {
   set.seed(seed)
   ### set up coefficient "functions" / error terms
   # smooth
@@ -406,7 +423,11 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALS
   }
   
   # specfiy number of basis functions that should be considered
-  n_basis <- seq(from = 1, to = 25, by = 1)
+  if(even_basis == TRUE){
+    n_basis <- seq(from = 1, to = 25, by = 1)
+  } else{
+    n_basis <- seq(from = 1, to = 25, by = 2)
+  }
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -422,10 +443,23 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALS
   CV_container$success_count <- rep(x = 0, times = length(n_basis))
   
   # create basis functions
-  basis_functions <- map(
-    .x = n_basis,
-    .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
-  )
+  if(even_basis == TRUE){
+    basis_functions <- map(
+      .x = n_basis,
+      .f = function(j) {
+        if(j %% 2 == 1){
+          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j))
+        } else{
+          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, dropind = j))
+        }
+      }
+    )
+  } else{
+    basis_functions <- map(
+      .x = n_basis,
+      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+    )
+  }
   
   # determine cv-method for later runs
   train.control <- caret::trainControl(method = "cv", number = 10)
