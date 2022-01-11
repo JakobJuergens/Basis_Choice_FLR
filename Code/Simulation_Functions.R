@@ -179,7 +179,7 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
   } else{
     basis_functions <- map(
       .x = n_basis,
-      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
     )
   }
 
@@ -457,7 +457,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis =
   } else{
     basis_functions <- map(
       .x = n_basis,
-      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
     )
   }
   
