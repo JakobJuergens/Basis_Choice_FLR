@@ -484,7 +484,7 @@ There are several important aspects of functional regression in this functional 
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
 
 		\begin{itemize}
-			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j} \independent \tilde{\xi}_{k}$ for $j \neq k$
+			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j}\independent \tilde{\xi}_{k}$ for $j \neq k$
 			\item Simplification: the $\xi_{j}$ do not follow a normal
 			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
 		\end{itemize}
@@ -531,6 +531,10 @@ $$Y_{1,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.9} - 
 $$Y_{2,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)$$
 		
 		where $Z \sim \mathcal{N}(0,1)$ to test the methods with different signal-to-noise ratios. In total we create four combinations for the simulation, using the two true coefficient functions and the two sets of responses. These four combinations are then used with different number of cubic bspline basis-function $(5,6,...,25)$ and fourier functions $(1,2,...,25)$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we use 10f cross-validation. The simulation was done with R (version...). In total we carried out 2000 simulations for each combination of data and number of basis functions. {\color{green} Information about version and link to repo / package in footnote??}
+		
+	\subsection{Put in appendix - Simulation setup cont.}
+	
+	The 	
 
 
 	
