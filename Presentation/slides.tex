@@ -69,8 +69,9 @@ with Applications to Near-Infrared Spectography}
 		\begin{itemize}
 			\item Continuous underlying process, where $x_i(t)$ exists $\forall t \in [T_1, T_2]$
 			\item Only observed at $x_{i}(t_{j,i})$
-			\item Growth curves, financial data, human perception (pitch), ...
-			\item To abstract information from the curves, they must be interpretable!
+			\item Example: Gasoline dataset (60 x 400)
+			\item Other Examples: Growth curves, financial data, human perception (pitch), ...
+			
 		\end{itemize}
 	\end{frame}
 
@@ -338,7 +339,7 @@ with Applications to Near-Infrared Spectography}
 	\end{frame}
 	
 
-	\begin{frame}{Simulation Setup \& Application}
+	\begin{frame}{Simulation Setup}
 		\begin{itemize}
 			\item Use the \textbf{Gasoline Dataset} (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
 			\item Generate \textbf{similar curves} from gasoline dataset:
@@ -355,7 +356,7 @@ with Applications to Near-Infrared Spectography}
 	\end{frame}
 	
 	
-	\begin{frame}{Simulation Setup \& Application cont.}
+	\begin{frame}{Simulation Setup cont.}
 
 		Following \textbf{Reiss and Ogden (2007)}, let $f_1(t)$ and $f_2(t)$ be two coefficient functions: 
 
@@ -379,36 +380,60 @@ with Applications to Near-Infrared Spectography}
 	\end{frame}	
 
 	
-	\begin{frame}{Simulation Setup \& Application cont.}
+	\begin{frame}{Simulation Setup cont.}
 		Let 
-		$$Y_{1,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)$$ 
-		$$Y_{2,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)$$
+		$$Y_{1,f} = \langle NIR, f\rangle + Z\left(  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)\right)$$ 
+		$$Y_{2,f} = \langle NIR, f\rangle + Z\left( \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)\right)$$
 		
 		where $Z \sim \mathcal{N}(0,1)$ be two responses for $f \in \{f_1(t), f_2(t)\}$.	
 		\begin{itemize}
-    		\item Four combinations with different number of cubic basis-function $n_{basis} \in (5,6,...,25)$ to perform regression using basis expansion and the FPCR approach.
+    		\item Four combinations with different number of cubic basis-function $n_{basis} \in (4,5,...,25)$ and fourier functions $(1,3,...,25)$ to perform regression using basis expansion and the FPCR approach.
 			\item Compare results via criteria (CV, Mallows CP,...)
+		
+		\end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Simulation Results}
+		
+		\begin{itemize}
+    		
 			\item {\color{green} add results here!}
 		\end{itemize}
 	\end{frame}
 	
 	
-	\begin{frame}{Simulation Setup \& Application cont.}
+	\begin{frame}{Application setup}
 		\begin{itemize}
 		\item
     		Use insights from the simulation study to uncover dependence.
     		\item
-    		Similar setup, but using only bsplie basis expansion and initial 60 spectral curves.
+    		Similar setup, but using only bspline basis expansion and initial 60 spectral curves.
     		\item
-    		Validation set approach:	Scores of testdata needs to be estimated by the trainingdata.  {\color{green} explain in detail?}
+    		Validation set approach:	Scores of test data needs to be estimated by the training data. 
     		\item
     		Report results by MSE scaled by variance.
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Summary}
-		Jona \\
-		Just summarize what we have done...
+		\begin{itemize}
+		\item
+    		Concepts of functional data: 
+    		\begin{itemize}
+			\item See dataset as smooth curve than as set of discrete measurements.
+    			\item Theory of Random Functions, motivated from random variable.
+    			\item Basis expansion and its Bias-Variance tradeoff.
+    			\item Scalar on Function Regression via Basis Expansion.
+    			\item Functional principal component Analysis and FPCR.
+		\end{itemize}
+    		\item
+    		Simulation study results: specification depends on function and signal-to-noise ratio
+    		\item
+    		% Guided you  from the beginning to the end of the presentaion through one application ....
+    		Guided through application to predict octane ratings.
+    		
+		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}
@@ -423,6 +448,7 @@ with Applications to Near-Infrared Spectography}
 	
 	\begin{frame}{Further Reading}
 		 Put footnotes here!
+		 Yuanpeng Li et al.(2020): Early Diagnosis of Type 2 Diabetes Based on Near-Infrared Spectroscopy Combined With Machine Learning and Aquaphotomics, Frontiers of Chemistry (8)
 	\end{frame}
 	
 	% From here on out are the supplementary slides.
