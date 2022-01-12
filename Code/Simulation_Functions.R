@@ -105,7 +105,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
       CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress2_1$SSE.CV * 1 / (tmp_sr + 1)
       CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress2_2$SSE.CV * 1 / (tmp_sr + 1)
       
-      # count succesfull runs
+      # count successful runs
       CV_container$success_count[j] <- CV_container$success_count[j] + 1
       },
       error = function(cond) {
