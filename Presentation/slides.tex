@@ -104,7 +104,7 @@ with Applications to Near-Infrared Spectography}
 
 	\begin{frame}{Random Function}
 		Let $\mathbb{E}$ be the index set and this can be described as
-		$${\{X(t,\omega) : t \in \mathbb{E}, \omega \in \Omega\},}$$
+		$${X = \{X(t,\omega) : t \in \mathbb{E}, \omega \in \Omega\},}$$
 		where $X(t, \cdot)$ is $\mathcal{F}$-measurable function on the sample space $\Omega$.\\
 		\begin{itemize}
 			\item It can be shortened to $X(t)$ by omitting $\omega$
@@ -132,23 +132,23 @@ with Applications to Near-Infrared Spectography}
 		$$\int_{0}^{1} \left(f(t)\right)^{2}dt < \infty$$
 		the function $f(t)$ is called \textbf{Square Integrable Function} written $f(t) \in \mathbb{L}^{2}[0,1]$.
 		\begin{itemize}
-			\item Without loss of generality, the interval is defined in $[0,1] $
-			\item $\mathbb{L}^{2}$ is the set of all square integrable functions
-			\item We focus on $\mathbb{L}^{2} [0,1]$ since the domain of our function is on the real line.
+			\item Without loss of generality, the interval is defined in $[0,1]$.
+			\item $\mathbb{L}^{2}$ is the set of all square integrable functions.
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Square Integrable Function}
-		Let $f, g \in \mathbb{L}^{2}[0,1]$, then
+		Let $f, g \in \mathbb{L}^{2}[0,1]$, then we can define inner product by
 		%$$(ab + bg)(t) = af(t) + bg(t), \quad t \in [0,1] and \forall a,b$$
 		%, where $a$ and $b$ are scalars. (Maybe don't need)\\
 		%We can additionally define the inner product as follows:
 		$$\langle f,g \rangle = \int_{0}^{1} f(t)g(t)dt$$
 		%\begin{itemize}
-		%	\item 
-		Orthogonality of two different functions $\langle f,g \rangle = 0$
-			%\item Distance between functions
-		%\end{itemize}
+		%	\item
+		\begin{itemize}
+			\item Orthogonality of two different functions with $\langle f,g \rangle = 0$
+			\item Distance between functions
+		\end{itemize}
 	\end{frame}
 	
 	%\begin{frame}{Stochastic Process Perspective}
@@ -162,8 +162,10 @@ with Applications to Near-Infrared Spectography}
 	
 
 	\begin{frame}{Basis Expansion}
-		\textbf{Basis Expansion} is a linear combination of functions defining a function as described:
+		\textbf{Basis Expansion} is a linear combination of functions as described:
+		
 		$$X_{i}(t) = \sum_{k=1}^{\infty} c_{ik}\phi_{k}(t) \approx \sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad i = 1, \dots, n, \quad \forall t \in \mathbb{E}$$
+		
 		where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion and $c_{ik}$ is the corresponding coefficient. We truncate the basis at $K$ to:
 		\vspace{0.2cm}
 		
@@ -175,17 +177,21 @@ with Applications to Near-Infrared Spectography}
 	\end{frame}
 	
 	\begin{frame}{Two Typical Types of Basis Function}
-		\textbf{Fourier Basis Function} is written as
-		$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
+		\textbf{Fourier Basis Function} is an element of the set:
+		
+		$$\{\sqrt{2}sin(2\pi nx | n \in \mathbb{N})\} \cup \{\sqrt{2}cos(2\pi nx | n \in \mathbb{N})\} \cup \{1\}$$
+		
+		%$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
+		
 		\vspace{2\baselineskip}
-		\textbf{B-spline Basis Function} is a flexible curve defined by degree and knots. \\
-		Each B-spline basis function, $i$-th B-spline basis function of degree $p$, $N_{i,p}(u)$ is defined on Cox-de Boor recursion formula.
+		\textbf{B-spline Basis Function} is a polynomial function defined by order and knots. \\
+		
 	\end{frame}
 	
 	\begin{frame}{Plots of Basis Functions}
 		\begin{figure}
 			\includegraphics[height = 4.5cm]{../Graphics/Fourier_Basis.pdf}
-			\caption {Fourier basis functions with order 9}
+			\caption {Fourier basis functions}
 		\end{figure}
 			
 	\end{frame}
@@ -193,18 +199,20 @@ with Applications to Near-Infrared Spectography}
 	\begin{frame}{Plots of Basis Functions}
 		\begin{figure}
 			\includegraphics[height = 4.5cm]{../Graphics/Bspline_Basis.pdf}
-			\caption {Bspline basis functions with order 9}
+			\caption {Bspline basis functions}
 		\end{figure}
 	\end{frame}
 	
 	\begin{frame}{Trade Off between Bias and Variance}
 		How do we choose the number $K$ of basis functions?
-		$$\textbf{MSE}[\hat{x}(t)] = \textbf{Bias}^2[\hat{x}(t)] + \textbf{Var}[\hat{x}(t)]$$
 		
-		{\color{red} Integrated Mean Squared Error}
+		$$\textbf{MSE}[\hat{X}(t)] = \textbf{Bias}^2[\hat{X}(t)] + \textbf{Var}[\hat{X}(t)]$$
+		
+		$$\textbf{MISE}[\hat{X}] = \int_{0}^{1} \textbf{MSE}[\hat{X}(t)] dt$$
+		
 		\begin{itemize}
 			\item The larger $K$, the better fit to the data with also fitting noise
-			\item If $K$ is too small, it would miss some significant information that we want to estimate 
+			\item If $K$ is too small, it would miss some significant information
 		\end{itemize}
 	\end{frame}
 	
@@ -447,13 +455,12 @@ with Applications to Near-Infrared Spectography}
 	\end{frame}
 	
 	\begin{frame}{Further Reading}
-		 Put footnotes here! \\
-		 NIR- spectroscopy \\
+		 Further Reading:
 		 \nocite{Bohacs_Ovadi_Salgo1998}
 		 \nocite{FR_li_et_al_2020} 
-		 Simulation Study \\
-		 \nocite{Reiss_2007b} 
-		 
+		 \nocite{Reiss_2007b}
+		 \AtNextBibliography{\tiny}
+		 \printbibliography[heading=none]
 	\end{frame}
 	
 	% From here on out are the supplementary slides.
