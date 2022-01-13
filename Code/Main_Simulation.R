@@ -54,8 +54,8 @@ test_fourier_function <- fourier_function(rep = 500, my_data = NULL, n_obs = 200
 saveRDS(test_fourier_function, file = "Results/Partial/fourier_sim_partial/rep500_n_obs200_seed100.RDS")
 
 # Jona 5x500
-test_fpcr <- fpcr_function(rep = 500, my_data = NULL, n_obs = 200, nharm = 4, seed = 100, debug = TRUE)
-saveRDS(test_fpcr, file = "Results/Partial/pca_bspline_sim_partial/rep500_n_obs200_seed100.RDS")
+test_fpcr <- fpcr_function(rep = 500, my_data = NULL, n_obs = 200, nharm = 4, seed = 104, debug = TRUE)
+saveRDS(test_fpcr, file = "Results/Partial/pca_bspline_nharm4_sim_partial/rep500_n_obs200_seed104.RDS")
 
 # Jakob 5x500
 for (i in 100:104) {
@@ -75,10 +75,12 @@ for (i in 100:104) {
   saveRDS(test_bspline_function_NIR, file = "Results/Partial/bspline_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
 }
 # Jona 5x500
-test_fourier_function_NIR <- fourier_function(rep = 500, my_data = NIR, n_obs = 60, seed = 100, even_basis = TRUE, debug = TRUE)
-saveRDS(test_fourier_function_NIR, file = "Results/Partial/fourier_NIR_partial/NIRrep500_n_obs60_seed100.RDS")
+for (i in 100:104) {
+test_fourier_function_NIR <- fourier_function(rep = 500, my_data = NIR, n_obs = 60, seed = i, debug = TRUE)
+saveRDS(test_fourier_function_NIR, file = paste0("Results/Partial/fourier_NIR_partial/NIR_fourier_rep500_n_obs60_seed", i, ".RDS"))
+}
 
-# Jona 5x500
+# Jakob 5x500
 test_fpcr_NIR <- fpcr_function(rep = 500, my_data = NIR, n_obs = 60, seed = 100, debug = TRUE)
 saveRDS(test_fpcr_NIR, file = "Results/Partial/pca_bspline_NIR_partial/NIRrep500_n_obs60_seed100.RDS")
 
