@@ -156,5 +156,5 @@ pc_approx_plot <- ggplot(data = plotting_approx_obs_tibble) +
 # save plot in appropriate folder
 ggsave(
   filename = "../Graphics/pc_approx.pdf", plot = pc_approx_plot,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )

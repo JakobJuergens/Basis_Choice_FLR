@@ -2,8 +2,8 @@
 \documentclass{beamer}
 
 % Theme choice:
-\usetheme{Berlin}
-\usecolortheme{seahorse}
+\usetheme{Dresden}
+\usecolortheme{whale}
 
 % packages
 %\usepackage[hmargin=2cm, vmargin=2cm]{geometry}
@@ -294,7 +294,7 @@ with Applications to Near-Infrared Spectography}
 		$$ \int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t) $$
 	\end{frame}
 	
-	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
+	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}\label{KLE}
 		A random function $X(\omega)$ can be expressed in terms of its mean function and its Eigenfunctions:
 		$$X(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)$$
 		
@@ -307,7 +307,9 @@ with Applications to Near-Infrared Spectography}
 			\end{enumerate}
 		\end{multicols}
 		
-		This is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of $X(\omega)$ and the Eigenfunctions can serve as a basis.
+		This is called the \textbf{Karhunen-Lo\'{e}ve Expansion} of $X(\omega)$ and the Eigenfunctions can serve as a basis. \\
+		
+		\hyperlink{spectral}{\beamergotobutton{Spectral Representation of Random Vectors}}
 	\end{frame}
 
 	\begin{frame}{Functional Principal Component Analysis}
@@ -322,7 +324,7 @@ with Applications to Near-Infrared Spectography}
 
 	\end{frame}
 
-	\begin{frame}{Functional Principal Component Analysis}
+	\begin{frame}{Functional Principal Component Analysis}\label{FPCA}
 	
 		The \textbf{Eigenvalues} and \textbf{Eigenfunctions}: $\{(\hat{\lambda}_i, \hat{\nu}_i) \: \vert \: i \in \mathcal{I}\}$  are solutions of the following equation:
 		$$ \int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t) $$
@@ -334,6 +336,7 @@ with Applications to Near-Infrared Spectography}
 		The corresponding scores $\hat{\xi}_i$ can be derived as
 		$$\hat{\xi}_j(\omega) = \int_{0}^{1} (F(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
 		
+		\hyperlink{PCA}{\beamergotobutton{PCA for Random Vectors}}
 	\end{frame}
 
 	\begin{frame}{FPCA - Plots}
@@ -459,7 +462,7 @@ with Applications to Near-Infrared Spectography}
 	
 	% From here on out are the supplementary slides.
 	
-	\begin{frame}{Spectral Representation of Random Vectors}
+	\begin{frame}{Spectral Representation of Random Vectors}\label{spectral}
 		Let $X(\omega)$ be a random vector realizing in $\mathbb{R}^p$.
 		
 		\begin{itemize}
@@ -480,9 +483,11 @@ with Applications to Near-Infrared Spectography}
 				\item $Cov(\xi_i(\omega), \xi_j(\omega)) = 0$ for $i \neq j$
 			\end{enumerate}
 		\end{multicols}
+	
+		\hyperlink{KLE}{\beamergotobutton{Karhunen-Lo\'{e}ve Expansion}}
 	\end{frame}
 
-	\begin{frame}{Principal Component Analysis}
+	\begin{frame}{Principal Component Analysis}\label{PCA}
 		A related concept is \textbf{Principal Component Analysis} (PCA).
 		\vspace{0.2cm}
 		
@@ -504,6 +509,6 @@ with Applications to Near-Infrared Spectography}
 				\item $Cov(Z_i(\omega), Z_j(\omega)) = 0$ for $i \neq j$
 			\end{enumerate}
 		\end{multicols}
+		\hyperlink{FPCA}{\beamergotobutton{Functional Principal Component Analysis}}
 	\end{frame}
-	
 \end{document}
