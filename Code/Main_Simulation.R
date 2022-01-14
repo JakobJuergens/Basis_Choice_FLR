@@ -72,25 +72,32 @@ for (i in 100:104) {
 # Jonghun 5x500
 for (i in 100:104) {
   test_bspline_function_NIR <- bspline_function(rep = 500, my_data = NIR, n_obs = 60, seed = i, debug = TRUE)
-  saveRDS(test_bspline_function_NIR, file = "Results/Partial/bspline_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
+  saveRDS(test_bspline_function_NIR,
+    file = paste0("Results/Partial/bspline_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
+  )
 }
 # Jona 5x500
 for (i in 100:104) {
-test_fourier_function_NIR <- fourier_function(rep = 500, my_data = NIR, n_obs = 60, seed = i, debug = TRUE)
-saveRDS(test_fourier_function_NIR, file = paste0("Results/Partial/fourier_NIR_partial/NIR_fourier_rep500_n_obs60_seed", i, ".RDS"))
+  test_fourier_function_NIR <- fourier_function(rep = 500, my_data = NIR, n_obs = 60, seed = i, debug = TRUE)
+  saveRDS(test_fourier_function_NIR,
+    file = paste0("Results/Partial/fourier_NIR_partial/NIR_fourier_rep500_n_obs60_seed", i, ".RDS")
+  )
 }
 
 # Jona 5x500 (Jakob)
-for(j in 2:4){
+for (j in 2:4) {
   for (i in 100:104) {
     test_fpcr_NIR <- fpcr_function(rep = 500, my_data = NIR, n_obs = 60, nharm = j, seed = i, debug = TRUE)
-    saveRDS(test_fpcr_NIR, 
-            file = paste0("Results/Partial/pca_bspline_nharm", j, "_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS"))
+    saveRDS(test_fpcr_NIR,
+      file = paste0("Results/Partial/pca_bspline_nharm", j, "_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
+    )
   }
 }
 
 # Jonghun 5x500
 for (i in 100:104) {
   test_fpcr2_NIR <- fpcr_fourier_function(rep = 500, my_data = NIR, n_obs = 60, even_basis = TRUE, seed = i, debug = TRUE)
-  saveRDS(test_fpcr2_NIR, file = "Results/Partial/pca_fourier_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
+  saveRDS(test_fpcr2_NIR,
+    file = paste0("Results/Partial/pca_fourier_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
+  )
 }
