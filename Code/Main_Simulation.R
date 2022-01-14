@@ -67,15 +67,17 @@ saveRDS(
 )
 
 # Jakob 5x500
-for (i in 100:104) {
-  test_fpcr2 <- fpcr_fourier_function(
-    rep = 500, my_data = NULL, nharm = 2, n_obs = 200,
-    seed = i, even_basis = FALSE, debug = TRUE
-  )
-  saveRDS(
-    object = test_fpcr2,
-    file = paste0("Results/Partial/pca_fourier_nharm2_sim_partial/rep500_n_obs200_seed", i, ".RDS")
-  )
+for (j in 2:4) {
+  for (i in 100:104) {
+    test_fpcr2 <- fpcr_fourier_function(
+      rep = 500, my_data = NULL, nharm = 2, n_obs = 200,
+      seed = i, even_basis = FALSE, debug = TRUE
+    )
+    saveRDS(
+      object = test_fpcr2,
+      file = paste0("Results/Partial/pca_fourier_nharm", j, "_sim_partial/rep500_n_obs200_seed", i, ".RDS")
+    )
+  }
 }
 ################################################################
 ##### The following simulations use the original NIR data ######
@@ -99,7 +101,7 @@ for (i in 100:104) {
 }
 
 # Jona 5x500 (Jakob)
-for (j in 2:4) {
+for (j in 3:4) {
   for (i in 100:104) {
     test_fpcr_NIR <- fpcr_function(rep = 500, my_data = NIR, n_obs = 60, nharm = j, seed = i, debug = TRUE)
     saveRDS(
