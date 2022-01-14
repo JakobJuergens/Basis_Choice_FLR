@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  14 JAN 2022 10:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  14 JAN 2022 18:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1407,52 +1407,25 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 ] [22
 
 ]
-<../Graphics/principal_components.pdf, id=632, 1445.4pt x 578.16pt>
-File: ../Graphics/principal_components.pdf Graphic file (type pdf)
-<use ../Graphics/principal_components.pdf>
-Package pdftex.def Info: ../Graphics/principal_components.pdf  used on input li
-ne 347.
-(pdftex.def)             Requested size: 239.68571pt x 95.86867pt.
-<../Graphics/pc_approx.pdf, id=633, 1445.4pt x 578.16pt>
+<../Graphics/pc_approx.pdf, id=632, 1445.4pt x 867.24pt>
 File: ../Graphics/pc_approx.pdf Graphic file (type pdf)
 <use ../Graphics/pc_approx.pdf>
-Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 347.
-(pdftex.def)             Requested size: 239.68571pt x 95.86867pt.
+Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 342.
+(pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
+ [23
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
-\OT1/cmss/m/n/10.95 (+20) In prac-tice
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
-\OT1/cmss/m/n/10.95 (+20) there are
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--347
-\OT1/cmss/m/n/10.95 (+20) prob-lems
- []
-
-
-Underfull \hbox (badness 7759) in paragraph at lines 347--347
-\OT1/cmss/m/n/10.95 (+20) are de-rived
- []
-
-[23
-
- <../Graphics/principal_components.pdf> <../Graphics/pc_approx.pdf>]
-[24
+ <../Graphics/pc_approx.pdf>] [24
 
 ]
-<smooth_function.png, id=697, 509.65407pt x 324.46219pt>
+<smooth_function.png, id=691, 509.65407pt x 324.46219pt>
 File: smooth_function.png Graphic file (type png)
 <use smooth_function.png>
-Package pdftex.def Info: smooth_function.png  used on input line 388.
+Package pdftex.def Info: smooth_function.png  used on input line 383.
 (pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
-<bumpy_function.png, id=698, 509.65407pt x 324.46219pt>
+<bumpy_function.png, id=692, 509.65407pt x 324.46219pt>
 File: bumpy_function.png Graphic file (type png)
 <use bumpy_function.png>
-Package pdftex.def Info: bumpy_function.png  used on input line 388.
+Package pdftex.def Info: bumpy_function.png  used on input line 383.
 (pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
  [25
 
@@ -1462,15 +1435,14 @@ Package pdftex.def Info: bumpy_function.png  used on input line 388.
 
 ] [28
 
-]
-[29
+] [29
 
 ] [30
 
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <6> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 463.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 458.
 
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
@@ -1482,13 +1454,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 512.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 507.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 512.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 507.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 512.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 507.
 
 
 [33
@@ -1511,10 +1483,10 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33268 strings out of 478353
- 649710 string characters out of 5854636
+ 33261 strings out of 478353
+ 649415 string characters out of 5854636
  1354406 words of memory out of 5000000
- 50637 multiletter control sequences out of 15000+600000
+ 50631 multiletter control sequences out of 15000+600000
  420335 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,18n,122p,2113b,1650s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1533,10 +1505,10 @@ t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmtt8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
 pfb>
-Output written on slides.pdf (33 pages, 584302 bytes).
+Output written on slides.pdf (33 pages, 476409 bytes).
 PDF statistics:
- 1047 PDF objects out of 1200 (max. 8388607)
- 939 compressed objects within 10 object streams
+ 1041 PDF objects out of 1200 (max. 8388607)
+ 935 compressed objects within 10 object streams
  72 named destinations out of 1000 (max. 500000)
- 50776 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 50771 words of extra memory for PDF output out of 51595 (max. 10000000)
 
