@@ -233,7 +233,7 @@ with Applications to Near-Infrared Spectroscopy}
 					
 		Let $\{\phi_i(t) \: \vert \: i = 1, \dots, \infty\}$ be a basis of $\mathbb{L}^2[0,1]$ leading to the following representation of $\beta(t)$
 		
-		$$\beta(t) = \sum_{j = 1}^{\infty} c_j \phi_j(t) \approx \sum_{j = 1}^{L} c_j b_j(t)$$
+		$$\beta(t) = \sum_{j = 1}^{\infty} c_j \phi_j(t) \approx \sum_{j = 1}^{L} c_j \phi_j(t)$$
 		%Assume that we have a data set containing observations each of which is made up of:
 		%\begin{itemize}
 		%	\item $y_i$: a scalar realization of $Y(\omega)$ - the octane rating of gasoline
@@ -257,7 +257,7 @@ with Applications to Near-Infrared Spectroscopy}
 
 	\begin{frame}{Estimation via Basis Representation}
 		Each combination of $x_i(t)$ and $\phi_j(t)$ gives us
-		$$Z_{i,j} = \int_{0}^{1} x_i(s) b_j(s)\mathrm{d}s$$
+		$$Z_{i,j} = \int_{0}^{1} x_i(s) \phi_j(s)\mathrm{d}s$$
 		
 		\begin{itemize}
 			\item This allows us to write each observation in the data set as $\left(y_i, Z_{i,1}, Z_{i,2}, \dots \right)$
@@ -317,10 +317,10 @@ with Applications to Near-Infrared Spectroscopy}
 		\vspace{0.4cm}
 		
 		\textbf{Empirical Mean Function}:
-		$$\hat{\mu}(t) = \frac{1}{n}\sum_{j = 1}^{n}f_j(t)$$
+		$$\hat{\mu}(t) = \frac{1}{n}\sum_{j = 1}^{n}x_j(t)$$
 
 		\textbf{Empirical Autocovariance Function}:
-		$$\hat{c}(t,s) = \frac{1}{n} \sum_{j = 1}^{n} \left(f_j(t) - \hat{\mu}(t)\right) \left(f_j(s) - \hat{\mu}(s)\right)$$
+		$$\hat{c}(t,s) = \frac{1}{n} \sum_{j = 1}^{n} \left(x_j(t) - \hat{\mu}(t)\right) \left(x_j(s) - \hat{\mu}(s)\right)$$
 
 	\end{frame}
 
