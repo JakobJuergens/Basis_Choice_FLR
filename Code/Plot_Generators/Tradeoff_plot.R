@@ -1,7 +1,12 @@
-library('refund')
-library('fda')
+# Clear Workspace
+rm(list = ls())
+
+# load libraries
+library(fda)
+library(refund)
 library(tidyverse)
 
+# load data
 data(gasoline)
 NIR    <- t(as.matrix(gasoline$NIR))
 
@@ -77,11 +82,26 @@ NIR_data = rbind(NIR,NIR_plot5,NIR_plot10,NIR_plot30,NIR_plot50,NIR_plot100)
 label <- paste0("K=",c(0,5,10,30,50,100))
 label[1] <- "Real Line"
 
-ggplot(data = NIR_data, aes(x=time, y=wavelength,color=K)) +
+basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength,color=K)) +
   geom_line()+
-  xlab('Wavelength') +
+  xlab('Wavelength in nm') +
   ylab('Spectrum') +
   scale_color_discrete(breaks=c('K=0','K=5','K=10','K=30','K=50','K=100'), 
                        labels=label)+
-  ggtitle('Basis expansions according to the different number of B-spline basis functions')
+  ggtitle('Basis expansions according to the different number of B-spline basis functions') +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(size = 30),
+    axis.title = element_text(size = 20),
+    axis.text = element_text(size = 20),
+    legend.title = element_text(size = 24),
+    legend.text = element_text(size = 20)
+  )
+
+# save plot in appropriate folder
+ggsave(
+  filename = "../Graphics/basis_expansions.pdf", plot = basis_exp_plot,
+  width = 20, height = 12, units = "in", dpi = 600
+)
   
