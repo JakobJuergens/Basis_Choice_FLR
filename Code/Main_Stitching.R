@@ -24,7 +24,7 @@ output_names <- map(
 summary_results <- map(
   .x = 1:length(sbfldr_paths),
   .f = function(p) {
-    if (grepl(pca, output_names[[p]], fixed = TRUE)) {
+    if (grepl('pca', output_names[[p]], fixed = TRUE)) {
       try(fpcr_simulation_stitch(path = sbfldr_paths[[p]]))
     } else {
       try(simulation_stitch(path = sbfldr_paths[[p]]))
