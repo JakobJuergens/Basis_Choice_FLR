@@ -58,53 +58,70 @@ with Applications to Near-Infrared Spectroscopy}
 	%\end{frame}
 	
 	\begin{frame}{Introduction}
-	
+		\textbf{Near-Infrared} (NIR) \textbf{Spectroscopy} enables fast diagnostics by using the NIR region of the electromagnetic spectrum
 		\begin{itemize}
-			\item \textbf{Near-Infrared} (NIR) \textbf{Spectroscopy} enables fast diagnostics by using the NIR region of the electromagnetic spectrum (from 780 nm to 2500 nm)
-			\item Suited for field-monitoring / on-line analysis
-			\item Spectroscopy results in high-dimensional dataset.	
+			\item Spectroscopy results in high-dimensional dataset: Gasoline dataset (60 x 401)
 			\item This set of measurements serves as set of discretized approximations of smooth spectral curves
+		\end{itemize}
+		\vspace{0.1cm}
+		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \: i = 1,2,...,N, \; j = 1,2,..., J_i, \; t_{j,i} \in [T_1, T_2] \}$$
+	
+		\begin{itemize}
+			\item Continuous underlying process where $x_i(t)$ exists $\forall t \in [T_1, T_2]$ but is only observed at $x_{i}(t_{j,i})$
 			\item Regression to determine relationship between octane rating and spectral curves
-			\end{itemize}
+		\end{itemize}
+		
 	\end{frame}
 	
-	\begin{frame}{Theory}
-		A simple functional dataset is given by 
-		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \: i = 1,2,...,N, \; j = 1,2,..., J_i, \; t_{j,i} \in [T_1, T_2] \}$$
-		
-		\begin{itemize}
-			\item Continuous underlying process, where $x_i(t)$ exists $\forall t \in [T_1, T_2]$
-			\item Only observed at $x_{i}(t_{j,i})$
-			\item Example: Gasoline dataset (60 x 400)
-			\item Other Examples: Growth curves, financial data, human perception (pitch), ...
-			
-		\end{itemize}
-	\end{frame}
+	%\begin{frame}{Theory}
+	%	A simple functional dataset is given by 
+	%	
+	%	
+	%	\begin{itemize}
+	%		\item Continuous underlying process, where $x_i(t)$ exists $\forall t \in [T_1, T_2]$
+	%		\item Only observed at $x_{i}(t_{j,i})$
+	%		\item Example: Gasoline dataset (60 x 400)
+	%		\item Other Examples: Growth curves, financial data, human perception (pitch), ...
+	%	\end{itemize}
+	%\end{frame}
 
-	\begin{frame}{Random Function}
-		A \textbf{Random Variable} is a function $X : \Omega \rightarrow \mathcal{S}$ which is defined on a common probability space $(\Omega, \mathcal{F}, \mathbb{P})$ where $\Omega$ is a probability space with a $\sigma$-algebra $\mathcal{F}$ and a probability measure $\mathbb{{P}}.$
+	 \begin{frame}{Random Function}
+		A \textbf{Random Variable} is a function $X : \Omega \rightarrow
+		\mathcal{S}$ which is defined on a common probability space $(\Omega,
+		\mathcal{F}, \mathbb{P})$ where $\Omega$ is a probability space with a
+		$\sigma$-algebra $\mathcal{F}$ and a probability measure $\mathbb{{P}}.$
 		\vspace{0.2cm}
 		
 		\begin{itemize}
 			\item If $\mathcal{S} = \mathbb{R}$ then $X$ is a random variable
-			\item If $\mathcal{S} = \mathbb{R}^{n}$ then $X$ is a random vector
-			\item If $\mathcal{S}$ is a space of functions, $X$ is called a \textbf{Random Function}
+			\item If $\mathcal{S} = \mathbb{R}^{n}$ then $X$ is a random
+			vector
+			\item If $\mathcal{S}$ is a space of functions, $X$ is called a
+			\textbf{Random Function}
 		\end{itemize}
+		\vspace{0.2cm}
+		
+		A \textbf{Realization} of a random function $X(\omega)$ is a function 
+		$$x_0(t) = X(\omega_0)(t) \quad t \in \mathbb{E}, \: \omega_0 \in \Omega$$
 	\end{frame}
-
-	\begin{frame}{Random Function}
-		Let $\mathbb{E}$ be the index set and this can be described as
-		$${X = \{X(t,\omega) : t \in \mathbb{E}, \omega \in \Omega\},}$$
-		where $X(t, \cdot)$ is $\mathcal{F}$-measurable function on the sample space $\Omega$.\\
-		\begin{itemize}
-			\item It can be shortened to $X(t)$ by omitting $\omega$
-			\item The function is realized when the $X(t)$ exists $\forall t \in \mathbb{E}$
-		\end{itemize}
-	\end{frame}
-
+	
+	%\begin{frame}{Random Function}
+	%	The realization of random function can be described as
+	%	$${\{X(t,\omega) : t \in \mathbb{E}, \omega \in \Omega\},}$$
+	%	where $\mathbb{E}$ is the index set and $X(t, \cdot)$ is
+	%	$\mathcal{F}$-measurable function on the sample space $\Omega$.\\
+	%	\begin{itemize}
+	%		\item It can be shortened to $X(t)$ by omitting $\omega$ or I can
+	%		be written as $X(t)(\omega)$.
+	%		\item The function is realized when the $X(t)$ exists $\forall t
+	%		\in \mathbb{E}$.
+	%	\end{itemize}
+	%\end{frame}
+	
 	\begin{frame}{Plots}
 		\begin{minipage}{.5\textwidth}
 			\begin{figure}
+				
 				\includegraphics[width=\textwidth]{../Graphics/Growth_curves.png}
 				\caption{Growth curves of \\ 54 girls age 1-18}
 			\end{figure}
@@ -118,81 +135,71 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 	
 	\begin{frame}{Square Integrable Function}
-		If a function $f(t)$ satisfies
+		A function is called \textbf{Square Integrable} written $f(t) \in \mathbb{L}^{2}[0,1]$ if
 		$$\int_{0}^{1} \left(f(t)\right)^{2}dt < \infty$$
-		the function $f(t)$ is called \textbf{Square Integrable Function} written $f(t) \in \mathbb{L}^{2}[0,1]$.
+
 		\begin{itemize}
 			\item Without loss of generality, the interval is defined in $[0,1]$.
-			\item $\mathbb{L}^{2}$ is the set of all square integrable functions.
+		\end{itemize}
+		\vspace{0.2cm}
+		
+		Let $f, g \in \mathbb{L}^{2}[0,1]$, then we can define inner product by
+		$$\langle f,g \rangle = \int_{0}^{1} f(t)g(t)dt$$
+		
+		\begin{itemize}
+			\item Orthogonality of two different functions with $\langle f,g\rangle = 0$
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Square Integrable Function}
-		Let $f, g \in \mathbb{L}^{2}[0,1]$, then we can define inner product by
-		%$$(ab + bg)(t) = af(t) + bg(t), \quad t \in [0,1] and \forall a,b$$
-		%, where $a$ and $b$ are scalars. (Maybe don't need)\\
-		%We can additionally define the inner product as follows:
-		$$\langle f,g \rangle = \int_{0}^{1} f(t)g(t)dt$$
-		%\begin{itemize}
-		%	\item
-		\begin{itemize}
-			\item Orthogonality of two different functions with $\langle f,g \rangle = 0$
-			\item Distance between functions
-		\end{itemize}
+		A natural \textbf{Norm} to be defined on $\mathbb{L}^2[0,1]$ is the following norm induced by the inner product.
+		$$\vert\vert f \vert\vert = \sqrt{\langle f,f \rangle} = \sqrt{\int_{0}^{1} f(t)^2 dt}$$
+		\vspace{0.2cm}
+		
+		This norm naturally induces a \textbf{Distance} on $\mathbb{L}^2[0,1]$.
+		$$d(f,g) =  \vert\vert f - g \vert\vert= \sqrt{\langle f-g, f-g \rangle} = \sqrt{\int_{0}^{1} \left[f(t) - g(t)\right]^2 dt}$$
+	
 	\end{frame}
 	
-	%\begin{frame}{Stochastic Process Perspective}
-	%	Functional data are the sample curves observed from continuous time stochastic precess.\\
-	%	\begin{itemize}
-	%		\item From this perspective, $X(t)$ is a random variable (?)\\
-	%		\item $X(\cdot)$ is a collection of random variables by each time index(?)\\
-	%		\item Realizations of a random function belong in large collection of functions
-	%	\end{itemize}		
-	%\end{frame}
-	
-
 	\begin{frame}{Basis Expansion}
-		\textbf{Basis Expansion} is a linear combination of functions as described:
+		\textbf{Basis Expansion} is a linear combination of functions as
+		described:
 		
-		$$X_{i}(t) = \sum_{k=1}^{\infty} c_{ik}\phi_{k}(t) \approx \sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad i = 1, \dots, n, \quad \forall t \in \mathbb{E}$$
+		$$x_{i}(t) = \sum_{k=1}^{\infty} c_{ik}\phi_{k}(t) \approx
+		\sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad i = 1, \dots, n, \quad \forall t \in
+		\mathbb{E}$$
 		
-		where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion and $c_{ik}$ is the corresponding coefficient. We truncate the basis at $K$ to:
+		where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion
+		and $c_{ik}$ is the corresponding coefficient. We truncate the basis at $K$
+		to:
 		\vspace{0.2cm}
 		
 		\begin{itemize}
 			\item make the function smoother
-			\item replace the original curves $X_{i}(t)$ by a smaller collection of $c_{nm}$
-			%\item replace the original scalar data $X_{n}(t_{jn})$ by a smaller collection of $c_{nm}$
-		\end{itemize}		
+			\item replace the original curves $x_{i}(t)$ with a smaller
+			collection of $c_{nm}$
+		\end{itemize}     
 	\end{frame}
-	
-	%\begin{frame}{Two Typical Types of Basis Function}
-	%	\textbf{Fourier Basis Function} is an element of the set:
-	%	
-	%	$$\{\sqrt{2}sin(2\pi nx | n \in \mathbb{N})\} \cup \{\sqrt{2}cos(2\pi nx | n \in \mathbb{N})\} \cup \{1\}$$
-	%	
-	%	%$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
-	%	
-	%	\vspace{2\baselineskip}
-	%	\textbf{B-spline Basis Function} is a polynomial function defined by order and knots. \\
-		
-	%\end{frame}
 	
 	\begin{frame}{Basis Functions}
 		\textbf{Fourier Basis Functions} are elements of the set:
-		$$\{\sqrt{2}\sin(2\pi nx) | n \in \mathbb{N}\} \cup \{\sqrt{2}\cos(2\pi nx) | n \in \mathbb{N}\} \cup \{1\}$$
+		$$\{\sqrt{2}\sin(2\pi nx) | n \in \mathbb{N}\} \cup
+		\{\sqrt{2}\cos(2\pi nx) | n \in \mathbb{N}\} \cup \{1\}$$
 		\vspace{-0.5cm}
 		\begin{figure}
-			\includegraphics[width = \textwidth]{../Graphics/Fourier_Basis.pdf}
+			\includegraphics[width =
+			\textwidth]{../Graphics/Fourier_Basis.pdf}
 			%\caption {Fourier basis functions}
 		\end{figure}
-			
+		
 	\end{frame}
 	
 	\begin{frame}{Basis Functions}
-		\textbf{B-spline Basis Functions} are polynomial functions defined by an order and a set of knots.
+		\textbf{B-spline Basis Functions} are polynomial functions defined by
+		an order and a set of knots.
 		\begin{figure}
-			\includegraphics[width = \textwidth]{../Graphics/Bspline_Basis.pdf}
+			\includegraphics[width =
+			\textwidth]{../Graphics/Bspline_Basis.pdf}
 			%\caption {Bspline basis functions}
 		\end{figure}
 	\end{frame}
@@ -200,19 +207,21 @@ with Applications to Near-Infrared Spectroscopy}
 	\begin{frame}{Trade Off between Bias and Variance}
 		How do we choose the number $K$ of basis functions?
 		
-		$$\textbf{MSE}[\hat{X}(t)] = \textbf{Bias}^2[\hat{X}(t)] + \textbf{Var}[\hat{X}(t)]$$
+		$$\textbf{MSE}[\hat{X}(t)] = \textbf{Bias}^2[\hat{X}(t)] +
+		\textbf{Var}[\hat{X}(t)]$$
 		
-		$$\textbf{MISE}[\hat{X}] = \int_{0}^{1} \textbf{MSE}[\hat{X}(t)] dt$$
+		$$\textbf{IMSE}[\hat{X}] = \int_{0}^{1} \textbf{MSE}[\hat{X}(t)] dt$$
 		
 		\begin{itemize}
-			\item The larger $K$, the better fit to the data, but also more fitting noise
+			\item The larger $K$, the better the fit to the data, but also more fitting noise
 			\item If $K$ is too small, the expansion would miss some significant information
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Trade Off between Bias and Variance}
 		\begin{figure}\notag
-			\includegraphics[width = \textwidth]{../Graphics/basis_expansions.pdf}
+			\includegraphics[width =
+			\textwidth]{../Graphics/basis_expansions.pdf}
 		\end{figure}
 	\end{frame}
 
@@ -223,16 +232,11 @@ with Applications to Near-Infrared Spectroscopy}
 		\begin{itemize}
 			\item $Y(\omega)$ and $\epsilon(\omega)$ realize in $\mathbb{R}$ and $X(\omega)$ realizes in $\mathbb{L}^2[0,1]$
 		\end{itemize}
-		\vspace{0.3cm}
+		\vspace{0.7cm}
 					
-		Let $\{\phi_i(t) \: \vert \: i = 1, \dots, \infty\}$ be a basis of $\mathbb{L}^2[0,1]$ leading to the following representation of $\beta(t)$
+		Let $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis leading to the following representation
 		
-		$$\beta(t) = \sum_{j = 1}^{\infty} c_j \phi_j(t) \approx \sum_{j = 1}^{L} c_j \phi_j(t)$$
-		%Assume that we have a data set containing observations each of which is made up of:
-		%\begin{itemize}
-		%	\item $y_i$: a scalar realization of $Y(\omega)$ - the octane rating of gasoline
-		%	\item $x_i(t)$: a realization of $X(\omega)$ - the measured NIR spectrum
-		%\end{itemize}
+		$$\beta(t) = \sum_{j \in \mathcal{I}} c_j \phi_j(t) \approx \sum_{j = 1}^{L} c_j \phi_j(t)$$
 
 	\end{frame}
 
@@ -240,9 +244,9 @@ with Applications to Near-Infrared Spectroscopy}
 		We can transform the data generating process into:
 		\begin{equation}\notag
 			\begin{split}
-				Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} c_j  \phi_j(s)\right) X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
-						  & = \alpha + \sum_{j = 1}^{\infty} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)	 \\
-						  & = \alpha + \sum_{j = 1}^{\infty} c_j {\color{red}Z_j(\omega)} + \epsilon(\omega)  \approx  \alpha + \sum_{j = 1}^{L} c_j {\color{red}Z_j(\omega)}  + \epsilon(\omega)
+				Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right) X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+						  & = \alpha + \sum_{j \in \mathcal{I}} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)	 \\
+						  & = \alpha + \sum_{j \in \mathcal{I}} c_j {\color{red}Z_j(\omega)} + \epsilon(\omega)  \approx  \alpha + \sum_{j = 1}^{L} c_j {\color{red}Z_j(\omega)}  + \epsilon(\omega)
 			\end{split}
 		\end{equation}
 	
@@ -250,7 +254,7 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		Truncating the functional basis allows us to estimate coefficients using \textbf{multivariate regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$ and an approximated coefficient function $\hat{\beta}(t)$:
+		Truncating the functional basis allows us to estimate coefficients using \textbf{Multivariate Regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$ and an approximated coefficient function $\hat{\beta}(t)$:
 		\vspace{-0.2cm}
 		$$\hat{\beta}_L(t) = \sum_{j = 1}^{L} \hat{c}_{L,j} \phi_j(t)$$
 		
@@ -277,10 +281,10 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 	
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}\label{KLE}
-		A random function $X(\omega)$ can be expressed in terms of its mean function and its Eigenfunctions:
+		A random function $X(\omega)$ can be expressed in terms of its \textbf{Mean Function} and its \textbf{Eigenfunctions}:
 		$$X(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)$$
 		
-		Where the $\xi_j$ are scalar-valued random variables with the following properties.
+		Where the $\xi_j$ are \textbf{Scalar-Valued Random Variables} with the following properties.
 		\begin{multicols}{2}
 			\begin{enumerate}
 				\item $\mathbb{E}[\xi_i(\omega)] = 0$
@@ -321,23 +325,16 @@ with Applications to Near-Infrared Spectroscopy}
 		\hyperlink{PCA}{\beamergotobutton{PCA for Random Vectors}}
 	\end{frame}
 
-	\begin{frame}{FPCA - Plot}
-			\includegraphics[width = \textwidth]{../Graphics/pc_approx.pdf}
-	\end{frame}
-	
-
 	\begin{frame}{Simulation Setup}
-		\begin{itemize}
-			\item Use the \textbf{Gasoline Dataset} (NIR-spectroscopy, 60 $\times$ 401) to predict octane ratings.
-			\item Generate \textbf{similar curves} from gasoline dataset:
-		\end{itemize}
+		Use the \textbf{Gasoline Dataset} (NIR-spectroscopy, 60 $\times$ 401) to generate \textbf{Similar Curves}:
 	
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
-
+		\vspace{0.2cm}
+		
 		\begin{itemize}
 			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j} \independent \tilde{\xi}_{k}$ for $j \neq k$
-			\item Simplification: the $\xi_{j}$ do not follow a normal
-			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
+			\item Simplification: the $\xi_{j}$ do not follow a normal distribution
+			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$
 		\end{itemize}
 		
 	\end{frame}
@@ -368,171 +365,45 @@ with Applications to Near-Infrared Spectroscopy}
 
 	
 	\begin{frame}{Simulation Setup cont.}
-		Let 
 		$$Y_{1,f} = \langle NIR, f\rangle + Z\left(  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)\right)$$ 
 		$$Y_{2,f} = \langle NIR, f\rangle + Z\left( \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)\right)$$
 		
-		where $Z \sim \mathcal{N}(0,1)$ be two responses for $f \in \{f_1(t), f_2(t)\}$.	
+		Let these be two responses for $f \in \{f_1(t), f_2(t)\}$ with $Z \sim \mathcal{N}(0,1)$.	
+		\vspace{0.2cm}
+		
 		\begin{itemize}
-    		\item Four combinations with different number of cubic basis-function $n_{basis} \in (4,5,...,25)$ and fourier functions $(1,3,...,25)$ to perform regression using basis expansion and the FPCR approach.
-			\item Compare results via criteria (CV, Mallows CP,...)
+    		\item Four combinations with different number of cubic basis-function $n_{basis} \in \{4,5, \dots ,25\}$ and fourier functions $\{1,3, \dots, 25\}$ to perform regression using basis expansion and the FPCR approach.
+			\item Compare results via criteria (CV, Mallows CP, ...)
 		
 		\end{itemize}
 	\end{frame}
 	
-	
-	\begin{frame}{Recap: Trade Off between Bias and Variance}
-		\begin{figure}\notag
-			\includegraphics[width = \textwidth]{../Graphics/basis_expansions.pdf}
-		\end{figure}
-	\end{frame}
-	
-	\begin{frame}{Simulation - Interpretation of results}
+	\begin{frame}{Simulation - Interpretation of results}\label{Results}
+		\textbf{Basis Expansion Regression}
 		\begin{itemize}
-		\item Basis expansion regression
-			\begin{itemize}
-    			\item Smooth true coefficient functions requires smaller number of $n_{basis}$ and vis versa.
+    			\item Smooth true coefficient functions requires smaller number of $n_{basis}$ and vice versa
     			\item Setup with higher noise requires smoother function.
-    			\item Bsplines perform overall better.
+    			\item  Bspline setup performs overall a bit better.
 		\end{itemize}
-    		\item FPCR
-    			\begin{itemize}
-    				\item Two PC enough to explain variation.
-    				\item 
-    			\end{itemize}
-    		
-		
-		\end{itemize}
+	
+		\textbf{FPCR}
+    	\begin{itemize}
+    		\item Two PC enough to explain variation.
+    		\item Results quite similar, but bspline setup better for smooth function with noisy response.
+    	\end{itemize}
+    
+    	Overall, fourier setup has lower complexity.
+    	
+    	\hyperlink{Simulation}{\beamergotobutton{Basis Expansion Results}}
+    	\hyperlink{Simulation2}{\beamergotobutton{FPCR Results}}
 	\end{frame}
-	
-	
-	
-	
-	\begin{frame}{Simulation Results - bspline basis expansion}
-		\begin{table}
-		\centering
-\resizebox*{\columnwidth}{6.5cm}{%
-\begin{tabular}{lllllll}
-\cline{2-6}
- & \textbf{f1\_e1\_spline}                 & \textbf{f1\_e2\_spline}                 & \textbf{f2\_e1\_spline}                   & \textbf{f2\_e2\_spline}                 & \textbf{n\_basis} &  \\ \cline{2-6}
- & 2.1318                        & {\color[HTML]{FE0000} 71.71} & 0.6082                        & 1.5345                        & 4                &  \\
- & 2.0076                        & 71.9395                      & 0.3427                        & 1.2906                        & 5                &  \\
- & {\color[HTML]{FE0000} 1.9937} & 72.2563                      & 0.2456                        & 1.2014                        & 6                &  \\
- & 2.0365                        & 73.7857                      & 0.2797                        & 1.2495                        & 7                &  \\
- & 2.1861                        & 79.0485                      & 0.1044                        & 1.1458                        & 8                &  \\
- & 2.0511                        & 74.1784                      & 0.0356                        & {\color[HTML]{FE0000} 1.0217} & 9                &  \\
- & 2.1052                        & 76.1884                      & 0.0297                        & 1.0393                        & 10               &  \\
- & 2.1012                        & 76.4031                      & {\color[HTML]{FE0000} 0.0296} & 1.0425                        & 11               &  \\
- & 2.3815                        & 86.1707                      & 0.037                         & 1.1819                        & 12               &  \\
- & 2.2114                        & 80.6208                      & 0.0363                        & 1.1024                        & 13               &  \\
- & 2.4495                        & 87.6977                      & 0.038                         & 1.2126                        & 14               &  \\
- & 2.2887                        & 83.4755                      & 0.0315                        & 1.1363                        & 15               &  \\
- & 2.5491                        & 93.593                       & 0.0352                        & 1.2652                        & 16               &  \\
- & 2.5514                        & 93.3074                      & 0.0352                        & 1.2661                        & 17               &  \\
- & 2.7516                        & 100.5562                     & 0.038                         & 1.362                         & 18               &  \\
- & 3.0243                        & 109.9876                     & 0.041                         & 1.4813                        & 19               &  \\
- & 3.4255                        & 122.396                      & 0.0472                        & 1.6854                        & 20               & 
-\end{tabular}%
-}
-\end{table}
-	\end{frame}
-	
-	
-	
-	\begin{frame}{Simulation Results - fourier basis expansion}
-		\begin{table}
-		\centering
-\resizebox*{\columnwidth}{!}{%
-\begin{tabular}{lllllll}
-\cline{2-6}
- & \textbf{f1\_e1\_spline}                 & \textbf{f1\_e2\_spline}                 & \textbf{f2\_e1\_spline}                   & \textbf{f2\_e2\_spline}                 & \textbf{n\_basis} &  \\ \cline{2-6}
- & 0                            & 0                              & 0                            & 0                             & 1                &  \\
- & 2.0292                       & {\color[HTML]{FE0000} 72.0085} & 0.512                        & 1.4747                        & 3                &  \\
- & {\color[HTML]{FE0000} 2.022} & 72.6017                        & 0.1616                       & 1.1375                        & 5                &  \\
- & 2.0355                       & 73.1836                        & 0.0293                       & {\color[HTML]{FE0000} 0.9907} & 7                &  \\
- & 2.062                        & 73.9631                        & {\color[HTML]{FE0000} 0.029} & 0.9994                        & 9                &  \\
- & 2.0881                       & 75.0921                        & 0.0291                       & 1.0139                        & 11               &  \\
- & 2.0997                       & 75.9422                        & 0.0294                       & 1.0291                        & 13               &  \\
- & 2.1087                       & 76.7123                        & 0.0298                       & 1.0371                        & 15               &  \\
- & 2.1301                       & 77.4908                        & 0.03                         & 1.0398                        & 17               &  \\
- & 2.1535                       & 78.3943                        & 0.0303                       & 1.0509                        & 19               &  \\
- & 2.1775                       & 79.2058                        & 0.0307                       & 1.0617                        & 21               &  \\
- & 2.2058                       & 80.3801                        & 0.031                        & 1.077                         & 23               &  \\
- & 2.2372                       & 81.509                         & 0.0315                       & 1.0905                        & 25               & 
-\end{tabular}%
-}
-\end{table}
-	\end{frame}
-	
-	
-	\begin{frame}{Simulation Results - bspline FPCR ($n_{harm}$ = 2)}
-		\begin{table}
-		\centering
-\resizebox*{\columnwidth}{!}{%
-\begin{tabular}{llllllll}
-\cline{2-7}
- & \boldmath{$f_1$}\textbf{, error 1}                 & \boldmath{$f_1$}\textbf{, error 2}                  & \boldmath{$f_2$}\textbf{, error 1}                    & \boldmath{$f_2$}\textbf{, error 2}                 & \textbf{expl. variance} & \textbf{n\_basis} &  \\ \cline{2-7}
- & 2.9163                       & 10.8768                       & 0.9599                        & 1.6431                        & 1                & 4                &  \\
- & {\color[HTML]{FE0000} 2.345} & {\color[HTML]{FE0000} 10.585} & 0.8649                        & 1.5631                        & 0.9776           & 5                &  \\
- & 2.4187                       & 10.6889                       & 0.8739                        & 1.5759                        & 0.9556           & 6                &  \\
- & 2.4971                       & 10.7287                       & 0.8625                        & 1.5723                        & 0.9472           & 7                &  \\
- & 2.5799                       & 10.6971                       & 0.8716                        & 1.575                         & 0.9239           & 8                &  \\
- & 2.6828                       & 10.7669                       & 0.853                         & 1.5661                        & 0.9178           & 9                &  \\
- & 2.825                        & 10.7906                       & 0.8304                        & 1.5622                        & 0.8976           & 10               &  \\
- & 2.9082                       & 10.7774                       & {\color[HTML]{FE0000} 0.8237} & {\color[HTML]{FE0000} 1.5424} & 0.906            & 11               &  \\
- & 2.9519                       & 10.8126                       & 0.8286                        & 1.5561                        & 0.9036           & 12               &  \\
- & 2.9972                       & 10.8221                       & 0.8404                        & 1.5551                        & 0.9052           & 13               &  \\
- & 2.9755                       & 10.7706                       & 0.8396                        & 1.5614                        & 0.9074           & 14               &  \\
- & 2.9762                       & 10.7946                       & 0.8476                        & 1.557                         & 0.9058           & 15               &  \\
- & 2.9627                       & 10.8067                       & 0.8609                        & 1.5615                        & 0.9061           & 16               &  \\
- & 2.9621                       & 10.7707                       & 0.857                         & 1.5628                        & 0.906            & 17               &  \\
- & 2.9929                       & 10.8315                       & 0.8536                        & 1.5632                        & 0.8935           & 18               &  \\
- & 2.9576                       & 10.7894                       & 0.8676                        & 1.5656                        & 0.901            & 19               &  \\
- & 2.9835                       & 10.8445                       & 0.8514                        & 1.5612                        & 0.8934           & 20               & 
-\end{tabular}%
-}
-\end{table}
-	\end{frame}
-	
-	
-	
-	\begin{frame}{Simulation Results - fourier FPCR ($n_{harm}$ = 2)}
-		\begin{table}
-		\centering
-\resizebox*{\columnwidth}{!}{%
-\begin{tabular}{llllllll}
-\cline{2-7}
- & \boldmath{$f_1$}\textbf{, error 1}                 & \boldmath{$f_1$}\textbf{, error 2}                  & \boldmath{$f_2$}\textbf{, error 1}                    & \boldmath{$f_2$}\textbf{, error 2}                 & \textbf{expl. variance} & \textbf{n\_basis} &  \\ \cline{2-7}
- & 0                             & 0                              & 0                             & 0                             & 0       & 1       &  \\
- & {\color[HTML]{FE0000} 2.2059} & {\color[HTML]{FE0000} 11.2438} & 0.8768                        & 1.5528                        & 0.9846  & 3       &  \\
- & 2.2148                        & 11.2567                        & {\color[HTML]{FE0000} 0.8227} & {\color[HTML]{FE0000} 1.5215} & 0.9584  & 5       &  \\
- & 2.2635                        & 11.2662                        & 0.8828                        & 1.5563                        & 0.9489  & 7       &  \\
- & 2.2721                        & 11.2692                        & 0.8811                        & 1.5531                        & 0.9439  & 9       &  \\
- & 2.2797                        & 11.2574                        & 0.879                         & 1.555                         & 0.9397  & 11      &  \\
- & 2.3039                        & 11.2708                        & 0.8887                        & 1.5591                        & 0.9421  & 13      &  \\
- & 2.3248                        & 11.2898                        & 0.8743                        & 1.5514                        & 0.9283  & 15      &  \\
- & 2.3798                        & 11.2957                        & 0.875                         & 1.5511                        & 0.9182  & 17      &  \\
- & 2.4233                        & 11.3049                        & 0.8632                        & 1.5453                        & 0.9167  & 19      &  \\
- & 2.4589                        & 11.3094                        & 0.8619                        & 1.5432                        & 0.9133  & 21      &  \\
- & 2.5306                        & 11.331                         & 0.8562                        & 1.5408                        & 0.9082  & 23      &  \\
- & 2.5752                        & 11.3272                        & 0.8531                        & 1.5393                        & 0.9062  & 25      & 
-\end{tabular}%
-}
-\end{table}
-	\end{frame}
-		
-		
-		
+
 	\begin{frame}{Application setup}
 		\begin{itemize}
-		\item
-    		Use insights from the simulation study to uncover dependence.
-    		\item
-    		Similar setup, but using only bspline basis expansion and initial 60 spectral curves.
-    		\item
-    		Validation set approach:	Scores of test data needs to be estimated by the training data. 
-    		\item
-    		Report results by MSE scaled by variance.
+			\item Use insights from the simulation study to uncover dependence.
+			\item Similar setup, but using only bspline basis expansion and initial 60 spectral curves.
+			\item Validation set approach:	Scores of test data needs to be estimated by the training data. 
+			\item Report results by MSE scaled by variance.
 		\end{itemize}
 	\end{frame}
 	
@@ -617,5 +488,114 @@ with Applications to Near-Infrared Spectroscopy}
 			\end{enumerate}
 		\end{multicols}
 		\hyperlink{FPCA}{\beamergotobutton{Functional Principal Component Analysis}}
+	\end{frame}
+
+	\begin{frame}{Simulation Results - bspline basis expansion}\label{Simulation}
+		\begin{table}
+			\centering
+			\resizebox*{\columnwidth}{!}{%
+				\begin{tabular}{lllllll}
+					\cline{2-6}
+					& \textbf{f1\_e1\_spline}                 & \textbf{f1\_e2\_spline}                 & \textbf{f2\_e1\_spline}                   & \textbf{f2\_e2\_spline}                 & \textbf{n\_basis} &  \\ \cline{2-6}
+					& 2.1318                        & {\color[HTML]{FE0000} 71.71} & 0.6082                        & 1.5345                        & 4                &  \\
+					& 2.0076                        & 71.9395                      & 0.3427                        & 1.2906                        & 5                &  \\
+					& {\color[HTML]{FE0000} 1.9937} & 72.2563                      & 0.2456                        & 1.2014                        & 6                &  \\
+					& 2.0365                        & 73.7857                      & 0.2797                        & 1.2495                        & 7                &  \\
+					& 2.1861                        & 79.0485                      & 0.1044                        & 1.1458                        & 8                &  \\
+					& 2.0511                        & 74.1784                      & 0.0356                        & {\color[HTML]{FE0000} 1.0217} & 9                &  \\
+					& 2.1052                        & 76.1884                      & 0.0297                        & 1.0393                        & 10               &  \\
+					& 2.1012                        & 76.4031                      & {\color[HTML]{FE0000} 0.0296} & 1.0425                        & 11               &  \\
+					& 2.3815                        & 86.1707                      & 0.037                         & 1.1819                        & 12               &  \\
+					& 2.2114                        & 80.6208                      & 0.0363                        & 1.1024                        & 13               &  \\
+					& 2.4495                        & 87.6977                      & 0.038                         & 1.2126                        & 14               &  \\
+					& 2.2887                        & 83.4755                      & 0.0315                        & 1.1363                        & 15               &  \\
+					& 2.5491                        & 93.593                       & 0.0352                        & 1.2652                        & 16               
+				\end{tabular}%
+			}
+		\end{table}
+		\hyperlink{Results}{\beamergotobutton{Results}}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Simulation Results - fourier basis expansion}
+		\begin{table}
+			\centering
+			\resizebox*{\columnwidth}{!}{%
+				\begin{tabular}{lllllll}
+					\cline{2-6}
+					& \textbf{f1\_e1\_spline}                 & \textbf{f1\_e2\_spline}                 & \textbf{f2\_e1\_spline}                   & \textbf{f2\_e2\_spline}                 & \textbf{n\_basis} &  \\ \cline{2-6}
+					& 0                            & 0                              & 0                            & 0                             & 1                &  \\
+					& 2.0292                       & {\color[HTML]{FE0000} 72.0085} & 0.512                        & 1.4747                        & 3                &  \\
+					& {\color[HTML]{FE0000} 2.022} & 72.6017                        & 0.1616                       & 1.1375                        & 5                &  \\
+					& 2.0355                       & 73.1836                        & 0.0293                       & {\color[HTML]{FE0000} 0.9907} & 7                &  \\
+					& 2.062                        & 73.9631                        & {\color[HTML]{FE0000} 0.029} & 0.9994                        & 9                &  \\
+					& 2.0881                       & 75.0921                        & 0.0291                       & 1.0139                        & 11               &  \\
+					& 2.0997                       & 75.9422                        & 0.0294                       & 1.0291                        & 13               &  \\
+					& 2.1087                       & 76.7123                        & 0.0298                       & 1.0371                        & 15               &  \\
+					& 2.1301                       & 77.4908                        & 0.03                         & 1.0398                        & 17               &  \\
+					& 2.1535                       & 78.3943                        & 0.0303                       & 1.0509                        & 19               &  \\
+					& 2.1775                       & 79.2058                        & 0.0307                       & 1.0617                        & 21               &  \\
+					& 2.2058                       & 80.3801                        & 0.031                        & 1.077                         & 23               &  \\
+					& 2.2372                       & 81.509                         & 0.0315                       & 1.0905                        & 25               & 
+				\end{tabular}%
+			}
+		\end{table}
+		\hyperlink{Results}{\beamergotobutton{Results}}
+	\end{frame}
+	
+	
+	\begin{frame}{Simulation Results - bspline FPCR ($n_{harm}$ = 2)}\label{Simulation2}
+		\begin{table}
+			\centering
+			\resizebox*{\columnwidth}{!}{%
+				\begin{tabular}{llllllll}
+					\cline{2-7}
+					& \boldmath{$f_1$}\textbf{, error 1}                 & \boldmath{$f_1$}\textbf{, error 2}                  & \boldmath{$f_2$}\textbf{, error 1}                    & \boldmath{$f_2$}\textbf{, error 2}                 & \textbf{expl. variance} & \textbf{n\_basis} &  \\ \cline{2-7}
+					& 2.9163                       & 10.8768                       & 0.9599                        & 1.6431                        & 1                & 4                &  \\
+					& {\color[HTML]{FE0000} 2.345} & {\color[HTML]{FE0000} 10.585} & 0.8649                        & 1.5631                        & 0.9776           & 5                &  \\
+					& 2.4187                       & 10.6889                       & 0.8739                        & 1.5759                        & 0.9556           & 6                &  \\
+					& 2.4971                       & 10.7287                       & 0.8625                        & 1.5723                        & 0.9472           & 7                &  \\
+					& 2.5799                       & 10.6971                       & 0.8716                        & 1.575                         & 0.9239           & 8                &  \\
+					& 2.6828                       & 10.7669                       & 0.853                         & 1.5661                        & 0.9178           & 9                &  \\
+					& 2.825                        & 10.7906                       & 0.8304                        & 1.5622                        & 0.8976           & 10               &  \\
+					& 2.9082                       & 10.7774                       & {\color[HTML]{FE0000} 0.8237} & {\color[HTML]{FE0000} 1.5424} & 0.906            & 11               &  \\
+					& 2.9519                       & 10.8126                       & 0.8286                        & 1.5561                        & 0.9036           & 12               &  \\
+					& 2.9972                       & 10.8221                       & 0.8404                        & 1.5551                        & 0.9052           & 13               &  \\
+					& 2.9755                       & 10.7706                       & 0.8396                        & 1.5614                        & 0.9074           & 14               &  \\
+					& 2.9762                       & 10.7946                       & 0.8476                        & 1.557                         & 0.9058           & 15               &  \\
+					& 2.9627                       & 10.8067                       & 0.8609                        & 1.5615                        & 0.9061           & 16          
+				\end{tabular}%
+			}
+		\end{table}
+		\hyperlink{Results}{\beamergotobutton{Results}}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Simulation Results - fourier FPCR ($n_{harm}$ = 2)}
+		\begin{table}
+			\centering
+			\resizebox*{\columnwidth}{!}{%
+				\begin{tabular}{llllllll}
+					\cline{2-7}
+					& \boldmath{$f_1$}\textbf{, error 1}                 & \boldmath{$f_1$}\textbf{, error 2}                  & \boldmath{$f_2$}\textbf{, error 1}                    & \boldmath{$f_2$}\textbf{, error 2}                 & \textbf{expl. variance} & \textbf{n\_basis} &  \\ \cline{2-7}
+					& 0                             & 0                              & 0                             & 0                             & 0       & 1       &  \\
+					& {\color[HTML]{FE0000} 2.2059} & {\color[HTML]{FE0000} 11.2438} & 0.8768                        & 1.5528                        & 0.9846  & 3       &  \\
+					& 2.2148                        & 11.2567                        & {\color[HTML]{FE0000} 0.8227} & {\color[HTML]{FE0000} 1.5215} & 0.9584  & 5       &  \\
+					& 2.2635                        & 11.2662                        & 0.8828                        & 1.5563                        & 0.9489  & 7       &  \\
+					& 2.2721                        & 11.2692                        & 0.8811                        & 1.5531                        & 0.9439  & 9       &  \\
+					& 2.2797                        & 11.2574                        & 0.879                         & 1.555                         & 0.9397  & 11      &  \\
+					& 2.3039                        & 11.2708                        & 0.8887                        & 1.5591                        & 0.9421  & 13      &  \\
+					& 2.3248                        & 11.2898                        & 0.8743                        & 1.5514                        & 0.9283  & 15      &  \\
+					& 2.3798                        & 11.2957                        & 0.875                         & 1.5511                        & 0.9182  & 17      &  \\
+					& 2.4233                        & 11.3049                        & 0.8632                        & 1.5453                        & 0.9167  & 19      &  \\
+					& 2.4589                        & 11.3094                        & 0.8619                        & 1.5432                        & 0.9133  & 21      &  \\
+					& 2.5306                        & 11.331                         & 0.8562                        & 1.5408                        & 0.9082  & 23      &  \\
+					& 2.5752                        & 11.3272                        & 0.8531                        & 1.5393                        & 0.9062  & 25      & 
+				\end{tabular}%
+			}
+		\end{table}
+		\hyperlink{Results}{\beamergotobutton{Results}}
 	\end{frame}
 \end{document}
