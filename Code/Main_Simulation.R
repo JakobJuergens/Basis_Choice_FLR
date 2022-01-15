@@ -119,3 +119,17 @@ for (i in 100:104) {
     file = paste0("Results/Partial/pca_fourier_NIR_partial/NIRrep500_n_obs60_seed", i, ".RDS")
   )
 }
+
+
+
+
+
+
+
+
+#######################
+
+pca_fourier_nharm2_sim
+write.csv(round(pca_bspline_nharm2_sim,4), "Results/Presentation_CSV/pca_bspline_nharm2_sim_round4.csv")
+
+
