@@ -41,6 +41,11 @@ with Applications to Near-Infrared Spectroscopy}
 	% Title page frame
 	\begin{frame}
 		\titlepage 
+		\begin{center}
+			{\small
+			Research Module in Econometrics and Statistics \\
+			Winter Semester 2021/2022}
+		\end{center}
 	\end{frame}
 	
 	% Remove logo from the next slides
@@ -76,26 +81,10 @@ with Applications to Near-Infrared Spectroscopy}
 		\end{itemize}
 	\end{frame}
 
-	%\begin{frame}{Theory}
-	%	Jonghun
-	%	\begin{itemize}
-	%		\item Random Functions (name square integrable functions)
-	%		\item Motivate continuous stochastic processes (growth curves/electricity consumption/yield curves/stonks)
-	%		\item Use curves to predict a scalar response (show typical dgp)
-	%	\end{itemize}
-	%\end{frame}
-
-	%\begin{frame}{Theory}
-	%	Jonghun
-	%	\begin{itemize}
-	%		\item Basis expansions (b-splines and fourier)
-	%		\item Talk about purposes
-	%		\item Plots and show bias variance tradeoff
-	%	\end{itemize}
-	%\end{frame}
-
 	\begin{frame}{Random Function}
 		A \textbf{Random Variable} is a function $X : \Omega \rightarrow \mathcal{S}$ which is defined on a common probability space $(\Omega, \mathcal{F}, \mathbb{P})$ where $\Omega$ is a probability space with a $\sigma$-algebra $\mathcal{F}$ and a probability measure $\mathbb{{P}}.$
+		\vspace{0.2cm}
+		
 		\begin{itemize}
 			\item If $\mathcal{S} = \mathbb{R}$ then $X$ is a random variable
 			\item If $\mathcal{S} = \mathbb{R}^{n}$ then $X$ is a random vector
@@ -177,30 +166,34 @@ with Applications to Near-Infrared Spectroscopy}
 		\end{itemize}		
 	\end{frame}
 	
-	\begin{frame}{Two Typical Types of Basis Function}
-		\textbf{Fourier Basis Function} is an element of the set:
+	%\begin{frame}{Two Typical Types of Basis Function}
+	%	\textbf{Fourier Basis Function} is an element of the set:
+	%	
+	%	$$\{\sqrt{2}sin(2\pi nx | n \in \mathbb{N})\} \cup \{\sqrt{2}cos(2\pi nx | n \in \mathbb{N})\} \cup \{1\}$$
+	%	
+	%	%$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
+	%	
+	%	\vspace{2\baselineskip}
+	%	\textbf{B-spline Basis Function} is a polynomial function defined by order and knots. \\
 		
-		$$\{\sqrt{2}sin(2\pi nx | n \in \mathbb{N})\} \cup \{\sqrt{2}cos(2\pi nx | n \in \mathbb{N})\} \cup \{1\}$$
-		
-		%$$f(x) = a_{0} + \sum_{n=1}^{\infty}a_{n}cos(2\pi nx) + b_{n}sin(2\pi nx)$$	\\
-		
-		\vspace{2\baselineskip}
-		\textbf{B-spline Basis Function} is a polynomial function defined by order and knots. \\
-		
-	\end{frame}
+	%\end{frame}
 	
-	\begin{frame}{Plots of Basis Functions}
+	\begin{frame}{Basis Functions}
+		\textbf{Fourier Basis Functions} are elements of the set:
+		$$\{\sqrt{2}\sin(2\pi nx) | n \in \mathbb{N}\} \cup \{\sqrt{2}\cos(2\pi nx) | n \in \mathbb{N}\} \cup \{1\}$$
+		\vspace{-0.5cm}
 		\begin{figure}
-			\includegraphics[height = 4.5cm]{../Graphics/Fourier_Basis.pdf}
-			\caption {Fourier basis functions}
+			\includegraphics[width = \textwidth]{../Graphics/Fourier_Basis.pdf}
+			%\caption {Fourier basis functions}
 		\end{figure}
 			
 	\end{frame}
 	
-	\begin{frame}{Plots of Basis Functions}
+	\begin{frame}{Basis Functions}
+		\textbf{B-spline Basis Functions} are polynomial functions defined by an order and a set of knots.
 		\begin{figure}
-			\includegraphics[height = 4.5cm]{../Graphics/Bspline_Basis.pdf}
-			\caption {Bspline basis functions}
+			\includegraphics[width = \textwidth]{../Graphics/Bspline_Basis.pdf}
+			%\caption {Bspline basis functions}
 		\end{figure}
 	\end{frame}
 	
@@ -249,7 +242,7 @@ with Applications to Near-Infrared Spectroscopy}
 			\begin{split}
 				Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} c_j  \phi_j(s)\right) X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
 						  & = \alpha + \sum_{j = 1}^{\infty} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)	 \\
-						  & = \alpha + \sum_{j = 1}^{\infty} c_j {\color{red}Z_j(\omega)} + \epsilon(\omega)  
+						  & = \alpha + \sum_{j = 1}^{\infty} c_j {\color{red}Z_j(\omega)} + \epsilon(\omega)  \approx  \alpha + \sum_{j = 1}^{L} c_j {\color{red}Z_j(\omega)}  + \epsilon(\omega)
 			\end{split}
 		\end{equation}
 	
@@ -257,33 +250,21 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		Each combination of $x_i(t)$ and $\phi_j(t)$ gives us
-		$$Z_{i,j} = \int_{0}^{1} x_i(s) \phi_j(s)\mathrm{d}s$$
-		
-		\begin{itemize}
-			\item This allows us to write each observation in the data set as $\left(y_i, Z_{i,1}, Z_{i,2}, \dots \right)$
-			\item Truncating the functional basis yields an approximation $\left(y_i, Z_{i,1}, Z_{i,2}, \dots, Z_{i,L}\right)$
-		\end{itemize}
-		
-		Coefficients can then be estimated using theory from \textbf{multivariate regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$.
-	\end{frame}
-
-	\begin{frame}{Estimation via Basis Representation}
-		This can be translated into an estimated coefficient function $\hat{\beta}(t)$:
-		
+		Truncating the functional basis allows us to estimate coefficients using \textbf{multivariate regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$ and an approximated coefficient function $\hat{\beta}(t)$:
+		\vspace{-0.2cm}
 		$$\hat{\beta}_L(t) = \sum_{j = 1}^{L} \hat{c}_{L,j} \phi_j(t)$$
-	
-		This is dependent on...
-		\begin{itemize}
-			\item The basis $(\phi_j(t))_{j \in \mathcal{I}}$ for the estimation of $\beta(t)$
-			\item The truncation parameter $L$
-			\item The basis $(\psi_j(t))_{j \in \mathcal{I}}$ used for the expansion of the observations
-			\item The truncation parameter in the approximation of the observations $K$
-		\end{itemize}
+		
+		This is dependent on...\vspace{-0.2cm}
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item The basis $(\phi_j(t))_{j \in \mathcal{I}}$ for the estimation of $\beta(t)$
+				\item The truncation parameter $L$\vfill\null
+				\item The basis $(\psi_j(t))_{j \in \mathcal{I}}$ used for the observations
+				\item The truncation parameter for the observations $K$
+			\end{itemize}
+		\end{multicols}
+
 	\end{frame}
-	
-
-
 
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
 		
@@ -341,7 +322,6 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 
 	\begin{frame}{FPCA - Plot}
-			%\includegraphics[width = \textwidth]{../Graphics/principal_components.pdf}
 			\includegraphics[width = \textwidth]{../Graphics/pc_approx.pdf}
 	\end{frame}
 	
@@ -446,7 +426,7 @@ with Applications to Near-Infrared Spectroscopy}
 	
 	
 	
-	\begin{frame}{Simulation Results - bspline}
+	\begin{frame}{Simulation Results - Fourier}
 		\begin{table}
 		\centering
 \resizebox*{\columnwidth}{!}{%
@@ -488,43 +468,35 @@ with Applications to Near-Infrared Spectroscopy}
 		\end{itemize}
 	\end{frame}
 	
-	\begin{frame}{Summary}
-		\begin{itemize}
-		\item
-    		Concepts of functional data: 
-    		\begin{itemize}
-			\item See dataset as smooth curve than as set of discrete measurements.
-    			\item Theory of Random Functions, motivated from random variable.
-    			\item Basis expansion and its Bias-Variance tradeoff.
-    			\item Scalar on Function Regression via Basis Expansion.
-    			\item Functional principal component Analysis and FPCR.
-		\end{itemize}
-    		\item
-    		Simulation study results: specification depends on function and signal-to-noise ratio
-    		\item
+	%\begin{frame}{Summary}
+	%	\begin{itemize}
+	%	\item
+    %		Concepts of functional data: 
+    %		\begin{itemize}
+	%		\item See dataset as smooth curve than as set of discrete measurements.
+    %			\item Theory of Random Functions, motivated from random variable.
+    %			\item Basis expansion and its Bias-Variance tradeoff.
+    %			\item Scalar on Function Regression via Basis Expansion.
+    %			\item Functional principal component Analysis and FPCR.
+	%	\end{itemize}
+    %		\item
+    %		Simulation study results: specification depends on function and signal-to-noise ratio
+    %		\item
     		% Guided you  from the beginning to the end of the presentaion through one application ....
-    		Guided through application to predict octane ratings.
+    %		Guided through application to predict octane ratings.
     		
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}
-		\topskip0pt
-		\vspace*{\fill}
-		\begin{center}
-			{\LARGE Thank you for your time!}
-		\end{center}	
-		\vspace*{\fill}
-		%
-	\end{frame}
+	%	\end{itemize}
+	%\end{frame}
 	
 	\begin{frame}{Further Reading}
-		 Further Reading:
-		 \nocite{Bohacs_Ovadi_Salgo1998}
-		 \nocite{FR_li_et_al_2020} 
-		 \nocite{Reiss_2007b}
-		 \AtNextBibliography{\tiny}
-		 \printbibliography[heading=none]
+		\nocite{hsing_theoretical_2015}
+		\nocite{kokoszka_introduction_2017}
+		\nocite{Bohacs_Ovadi_Salgo1998}
+		\nocite{FR_li_et_al_2020} 
+		\nocite{Reiss_2007b}
+		\nocite{ramsay_functional_2005}
+		\AtNextBibliography{\tiny}
+		\printbibliography[heading=none]
 	\end{frame}
 	
 	% From here on out are the supplementary slides.
