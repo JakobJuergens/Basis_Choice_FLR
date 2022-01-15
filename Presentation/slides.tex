@@ -51,12 +51,6 @@ with Applications to Near-Infrared Spectroscopy}
 	% Remove logo from the next slides
 	\logo{}
 	
-	% I'm not really a fan of a table of contents in short presentations (Jakob)
-	% Outline frame
-	%\begin{frame}{Outline}
-	%	\tableofcontents
-	%\end{frame}
-	
 	\begin{frame}{Introduction}
 		\textbf{Near-Infrared} (NIR) \textbf{Spectroscopy} enables fast diagnostics by using the NIR region of the electromagnetic spectrum
 		\begin{itemize}
@@ -67,23 +61,11 @@ with Applications to Near-Infrared Spectroscopy}
 		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \: i = 1,2,...,N, \; j = 1,2,..., J_i, \; t_{j,i} \in [T_1, T_2] \}$$
 	
 		\begin{itemize}
-			\item Continuous underlying process where $x_i(t)$ exists $\forall t \in [T_1, T_2]$ but is only observed at $x_{i}(t_{j,i})$
+			\item Continuous underlying process where $x_i(t)$ exists $\forall t \in [T_1, T_2]$ but is only observed at $t_{j,i}$
 			\item Regression to determine relationship between octane rating and spectral curves
 		\end{itemize}
 		
 	\end{frame}
-	
-	%\begin{frame}{Theory}
-	%	A simple functional dataset is given by 
-	%	
-	%	
-	%	\begin{itemize}
-	%		\item Continuous underlying process, where $x_i(t)$ exists $\forall t \in [T_1, T_2]$
-	%		\item Only observed at $x_{i}(t_{j,i})$
-	%		\item Example: Gasoline dataset (60 x 400)
-	%		\item Other Examples: Growth curves, financial data, human perception (pitch), ...
-	%	\end{itemize}
-	%\end{frame}
 
 	 \begin{frame}{Random Function}
 		A \textbf{Random Variable} is a function $X : \Omega \rightarrow
@@ -104,19 +86,6 @@ with Applications to Near-Infrared Spectroscopy}
 		A \textbf{Realization} of a random function $X(\omega)$ is a function 
 		$$x_0(t) = X(\omega_0)(t) \quad t \in \mathbb{E}, \: \omega_0 \in \Omega$$
 	\end{frame}
-	
-	%\begin{frame}{Random Function}
-	%	The realization of random function can be described as
-	%	$${\{X(t,\omega) : t \in \mathbb{E}, \omega \in \Omega\},}$$
-	%	where $\mathbb{E}$ is the index set and $X(t, \cdot)$ is
-	%	$\mathcal{F}$-measurable function on the sample space $\Omega$.\\
-	%	\begin{itemize}
-	%		\item It can be shortened to $X(t)$ by omitting $\omega$ or I can
-	%		be written as $X(t)(\omega)$.
-	%		\item The function is realized when the $X(t)$ exists $\forall t
-	%		\in \mathbb{E}$.
-	%	\end{itemize}
-	%\end{frame}
 	
 	\begin{frame}{Plots}
 		\begin{minipage}{.5\textwidth}
@@ -165,19 +134,19 @@ with Applications to Near-Infrared Spectroscopy}
 		\textbf{Basis Expansion} is a linear combination of functions as
 		described:
 		
-		$$x_{i}(t) = \sum_{k=1}^{\infty} c_{ik}\phi_{k}(t) \approx
-		\sum_{k=1}^{K} c_{ik}\phi_{k}(t), \quad i = 1, \dots, n, \quad \forall t \in
+		$$x_{i}(t) = \sum_{j \in \mathcal{I}} c_{i,j}\phi_{j}(t) \approx
+		\sum_{j=1}^{L} c_{i, j}\phi_{j}(t), \quad i = 1, \dots, n, \quad \forall t \in
 		\mathbb{E}$$
 		
-		where $\phi_{k}(t)$ is the $k^{th}$ basis function of the expansion
-		and $c_{ik}$ is the corresponding coefficient. We truncate the basis at $K$
+		where $\phi_{j}(t)$ is the $j^{th}$ basis function of the expansion
+		and $c_{i, j}$ is the corresponding coefficient. We truncate the basis at $L$
 		to:
 		\vspace{0.2cm}
 		
 		\begin{itemize}
 			\item make the function smoother
 			\item replace the original curves $x_{i}(t)$ with a smaller
-			collection of $c_{nm}$
+			collection of $c_{n, m}$
 		\end{itemize}     
 	\end{frame}
 	
@@ -195,7 +164,7 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 	
 	\begin{frame}{Basis Functions}
-		\textbf{B-spline Basis Functions} are polynomial functions defined by
+		\textbf{B-spline Basis Functions} are piece-wise polynomial functions defined by
 		an order and a set of knots.
 		\begin{figure}
 			\includegraphics[width =
@@ -205,7 +174,7 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 	
 	\begin{frame}{Trade Off between Bias and Variance}
-		How do we choose the number $K$ of basis functions?
+		How do we choose the number $L$ of basis functions?
 		
 		$$\textbf{MSE}[\hat{X}(t)] = \textbf{Bias}^2[\hat{X}(t)] +
 		\textbf{Var}[\hat{X}(t)]$$
@@ -213,8 +182,8 @@ with Applications to Near-Infrared Spectroscopy}
 		$$\textbf{IMSE}[\hat{X}] = \int_{0}^{1} \textbf{MSE}[\hat{X}(t)] dt$$
 		
 		\begin{itemize}
-			\item The larger $K$, the better the fit to the data, but also more fitting noise
-			\item If $K$ is too small, the expansion would miss some significant information
+			\item The larger $L$, the better the fit to the data, but also more fitting noise
+			\item If $L$ is too small, the expansion would miss some significant information
 		\end{itemize}
 	\end{frame}
 	
@@ -254,7 +223,7 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
-		Truncating the functional basis allows us to estimate coefficients using \textbf{Multivariate Regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$ and an approximated coefficient function $\hat{\beta}(t)$:
+		Truncating the functional basis allows us to estimate coefficients using \textbf{Multivariate Regression} leading to an estimated coefficient vector $\hat{c} \in \mathbb{R}^L$ and an estimated coefficient function $\hat{\beta}_L(t)$:
 		\vspace{-0.2cm}
 		$$\hat{\beta}_L(t) = \sum_{j = 1}^{L} \hat{c}_{L,j} \phi_j(t)$$
 		
@@ -263,7 +232,7 @@ with Applications to Near-Infrared Spectroscopy}
 			\begin{itemize}
 				\item The basis $(\phi_j(t))_{j \in \mathcal{I}}$ for the estimation of $\beta(t)$
 				\item The truncation parameter $L$\vfill\null
-				\item The basis $(\psi_j(t))_{j \in \mathcal{I}}$ used for the observations
+				\item The basis $(\psi_j(t))_{j \in \mathcal{L}}$ used for the observations
 				\item The truncation parameter for the observations $K$
 			\end{itemize}
 		\end{multicols}
@@ -372,13 +341,13 @@ with Applications to Near-Infrared Spectroscopy}
 		\vspace{0.2cm}
 		
 		\begin{itemize}
-    		\item Four combinations with different number of cubic basis-function $n_{basis} \in \{4,5, \dots ,25\}$ and fourier functions $\{1,3, \dots, 25\}$ to perform regression using basis expansion and the FPCR approach.
+    		\item Four combinations with different number of cubic bspline basis-function $n_{basis} \in \{4,5, \dots ,25\}$ and fourier functions $\{1,3, \dots, 25\}$ to perform regression using basis expansion and the FPCR approach.
 			\item Compare results via criteria (CV, Mallows CP, ...)
 		
 		\end{itemize}
 	\end{frame}
 	
-	\begin{frame}{Simulation - Interpretation of results}\label{Results}
+	\begin{frame}{Simulation - Interpretation of Results}\label{Results}
 		\textbf{Basis Expansion Regression}
 		\begin{itemize}
     			\item Smooth true coefficient functions requires smaller number of $n_{basis}$ and vice versa
@@ -398,7 +367,7 @@ with Applications to Near-Infrared Spectroscopy}
     	\hyperlink{Simulation2}{\beamergotobutton{FPCR Results}}
 	\end{frame}
 
-	\begin{frame}{Application setup}
+	\begin{frame}{Application Setup}
 		\begin{itemize}
 			\item Use insights from the simulation study to uncover dependence.
 			\item Similar setup, but using only bspline basis expansion and initial 60 spectral curves.
@@ -406,26 +375,6 @@ with Applications to Near-Infrared Spectroscopy}
 			\item Report results by MSE scaled by variance.
 		\end{itemize}
 	\end{frame}
-	
-	%\begin{frame}{Summary}
-	%	\begin{itemize}
-	%	\item
-    %		Concepts of functional data: 
-    %		\begin{itemize}
-	%		\item See dataset as smooth curve than as set of discrete measurements.
-    %			\item Theory of Random Functions, motivated from random variable.
-    %			\item Basis expansion and its Bias-Variance tradeoff.
-    %			\item Scalar on Function Regression via Basis Expansion.
-    %			\item Functional principal component Analysis and FPCR.
-	%	\end{itemize}
-    %		\item
-    %		Simulation study results: specification depends on function and signal-to-noise ratio
-    %		\item
-    		% Guided you  from the beginning to the end of the presentaion through one application ....
-    %		Guided through application to predict octane ratings.
-    		
-	%	\end{itemize}
-	%\end{frame}
 	
 	\begin{frame}{Further Reading}
 		\nocite{hsing_theoretical_2015}
