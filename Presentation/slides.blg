@@ -1,15 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'slides.blg'
-[58] biber:340> INFO - === Sa Jan 15, 2022, 16:04:29
-[68] Biber.pm:415> INFO - Reading 'slides.bcf'
-[128] Biber.pm:952> INFO - Found 6 citekeys in bib section 0
-[137] Biber.pm:4340> INFO - Processing section 0
-[144] Biber.pm:4531> INFO - Looking for bibtex format file '../RMbibliography.bib' for section 0
-[146] bibtex.pm:1689> INFO - LaTeX decoding ...
-[166] bibtex.pm:1494> INFO - Found BibTeX data source '../RMbibliography.bib'
-[232] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[232] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[232] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[232] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[239] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
-[243] bbl.pm:757> INFO - Output to slides.bbl
+[49] biber:340> INFO - === So Jan 16, 2022, 11:32:24
+[59] Biber.pm:415> INFO - Reading 'slides.bcf'
+[98] Biber.pm:952> INFO - Found 6 citekeys in bib section 0
+[107] Biber.pm:4340> INFO - Processing section 0
+[114] Biber.pm:4531> INFO - Looking for bibtex format file '../RMbibliography.bib' for section 0
+[116] bibtex.pm:1689> INFO - LaTeX decoding ...
+[133] bibtex.pm:1494> INFO - Found BibTeX data source '../RMbibliography.bib'
+[188] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[188] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[188] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[188] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[195] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
+[199] bbl.pm:757> INFO - Output to slides.bbl
