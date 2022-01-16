@@ -17,14 +17,16 @@ style=authoryear-comp,
 ]{biblatex}
 
 
+\newcommand{\independent}{\perp\!\!\!\!\perp} 
+
 \addbibresource{RMbibliography.bib}
 \onehalfspacing
 \parindent=0pt
 
 \begin{document}
-	\title{{\LARGE {\color{red}PLACEHOLDER-TITLE:} Functional Linear Regression in a Scalar-on-Function Setting with Applications to SOMETHING}}
+	\title{{\LARGE {\color{red}PLACEHOLDER-TITLE:} Functional Linear Regression in a Scalar-on-Function Setting with Applications to Near-Infrared Spectroscopy}}
 	\author{Jonghun Baek, Jakob Juergens, Jonathan Willnow}
-	\date{{\color{red}whenever}}
+	\date{11.02.2022}
 	\maketitle
 	\vspace{1.5 cm}
 	\begin{center}
@@ -308,10 +310,11 @@ style=authoryear-comp,
 	
 	\begin{equation}
 		\begin{split}
-			Y(\omega) & = \alpha + \int_{0}^{1}\left[\left(\sum_{j = 1}^{\infty} \psi_j  b_j(s)\right) F(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \sum_{j = 1}^{\infty} \left[\psi_j \textcolor{red}{\int_{0}^{1} F(\omega)(s) b_j(s)\mathrm{d}s}\right] + \epsilon(\omega) \\
-			& = \alpha + \sum_{j = 1}^{\infty} \psi_j \textcolor{red}{\langle F(\omega), b_j \rangle} + \epsilon(\omega) 
-			  = \alpha + \sum_{j = 1}^{\infty} \psi_j \textcolor{red}{Z_j(\omega)} + \epsilon(\omega)
+			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j \phi_j(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j \in \mathcal{I}} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega) \\
+			& = \alpha + \sum_{j \in \mathcal{I}} c_j \textcolor{red}{\langle X(\omega), \phi_j \rangle} + \epsilon(\omega) 
+		      = \alpha + \sum_{j \in \mathcal{I}} c_j \textcolor{red}{Z_j(\omega)} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 	
@@ -319,6 +322,19 @@ style=authoryear-comp,
 	
 	\begin{equation}
 			Y(\omega) \approx \alpha + \sum_{j = 1}^{L} \psi_j Z_j(\omega) + \epsilon(\omega)
+	\end{equation}
+
+	{\color{red} This fancy equation will be very useful to explain our simulation.}
+	
+	\begin{equation}
+		\begin{split}
+			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j \in \mathcal{I}} \left[ c_j \sum_{k \in \mathcal{L}} \textcolor{teal}{d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s}\right] + \epsilon(\omega)
+			= \alpha + \sum_{j \in \mathcal{I}} \left[c_j \sum_{k \in \mathcal{L}}  \textcolor{teal}{Z_{j, k}(\omega)} \right] + \epsilon(\omega) \\
+			& \approx \alpha + \sum_{j = 1}^{J} \left[c_j \textcolor{violet}{\sum_{k = 1}^{K}  Z_{j, k}(\omega)} \right] + \epsilon(\omega)
+			= \alpha + \sum_{j = 1}^{J} \left[c_j \textcolor{violet}{\tilde{Z}_{j}(\omega)} \right] + \epsilon(\omega)	
+		\end{split}
 	\end{equation}
 	
 	\subsection{Detailed Draft}
