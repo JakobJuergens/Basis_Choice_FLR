@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  16 JAN 2022 11:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  16 JAN 2022 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1448,15 +1448,15 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 ] [19
 
 ]
-<smooth_function.png, id=560, 509.65407pt x 324.46219pt>
+<smooth_function.png, id=563, 509.65407pt x 324.46219pt>
 File: smooth_function.png Graphic file (type png)
 <use smooth_function.png>
-Package pdftex.def Info: smooth_function.png  used on input line 333.
+Package pdftex.def Info: smooth_function.png  used on input line 334.
 (pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
-<bumpy_function.png, id=561, 509.65407pt x 324.46219pt>
+<bumpy_function.png, id=564, 509.65407pt x 324.46219pt>
 File: bumpy_function.png Graphic file (type png)
 <use bumpy_function.png>
-Package pdftex.def Info: bumpy_function.png  used on input line 333.
+Package pdftex.def Info: bumpy_function.png  used on input line 334.
 (pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
  [20
 
@@ -1470,7 +1470,7 @@ Package pdftex.def Info: bumpy_function.png  used on input line 333.
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <6> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 396.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 397.
 
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
@@ -1483,33 +1483,43 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 448.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 449.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 448.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 449.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 448.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 449.
 
  [26
 
-] [27
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 464.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 464.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 464.
+
+
+Overfull \vbox (0.90662pt too high) detected at line 464
+ []
+
+[27
 
 ] [28
 
+] [29
+
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 545.
 
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
+ [30
 
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
-
- [29
-
-] [30
+] [31
 
 ]
 \tf@nav=\write7
@@ -1522,6 +1532,9 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
 \openout9 = `slides.snm'.
 
  (build/slides.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package logreq Info: Writing requests to 'slides.run.xml'.
@@ -1529,36 +1542,38 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33164 strings out of 478599
- 623509 string characters out of 5858101
+ 33177 strings out of 478599
+ 623658 string characters out of 5858101
  1376230 words of memory out of 5000000
- 50234 multiletter control sequences out of 15000+600000
- 428032 words of font info for 149 fonts, out of 8000000 for 9000
+ 50239 multiletter control sequences out of 15000+600000
+ 428440 words of font info for 152 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,19n,124p,2670b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 128i,20n,124p,2670b,1656s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2021
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmib10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-s10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><
-c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2021/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive
-/2021/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb>
-Output written on build/slides.pdf (30 pages, 384491 bytes).
+type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmib10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmssi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2021/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/cm-super/sfso1000.pfb>
+Output written on build/slides.pdf (31 pages, 405573 bytes).
 PDF statistics:
- 995 PDF objects out of 1000 (max. 8388607)
- 889 compressed objects within 9 object streams
- 76 named destinations out of 1000 (max. 500000)
- 58958 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1038 PDF objects out of 1200 (max. 8388607)
+ 926 compressed objects within 10 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 61006 words of extra memory for PDF output out of 61914 (max. 10000000)
 
