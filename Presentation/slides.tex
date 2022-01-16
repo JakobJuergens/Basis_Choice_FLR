@@ -28,8 +28,6 @@ style=authoryear-comp,
 \addbibresource{../RMbibliography.bib}
 \parindent=0pt
 
- \newcommand{\independent}{\perp\!\!\!\!\perp} 
-
 % Title page details: 
 \title{Scalar on Function Regression \\
 with Applications to Near-Infrared Spectroscopy}
@@ -57,8 +55,8 @@ with Applications to Near-Infrared Spectroscopy}
 			\item Spectroscopy results in high-dimensional dataset: Gasoline dataset (60 x 401)
 			\item This set of measurements serves as set of discretized approximations of smooth spectral curves
 		\end{itemize}
-		\vspace{0.1cm}
-		$$\{x_{i}(t_{j,i}) \in \mathbb{R} \: \vert \: i = 1,2,...,N, \; j = 1,2,..., J_i, \; t_{j,i} \in [T_1, T_2] \}$$
+		\vspace{0.2cm}
+		$$x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]$$
 	
 		\begin{itemize}
 			\item Continuous underlying process where $x_i(t)$ exists $\forall t \in [T_1, T_2]$ but is only observed at $t_{j,i}$
@@ -220,6 +218,7 @@ with Applications to Near-Infrared Spectroscopy}
 		\end{equation}
 	
 		Where a $Z_j(\omega)$ is a \textbf{scalar random variable}.
+		\vspace{0.2cm}
 		
 		\hyperlink{FullEq}{\beamergotobutton{Equation with Approximated Functions}}
 	\end{frame}
@@ -290,7 +289,7 @@ with Applications to Near-Infrared Spectroscopy}
 		\vspace{0.2cm}
 		
 		The corresponding scores $\hat{\xi}_i$ can be derived as
-		$$\hat{\xi}_j(\omega) = \int_{0}^{1} (F(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
+		$$\hat{\xi}_j(\omega) = \int_{0}^{1} (X(\omega)(s) - \hat{\mu}(s)) \hat{\nu}_j(s) \mathrm{d}s$$
 		
 		\hyperlink{PCA}{\beamergotobutton{PCA for Random Vectors}}
 	\end{frame}
@@ -302,15 +301,15 @@ with Applications to Near-Infrared Spectroscopy}
 		\vspace{0.2cm}
 		
 		\begin{itemize}
-			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j} \independent \tilde{\xi}_{k}$ for $j \neq k$
-			\item Simplification: the $\xi_{j}$ do not follow a normal distribution
+			\item $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$
+			\item \textbf{Simplification:} the $\xi_{j}$ do not follow a normal distribution
 			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$
 		\end{itemize}
 		
 	\end{frame}
 	
 	
-	\begin{frame}{Simulation Setup cont.}
+	\begin{frame}{Simulation Setup}
 
 		Following \textbf{Reiss and Ogden (2007)}, let $f_1(t)$ and $f_2(t)$ be two coefficient functions: 
 
@@ -334,7 +333,7 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}	
 
 	
-	\begin{frame}{Simulation Setup cont.}
+	\begin{frame}{Simulation Setup}
 		$$Y_{1,f} = \langle NIR, f\rangle + Z\left(  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)\right)$$ 
 		$$Y_{2,f} = \langle NIR, f\rangle + Z\left( \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)\right)$$
 		
@@ -379,9 +378,9 @@ with Applications to Near-Infrared Spectroscopy}
 	Use insights from the simulation study to \textbf{predict the Octane Ratings}.
 	\vspace{0.4cm}
 		\begin{itemize}
-			\item Similar setup, but relying on the initial 60 spectral curves
+			\item Similar setup, but relying on the original 60 spectral curves
 			\item Validation set approach:	Scores of test data needs to be estimated by the training data
-			\item Report results by \textbf{IMSE} for the evaluated best model specifications
+			\item Report results by \textbf{Prediction MSE} for the evaluated best model specifications
 		\end{itemize}
 	\end{frame}
 	
@@ -389,7 +388,6 @@ with Applications to Near-Infrared Spectroscopy}
 		\nocite{hsing_theoretical_2015}
 		\nocite{kokoszka_introduction_2017}
 		\nocite{Bohacs_Ovadi_Salgo1998}
-		\nocite{FR_li_et_al_2020} 
 		\nocite{Reiss_2007b}
 		\nocite{ramsay_functional_2005}
 		\AtNextBibliography{\tiny}
@@ -463,7 +461,7 @@ with Applications to Near-Infrared Spectroscopy}
 		\hyperlink{ReducedEq}{\beamergotobutton{Equation without Approximated Functions}}
 	\end{frame}
 
-	\begin{frame}{Simulation Results - bspline basis expansion}\label{Simulation}
+	\begin{frame}{Simulation Results - Bspline basis expansion}\label{Simulation}
 		\begin{table}
 			\centering
 			\resizebox*{8cm}{!}{%
