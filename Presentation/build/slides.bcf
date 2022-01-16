@@ -2345,9 +2345,12 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">../RMbibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" nocite="1">Bohacs_Ovadi_Salgo1998</bcf:citekey>
-    <bcf:citekey order="2" nocite="1">FR_li_et_al_2020</bcf:citekey>
-    <bcf:citekey order="3" nocite="1">Reiss_2007b</bcf:citekey>
+    <bcf:citekey order="1" nocite="1">hsing_theoretical_2015</bcf:citekey>
+    <bcf:citekey order="2" nocite="1">kokoszka_introduction_2017</bcf:citekey>
+    <bcf:citekey order="3" nocite="1">Bohacs_Ovadi_Salgo1998</bcf:citekey>
+    <bcf:citekey order="4" nocite="1">FR_li_et_al_2020</bcf:citekey>
+    <bcf:citekey order="5" nocite="1">Reiss_2007b</bcf:citekey>
+    <bcf:citekey order="6" nocite="1">ramsay_functional_2005</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

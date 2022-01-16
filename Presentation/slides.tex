@@ -342,8 +342,8 @@ with Applications to Near-Infrared Spectroscopy}
 		\vspace{0.2cm}
 		
 		\begin{itemize}
-    		\item Four combinations with different number of cubic bspline basis-function $n_{basis} \in \{4,5, \dots ,25\}$ and fourier functions $\{1,3, \dots, 25\}$ to perform regression using basis expansion and the FPCR approach.
-			\item Compare results via criteria (CV, Mallows CP, ...)
+    		\item Four combinations with different number of cubic bspline basis-function $n_{basis} \in \{4,5, \dots ,25\}$ and fourier functions $\{1,3, \dots, 25\}$ to perform regression using basis expansion and the FPCR approach
+			\item Compare results via criteria (CV, Mallows' CP, ...)
 		
 		\end{itemize}
 	\end{frame}
@@ -351,29 +351,37 @@ with Applications to Near-Infrared Spectroscopy}
 	\begin{frame}{Simulation - Interpretation of Results}\label{Results}
 		\textbf{Basis Expansion Regression}
 		\begin{itemize}
-    			\item Smooth true coefficient functions requires smaller number of $n_{basis}$ and vice versa
-    			\item Setup with higher noise requires smoother function.
-    			\item  Bspline setup performs overall a bit better.
+    			\item Smooth function requires smaller number of $n_{basis}$ and vice versa
+    			\item Setup with higher noise requires smoother function
+    			
+    			%\item  Bspline setup performs overall a bit better.
 		\end{itemize}
-	
-		\textbf{FPCR}
+		 	
+		Performs better on bumpy function with low noise.\\
+	\vspace{0.4cm}
+		\textbf{Functional Principal Component Regression}
     	\begin{itemize}
-    		\item Two PC enough to explain variation.
-    		\item Results quite similar, but bspline setup better for smooth function with noisy response.
+    		\item Two Functional-PC enough to explain variation
+    		\item Results quite similar, but bspline setup better for smooth function with noisy response
+    		
     	\end{itemize}
+    	 
+    	Performs better in the noisy setup with the smooth function.\\
+    	\vspace{0.4cm}
     
-    	Overall, fourier setup has lower complexity.
+
     	
     	\hyperlink{Simulation}{\beamergotobutton{Basis Expansion Results}}
     	\hyperlink{Simulation2}{\beamergotobutton{FPCR Results}}
 	\end{frame}
 
 	\begin{frame}{Application Setup}
+	Use insights from the simulation study to \textbf{predict the Octane Ratings}.
+	\vspace{0.4cm}
 		\begin{itemize}
-			\item Use insights from the simulation study to uncover dependence.
-			\item Similar setup, but using only bspline basis expansion and initial 60 spectral curves.
-			\item Validation set approach:	Scores of test data needs to be estimated by the training data. 
-			\item Report results by MSE scaled by variance.
+			\item Similar setup, but relying on the initial 60 spectral curves
+			\item Validation set approach:	Scores of test data needs to be estimated by the training data
+			\item Report results by \textbf{IMSE} for the evaluated best model specifications
 		\end{itemize}
 	\end{frame}
 	
@@ -458,10 +466,10 @@ with Applications to Near-Infrared Spectroscopy}
 	\begin{frame}{Simulation Results - bspline basis expansion}\label{Simulation}
 		\begin{table}
 			\centering
-			\resizebox*{\columnwidth}{!}{%
+			\resizebox*{8cm}{!}{%
 				\begin{tabular}{lllllll}
 					\cline{2-6}
-					& \textbf{f1\_e1\_spline}                 & \textbf{f1\_e2\_spline}                 & \textbf{f2\_e1\_spline}                   & \textbf{f2\_e2\_spline}                 & \textbf{n\_basis} &  \\ \cline{2-6}
+					& \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}               & \textbf{n\_basis} &  \\ \cline{2-6}
 					& 2.1318                        & {\color[HTML]{FE0000} 71.71} & 0.6082                        & 1.5345                        & 4                &  \\
 					& 2.0076                        & 71.9395                      & 0.3427                        & 1.2906                        & 5                &  \\
 					& {\color[HTML]{FE0000} 1.9937} & 72.2563                      & 0.2456                        & 1.2014                        & 6                &  \\
@@ -483,14 +491,14 @@ with Applications to Near-Infrared Spectroscopy}
 	
 	
 	
-	\begin{frame}{Simulation Results - fourier basis expansion}
+	\begin{frame}{Simulation Results - Fourier basis expansion}
 		\begin{table}
 			\centering
-			\resizebox*{\columnwidth}{!}{%
+			\resizebox*{8cm}{!}{%
 				\begin{tabular}{lllllll}
 					\cline{2-6}
-					& \textbf{f1\_e1\_spline}                 & \textbf{f1\_e2\_spline}                 & \textbf{f2\_e1\_spline}                   & \textbf{f2\_e2\_spline}                 & \textbf{n\_basis} &  \\ \cline{2-6}
-					& 0                            & 0                              & 0                            & 0                             & 1                &  \\
+					& \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}               & \textbf{n\_basis} &  \\ \cline{2-6}
+					                                                                             
 					& 2.0292                       & {\color[HTML]{FE0000} 72.0085} & 0.512                        & 1.4747                        & 3                &  \\
 					& {\color[HTML]{FE0000} 2.022} & 72.6017                        & 0.1616                       & 1.1375                        & 5                &  \\
 					& 2.0355                       & 73.1836                        & 0.0293                       & {\color[HTML]{FE0000} 0.9907} & 7                &  \\
@@ -510,13 +518,13 @@ with Applications to Near-Infrared Spectroscopy}
 	\end{frame}
 	
 	
-	\begin{frame}{Simulation Results - bspline FPCR ($n_{harm}$ = 2)}\label{Simulation2}
+	\begin{frame}{Simulation Results - Bspline FPCR ($n_{harm}$ = 2)}\label{Simulation2}
 		\begin{table}
 			\centering
-			\resizebox*{\columnwidth}{!}{%
+			\resizebox*{9cm}{!}{%
 				\begin{tabular}{llllllll}
 					\cline{2-7}
-					& \boldmath{$f_1$}\textbf{, error 1}                 & \boldmath{$f_1$}\textbf{, error 2}                  & \boldmath{$f_2$}\textbf{, error 1}                    & \boldmath{$f_2$}\textbf{, error 2}                 & \textbf{expl. variance} & \textbf{n\_basis} &  \\ \cline{2-7}
+					& \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}                & \textbf{expl. var} & \textbf{n\_basis} &  \\ \cline{2-7}
 					& 2.9163                       & 10.8768                       & 0.9599                        & 1.6431                        & 1                & 4                &  \\
 					& {\color[HTML]{FE0000} 2.345} & {\color[HTML]{FE0000} 10.585} & 0.8649                        & 1.5631                        & 0.9776           & 5                &  \\
 					& 2.4187                       & 10.6889                       & 0.8739                        & 1.5759                        & 0.9556           & 6                &  \\
@@ -538,14 +546,14 @@ with Applications to Near-Infrared Spectroscopy}
 	
 	
 	
-	\begin{frame}{Simulation Results - fourier FPCR ($n_{harm}$ = 2)}
+	\begin{frame}{Simulation Results - Fourier FPCR ($n_{harm}$ = 2)}
 		\begin{table}
 			\centering
-			\resizebox*{\columnwidth}{!}{%
+			\resizebox*{9cm}{!}{%
 				\begin{tabular}{llllllll}
 					\cline{2-7}
-					& \boldmath{$f_1$}\textbf{, error 1}                 & \boldmath{$f_1$}\textbf{, error 2}                  & \boldmath{$f_2$}\textbf{, error 1}                    & \boldmath{$f_2$}\textbf{, error 2}                 & \textbf{expl. variance} & \textbf{n\_basis} &  \\ \cline{2-7}
-					& 0                             & 0                              & 0                             & 0                             & 0       & 1       &  \\
+					& \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}                & \textbf{expl. var} & \textbf{n\_basis} &  \\ \cline{2-7}
+			
 					& {\color[HTML]{FE0000} 2.2059} & {\color[HTML]{FE0000} 11.2438} & 0.8768                        & 1.5528                        & 0.9846  & 3       &  \\
 					& 2.2148                        & 11.2567                        & {\color[HTML]{FE0000} 0.8227} & {\color[HTML]{FE0000} 1.5215} & 0.9584  & 5       &  \\
 					& 2.2635                        & 11.2662                        & 0.8828                        & 1.5563                        & 0.9489  & 7       &  \\
@@ -561,6 +569,7 @@ with Applications to Near-Infrared Spectroscopy}
 				\end{tabular}%
 			}
 		\end{table}
+		\vspace{0.2cm}
 		\hyperlink{Results}{\beamergotobutton{Results}}
 	\end{frame}
 \end{document}

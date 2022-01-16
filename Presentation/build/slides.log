@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  15 JAN 2022 14:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  16 JAN 2022 11:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1342,7 +1342,7 @@ Package biblatex Info: Reference segment=0 on input line 39.
  (build/slides.nav) [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 68.
 
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1350,7 +1350,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (c:/texlive/2021/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 68.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1360,7 +1360,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 64.
+ut line 68.
 
 (c:/texlive/2021/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1375,175 +1375,141 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ] [3
 
-] [4
-
-] [5
-
 ]
-<../Graphics/Growth_curves.png, id=159, 338.76563pt x 364.36125pt>
+<../Graphics/Growth_curves.png, id=106, 338.76563pt x 364.36125pt>
 File: ../Graphics/Growth_curves.png Graphic file (type png)
 <use ../Graphics/Growth_curves.png>
-Package pdftex.def Info: ../Graphics/Growth_curves.png  used on input line 129.
+Package pdftex.def Info: ../Graphics/Growth_curves.png  used on input line 104.
 
 (pdftex.def)             Requested size: 153.64493pt x 165.25645pt.
-<../Graphics/NIR.png, id=160, 338.76563pt x 364.36125pt>
+<../Graphics/NIR.png, id=107, 338.76563pt x 364.36125pt>
 File: ../Graphics/NIR.png Graphic file (type png)
 <use ../Graphics/NIR.png>
-Package pdftex.def Info: ../Graphics/NIR.png  used on input line 129.
+Package pdftex.def Info: ../Graphics/NIR.png  used on input line 104.
 (pdftex.def)             Requested size: 153.64493pt x 165.25645pt.
- [6
+ [4
 
- <../Graphics/Growth_curves.png> <../Graphics/NIR.png>]
+ <../Graphics/Growth_curves.png> <../Graphics/NIR.png>] [5
+
+] [6
+
+]
 [7
 
-] [8
-
-] [9
-
-] [10
-
 ]
-<../Graphics/Fourier_Basis.pdf, id=297, 1445.4pt x 578.16pt>
+<../Graphics/Fourier_Basis.pdf, id=218, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 198.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 164.
 
-(pdftex.def)             Requested size: 320.08421pt x 128.0374pt.
-
-Overfull \hbox (12.79434pt too wide) in paragraph at lines 198--198
- [] 
- []
-
-[11
+(pdftex.def)             Requested size: 307.28987pt x 122.91692pt.
+ [8
 
  <../Graphics/Fourier_Basis.pdf>]
-<../Graphics/Bspline_Basis.pdf, id=329, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=251, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 205.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 174.
 
-(pdftex.def)             Requested size: 320.08421pt x 128.0374pt.
+(pdftex.def)             Requested size: 307.28987pt x 122.91692pt.
+ [9
 
-Overfull \hbox (12.79434pt too wide) in paragraph at lines 205--205
- [] 
- []
-
-[12
-
- <../Graphics/Bspline_Basis.pdf>] [13
+ <../Graphics/Bspline_Basis.pdf>]
+[10
 
 ]
-<../Graphics/basis_expansions.pdf, id=389, 1445.4pt x 867.24pt>
+<../Graphics/basis_expansions.pdf, id=309, 1445.4pt x 867.24pt>
 File: ../Graphics/basis_expansions.pdf Graphic file (type pdf)
 <use ../Graphics/basis_expansions.pdf>
-Package pdftex.def Info: ../Graphics/basis_expansions.pdf  used on input line 2
-24.
+Package pdftex.def Info: ../Graphics/basis_expansions.pdf  used on input line 1
+95.
 (pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [14
+ [11
 
- <../Graphics/basis_expansions.pdf>] (c:/texlive/2021/texmf-dist/tex/latex/micr
-otype/mt-cmr.cfg
+ <../Graphics/basis_expansions.pdf>]
+(c:/texlive/2021/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
-) [15
+) [12
+
+] [13
+
+] [14
+
+]
+[15
 
 ] [16
 
-]
-[17
+] [17
 
 ] [18
 
 ] [19
 
-] [20
+]
+<smooth_function.png, id=560, 509.65407pt x 324.46219pt>
+File: smooth_function.png Graphic file (type png)
+<use smooth_function.png>
+Package pdftex.def Info: smooth_function.png  used on input line 333.
+(pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
+<bumpy_function.png, id=561, 509.65407pt x 324.46219pt>
+File: bumpy_function.png Graphic file (type png)
+<use bumpy_function.png>
+Package pdftex.def Info: bumpy_function.png  used on input line 333.
+(pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
+ [20
 
-] [21
+ <./smooth_function.png> <./bumpy_function.png>]
+[21
 
 ] [22
 
-]
-<../Graphics/pc_approx.pdf, id=639, 1445.4pt x 867.24pt>
-File: ../Graphics/pc_approx.pdf Graphic file (type pdf)
-<use ../Graphics/pc_approx.pdf>
-Package pdftex.def Info: ../Graphics/pc_approx.pdf  used on input line 346.
-(pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [23
-
- <../Graphics/pc_approx.pdf>] [24
-
-]
-<smooth_function.png, id=698, 509.65407pt x 324.46219pt>
-File: smooth_function.png Graphic file (type png)
-<use smooth_function.png>
-Package pdftex.def Info: smooth_function.png  used on input line 387.
-(pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
-<bumpy_function.png, id=699, 509.65407pt x 324.46219pt>
-File: bumpy_function.png Graphic file (type png)
-<use bumpy_function.png>
-Package pdftex.def Info: bumpy_function.png  used on input line 387.
-(pdftex.def)             Requested size: 153.64493pt x 97.81468pt.
- [25
-
- <./smooth_function.png> <./bumpy_function.png>] [26
-
-]
-File: ../Graphics/basis_expansions.pdf Graphic file (type pdf)
-<use ../Graphics/basis_expansions.pdf>
-Package pdftex.def Info: ../Graphics/basis_expansions.pdf  used on input line 4
-08.
-(pdftex.def)             Requested size: 307.28987pt x 184.37538pt.
- [27
-
-] [28
-
-]
-Overfull \vbox (3.27135pt too high) detected at line 458
- []
-
-[29
-
-] [30
-
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 515.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 515.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 515.
-
-
-Overfull \vbox (7.49602pt too high) detected at line 515
- []
-
-[31
-
-] [32
-
-] [33
-
-] [34
-
-] [35
+] [23
 
 ]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <6> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 596.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 396.
 
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-[36
+[24
 
  <c:/texlive/2021/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
-[37
+[25
 
-] [38
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 448.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 448.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 448.
+
+ [26
+
+] [27
+
+] [28
+
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 529.
+
+ [29
+
+] [30
 
 ]
 \tf@nav=\write7
@@ -1563,36 +1529,36 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33189 strings out of 478599
- 623896 string characters out of 5858101
- 1378913 words of memory out of 5000000
- 50255 multiletter control sequences out of 15000+600000
- 427199 words of font info for 143 fonts, out of 8000000 for 9000
+ 33164 strings out of 478599
+ 623509 string characters out of 5858101
+ 1376230 words of memory out of 5000000
+ 50234 multiletter control sequences out of 15000+600000
+ 428032 words of font info for 149 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,18n,124p,2113b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 128i,19n,124p,2670b,1654s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2021
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmss10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
-12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c
-:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb>
-Output written on build/slides.pdf (38 pages, 508969 bytes).
+ic/amsfonts/cm/cmmib10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+s10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><
+c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2021/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb>
+Output written on build/slides.pdf (30 pages, 384491 bytes).
 PDF statistics:
- 1203 PDF objects out of 1440 (max. 8388607)
- 1085 compressed objects within 11 object streams
- 86 named destinations out of 1000 (max. 500000)
- 54867 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 995 PDF objects out of 1000 (max. 8388607)
+ 889 compressed objects within 9 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 58958 words of extra memory for PDF output out of 61914 (max. 10000000)
 
