@@ -1,4 +1,6 @@
 \defcounter {refsection}{0}\relax 
+\beamer@slide {ReducedEq}{13}
+\defcounter {refsection}{0}\relax 
 \beamer@slide {KLE}{16}
 \defcounter {refsection}{0}\relax 
 \beamer@slide {FPCA}{18}
@@ -13,6 +15,8 @@
 \defcounter {refsection}{0}\relax 
 \beamer@slide {PCA}{26}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {Simulation}{27}
+\beamer@slide {FullEq}{27}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {Simulation2}{29}
+\beamer@slide {Simulation}{28}
+\defcounter {refsection}{0}\relax 
+\beamer@slide {Simulation2}{30}

@@ -209,7 +209,7 @@ with Applications to Near-Infrared Spectroscopy}
 
 	\end{frame}
 
-	\begin{frame}{Estimation via Basis Representation}
+	\begin{frame}{Estimation via Basis Representation}\label{ReducedEq}
 		We can transform the data generating process into:
 		\begin{equation}\notag
 			\begin{split}
@@ -220,6 +220,8 @@ with Applications to Near-Infrared Spectroscopy}
 		\end{equation}
 	
 		Where a $Z_j(\omega)$ is a \textbf{scalar random variable}.
+		
+		\hyperlink{FullEq}{\beamergotobutton{Equation with Approximated Functions}}
 	\end{frame}
 
 	\begin{frame}{Estimation via Basis Representation}
@@ -236,7 +238,6 @@ with Applications to Near-Infrared Spectroscopy}
 				\item The truncation parameter for the observations $K$
 			\end{itemize}
 		\end{multicols}
-
 	\end{frame}
 
 	\begin{frame}{Karhunen-Lo\'{e}ve Expansion}
@@ -437,6 +438,21 @@ with Applications to Near-Infrared Spectroscopy}
 			\end{enumerate}
 		\end{multicols}
 		\hyperlink{FPCA}{\beamergotobutton{Functional Principal Component Analysis}}
+	\end{frame}
+
+	\begin{frame}{Estimation with Approximated Functions}\label{FullEq}
+		{\small
+		\begin{equation}\notag
+			\begin{split}
+				Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega) \\
+				& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
+				& = \alpha + \sum_{j \in \mathcal{I}} \left[ c_j \sum_{k \in \mathcal{L}} \textcolor{teal}{d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s}\right] + \epsilon(\omega) \\
+				& = \alpha + \sum_{j \in \mathcal{I}} \left[c_j \sum_{k \in \mathcal{L}}  \textcolor{teal}{Z_{j, k}(\omega)} \right] + \epsilon(\omega) \\
+				& \approx \alpha + \sum_{j = 1}^{L} \left[c_j \textcolor{violet}{\sum_{k = 1}^{K}  Z_{j, k}(\omega)} \right] + \epsilon(\omega)
+				= \alpha + \sum_{j = 1}^{L} \left[c_j \textcolor{violet}{\tilde{Z}_{j}^{K}(\omega)} \right] + \epsilon(\omega)	
+			\end{split}
+		\end{equation}}
+		\hyperlink{ReducedEq}{\beamergotobutton{Equation without Approximated Functions}}
 	\end{frame}
 
 	\begin{frame}{Simulation Results - bspline basis expansion}\label{Simulation}
