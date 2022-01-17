@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  16 JAN 2022 16:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  17 JAN 2022 19:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1526,15 +1526,20 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
  (./slides.aux)
 Package rerunfilecheck Info: File `slides.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'slides.run.xml'.
 \openout1 = `slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34378 strings out of 478353
- 667214 string characters out of 5854636
- 1379470 words of memory out of 5000000
- 51690 multiletter control sequences out of 15000+600000
+ 34373 strings out of 478353
+ 667149 string characters out of 5854636
+ 1379293 words of memory out of 5000000
+ 51685 multiletter control sequences out of 15000+600000
  428440 words of font info for 152 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,20n,122p,2670b,1650s stack positions out of 5000i,500n,10000p,200000b,80000s

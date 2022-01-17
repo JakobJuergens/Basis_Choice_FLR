@@ -1,15 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'slides.blg'
-[49] biber:340> INFO - === So Jan 16, 2022, 15:13:07
-[60] Biber.pm:415> INFO - Reading 'slides.bcf'
-[107] Biber.pm:952> INFO - Found 5 citekeys in bib section 0
-[119] Biber.pm:4340> INFO - Processing section 0
-[129] Biber.pm:4531> INFO - Looking for bibtex format file '../RMbibliography.bib' for section 0
-[131] bibtex.pm:1689> INFO - LaTeX decoding ...
-[153] bibtex.pm:1494> INFO - Found BibTeX data source '../RMbibliography.bib'
-[208] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[208] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[208] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[208] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[215] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
-[219] bbl.pm:757> INFO - Output to slides.bbl
+[47] biber:340> INFO - === Mo Jan 17, 2022, 19:16:37
+[56] Biber.pm:415> INFO - Reading 'slides.bcf'
+[99] Biber.pm:952> INFO - Found 5 citekeys in bib section 0
+[107] Biber.pm:4340> INFO - Processing section 0
+[113] Biber.pm:4531> INFO - Looking for bibtex format file 'RMbibliography.bib' for section 0
+[115] bibtex.pm:1689> INFO - LaTeX decoding ...
+[133] bibtex.pm:1494> INFO - Found BibTeX data source 'RMbibliography.bib'
+[178] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[178] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[178] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[179] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[184] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
+[187] bbl.pm:757> INFO - Output to slides.bbl
