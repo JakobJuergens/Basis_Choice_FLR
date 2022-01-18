@@ -100,10 +100,10 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
       tmp_sr <- CV_container$success_count[j]
       
       # save Cross validation criterion in provided container
-      CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress1_1$SSE.CV * 1 / (tmp_sr + 1)
-      CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress1_2$SSE.CV * 1 / (tmp_sr + 1)
-      CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress2_1$SSE.CV * 1 / (tmp_sr + 1)
-      CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress2_2$SSE.CV * 1 / (tmp_sr + 1)
+      CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_1$SSE.CV) * 1 / (tmp_sr + 1)
+      CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_2$SSE.CV) * 1 / (tmp_sr + 1)
+      CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_1$SSE.CV) * 1 / (tmp_sr + 1)
+      CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_2$SSE.CV) * 1 / (tmp_sr + 1)
       
       # count successful runs
       CV_container$success_count[j] <- CV_container$success_count[j] + 1
@@ -242,10 +242,10 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
           tmp_sr <- CV_container$success_count[j]
           
           # save Cross validation criterion in provided container
-          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress1_1$SSE.CV * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress1_2$SSE.CV * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress2_1$SSE.CV * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + f_regress2_2$SSE.CV * 1 / (tmp_sr + 1)
+          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_1$SSE.CV) * 1 / (tmp_sr + 1)
+          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_2$SSE.CV) * 1 / (tmp_sr + 1)
+          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_1$SSE.CV) * 1 / (tmp_sr + 1)
+          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_2$SSE.CV) * 1 / (tmp_sr + 1)
           
           # count succesfull runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
