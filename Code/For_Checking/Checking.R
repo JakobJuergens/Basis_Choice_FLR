@@ -33,6 +33,8 @@ sigma_eps_squared2_2 <- as.numeric((var(NIR %*% f2) / 0.6) - var(NIR %*% f2))
 
 ### load code from other source files
 source("data_generator.R")
+source("k_fold_CV_function.R")
+
 
 ### FPCA simulation function - bspline basis
 fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE) {
@@ -176,37 +178,20 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
             dataframe2_2 <- as.data.frame(
               rbind(cbind(df2_2_train[,1], train_fd$scores),cbind(df2_2_test[,1], scores_mat)))
             
+            model1_1 <- lm(Y1_1 ~., dataframe1_1) 
+            model1_2 <- lm(Y1_2 ~., dataframe1_2)
+            model2_1 <- lm(Y2_1 ~., dataframe2_1)
+            model2_2 <- lm(Y2_2 ~., dataframe2_2)
             
-            # model1_1 <- lm(Y1_1[1:(n_obs * 9 / 10)] ~., data = dataframe1_1[1:(n_obs * 9 / 10), ])
-            # model1_2 <- lm(Y1_2[1:(n_obs * 9 / 10)] ~., data = dataframe1_2[1:(n_obs * 9 / 10), ])
-            # model2_1 <- lm(Y2_1[1:(n_obs * 9 / 10)] ~., data = dataframe2_1[1:(n_obs * 9 / 10), ])
-            # model2_2 <- lm(Y2_2[1:(n_obs * 9 / 10)] ~., data = dataframe2_2[1:(n_obs * 9 / 10), ])
-            # 
-            # predictions1_1 <- model1_1 %>% predict(dataframe1_1[(n_obs * 9 / 10 + 1):n_obs, ])
-            # predictions1_2 <- model1_2 %>% predict(dataframe1_2[(n_obs * 9 / 10 + 1):n_obs, ])
-            # predictions2_1 <- model2_1 %>% predict(dataframe2_1[(n_obs * 9 / 10 + 1):n_obs, ])
-            # predictions2_2 <- model2_2 %>% predict(dataframe2_2[(n_obs * 9 / 10 + 1):n_obs, ])
-            # 
-            # MSPE_mat[m, 1] <- caret::RMSE(predictions1_1, dataframe1_1[(n_obs * 9 / 10 + 1):n_obs, 1])
-            # MSPE_mat[m, 2] <- caret::RMSE(predictions1_2, dataframe1_2[(n_obs * 9 / 10 + 1):n_obs, 1])
-            # MSPE_mat[m, 3] <- caret::RMSE(predictions2_1, dataframe2_1[(n_obs * 9 / 10 + 1):n_obs, 1])
-            # MSPE_mat[m, 4] <- caret::RMSE(predictions2_2, dataframe2_2[(n_obs * 9 / 10 + 1):n_obs, 1])
+            MSPE1_1 <- sum((model1_1$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            MSPE1_2 <- sum((model1_2$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            MSPE2_1 <- sum((model2_1$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            MSPE2_2 <- sum((model2_2$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
             
-            model1_1 <- lm(Y1_1 ~., data = dataframe1_1)
-            model1_2 <- lm(Y1_2 ~., data = dataframe1_2)
-            model2_1 <- lm(Y2_1 ~., data = dataframe2_1)
-            model2_2 <- lm(Y2_2 ~., data = dataframe2_2)
-
-            MSPE1_1 <- mean((model1_1$residuals)^2)
-            MSPE1_2 <- mean((model1_2$residuals)^2)
-            MSPE2_1 <- mean((model2_1$residuals)^2)
-            MSPE2_2 <- mean((model2_2$residuals)^2)
-
-            MSPE_mat[m, 1] <- sqrt(MSPE1_1)
-            MSPE_mat[m, 2] <- sqrt(MSPE1_2)
-            MSPE_mat[m, 3] <- sqrt(MSPE2_1)
-            MSPE_mat[m, 4] <- sqrt(MSPE2_2)
-            
+            MSPE_mat[m, 1] <- MSPE1_1
+            MSPE_mat[m, 2] <- MSPE1_2
+            MSPE_mat[m, 3] <- MSPE2_1
+            MSPE_mat[m, 4] <- MSPE2_2
             }
             
             MSPE_mat <- colMeans(MSPE_mat)
@@ -246,13 +231,11 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
 
 
 test_fpcr_NIR2 <- fpcr_function(
-  rep = 1, my_data = NULL, n_obs = 200, nharm = 2, seed = 100, debug = TRUE
+  rep = 100, my_data = NIR, n_obs = 60, nharm = 2, seed = 100, debug = TRUE
 )
-  
 test_fpcr_NIR3 <- fpcr_function(
-  rep = 1, my_data = NULL, n_obs = 60, nharm = 3, seed = 100, debug = TRUE
- )
-
+  rep = 100, my_data = NIR, n_obs = 60, nharm = 3, seed = 100, debug = TRUE
+)
 test_fpcr_NIR4 <- fpcr_function(
-  rep = 1, my_data = NULL, n_obs = 60, nharm = 4, seed = 100, debug = TRUE
+  rep = 100, my_data = NIR, n_obs = 60, nharm = 4, seed = 100, debug = TRUE
 )
