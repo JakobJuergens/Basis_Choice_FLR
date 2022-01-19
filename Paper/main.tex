@@ -10,6 +10,7 @@
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{hyperref}
 \usepackage[font=small,skip=2pt]{caption}
 \usepackage[
 backend=biber,
@@ -201,7 +202,7 @@ style=authoryear-comp,
 	In functional data analysis the concept of a data set can include not only realizations of scalar random variables, but also realizations of random functions. In the following, all random functions are assumed to realize in $\mathbb{L}^2$. As in the finite dimensional setting the concept of identically distributed and independent data is important. This concept generalizes intuitively to the case of functional data using the concepts for general random variables. {\color{red} Explain this better!}\\
 	An example of one such data set could be a set of $n$ independent realizations of a Wiener-process and $n$ associated scalar variables that could be subject of a regression analysis with respect to the corresponding realizations of the Wiener process. A definition and a plotted example for the Wiener process are given in \ref{Wiener}.
 	
-	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}
+	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $X(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(X(\omega)) = \mu_x$ and $Cov(X(\omega)) = \Sigma_X$. Then $\Sigma_X$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_X = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
 		
 	This decomposition can be used to express the random vector $X(\omega)$ in the following way.
@@ -489,18 +490,16 @@ There are several important aspects of functional regression in this functional 
 	\end{itemize}
 
 	\subsection{Motivation}
-	For the simulation study, we deviate from the standart simulation setting. Instead of generating data by ourself, we use the data from the gasoline dataset ($NIR$) to predict the octane ratings of gasoline samples, relying on the introduced methods. The dataset, which contains 60 i.i.d. observations with each 400 measurements, was constructed using Near infra-red (NIR) spectroscopy, which allows to analyse samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). 
+	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we imposed the gasoline data which consists of 60 samples of Near Infrared (NIR) spectroscopy measured by 2-nm from 900 to 1,700 nm, and a response variable, octane rate. The dataset, which contains 60 i.i.d. observations with 401 measurements, allows to analyze samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). The optimal number L of basis functions were chosen for each model through 10-fold Cross-Validation. Additionally, even for FPCR, we discovered what number of components produces the best. As a result, we progressed the application with the derived outcomes.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated similar curves from the gasoline dataset. This is motivated by the Karhunen-Loeve-Expansion {\color{green} link formula}
-	 First, the initial curves are expressed in terms of a generated bspline basis, created using 50 knots. These smooth curves are then centred, before performing FPCA. For simplification, we assume that
-	$\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$
+	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis, created using 50 knots. These smooth curves are then centered, before performing FPCA. It is supposed that each estimated score follows normal distribution with the assumption that the variance equals its eigenvalue. Finally, we obtain the generated curves
 	
 	
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
 
 		\begin{itemize}
-			\item $\tilde{\xi}_{j} \sim \mathcal{N}(0,\hat{\lambda}_j)$ and $\tilde{\xi}_{j}\independent \tilde{\xi}_{k}$ for $j \neq k$
+			\item $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$
 			\item Simplification: the $\xi_{j}$ do not follow a normal
 			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
 		\end{itemize}
