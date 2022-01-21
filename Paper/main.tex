@@ -159,6 +159,8 @@ style=authoryear-comp,
 			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
 		\end{cases}
 	\end{equation}
+	{\color{orange}$$\{\sqrt{2}\sin(2\pi nx) | n \in \mathbb{N}\} \cup
+	\{\sqrt{2}\cos(2\pi nx) | n \in \mathbb{N}\} \cup \{1\}$$}
 	
 	\begin{figure}[H]\label{fourier_basis}
 	\includegraphics[width = \textwidth]{../Graphics/Fourier_Basis.pdf}
@@ -193,10 +195,11 @@ style=authoryear-comp,
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
 	{\color{red} Write something about how to approximate functions by truncating the basis.}
-	
+	As above-mentioned, the realized curves can be estimated with basis functions. For the basis expansion, it is technically possible to use all basis functions $b_{j \in \mathcal{I}}$. On the one hand, this way is not efficient since the technique with too many basis functions can even approximate a noise of the sample curves which possibly interrupts the analysis. On the other hand, the important information on the curves would be missed with a too-small number of basis functions. This discussion challenges the researcher to seek a point at which they truncate the basis function in order to remove noise and, at the same time, maintain significant fluctuation. The basis expansion with truncation is by:
 	\begin{equation}
 		F(\omega_0) = f(t) = \sum_{j \in \mathcal{I}} \psi_j(\omega_0) b_j(t) = \sum_{j = 1}^{L} \psi_j(\omega_0) b_j(t) + \delta(t) \approx \sum_{j = 1}^{L} \psi_j(\omega_0) b_j(t)
 	\end{equation}
+	where $\delta(t)$ is the truncation error. The number $L$ is subjectively chosen but we can fix the nubmer through a more reasonable method, Cross-Validation, which minimizes Mean Squared Error (MSE). 
 	
 	\subsection{Functional Data Sets}
 	In functional data analysis the concept of a data set can include not only realizations of scalar random variables, but also realizations of random functions. In the following, all random functions are assumed to realize in $\mathbb{L}^2$. As in the finite dimensional setting the concept of identically distributed and independent data is important. This concept generalizes intuitively to the case of functional data using the concepts for general random variables. {\color{red} Explain this better!}\\
@@ -223,7 +226,21 @@ style=authoryear-comp,
 	\begin{equation}\label{CovarianceFunction}
 		c(t,s) = \mathbb{E}\big[ \left( F(\omega)(t) - \mu(t) \right) \left( F(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
+	{\color{orange}suggestion from here}
+	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through c : $[0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $L^{2}[0,1]$ such that $K : v \rightarrow Kv$ for $v \in L^{2}[0,1]$, by
+	\begin{equation}
+		[Kv](t) = \int_{0}^{1}c(t,s)v(s)ds
+	\end{equation}
 
+	Then, the operator $K$ has orthonormal basis functions $v_{i} \in L^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, K holds following triats:
+	
+		\begin{enumerate}
+			\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
+			\item The eigenspaces corresponding to non-zero eigenvalues are finite-dimentsional.
+			\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
+		\end{enumerate}
+	
+	Therefore, we can approximate the function $F$ with first few eigenfunctions. {\color{orange}to here. Then, we can justify why the function F can be explaiend enough well with few eigenfunctions and how to find the variance proporation with Var($\xi$) = $\lambda$}
 	Theoretical considerations lead to the result that $F$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion.
 	
 	\begin{equation}\label{KarhunenLoeve}
@@ -238,7 +255,7 @@ style=authoryear-comp,
 	
 	The $\xi_j(\omega)$ are then given as $\xi_j(\omega) = \langle F(\omega) - \mu, \nu_j\rangle$ and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector.
 	
-		\begin{multicols}{2}
+	\begin{multicols}{2}
 		\begin{enumerate}
 			\item $\mathbb{E}\left[\xi_j(\omega)\right] = 0$
 			\item $Var\left(\xi_j(\omega)\right) = \lambda_i$
@@ -493,7 +510,7 @@ There are several important aspects of functional regression in this functional 
 	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we imposed the gasoline data which consists of 60 samples of Near Infrared (NIR) spectroscopy measured by 2-nm from 900 to 1,700 nm, and a response variable, octane rate. The dataset, which contains 60 i.i.d. observations with 401 measurements, allows to analyze samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). The optimal number L of basis functions were chosen for each model through 10-fold Cross-Validation. Additionally, even for FPCR, we discovered what number of components produces the best. As a result, we progressed the application with the derived outcomes.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis, created using 50 knots. These smooth curves are then centered, before performing FPCA. It is supposed that each estimated score follows normal distribution with the assumption that the variance equals its eigenvalue. Finally, we obtain the generated curves
+	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis, created using 50 knots. These smooth curves are then centered({\color{orange} in this case, shouldn't mu be removed on the equation?}), before performing \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is supposed that each estimated score follows normal distribution with the fact that the mean is 0 and the variance equals its eigenvalue. Finally, we obtain the generated curves
 	
 	
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 

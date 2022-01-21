@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  19 JAN 2022 13:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  21 JAN 2022 15:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -875,71 +875,64 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 <../Graphics/Fourier_Basis.pdf, id=222, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 164.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 166.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [6 <../Graphics/Fourier_Basis.pdf>]
 <../Graphics/Bspline_Basis.pdf, id=241, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 189.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 191.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
-
- []
-
-[7 <../Graphics/Bspline_Basis.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+ [7 <../Graphics/Bspline_Basis.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
 
  []
 
-[8] [9] [10] [11] [12] [13] [14]
-<../Graphics/smooth_function.png, id=343, 509.65407pt x 324.46219pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+
+ []
+
+[8] [9] [10] [11] [12] [13] [14] [15]
+<../Graphics/smooth_function.png, id=352, 509.65407pt x 324.46219pt>
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
-Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 53
-0.
+Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 54
+7.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-<../Graphics/bumpy_function.png, id=344, 509.65407pt x 324.46219pt>
+<../Graphics/bumpy_function.png, id=353, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 536
+Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 553
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
- [15 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>] [16]
-<../Graphics/Wiener_plot.pdf, id=364, 1445.4pt x 578.16pt>
+ [16 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>] [17]
+<../Graphics/Wiener_plot.pdf, id=373, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 616.
+Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 633.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
- [17] [18 <../Graphics/Wiener_plot.pdf>]
+ [18] [19 <../Graphics/Wiener_plot.pdf>]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [19]
-(./main.aux)
 
-LaTeX Warning: There were undefined references.
-
+[20] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: B62B95A467F2FED313778FD06BFB3FA1;4840.
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22310 strings out of 478353
- 387722 string characters out of 5852101
- 1147848 words of memory out of 5000000
- 39880 multiletter control sequences out of 15000+600000
- 420326 words of font info for 154 fonts, out of 8000000 for 9000
+ 22353 strings out of 478353
+ 388164 string characters out of 5852101
+ 1148374 words of memory out of 5000000
+ 39916 multiletter control sequences out of 15000+600000
+ 420377 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
@@ -961,10 +954,10 @@ exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/20
 21/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist
 /fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (19 pages, 1715070 bytes).
+Output written on main.pdf (20 pages, 1718430 bytes).
 PDF statistics:
- 528 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
- 133 named destinations out of 1000 (max. 500000)
+ 537 PDF objects out of 1000 (max. 8388607)
+ 460 compressed objects within 5 object streams
+ 138 named destinations out of 1000 (max. 500000)
  41746 words of extra memory for PDF output out of 42996 (max. 10000000)
 
