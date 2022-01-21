@@ -19,6 +19,37 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global}
+    \entry{alexanderian_KLexpansion_2015}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a7250c5894db37d9dcfadaf8d5104ff1}{%
+           family={Alexanderian},
+           familyi={A\bibinitperiod},
+           given={Alen},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a7250c5894db37d9dcfadaf8d5104ff1}
+      \strng{fullhash}{a7250c5894db37d9dcfadaf8d5104ff1}
+      \strng{bibnamehash}{a7250c5894db37d9dcfadaf8d5104ff1}
+      \strng{authorbibnamehash}{a7250c5894db37d9dcfadaf8d5104ff1}
+      \strng{authornamehash}{a7250c5894db37d9dcfadaf8d5104ff1}
+      \strng{authorfullhash}{a7250c5894db37d9dcfadaf8d5104ff1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv: Probability}
+      \field{title}{A brief note on the Karhunen-Loève expansion}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1509.07526
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1509.07526
+      \endverb
+    \endentry
     \entry{bauer_wahrscheinlichkeitstheorie_2020}{book}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=3c0199f43b68ebb6f516edde6e094567}{%
@@ -161,6 +192,47 @@
       \verb https://projecteuclid.org/journals/annals-of-statistics/volume-34/issue-5/Prediction-in-functional-linear-regression/10.1214/009053606000000830.full
       \endverb
       \keyw{62G20,62J05,bootstrap,Covariance,Dimension reduction,eigenfunction,eigenvalue,eigenvector,Functional data analysis,intercept,minimax,optimal convergence rate,principal components analysis,rate of convergence,slope,smoothing,spectral decomposition}
+    \endentry
+    \entry{cardot_bumpyfunction_2002}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7771e014f886d75016ade6d6e37db566}{%
+           family={Cardot},
+           familyi={C\bibinitperiod},
+           given={Hervé},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{7771e014f886d75016ade6d6e37db566}
+      \strng{fullhash}{7771e014f886d75016ade6d6e37db566}
+      \strng{bibnamehash}{7771e014f886d75016ade6d6e37db566}
+      \strng{authorbibnamehash}{7771e014f886d75016ade6d6e37db566}
+      \strng{authornamehash}{7771e014f886d75016ade6d6e37db566}
+      \strng{authorfullhash}{7771e014f886d75016ade6d6e37db566}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper introduces a new nonparametric estimator based on penalized regression splines for linear operator equations when the data are noisy. A local roughness penalty that relies on local support properties of B-splines is introduced in order to deal with spatial heterogeneity of the function to be estimated. This estimator is shown to be consistent under weak conditions on the asymptotic behaviour of the singular values of the linear operator. Furthermore, in the usual nonparametric settings, it is shown to attain optimal rates of convergence. Then its good performances are confirmed by means of a simulation study.}
+      \field{issn}{0047-259X}
+      \field{journaltitle}{Journal of Multivariate Analysis}
+      \field{number}{1}
+      \field{title}{Spatially Adaptive Splines for Statistical Linear Inverse Problems}
+      \field{volume}{81}
+      \field{year}{2002}
+      \field{pages}{100\bibrangedash 119}
+      \range{pages}{20}
+      \verb{doi}
+      \verb https://doi.org/10.1006/jmva.2001.1994
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0047259X01919943
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0047259X01919943
+      \endverb
+      \keyw{linear inverse problems,integral equations,deconvolution,regularization,local roughness penalties,spatially adaptive estimators,regression splines,convergence}
     \endentry
     \entry{carey_life_2002}{article}{}
       \name{author}{7}{}{%
@@ -617,6 +689,48 @@
       \endverb
       \verb{url}
       \verb https://www.springer.com/de/book/9780387400808
+      \endverb
+    \endentry
+    \entry{Reiss_2007b}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=33ded7c05af7de063bce348114a01c8b}{%
+           family={Reiss},
+           familyi={R\bibinitperiod},
+           given={Philip\bibnamedelima T.},
+           giveni={P\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=75e9564a86e52d4e314ca68471a260b9}{%
+           family={Ogden},
+           familyi={O\bibinitperiod},
+           given={R.\bibnamedelimi Todd},
+           giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6b337134e9ea85858d76e264e6dd9ca9}
+      \strng{fullhash}{6b337134e9ea85858d76e264e6dd9ca9}
+      \strng{bibnamehash}{6b337134e9ea85858d76e264e6dd9ca9}
+      \strng{authorbibnamehash}{6b337134e9ea85858d76e264e6dd9ca9}
+      \strng{authornamehash}{6b337134e9ea85858d76e264e6dd9ca9}
+      \strng{authorfullhash}{6b337134e9ea85858d76e264e6dd9ca9}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-1459}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{479}
+      \field{title}{Functional Principal Component Regression and Functional Partial Least Squares}
+      \field{volume}{102}
+      \field{year}{2007}
+      \field{pages}{984\bibrangedash 996}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1198/016214507000000527
+      \endverb
+      \verb{file}
+      \verb Functional Principal Component Regression and Functional Partial Least Squares (2):C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\Functional Principal Component Regression and Functional Partial Least Squares (2).pdf:pdf
       \endverb
     \endentry
     \entry{shonkwiler_explorations_2009}{book}{}
