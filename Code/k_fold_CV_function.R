@@ -93,7 +93,7 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
       stop = stop +i
     }
   } 
-  return(list(SSE.CV=SSE.CV, errfd.cv=errfd))
+  return(list(SSE.CV=SSE.CV, errfd.cv=errfd, fRegress_obj = fRegressListi))
 }
 
 
