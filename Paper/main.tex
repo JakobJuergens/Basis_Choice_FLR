@@ -152,19 +152,19 @@ style=authoryear-comp,
 	\end{equation}
 	
 	\paragraph{Monomial Basis}
-This is the basis that is needed in order to build polynomials, one of the best known ways of basis expansion.
-For the polynomial of the form 
+This is the basis that is needed to build polynomials, one of the best-known ways to expand a function.
+The polynomial of the form 
 
 	\begin{equation}
-		f(t) = \sum_{i =1}^{\mathcal{I}} c_k(t -w)^{i-1}
+		f(t) = \sum_{k =1}^{K} c_k(t -w)^{k-1}
 	\end{equation}
-	$(t -w)$ is the monomial basis function of the sequence
+	can be expressed as a linear combination of the monomials $(t - w)$ which form the basis 
 	
 	\begin{equation}
-		S_{i}^{MB}(t) = (t-w)^i, i = 0, 1, ..., \mathcal{I} 
+		S_{k}^{MB}(t) = (t-w)^k, k = 0, 1, ..., K.
 	\end{equation}
 	
-	where the shift parameter $w$ usually is specified to be the center of the interval subject to approximation.
+	The shift parameter $w$ usually is specified to be the center of the interval subject to approximation.
 	
 	 Problems of collinearity arise for higher degrees since the monomial basis becomes more correlated as the degrees increase. This restricts the number of degrees and therefore the use of this basis: For simple functions this may be useful, but the small number of degrees makes it impossible to capture pronounced local peculiarities and leads to undesirable behaviour at the tails. (cf. \cite{ramsay_functional_2005})
 

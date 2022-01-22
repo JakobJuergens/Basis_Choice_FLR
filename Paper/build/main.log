@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  22 JAN 2022 20:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.1)  22 JAN 2022 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -925,11 +925,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21722 strings out of 478599
- 366595 string characters out of 5858101
- 1148152 words of memory out of 5000000
+ 21724 strings out of 478599
+ 366613 string characters out of 5858101
+ 1147152 words of memory out of 5000000
  39018 multiletter control sequences out of 15000+600000
- 420752 words of font info for 159 fonts, out of 8000000 for 9000
+ 420812 words of font info for 160 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,66p,2668b,1725s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
@@ -951,7 +951,7 @@ exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/20
 21/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist
 /fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on build/main.pdf (21 pages, 1723206 bytes).
+Output written on build/main.pdf (21 pages, 1723208 bytes).
 PDF statistics:
  560 PDF objects out of 1000 (max. 8388607)
  482 compressed objects within 5 object streams
