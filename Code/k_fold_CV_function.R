@@ -37,7 +37,9 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
     # check if dataset can be divided evenly by number of CV number
     if (dataset_length %% CVobs == 0)  {
       num_removed <- dataset_length / CVobs
-    } else {print("ERROR")}##############################################################  do smth
+    } else {
+      stop('Data set is not divisible into specified number of cv-sets')
+    }##############################################################  do smth
     start = 1
     stop = num_removed
     # start CV
@@ -90,7 +92,6 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
         }
         yhati <- yhati + tmp_yhat
       }
-      print(yhati)
       
       errfd[m] = mean((yvec[(start:stop)] - yhati)^2);
       SSE.CV <- SSE.CV + errfd[m]
@@ -98,8 +99,8 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
       stop = stop + num_removed
     }
   } 
-  return(list(SSE.CV=SSE.CV, errfd.cv=errfd, xfdlisti = xfdlisti, 
-              betalist = betalist, fRegress_obj = fRegressListi))
+  return(list(SSE.CV=SSE.CV, errfd.cv=errfd))
+              #xfdlisti = xfdlisti, betalist = betalist, fRegress_obj = fRegressListi))
 }
 
 
