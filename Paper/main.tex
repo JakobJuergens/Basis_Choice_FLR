@@ -152,8 +152,23 @@ style=authoryear-comp,
 	\end{equation}
 	
 	\paragraph{Monomial Basis}
+This is the basis that is needed in order to build polynomials, one of the best known ways of basis expansion.
+For the polynomial of the form 
+
+	\begin{equation}
+		f(t) = \sum_{i =1}^{\mathcal{I}} c_k(t -w)^{i-1}
+	\end{equation}
+	$(t -w)$ is the monomial basis function of the sequence
 	
-	{\color{red} Jona}
+	\begin{equation}
+		S_{i}^{MB}(t) = (t-w)^i, i = 0, 1, ..., \mathcal{I} 
+	\end{equation}
+	
+	where the shift parameter $w$ usually is specified to be the center of the interval subject to approximation.
+	
+	 Problems of collinearity arise for higher degrees since the monomial basis becomes more correlated as the degrees increase. This restricts the number of degrees and therefore the use of this basis: For simple functions this may be useful, but the small number of degrees makes it impossible to capture pronounced local peculiarities and leads to undesirable behaviour at the tails. (cf. \cite{ramsay_functional_2005})
+
+
 	
 	\paragraph{Fourier Basis}
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
@@ -514,25 +529,23 @@ There are several important aspects of functional regression in this functional 
 	\end{itemize}
 
 	\subsection{Motivation}
-	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we imposed the gasoline data which consists of 60 samples of Near Infrared (NIR) spectroscopy measured by 2-nm from 900 to 1,700 nm, and a response variable, octane rate. The dataset, which contains 60 i.i.d. observations with 401 measurements, allows to analyze samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). The optimal number L of basis functions were chosen for each model through 10-fold Cross-Validation. Additionally, even for FPCR, we discovered what number of components produces the best. We finally progressed the application with the derived outcomes from our simulation study.
+	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we imposed the gasoline data which consists of 60 samples of Near Infrared (NIR) spectroscopy measured by 2-nm from 900 to 1,700 nm, and a response variable, octane rate. NIR- spectroscopy allows to analyze samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). This setup was chosen to improve the approach towards the application, which involves predicting the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis, created using 50 knots. These smooth curves are then centered({\color{orange} in this case, shouldn't mu be removed on the equation?}), before performing \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is supposed that each estimated score follows normal distribution with the fact that the mean is 0 and the variance equals its eigenvalue. Finally, we obtain the generated curves
+	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before performing \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drwan from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$ Finally, we obtain the generated curves $NIR_{sim}$
 	
 	
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
 
-		\begin{itemize}
-			\item $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$
-			\item Simplification: the $\xi_{j}$ do not follow a normal
-			\item $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
-		\end{itemize}
+		where
+			$\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
+		
 	
     %{\color{blue} I shifted this from theory to over here, as it makes more sense in the simulation part.\\
     %Very short summary: take fpc's and eigenvalues, use that the scores are independent from each other. Use the eigenvalues as variances and draw from a multivariate normal with the right varcov matrix (normal just because of convenience... No theoretical reasoning)}
     
     \subsection{Simulation setup}
-	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions, smooth function $f_1(t)$ and bumpy function $f_2(t)$, were chosen to differentiate their smoothness. The bumpy function was generated by refering to \cite{cardot_bumpyfunction_2002}. The two functions are described as: {\color{orange} we might define the interval of t on the functions}
+	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions,  $f_1(t)$ and  $f_2(t)$, are created that differ in their smoothness, to compare the methods with differing true coefficient functions:
 	
 	\begin{equation}
     	f_1(t) = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t) 
@@ -544,7 +557,8 @@ There are several important aspects of functional regression in this functional 
     				 & + 8 \exp{\left(\frac{-0.5(t-0.6)^2}{0.02^2}\right)} -  \exp{\left(\frac{-0.5(t-0.8)^2}{0.03^2}\right)}
     	\end{split}
     \end{equation}
-    
+    The bumpy function, $f_2(t)$, was generated by referring to \cite{cardot_bumpyfunction_2002}. 
+    Both functions were created such that the inner product $\langle NIR_{sim}, f \rangle, f \in \{f_1(t), f_2(t)\}$ creates responses similar to the original octane ratings of the gasoline dataset. 
 
 		\vspace{0.1cm}
 		\begin{figure}
@@ -563,11 +577,11 @@ There are several important aspects of functional regression in this functional 
 			\end{minipage}
 		\end{figure}
 		
-		The intention of comparisons based on the two functions was to represent which type of expansions turn out better simulation results in each case where the functions are bumpy and smooth. Two different error-terms $\epsilon$ were created by first generating $i.i.d.$ standard normal error and then multiplying them by a error variation $\sigma_e $ which is calculated such that the squared multiple correlation coefficient $R^2 = var(Xf) / (var(Xf) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error-terms are then used to generate two sets of responses for $f \in \{f_1(t), f_2(t)\}$.
+		 Two different error-terms $\epsilon$ were created by first generating an $i.i.d.$ standard normal error term and then multiplying it by two error variations $\sigma_e $. The error variations represent different signal-to-noise ratios and are created such that the squared multiple correlation coefficient $R^2 = var(Xf) / (var(Xf) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error-terms are then used to generate two sets of responses for $f \in \{f_1(t), f_2(t)\}$.
 		
-		$$Y_{1,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)$$ 
+		$$Y_{1,f} = \langle NIR, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)\biggr\rbrack$$ 
 		
-		$$Y_{2,f} = \langle NIR, f\rangle + Z  \frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)$$
+		$$Y_{2,f} = \langle NIR, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)\biggr\rbrack$$
 		
 		where $Z \sim \mathcal{N}(0,1)$ to test the methods with different signal-to-noise ratios. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with different number of cubic bspline basis-function $(5,6,...,25)$ and fourier functions $(1,2,...,25)$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used 10f cross-validation. The simulation was done with R (version...). We carried out 2500 repetitions for each set of simulations. {\color{green} Information about version and link to repo / package in footnote??}
 		
