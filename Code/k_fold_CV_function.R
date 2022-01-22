@@ -36,10 +36,10 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
     
     # check if dataset can be divided evenly by number of CV number
     if (dataset_length %% CVobs == 0)  {
-      i <- dataset_length / CVobs
+      num_removed <- dataset_length / CVobs
     } else {print("ERROR")}##############################################################  do smth
     start = 1
-    stop = i
+    stop = num_removed
     # start CV
     for (m in 1:CVobs) {
       
@@ -63,13 +63,16 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
         xfdlisti[[j]] <- fd(coefj,basisj)
       }
       yveci         <- yvec[-(start:stop)]
+      
       fRegressListi <- fRegress(yveci, xfdlisti, betalist, wti)
       betaestlisti  <- fRegressListi$betaestlist
-      yhati <- c()
+      yhati <- rep(0, times = num_removed)
       
   
       for (j in 1:p) {
         # use test data on trained model, get yhat for test data
+        tmp_yhat <- c()
+        
         for (curve in start:stop){
           betafdParj <- betaestlisti[[j]]
           betafdj    <- betafdParj$fd
@@ -81,19 +84,22 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
           delta      <- tfine[2]-tfine[1]
           betavec    <- eval.fd(tfine, betafdj, 0, returnMatrix)
           xveci      <- eval.fd(tfine, xfdj[curve], 0, returnMatrix)
-          yhati     <- c(yhati, delta*(sum(xveci*betavec) -
+          tmp_yhat   <- c(tmp_yhat, delta*(sum(xveci*betavec) -
                                          0.5*( xveci[1]    *betavec[1] +
                                                  xveci[nfine]*betavec[nfine] )))
         }
-       
+        yhati <- yhati + tmp_yhat
       }
-      errfd[m] = mean(yvec[(start:stop)] - yhati);
-      SSE.CV <- SSE.CV + errfd[m]^2
-      start = start +i
-      stop = stop +i
+      print(yhati)
+      
+      errfd[m] = mean((yvec[(start:stop)] - yhati)^2);
+      SSE.CV <- SSE.CV + errfd[m]
+      start = start + num_removed
+      stop = stop + num_removed
     }
   } 
-  return(list(SSE.CV=SSE.CV, errfd.cv=errfd, fRegress_obj = fRegressListi))
+  return(list(SSE.CV=SSE.CV, errfd.cv=errfd, xfdlisti = xfdlisti, 
+              betalist = betalist, fRegress_obj = fRegressListi))
 }
 
 
@@ -189,6 +195,7 @@ fRegressArgCheck <- function(yfd, xfdlist, betalist, wt=NULL)
         paste("Covariate",j,"is not univariate."))
       #  check size of coefficient array
       Nj <- dim(xcoef)[2]
+      
       if (Nj != N) {
         print(
           paste("Incorrect number of replications in XFDLIST",

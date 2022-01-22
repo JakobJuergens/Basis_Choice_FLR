@@ -13,9 +13,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Bases of $\mathbb {L}^2$}{5}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{6}{section*.2}%
+\contentsline {paragraph}{Monomial Basis}{5}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{B-spline Basis}{6}{section*.4}%
+\contentsline {paragraph}{Fourier Basis}{6}{section*.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{B-spline Basis}{6}{section*.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.4}Approximation and Smoothing via Basis Truncation}{7}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 

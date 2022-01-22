@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  22 JAN 2022 00:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  22 JAN 2022 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -860,61 +860,61 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  [2] [3] [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 143.
+(hyperref)                removing `math shift' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 143.
+(hyperref)                removing `superscript' on input line 145.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 143.
+(hyperref)                removing `math shift' on input line 145.
 
 [5]
-<../Graphics/Fourier_Basis.pdf, id=222, 1445.4pt x 578.16pt>
+<../Graphics/Fourier_Basis.pdf, id=223, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 166.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 172.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [6 <../Graphics/Fourier_Basis.pdf>]
-<../Graphics/Bspline_Basis.pdf, id=241, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=242, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 191.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 197.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [7 <../Graphics/Bspline_Basis.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
 [8] [9] [10] [11] [12] [13] [14] [15]
-<../Graphics/smooth_function.png, id=356, 509.65407pt x 324.46219pt>
+<../Graphics/smooth_function.png, id=357, 509.65407pt x 324.46219pt>
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
-Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 54
-8.
+Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 55
+4.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-<../Graphics/bumpy_function.png, id=357, 509.65407pt x 324.46219pt>
+<../Graphics/bumpy_function.png, id=358, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 554
+Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 560
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
 
 Underfull \vbox (badness 1603) has occurred while \output is active []
 
  [16 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>] [17]
-<../Graphics/Wiener_plot.pdf, id=379, 1445.4pt x 578.16pt>
+<../Graphics/Wiener_plot.pdf, id=380, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 634.
+Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 640.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [18] [19 <../Graphics/Wiener_plot.pdf>]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -929,9 +929,9 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22396 strings out of 478353
- 388071 string characters out of 5854636
- 1150624 words of memory out of 5000000
+ 22397 strings out of 478353
+ 388081 string characters out of 5854636
+ 1149624 words of memory out of 5000000
  39944 multiletter control sequences out of 15000+600000
  420752 words of font info for 159 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -954,10 +954,10 @@ pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share
 nts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-sup
 er/sfrm1095.pfb>
-Output written on main.pdf (21 pages, 1721571 bytes).
+Output written on main.pdf (21 pages, 1721940 bytes).
 PDF statistics:
- 554 PDF objects out of 1000 (max. 8388607)
- 476 compressed objects within 5 object streams
- 142 named destinations out of 1000 (max. 500000)
+ 555 PDF objects out of 1000 (max. 8388607)
+ 477 compressed objects within 5 object streams
+ 143 named destinations out of 1000 (max. 500000)
  41746 words of extra memory for PDF output out of 42996 (max. 10000000)
 

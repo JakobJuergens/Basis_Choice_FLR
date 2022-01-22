@@ -32,12 +32,12 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
 
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
-    matrix(data = 0, nrow = length(n_basis), ncol = 7)
+    matrix(data = 0, nrow = length(n_basis), ncol = 6)
   )
 
   colnames(CV_container) <- c(
     "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
-    "IMSE", "n_basis", "success_count"
+    "n_basis", "success_count"
   )
 
   CV_container$n_basis <- n_basis
@@ -50,6 +50,8 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   )
 
   # prepare objects for functional linear regression
+  betafdPar1 <- fdPar(fd(0, create.constant.basis(c(0, 1))))
+  
   betafdPar2_list <- map(
     .x = 1:length(n_basis),
     .f = function(i) fdPar(basis_functions[[i]])
@@ -57,7 +59,9 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
 
   betalist_list <- map(
     .x = 1:length(n_basis),
-    .f = function(i) list(smooth_basis_fd_data = betafdPar2_list[[i]])
+    .f = function(i) list(const = betafdPar1, 
+                          smooth_basis = betafdPar2_list[[i]]
+                          )
   )
 
   # loop over repetitions
@@ -93,25 +97,19 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
           smallbasis <- basis_functions[[j]]
 
           # express my_data data in functional basis
-          smooth_basis_fd <- smooth.basis(y = data, fdParobj = smallbasis)$fd
+          smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
 
           # prepare objects for functional regression
-          xfdlist <- list(smooth_basis = smooth_basis_fd)
+          xfdlist <- list(const = smooth.basis(argvals = grid, 
+                                               y = matrix(data = 1, nrow = 401, ncol = n_obs),
+                                               fdParobj = smallbasis)$fd, 
+                          smooth_basis = smooth_basis_fd)
 
           # perform functional regression with cross validation for all 4 scenarios
           f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          
-          # extract fRegress objects
-          f_regress1_1_obj <- f_regress1_1$fRegress_obj
-          f_regress1_2_obj <- f_regress1_2$fRegress_obj
-          f_regress2_1_obj <- f_regress2_1$fRegress_obj
-          f_regress2_2_obj <- f_regress2_2$fRegress_obj
-          
-          # evaluate basis
-          eval_basis <- eval.basis(evalarg = grid, basisobj = smallbasis)
 
           # generate tmp variable for current number of succesful runs
           tmp_sr <- CV_container$success_count[j]
@@ -177,12 +175,12 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
 
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
-    matrix(data = 0, nrow = length(n_basis), ncol = 7)
+    matrix(data = 0, nrow = length(n_basis), ncol = 6)
   )
 
   colnames(CV_container) <- c(
     "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
-    "IMSE", "n_basis", "success_count"
+    "n_basis", "success_count"
   )
 
   CV_container$n_basis <- n_basis
