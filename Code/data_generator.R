@@ -20,14 +20,16 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
 
   ### create basis object for fpca
   # generate vector of knots
-  breaks <- seq(from = 0, to = n_wl, length.out = n_knots)
+  breaks <- seq(from = 0, to = 1, length.out = n_knots)
+  
   # generate bspline basis accordingly
   bspline_basis <- create.bspline.basis(
-    rangeval = c(0, n_wl), norder = n_order, breaks = breaks
+    rangeval = c(0, 1), norder = n_order, breaks = breaks
   )
 
   # express NIR in terms of the bspline basis
-  NIR_bspline_fd <- smooth.basis(y = t(NIR), fdParobj = bspline_basis)$fd
+  NIR_bspline_fd <- smooth.basis(argvals = seq(0, 1, length.out = n_wl), 
+                                 y = t(NIR), fdParobj = bspline_basis)$fd
 
   # perform fpca
   NIR_pcaObj <- pca.fd(
@@ -48,7 +50,8 @@ NIR_curve_generator <- function(n = 1, n_harmonics = 4, n_order = 4,
   pc_basis_bspline_coef <- NIR_pcaObj$harmonics$coefs
 
   # get values of bspline basis functions at grid points
-  bspline_basis_vals <- eval.basis(evalarg = 1:n_wl, basisobj = bspline_basis)
+  bspline_basis_vals <- eval.basis(evalarg = seq(0, 1, length.out = n_wl), 
+                                   basisobj = bspline_basis)
 
   # get values of PCs at grid points
   pc_grid_vals <- bspline_basis_vals %*% pc_basis_bspline_coef
