@@ -8,7 +8,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   NIR <- as.matrix(gasoline$NIR)
   
   ### set up coefficient "functions" / error terms
-  grid <- seq(0, 1, length = 401)
+  grid <- seq(0, 1, length.out = 401)
   
   # smooth
   f1 <- 2 * sin(0.5 * pi * grid) + 4 * sin(1.5 * pi * grid) + 5 * sin(2.5 * pi * grid)
@@ -46,7 +46,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   # create basis functions
   basis_functions <- map(
     .x = n_basis,
-    .f = function(j) create.bspline.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+    .f = function(j) create.bspline.basis(rangeval = c(0, 1), nbasis = j, norder = 4)
   )
 
   # prepare objects for functional linear regression
@@ -103,6 +103,15 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
           f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          
+          # extract fRegress objects
+          f_regress1_1_obj <- f_regress1_1$fRegress_obj
+          f_regress1_2_obj <- f_regress1_2$fRegress_obj
+          f_regress2_1_obj <- f_regress2_1$fRegress_obj
+          f_regress2_2_obj <- f_regress2_2$fRegress_obj
+          
+          # evaluate basis
+          eval_basis <- eval.basis(evalarg = grid, basisobj = smallbasis)
 
           # generate tmp variable for current number of succesful runs
           tmp_sr <- CV_container$success_count[j]
@@ -140,7 +149,7 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
   NIR <- as.matrix(gasoline$NIR)
 
   ### set up coefficient "functions" / error terms
-  grid <- seq(0, 1, length = 401)
+  grid <- seq(0, 1, length.out = 401)
   # smooth
   f1 <- 2 * sin(0.5 * pi * grid) + 4 * sin(1.5 * pi * grid) + 5 * sin(2.5 * pi * grid)
   # bumpy
@@ -185,16 +194,16 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
       .x = n_basis,
       .f = function(j) {
         if (j %% 2 == 1) {
-          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j))
+          return(create.fourier.basis(rangeval = c(0, 1), nbasis = j))
         } else {
-          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, dropind = j))
+          return(create.fourier.basis(rangeval = c(0, 1), nbasis = j, dropind = j))
         }
       }
     )
   } else {
     basis_functions <- map(
       .x = n_basis,
-      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
+      .f = function(j) create.fourier.basis(rangeval = c(0, 1), nbasis = j)
     )
   }
 
@@ -253,6 +262,12 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
           f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
 
+          # extract fRegress objects
+          f_regress1_1_obj <- f_regress1_1$fRegress_obj
+          f_regress1_2_obj <- f_regress1_2$fRegress_obj
+          f_regress2_1_obj <- f_regress2_1$fRegress_obj
+          f_regress2_2_obj <- f_regress2_2$fRegress_obj
+          
           # generate tmp variable for current number of succesful runs
           tmp_sr <- CV_container$success_count[j]
 
@@ -289,7 +304,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
   NIR <- as.matrix(gasoline$NIR)
   
   ### set up coefficient "functions" / error terms
-  grid <- seq(0, 1, length = 401)
+  grid <- seq(0, 1, length.out = 401)
   # smooth
   f1 <- 2 * sin(0.5 * pi * grid) + 4 * sin(1.5 * pi * grid) + 5 * sin(2.5 * pi * grid)
   # bumpy
@@ -327,7 +342,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
   # create basis functions
   basis_functions <- map(
     .x = n_basis,
-    .f = function(j) create.bspline.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+    .f = function(j) create.bspline.basis(rangeval = c(0, 1), nbasis = j, norder = 4)
   )
 
   # determine cv-method for later runs
@@ -432,7 +447,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
   NIR <- as.matrix(gasoline$NIR)
   
   ### set up coefficient "functions" / error terms
-  grid <- seq(0, 1, length = 401)
+  grid <- seq(0, 1, length.out = 401)
   # smooth
   f1 <- 2 * sin(0.5 * pi * grid) + 4 * sin(1.5 * pi * grid) + 5 * sin(2.5 * pi * grid)
   # bumpy
@@ -477,16 +492,16 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
       .x = n_basis,
       .f = function(j) {
         if (j %% 2 == 1) {
-          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j))
+          return(create.fourier.basis(rangeval = c(0, 1), nbasis = j))
         } else {
-          return(create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j, dropind = j))
+          return(create.fourier.basis(rangeval = c(0, 1), nbasis = j, dropind = j))
         }
       }
     )
   } else {
     basis_functions <- map(
       .x = n_basis,
-      .f = function(j) create.fourier.basis(rangeval = c(0, length(grid)), nbasis = j)
+      .f = function(j) create.fourier.basis(rangeval = c(0, 1), nbasis = j)
     )
   }
 
