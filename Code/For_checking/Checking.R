@@ -101,10 +101,10 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
     Y2_1 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_1)
     Y2_2 <- as.numeric(my_data %*% f2 + rnorm(n_obs, 0, 1) * sigma_eps_squared2_2)
     
-    df1_1 <- data.frame(Y1_1, my_data)
-    df1_2 <- data.frame(Y1_2, my_data)
-    df2_1 <- data.frame(Y2_1, my_data)
-    df2_2 <- data.frame(Y2_2, my_data)
+    # df1_1 <- data.frame(Y1_1, my_data)
+    # df1_2 <- data.frame(Y1_2, my_data)
+    # df2_1 <- data.frame(Y2_1, my_data)
+    # df2_2 <- data.frame(Y2_2, my_data)
     
     # loop over repetitions
     for (j in 1:length(n_basis)) {
@@ -122,18 +122,18 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
           for(m in 1 : 10){
             sampling <- sort(sample(1:n_obs, n_obs/10, replace = FALSE))
             
-            test_data <- data[, sampling]
-            train_data <- data[, -sampling]
+            # test_data <- data[, sampling]
+            # train_data <- data[, -sampling]
             
-            df1_1_train <- df1_1[-sampling, ]
-            df1_2_train <- df1_2[-sampling, ]
-            df2_1_train <- df2_1[-sampling, ]
-            df2_2_train <- df2_2[-sampling, ]
-            
-            df1_1_test <- df1_1[sampling, ]
-            df1_2_test <- df1_1[sampling, ]
-            df2_1_test <- df1_1[sampling, ]
-            df2_2_test <- df1_1[sampling, ]
+            # df1_1_train <- df1_1[-sampling, ]
+            # df1_2_train <- df1_2[-sampling, ]
+            # df2_1_train <- df2_1[-sampling, ]
+            # df2_2_train <- df2_2[-sampling, ]
+            # 
+            # df1_1_test <- df1_1[sampling, ]
+            # df1_2_test <- df1_1[sampling, ]
+            # df2_1_test <- df1_1[sampling, ]
+            # df2_2_test <- df1_1[sampling, ]
             
             # express my_data data in functional basis
             smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
@@ -143,6 +143,9 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
             # perform fPCA
             train_fd <- pca.fd(fdobj = smooth_basis_fd_train, 
                                nharm = nharm, centerfns = TRUE)
+            
+            # extract scores for training set
+            train_scores <- train_fd$scores
             
             scores_vec  <- c()
             scores_mat  <- matrix(0, nrow = n_obs/10, ncol = nharm)
@@ -175,34 +178,49 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
               return(scores_vec)
             }
             
-            for (p in n_obs/10){
+            for (p in 1:(n_obs/10)){
               scores_mat[p,] <- sc(p)
             }
             
-            # combine objects into data frames for linear regression
-            dataframe1_1 <- as.data.frame(
-              rbind(cbind(df1_1_train[,1], train_fd$scores),cbind(df1_1_test[,1], scores_mat)))
-            dataframe1_2 <- as.data.frame(
-              rbind(cbind(df1_2_train[,1], train_fd$scores),cbind(df1_2_test[,1], scores_mat)))
-            dataframe2_1 <- as.data.frame(
-              rbind(cbind(df2_1_train[,1], train_fd$scores),cbind(df2_1_test[,1], scores_mat)))
-            dataframe2_2 <- as.data.frame(
-              rbind(cbind(df2_2_train[,1], train_fd$scores),cbind(df2_2_test[,1], scores_mat)))
+            scores_tib <- as_tibble(scores_mat)
+            names(scores_tib) <- paste0('harm_', 1:nharm)
+            
+            # # combine objects into data frames for linear regression
+            dataframe1_1 <- as_tibble(cbind(df1_1_train[,1], train_fd$scores))
+            dataframe1_2 <- as_tibble(cbind(df1_2_train[,1], train_fd$scores))
+            dataframe2_1 <- as_tibble(cbind(df2_1_train[,1], train_fd$scores))
+            dataframe2_2 <- as_tibble(cbind(df2_2_train[,1], train_fd$scores))
+            
+            # give correct names
+            names(dataframe1_1) <- c('Y1_1', paste0('harm_', 1:nharm))
+            names(dataframe1_2) <- c('Y1_2', paste0('harm_', 1:nharm))
+            names(dataframe2_1) <- c('Y2_1', paste0('harm_', 1:nharm))
+            names(dataframe2_2) <- c('Y2_2', paste0('harm_', 1:nharm))
             
             model1_1 <- lm(Y1_1 ~., dataframe1_1) 
             model1_2 <- lm(Y1_2 ~., dataframe1_2)
             model2_1 <- lm(Y2_1 ~., dataframe2_1)
             model2_2 <- lm(Y2_2 ~., dataframe2_2)
             
-            MSPE1_1 <- sum((model1_1$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
-            MSPE1_2 <- sum((model1_2$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
-            MSPE2_1 <- sum((model2_1$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
-            MSPE2_2 <- sum((model2_2$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            test_prediction1_1 <- unname(predict(object = model1_1, newdata = scores_tib))
+            test_prediction1_2 <- unname(predict(object = model1_2, newdata = scores_tib))
+            test_prediction2_1 <- unname(predict(object = model2_1, newdata = scores_tib))
+            test_prediction2_2 <- unname(predict(object = model2_2, newdata = scores_tib))
             
-            MSPE_mat[m, 1] <- MSPE1_1
-            MSPE_mat[m, 2] <- MSPE1_2
-            MSPE_mat[m, 3] <- MSPE2_1
-            MSPE_mat[m, 4] <- MSPE2_2
+            rmse_test1_1 <- sqrt(1/10 * sum((test_prediction1_1 - Y1_1)^2))
+            rmse_test1_2 <- sqrt(1/10 * sum((test_prediction1_2 - Y1_2)^2))
+            rmse_test2_1 <- sqrt(1/10 * sum((test_prediction2_1 - Y2_1)^2))
+            rmse_test2_2 <- sqrt(1/10 * sum((test_prediction2_2 - Y2_2)^2))
+            
+            # MSPE1_1 <- sum((model1_1$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            # MSPE1_2 <- sum((model1_2$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            # MSPE2_1 <- sum((model2_1$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            # MSPE2_2 <- sum((model2_2$residuals[(n_obs * 9 / 10 + 1):n_obs])^2)/(n_obs/10)
+            
+            MSPE_mat[m, 1] <- rmse_test1_1
+            MSPE_mat[m, 2] <- rmse_test1_2
+            MSPE_mat[m, 3] <- rmse_test2_1
+            MSPE_mat[m, 4] <- rmse_test2_2
           }
           
           MSPE_mat <- colMeans(MSPE_mat)
