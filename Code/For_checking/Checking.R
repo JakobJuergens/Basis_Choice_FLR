@@ -114,9 +114,12 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
           MSPE_mat <- as.data.frame(matrix(0, nrow = 10, ncol = 4))
           colnames(MSPE_mat) <- c('MSPE1_1', 'MSPE1_2', 'MSPE2_1', 'MSPE2_2')
           
+          #Randomly reorder samples
+          sampling <- sample(n_obs, n_obs, replace = FALSE)
+          
           for(m in 1 : 10){
-            # choose sample to be used as test data
-            sampling <- sort(sample(1:n_obs, n_obs/10, replace = FALSE))
+            #Choose samples for test data with ordering
+            sampling <- sort(sampling[((n_obs/10)*(m-1)+1) : ((n_obs/10)*m)])
             
             # express my_data data in functional basis
             smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
