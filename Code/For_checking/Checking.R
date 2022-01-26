@@ -76,7 +76,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
   # create basis functions
   basis_functions <- map(
     .x = n_basis,
-    .f = function(j) create.bspline.basis(rangeval = c(0, length(grid)), nbasis = j, norder = 4)
+    .f = function(j) create.bspline.basis(rangeval = c(0, 1), nbasis = j, norder = 4)
   )
   
   
@@ -120,7 +120,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
           colnames(MSPE_mat) <- c('MSPE1_1', 'MSPE1_2', 'MSPE2_1', 'MSPE2_2')
           
           for(m in 1 : 10){
-            sampling <- sort(sample(n_obs, n_obs/10, replace = FALSE))
+            sampling <- sort(sample(1:n_obs, n_obs/10, replace = FALSE))
             
             test_data <- data[, sampling]
             train_data <- data[, -sampling]
@@ -136,30 +136,41 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
             df2_2_test <- df1_1[sampling, ]
             
             # express my_data data in functional basis
-            smooth_basis_fd <- smooth.basis(y = data, fdParobj = smallbasis)$fd
-            
+            smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
             smooth_basis_fd_train <- smooth_basis_fd[-sampling]
             smooth_basis_fd_test  <- smooth_basis_fd[sampling]
             
             # perform fPCA
-            train_fd <- pca.fd(smooth_basis_fd_train, nharm = nharm, centerfns = TRUE)
+            train_fd <- pca.fd(fdobj = smooth_basis_fd_train, 
+                               nharm = nharm, centerfns = TRUE)
             
             scores_vec  <- c()
             scores_mat  <- matrix(0, nrow = n_obs/10, ncol = nharm)
             
+            tmp_grid <- seq(0, 1, length.out = 1000)
+            basis_eval <- eval.basis(evalarg = tmp_grid, basisobj = smallbasis)
+            integral_matrix <- matrix(data = 0, nrow = n_basis[j], ncol = n_basis[j])
+            
+            for(l in 1:n_basis[j]){
+              for(k in 1:n_basis[j]){
+                integral_matrix[l,k] <- integrate(function(t){
+                    approx(x = tmp_grid,
+                           y = basis_eval[, l] * t(basis_eval[, k]), xout = t)$y}, lower = 0, upper = 1
+                  )$value
+              }
+            }
+            
             sc <-  function(x){
+              scores_vec <- c()
+              
               for(k in 1 : nharm){
-                newfun        <- (smooth_basis_fd_test[x]-train_fd$meanfd)*train_fd$harmonics[k]
+                newfun <- (smooth_basis_fd_test[x]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
                 
-                newfun_points <- eval.fd(seq(0, 401, len = 10000), newfun, int2Lfd(0))
+                weighted_basis_integrals_products <- newfun * integral_matrix
                 
-                #Get estimated scores
-                score         <- integrate(function(t){
-                  approx(x = seq(0, 401, len = 10000), 
-                         y = newfun_points, xout=t)$y
-                },
-                0, 401)$value
-                scores_vec    <- c(scores_vec, score)
+                estimated_score <- sum(weighted_basis_integrals_products)
+                  
+                scores_vec    <- c(scores_vec, estimated_score)
               }
               return(scores_vec)
             }
