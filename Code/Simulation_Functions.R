@@ -852,7 +852,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", j, " bspline basis functions for FPCA Run.",
+            "Problem occured in run ", i, " for ", n_basis[j], " fourier basis functions for FPCA Run.",
             " Error message: ", cond
           ))
         }
@@ -897,7 +897,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
-    matrix(data = 0, nrow = length(n_basis), ncol = 7)
+    matrix(data = 0, nrow = length(n_basis), ncol = 6)
   )
   
   colnames(CV_container) <- c(
@@ -987,8 +987,8 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
             
             # calculate integrals over pairwise products of basis functions
             # and save in provided matrix
-            for (l in 1:n_basis[j]) {
-              for (k in 1:n_basis[j]) {
+            for (l in 1:length(n_basis[j])) {
+              for (k in 1:length(n_basis[j])) {
                 integral_matrix[l, k] <- integrate(function(t) {
                   approx(
                     x = tmp_grid,
@@ -1067,7 +1067,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", j, " bspline basis functions for FPCA Run.",
+            "Problem occured in run ", i, " for ", j, " monomial basis functions for FPCA Run.",
             " Error message: ", cond
           ))
         }
