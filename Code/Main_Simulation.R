@@ -101,51 +101,51 @@ for (j in 2:4) {
 ##### The following simulations use the original NIR data ######
 ################################################################
 
-# Jonghun 5x500
-for (i in 100:149) {
-  test_bspline_function_NIR <- bspline_function(
-    rep = 100, my_data = NIR, n_obs = 60, seed = i, debug = TRUE
-  )
-  saveRDS(
-    object = test_bspline_function_NIR,
-    file = paste0("Results/Paper/Partial/bspline_NIR_partial/NIRrep100_n_obs60_seed", i, ".RDS")
-  )
-}
-
-# Jona 5x500
-for (i in 100:149) {
-  test_fourier_function_NIR <- fourier_function(
-    rep = 100, my_data = NIR, n_obs = 60, seed = i, debug = TRUE, even_basis = FALSE
-  )
-  saveRDS(
-    object = test_fourier_function_NIR,
-    file = paste0("Results/Paper/Partial/fourier_NIR_partial/NIR_fourier_rep100_n_obs60_seed", i, ".RDS")
-  )
-}
-
-# Jona 5x500 (Jakob)
-for (j in 4:4) {
-  for (i in 100:149) {
-    test_fpcr_NIR <- fpcr_function(
-      rep = 100, my_data = NIR, n_obs = 60, nharm = j, seed = i, debug = TRUE
-    )
-    saveRDS(
-      object = test_fpcr_NIR,
-      file = paste0("Results/Paper/Partial/pca_bspline_nharm", j, "_NIR_partial/NIRrep100_n_obs60_seed", i, ".RDS")
-    )
-  }
-}
-
-# Jonghun 5x500
-for (j in 2:4) {
-  for (i in 100:149) {
-    test_fpcr2_NIR <- fpcr_fourier_function(
-      rep = 100, my_data = NIR, n_obs = 60, nharm = j, 
-      even_basis = FALSE, seed = i, debug = TRUE
-    )
-    saveRDS(
-      object = test_fpcr2_NIR,
-      file = paste0("Results/Paper/Partial/pca_fourier_nharm", j, "_NIR_partial/NIRrep100_n_obs60_seed", i, ".RDS")
-    )
-  }
-}
+# # Jonghun 5x500
+# for (i in 100:149) {
+#   test_bspline_function_NIR <- bspline_function(
+#     rep = 100, my_data = NIR, n_obs = 60, seed = i, debug = TRUE
+#   )
+#   saveRDS(
+#     object = test_bspline_function_NIR,
+#     file = paste0("Results/Paper/Partial/bspline_NIR_partial/NIRrep100_n_obs60_seed", i, ".RDS")
+#   )
+# }
+# 
+# # Jona 5x500
+# for (i in 100:149) {
+#   test_fourier_function_NIR <- fourier_function(
+#     rep = 100, my_data = NIR, n_obs = 60, seed = i, debug = TRUE, even_basis = FALSE
+#   )
+#   saveRDS(
+#     object = test_fourier_function_NIR,
+#     file = paste0("Results/Paper/Partial/fourier_NIR_partial/NIR_fourier_rep100_n_obs60_seed", i, ".RDS")
+#   )
+# }
+# 
+# # Jona 5x500 (Jakob)
+# for (j in 4:4) {
+#   for (i in 100:149) {
+#     test_fpcr_NIR <- fpcr_function(
+#       rep = 100, my_data = NIR, n_obs = 60, nharm = j, seed = i, debug = TRUE
+#     )
+#     saveRDS(
+#       object = test_fpcr_NIR,
+#       file = paste0("Results/Paper/Partial/pca_bspline_nharm", j, "_NIR_partial/NIRrep100_n_obs60_seed", i, ".RDS")
+#     )
+#   }
+# }
+# 
+# # Jonghun 5x500
+# for (j in 2:4) {
+#   for (i in 100:149) {
+#     test_fpcr2_NIR <- fpcr_fourier_function(
+#       rep = 100, my_data = NIR, n_obs = 60, nharm = j, 
+#       even_basis = FALSE, seed = i, debug = TRUE
+#     )
+#     saveRDS(
+#       object = test_fpcr2_NIR,
+#       file = paste0("Results/Paper/Partial/pca_fourier_nharm", j, "_NIR_partial/NIRrep100_n_obs60_seed", i, ".RDS")
+#     )
+#   }
+# }
