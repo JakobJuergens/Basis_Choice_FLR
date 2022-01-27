@@ -469,7 +469,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
   )
 
   # find number of elements in fold
-  n_elem_fold <- ceiling(n_obs / 10)
+  n_elem_fold <- floor(n_obs / 10)
   
   # loop over repetitions
   for (i in 1:rep) {
@@ -509,7 +509,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
         {
           
           #Randomly reorder samples
-          shuffled <- sample(x = 1:n_obs, size = n_obs, replace = FALSE)
+          shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
           for(m in 1:10){
             #Choose samples for test data with ordering
@@ -557,10 +557,10 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
               for(k in 1 : nharm){
                 # calculate weight matrix for the integrated pairwise products of 
                 # basis functions (integral_matrix)
-                newfun <- (smooth_basis_fd_test[x]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
+                newfun <- (smooth_basis_fd_test[p]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
                 # do element wise product between matrices
                 weighted_basis_integrals_products <- newfun * integral_matrix
-                # sum over all elements of the amtrix to obtain the score estimate
+                # sum over all elements of the matrix to obtain the score estimate
                 scores_mat[p, k] <- sum(weighted_basis_integrals_products)
               }
             }
@@ -701,7 +701,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
   }
 
   # find number of elements in fold
-  n_elem_fold <- ceiling(n_obs / 10)
+  n_elem_fold <- floor(n_obs / 10)
   
   # loop over repetitions
   for (i in 1:rep) {
@@ -741,7 +741,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
         {
           
           #Randomly reorder samples
-          shuffled <- sample(x = 1:n_obs, size = n_obs, replace = FALSE)
+          shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
           for(m in 1:10){
             #Choose samples for test data with ordering
@@ -789,7 +789,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
               for(k in 1 : nharm){
                 # calculate weight matrix for the integrated pairwise products of 
                 # basis functions (integral_matrix)
-                newfun <- (smooth_basis_fd_test[x]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
+                newfun <- (smooth_basis_fd_test[p]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
                 # do element wise product between matrices
                 weighted_basis_integrals_products <- newfun * integral_matrix
                 # sum over all elements of the amtrix to obtain the score estimate
@@ -916,7 +916,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
   )
   
   # find number of elements in fold
-  n_elem_fold <- ceiling(n_obs / 10)
+  n_elem_fold <- floor(n_obs / 10)
   
   # loop over repetitions
   for (i in 1:rep) {
@@ -956,7 +956,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
         {
           
           #Randomly reorder samples
-          shuffled <- sample(x = 1:n_obs, size = n_obs, replace = FALSE)
+          shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
           for(m in 1:10){
             #Choose samples for test data with ordering
@@ -1004,10 +1004,10 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
               for(k in 1 : nharm){
                 # calculate weight matrix for the integrated pairwise products of 
                 # basis functions (integral_matrix)
-                newfun <- (smooth_basis_fd_test[x]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
+                newfun <- (smooth_basis_fd_test[p]$coefs - train_fd$meanfd$coefs) %*% t(train_fd$harmonics[k]$coefs)
                 # do element wise product between matrices
                 weighted_basis_integrals_products <- newfun * integral_matrix
-                # sum over all elements of the amtrix to obtain the score estimate
+                # sum over all elements of the matrix to obtain the score estimate
                 scores_mat[p, k] <- sum(weighted_basis_integrals_products)
               }
             }
