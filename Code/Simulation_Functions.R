@@ -100,9 +100,10 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
           smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
 
           # prepare objects for functional regression
-          xfdlist <- list(const = smooth.basis(argvals = grid, 
-                                               y = matrix(data = 1, nrow = 401, ncol = n_obs),
-                                               fdParobj = smallbasis)$fd, 
+          xfdlist <- list(const = rep(x = 1, times = n_obs), 
+                                  #smooth.basis(argvals = grid, 
+                                  #y = matrix(data = 1, nrow = 401, ncol = n_obs),
+                                  #fdParobj = smallbasis)$fd, 
                           smooth_basis = smooth_basis_fd)
 
           # perform functional regression with cross validation for all 4 scenarios

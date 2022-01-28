@@ -60,7 +60,7 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
         }
         basisj <- xfdj$basis
         coefj  <- xfdj$coefs
-        if (dim(coefj)[1] == 1) coefj <- matrix(coefj[-(start:stop)],1,N-1)
+        if (dim(coefj)[1] == 1) coefj <- matrix(coefj[-(start:stop)],1,N-num_removed)
         else                    coefj <- as.matrix(coefj[,-(start:stop)])
         xfdlisti[[j]] <- fd(coefj,basisj)
       }
