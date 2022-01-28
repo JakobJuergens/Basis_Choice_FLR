@@ -132,15 +132,20 @@ style=authoryear-comp,
 		\int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
+	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined.\\
 	Its inner product is defined as
 	
 	\begin{equation}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	The Hilbert space of square integrable functions on $[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
+	The Hilbert space of square integrable functions on $[0,1]$ {\color{orange} (instead, $\mathbb{L}^2[0,1]$)} is the function space that is most often used for theoretical considerations in functional data analysis  {\color{orange} without loss of generality}. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
-	{\color{red} Jonghun (more detail)}
+	\begin{equation}
+	\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
+	\end{equation}
+	
+	The realized $f(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	
 	\subsection{Bases of $\mathbb{L}^2$}
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
@@ -179,8 +184,7 @@ The polynomial of the form
 			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
 		\end{cases}
 	\end{equation}
-	{\color{orange}$$\{\sqrt{2}\sin(2\pi nx) | n \in \mathbb{N}\} \cup
-	\{\sqrt{2}\cos(2\pi nx) | n \in \mathbb{N}\} \cup \{1\}$$}
+	
 	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthogonal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  
 	\begin{figure}[H]\label{fourier_basis}
 	\includegraphics[width = \textwidth]{../Graphics/Fourier_Basis.pdf}
