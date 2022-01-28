@@ -386,12 +386,12 @@ The polynomial of the form
 	
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
-			\hat{\xi}_{j, i} & = \int_{0}^{1} \left({\color{red} f_i(s) - \hat{\mu}(s)}\right) {\color{blue}\hat{\nu}(s)} \mathrm{d}s
-			= \int_{0}^{1} \left({\color{red}\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)}\right) \left({\color{blue}\sum_{k \in \mathcal{L}} b_{k} \psi_{k}(s)}\right) \mathrm{d}s \\
-			& = \sum_{j \in \mathcal{I}}\sum_{k \in \mathcal{L}} {\color{teal} a_{i,j} b_{k} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s}
-			= \sum_{j \in \mathcal{I}} \sum_{k \in \mathcal{L}} {\color{teal} Z_{i,j,k}} 
-			\approx \sum_{j = 1}^{J} {\color{violet}\sum_{k = 1}^{K} Z_{i,j,k}} 
-			= \sum_{j = 1}^{J} {\color{violet}\tilde{Z}_{i,j}}
+			\hat{\xi}_{i}^m & = \int_{0}^{1} \left({\color{red} f_i(s) - \hat{\mu}(s)}\right) {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
+			= \int_{0}^{1} \left({\color{red}\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)}\right) \left({\color{blue}\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)}\right) \mathrm{d}s \\
+			& = \sum_{j \in \mathcal{I}}\sum_{k \in \mathcal{L}} {\color{teal} a_{i,j} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s}
+			= \sum_{j \in \mathcal{I}} \sum_{k \in \mathcal{L}} {\color{teal} Z_{i,j,k}^m} 
+			\approx \sum_{j = 1}^{J} {\color{violet}\sum_{k = 1}^{K} Z_{i,j,k}^m} 
+			= \sum_{j = 1}^{J} {\color{violet}\tilde{Z}_{i,j}^m}
 		\end{split}
 	\end{equation}
 
@@ -399,8 +399,8 @@ The polynomial of the form
 	
 	\begin{equation}
 		\begin{split}
-			Z_{i, j, k} & =  a_{i,j} b_k \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \quad j = 1, \dots, L \quad k = 1, \dots, L \\
-			\tilde{Z}_{i, j}& = a_{i,j} \sum_{k = 1}^{L} \left[ b_k \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
+			Z_{i, j, k}^m & =  a_{i,j} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \quad j = 1, \dots, L \quad k = 1, \dots, L \\
+			\tilde{Z}_{i, j}^m& = a_{i,j} \sum_{k = 1}^{L} \left[ b_k^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
 		\end{split}
 	\end{equation}
 	
