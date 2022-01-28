@@ -109,7 +109,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
           f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
           f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
 
-          # generate tmp variable for current number of succesful runs
+          # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
 
           # save Cross validation criterion in provided container
@@ -454,7 +454,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
   } else {
     data_cond <- TRUE
   }
-
+  
   # specfiy number of basis functions that should be considered
   n_basis <- seq(from = 4, to = 25, by = 1)
 
@@ -518,7 +518,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
       tryCatch(
         {
           
-          #Randomly reorder samples
+          # Order samples
           shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
           for(m in 1:10){
@@ -612,7 +612,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
           
           MSPE_average <- colMeans(MSPE_mat)
 
-          # generate tmp variable for current number of succesful runs
+          # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
 
           # Use results from FPCA to perform linear regression and obtain CV scores
@@ -624,7 +624,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
           # update varprop
           # CV_container$varprop[j] <- CV_container$varprop[j] * tmp_sr / (tmp_sr + 1) + sum(train_fd$varprop) * 1 / (tmp_sr + 1)
           
-          # count succesfull runs
+          # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
         error = function(cond) {
@@ -750,7 +750,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
       tryCatch(
         {
           
-          #Randomly reorder samples
+          # Order samples
           shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
           for(m in 1:10){
@@ -844,7 +844,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
           
           MSPE_average <- colMeans(MSPE_mat)
           
-          # generate tmp variable for current number of succesful runs
+          # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
           
           # Use results from FPCA to perform linear regression and obtain CV scores
@@ -856,7 +856,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
           # update varprop
           # CV_container$varprop[j] <- CV_container$varprop[j] * tmp_sr / (tmp_sr + 1) + sum(train_fd$varprop) * 1 / (tmp_sr + 1)
           
-          # count succesfull runs
+          # count succesful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
         error = function(cond) {
@@ -965,7 +965,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
       tryCatch(
         {
           
-          #Randomly reorder samples
+          # Order samples
           shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
           for(m in 1:10){
@@ -1059,7 +1059,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
           
           MSPE_average <- colMeans(MSPE_mat)
           
-          # generate tmp variable for current number of succesful runs
+          # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
           
           # Use results from FPCA to perform linear regression and obtain CV scores
@@ -1071,7 +1071,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
           # update varprop
           # CV_container$varprop[j] <- CV_container$varprop[j] * tmp_sr / (tmp_sr + 1) + sum(train_fd$varprop) * 1 / (tmp_sr + 1)
           
-          # count succesfull runs
+          # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
         error = function(cond) {
