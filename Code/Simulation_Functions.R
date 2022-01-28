@@ -101,9 +101,6 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
 
           # prepare objects for functional regression
           xfdlist <- list(const = rep(x = 1, times = n_obs), 
-                                  #smooth.basis(argvals = grid, 
-                                  #y = matrix(data = 1, nrow = 401, ncol = n_obs),
-                                  #fdParobj = smallbasis)$fd, 
                           smooth_basis = smooth_basis_fd)
 
           # perform functional regression with cross validation for all 4 scenarios
@@ -206,6 +203,9 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
     )
   }
   
+  # prepare objects for functional linear regression
+  betafdPar1 <- fdPar(fd(0, create.constant.basis(c(0, 1))))
+  
   betafdPar2_list <- map(
     .x = 1:length(n_basis),
     .f = function(i) fdPar(basis_functions[[i]])
@@ -213,7 +213,9 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
   
   betalist_list <- map(
     .x = 1:length(n_basis),
-    .f = function(i) list(smooth_basis = betafdPar2_list[[i]])
+    .f = function(i) list(const = betafdPar1, 
+                          smooth_basis = betafdPar2_list[[i]]
+    )
   )
 
   # loop over repetitions
@@ -252,7 +254,8 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
           smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
 
           # prepare objects for functional regression
-          xfdlist <- list(smooth_basis = smooth_basis_fd)
+          xfdlist <- list(const = rep(x = 1, times = n_obs), 
+                          smooth_basis = smooth_basis_fd)
 
           # perform functional regression with cross validation for all 4 scenarios
           f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
@@ -337,6 +340,9 @@ monomial_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
     .f = function(j) create.monomial.basis(rangeval = c(0,1), nbasis = j)
   )
   
+  # prepare objects for functional linear regression
+  betafdPar1 <- fdPar(fd(0, create.constant.basis(c(0, 1))))
+  
   betafdPar2_list <- map(
     .x = 1:length(n_basis),
     .f = function(i) fdPar(basis_functions[[i]])
@@ -344,7 +350,9 @@ monomial_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   
   betalist_list <- map(
     .x = 1:length(n_basis),
-    .f = function(i) list(smooth_basis = betafdPar2_list[[i]])
+    .f = function(i) list(const = betafdPar1, 
+                          smooth_basis = betafdPar2_list[[i]]
+    )
   )
   
   # loop over repetitions
@@ -383,7 +391,8 @@ monomial_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
           smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
           
           # prepare objects for functional regression
-          xfdlist <- list(smooth_basis = smooth_basis_fd)
+          xfdlist <- list(const = rep(x = 1, times = n_obs), 
+                          smooth_basis = smooth_basis_fd)
           
           # perform functional regression with cross validation for all 4 scenarios
           f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
