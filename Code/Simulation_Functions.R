@@ -15,6 +15,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   # bumpy
   f2 <- 1.5 * exp(-0.5 * (grid - 0.3)^2 / 0.02^2) - 4 * exp(-0.5 * (grid - 0.45)^2 / 0.015^2) + 8 * exp(-0.5 * (grid - 0.6)^2 / 0.02^2) - exp(-0.5 * (grid - 0.8)^2 / 0.03^2)
   
+  # Move this to the iteration over repetitions and replace NIR by my_data 
   # two different variances of error
   sigma_eps_squared1_1 <- as.numeric((var(NIR %*% f1) / 0.9) - var(NIR %*% f1))
   sigma_eps_squared1_2 <- as.numeric((var(NIR %*% f1) / 0.6) - var(NIR %*% f1))

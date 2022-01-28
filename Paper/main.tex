@@ -386,8 +386,8 @@ The polynomial of the form
 	
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
-			\hat{\xi}_{i}^m & = \int_{0}^{1} \left({\color{red} f_i(s) - \hat{\mu}(s)}\right) {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
-			= \int_{0}^{1} \left({\color{red}\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)}\right) \left({\color{blue}\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)}\right) \mathrm{d}s \\
+			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( f_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
+			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
 			& = \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}} {\color{teal}  b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s}\right]
 			= \sum_{j \in \mathcal{I}} \left[a_{i,j}\sum_{k \in \mathcal{L}} {\color{teal} Z_{j,k}^m} \right]
 			\approx \sum_{j = 1}^{J} \left[a_{i,j}{\color{violet}\sum_{k = 1}^{K} Z_{j,k}^m} \right]
@@ -501,22 +501,6 @@ There are several important aspects of functional regression in this functional 
     \end{equation}
 
     to the linear model of equation 2 with $\mathbf{c} = [\alpha, c_1, c_2,...,c_K]^T$ (corresponding to $\mathbf{\beta}$) estimated by $\mathbf{\hat{c}} = \mathbf{(X^{T}X)^{-1}X^{T}Y}$. Hence, the estimate $\hat{\beta}$ depends on the basis function $B_{k}$ and its corresponding shape, where $K$ is a subjective choice of the researcher. This subjective choice highly depends on the researchers intuition of the smoothness of the estimate. It is best practice to use the same basis functions as in {\color{red} add link to smoothing} (cf. ~\cite{kokoszka_introduction_2017})
-    
-    {\color{red} include Part about CI´s? its about inference and not about prediction}
-    
-	\begin{itemize}
-		\item Problem: truncation error $\delta$ and how to deal with it?
-	\end{itemize}
-
-	\begin{itemize}	
-		\item Explain how to address truncation error in standard errors
-		\item Motivate three estimation procedures
-		\begin{enumerate}
-			\item truncated b-spline basis expansion without addressing truncation error
-			\item truncated b-spline basis expansion WITH addressing truncation error
-			\item truncated Eigenbasis expansion (advantages: low number of basis functions get low approximation error)
-		\end{enumerate}
-	\end{itemize}
 	
 	\subsection{Draft-Overview}
 	\begin{itemize}
@@ -664,6 +648,7 @@ describe setup and results
 		\item \cite{James.2009} (shape-restrictions)
 	\end{itemize}
 	
+	\newpage
 	\section{Appendix}
 	
 	\subsection{Basis Plots}
