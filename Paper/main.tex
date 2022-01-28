@@ -186,10 +186,6 @@ The polynomial of the form
 	\end{equation}
 	
 	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthogonal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  
-	\begin{figure}[H]\label{fourier_basis}
-	\includegraphics[width = \textwidth]{../Graphics/Fourier_Basis.pdf}
-	\caption{Fourier basis functions for $i = 1,\dots,6$}
-	\end{figure}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
 	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $S_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
@@ -209,13 +205,7 @@ The polynomial of the form
 	Even though, this approach is not theoretically exact, in practice, this is often a reasonable approach and yields satisfactory results in cases where the functional form of B-splines makes them an appropriate approximation tool. 
 	
 	{\color{red}Explain what happens when $l+m+1 > L$ !!!\\
-		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.}
-
-	\begin{figure}[H]\label{bspline_basis}
-		\includegraphics[width = \textwidth]{../Graphics/Bspline_Basis.pdf}
-		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
-	\end{figure}
-	
+		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.}	
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
 	{\color{red} Write something about how to approximate functions by truncating the basis.}
@@ -368,14 +358,25 @@ The polynomial of the form
 
 	{\color{red} This fancy equation will be very useful to explain our simulation.}
 	
-	\begin{equation}
+	\begin{equation}\label{basis_exp_transf}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega) \\
 			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \sum_{j \in \mathcal{I}} \left[ c_j \sum_{k \in \mathcal{L}} \textcolor{teal}{d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s}\right] + \epsilon(\omega)
-			= \alpha + \sum_{j \in \mathcal{I}} \left[c_j \sum_{k \in \mathcal{L}}  \textcolor{teal}{Z_{j, k}(\omega)} \right] + \epsilon(\omega) \\
-			& \approx \alpha + \sum_{j = 1}^{J} \left[c_j \textcolor{violet}{\sum_{k = 1}^{K}  Z_{j, k}(\omega)} \right] + \epsilon(\omega)
-			= \alpha + \sum_{j = 1}^{J} \left[c_j \textcolor{violet}{\tilde{Z}_{j}^{K}(\omega)} \right] + \epsilon(\omega)	
+			& = \alpha + \sum_{j \in \mathcal{I}} \left[ c_j d_k(\omega)\sum_{k \in \mathcal{L}} \textcolor{teal}{ \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s}\right] + \epsilon(\omega)
+			= \alpha + \sum_{j \in \mathcal{I}} \left[c_j d_k(\omega) \sum_{k \in \mathcal{L}}  \textcolor{teal}{Z_{j, k}} \right] + \epsilon(\omega) \\
+			& \approx \alpha + \sum_{j = 1}^{J} \left[c_j d_k(\omega) \textcolor{violet}{\sum_{k = 1}^{K}  Z_{j, k}} \right] + \epsilon(\omega)
+			= \alpha + \sum_{j = 1}^{J} \left[c_j d_k(\omega)\textcolor{violet}{\tilde{Z}_{j}^{K}} \right] + \epsilon(\omega)	
+		\end{split}
+	\end{equation}
+
+	A typical choice in this scenario is to use the same functional basis and the same truncation parameter for both the coefficient function and the approximation of the observations. This leads to the following simplification of Equation \ref{basis_exp_transf}.
+
+	\begin{equation}
+		\begin{split}
+			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega) \\
+			& \approx \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j = 1}^{L} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k  = 1}^{L} d_k(\omega)  \phi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j = 1}^{L} \left[\sum_{k = 1}^{L} c_j d_k(\omega) \textcolor{teal}{ \int_{0}^{1} \phi_j(s) 	\phi_k(s) \mathrm{d}s}\right] + \epsilon(\omega)
+			= \alpha + \sum_{j = 1}^{L} \sum_{k = 1}^{L}  c_j d_k(\omega)\textcolor{teal}{Z_{j, k}}  + 	\epsilon(\omega)	
 		\end{split}
 	\end{equation}
 	
@@ -637,6 +638,18 @@ describe setup and results
 	\end{itemize}
 	
 	\section{Appendix}
+	
+	\subsection{Basis Plots}
+	
+	\begin{figure}[H]\label{fourier_basis}
+		\includegraphics[width = \textwidth]{../Graphics/Fourier_Basis.pdf}
+		\caption{Fourier basis functions for $i = 1,\dots,6$}
+	\end{figure}
+	
+	\begin{figure}[H]\label{bspline_basis}
+		\includegraphics[width = \textwidth]{../Graphics/Bspline_Basis.pdf}
+		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
+	\end{figure}
 	
 	\subsection{Wiener Process}\label{Wiener}
 	A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
