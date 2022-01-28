@@ -346,10 +346,9 @@ The polynomial of the form
 	
 	\begin{equation}
 		\begin{split}
-			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j \phi_j(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \sum_{j \in \mathcal{I}} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega) \\
-			& = \alpha + \sum_{j \in \mathcal{I}} c_j \textcolor{red}{\langle X(\omega), \phi_j \rangle} + \epsilon(\omega) 
+			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega)
+			= \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j \phi_j(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j \in \mathcal{I}} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)
 		      = \alpha + \sum_{j \in \mathcal{I}} c_j \textcolor{red}{Z_j(\omega)} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
@@ -364,8 +363,8 @@ The polynomial of the form
 	
 	\begin{equation}\label{basis_exp_transf}
 		\begin{split}
-			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
+			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega)
+			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
 			& = \alpha + \sum_{j \in \mathcal{I}} c_j \left[\sum_{k \in \mathcal{L}} \textcolor{teal}{d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s}\right] + \epsilon(\omega) 
 			= \alpha + \sum_{j \in \mathcal{I}} \left[ c_j \sum_{k \in \mathcal{L}} \textcolor{teal}{Z_{j, k}(\omega)} \right] + \epsilon(\omega) \\
 			& \approx \alpha + \sum_{j = 1}^{J} \left[c_j {\color{violet}\sum_{k = 1}^{K}  Z_{j, k}(\omega)} \right] + \epsilon(\omega) 

@@ -29,13 +29,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.8}Estimation using Basis-Representation}{10}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9}Estimation using Functional Principal Components}{12}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.9}Estimation using Functional Principal Components}{11}{subsection.3.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10}Detailed Draft}{12}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.10}Detailed Draft}{11}{subsection.3.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.11}Draft-Overview}{15}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.11}Draft-Overview}{14}{subsection.3.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.12}Literature}{15}{subsection.3.12}%
+\contentsline {subsection}{\numberline {3.12}Literature}{14}{subsection.3.12}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Simulation Study}{16}{section.4}%
 \defcounter {refsection}{0}\relax 
