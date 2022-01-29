@@ -550,13 +550,13 @@ The polynomial of the form
 		\end{equation}
 		
 		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 5\}$, cubic bspline basis-function $\{5,6,...,25\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
-		 To obtain valid out of sample properties for the FPCR, within the 10 fold cross validation we first calculate the Functional Principal Components of the trainig-set for each curve. These scores are then used to estimate the scores $\hat{\xi}_{i}^m$ for $i \in holdoutset$ for each curve by the equation:
+		 To obtain valid out of sample properties for the FPCR, within each of the ten 10 fold cross-validation splits, we first calculate the Functional Principal Components of the trainig-set $\mathcal{T}$ for each curve. These scores are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation:
 		 
 	\begin{equation}
 		\begin{split}
-			\hat{\xi}_{i}^m &=  \int_{0}^{1} \left[ {\color{red} X_{i}(s) - \hat{\mu}(s)} \right] {\color{blue}\hat{\nu}^m }\mathrm{d}s) 
+			\hat{\xi}_{i}^{m, \mathcal{H}} &=  \int_{0}^{1} ({\color{red} X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)} ) {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
 						    = \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			 &= \sum_{j \in \mathcal{I}} \sum_{k \in \mathcal{L}} ( a_{i,j}   b_{k}^m ) \int_{0}^{1} (\phi_j(s) \psi_{k}(s)\mathrm{d}s)
+			 &= \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}}  b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
 		\end{split}
 	\end{equation}
 	
