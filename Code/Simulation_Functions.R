@@ -28,7 +28,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   }
 
   # specify number of basis functions that should be considered
-  n_basis <- seq(from = 4, to = 25, by = 1)
+  n_basis <- seq(from = 4, to = 18, by = 1)
 
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
