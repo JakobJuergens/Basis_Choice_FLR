@@ -51,7 +51,7 @@ for (i in 100:149) {
     even_basis = FALSE, debug = TRUE
   )
   saveRDS(
-    object = test_fourier_function,
+    object = test_monomial_function,
     file = paste0("Results/Paper/Partial/monomial_sim_partial/rep100_n_obs200_seed", i, ".RDS")
   )
 }
