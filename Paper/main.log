@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  29 JAN 2022 13:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  29 JAN 2022 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -935,7 +935,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20]
 [21]
-<../Graphics/Wiener_plot.pdf, id=452, 1445.4pt x 578.16pt>
+<../Graphics/Wiener_plot.pdf, id=457, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
 Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 807.
@@ -953,10 +953,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22502 strings out of 478353
- 390646 string characters out of 5852101
- 1154126 words of memory out of 5000000
- 40011 multiletter control sequences out of 15000+600000
+ 22508 strings out of 478353
+ 390688 string characters out of 5852101
+ 1154396 words of memory out of 5000000
+ 40017 multiletter control sequences out of 15000+600000
  420863 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -979,10 +979,10 @@ exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/20
 21/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist
 /fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (24 pages, 1734733 bytes).
+Output written on main.pdf (24 pages, 1734975 bytes).
 PDF statistics:
- 628 PDF objects out of 1000 (max. 8388607)
- 546 compressed objects within 6 object streams
+ 633 PDF objects out of 1000 (max. 8388607)
+ 551 compressed objects within 6 object streams
  176 named destinations out of 1000 (max. 500000)
  41778 words of extra memory for PDF output out of 42996 (max. 10000000)
 

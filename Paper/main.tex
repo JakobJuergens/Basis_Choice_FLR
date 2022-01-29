@@ -708,7 +708,7 @@ describe setup and results
 		\end{equation}
 		where the constant function is always an eigenfunction of the operater $K$. It leads the inner product to 0 due to orthonormality of eigenfunctions. {\color{red} Another way to prove or use centered mean}
 		For the case of centered process
-		\begin{equation}
+		\begin{equation}\label{Lemma1}
 			\begin{split}
 				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
 				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
@@ -718,7 +718,7 @@ describe setup and results
 		\end{equation}
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
 		The second claim is proved as:
-		\begin{equation}
+		\begin{equation}\label{Lemma2}
 			\begin{split}
 				\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
 				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
@@ -730,7 +730,7 @@ describe setup and results
 			\end{split}
 		\end{equation}
 		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the other two properties.
-		\begin{equation}
+		\begin{equation}\label{Lemma3}
 			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
 		\end{equation}
 	\end{proof}
@@ -755,15 +755,15 @@ describe setup and results
 		\end{equation}
 		
 		Once it is shown that $\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = 0$ uniformly in [0,1], the proof is completed.
-		\begin{equation}
+		\begin{equation}\label{Thr1}
 			\begin{split}
 				\epsilon_{n}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} 	\nu_{j}(t)\bigg)^2 \right]\\
 				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{j=1}^{n}\xi_{j}\nu_{j}(t)\bigg] + \mathbb{E}\bigg[\sum_{j=1}^{n}\sum_{k=1}^{n}\xi_{j}\xi_{k}\nu_{j}(t)\nu_{k}(t)\bigg]
 			\end{split}
 		\end{equation}
 		
-		Now, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (18),
-		\begin{equation}
+		Now, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}),
+		\begin{equation}\label{Thr2}
 			\begin{split}
 				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} \xi_{j}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} \bigg(\int_{0}^{1} F_{s}\nu_{i}(s)ds\bigg) \xi_{j}(t) \right]\\
 				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} \mathbb{E}[F(t)F(s)]\nu_{j}(s)ds\bigg)\nu_{j}\\
@@ -772,14 +772,14 @@ describe setup and results
 			\end{split}
 		\end{equation} 
 		
-		We derive from (54) that
-		\begin{equation}
+		We derive from (\ref{Lemma2}) that
+		\begin{equation}\label{Thr3}
 			\begin{split}
 				\mathbb{E}\bigg[\sum_{j=1}^{n} \sum_{k=1}^{n} \xi_{j} \xi_{k} \nu_{j}(t) \nu_{k}(t)\bigg] = & \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}[\xi_{j} \xi_{k}] \nu_{j}(t) \nu_{k}(t)\\
 				= & \sum_{j=1}^{n} \sum_{k=1}^{n} \delta_{jk} \lambda_{j} \nu_{j}(t) \nu_{k}(t) = 		\sum_{j=1}^{n} \lambda_{j} \nu_{j}(t)^{2}
 			\end{split}	
 		\end{equation}
-		where $\delta_{jk} = 1$ if $j=k$, otherwise 0. Therefore, by (58), (59), and (60) we obtain
+		where $\delta_{jk} = 1$ if $j=k$, otherwise 0. Therefore, by (\ref{Thr1}), (\ref{Thr2}), and (\ref{Thr3}) we obtain
 		\begin{equation}
 			\epsilon_{n}(t) = c(t,t) - \sum_{j=1}^{n} \lambda_{j} \nu_{j}(t) \nu_{j}(t)
 		\end{equation}
