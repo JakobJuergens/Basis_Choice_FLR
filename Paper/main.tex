@@ -9,6 +9,7 @@
 \usepackage{multicol}
 \usepackage{float}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage[font=small,skip=2pt]{caption}
@@ -692,56 +693,102 @@ describe setup and results
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
 		\item Var[$\xi_{j}$] = $\lambda_{j}$
 	\end{enumerate}
-	\textit{Proof}. To obtain the first result, we can show that
-	\begin{equation}
-		\begin{split}
-		\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt \biggr\rbrack\\
-		= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
-		= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-		= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt \\
-		= & \mu(t) \int_{0}^{1} \nu_{j}(t)
-		\end{split}
-	\end{equation}
-
-	For the case of centered process
-	\begin{equation}
-		\begin{split}
-			\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
-			= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
-			= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-			= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt \\
-			= & \mu(t) \int_{0}^{1} \nu_{j}(t) = 0
-		\end{split}
-	\end{equation}
-	The second claim is proved as:
-	\begin{equation}
-		\begin{split}
-		\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
-		= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack\\
-		= & \int_{0}^{1} \int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu_{j}(s) \nu_{k}(t) ds dt\\
-		= & \int_{0}^{1} (\int_{0}^{1}k(s,t)\nu_{j}(s)ds) \nu_{k}(t) dt \\
-		= & \int_{0}^{1}[K\nu_{j}](t)\nu_{k}(t)dt\\
-		= & \langle K \nu_{j}, \nu_{k} \rangle\\
-		= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
-		\end{split}
-	\end{equation}
-	where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the other two properties.
-	\begin{equation}
-		Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
-	\end{equation}
-
+	
+	\begin{proof}
+		To obtain the first result, we can show that
+		\begin{equation}
+			\begin{split}
+				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt \biggr\rbrack\\
+				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
+				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt\\
+				= & \mu(t) \int_{0}^{1} \nu_{j}(t)\\
+				= & \mu(t) \langle \nu_{j}(t), 1 \rangle = 0
+			\end{split}
+		\end{equation}
+		where the constant function is always an eigenfunction of the operater $K$. It leads the inner product to 0 due to orthonormality of eigenfunctions. {\color{red} Another way to prove or use centered mean}
+		For the case of centered process
+		\begin{equation}
+			\begin{split}
+				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
+				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
+				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt = 0
+			\end{split}
+		\end{equation}
+		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
+		The second claim is proved as:
+		\begin{equation}
+			\begin{split}
+				\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
+				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} \int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu_{j}(s) \nu_{k}(t) ds dt\\
+				= & \int_{0}^{1} \left(\int_{0}^{1}c(s,t)\nu_{j}(s)ds \right) \nu_{k}(t) dt \\
+				= & \int_{0}^{1}[K\nu_{j}](t)\nu_{k}(t)dt\\
+				= & \langle K \nu_{j}, \nu_{k} \rangle\\
+				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
+			\end{split}
+		\end{equation}
+		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the other two properties.
+		\begin{equation}
+			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
+		\end{equation}
+	\end{proof}
+	
+	
 	\subsection{Karhunen-Lo\'{e}ve expansion}
 	Let $F : [0,1]  \rightarrow \mathbb{R}$ be a centered mean-square continuous stochastic process with $F \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{i}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
-		F(t) = \sum_{i=1}^{\infty} \xi_{i} \nu_{i}(t),
+		F(t) = \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
 	\end{equation}
-	where coefficients $\xi_{i}$ are given by $\xi_{i}(\omega) = \int_{0}^{1} F(t)(\omega) \nu_{i}(t)dt$ and satisfy the following conditions.
+	where coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} F(t)(\omega) \nu_{j}(t)dt$ and satisfy the following conditions.
 	\begin{enumerate}
 		\item $\mathbb{E}[\xi_{j}] = 0$
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
 		\item Var[$\xi_{j}$] = $\lambda_{j}$
 	\end{enumerate}
-	\textit{Proof}. ...
+	
+	\begin{proof}
+		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the fact that $\xi_{j}(\omega) = \int_{0}^{1} F(\omega)(t) \nu_{j}(t)dt$ satisfy the three conclusions by Lemma. We prove it by considering
+		\begin{equation}
+			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+		\end{equation}
+		
+		Once it is shown that $\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = 0$ uniformly in [0,1], the proof is completed.
+		\begin{equation}
+			\begin{split}
+				\epsilon_{n}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} 	\nu_{j}(t)\bigg)^2 \right]\\
+				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{j=1}^{n}\xi_{j}\nu_{j}(t)\bigg] + \mathbb{E}\bigg[\sum_{j=1}^{n}\sum_{k=1}^{n}\xi_{j}\xi_{k}\nu_{j}(t)\nu_{k}(t)\bigg]
+			\end{split}
+		\end{equation}
+		
+		Now, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (18),
+		\begin{equation}
+			\begin{split}
+				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} \xi_{j}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} \bigg(\int_{0}^{1} F_{s}\nu_{i}(s)ds\bigg) \xi_{j}(t) \right]\\
+				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} \mathbb{E}[F(t)F(s)]\nu_{j}(s)ds\bigg)\nu_{j}\\
+				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} c(t,s) \nu_{j}(s)ds\bigg)\nu_{j}\\
+				= & \sum_{j=1}^{n}[K\nu_{j}](t)\nu_{j} = \sum_{j=1}^{n}\lambda_{j}\nu_{j}^{2}
+			\end{split}
+		\end{equation} 
+		
+		We derive from (54) that
+		\begin{equation}
+			\begin{split}
+				\mathbb{E}\bigg[\sum_{j=1}^{n} \sum_{k=1}^{n} \xi_{j} \xi_{k} \nu_{j}(t) \nu_{k}(t)\bigg] = & \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}[\xi_{j} \xi_{k}] \nu_{j}(t) \nu_{k}(t)\\
+				= & \sum_{j=1}^{n} \sum_{k=1}^{n} \delta_{jk} \lambda_{j} \nu_{j}(t) \nu_{k}(t) = 		\sum_{j=1}^{n} \lambda_{j} \nu_{j}(t)^{2}
+			\end{split}	
+		\end{equation}
+		where $\delta_{jk} = 1$ if $j=k$, otherwise 0. Therefore, by (58), (59), and (60) we obtain
+		\begin{equation}
+			\epsilon_{n}(t) = c(t,t) - \sum_{j=1}^{n} \lambda_{j} \nu_{j}(t) \nu_{j}(t)
+		\end{equation}
+		
+		implementing Mercer's Theorem this proof is concluded by
+		\begin{equation}
+			\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right] = 0
+		\end{equation}
+	\end{proof}
 
 	\subsection{Wiener Process}\label{Wiener}
 	A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
