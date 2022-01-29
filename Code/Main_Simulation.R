@@ -21,7 +21,7 @@ source("data_generator.R")
 ##### Perform Simulations #####
 
 # Jakob
-for (i in 100:149) {
+for (i in 113:149) {
   test_bspline_function <- bspline_function(
     rep = 100, my_data = NULL, n_obs = 200, seed = i, debug = TRUE
   )
@@ -34,8 +34,7 @@ for (i in 100:149) {
 # Jakob
 for (i in 100:149) {
   test_fourier_function <- fourier_function(
-    rep = 100, my_data = NULL, n_obs = 200, seed = i,
-    even_basis = FALSE, debug = TRUE
+    rep = 100, my_data = NULL, n_obs = 200, seed = i, debug = TRUE
   )
   saveRDS(
     object = test_fourier_function,
