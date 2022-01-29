@@ -15,7 +15,6 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   # bumpy
   f2 <- 1.5 * exp(-0.5 * (grid - 0.3)^2 / 0.02^2) - 4 * exp(-0.5 * (grid - 0.45)^2 / 0.015^2) + 8 * exp(-0.5 * (grid - 0.6)^2 / 0.02^2) - exp(-0.5 * (grid - 0.8)^2 / 0.03^2)
   
-  # Move this to the iteration over repetitions and replace NIR by my_data 
   # two different variances of error
   sigma_eps_squared1_1 <- as.numeric((var(NIR %*% f1) / 0.9) - var(NIR %*% f1))
   sigma_eps_squared1_2 <- as.numeric((var(NIR %*% f1) / 0.6) - var(NIR %*% f1))
@@ -37,7 +36,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   )
 
   colnames(CV_container) <- c(
-    "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
+    "f1_e1", "f1_e2", "f2_e1", "f2_e2",
     "n_basis", "success_count"
   )
 
@@ -64,6 +63,9 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
                           smooth_basis = betafdPar2_list[[i]]
                           )
   )
+  
+  # find number of elements in fold
+  n_elem_fold <- floor(n_obs / 10)
 
   # loop over repetitions
   for (i in 1:rep) {
@@ -92,33 +94,126 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
         print(paste0("Basis specification: ", j, " out of ", length(n_basis)))
       }
 
+      # construct basis for functional representation
+      smallbasis <- basis_functions[[j]]
+      
+      # create container for values
+      MSPE_mat <- as.data.frame(matrix(0, nrow = 10, ncol = 4))
+      colnames(MSPE_mat) <- c('MSPE1_1', 'MSPE1_2', 'MSPE2_1', 'MSPE2_2')
+      
       tryCatch(
         {
-          # construct basis for functional representation
-          smallbasis <- basis_functions[[j]]
+          # Order samples
+          shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
+          
+          for(m in 1:10){
+            #Choose samples for test data with ordering
+            sampling <- sort(x = shuffled[((n_elem_fold)*(m-1)+1):((n_elem_fold)*m)])
+            
+            # express my_data data in functional basis
+            smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)
+            smooth_basis_fd_train <- smooth.basis(argvals = grid, y = data[,-sampling], fdParobj = smallbasis)$fd
+            smooth_basis_fd_test  <- smooth.basis(argvals = grid, y = data[,sampling], fdParobj = smallbasis)$fd
 
-          # express my_data data in functional basis
-          smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
+            # prepare objects for functional regression
+            xfdlist_train <- list(const = rep(x = 1, times = n_obs - n_elem_fold), 
+                                  smooth_basis = smooth_basis_fd_train)
+            xfdlist_test <- list(const = rep(x = 1, times = n_obs - n_elem_fold),
+                                 smooth_basis = smooth_basis_fd_test)
 
-          # prepare objects for functional regression
-          xfdlist <- list(const = rep(x = 1, times = n_obs), 
-                          smooth_basis = smooth_basis_fd)
-
-          # perform functional regression with cross validation for all 4 scenarios
-          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
-
+            # do fRegress for training data set
+            fReg_1_1 <- fRegress(y = Y1_1[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_1_2 <- fRegress(y = Y1_2[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_2_1 <- fRegress(y = Y2_1[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_2_2 <- fRegress(y = Y2_2[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            
+            # extract constants
+            const_1_1 <- as.numeric(fReg_1_1$betaestlist$const$fd$coefs)
+            const_1_2 <- as.numeric(fReg_1_2$betaestlist$const$fd$coefs)
+            const_2_1 <- as.numeric(fReg_2_1$betaestlist$const$fd$coefs)
+            const_2_2 <- as.numeric(fReg_2_2$betaestlist$const$fd$coefs)
+            
+            # get estimated coefficients for basis representation of coefficient function
+            est_coef_1_1 <- fReg_1_1$betaestlist$smooth_basis$fd$coefs
+            est_coef_1_2 <- fReg_1_2$betaestlist$smooth_basis$fd$coefs
+            est_coef_2_1 <- fReg_2_1$betaestlist$smooth_basis$fd$coefs
+            est_coef_2_2 <- fReg_2_2$betaestlist$smooth_basis$fd$coefs
+            
+            # get coefficients for basis representation of observations
+            obs_test_coefs <- smooth_basis_fd_test$coefs
+            
+            # multiply
+            coefficient_matrix_1_1 <- map(.x = 1:n_elem_fold,
+                    .f = function(i) est_coef_1_1 %*% obs_test_coefs[,i])
+            coefficient_matrix_1_2 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_1_2 %*% obs_test_coefs[,i])
+            coefficient_matrix_2_1 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_2_1 %*% obs_test_coefs[,i])
+            coefficient_matrix_2_2 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_2_2 %*% obs_test_coefs[,i])
+            
+            # integral matrix
+            # grid for approximation of intergrals on [0,1]
+            tmp_grid <- seq(0, 1, length.out = 1000)
+            # get values of basis functions at approximation grid
+            basis_eval <- eval.basis(evalarg = tmp_grid, basisobj = smallbasis)
+            # create a container for the integrals over the pairwise products 
+            # of the basis functions
+            integral_matrix <- matrix(data = 0, nrow = n_basis[j], ncol = n_basis[j])
+            
+            # calculate integrals over pairwise products of basis functions
+            # and save in provided matrix
+            for (l in 1:n_basis[j]) {
+              for (k in 1:n_basis[j]) {
+                integral_matrix[l, k] <- integrate(function(t) {
+                  approx(
+                    x = tmp_grid,
+                    y = basis_eval[, l] * t(basis_eval[, k]), xout = t
+                  )$y
+                }, lower = 0, upper = 1)$value
+              }
+            }
+            
+            # multiply matrices
+            regressor_inf_1_1 <- unlist(map(.x = 1:n_elem_fold,
+                                     .f = function(i) sum(coefficient_matrix_1_1[[i]] * integral_matrix)))
+            regressor_inf_1_2 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_1_2[[i]] * integral_matrix)))
+            regressor_inf_2_1 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_2_1[[i]] * integral_matrix)))
+            regressor_inf_2_2 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_2_2[[i]] * integral_matrix)))
+            
+            # predict values
+            pred_1_1 <- const_1_1 + regressor_inf_1_1
+            pred_1_2 <- const_1_2 + regressor_inf_1_2
+            pred_2_1 <- const_2_1 + regressor_inf_2_1
+            pred_2_2 <- const_2_2 + regressor_inf_2_2
+            
+            # calculate errors
+            error_1_1 <- Y1_1[sampling] - pred_1_1
+            error_1_2 <- Y1_2[sampling] - pred_1_2
+            error_2_1 <- Y2_1[sampling] - pred_2_1
+            error_2_2 <- Y2_2[sampling] - pred_2_2
+            
+            # calculate MSE
+            MSPE_mat[m, 1] <- mean(error_1_1^2)
+            MSPE_mat[m, 2] <- mean(error_1_2^2)
+            MSPE_mat[m, 3] <- mean(error_2_1^2)
+            MSPE_mat[m, 4] <- mean(error_2_2^2)
+          }
+            
+          MSPE_average <- colMeans(MSPE_mat)
+          
           # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
-
-          # save Cross validation criterion in provided container
-          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_1$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_2$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_1$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_2$SSE.CV) * 1 / (tmp_sr + 1)
-
+          
+          # Use results from FPCA to perform linear regression and obtain CV scores
+          CV_container$f1_e1[j] <- CV_container$f1_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
+          CV_container$f1_e2[j] <- CV_container$f1_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
+          CV_container$f2_e1[j] <- CV_container$f2_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
+          CV_container$f2_e2[j] <- CV_container$f2_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
+          
           # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
@@ -167,9 +262,9 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
 
   # specfiy number of basis functions that should be considered
   if (even_basis == TRUE) {
-    n_basis <- seq(from = 1, to = 25, by = 1)
+    n_basis <- seq(from = 1, to = 19, by = 1)
   } else {
-    n_basis <- seq(from = 1, to = 25, by = 2)
+    n_basis <- seq(from = 1, to = 19, by = 2)
   }
 
   # set up container for averaged cross validation scores
@@ -178,7 +273,7 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
   )
 
   colnames(CV_container) <- c(
-    "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
+    "f1_e1", "f1_e2", "f2_e1", "f2_e2",
     "n_basis", "success_count"
   )
 
@@ -219,6 +314,9 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
     )
   )
 
+  # find number of elements in fold
+  n_elem_fold <- floor(n_obs / 10)
+  
   # loop over repetitions
   for (i in 1:rep) {
     if (debug) {
@@ -246,34 +344,127 @@ fourier_function <- function(rep, my_data = NULL, n_obs, seed, even_basis = FALS
         print(paste0("Basis specification: ", j, " out of ", length(n_basis)))
       }
 
+      # construct basis for functional representation
+      smallbasis <- basis_functions[[j]]
+      
+      # create container for values
+      MSPE_mat <- as.data.frame(matrix(0, nrow = 10, ncol = 4))
+      colnames(MSPE_mat) <- c('MSPE1_1', 'MSPE1_2', 'MSPE2_1', 'MSPE2_2')
+      
       tryCatch(
         {
-          # construct basis for functional representation
-          smallbasis <- basis_functions[[j]]
-
-          # express my_data data in functional basis
-          smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
-
-          # prepare objects for functional regression
-          xfdlist <- list(const = rep(x = 1, times = n_obs), 
-                          smooth_basis = smooth_basis_fd)
-
-          # perform functional regression with cross validation for all 4 scenarios
-          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
+          # Order samples
+          shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
-          # generate tmp variable for current number of succesful runs
+          for(m in 1:10){
+            #Choose samples for test data with ordering
+            sampling <- sort(x = shuffled[((n_elem_fold)*(m-1)+1):((n_elem_fold)*m)])
+            
+            # express my_data data in functional basis
+            smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)
+            smooth_basis_fd_train <- smooth.basis(argvals = grid, y = data[,-sampling], fdParobj = smallbasis)$fd
+            smooth_basis_fd_test  <- smooth.basis(argvals = grid, y = data[,sampling], fdParobj = smallbasis)$fd
+            
+            # prepare objects for functional regression
+            xfdlist_train <- list(const = rep(x = 1, times = n_obs - n_elem_fold), 
+                                  smooth_basis = smooth_basis_fd_train)
+            xfdlist_test <- list(const = rep(x = 1, times = n_obs - n_elem_fold),
+                                 smooth_basis = smooth_basis_fd_test)
+            
+            # do fRegress for training data set
+            fReg_1_1 <- fRegress(y = Y1_1[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_1_2 <- fRegress(y = Y1_2[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_2_1 <- fRegress(y = Y2_1[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_2_2 <- fRegress(y = Y2_2[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            
+            # extract constants
+            const_1_1 <- as.numeric(fReg_1_1$betaestlist$const$fd$coefs)
+            const_1_2 <- as.numeric(fReg_1_2$betaestlist$const$fd$coefs)
+            const_2_1 <- as.numeric(fReg_2_1$betaestlist$const$fd$coefs)
+            const_2_2 <- as.numeric(fReg_2_2$betaestlist$const$fd$coefs)
+            
+            # get estimated coefficients for basis representation of coefficient function
+            est_coef_1_1 <- fReg_1_1$betaestlist$smooth_basis$fd$coefs
+            est_coef_1_2 <- fReg_1_2$betaestlist$smooth_basis$fd$coefs
+            est_coef_2_1 <- fReg_2_1$betaestlist$smooth_basis$fd$coefs
+            est_coef_2_2 <- fReg_2_2$betaestlist$smooth_basis$fd$coefs
+            
+            # get coefficients for basis representation of observations
+            obs_test_coefs <- smooth_basis_fd_test$coefs
+            
+            # multiply
+            coefficient_matrix_1_1 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_1_1 %*% obs_test_coefs[,i])
+            coefficient_matrix_1_2 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_1_2 %*% obs_test_coefs[,i])
+            coefficient_matrix_2_1 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_2_1 %*% obs_test_coefs[,i])
+            coefficient_matrix_2_2 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_2_2 %*% obs_test_coefs[,i])
+            
+            # integral matrix
+            # grid for approximation of intergrals on [0,1]
+            tmp_grid <- seq(0, 1, length.out = 1000)
+            # get values of basis functions at approximation grid
+            basis_eval <- eval.basis(evalarg = tmp_grid, basisobj = smallbasis)
+            # create a container for the integrals over the pairwise products 
+            # of the basis functions
+            integral_matrix <- matrix(data = 0, nrow = n_basis[j], ncol = n_basis[j])
+            
+            # calculate integrals over pairwise products of basis functions
+            # and save in provided matrix
+            for (l in 1:n_basis[j]) {
+              for (k in 1:n_basis[j]) {
+                integral_matrix[l, k] <- integrate(function(t) {
+                  approx(
+                    x = tmp_grid,
+                    y = basis_eval[, l] * t(basis_eval[, k]), xout = t
+                  )$y
+                }, lower = 0, upper = 1)$value
+              }
+            }
+            
+            # multiply matrices
+            regressor_inf_1_1 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_1_1[[i]] * integral_matrix)))
+            regressor_inf_1_2 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_1_2[[i]] * integral_matrix)))
+            regressor_inf_2_1 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_2_1[[i]] * integral_matrix)))
+            regressor_inf_2_2 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_2_2[[i]] * integral_matrix)))
+            
+            # predict values
+            pred_1_1 <- const_1_1 + regressor_inf_1_1
+            pred_1_2 <- const_1_2 + regressor_inf_1_2
+            pred_2_1 <- const_2_1 + regressor_inf_2_1
+            pred_2_2 <- const_2_2 + regressor_inf_2_2
+            
+            # calculate errors
+            error_1_1 <- Y1_1[sampling] - pred_1_1
+            error_1_2 <- Y1_2[sampling] - pred_1_2
+            error_2_1 <- Y2_1[sampling] - pred_2_1
+            error_2_2 <- Y2_2[sampling] - pred_2_2
+            
+            # calculate MSE
+            MSPE_mat[m, 1] <- mean(error_1_1^2)
+            MSPE_mat[m, 2] <- mean(error_1_2^2)
+            MSPE_mat[m, 3] <- mean(error_2_1^2)
+            MSPE_mat[m, 4] <- mean(error_2_2^2)
+          }
+          
+          MSPE_average <- colMeans(MSPE_mat)
+          
+          # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
-
-          # save Cross validation criterion in provided container
-          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_1$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_2$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_1$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_2$SSE.CV) * 1 / (tmp_sr + 1)
-
-          # count succesfull runs
+          
+          # Use results from FPCA to perform linear regression and obtain CV scores
+          CV_container$f1_e1[j] <- CV_container$f1_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
+          CV_container$f1_e2[j] <- CV_container$f1_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
+          CV_container$f2_e1[j] <- CV_container$f2_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
+          CV_container$f2_e2[j] <- CV_container$f2_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
+          
+          # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },
         error = function(cond) {
@@ -328,7 +519,7 @@ monomial_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
   )
   
   colnames(CV_container) <- c(
-    "f1_e1_spline", "f1_e2_spline", "f2_e1_spline", "f2_e2_spline",
+    "f1_e1", "f1_e2", "f2_e1", "f2_e2",
     "n_basis", "success_count"
   )
   
@@ -355,6 +546,9 @@ monomial_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
                           smooth_basis = betafdPar2_list[[i]]
     )
   )
+  
+  # find number of elements in fold
+  n_elem_fold <- floor(n_obs / 10)
   
   # loop over repetitions
   for (i in 1:rep) {
@@ -383,32 +577,125 @@ monomial_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
         print(paste0("Basis specification: ", j, " out of ", length(n_basis)))
       }
       
+      # construct basis for functional representation
+      smallbasis <- basis_functions[[j]]
+      
+      # create container for values
+      MSPE_mat <- as.data.frame(matrix(0, nrow = 10, ncol = 4))
+      colnames(MSPE_mat) <- c('MSPE1_1', 'MSPE1_2', 'MSPE2_1', 'MSPE2_2')
+      
       tryCatch(
         {
-          # construct basis for functional representation
-          smallbasis <- basis_functions[[j]]
+          # Order samples
+          shuffled <- 1:n_obs # sample(x = 1:n_obs, size = n_obs, replace = FALSE)
           
-          # express my_data data in functional basis
-          smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)$fd
+          for(m in 1:10){
+            #Choose samples for test data with ordering
+            sampling <- sort(x = shuffled[((n_elem_fold)*(m-1)+1):((n_elem_fold)*m)])
+            
+            # express my_data data in functional basis
+            smooth_basis_fd <- smooth.basis(argvals = grid, y = data, fdParobj = smallbasis)
+            smooth_basis_fd_train <- smooth.basis(argvals = grid, y = data[,-sampling], fdParobj = smallbasis)$fd
+            smooth_basis_fd_test  <- smooth.basis(argvals = grid, y = data[,sampling], fdParobj = smallbasis)$fd
+            
+            # prepare objects for functional regression
+            xfdlist_train <- list(const = rep(x = 1, times = n_obs - n_elem_fold), 
+                                  smooth_basis = smooth_basis_fd_train)
+            xfdlist_test <- list(const = rep(x = 1, times = n_obs - n_elem_fold),
+                                 smooth_basis = smooth_basis_fd_test)
+            
+            # do fRegress for training data set
+            fReg_1_1 <- fRegress(y = Y1_1[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_1_2 <- fRegress(y = Y1_2[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_2_1 <- fRegress(y = Y2_1[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            fReg_2_2 <- fRegress(y = Y2_2[-sampling], xfdlist = xfdlist_train, betalist = betalist_list[[j]])
+            
+            # extract constants
+            const_1_1 <- as.numeric(fReg_1_1$betaestlist$const$fd$coefs)
+            const_1_2 <- as.numeric(fReg_1_2$betaestlist$const$fd$coefs)
+            const_2_1 <- as.numeric(fReg_2_1$betaestlist$const$fd$coefs)
+            const_2_2 <- as.numeric(fReg_2_2$betaestlist$const$fd$coefs)
+            
+            # get estimated coefficients for basis representation of coefficient function
+            est_coef_1_1 <- fReg_1_1$betaestlist$smooth_basis$fd$coefs
+            est_coef_1_2 <- fReg_1_2$betaestlist$smooth_basis$fd$coefs
+            est_coef_2_1 <- fReg_2_1$betaestlist$smooth_basis$fd$coefs
+            est_coef_2_2 <- fReg_2_2$betaestlist$smooth_basis$fd$coefs
+            
+            # get coefficients for basis representation of observations
+            obs_test_coefs <- smooth_basis_fd_test$coefs
+            
+            # multiply
+            coefficient_matrix_1_1 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_1_1 %*% obs_test_coefs[,i])
+            coefficient_matrix_1_2 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_1_2 %*% obs_test_coefs[,i])
+            coefficient_matrix_2_1 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_2_1 %*% obs_test_coefs[,i])
+            coefficient_matrix_2_2 <- map(.x = 1:n_elem_fold,
+                                          .f = function(i) est_coef_2_2 %*% obs_test_coefs[,i])
+            
+            # integral matrix
+            # grid for approximation of intergrals on [0,1]
+            tmp_grid <- seq(0, 1, length.out = 1000)
+            # get values of basis functions at approximation grid
+            basis_eval <- eval.basis(evalarg = tmp_grid, basisobj = smallbasis)
+            # create a container for the integrals over the pairwise products 
+            # of the basis functions
+            integral_matrix <- matrix(data = 0, nrow = n_basis[j], ncol = n_basis[j])
+            
+            # calculate integrals over pairwise products of basis functions
+            # and save in provided matrix
+            for (l in 1:n_basis[j]) {
+              for (k in 1:n_basis[j]) {
+                integral_matrix[l, k] <- integrate(function(t) {
+                  approx(
+                    x = tmp_grid,
+                    y = basis_eval[, l] * t(basis_eval[, k]), xout = t
+                  )$y
+                }, lower = 0, upper = 1)$value
+              }
+            }
+            
+            # multiply matrices
+            regressor_inf_1_1 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_1_1[[i]] * integral_matrix)))
+            regressor_inf_1_2 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_1_2[[i]] * integral_matrix)))
+            regressor_inf_2_1 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_2_1[[i]] * integral_matrix)))
+            regressor_inf_2_2 <- unlist(map(.x = 1:n_elem_fold,
+                                            .f = function(i) sum(coefficient_matrix_2_2[[i]] * integral_matrix)))
+            
+            # predict values
+            pred_1_1 <- const_1_1 + regressor_inf_1_1
+            pred_1_2 <- const_1_2 + regressor_inf_1_2
+            pred_2_1 <- const_2_1 + regressor_inf_2_1
+            pred_2_2 <- const_2_2 + regressor_inf_2_2
+            
+            # calculate errors
+            error_1_1 <- Y1_1[sampling] - pred_1_1
+            error_1_2 <- Y1_2[sampling] - pred_1_2
+            error_2_1 <- Y2_1[sampling] - pred_2_1
+            error_2_2 <- Y2_2[sampling] - pred_2_2
+            
+            # calculate MSE
+            MSPE_mat[m, 1] <- mean(error_1_1^2)
+            MSPE_mat[m, 2] <- mean(error_1_2^2)
+            MSPE_mat[m, 3] <- mean(error_2_1^2)
+            MSPE_mat[m, 4] <- mean(error_2_2^2)
+          }
           
-          # prepare objects for functional regression
-          xfdlist <- list(const = rep(x = 1, times = n_obs), 
-                          smooth_basis = smooth_basis_fd)
+          MSPE_average <- colMeans(MSPE_mat)
           
-          # perform functional regression with cross validation for all 4 scenarios
-          f_regress1_1 <- fRegress.CVk(y = Y1_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress1_2 <- fRegress.CVk(y = Y1_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress2_1 <- fRegress.CVk(y = Y2_1, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          f_regress2_2 <- fRegress.CVk(y = Y2_2, xfdlist = xfdlist, betalist = betalist_list[[j]])
-          
-          # generate tmp variable for current number of succesful runs
+          # generate tmp variable for current number of successful runs
           tmp_sr <- CV_container$success_count[j]
           
-          # save Cross validation criterion in provided container
-          CV_container$f1_e1_spline[j] <- CV_container$f1_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_1$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_spline[j] <- CV_container$f1_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress1_2$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_spline[j] <- CV_container$f2_e1_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_1$SSE.CV) * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_spline[j] <- CV_container$f2_e2_spline[j] * tmp_sr / (tmp_sr + 1) + sqrt(f_regress2_2$SSE.CV) * 1 / (tmp_sr + 1)
+          # Use results from FPCA to perform linear regression and obtain CV scores
+          CV_container$f1_e1[j] <- CV_container$f1_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
+          CV_container$f1_e2[j] <- CV_container$f1_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
+          CV_container$f2_e1[j] <- CV_container$f2_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
+          CV_container$f2_e2[j] <- CV_container$f2_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
           
           # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
@@ -465,7 +752,7 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
   )
 
   colnames(CV_container) <- c(
-    "f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr",
+    "f1_e1", "f1_e2", "f2_e1", "f2_e2",
     # "varprop", 
     "n_basis", "success_count"
   )
@@ -534,9 +821,6 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
             # perform fPCA on training data
             train_fd <- pca.fd(fdobj = smooth_basis_fd_train, 
                                nharm = nharm, centerfns = TRUE)
-            
-            # extract scores for training set
-            train_scores <- train_fd$scores
             
             # create container for estimated scores in test data
             scores_mat  <- matrix(0, nrow = n_elem_fold, ncol = nharm)
@@ -605,10 +889,10 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
             test_prediction2_2 <- unname(predict(object = model2_2, newdata = scores_tib))
             
             # calculate RMSE from predicted values
-            MSPE_mat[m, 1] <- sqrt(1/10 * sum((test_prediction1_1 - Y1_1)^2))
-            MSPE_mat[m, 2] <- sqrt(1/10 * sum((test_prediction1_2 - Y1_2)^2))
-            MSPE_mat[m, 3] <- sqrt(1/10 * sum((test_prediction2_1 - Y2_1)^2))
-            MSPE_mat[m, 4] <- sqrt(1/10 * sum((test_prediction2_2 - Y2_2)^2))
+            MSPE_mat[m, 1] <- mean((test_prediction1_1 - Y1_1[sampling])^2)
+            MSPE_mat[m, 2] <- mean((test_prediction1_2 - Y1_2[sampling])^2)
+            MSPE_mat[m, 3] <- mean((test_prediction2_1 - Y2_1[sampling])^2)
+            MSPE_mat[m, 4] <- mean((test_prediction2_2 - Y2_2[sampling])^2)
           }
           
           MSPE_average <- colMeans(MSPE_mat)
@@ -617,13 +901,10 @@ fpcr_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debug = FALSE
           tmp_sr <- CV_container$success_count[j]
 
           # Use results from FPCA to perform linear regression and obtain CV scores
-          CV_container$f1_e1_fpcr[j] <- CV_container$f1_e1_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_fpcr[j] <- CV_container$f1_e2_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_fpcr[j] <- CV_container$f2_e1_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_fpcr[j] <- CV_container$f2_e2_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
-          
-          # update varprop
-          # CV_container$varprop[j] <- CV_container$varprop[j] * tmp_sr / (tmp_sr + 1) + sum(train_fd$varprop) * 1 / (tmp_sr + 1)
+          CV_container$f1_e1[j] <- CV_container$f1_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
+          CV_container$f1_e2[j] <- CV_container$f1_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
+          CV_container$f2_e1[j] <- CV_container$f2_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
+          CV_container$f2_e2[j] <- CV_container$f2_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
           
           # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
@@ -673,9 +954,9 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
 
   # specfiy number of basis functions that should be considered
   if (even_basis == TRUE) {
-    n_basis <- seq(from = 1, to = 25, by = 1)
+    n_basis <- seq(from = 1, to = 19, by = 1)
   } else {
-    n_basis <- seq(from = 1, to = 25, by = 2)
+    n_basis <- seq(from = 1, to = 19, by = 2)
   }
 
   # set up container for averaged cross validation scores
@@ -684,7 +965,7 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
   )
 
   colnames(CV_container) <- c(
-    "f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr",
+    "f1_e1", "f1_e2", "f2_e1", "f2_e2",
     # "varprop", 
     "n_basis", "success_count"
   )
@@ -767,9 +1048,6 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
             train_fd <- pca.fd(fdobj = smooth_basis_fd_train, 
                                nharm = nharm, centerfns = TRUE)
             
-            # extract scores for training set
-            train_scores <- train_fd$scores
-            
             # create container for estimated scores in test data
             scores_mat  <- matrix(0, nrow = n_elem_fold, ncol = nharm)
             
@@ -837,10 +1115,10 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
             test_prediction2_2 <- unname(predict(object = model2_2, newdata = scores_tib))
             
             # calculate RMSE from predicted values
-            MSPE_mat[m, 1] <- sqrt(1/10 * sum((test_prediction1_1 - Y1_1)^2))
-            MSPE_mat[m, 2] <- sqrt(1/10 * sum((test_prediction1_2 - Y1_2)^2))
-            MSPE_mat[m, 3] <- sqrt(1/10 * sum((test_prediction2_1 - Y2_1)^2))
-            MSPE_mat[m, 4] <- sqrt(1/10 * sum((test_prediction2_2 - Y2_2)^2))
+            MSPE_mat[m, 1] <- mean((test_prediction1_1 - Y1_1[sampling])^2)
+            MSPE_mat[m, 2] <- mean((test_prediction1_2 - Y1_2[sampling])^2)
+            MSPE_mat[m, 3] <- mean((test_prediction2_1 - Y2_1[sampling])^2)
+            MSPE_mat[m, 4] <- mean((test_prediction2_2 - Y2_2[sampling])^2)
           }
           
           MSPE_average <- colMeans(MSPE_mat)
@@ -849,13 +1127,10 @@ fpcr_fourier_function <- function(rep, my_data = NULL, n_obs, nharm, seed, even_
           tmp_sr <- CV_container$success_count[j]
           
           # Use results from FPCA to perform linear regression and obtain CV scores
-          CV_container$f1_e1_fpcr[j] <- CV_container$f1_e1_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_fpcr[j] <- CV_container$f1_e2_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_fpcr[j] <- CV_container$f2_e1_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_fpcr[j] <- CV_container$f2_e2_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
-          
-          # update varprop
-          # CV_container$varprop[j] <- CV_container$varprop[j] * tmp_sr / (tmp_sr + 1) + sum(train_fd$varprop) * 1 / (tmp_sr + 1)
+          CV_container$f1_e1[j] <- CV_container$f1_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
+          CV_container$f1_e2[j] <- CV_container$f1_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
+          CV_container$f2_e1[j] <- CV_container$f2_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
+          CV_container$f2_e2[j] <- CV_container$f2_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
           
           # count succesful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
@@ -912,7 +1187,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
   )
   
   colnames(CV_container) <- c(
-    "f1_e1_fpcr", "f1_e2_fpcr", "f2_e1_fpcr", "f2_e2_fpcr",
+    "f1_e1", "f1_e2", "f2_e1", "f2_e2",
     # "varprop", 
     "n_basis", "success_count"
   )
@@ -982,9 +1257,6 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
             train_fd <- pca.fd(fdobj = smooth_basis_fd_train, 
                                nharm = nharm, centerfns = TRUE)
             
-            # extract scores for training set
-            train_scores <- train_fd$scores
-            
             # create container for estimated scores in test data
             scores_mat  <- matrix(0, nrow = n_elem_fold, ncol = nharm)
             
@@ -1052,10 +1324,10 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
             test_prediction2_2 <- unname(predict(object = model2_2, newdata = scores_tib))
             
             # calculate RMSE from predicted values
-            MSPE_mat[m, 1] <- sqrt(1/10 * sum((test_prediction1_1 - Y1_1)^2))
-            MSPE_mat[m, 2] <- sqrt(1/10 * sum((test_prediction1_2 - Y1_2)^2))
-            MSPE_mat[m, 3] <- sqrt(1/10 * sum((test_prediction2_1 - Y2_1)^2))
-            MSPE_mat[m, 4] <- sqrt(1/10 * sum((test_prediction2_2 - Y2_2)^2))
+            MSPE_mat[m, 1] <- mean((test_prediction1_1 - Y1_1[sampling])^2)
+            MSPE_mat[m, 2] <- mean((test_prediction1_2 - Y1_2[sampling])^2)
+            MSPE_mat[m, 3] <- mean((test_prediction2_1 - Y2_1[sampling])^2)
+            MSPE_mat[m, 4] <- mean((test_prediction2_2 - Y2_2[sampling])^2)
           }
           
           MSPE_average <- colMeans(MSPE_mat)
@@ -1064,14 +1336,11 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
           tmp_sr <- CV_container$success_count[j]
           
           # Use results from FPCA to perform linear regression and obtain CV scores
-          CV_container$f1_e1_fpcr[j] <- CV_container$f1_e1_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
-          CV_container$f1_e2_fpcr[j] <- CV_container$f1_e2_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
-          CV_container$f2_e1_fpcr[j] <- CV_container$f2_e1_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
-          CV_container$f2_e2_fpcr[j] <- CV_container$f2_e2_fpcr[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
-          
-          # update varprop
-          # CV_container$varprop[j] <- CV_container$varprop[j] * tmp_sr / (tmp_sr + 1) + sum(train_fd$varprop) * 1 / (tmp_sr + 1)
-          
+          CV_container$f1_e1[j] <- CV_container$f1_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[1] * 1 / (tmp_sr + 1)
+          CV_container$f1_e2[j] <- CV_container$f1_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[2] * 1 / (tmp_sr + 1)
+          CV_container$f2_e1[j] <- CV_container$f2_e1[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[3] * 1 / (tmp_sr + 1)
+          CV_container$f2_e2[j] <- CV_container$f2_e2[j] * tmp_sr / (tmp_sr + 1) + MSPE_average[4] * 1 / (tmp_sr + 1)
+
           # count successful runs
           CV_container$success_count[j] <- CV_container$success_count[j] + 1
         },

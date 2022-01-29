@@ -90,8 +90,11 @@ fRegress.CVk <- function(y, xfdlist, betalist, wt=NULL, CVobs=10,
                                          0.5*( xveci[1]    *betavec[1] +
                                                  xveci[nfine]*betavec[nfine] )))
         }
+
         yhati <- yhati + tmp_yhat
       }
+      print(yhati)
+      print(yvec[(start:stop)])
       # calculate prediction MSE
       errfd[m] = mean((yvec[(start:stop)] - yhati)^2);
       SSE.CV <- SSE.CV + errfd[m]
