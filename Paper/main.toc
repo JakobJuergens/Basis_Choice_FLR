@@ -67,6 +67,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.1}Basis Plots}{19}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Wiener Process}{19}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.2}Lemma}{19}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Bibliography}{21}{section.8}%
+\contentsline {subsection}{\numberline {7.3}Karhunen-Lo\'{e}ve expansion}{21}{subsection.7.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.4}Wiener Process}{21}{subsection.7.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Bibliography}{22}{section.8}%

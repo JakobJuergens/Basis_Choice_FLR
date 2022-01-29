@@ -241,12 +241,12 @@ The polynomial of the form
 		c(t,s) = \mathbb{E}\big[ \left( F(\omega)(t) - \mu(t) \right) \left( F(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 	{\color{orange}suggestion from here}
-	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through c : $[0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $L^{2}[0,1]$ such that $K : v \rightarrow Kv$ for $v \in L^{2}[0,1]$, by
+	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through c : $[0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
 	\begin{equation}
-		[Kv](t) = \int_{0}^{1}c(t,s)v(s)ds
+		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
 	\end{equation}
 
-	Then, the operator $K$ has orthonormal basis functions $v_{i} \in L^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds following traits:
+	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds following traits:
 	
 		\begin{enumerate}
 			\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
@@ -271,7 +271,7 @@ The polynomial of the form
 	\begin{equation}
 		\xi_j(\omega) = \langle F(\omega) - \mu, \nu_j\rangle = \int_{0}^{1} \left(F(\omega)(s) - \mu(s)\right) \nu_j(s) \mathrm{d}s
 	\end{equation} 
-	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector.
+	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector. {\color{orange} We would need to assume that the process is centered, otherwise we may not derive below results(not sure though).}
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -400,10 +400,10 @@ The polynomial of the form
 	\begin{equation}
 		\begin{split}
 			Z_{j, k}^m & =  b_{k}^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \quad j = 1, \dots, L \quad k = 1, \dots, L \\
-			\tilde{Z}_{j}^m& = \sum_{k = 1}^{L} \left[ b_k^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
+			\tilde{Z}_{j}^m& = \sum_{k = 1}^{L} \left[ b_k^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L\\
 		\end{split}
 	\end{equation}
-	
+
 	\subsection{Detailed Draft}
 	\begin{itemize}
 		\item Motivate random functions from introduction and the general concept of random variables
@@ -662,7 +662,66 @@ describe setup and results
 		\includegraphics[width = \textwidth]{../Graphics/Bspline_Basis.pdf}
 		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
 	\end{figure}
-	
+
+	\subsection{Lemma}
+	{\color{orange} We might put the below theorems for KL. The deterministic basis expansions are pretty clear about why we can use the truncation version by itself. In contrast, I feel like that for the case of KL it does not. And in the centered case?} 
+	The coefficients $\xi_{j}$ satisfy the following:
+	\begin{enumerate}
+		\item $\mathbb{E}[\xi_{j}] = 0$
+		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
+		\item Var[$\xi_{j}$] = $\lambda_{j}$
+	\end{enumerate}
+	\textit{Proof}. To obtain the first result, we can show that
+	\begin{equation}
+		\begin{split}
+		\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt \biggr\rbrack\\
+		= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
+		= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
+		= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt \\
+		= & \mu(t) \int_{0}^{1} \nu_{j}(t)
+		\end{split}
+	\end{equation}
+
+	For the case of centered process
+	\begin{equation}
+		\begin{split}
+			\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
+			= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
+			= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
+			= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt \\
+			= & \mu(t) \int_{0}^{1} \nu_{j}(t) = 0
+		\end{split}
+	\end{equation}
+	The second claim is proved as:
+	\begin{equation}
+		\begin{split}
+		\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
+		= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack\\
+		= & \int_{0}^{1} \int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu_{j}(s) \nu_{k}(t) ds dt\\
+		= & \int_{0}^{1} (\int_{0}^{1}k(s,t)\nu_{j}(s)ds) \nu_{k}(t) dt \\
+		= & \int_{0}^{1}[K\nu_{j}](t)\nu_{k}(t)dt\\
+		= & \langle K \nu_{j}, \nu_{k} \rangle\\
+		= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
+		\end{split}
+	\end{equation}
+	where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the other two properties.
+	\begin{equation}
+		Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
+	\end{equation}
+
+	\subsection{Karhunen-Lo\'{e}ve expansion}
+	Let $F : [0,1]  \rightarrow \mathbb{R}$ be a centered mean-square continuous stochastic process with $F \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{i}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	\begin{equation}
+		F(t) = \sum_{i=1}^{\infty} \xi_{i} \nu_{i}(t),
+	\end{equation}
+	where coefficients $\xi_{i}$ are given by $\xi_{i}(\omega) = \int_{0}^{1} F(t)(\omega) \nu_{i}(t)dt$ and satisfy the following conditions.
+	\begin{enumerate}
+		\item $\mathbb{E}[\xi_{j}] = 0$
+		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
+		\item Var[$\xi_{j}$] = $\lambda_{j}$
+	\end{enumerate}
+	\textit{Proof}. ...
+
 	\subsection{Wiener Process}\label{Wiener}
 	A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
 	It is characterized by the following properties.
