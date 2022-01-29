@@ -255,8 +255,7 @@ The polynomial of the form
 			\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
 		\end{enumerate}
 	
-	Therefore, we can approximate the function $F$ with first few eigenfunctions. {\color{orange}to here. Then, we can justify why the function F can be explaiend enough well with few eigenfunctions and how to find the variance proporation with Var($\xi$) = $\lambda$}
-	Theoretical considerations lead to the result that $F$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion.
+	Therefore, we can approximate the function $F$ with first few eigenfunctions. The functions $F$ are approximated enough well by first few principal components since the order of them are sorted in descending order (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $F$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
 		F(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)
@@ -265,7 +264,7 @@ The polynomial of the form
 	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathbb{N}\}$ of the following equation.
 	
 	\begin{equation}
-		\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
+		{\color{orange} [K \nu](t) =}\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
 	\end{equation}
 	
 	The $\xi_j(\omega)$ are then given as 
@@ -685,7 +684,7 @@ describe setup and results
 		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
 	\end{figure}
 
-	\subsection{Lemma}
+	\subsection{Lemma} \label{Proof1}
 	{\color{orange} We might put the below theorems for KL. The deterministic basis expansions are pretty clear about why we can use the truncation version by itself. In contrast, I feel like that for the case of KL it does not. And in the centered case?} 
 	The coefficients $\xi_{j}$ satisfy the following:
 	\begin{enumerate}
@@ -736,7 +735,7 @@ describe setup and results
 	\end{proof}
 	
 	
-	\subsection{Karhunen-Lo\'{e}ve expansion}
+	\subsection{Karhunen-Lo\'{e}ve expansion} \label{Proof2}
 	Let $F : [0,1]  \rightarrow \mathbb{R}$ be a centered mean-square continuous stochastic process with $F \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{i}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
 		F(t) = \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
