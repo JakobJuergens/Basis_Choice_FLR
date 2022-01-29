@@ -140,7 +140,11 @@ style=authoryear-comp,
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	The Hilbert space of square integrable functions on $[0,1]$ {\color{orange} (instead, $\mathbb{L}^2[0,1]$)} is the function space that is most often used for theoretical considerations in functional data analysis  {\color{orange} without loss of generality}. Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
+	The Hilbert space of square integrable functions on $[0,1]$ {\color{orange} (instead, $\mathbb{L}^2[0,1]$)} is the function space that is most often used for theoretical considerations in functional data analysis  {\color{orange} without loss of generality}. 
+	
+	%Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
+	
+	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
 	\begin{equation}
 	\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
@@ -148,7 +152,7 @@ style=authoryear-comp,
 	
 	The realized $f(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	
-	\subsection{Bases of $\mathbb{L}^2$}
+	\subsection{Bases of $\mathbb{L}^2$} % Maybe change title due to monomial and bspline basis not ful;filling this property
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
 	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $F(\omega_0) = f(t)$ of $F(\omega)$.
@@ -169,7 +173,7 @@ The polynomial of the form
 	\begin{equation}
 		S_{k}^{MB}(t) = (t-w)^k, k = 0, 1, ..., K.
 	\end{equation}
-	The single basis function $1$ within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}).\\
+	The single basis function $1$ within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). {\color{blue} Taylor expansion as motivation}\\ 
 	The shift parameter $w$ usually is specified to be the center of the interval subject to approximation.
 	 Problems of collinearity arise for higher degrees since the monomial basis becomes more correlated as the degrees increase. This restricts the number of degrees and therefore the use of this basis: For simple functions this may be useful, but the small number of degrees makes it impossible to capture pronounced local peculiarities and leads to undesirable behaviour at the tails. (cf. \cite{ramsay_functional_2005})
 
@@ -186,7 +190,7 @@ The polynomial of the form
 		\end{cases}
 	\end{equation}
 	
-	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthogonal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  
+	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthogonal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  {\color{blue} Motivate from fourier series}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
 	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $S_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
@@ -404,103 +408,55 @@ The polynomial of the form
 		\end{split}
 	\end{equation}
 
-	\subsection{Detailed Draft}
-	\begin{itemize}
-		\item Motivate random functions from introduction and the general concept of random variables
-		\item Formalize random function in this context as random variables realizing in a Hilbert space
-		\item Introduce $\mathbb{L}^2[0,1]$ as the Hilbert space of square integrable functions on $[0,1]$
-		\item Specialize to Hilbert space being $\mathbb{L}^2[0,1]$ for this context
-		\item Define mean and covariance function of a random function realizing in $\mathbb{L}^2[0,1]$
-		\item Introduce the concept of a basis of a Hilbert space and specialize to $\mathbb{L}^2[0,1]$
-		\item Introduce b-spline and Fourier bases
-		\item Introduce eigenfunctions and FPCA on the basis of covariance function (Karhunen-Lo\'{e}ve expansion)
-		\item explain similarities to Eigenvalues and Eigenvectors of matrix + PCA (fraction of explained variance etc...)
-		\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbb{L}^2[0,1]$
-		\item Explain the concept of iid data in a functional setting		
-		\item Define point-wise mean (sample), point-wise standard deviation (sample) and sample covariance function
-		\item Explain approximations of functional observations using truncated basis representations
-		\item Introduce linear operator $L_1$ and sufficient condition associated with it
-		\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
-	\end{itemize}
+	%\subsection{Detailed Draft}
+	%\begin{itemize}
+	%	\item Motivate random functions from introduction and the general concept of random variables
+	%	\item Formalize random function in this context as random variables realizing in a Hilbert space
+	%	\item Introduce $\mathbb{L}^2[0,1]$ as the Hilbert space of square integrable functions on $[0,1]$
+	%	\item Specialize to Hilbert space being $\mathbb{L}^2[0,1]$ for this context
+	%	\item Define mean and covariance function of a random function realizing in $\mathbb{L}^2[0,1]$
+	%	\item Introduce the concept of a basis of a Hilbert space and specialize to $\mathbb{L}^2[0,1]$
+	%	\item Introduce b-spline and Fourier bases
+	%	\item Introduce eigenfunctions and FPCA on the basis of covariance function (Karhunen-Lo\'{e}ve expansion)
+	%	\item explain similarities to Eigenvalues and Eigenvectors of matrix + PCA (fraction of explained variance etc...)
+	%	\item Introduce functional observations in this context as realizations of a random variable realizing in $\mathbb{L}^2[0,1]$
+	%	\item Explain the concept of iid data in a functional setting		
+	%	\item Define point-wise mean (sample), point-wise standard deviation (sample) and sample covariance function
+	%	\item Explain approximations of functional observations using truncated basis representations
+	%	\item Introduce linear operator $L_1$ and sufficient condition associated with it
+	%	\item Motivate Scalar-on-function regression from multivariate linear regression with a scalar response variable
+	%\end{itemize}
 
-There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ — this estimate also needs to have a useful interpretation. Without it, there might be prediction, but the increase in understanding of the underlying question will be minimal. One aspect of a useful interpretation is that the estimate $\beta(s)$ should not jump in a seemingly random fashion, because an interpretation of this erratic behavior will often be impossible.
+%There are several important aspects of functional regression in this functional setting that separate it from usual multiple regression according to \cite{kokoszka_introduction_2017}: In functional linear regression, the aim is not only to obtain an estimate of the function $\beta(s)$ — this estimate also needs to have a useful interpretation. Without it, there might be prediction, but the increase in understanding of the underlying question will be minimal. One aspect of a useful interpretation is that the estimate $\beta(s)$ should not jump in a seemingly random fashion, because an interpretation of this erratic behavior will often be impossible.
 
-	A common setting in non-functional regression is akin to the following. Assume a model as follows:
+	%A common setting in non-functional regression is akin to the following. Assume a model as follows:
 	
-	\begin{equation}
-		Y = X'\beta + \epsilon
-	\end{equation}
+	%\begin{equation}
+	%	Y = X'\beta + \epsilon
+	%\end{equation}
 
-	where $X \in \mathbb{R}^{n\times J}$ is a matrix containing the regressors, $\beta \in \mathbb{R}^J$ is a coefficient vector and $epsilon$ is a vector containing the error term. For simplicity, assume that the data generating process fulfills the Markov assumptions. Then the famous OLS-estimator is given by:
+	%where $X \in \mathbb{R}^{n\times J}$ is a matrix containing the regressors, $\beta \in \mathbb{R}^J$ is a coefficient vector and $epsilon$ is a vector containing the error term. For simplicity, assume that the data generating process fulfills the Markov assumptions. Then the famous OLS-estimator is given by:
 	
-	\begin{equation}
-		\hat{\beta}_{OLS} = (X'X)^{-1}X'Y
-	\end{equation}
+	%\begin{equation}
+	%	\hat{\beta}_{OLS} = (X'X)^{-1}X'Y
+	%\end{equation}
 
-	A naive approach to FLR would be to try to generalize this to the functional setting.
-	Assuming a data generating process of the form:
+	%A naive approach to FLR would be to try to generalize this to the functional setting.
+	%Assuming a data generating process of the form:
 	
-	\begin{equation}
-    	 Y =  \int \beta(s)X(s) \,\mathrm{d}t \ +\epsilon
-    \end{equation}
+	%\begin{equation}
+   % 	 Y =  \int \beta(s)X(s) \,\mathrm{d}t \ +\epsilon
+    %\end{equation}
 
-    it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Where in the finite dimensional setting the OLS estimator can be derived as a method of moments estimator by solving a system of equations of sample moment restrictions, this leads to a system of infinitely many equations in the functional setting. 
-    In practice, functional observations are never truly continuously observed. If we assume that the functional observations are observed at a finite set of points $\{t_1, \dots, t_J\}$ this makes the derivation of an OLS estimator possible as before.
+    %it becomes clear that we cannot compute the estimate of $\beta(t)$ as we would do in a classical multivariate setup because of the infinite dimensionality of the underlying objects. Where in the finite dimensional setting the OLS estimator can be derived as a method of moments estimator by solving a system of equations of sample moment restrictions, this leads to a system of infinitely many equations in the functional setting. 
+    %In practice, functional observations are never truly continuously observed. If we assume that the functional observations are observed at a finite set of points $\{t_1, \dots, t_J\}$ this makes the derivation of an OLS estimator possible as before.
     
-    \begin{equation}\label{discrete_time_model}
-    	Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{i},
-    \end{equation}
+    %\begin{equation}\label{discrete_time_model}
+    %	Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{i},
+    %\end{equation}
 
-    However, this often still results in a large and difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
-    Looking at equation \ref{discrete_time_model} and assuming continuous functions $X_i$ it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$. Thereby, there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances of $\beta$. (cf. ~\cite{kokoszka_introduction_2017})\\
-    A different approach is necessary.
-    
-    Define therefore
-    
-    \begin{equation}
-  		c_{\mathbf{X}}(t,s) = E[\mathbf{X}(t)\mathbf{X}(s)],\: c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\mathbf{Y}], 
-    \end{equation}
-
-   Under the assumption that $X$ is independent from $\epsilon$ we obtain
-
-   \begin{equation}
-	   c_{\mathbf{X}\mathbf{Y}}(t) = E[\mathbf{X}(t)\int \beta(t)\mathbf{X}(s) \,\mathrm{d}s \ +\epsilon]
-   \end{equation}
-
-   \begin{equation}
- 	  c_{\mathbf{X}\mathbf{Y}}(t) = E[\int \beta(s) \: \mathbf{X}(s)\mathbf{X}(t) \, \mathrm{d}s \: | \: X]  + E[\epsilon |\mathbf{X}]
-   \end{equation}
-  
-   \begin{equation}
-      c_{\mathbf{X}\mathbf{Y}}(t) = \int c_{\mathbf{X}}(t,s) \beta(s) \,\mathrm{d}s
-   \end{equation}
-   
-   In practice, this results in a large and often difficult to solve system of equations. If solved, a  perfect fit is possible,but results in a noisy and erratic function $\hat{\beta}(s)$ that is not useful for interpretation since it does not utilize the intuition of smooth functions (cf.~\cite{horvath_inference_2012}). Another reason why estimation is not feasible using this approach is colinearity.
-   If we approximate the scalar-on-functional regression by assuming a set of discrete observation points for all realizations of the data generating process as
-   
-  	\begin{equation}
-    	Y_i = \sum_{j = 1}^{n} \beta(t_{j})X_i(t_{j}) + \epsilon_{i},
-    \end{equation} 
-
-	it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$ there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances of $\beta$. (cf. ~\cite{kokoszka_introduction_2017}) {\color{red} isn't something missing here? Like "and employ standard multivariate linear regression" // Will be done (Jona)}
-  	
-	\begin{itemize}
-		\item Solution: estimation using truncated basis expansion to approximate data (theoretical description)
-	\end{itemize}
-		
-	The simplest approach to regularize the noisy estimate of $\hat{\beta}(s)$	is to expand it with deterministic basis function. Assume 
-
-	\begin{equation}
-     	\beta(t) =  \sum_{k=1}^{K} c_{k}B_{k}(t)
-    \end{equation}
-
-    to expand
-    
-    \begin{equation}
-    	\int \beta(s)X(s) \,\mathrm{d}t \ = \sum_{k=1}^{K} c_{k} \int B_{k}(t)X_{i}(t)\,\mathrm{d}t =: \sum_{k=1}^{K} x_{ik} c_{k} 
-    \end{equation}
-
-    to the linear model of equation 2 with $\mathbf{c} = [\alpha, c_1, c_2,...,c_K]^T$ (corresponding to $\mathbf{\beta}$) estimated by $\mathbf{\hat{c}} = \mathbf{(X^{T}X)^{-1}X^{T}Y}$. Hence, the estimate $\hat{\beta}$ depends on the basis function $B_{k}$ and its corresponding shape, where $K$ is a subjective choice of the researcher. This subjective choice highly depends on the researchers intuition of the smoothness of the estimate. It is best practice to use the same basis functions as in {\color{red} add link to smoothing} (cf. ~\cite{kokoszka_introduction_2017})
+    %However, this often still results in a large and difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
+    %Looking at equation \ref{discrete_time_model} and assuming continuous functions $X_i$ it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$. Thereby, there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances of $\beta$. (cf. ~\cite{kokoszka_introduction_2017})\\
 	
 	\subsection{Draft-Overview}
 	\begin{itemize}
@@ -524,21 +480,14 @@ There are several important aspects of functional regression in this functional 
 	\newpage
 	\section{Simulation Study}
 	
-	\subsection{Draft-Overview}
-	\begin{itemize}
-		\item Motivate Simulation for some data generating process from application
-		\item Describe Simulation Setting from technical standpoint (DGP, set-up for replication, ...)
-		
-		\item Compare estimation with \begin{enumerate}
-			\item b-spline basis without addressing approximation error
-			\item ... including proper treatment of approximation error
-			\item Eigenbasis constructed from observations
-			\end{enumerate}
-	
-		\item Prediction not Inference (Alternative: Focused on a testing procedure motivated by the application)
-		\item Present Results
-		\item Explain relevance for application
-	\end{itemize}
+	%\subsection{Draft-Overview}
+	%\begin{itemize}
+	%	\item Motivate Simulation for some data generating process from application
+	%	\item Describe Simulation Setting from technical standpoint (DGP, set-up for replication, ...)
+	%			\item Prediction not Inference (Alternative: Focused on a testing procedure motivated by the application)
+	%	\item Present Results
+	%	\item Explain relevance for application
+	%\end{itemize}
 
 	\subsection{Motivation}
 	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near Infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. NIR- spectroscopy allows to analyse samples of gasoline much faster, cheaper and with the same reproducibility as standard tests while not destroying the sample (cf. \cite{Bohacs_Ovadi_Salgo1998}). We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
@@ -605,9 +554,9 @@ There are several important aspects of functional regression in this functional 
 		 
 	\begin{equation}
 		\begin{split}
-			\hat{\xi}_{i}^m =  \int_{0}^{1} \left[ {\color{red} X_{i}(s) - \hat{\mu}(s)} \right] {\color{blue}\hat{\nu}^m }\mathrm{d}s) \\
-						    = \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s 
-			 = \sum_{j \in \mathcal{I}} \sum_{k \in \mathcal{L}} ( a_{i,j}   b_{k}^m ) \int_{0}^{1} (\phi_j(s) \psi_{k}(s)\mathrm{d}s)
+			\hat{\xi}_{i}^m &=  \int_{0}^{1} \left[ {\color{red} X_{i}(s) - \hat{\mu}(s)} \right] {\color{blue}\hat{\nu}^m }\mathrm{d}s) 
+						    = \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
+			 &= \sum_{j \in \mathcal{I}} \sum_{k \in \mathcal{L}} ( a_{i,j}   b_{k}^m ) \int_{0}^{1} (\phi_j(s) \psi_{k}(s)\mathrm{d}s)
 		\end{split}
 	\end{equation}
 	
@@ -626,7 +575,11 @@ There are several important aspects of functional regression in this functional 
 	\paragraph{Bspline Basis}
 	\paragraph{Fourier Basis}
 	
-
+	\subsubsection{Functional Principal Component Regression}
+	\paragraph{Monomial Basis}
+	\paragraph{Bspline Basis}
+	\paragraph{Fourier Basis}
+	
 	\subsubsection{Interpretation and Relevance for Application}
 
 	\subsection{Literature}
@@ -637,25 +590,12 @@ There are several important aspects of functional regression in this functional 
 	
 	\newpage
 	\section{Application}
-The application uses the insights from the previous sections to predict the octane ratings of the introduced gasoline dataset. Following the results from the simulation study,... 
-\begin{itemize}
-\item
-{\color{green} incorporate results of simulation study: number of basis, components, etc...}
-\item
-point out difficulties estimating sderror
-\item
-describe setup and results
+		The application uses the insights from the previous sections to predict the octane ratings of the introduced gasoline dataset. Following the results from the simulation study,... 
+		\begin{itemize}
+			\item {\color{green} incorporate results of simulation study: number of basis, components, etc...}
+			\item point out difficulties estimating sderror
+			\item describe setup and results
 \end{itemize}
-
-
-	\subsection{Draft-Overview}
-	\begin{itemize}
-		\item Prediction not Inference (Alternative: Focused on a testing procedure motivated by the data set)
-		\item IID data set (no dependence between the curves, don't want to do functional time series)
-		\item Not necessarily data from economics (like biology, sports, whatever)
-		\item Smooth curves or random walk (both fine)
-		\item \href{https://functionaldata.wordpress.ncsu.edu/resources/}{https://functionaldata.wordpress.ncsu.edu/resources/}
-	\end{itemize}
 	
 	\subsection{Literature}
 	\begin{itemize}
@@ -684,6 +624,25 @@ describe setup and results
 		\caption{B-spline basis functions of order 3 for 6 equidistant knots on $[0,1]$}
 	\end{figure}
 
+\subsection{Wiener Process}\label{Wiener}
+A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
+It is characterized by the following properties.
+
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item $W_0 = 0$
+		\item $\forall t > 0 W_{t+u} - W_t \perp\!\!\!\perp W_s \forall s \leq t$
+		\item $W_{t+u} - W_t \sim \mathcal{N}(0,u)$
+		\item $W_t$ is continuous in $t$
+	\end{enumerate}
+\end{multicols}
+
+\begin{figure}[H]\label{Wiener_plot}
+	\includegraphics[width = \textwidth]{../Graphics/Wiener_plot.pdf}
+	\caption{25 i.i.d. realizations of a Wiener Process on $[0,1]$}
+\end{figure}
+
+	\section{Proofs}
 	\subsection{Lemma} \label{Proof1}
 	{\color{orange} We might put the below theorems for KL. The deterministic basis expansions are pretty clear about why we can use the truncation version by itself. In contrast, I feel like that for the case of KL it does not. And in the centered case?} 
 	The coefficients $\xi_{j}$ satisfy the following:
@@ -788,24 +747,6 @@ describe setup and results
 			\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right] = 0
 		\end{equation}
 	\end{proof}
-
-	\subsection{Wiener Process}\label{Wiener}
-	A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
-	It is characterized by the following properties.
-	
-	\begin{multicols}{2}
-		\begin{enumerate}
-			\item $W_0 = 0$
-			\item $\forall t > 0 W_{t+u} - W_t \perp\!\!\!\perp W_s \forall s \leq t$
-			\item $W_{t+u} - W_t \sim \mathcal{N}(0,u)$
-			\item $W_t$ is continuous in $t$
-		\end{enumerate}
-	\end{multicols}
-
-	\begin{figure}[H]\label{Wiener_plot}
-		\includegraphics[width = \textwidth]{../Graphics/Wiener_plot.pdf}
-		\caption{25 i.i.d. realizations of a Wiener Process on $[0,1]$}
-	\end{figure}
 
 	\newpage
 	
