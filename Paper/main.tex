@@ -541,10 +541,10 @@ There are several important aspects of functional regression in this functional 
 	\end{itemize}
 
 	\subsection{Motivation}
-	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we imposed the gasoline data which consists of 60 samples of Near Infrared (NIR) spectroscopy measured by 2-nm from 900 to 1,700 nm, and a response variable, octane rate. NIR- spectroscopy allows to analyze samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). This setup was chosen to improve the approach towards the application, which involves predicting the octane ratings from the gasoline dataset.
+	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near Infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. NIR- spectroscopy allows to analyse samples of gasoline much faster, cheaper and with the same reproducibility as standard tests while not destroying the sample (cf. \cite{Bohacs_Ovadi_Salgo1998}). We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drwan from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$. Finally, we obtain the generated curves $NIR_{sim}$
+	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drawn from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$. Finally, we obtain the generated curves $NIR_{sim}$
 	
 	
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
@@ -600,7 +600,20 @@ There are several important aspects of functional regression in this functional 
 			\end{split}
 		\end{equation}
 		
-		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 5\}$, cubic bspline basis-function $\{5,6,...,25\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used 10 fold cross-validation. The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
+		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 5\}$, cubic bspline basis-function $\{5,6,...,25\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
+		 To obtain valid out of sample properties for the FPCR, within the 10 fold cross validation we first calculate the Functional Principal Components of the trainig-set for each curve. These scores are then used to estimate the scores $\hat{\xi}_{i}^m$ for $i \in holdoutset$ for each curve by the equation:
+		 
+	\begin{equation}
+		\begin{split}
+			\hat{\xi}_{i}^m =  \int_{0}^{1} \left[ {\color{red} X_{i}(s) - \hat{\mu}(s)} \right] {\color{blue}\hat{\nu}^m }\mathrm{d}s) \\
+						    = \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s 
+			 = \sum_{j \in \mathcal{I}} \sum_{k \in \mathcal{L}} ( a_{i,j}   b_{k}^m ) \int_{0}^{1} (\phi_j(s) \psi_{k}(s)\mathrm{d}s)
+		\end{split}
+	\end{equation}
+	
+	
+	
+		 The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
 		
 	
 	\subsection{Results}
