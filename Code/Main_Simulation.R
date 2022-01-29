@@ -17,7 +17,6 @@ NIR <- as.matrix(gasoline$NIR)
 source("Simulation_Functions.R")
 ### load code from other source files
 source("data_generator.R")
-source("k_fold_CV_function.R")
 
 ##### Perform Simulations #####
 
