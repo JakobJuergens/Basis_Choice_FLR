@@ -544,7 +544,7 @@ There are several important aspects of functional regression in this functional 
 	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we imposed the gasoline data which consists of 60 samples of Near Infrared (NIR) spectroscopy measured by 2-nm from 900 to 1,700 nm, and a response variable, octane rate. NIR- spectroscopy allows to analyze samples of gasoline much faster and with the same reproducibility as standard tests (cf. \cite{Bohacs_Ovadi_Salgo1998}). This setup was chosen to improve the approach towards the application, which involves predicting the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before performing \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drwan from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$ Finally, we obtain the generated curves $NIR_{sim}$
+	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset. This is motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drwan from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$. Finally, we obtain the generated curves $NIR_{sim}$
 	
 	
 		$$\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)$$ 
@@ -557,7 +557,7 @@ There are several important aspects of functional regression in this functional 
     %Very short summary: take fpc's and eigenvalues, use that the scores are independent from each other. Use the eigenvalues as variances and draw from a multivariate normal with the right varcov matrix (normal just because of convenience... No theoretical reasoning)}
     
     \subsection{Simulation setup}
-	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions,  $f_1(t)$ and  $f_2(t)$, are created that differ in their smoothness, to compare the methods with differing true coefficient functions:
+	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions,  $f_1(t)$ and  $f_2(t)$, are created that differ in their smoothness, to compare the introduced methods with differing true coefficient functions:
 	
 	\begin{equation}
     	f_1(t) = 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t) 
@@ -600,11 +600,19 @@ There are several important aspects of functional regression in this functional 
 			\end{split}
 		\end{equation}
 		
-		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 5\}$, cubic bspline basis-function $\{5,6,...,25\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used 10 fold cross-validation. The simulation was done with R (version...). In total we conducted out 2500 repetitions for each set of simulations. {\color{green} Information about version and link to repo / package in footnote??}
+		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 5\}$, cubic bspline basis-function $\{5,6,...,25\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used 10 fold cross-validation. The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
 		
 	
 	\subsection{Results}
-	DESCRIBE RESULTS
+	{\color{green}DESCRIBE RESULTS: make paragraph for each setup? so 6 paragraphs? Like this: }
+	
+	
+	\subsubsection{Basis Expansion Regression}
+	This follows from the \hyperref[basis_exp_transf]{Basis Expansion Transformation}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, tractable with typical multivariate regression theory. 
+	\paragraph{Monomial Basis}
+	\paragraph{Bspline Basis}
+	\paragraph{Fourier Basis}
+	
 
 	\subsubsection{Interpretation and Relevance for Application}
 
