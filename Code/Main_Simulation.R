@@ -21,7 +21,7 @@ source("data_generator.R")
 ##### Perform Simulations #####
 
 # Jakob
-for (i in 113:149) {
+for (i in 147:149) {
   test_bspline_function <- bspline_function(
     rep = 100, my_data = NULL, n_obs = 200, seed = i, debug = TRUE
   )

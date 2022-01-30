@@ -1179,7 +1179,7 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
   }
   
   # specfiy number of basis functions that should be considered
-  n_basis <- seq(from = 4, to = 12, by = 1)
+  n_basis <- seq(from = 2, to = 12, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
