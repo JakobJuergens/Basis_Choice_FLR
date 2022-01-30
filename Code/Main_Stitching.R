@@ -6,12 +6,12 @@ library(tidyverse)
 source("Simulation_Stitch_Functions.R")
 
 # get subfolders of Results/partial
-sbfldrs <- list.files(path = "Results/Partial")
+sbfldrs <- list.files(path = "Results/Paper/Partial")
 
 # create paths to subfolders
 sbfldr_paths <- map(
   .x = sbfldrs,
-  .f = function(fldr) paste0("Results/Partial/", fldr)
+  .f = function(fldr) paste0("Results/Paper/Partial/", fldr)
 )
 
 # create names for summary objects
@@ -24,11 +24,7 @@ output_names <- map(
 summary_results <- map(
   .x = 1:length(sbfldr_paths),
   .f = function(p) {
-    if (grepl('pca', output_names[[p]], fixed = TRUE)) {
-      try(fpcr_simulation_stitch(path = sbfldr_paths[[p]]))
-    } else {
       try(simulation_stitch(path = sbfldr_paths[[p]]))
-    }
   }
 )
 
@@ -36,6 +32,6 @@ summary_results <- map(
 for (i in 1:length(sbfldrs)) {
   saveRDS(
     object = summary_results[[i]],
-    file = paste0("Results/Summaries/", output_names[[i]], ".RDS")
+    file = paste0("Results/Paper/Summaries/", output_names[[i]], ".RDS")
   )
 }
