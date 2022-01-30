@@ -27,13 +27,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.7}Scalar-on-Function Regression}{9}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8}Estimation using Basis-Representation}{10}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.7.1}Estimation using Basis-Representation}{10}{subsubsection.3.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9}Estimation using Functional Principal Components}{11}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.7.2}Estimation using Functional Principal Components}{11}{subsubsection.3.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10}Draft-Overview}{11}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.8}Draft-Overview}{11}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.11}Literature}{12}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.9}Literature}{12}{subsection.3.9}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Simulation Study}{13}{section.4}%
 \defcounter {refsection}{0}\relax 
