@@ -325,7 +325,7 @@ The polynomial of the form
 	
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	
-	\begin{equation}
+	\begin{equation}\label{score_approx}
 		\hat{\xi}_{i}^m \approx \sum_{j = 1}^{L} \left[ a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s\right] =: \tilde{\xi}^{m,L}_{i}
 	\end{equation}
 	
@@ -410,34 +410,48 @@ The polynomial of the form
 	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression.
 	
 	\subsubsection{Estimation using Functional Principal Components}
-
-	{\color{red} We have to clean this up theoretically. Having both the mean function and the $\alpha$ in there makes this viable for the model but not for estimation as are estimated in the constant. In these equations the sum over m and the sum over j should be exchanged.\\
-	M is the chosen number of principal components}
-
+	
+	Using the Karhunen-Lo\'{e}ve Expansion to represent $X(\omega)$, it is also possible to express the data generating process in a slightly different way.
+	
 	\begin{equation}
 		\begin{split}
-			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon(\omega)
-			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s)\right)} {\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} \mathrm{d}s + \epsilon(\omega)\\
-			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \mu(s) + \sum_{m \in \mathcal{M}} \left[ \xi^m(\omega) \sum_{j \in \mathcal{I}} b_j \nu^m(s) \phi_j(s) \right] \right] \mathrm{d}s + \epsilon(\omega) \\
-			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \xi^m(\omega) \sum_{j \in \mathcal{I}} b_j \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
-			& \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{m  = 1}^{M}\left[ \xi^m(\omega) \sum_{j = 1}^{J} b_j \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} \beta(s) \mathrm{d}s + \epsilon(\omega)
+			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
+			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathcal{M}} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
+			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathcal{M}} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
-	Using sample analogues, we can use this form to obtain the following approximation.
+	As these theoretical Eigenfunctions and Eigenvalues are typically unknown, the corresponding equation in sample analogues is more interesting as a representation of an observation.
+	
+	\begin{equation}
+		\begin{split}
+			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} \beta(s) \mathrm{d}s + \epsilon_i
+			= \alpha + \int_{0}^{1} {\color{red}\left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^m_i \hat{\nu}^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon_i\\
+			&= {\color{teal}\alpha + \int_{0}^{1} \hat{\mu}(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathcal{M}} \hat{\xi}^m_i {\color{violet}\int_{0}^{1} \hat{\nu}^m(s) \beta(s) \mathrm{d}s} + \epsilon_i
+			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathcal{M}} \hat{\xi}^m_i {\color{violet}\hat{\beta}^m} + \epsilon_i
+		\end{split}
+	\end{equation}
+	
+	This, however, is a simplification for the purposes of real-world estimation as in most implementations the coefficient function and the principal components are also expressed or derived in terms of a basis that can be chosen freely. Introducing both concepts one step at a time leads to the following complication if we first introduce an expansion of the coefficient function.
 
 	\begin{equation}
-			Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s +  \sum_{m  = 1}^{M} \left[ \hat{\xi}^m(\omega) \sum_{j = 1}^{J} b_j \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+		\begin{split}
+			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon_i
+			= \alpha + \int_{0}^{1} {\color{red}\left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right)} {\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} \mathrm{d}s + \epsilon_i\\
+			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \hat{\mu}(s) + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j \in \mathcal{I}} b_j \hat{\nu}^m(s) \phi_j(s) \right] \right] \mathrm{d}s + \epsilon_i \\
+			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j \in \mathcal{I}} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
+		\end{split}
 	\end{equation}
 
-	Using the same basis for the construction of $\tilde{\xi}^{m,L}_{i}$ and the expansion of the coefficient function and the same truncation parameter $L$ for both approximations, then gives us the following.
+	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coeffieicnt function at the same parameter $L$ that was used for the approximation of the principal components and scores.
 	
 	\begin{equation}
 		\begin{split}
 			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
 			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
 			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon(\omega)
-			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}Z^{m,L}}+ \epsilon(\omega)
+			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
