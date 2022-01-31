@@ -25,13 +25,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.6}Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}{8}{subsection.3.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7}Scalar-on-Function Regression}{9}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.7}Scalar-on-Function Regression}{10}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.1}Estimation using Basis-Representation}{10}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.1}Estimation using Basis-Representation}{11}{subsubsection.3.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.2}Estimation using Functional Principal Components}{11}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.2}Estimation using Functional Principal Components}{12}{subsubsection.3.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8}Draft-Overview}{11}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.8}Draft-Overview}{12}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.9}Literature}{12}{subsection.3.9}%
 \defcounter {refsection}{0}\relax 
