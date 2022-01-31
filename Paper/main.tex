@@ -411,28 +411,32 @@ The polynomial of the form
 	
 	\subsubsection{Estimation using Functional Principal Components}
 
-	{\color{red} We have to clean this up theoretically. Having both the mean function and the $\alpha$ in there makes this viable for the model but not for estimation as are estimated in the constant.}
+	{\color{red} We have to clean this up theoretically. Having both the mean function and the $\alpha$ in there makes this viable for the model but not for estimation as are estimated in the constant. In these equations the sum over m and the sum over j should be exchanged.}
 
 	\begin{equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon(\omega)
 			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s)\right)} {\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} \mathrm{d}s + \epsilon(\omega)\\
-			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \mu(s) + \sum_{j \in \mathcal{I}} \left[b_j \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s) \phi_j(s)\right] \right] \mathrm{d}s + \epsilon(\omega) \\
-			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{j \in \mathcal{I}} \left[b_j \sum_{m \in \mathcal{M}} \xi^m(\omega) \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
-			& \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{j = 1}^{J} \left[b_j \sum_{m  = 1}^{M} \xi^m(\omega) \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \mu(s) + \sum_{m \in \mathcal{M}} \left[ \xi^m(\omega) \sum_{j \in \mathcal{I}} b_j \nu^m(s) \phi_j(s) \right] \right] \mathrm{d}s + \epsilon(\omega) \\
+			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \xi^m(\omega) \sum_{j \in \mathcal{I}} b_j \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
+			& \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{m  = 1}^{M}\left[ \xi^m(\omega) \sum_{j = 1}^{J} b_j \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
 	Using sample analogues, we can use this form to obtain the following approximation.
 
 	\begin{equation}
-			Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{j = 1}^{J} \left[b_j \sum_{m  = 1}^{M} \hat{\xi}^m(\omega) \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+			Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s +  \sum_{m  = 1}^{M} \left[ \hat{\xi}^m(\omega) \sum_{j = 1}^{J} b_j \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
 	\end{equation}
 
 	Using the same basis for the construction of $\tilde{\xi}^{m,L}_{i}$ and the expansion of the coefficient function and the same truncation parameter $L$ for both approximations, then gives us the following.
 	
 	\begin{equation}
-		y_i \approx \alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{j = 1}^{L} \left[b_j \sum_{m  = 1}^{M}  \tilde{\xi}^{m,L}_{i} \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+		\begin{split}
+			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
+			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
+			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right] \right]+ \epsilon(\omega) \\
+		\end{split}
 	\end{equation}
 
 	%\subsection{Detailed Draft}
