@@ -77,14 +77,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.1}Basis Plots}{18}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Wiener Process}{18}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.2}Simulation Study Results}{19}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Proofs}{19}{section.8}%
+\contentsline {subsection}{\numberline {7.3}Wiener Process}{20}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}Lemma}{19}{subsection.8.1}%
+\contentsline {section}{\numberline {8}Proofs}{20}{section.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}Karhunen-Lo\'{e}ve expansion}{20}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.1}Lemma}{20}{subsection.8.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Bibliography}{22}{section.9}%
+\contentsline {subsection}{\numberline {8.2}Karhunen-Lo\'{e}ve expansion}{21}{subsection.8.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Affidavit}{24}{section.10}%
+\contentsline {section}{\numberline {9}Bibliography}{23}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}Affidavit}{25}{section.10}%
