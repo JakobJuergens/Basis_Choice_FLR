@@ -1,3 +1,4 @@
+
 \documentclass[11pt,twoside,a4paper]{article}
 \usepackage[hmargin=2cm, vmargin=2cm]{geometry}
 \usepackage{microtype}
@@ -581,7 +582,7 @@ The polynomial of the form
 			\end{split}
 		\end{equation}
 		
-		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 5\}$, cubic bspline basis-function $\{5,6,...,25\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
+		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic bspline basis-function $\{5,6,...,18\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
 		 To obtain valid out of sample properties for the FPCR, within each of the ten 10 fold cross-validation splits, we first calculate the Functional Principal Components of the trainig-set $\mathcal{T}$ for each curve. These scores are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation:
 		 
 	\begin{equation}
@@ -603,9 +604,22 @@ The polynomial of the form
 	
 	\subsubsection{Basis Expansion Regression}
 	This follows from the \hyperref[basis_exp_transf]{Basis Expansion Transformation}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, tractable with typical multivariate regression theory. 
+	
 	\paragraph{Monomial Basis}
+	Due to the high collinearity of these basis, simulations were conducted up until the sixth monomial basis, excluding the first one since this just represents a constant. For reasons outlined in {\color{green} Link chapter}, they are suited for the smooth function $f_1$ and show a better performance than bsplines, but show the weakest performance for the setup $f_2, Y_1$. In the setup with high noise, $f_2, Y_2$ this weakness is still visible, but way less pronounced.
+	
 	\paragraph{Bspline Basis}
+	Simulations with bspline basis functions were possible from 5 to 18, since from 18 onwards the simulations were running into problems concerning {\color{green} what happend here exactly?}
+The smooth function $f_1$ requires only 5(4) Bspline basis functions, for the high(low)-signal-to-noise ratio to obtain the best fit for the bspline basis, which performs the worst for $f_1$. For $f_2$, 11(6) bspline basis functions are needed for the high(low) signal-to-noise ratios. For $f_2$, the bspline basis functions outperform the monomial basis, but come second to the fourier basis.
+	
 	\paragraph{Fourier Basis}
+	The results are simialar to the previous results: For $f_1$, the simulation chooses a smaller number of fourier basis functions, 5(3) and a higher number for the bumpy function $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number to account for the higher noise in the response variable.
+	\\
+	
+	
+	The results follow the Bias-Variance Tradeoff: The function $f_1$ is rather smooth and not much bias is introduced here when choosing a small number of basis functions since $f_1$ lacks pronounced peculiarities. For $f_2$, higher number of basis functions are needed, resulting from the inherent peculiarities of $f_2$: We can choose a higher number of basis functions since the amount of bias is decrasing much faster in the number of basis functions than the variance is increasing, compared to $f_1$.
+	
+	
 	
 	\subsubsection{Functional Principal Component Regression}
 	\paragraph{Monomial Basis}
