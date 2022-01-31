@@ -435,7 +435,8 @@ The polynomial of the form
 		\begin{split}
 			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
 			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
-			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right] \right]+ \epsilon(\omega) \\
+			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon(\omega)
+			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}Z^{m,L}}+ \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
