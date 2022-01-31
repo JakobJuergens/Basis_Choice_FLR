@@ -37,8 +37,7 @@ for (i in 1:length(sbfldrs)) {
     )
     write_csv(
       x = summary_results[[i]], 
-      file = paste0("Results/Paper/Summaries/", output_names[[i]], ".RDS")
+      file = paste0("Results/Paper/Summaries/", output_names[[i]], ".csv")
     )
   }
-  
 }
