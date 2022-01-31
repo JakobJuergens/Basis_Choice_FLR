@@ -4,7 +4,7 @@
 library(tidyverse)
 
 # setup for plot generation
-n_funcs <- 6
+n_funcs <- 7
 n_points <- 1000
 
 # function factory that generates the basis functions
