@@ -32,7 +32,7 @@ for (i in 100:149) {
 }
 
 # Jakob
-for (i in 100:149) {
+for (i in 140:149) {
   test_fourier_function <- fourier_function(
     rep = 100, my_data = NULL, n_obs = 200, seed = i, debug = TRUE,
     even_basis = FALSE
