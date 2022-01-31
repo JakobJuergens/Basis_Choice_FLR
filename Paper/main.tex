@@ -155,10 +155,10 @@ style=authoryear-comp,
 	\subsection{Bases of $\mathbb{L}^2$} % Maybe change title due to monomial and bspline basis not ful;filling this property
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
-	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $F(\omega_0) = f(t)$ of $F(\omega)$.
+	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$.
 	
 	\begin{equation}
-		F(\omega_0) = f(t) = \sum_{j \in \mathcal{I}} \psi_j(\omega_0) b_j(t)
+		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_{j}(\omega_0) \phi_j(t)
 	\end{equation}
 	
 	\paragraph{Monomial Basis}
@@ -166,12 +166,12 @@ This is the basis that is needed to build polynomials, one of the best-known way
 The polynomial of the form 
 
 	\begin{equation}
-		f(t) = \sum_{k =0}^{K} c_k(t -w)^{k}
+		x(t) = \sum_{i \in \mathcal{I}} c_i(t -w)^{i}
 	\end{equation}
-	can be expressed as a finite linear combination of the monomials $(t - w)^{k}$ with coefficient $c_k$ which form the basis 
+	can be expressed as a finite linear combination of the monomials $(t - w)^{i}$ with coefficient $c_i$ which form the basis 
 	
 	\begin{equation}
-		S_{k}^{MB}(t) = (t-w)^k, k = 0, 1, ..., K.
+		\phi_{i}^{M}(t) = (t-w)^k \quad i \in \mathcal{I}
 	\end{equation}
 	The single basis function $1$ within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). {\color{blue} Taylor expansion as motivation}\\ 
 	The shift parameter $w$ usually is specified to be the center of the interval subject to approximation.
@@ -182,7 +182,7 @@ The polynomial of the form
 	\paragraph{Fourier Basis}
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
 	\begin{equation}
-		S_{i}^{FB}(x) = 
+		\phi_{i}^{F}(x) = 
 		\begin{cases}
 			1 & \text{if} \quad i = 1\\
 			\sqrt{2} \cos(\pi i x) & \text{if} \quad i \quad \text{is even} \\
@@ -197,12 +197,12 @@ The polynomial of the form
 
 	\begin{equation}
 		\begin{split}
-			S_{l,0}^{BS}(x) = &
+			\phi_{l,0}^{BS}(x) = &
 			\begin{cases}
 				1 & \text{if} \quad x \in \left[\tau_l, \tau_{l+1}\right)\\
 				0 & \text{otherwise}
 			\end{cases}\\ \\
-			S_{l,m}^{BS}(x) = &\frac{x - \tau_l}{\tau_{l+m} - \tau_l} S_{l,m-1}^{BS}(x) + \frac{\tau_{l+m+1} - x}{\tau_{l+m+1} - \tau_{l+1}} S_{l+1,m-1}^{BS}(x)
+			\phi_{l,m}^{BS}(x) = &\frac{x - \tau_l}{\tau_{l+m} - \tau_l} \phi_{l,m-1}^{BS}(x) + \frac{\tau_{l+m+1} - x}{\tau_{l+m+1} - \tau_{l+1}} \phi_{l+1,m-1}^{BS}(x)
 		\end{split}
 	\end{equation}
 	
@@ -216,7 +216,7 @@ The polynomial of the form
 	{\color{red} Write something about how to approximate functions by truncating the basis.}
 	As above-mentioned, the realized curves can be estimated with basis functions. For the basis expansion, it is technically possible to use all basis functions $b_{j \in \mathcal{I}}$. On the one hand, this way is not efficient since the technique with too many basis functions can even approximate a noise of the sample curves which possibly interrupts the analysis. On the other hand, the important information on the curves would be missed with a too-small number of basis functions. This discussion challenges the researcher to seek a point at which they truncate the basis function in order to remove noise and, at the same time, maintain significant fluctuation. The basis expansion with truncation is by:
 	\begin{equation}
-		F(\omega_0) = f(t) = \sum_{j \in \mathcal{I}} \psi_j(\omega_0) b_j(t) = \sum_{j = 1}^{L} \psi_j(\omega_0) b_j(t) + \delta(t) \approx \sum_{j = 1}^{L} \psi_j(\omega_0) b_j(t)
+		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
 	where $\delta(t)$ is the truncation error. The number $L$ is subjectively chosen but we can fix the nubmer through a more reasonable method, Cross-Validation, which minimizes Mean Squared Error (MSE). 
 	
@@ -225,25 +225,25 @@ The polynomial of the form
 	An example of one such data set could be a set of $n$ independent realizations of a Wiener-process and $n$ associated scalar variables that could be subject of a regression analysis with respect to the corresponding realizations of the Wiener process. A definition and a plotted example for the Wiener process are given in \ref{Wiener}.
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
-	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $X(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(X(\omega)) = \mu_x$ and $Cov(X(\omega)) = \Sigma_X$. Then $\Sigma_X$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_X = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
+	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $V(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(V(\omega)) = \mu_V$ and $Cov(V(\omega)) = \Sigma_V$. Then $\Sigma_V$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_V = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
 		
-	This decomposition can be used to express the random vector $X(\omega)$ in the following way.
+	This decomposition can be used to express the random vector $V(\omega)$ in the following way.
 	
 	\begin{equation}
-		X(\omega) = \mu_x + \Gamma \Lambda^{\frac{1}{2}} D(\omega) = \mu_x + \sum_{i = 1}^{p} \sqrt{\lambda_i} D_i(\omega) \gamma_i
+		V(\omega) = \mu_V + \Gamma \Lambda^{\frac{1}{2}} D(\omega) = \mu_V + \sum_{i = 1}^{p} \sqrt{\lambda_i} D_i(\omega) \gamma_i
 	\end{equation}
 	
 	where $D(\omega)$ is a random vector with $\mathbb{E}(D(\omega)) = 0_p$ and $Cov(D(\omega)) = \mathbb{I}_p$.\\
 	
-	To obtain the analogous concept for a random function, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2[0,1]$. Therefore, let $F: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function.
-	Then the mean and covariance functions of $F$ are defined as follows.
+	To obtain the analogous concept for a random function, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2[0,1]$. Therefore, let $X: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function.
+	Then the mean and covariance functions of $X$ are defined as follows.
 	
 	\begin{equation}\label{MeanFunction}
-		\mu(t) = \mathbb{E}\left[ F(\omega)(t) \right]
+		\mu(t) = \mathbb{E}\left[ X(\omega)(t) \right]
 	\end{equation}
 	
 	\begin{equation}\label{CovarianceFunction}
-		c(t,s) = \mathbb{E}\big[ \left( F(\omega)(t) - \mu(t) \right) \left( F(\omega)(s) - \mu(s) \right) \big]
+		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 	{\color{orange}suggestion from here}
 	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through c : $[0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
@@ -259,13 +259,13 @@ The polynomial of the form
 			\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
 		\end{enumerate}
 	
-	Therefore, we can approximate the function $F$ with first few eigenfunctions. The functions $F$ are approximated enough well by first few principal components since the order of them are sorted in descending order (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $F$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
+	Therefore, we can approximate the function $X$ with first few eigenfunctions. The functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
-		F(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)
+		X(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)
 	\end{equation}
 
-	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathbb{N}\}$ of the following equation.
+	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
 	
 	\begin{equation}
 		{\color{orange} [K \nu](t) =}\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
@@ -273,7 +273,7 @@ The polynomial of the form
 	
 	The $\xi_j(\omega)$ are then given as 
 	\begin{equation}
-		\xi_j(\omega) = \langle F(\omega) - \mu, \nu_j\rangle = \int_{0}^{1} \left(F(\omega)(s) - \mu(s)\right) \nu_j(s) \mathrm{d}s
+		\xi^m(\omega) = \langle X(\omega) - \mu, \nu^m\rangle = \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation} 
 	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector. {\color{orange} We would need to assume that the process is centered, otherwise we may not derive below results(not sure though).}
 	
@@ -285,18 +285,18 @@ The polynomial of the form
 		\end{enumerate}
 	\end{multicols}
 	
-	In the typical scalar setting, a similar consideration leads to the concept of principal components. This is also possible in a functional setting. Let $\{f_1(t), \dots, f_n(t)\}$ be a set of i.i.d. realizations generated by a random function $F(\omega) \mapsto \mathbb{L}^2[0,1]$.
+	In the typical scalar setting, a similar consideration leads to the concept of principal components. This is also possible in a functional setting. Let $\{x_1(t), \dots, x_n(t)\}$ be a set of i.i.d. realizations generated by a random function $X(\omega) \mapsto \mathbb{L}^2[0,1]$.
 	Define the following sample analogues for the mean and covariance functions.
 	
 	\begin{equation}
-		\hat{\mu}(t) = \frac{1}{n}\sum_{j = 1}^{n}f_j(t)
+		\hat{\mu}(t) = \frac{1}{n}\sum_{i = 1}^{n}x_i(t)
 	\end{equation}
 
 	\begin{equation}
-		\hat{c}(t,s) = \frac{1}{n} \sum_{j = 1}^{n} \left(f_j(t) - \hat{\mu}(t)\right) \left(f_j(s) - \hat{\mu}(s)\right)
+		\hat{c}(t,s) = \frac{1}{n} \sum_{i = 1}^{n} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
 	\end{equation}
 
-	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}_i, \hat{\nu}_i) \: \vert \: i \in \mathbb{N}\}$ for $\{(\lambda_i, \nu_i) \: \vert \: i \in \mathbb{N}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathbb{N}$.}
+	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m \in \mathcal{M}\}$ for $\{(\lambda^m, \nu^m) \: \vert \: i \in \mathcal{M}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{M}$.}
 	
 	\begin{equation}
 		\int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t)
@@ -305,7 +305,28 @@ The polynomial of the form
 	This naturally leads to the following representation.
 	
 	\begin{equation}
-		f_i(t) = \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i,j} \hat{\nu}(t)
+		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i,j} \hat{\nu}(t)
+	\end{equation}
+	where the $\hat{\xi}_{i}^m$ are derived as 
+	
+	\begin{equation}
+		\hat{\xi}_i^m(\omega) = \langle x_i - \hat{\mu}, \hat{\nu}^m\rangle = \int_{0}^{1} \left(x_i(s) - \hat{\mu}(s)\right) \hat{\nu}^m(s) \mathrm{d}s
+	\end{equation}
+	
+	In reality these calculations are often done using basis representations of both the functional principal components $\hat{\nu}^m$ and the observations $x_i(t)$ leading to the following representation.
+	
+	\begin{equation}\label{FPCA_basis_expansion}
+		\begin{split}
+			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
+			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
+			& = \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right] \approx \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right]
+		\end{split}
+	\end{equation}
+	
+	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
+	
+	\begin{equation}
+		\tilde{\xi}^{m,L}_{i} = \sum_{j = 1}^{L} \left[ a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s\right]
 	\end{equation}
 	
 	\subsection{Scalar-on-Function Regression}
@@ -326,24 +347,24 @@ The polynomial of the form
 	A general data generating process in this functional scenario could look like the following equation.
 	
 	\begin{equation}
-		Y(\omega) = \alpha + \Psi\left(F(\omega)\right) + \epsilon(\omega)
+		Y(\omega) = \alpha + \Psi\left(X(\omega)\right) + \epsilon(\omega)
 	\end{equation}
 	
 	Here $\Psi$ is a functional that maps a realization of a random function in $\mathbb{L}^2[0,1]$ into $\mathbb{R}$. One simple example to illustrate the principle is the maximum $\Psi(f) = \max_{x \in [0,1]}f(x)$.
 	However, the typical setup is often as follows mimicking the structure of the multivariate linear model extended from summation to integration. This structure is crucial for the extension of linear regression to the case of functional regressors. Therefore, in this paper we always implicitly assume that a data generating process has the following structure. {\color{red} maybe a better motivation is the one Jona gave: from very dense observations that run into problems of colinearity when using the original OLS estimator}
 	
 	\begin{equation}\label{DGP}
-		Y(\omega) = \alpha + \int_{0}^{1} \beta(s)F(\omega)(s) \mathrm{d}s + \epsilon(\omega)
+		Y(\omega) = \alpha + \int_{0}^{1} \beta(s)X(\omega)(s) \mathrm{d}s + \epsilon(\omega)
 	\end{equation}
 	
-	Where $f(t)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(t)$ is an unknown coefficient function. 
+	Where $x(t)$ is the realization of a random function in $\mathbb{L}^2[0,1]$ and $\beta(t)$ is an unknown coefficient function. 
 	Similar to the finite dimensional setting, an interesting question is how to estimate the unknown function $\beta(t)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite dimensional objects is not possible. Therefore, other options have to be considered.
 	
-	\subsection{Estimation using Basis-Representation}
+	\subsubsection{Estimation using Basis-Representation}
 	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathbb{N}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
 	
 	\begin{equation}
-		\beta(t) = \sum_{j = 1}^{\infty} \psi_j b_j(t)
+		\beta(t) = \sum_{j = 1}^{\infty} b_j \phi_j(t)
 	\end{equation}
 	
 	This enables us to write equation \ref{DGP} with $\beta(t)$ represented in this way to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.
@@ -351,62 +372,47 @@ The polynomial of the form
 	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega)
-			= \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j \phi_j(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \sum_{j \in \mathcal{I}} \left[c_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)
-		      = \alpha + \sum_{j \in \mathcal{I}} c_j \textcolor{red}{Z_j(\omega)} + \epsilon(\omega)
+			= \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j \in \mathcal{I}} \left[b_j \textcolor{red}{\int_{0}^{1} X(\omega)(s) \phi_j(s)\mathrm{d}s}\right] + \epsilon(\omega)
+		      = \alpha + \sum_{j \in \mathcal{I}} b_j \textcolor{red}{Z_j(\omega)} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 	
 	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $L$ can be used to make this problem tractable with typical theory from multivariate regression while staying reasonably accurate.
 	
 	\begin{equation}
-			Y(\omega) \approx \alpha + \sum_{j = 1}^{L} c_j Z_j(\omega) + \epsilon(\omega)
+			Y(\omega) \approx \alpha + \sum_{j = 1}^{L} b_j Z_j(\omega) + \epsilon(\omega)
 	\end{equation}
 
-	{\color{red} This fancy equation will be very useful to explain our simulation.}
+	In practice it is common to not only express the coefficient function in terms of a basis but also the observations. Therefore two bases ($\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and $\left(\psi_k(t)\right)_{k \in \mathcal{L}}$) and two corresponding truncation parameters ($J$ and $K$) can be chosen. This leads to the following representation.
 	
 	\begin{equation}\label{basis_exp_transf}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega)
-			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} c_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \sum_{j \in \mathcal{I}} c_j \left[\sum_{k \in \mathcal{L}} \textcolor{teal}{d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s}\right] + \epsilon(\omega) 
-			= \alpha + \sum_{j \in \mathcal{I}} \left[ c_j \sum_{k \in \mathcal{L}} \textcolor{teal}{Z_{j, k}(\omega)} \right] + \epsilon(\omega) \\
-			& \approx \alpha + \sum_{j = 1}^{J} \left[c_j {\color{violet}\sum_{k = 1}^{K}  Z_{j, k}(\omega)} \right] + \epsilon(\omega) 
-			= \alpha + \sum_{j = 1}^{J} c_j {\color{violet}\tilde{Z}_j(\omega)} + \epsilon(\omega) 
+			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j \in \mathcal{I}} b_j \left[\sum_{k \in \mathcal{L}} d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \epsilon(\omega) 
+			\approx \alpha + \sum_{j = 1}^{J} \left[b_j \sum_{k = 1}^{K}  d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
-	A typical choice in this scenario is to use the same functional basis and the same truncation parameter $L$ for both the coefficient function and the approximation of the observations. This leads to the following simplification of Equation \ref{basis_exp_transf}.
+	A typical choice in this scenario is to use the same functional basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for both the coefficient function and the approximation of the observations. Defining the following notation 
 
 	\begin{equation}
-		\begin{split}
-			Z_{j, k}(\omega) & = d_k(\omega) \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \quad j = 1, \dots, L \quad k = 1, \dots, L \\
-			\tilde{Z}_j(\omega) & = \sum_{k = 1}^{L} \left[d_k(\omega) \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
-		\end{split}
-	\end{equation}
-	
-	\subsection{Estimation using Functional Principal Components}
-	
-	
-	\begin{equation}\label{FPCA_basis_expansion}
-		\begin{split}
-			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( f_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
-			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			& = \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}} {\color{teal}  b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s}\right]
-			= \sum_{j \in \mathcal{I}} \left[a_{i,j}\sum_{k \in \mathcal{L}} {\color{teal} Z_{j,k}^m} \right]
-			\approx \sum_{j = 1}^{J} \left[a_{i,j}{\color{violet}\sum_{k = 1}^{K} Z_{j,k}^m} \right]
-			= \sum_{j = 1}^{J} a_{i,j}{\color{violet}\tilde{Z}_{j}^m}
-		\end{split}
+			\tilde{Z}_j(\omega) = \sum_{k = 1}^{L} \left[d_k(\omega) \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
 	\end{equation}
 
-	Again using the same basis and the same truncation parameter $L$ leads to the following simplifications of Equation \ref{FPCA_basis_expansion}.
+	This leads to a considerable simplification of Equation \ref{basis_exp_transf}.
 	
-	\begin{equation}
-		\begin{split}
-			Z_{j, k}^m & =  b_{k}^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \quad j = 1, \dots, L \quad k = 1, \dots, L \\
-			\tilde{Z}_{j}^m& = \sum_{k = 1}^{L} \left[ b_k^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L\\
-		\end{split}
+	\begin{equation}\label{simplified_model_basis_equation}
+		Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
 	\end{equation}
+
+	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression.
+	
+	\subsubsection{Estimation using Functional Principal Components}
+	
+	% maybe use n for coefficents in expansion of nu? before b for beta, so this could be a consistent choice
+
 
 	%\subsection{Detailed Draft}
 	%\begin{itemize}
@@ -554,9 +560,9 @@ The polynomial of the form
 		 
 	\begin{equation}
 		\begin{split}
-			\hat{\xi}_{i}^{m, \mathcal{H}} &=  \int_{0}^{1} ({\color{red} X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)} ) {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
-						    = \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			 &= \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}}  b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
+			\hat{\xi}_{i}^{m, \mathcal{H}} &=  \int_{0}^{1} {\color{red} \left(X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)\right)} {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
+						    = \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j}^{\mathcal{H}} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^{m, \mathcal{T}} \psi_{k}(s)\right)} \mathrm{d}s \\
+			 &= \sum_{j \in \mathcal{I}} \left[ a_{i,j}^{\mathcal{H}}\sum_{k \in \mathcal{L}}  b_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
 		\end{split}
 	\end{equation}
 	
@@ -752,5 +758,29 @@ It is characterized by the following properties.
 	
 	\section{Bibliography}
 	\printbibliography[heading=none]	
+	
+	\newpage
+	\section{Affidavit}
+	
+	\vspace{2cm}
+	"I hereby confirm that the work presented has been performed and
+	interpreted solely by myself except for where I explicitly identified the
+	contrary. I assure that this work has not been presented in any other
+	form for the fulfillment of any other degree or qualification. Ideas
+	taken from other works in letter and in spirit are identified in every
+	single case."
+	
+	\vspace{2cm}
+	Bonn, 11.02.2021 \hrulefill \\
+	\hspace*{0mm}Jonghun Baek
+	
+	\vspace{2cm}
+	Bonn, 11.02.2021 \hrulefill \\
+	\hspace*{0mm}Jakob R. Juergens
+	
+	\vspace{2cm}
+	Bonn, 11.02.2021 \hrulefill \\
+	\hspace*{0mm}Jonathan Willnow
+	
 	
 \end{document}

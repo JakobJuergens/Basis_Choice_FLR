@@ -32,10 +32,10 @@ for (i in 100:149) {
 }
 
 # Jakob
-for (i in 100:149) {
+for (i in 140:149) {
   test_fourier_function <- fourier_function(
-    rep = 100, my_data = NULL, n_obs = 200, seed = i,
-    even_basis = FALSE, debug = TRUE
+    rep = 100, my_data = NULL, n_obs = 200, seed = i, debug = TRUE,
+    even_basis = FALSE
   )
   saveRDS(
     object = test_fourier_function,
@@ -46,8 +46,7 @@ for (i in 100:149) {
 # Jonghun
 for (i in 100:149) {
   test_monomial_function <- monomial_function(
-    rep = 100, my_data = NULL, n_obs = 200, seed = i,
-    even_basis = FALSE, debug = TRUE
+    rep = 100, my_data = NULL, n_obs = 200, seed = i, debug = TRUE
   )
   saveRDS(
     object = test_monomial_function,
