@@ -262,7 +262,7 @@ The polynomial of the form
 	Therefore, we can approximate the function $X$ with first few eigenfunctions. The functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
-		X(\omega)(t) = \mu(t) + \sum_{j = 1}^{\infty} \xi_j(\omega) \nu_j(t)
+		X(\omega)(t) = \mu(t) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(t)
 	\end{equation}
 
 	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
@@ -326,7 +326,7 @@ The polynomial of the form
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	
 	\begin{equation}
-		\tilde{\xi}^{m,L}_{i} = \sum_{j = 1}^{L} \left[ a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s\right]
+		\hat{\xi}_{i}^m \approx \sum_{j = 1}^{L} \left[ a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s\right] =: \tilde{\xi}^{m,L}_{i}
 	\end{equation}
 	
 	\subsection{Scalar-on-Function Regression}
@@ -378,7 +378,7 @@ The polynomial of the form
 		\end{split}
 	\end{equation}
 	
-	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $L$ can be used to make this problem tractable with typical theory from multivariate regression while staying reasonably accurate.
+	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on what is possibly a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $L$ can be used to make this problem tractable with typical theory from multivariate regression while staying reasonably accurate.
 	
 	\begin{equation}
 			Y(\omega) \approx \alpha + \sum_{j = 1}^{L} b_j Z_j(\omega) + \epsilon(\omega)
@@ -410,9 +410,30 @@ The polynomial of the form
 	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression.
 	
 	\subsubsection{Estimation using Functional Principal Components}
-	
-	% maybe use n for coefficents in expansion of nu? before b for beta, so this could be a consistent choice
 
+	{\color{red} We have to clean this up theoretically. Having both the mean function and the $\alpha$ in there makes this viable for the model but not for estimation as are estimated in the constant.}
+
+	\begin{equation}
+		\begin{split}
+			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon(\omega)
+			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s)\right)} {\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} \mathrm{d}s + \epsilon(\omega)\\
+			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \mu(s) + \sum_{j \in \mathcal{I}} \left[b_j \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s) \phi_j(s)\right] \right] \mathrm{d}s + \epsilon(\omega) \\
+			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{j \in \mathcal{I}} \left[b_j \sum_{m \in \mathcal{M}} \xi^m(\omega) \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
+			& \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \mu(s) \mathrm{d}s + \sum_{j = 1}^{J} \left[b_j \sum_{m  = 1}^{M} \xi^m(\omega) \int_{0}^{1}\nu^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+		\end{split}
+	\end{equation}
+
+	Using sample analogues, we can use this form to obtain the following approximation.
+
+	\begin{equation}
+			Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{j = 1}^{J} \left[b_j \sum_{m  = 1}^{M} \hat{\xi}^m(\omega) \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+	\end{equation}
+
+	Using the same basis for the construction of $\tilde{\xi}^{m,L}_{i}$ and the expansion of the coefficient function and the same truncation parameter $L$ for both approximations, then gives us the following.
+	
+	\begin{equation}
+		y_i \approx \alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{j = 1}^{L} \left[b_j \sum_{m  = 1}^{M}  \tilde{\xi}^{m,L}_{i} \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
+	\end{equation}
 
 	%\subsection{Detailed Draft}
 	%\begin{itemize}
