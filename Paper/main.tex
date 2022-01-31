@@ -58,10 +58,18 @@ style=authoryear-comp,
 		\item Describing the difference to multiple linear regression intuitively
 		\item Giving an intuitive example
 	\end{itemize}	
-	Functional Data Analysis (FDA) is a relatively new field {\color{red} (roots in the 1940s Grenander and Karhunen)} which is gaining more attention as researchers from different fields collect data that is functional in nature. Classical statistical methods can often process this data, but only FDA allows extracting information given by the smoothness of the underlying process (cf. \cite{levitin_introduction_2007}).
+	Functional Data Analysis (FDA) is {\color{red} (roots in the 1940s Grenander and Karhunen)} gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, but only FDA allows extracting the information given by the smoothness of the underlying process of the functional data (cf. \cite{levitin_introduction_2007}).
 	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).\\
-	 To motivate scalar-on-function regression, consider the case of a data set containing a scalar response and observations of an underlying continuous process. In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI), where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
-	 The focus of this paper is to introduce Functional Linear Regression (FLR) in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:
+	 Consider the case of a dataset which is containing observations of an underlying continuous process, measured at some discrete points $t_{j,i}$: 
+	 
+\begin{equation}
+	x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]
+\end{equation}
+		
+			 This measurement set can be viewed as set of discretized approximations of the underlying true process which could be the absorption of the Near-infrared spectrum which we will use for the simulation and application. This continuous underlying process for which 
+ $x_i(t)$ exists $\forall t \in [T_1, T_2]$ is only observed at the discrete measurement points. This dataset can then be used to perform Functional Linear Regression (FLR) on a scalar response variable. To conduct functional linear regression, several new concepts and methods need to be considered and explained that distinguish it multivariate linear regression.
+%	 In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI) to where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
+The focus of this paper is to introduce FLR in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:
 	 
 	 \begin{equation}
 	 	Y(\omega) = \alpha + \int_{0}^{1}{X(\omega)(s)\beta(s) \mathrm{d}s} + \epsilon(\omega),
@@ -427,7 +435,7 @@ The polynomial of the form
 
 	Using sample analogues, we can use this form to obtain the following approximation.
 
-	\begin{equation}
+	\begin{equation}\label{fpc_exp_transf}
 			Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s +  \sum_{m  = 1}^{M} \left[ \hat{\xi}^m(\omega) \sum_{j = 1}^{J} b_j \int_{0}^{1} \hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega)
 	\end{equation}
 
@@ -524,7 +532,7 @@ The polynomial of the form
 	%\end{itemize}
 
 	\subsection{Motivation}
-	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near Infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. NIR- spectroscopy allows to analyse samples of gasoline much faster, cheaper and with the same reproducibility as standard tests while not destroying the sample (cf. \cite{Bohacs_Ovadi_Salgo1998}). We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
+	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. NIR- spectroscopy allows to analyse samples of gasoline much faster, cheaper and with the same reproducibility as standard tests while not destroying the sample (cf. \cite{Bohacs_Ovadi_Salgo1998}). We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
 	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drawn from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$. Finally, we obtain the generated curves $NIR_{sim}$
@@ -593,7 +601,7 @@ The polynomial of the form
 			 &= \sum_{j \in \mathcal{I}} \left[ a_{i,j}^{\mathcal{H}}\sum_{k \in \mathcal{L}}  b_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
 		\end{split}
 	\end{equation}
-	
+	\vspace{	0.2cm}
 	
 	
 		 The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
@@ -604,25 +612,28 @@ The polynomial of the form
 	
 	
 	\subsubsection{Basis Expansion Regression}
-	This follows from the \hyperref[basis_exp_transf]{Basis Expansion Transformation}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, tractable with typical multivariate regression theory. 
+	The following results origin from the \hyperref[basis_exp_transf]{\textbf{Estimation using Basis-Representation}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
 	
 	\paragraph{Monomial Basis}
-	Due to the high collinearity of these basis, simulations were conducted up until the sixth monomial basis, excluding the first one since this just represents a constant. For reasons outlined in {\color{green} Link chapter}, they are suited for the smooth function $f_1$ and show a better performance than bsplines, but show the weakest performance for the setup $f_2, Y_1$. In the setup with high noise, $f_2, Y_2$ this weakness is still visible, but way less pronounced.
+	Due to the high collinearity of these basis, simulations were conducted up until the sixth monomial basis, excluding the first one since this just represents a constant. For reasons outlined in {\color{green} Link chapter}, they are suited for the smooth function $f_1$ and show a better performance than bsplines for this coefficient function, but show the weakest performance for the coefficient function $f_2$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2, Y_2$ this weakness is still visible, but less strongly pronounced.
 	
 	\paragraph{Bspline Basis}
 	Simulations with bspline basis functions were possible from 5 to 18, since from 18 onwards the simulations were running into problems concerning {\color{green} what happend here exactly?}
 The smooth function $f_1$ requires only 5(4) Bspline basis functions, for the high(low)-signal-to-noise ratio to obtain the best fit for the bspline basis, which performs the worst for $f_1$. For $f_2$, 11(6) bspline basis functions are needed for the high(low) signal-to-noise ratios. For $f_2$, the bspline basis functions outperform the monomial basis, but come second to the fourier basis.
 	
 	\paragraph{Fourier Basis}
-	The results are simialar to the previous results: For $f_1$, the simulation chooses a smaller number of fourier basis functions, 5(3) and a higher number for the bumpy function $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number to account for the higher noise in the response variable.
+	For $f_1$, the simulation chooses a smaller number of fourier basis functions, 5(3) and a higher number for the bumpy function $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number to account for the higher noise in the response variable. The fourier basis functions performs the best in each setup for the basis expansion regression. When recalling $f_1$ and $f_2$, both, but especially $f_1$ shows similar curvature order across the domain which contributes to the strong performance of this basis.
 	\\
 	
 	
-	The results follow the Bias-Variance Tradeoff: The function $f_1$ is rather smooth and not much bias is introduced here when choosing a small number of basis functions since $f_1$ lacks pronounced peculiarities. For $f_2$, higher number of basis functions are needed, resulting from the inherent peculiarities of $f_2$: We can choose a higher number of basis functions since the amount of bias is decrasing much faster in the number of basis functions than the variance is increasing, compared to $f_1$.
+	For all specifications, the effect of the Bias-Variance tradeoff can be observed:: The function $f_1$ is rather smooth and not much bias is introduced here when choosing a small number of basis functions since $f_1$ lacks pronounced peculiarities. For $f_2$, higher number of basis functions are needed, resulting from the inherent peculiarities of $f_2$: We can choose a higher number of basis functions since the amount of bias is deceasing much faster in the number of basis functions than the variance is increasing, compared to $f_1$. 
 	
 	
 	
 	\subsubsection{Functional Principal Component Regression}
+	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{\textbf{Estimation using Functional Principal Components}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
+
+	
 	\paragraph{Monomial Basis}
 	\paragraph{Bspline Basis}
 	\paragraph{Fourier Basis}
