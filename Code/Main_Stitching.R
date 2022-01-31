@@ -30,8 +30,15 @@ summary_results <- map(
 
 # save in summaries folder
 for (i in 1:length(sbfldrs)) {
-  saveRDS(
-    object = summary_results[[i]],
-    file = paste0("Results/Paper/Summaries/", output_names[[i]], ".RDS")
-  )
+  if(length(summary_results[[i]]) != 1){
+    saveRDS(
+      object = summary_results[[i]],
+      file = paste0("Results/Paper/Summaries/", output_names[[i]], ".RDS")
+    )
+    write_csv(
+      x = summary_results[[i]], 
+      file = paste0("Results/Paper/Summaries/", output_names[[i]], ".RDS")
+    )
+  }
+  
 }
