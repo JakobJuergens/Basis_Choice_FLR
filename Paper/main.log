@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 19:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 19:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,20 +983,15 @@ Package microtype Info: Loading generic protrusion settings for font family
  [23] [24] [25] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BB213BF473158C02D7A5DB08F376826B;5604.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22508 strings out of 478353
- 389978 string characters out of 5854636
- 1155039 words of memory out of 5000000
- 40003 multiletter control sequences out of 15000+600000
+ 22548 strings out of 478353
+ 390409 string characters out of 5854636
+ 1155662 words of memory out of 5000000
+ 40043 multiletter control sequences out of 15000+600000
  422824 words of font info for 169 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1018,7 +1013,7 @@ re/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
 uper/sfrm1095.pfb>
-Output written on main.pdf (25 pages, 1785076 bytes).
+Output written on main.pdf (25 pages, 1789230 bytes).
 PDF statistics:
  640 PDF objects out of 1000 (max. 8388607)
  555 compressed objects within 6 object streams
