@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 18:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 18:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -687,24 +687,24 @@ File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -740,12 +740,12 @@ LaTeX Font Info:    ... okay on input line 28.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 28.
-Package microtype Info: Applying patch `item' on input line 28.
-Package microtype Info: Applying patch `toc' on input line 28.
-Package microtype Info: Applying patch `eqnum' on input line 28.
+LaTeX Info: Redefining \microtypecontext on input line 29.
+Package microtype Info: Applying patch `item' on input line 29.
+Package microtype Info: Applying patch `toc' on input line 29.
+Package microtype Info: Applying patch `eqnum' on input line 29.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 28.
+Package microtype Warning: Unable to apply patch `footnote' on input line 29.
 
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
@@ -753,7 +753,7 @@ Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 28.
+LaTeX Info: Redefining \showhyphens on input line 29.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -791,7 +791,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 28.
+Package hyperref Info: Link coloring OFF on input line 29.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -804,9 +804,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count434
 )
-LaTeX Info: Redefining \ref on input line 28.
-LaTeX Info: Redefining \pageref on input line 28.
-LaTeX Info: Redefining \nameref on input line 28.
+LaTeX Info: Redefining \ref on input line 29.
+LaTeX Info: Redefining \pageref on input line 29.
+LaTeX Info: Redefining \nameref on input line 29.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -844,9 +844,9 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 28.
-Package biblatex Info: Reference segment=0 on input line 28.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 33.
+Package biblatex Info: Reference section=0 on input line 29.
+Package biblatex Info: Reference segment=0 on input line 29.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -855,7 +855,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -872,27 +872,27 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  [2] [3] [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 155.
+(hyperref)                removing `math shift' on input line 156.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 155.
+(hyperref)                removing `superscript' on input line 156.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 155.
+(hyperref)                removing `math shift' on input line 156.
 
 [5]
 Underfull \vbox (badness 1596) has occurred while \output is active []
 
  [6]
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
@@ -901,12 +901,12 @@ Underfull \vbox (badness 4608) has occurred while \output is active []
 
  [9]
 [10]
-Overfull \hbox (11.52672pt too wide) detected at line 396
+Overfull \hbox (11.52672pt too wide) detected at line 397
 []
  []
 
 [11] [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 567--569
+Underfull \hbox (badness 10000) in paragraph at lines 568--570
 
  []
 
@@ -914,44 +914,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 567--569
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
 Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 57
-8.
+9.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
 <../Graphics/bumpy_function.png, id=357, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 584
+Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 585
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
 [14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>] [16] [
-17]
+ [15 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 631--633
+
+ []
+
+[16] [17]
 <../Graphics/Fourier_Basis.pdf, id=399, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 665.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 679.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 <../Graphics/Bspline_Basis.pdf, id=400, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 670.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 684.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-
-[18 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf>]
-Overfull \hbox (10.84837pt too wide) in paragraph at lines 680--689
+ [18 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf>]
+Overfull \hbox (10.84837pt too wide) in paragraph at lines 694--703
  [][] 
  []
 
 
-Overfull \hbox (21.79839pt too wide) in paragraph at lines 697--716
+Overfull \hbox (21.79839pt too wide) in paragraph at lines 711--730
  [][] 
  []
 
 
-Overfull \hbox (21.79839pt too wide) in paragraph at lines 725--738
+Overfull \hbox (21.79839pt too wide) in paragraph at lines 739--752
  [][] 
  []
 
@@ -962,7 +965,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <../Graphics/Wiener_plot.pdf, id=428, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 759.
+Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 773.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 
 [20 <../Graphics/Wiener_plot.pdf>] [21] [22]
@@ -978,11 +981,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22535 strings out of 478353
- 390101 string characters out of 5854636
+ 22541 strings out of 478353
+ 390153 string characters out of 5854636
  1155583 words of memory out of 5000000
  40037 multiletter control sequences out of 15000+600000
- 422653 words of font info for 166 fonts, out of 8000000 for 9000
+ 422824 words of font info for 169 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
@@ -1003,7 +1006,7 @@ re/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
 uper/sfrm1095.pfb>
-Output written on main.pdf (25 pages, 1735651 bytes).
+Output written on main.pdf (25 pages, 1737595 bytes).
 PDF statistics:
  638 PDF objects out of 1000 (max. 8388607)
  555 compressed objects within 6 object streams
