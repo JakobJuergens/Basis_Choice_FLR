@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 13:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -901,29 +901,25 @@ Underfull \vbox (badness 4608) has occurred while \output is active []
 
  [9]
 [10]
-Overfull \hbox (11.52672pt too wide) detected at line 408
+Overfull \hbox (11.52672pt too wide) detected at line 396
 []
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 538--540
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 526--528
 
  []
 
-<../Graphics/smooth_function.png, id=342, 509.65407pt x 324.46219pt>
+<../Graphics/smooth_function.png, id=341, 509.65407pt x 324.46219pt>
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
-Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 54
-9.
+Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 53
+7.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-<../Graphics/bumpy_function.png, id=343, 509.65407pt x 324.46219pt>
+<../Graphics/bumpy_function.png, id=342, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 555
+Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 543
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
 [13]
@@ -931,22 +927,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>] [15] [
 16]
-<../Graphics/Fourier_Basis.pdf, id=386, 1445.4pt x 578.16pt>
+<../Graphics/Fourier_Basis.pdf, id=385, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 636.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 624.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Bspline_Basis.pdf, id=387, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=386, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 641.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 629.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Wiener_plot.pdf, id=388, 1445.4pt x 578.16pt>
+<../Graphics/Wiener_plot.pdf, id=387, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 659.
+Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 647.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -967,8 +963,8 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22502 strings out of 478353
- 389631 string characters out of 5854636
+ 22501 strings out of 478353
+ 389618 string characters out of 5854636
  1151502 words of memory out of 5000000
  40021 multiletter control sequences out of 15000+600000
  420761 words of font info for 159 fonts, out of 8000000 for 9000
@@ -990,10 +986,10 @@ fonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
 re/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-
 dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (23 pages, 1712565 bytes).
+Output written on main.pdf (23 pages, 1712163 bytes).
 PDF statistics:
- 605 PDF objects out of 1000 (max. 8388607)
- 528 compressed objects within 6 object streams
- 167 named destinations out of 1000 (max. 500000)
+ 604 PDF objects out of 1000 (max. 8388607)
+ 527 compressed objects within 6 object streams
+ 166 named destinations out of 1000 (max. 500000)
  41778 words of extra memory for PDF output out of 42996 (max. 10000000)
 

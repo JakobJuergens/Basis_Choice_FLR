@@ -319,23 +319,11 @@ The polynomial of the form
 		\begin{split}
 			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
 			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			& = \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}} {\color{teal}  b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s}\right]
-			= \sum_{j \in \mathcal{I}} \left[a_{i,j}\sum_{k \in \mathcal{L}} {\color{teal} Z_{j,k}^m} \right]\\
-			& \approx \sum_{j = 1}^{J} \left[a_{i,j}{\color{violet}\sum_{k = 1}^{K} Z_{j,k}^m} \right]
-			= \sum_{j = 1}^{J} a_{i,j}{\color{violet}\tilde{Z}_{j}^m}
+			& = \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right] \approx \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right]
 		\end{split}
 	\end{equation}
 	
-	Using the same basis and the same truncation parameter $L$ leads to the following simplifications of Equation \ref{FPCA_basis_expansion}.
-	
-	\begin{equation}
-		\begin{split}
-			Z_{j, k}^m & =  b_{k}^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \quad j = 1, \dots, L \quad k = 1, \dots, L \\
-			\tilde{Z}_{j}^m& = \sum_{k = 1}^{L} \left[ b_k^m \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L\\
-		\end{split}
-	\end{equation} 
-
-	For notational purposes in this paper we define the following convention:
+	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	
 	\begin{equation}
 		\tilde{\xi}^{m,L}_{i} = \sum_{j = 1}^{L} \left[ a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s\right]
