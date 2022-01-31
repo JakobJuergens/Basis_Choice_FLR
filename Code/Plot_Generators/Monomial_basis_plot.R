@@ -11,10 +11,10 @@ n_points <- 1000
 points <- seq(from = 0, to = 1, length.out = n_points)
 
 # function factory that generates the basis functions
-bspline_basis <- create.monomial.basis(rangeval = c(0,1), nbasis = 8)
+monomial_basis <- create.monomial.basis(rangeval = c(0,1), nbasis = 8)
 
 # Calculate basis functions at points
-res_matrix <- eval.basis(evalarg = points, basisobj = bspline_basis)
+res_matrix <- eval.basis(evalarg = points, basisobj = monomial_basis)
 
 # convert to tibble
 res_tibble <- cbind(x = points, as_tibble(res_matrix))
@@ -38,5 +38,5 @@ monomial_plot <- ggplot(data = plot_tibble) +
         legend.text = element_text(size = 20))
 
 # save plot in appropriate folder
-ggsave(filename = '../Graphics/Monomial_Basis.pdf', plot = bspline_plot,
+ggsave(filename = '../Graphics/Monomial_Basis.pdf', plot = monomial_plot,
        width = 20, height = 8, units = "in", dpi = 600)
