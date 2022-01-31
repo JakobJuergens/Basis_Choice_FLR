@@ -6,15 +6,12 @@ library(fda)
 
 # setup for plot generation
 n_points <- 1000
-knots <- seq(from = 0, to = 1, length.out = 8)
-order <- 4
 
 # Create points for calculation of basis functions
 points <- seq(from = 0, to = 1, length.out = n_points)
 
 # function factory that generates the basis functions
-bspline_basis <- create.bspline.basis(rangeval = c(0,1), norder = order,
-                                        breaks = knots)
+bspline_basis <- create.monomial.basis(rangeval = c(0,1), nbasis = 8)
 
 # Calculate basis functions at points
 res_matrix <- eval.basis(evalarg = points, basisobj = bspline_basis)
@@ -28,7 +25,7 @@ plot_tibble <- res_tibble %>%
   pivot_longer(cols = !x, names_to = 'Function', values_to = 'Value')
 
 # generate plot
-bspline_plot <- ggplot(data = plot_tibble) +
+monomial_plot <- ggplot(data = plot_tibble) +
   geom_line(aes(x = x, y = Value, col = Function)) +
   #ggtitle("B-spline Basis") +
   theme_light() +
@@ -41,5 +38,5 @@ bspline_plot <- ggplot(data = plot_tibble) +
         legend.text = element_text(size = 20))
 
 # save plot in appropriate folder
-ggsave(filename = '../Graphics/Bspline_Basis.pdf', plot = bspline_plot,
+ggsave(filename = '../Graphics/Monomial_Basis.pdf', plot = bspline_plot,
        width = 20, height = 8, units = "in", dpi = 600)
