@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  29 JAN 2022 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  30 JAN 2022 23:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -883,7 +883,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 155.
 
 [5]
-Underfull \vbox (badness 1199) has occurred while \output is active []
+Underfull \vbox (badness 1596) has occurred while \output is active []
 
  [6]
 [7]
@@ -901,33 +901,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 520--522
 
  []
 
-<../Graphics/smooth_function.png, id=333, 509.65407pt x 324.46219pt>
+<../Graphics/smooth_function.png, id=338, 509.65407pt x 324.46219pt>
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
 Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 53
 1.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-<../Graphics/bumpy_function.png, id=334, 509.65407pt x 324.46219pt>
+<../Graphics/bumpy_function.png, id=339, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
 Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 537
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-[13] [14 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>]
-[15] [16]
-<../Graphics/Fourier_Basis.pdf, id=377, 1445.4pt x 578.16pt>
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>] [15] [
+16]
+<../Graphics/Fourier_Basis.pdf, id=382, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
 Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 618.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Bspline_Basis.pdf, id=378, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=383, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
 Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 623.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Wiener_plot.pdf, id=379, 1445.4pt x 578.16pt>
+<../Graphics/Wiener_plot.pdf, id=384, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
 Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 641.
@@ -943,18 +946,18 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [21] [22] (./main.aux)
+ [21] [22] [23] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9B5AA5E41F0FA66641B96D452308FB16;5440.
+(rerunfilecheck)             Checksum: E404AED8CBD79D0769CF1F4366325931;5548.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22495 strings out of 478353
- 389514 string characters out of 5854636
- 1154429 words of memory out of 5000000
- 40019 multiletter control sequences out of 15000+600000
+ 22498 strings out of 478353
+ 389559 string characters out of 5854636
+ 1154432 words of memory out of 5000000
+ 40020 multiletter control sequences out of 15000+600000
  420761 words of font info for 159 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -974,10 +977,10 @@ fonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
 .pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
 re/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-
 dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (22 pages, 1707667 bytes).
+Output written on main.pdf (23 pages, 1710515 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
- 515 compressed objects within 6 object streams
- 162 named destinations out of 1000 (max. 500000)
- 41770 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 601 PDF objects out of 1000 (max. 8388607)
+ 524 compressed objects within 6 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 41778 words of extra memory for PDF output out of 42996 (max. 10000000)
 

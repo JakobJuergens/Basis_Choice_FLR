@@ -27,13 +27,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.7}Scalar-on-Function Regression}{9}{subsection.3.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8}Estimation using Basis-Representation}{10}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.7.1}Estimation using Basis-Representation}{10}{subsubsection.3.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9}Estimation using Functional Principal Components}{11}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.7.2}Estimation using Functional Principal Components}{11}{subsubsection.3.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.10}Draft-Overview}{11}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.8}Draft-Overview}{11}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.11}Literature}{12}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.9}Literature}{12}{subsection.3.9}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Simulation Study}{13}{section.4}%
 \defcounter {refsection}{0}\relax 
@@ -45,7 +45,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.4}Results}{14}{subsection.4.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.4.1}Basis Expansion Regression}{14}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1}Basis Expansion Regression}{15}{subsubsection.4.4.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Monomial Basis}{15}{section*.6}%
 \defcounter {refsection}{0}\relax 
@@ -86,3 +86,5 @@
 \contentsline {subsection}{\numberline {8.2}Karhunen-Lo\'{e}ve expansion}{19}{subsection.8.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {9}Bibliography}{21}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}Affidavit}{23}{section.10}%
