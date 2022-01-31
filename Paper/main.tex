@@ -445,14 +445,14 @@ The polynomial of the form
 		\end{split}
 	\end{equation}
 
-	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coeffieicnt function at the same parameter $L$ that was used for the approximation of the principal components and scores.
+	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coefficient function at the same parameter $L$ that was used for the approximation of the principal components and scores. The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation.
 	
 	\begin{equation}
 		\begin{split}
-			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
-			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon(\omega) \\
-			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon(\omega)
-			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon(\omega)
+			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon_i \\
+			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon_i \\
+			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon_i
+			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon_i
 		\end{split}
 	\end{equation}
 
@@ -505,14 +505,6 @@ The polynomial of the form
 
     %However, this often still results in a large and difficult to solve system of equations. Even if solved, the result is often a noisy function $\hat{\beta}(s)$ that is not useful for interpretation since it does not use the intuition of smooth functions. Another reason why estimation is not feasible using this approach is colinearity.
     %Looking at equation \ref{discrete_time_model} and assuming continuous functions $X_i$ it becomes clear that if $t_{j}$ is close to $t_{j'}$, $X_{i}(t_{j})$ is close to $X_{i}(t_{j'})$. Thereby, there will be vectors $X_{i} = (X_i(t_1), \dots, X_i(t_J))'$ that are highly correlated and thus lead to large variances of $\beta$. (cf. ~\cite{kokoszka_introduction_2017})\\
-	
-	\subsection{Draft-Overview}
-	\begin{itemize}
-		\item Motivate Karhunen-Loeve-Expansion and Eigenbasis from PCA		
-		\item Explain Scalar-on-Function Regression
-		\item Estimation through basis-expansion (incl. Eigenbasis) [and estimation with roughness penalty]
-		\item Address approximation error due to basis-truncation
-	\end{itemize}
 
 	\subsection{Literature}
 	\begin{itemize}
