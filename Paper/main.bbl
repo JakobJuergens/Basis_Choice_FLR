@@ -322,65 +322,6 @@
       \endverb
       \keyw{cost of reproduction,life span,life table,longevity extension,male–female mortality,sex–mortality differentials}
     \endentry
-    \entry{Das_2019}{article}{}
-      \name{author}{4}{}{%
-        {{un=0,uniquepart=base,hash=42604d55905e939e5505337d17691f66}{%
-           family={Das},
-           familyi={D\bibinitperiod},
-           given={Sonali},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=ea560bc38238ec59a256228db7cef460}{%
-           family={Demirer},
-           familyi={D\bibinitperiod},
-           given={Riza},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=6d2a6f686850299cb3a372d85ea4ada6}{%
-           family={Gupta},
-           familyi={G\bibinitperiod},
-           given={Rangan},
-           giveni={R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=a80095899869dda0c882da3489dfad90}{%
-           family={Mangisa},
-           familyi={M\bibinitperiod},
-           given={Siphumlile},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{1add6486a5635ae27d1bbc76cbb18131}
-      \strng{fullhash}{62350e6d75613e41b9c70b6b9b303fad}
-      \strng{bibnamehash}{1add6486a5635ae27d1bbc76cbb18131}
-      \strng{authorbibnamehash}{1add6486a5635ae27d1bbc76cbb18131}
-      \strng{authornamehash}{1add6486a5635ae27d1bbc76cbb18131}
-      \strng{authorfullhash}{62350e6d75613e41b9c70b6b9b303fad}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{0954-349X}
-      \field{journaltitle}{Structural Change and Economic Dynamics}
-      \field{title}{The effect of global crises on stock market correlations: Evidence from scalar regressions via functional data analysis}
-      \field{volume}{50}
-      \field{year}{2019}
-      \field{pages}{132\bibrangedash 147}
-      \range{pages}{16}
-      \verb{doi}
-      \verb 10.1016/j.strueco.2019.05.007
-      \endverb
-      \verb{file}
-      \verb Das, Demirer et al. 2019 - The effect of global crises:C\:\\Users\\Jonathan\\Desktop\\RM_Stats\\CITAVI_RM_STATS\\Citavi Attachments\\Das, Demirer et al. 2019 - The effect of global crises.pdf:pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/s0954349x19301407
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/s0954349x19301407
-      \endverb
-    \endentry
     \entry{Bohacs_Ovadi_Salgo1998}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=075cb86652d5e3f8dd59cc70be34ca5a}{%
@@ -633,6 +574,93 @@
       \endverb
       \verb{file}
       \verb Full Text PDF:/home/jjuergens/Zotero/storage/LBCJRPIW/Levitin et al. - 2007 - Introduction to Functional Data Analysis.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{FR_li_et_al_2020}{article}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=d00f5938b0a09a342715702f38ac8ae4}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yuanpeng},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=abb1947d67346e97669219d624a9b6d0}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Liu},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=502de95c3193f5c283f4ef712520a97e}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e5e75de005527384d76b15222f8296c5}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Chuanmei},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ace398d616358de632c64d6ae0b9412c}{%
+           family={Guang},
+           familyi={G\bibinitperiod},
+           given={Peiwen},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=23118b73b64c99e8852504622b4b9eb3}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Furong},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=df24e878cbff6970ebff502a90133347}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Zhenqiang},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9f5d270b4cbd3e68064cc945799a3f94}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lihu},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cc3bd6cad6f08a5373f805803a1f243a}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Junhui},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{fullhash}{c821fffb073a66f502339c3b724ed5cd}
+      \strng{bibnamehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{authorbibnamehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{authornamehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{authorfullhash}{c821fffb073a66f502339c3b724ed5cd}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Early diagnosis is important to reduce the incidence and mortality rate of diabetes. The feasibility of early diagnosis of diabetes was studied via near-infrared spectra (NIRS) combined with a support vector machine (SVM) and aquaphotomics.}
+      \field{issn}{2296-2646}
+      \field{journaltitle}{Frontiers in Chemistry}
+      \field{title}{Early Diagnosis of Type 2 Diabetes Based on Near-Infrared Spectroscopy Combined With Machine Learning and Aquaphotomics}
+      \field{volume}{8}
+      \field{year}{2020}
+      \field{pages}{1133}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fchem.2020.580489
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/article/10.3389/fchem.2020.580489
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/article/10.3389/fchem.2020.580489
       \endverb
     \endentry
     \entry{ramsay_functional_2005}{book}{}

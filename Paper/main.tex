@@ -84,7 +84,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
+	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. {\color{orange} How about hereby restricting the $\mathbb{F} = \mathbb{R}$, otherwise we would need to put something additional at 4.}A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -135,25 +135,21 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	
 	\subsection{Hilbert Space of Square-Integrable Functions}
-	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure.\\
-	Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
 	
 	\begin{equation}
-		{\color{orange} \lvert \lvert f \rvert \rvert^2 =} \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
+		\lvert \lvert f \rvert \rvert_2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
-	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined.\\
-	Its inner product is defined as
+	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined. Its inner product is defined as
 	
 	\begin{equation}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	The Hilbert space of square integrable functions on $[0,1]$ {\color{orange} (instead, $\mathbb{L}^2[0,1]$)} is the function space that is most often used for theoretical considerations in functional data analysis  {\color{orange} without loss of generality}. 
+	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis without loss of generality. We also focus on the interval [0,1] for the purpose of this paper.	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
 	%Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
-	
-	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
 	\begin{equation}
 	\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
@@ -222,7 +218,6 @@ The polynomial of the form
 		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.}	
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
-	{\color{red} Write something about how to approximate functions by truncating the basis.}
 	As above-mentioned, the realized curves can be estimated with basis functions. For the basis expansion, it is technically possible to use all basis functions $b_{j \in \mathcal{I}}$. On the one hand, this way is not efficient since the technique with too many basis functions can even approximate a noise of the sample curves which possibly interrupts the analysis. On the other hand, the important information on the curves would be missed with a too-small number of basis functions. This discussion challenges the researcher to seek a point at which they truncate the basis function in order to remove noise and, at the same time, maintain significant fluctuation. The basis expansion with truncation is by:
 	\begin{equation}
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
@@ -235,7 +230,7 @@ The polynomial of the form
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $V(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(V(\omega)) = \mu_V$ and $Cov(V(\omega)) = \Sigma_V$. Then $\Sigma_V$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_V = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
-		
+	
 	This decomposition can be used to express the random vector $V(\omega)$ in the following way.
 	
 	\begin{equation}
@@ -254,27 +249,25 @@ The polynomial of the form
 	\begin{equation}\label{CovarianceFunction}
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
-	{\color{orange}suggestion from here}
-	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through c : $[0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
+	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
 	\begin{equation}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
 	\end{equation}
-
-	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds following traits:
 	
-		\begin{enumerate}
-			\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
-			\item The eigenspaces corresponding to non-zero eigenvalues are finite-dimentsional.
-			\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
-		\end{enumerate}
+	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
 	
-	Therefore, we can approximate the function $X$ with first few eigenfunctions. The functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
+	%\begin{enumerate}
+	%\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
+	%\item The eigenspaces corresponding to non-zero eigenvalues are finite-dimentsional.
+	%\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
+	%\end{enumerate}
+	%Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
 		X(\omega)(t) = \mu(t) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(t)
 	\end{equation}
-
-	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
+	
+	where the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
 	
 	\begin{equation}
 		{\color{orange} [K \nu](t) =}\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
@@ -284,13 +277,13 @@ The polynomial of the form
 	\begin{equation}
 		\xi^m(\omega) = \langle X(\omega) - \mu, \nu^m\rangle = \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation} 
-	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector. {\color{orange} We would need to assume that the process is centered, otherwise we may not derive below results(not sure though).}
+	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
-			\item $\mathbb{E}\left[\xi_j(\omega)\right] = 0$
-			\item $Var\left(\xi_j(\omega)\right) = \lambda_i$
-			\item $Cov\left(\xi_j(\omega), \xi_k(\omega)\right) = 0$ if $j \neq k$
+			\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
+			\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
+			\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = 0$ if $m \neq n$
 		\end{enumerate}
 	\end{multicols}
 	
@@ -300,11 +293,11 @@ The polynomial of the form
 	\begin{equation}
 		\hat{\mu}(t) = \frac{1}{n}\sum_{i = 1}^{n}x_i(t)
 	\end{equation}
-
+	
 	\begin{equation}
 		\hat{c}(t,s) = \frac{1}{n} \sum_{i = 1}^{n} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
 	\end{equation}
-
+	
 	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m \in \mathcal{M}\}$ for $\{(\lambda^m, \nu^m) \: \vert \: i \in \mathcal{M}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{M}$.}
 	
 	\begin{equation}
@@ -314,7 +307,7 @@ The polynomial of the form
 	This naturally leads to the following representation.
 	
 	\begin{equation}
-		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i,j} \hat{\nu}(t)
+		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i}^{m} \hat{\nu}^{m}(t)
 	\end{equation}
 	where the $\hat{\xi}_{i}^m$ are derived as 
 	
@@ -416,7 +409,24 @@ The polynomial of the form
 		Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
 	\end{equation}
 
-	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression.
+		A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
+	
+	\begin{equation}
+		Y = \begin{pmatrix}
+			y_1 \\ \vdots \\ y_n
+		\end{pmatrix}, \quad
+		Z = \begin{pmatrix}
+			1 & \tilde{Z}_{1,1} & \dots & \tilde{Z}_{1,J} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			1 & \tilde{Z}_{n,1} & \dots & \tilde{Z}_{n,J}
+		\end{pmatrix}
+	\end{equation}
+	
+	Then an OLS estimator can be calculated in the usual way to obtain an estimate for the values of $\alpha$ and $b_j$ and an estimate of the coefficient function can be derived accordingly.
+	
+	\begin{equation}
+		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
+	\end{equation}
 	
 	\subsubsection{Estimation using Functional Principal Components}
 	
@@ -462,6 +472,25 @@ The polynomial of the form
 			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon_i
 			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon_i
 		\end{split}
+	\end{equation}
+
+	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
+	
+	\begin{equation}
+		Y = \begin{pmatrix}
+			y_1 \\ \vdots \\ y_n
+		\end{pmatrix}, \quad
+		Z = \begin{pmatrix}
+			1 & \tilde{\xi}^{1,L}_{1} & \dots & \tilde{\xi}^{M,L}_{1} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			1 & \tilde{\xi}^{1,L}_{n} & \dots & \tilde{\xi}^{M,L}_{n}
+		\end{pmatrix}
+	\end{equation}
+	
+	We can then derive the following estimators.
+	
+	\begin{equation}
+		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\tilde{\beta}}^{m,L} = \tilde{b}^{L,M}_{m+1}
 	\end{equation}
 
 	%\subsection{Detailed Draft}

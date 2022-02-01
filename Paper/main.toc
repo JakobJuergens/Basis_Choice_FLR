@@ -11,7 +11,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Hilbert Space of Square-Integrable Functions}{5}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Bases of $\mathbb {L}^2$}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Bases of $\mathbb {L}^2$}{6}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Monomial Basis}{6}{section*.2}%
 \defcounter {refsection}{0}\relax 
@@ -33,58 +33,60 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.8}Literature}{13}{subsection.3.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Simulation Study}{14}{section.4}%
+\contentsline {section}{\numberline {4}Simulation Study}{15}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Motivation}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}Motivation}{15}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Generating Similar Curves}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Generating Similar Curves}{15}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Simulation setup}{14}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}Simulation setup}{15}{subsection.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Results}{15}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.4}Results}{16}{subsection.4.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {4.4.1}Basis Expansion Regression}{16}{subsubsection.4.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{16}{section*.6}%
+\contentsline {paragraph}{Monomial Basis}{17}{section*.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Bspline Basis}{16}{section*.7}%
+\contentsline {paragraph}{Bspline Basis}{17}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{16}{section*.8}%
+\contentsline {paragraph}{Fourier Basis}{17}{section*.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.4.2}Functional Principal Component Regression}{16}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2}Functional Principal Component Regression}{17}{subsubsection.4.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{16}{section*.9}%
+\contentsline {paragraph}{Monomial Basis}{17}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Bspline Basis}{16}{section*.10}%
+\contentsline {paragraph}{Bspline Basis}{17}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{16}{section*.11}%
+\contentsline {paragraph}{Fourier Basis}{17}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.4.3}Interpretation and Relevance for Application}{16}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.3}Interpretation and Relevance for Application}{18}{subsubsection.4.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.5}Literature}{16}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.5}Literature}{18}{subsection.4.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Application}{17}{section.5}%
+\contentsline {section}{\numberline {5}Application}{19}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Literature}{17}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.1}Literature}{19}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Outlook}{17}{section.6}%
+\contentsline {section}{\numberline {6}Outlook}{19}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Literature}{17}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.1}Literature}{19}{subsection.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Appendix}{18}{section.7}%
+\contentsline {section}{\numberline {7}Appendix}{20}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Basis Plots}{18}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.1}Near-infrared (NIR) Spectroscopy}{20}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Simulation Study Results}{19}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.2}Basis Plots}{20}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.3}Wiener Process}{20}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.3}Simulation Study Results}{22}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Proofs}{20}{section.8}%
+\contentsline {subsection}{\numberline {7.4}Wiener Process}{23}{subsection.7.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}Lemma}{20}{subsection.8.1}%
+\contentsline {section}{\numberline {8}Proofs}{23}{section.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}Karhunen-Lo\'{e}ve expansion}{21}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.1}Lemma}{23}{subsection.8.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Bibliography}{23}{section.9}%
+\contentsline {subsection}{\numberline {8.2}Karhunen-Lo\'{e}ve expansion}{24}{subsection.8.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Affidavit}{25}{section.10}%
+\contentsline {section}{\numberline {9}Bibliography}{26}{section.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}Affidavit}{28}{section.10}%
