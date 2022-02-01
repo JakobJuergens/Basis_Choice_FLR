@@ -412,7 +412,24 @@ The polynomial of the form
 		Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
 	\end{equation}
 
-	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression.
+		A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
+	
+	\begin{equation}
+		Y = \begin{pmatrix}
+			y_1 \\ \vdots \\ y_n
+		\end{pmatrix}, \quad
+		Z = \begin{pmatrix}
+			1 & \tilde{Z}_{1,1} & \dots & \tilde{Z}_{1,J} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			1 & \tilde{Z}_{n,1} & \dots & \tilde{Z}_{n,J}
+		\end{pmatrix}
+	\end{equation}
+	
+	Then an OLS estimator can be calculated in the usual way to obtain an estimate for the values of $\alpha$ and $b_j$ and an estimate of the coefficient function can be derived accordingly.
+	
+	\begin{equation}
+		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
+	\end{equation}
 	
 	\subsubsection{Estimation using Functional Principal Components}
 	
@@ -458,6 +475,25 @@ The polynomial of the form
 			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon_i
 			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon_i
 		\end{split}
+	\end{equation}
+
+	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
+	
+	\begin{equation}
+		Y = \begin{pmatrix}
+			y_1 \\ \vdots \\ y_n
+		\end{pmatrix}, \quad
+		Z = \begin{pmatrix}
+			1 & \tilde{\xi}^{1,L}_{1} & \dots & \tilde{\xi}^{M,L}_{1} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			1 & \tilde{\xi}^{1,L}_{n} & \dots & \tilde{\xi}^{M,L}_{n}
+		\end{pmatrix}
+	\end{equation}
+	
+	We can then derive the following estimators.
+	
+	\begin{equation}
+		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\tilde{\beta}}^{m,L} = \tilde{b}^{L,M}_{m+1}
 	\end{equation}
 
 	%\subsection{Detailed Draft}
