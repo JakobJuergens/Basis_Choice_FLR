@@ -231,7 +231,7 @@ The polynomial of the form
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $V(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(V(\omega)) = \mu_V$ and $Cov(V(\omega)) = \Sigma_V$. Then $\Sigma_V$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_V = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
-		
+	
 	This decomposition can be used to express the random vector $V(\omega)$ in the following way.
 	
 	\begin{equation}
@@ -250,27 +250,25 @@ The polynomial of the form
 	\begin{equation}\label{CovarianceFunction}
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
-	{\color{orange}suggestion from here}
-	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through c : $[0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
+	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
 	\begin{equation}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
 	\end{equation}
-
-	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds following traits:
 	
-		\begin{enumerate}
-			\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
-			\item The eigenspaces corresponding to non-zero eigenvalues are finite-dimentsional.
-			\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
-		\end{enumerate}
+	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m > n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion.
 	
-	Therefore, we can approximate the function $X$ with first few eigenfunctions. The functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
+	%\begin{enumerate}
+	%\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
+	%\item The eigenspaces corresponding to non-zero eigenvalues are finite-dimentsional.
+	%\item The eigenvalues can be ordered in nonincreasing order as follows $\lambda_{1} \geq \lambda_{2} \geq \dots \geq 0$.
+	%\end{enumerate}
+	%Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
 		X(\omega)(t) = \mu(t) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(t)
 	\end{equation}
-
-	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
+	
+	where the $\nu_j$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
 	
 	\begin{equation}
 		{\color{orange} [K \nu](t) =}\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
@@ -280,13 +278,13 @@ The polynomial of the form
 	\begin{equation}
 		\xi^m(\omega) = \langle X(\omega) - \mu, \nu^m\rangle = \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation} 
-	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector. {\color{orange} We would need to assume that the process is centered, otherwise we may not derive below results(not sure though).}
+	and thereby random variables realizing in $\mathbb{R}$ and have the following properties akin to $\Lambda^{\frac{1}{2}} D(\omega)$ for the case of a random vector.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
-			\item $\mathbb{E}\left[\xi_j(\omega)\right] = 0$
-			\item $Var\left(\xi_j(\omega)\right) = \lambda_i$
-			\item $Cov\left(\xi_j(\omega), \xi_k(\omega)\right) = 0$ if $j \neq k$
+			\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
+			\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
+			\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = 0$ if $m \neq n$
 		\end{enumerate}
 	\end{multicols}
 	
@@ -296,11 +294,11 @@ The polynomial of the form
 	\begin{equation}
 		\hat{\mu}(t) = \frac{1}{n}\sum_{i = 1}^{n}x_i(t)
 	\end{equation}
-
+	
 	\begin{equation}
 		\hat{c}(t,s) = \frac{1}{n} \sum_{i = 1}^{n} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
 	\end{equation}
-
+	
 	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m \in \mathcal{M}\}$ for $\{(\lambda^m, \nu^m) \: \vert \: i \in \mathcal{M}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{M}$.}
 	
 	\begin{equation}
@@ -310,7 +308,7 @@ The polynomial of the form
 	This naturally leads to the following representation.
 	
 	\begin{equation}
-		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i,j} \hat{\nu}(t)
+		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i}^{m} \hat{\nu}^{m}(t)
 	\end{equation}
 	where the $\hat{\xi}_{i}^m$ are derived as 
 	
