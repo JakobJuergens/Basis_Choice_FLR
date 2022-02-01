@@ -135,25 +135,21 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	
 	\subsection{Hilbert Space of Square-Integrable Functions}
-	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure.\\
-	Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
 	
 	\begin{equation}
-		{\color{orange} \lvert \lvert f \rvert \rvert^2 =} \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
+		\lvert \lvert f \rvert \rvert^2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
-	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined.\\
-	Its inner product is defined as
+	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined. Its inner product is defined as
 	
 	\begin{equation}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	The Hilbert space of square integrable functions on $[0,1]$ {\color{orange} (instead, $\mathbb{L}^2[0,1]$)} is the function space that is most often used for theoretical considerations in functional data analysis  {\color{orange} without loss of generality}. 
+	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis without loss of generality. We also focus on the interval [0,1] for the purpose of this paper.	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
 	%Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
-	
-	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
 	\begin{equation}
 	\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
