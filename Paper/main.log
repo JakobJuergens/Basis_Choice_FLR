@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  31 JAN 2022 21:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.4)  1 FEB 2022 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -897,104 +897,100 @@ Overfull \hbox (11.52672pt too wide) detected at line 405
 []
  []
 
-[11] [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 568--570
+[11] [12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 604--606
 
  []
 
-<../Graphics/smooth_function.png, id=350, 509.65407pt x 324.46219pt>
+<../Graphics/smooth_function.png, id=358, 509.65407pt x 324.46219pt>
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
-Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 57
-9.
+Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 61
+5.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-<../Graphics/bumpy_function.png, id=351, 509.65407pt x 324.46219pt>
+<../Graphics/bumpy_function.png, id=359, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 585
+Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 621
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-[14]
+[15]
 Underfull \vbox (badness 6725) has occurred while \output is active []
 
- [15 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 631--633
+ [16 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 667--669
 
  []
 
 
-LaTeX Warning: Hyper reference `fpc_exp_transf' on page 16 undefined on input l
-ine 640.
+LaTeX Warning: Hyper reference `fpc_exp_transf' on page 17 undefined on input l
+ine 676.
 
-[16] [17] [18]
-<../Graphics/Fourier_Basis.pdf, id=397, 1445.4pt x 578.16pt>
+[17] [18] [19]
+<../Graphics/Fourier_Basis.pdf, id=407, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 682.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 718.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Bspline_Basis.pdf, id=398, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=408, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 687.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 723.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Monomial_Basis.pdf, id=399, 1445.4pt x 578.16pt>
+<../Graphics/Monomial_Basis.pdf, id=409, 1445.4pt x 578.16pt>
 File: ../Graphics/Monomial_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Monomial_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 692
+Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 728
 .
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
- [19 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf> <../Graphi
+ [20 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf> <../Graphi
 cs/Monomial_Basis.pdf>]
-Overfull \hbox (10.84837pt too wide) in paragraph at lines 703--712
+Overfull \hbox (10.84837pt too wide) in paragraph at lines 739--748
  [][] 
  []
 
 
-Overfull \hbox (21.79839pt too wide) in paragraph at lines 720--739
+Overfull \hbox (21.79839pt too wide) in paragraph at lines 756--775
  [][] 
  []
 
 
-Overfull \hbox (21.79839pt too wide) in paragraph at lines 748--761
+Overfull \hbox (21.79839pt too wide) in paragraph at lines 784--797
  [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [20]
-<../Graphics/Wiener_plot.pdf, id=433, 1445.4pt x 578.16pt>
+ [21]
+<../Graphics/Wiener_plot.pdf, id=441, 1445.4pt x 578.16pt>
 File: ../Graphics/Wiener_plot.pdf Graphic file (type pdf)
 <use ../Graphics/Wiener_plot.pdf>
-Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 782.
+Package pdftex.def Info: ../Graphics/Wiener_plot.pdf  used on input line 818.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 
-[21 <../Graphics/Wiener_plot.pdf>] [22] [23]
+[22 <../Graphics/Wiener_plot.pdf>] [23] [24]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [24] [25] [26] (./main.aux)
+ [25] [26] [27] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BB213BF473158C02D7A5DB08F376826B;5604.
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22510 strings out of 478353
- 389936 string characters out of 5854636
- 1155021 words of memory out of 5000000
- 40002 multiletter control sequences out of 15000+600000
+ 22553 strings out of 478353
+ 390404 string characters out of 5854636
+ 1156608 words of memory out of 5000000
+ 40040 multiletter control sequences out of 15000+600000
  422884 words of font info for 170 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1016,10 +1012,10 @@ re/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
 uper/sfrm1095.pfb>
-Output written on main.pdf (26 pages, 1790365 bytes).
+Output written on main.pdf (27 pages, 1792581 bytes).
 PDF statistics:
- 640 PDF objects out of 1000 (max. 8388607)
- 554 compressed objects within 6 object streams
- 177 named destinations out of 1000 (max. 500000)
+ 650 PDF objects out of 1000 (max. 8388607)
+ 563 compressed objects within 6 object streams
+ 182 named destinations out of 1000 (max. 500000)
  41783 words of extra memory for PDF output out of 42996 (max. 10000000)
 
