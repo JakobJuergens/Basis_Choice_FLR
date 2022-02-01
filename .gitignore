@@ -2,3 +2,15 @@
 .Rhistory
 .RData
 .Ruserdata
+**/Archive
+**/Paper/RMbibliography.bbl
+**/Paper/RMbibliography.blg
+**/Paper/main.bbl
+**/Paper/main.blg
+**/Paper/main.aux
+**/Paper/main.bcf
+**/Paper/main.log
+**/Paper/main.out
+**/Paper/main.run.xml
+**/Paper/main.synctex.gz
+**/Paper/main.toc
