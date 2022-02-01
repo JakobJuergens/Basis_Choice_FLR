@@ -8,16 +8,11 @@ suppressMessages(library(fda))
 suppressMessages(library(fpca))
 suppressMessages(library(caret))
 
-### load data set
-data(gasoline)
-# octane <- (gasoline$octane)
-NIR <- as.matrix(gasoline$NIR)
-
 ##### import simulation functions #####
 source("Application_Functions.R")
 
 ### Run Application for basis expansion
-bspline_appl <- bspline_appl_function(fold_size = 5, rep = 1, seed = 100, debug = TRUE)
+bspline_appl <- bspline_appl_function(fold_size = 5, rep = 250, seed = 100, debug = TRUE)
 saveRDS(object = bspline_appl, file = 'Results/Paper/Application/bspline_appl.RDS')
 write_csv(x = bspline_appl, file = 'Results/Paper/Application/bspline_appl.csv')
 
