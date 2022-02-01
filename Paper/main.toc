@@ -11,7 +11,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Hilbert Space of Square-Integrable Functions}{5}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Bases of $\mathbb {L}^2$}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Bases of $\mathbb {L}^2$}{5}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Monomial Basis}{6}{section*.2}%
 \defcounter {refsection}{0}\relax 
