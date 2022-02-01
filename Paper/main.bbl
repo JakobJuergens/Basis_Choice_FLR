@@ -576,6 +576,93 @@
       \verb Full Text PDF:/home/jjuergens/Zotero/storage/LBCJRPIW/Levitin et al. - 2007 - Introduction to Functional Data Analysis.pdf:application/pdf
       \endverb
     \endentry
+    \entry{FR_li_et_al_2020}{article}{}
+      \name{author}{9}{}{%
+        {{un=0,uniquepart=base,hash=d00f5938b0a09a342715702f38ac8ae4}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yuanpeng},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=abb1947d67346e97669219d624a9b6d0}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Liu},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=502de95c3193f5c283f4ef712520a97e}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e5e75de005527384d76b15222f8296c5}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Chuanmei},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ace398d616358de632c64d6ae0b9412c}{%
+           family={Guang},
+           familyi={G\bibinitperiod},
+           given={Peiwen},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=23118b73b64c99e8852504622b4b9eb3}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Furong},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=df24e878cbff6970ebff502a90133347}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Zhenqiang},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9f5d270b4cbd3e68064cc945799a3f94}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lihu},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cc3bd6cad6f08a5373f805803a1f243a}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Junhui},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{fullhash}{c821fffb073a66f502339c3b724ed5cd}
+      \strng{bibnamehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{authorbibnamehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{authornamehash}{d4f3d9f30191782a9e918c28daa8b475}
+      \strng{authorfullhash}{c821fffb073a66f502339c3b724ed5cd}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Early diagnosis is important to reduce the incidence and mortality rate of diabetes. The feasibility of early diagnosis of diabetes was studied via near-infrared spectra (NIRS) combined with a support vector machine (SVM) and aquaphotomics.}
+      \field{issn}{2296-2646}
+      \field{journaltitle}{Frontiers in Chemistry}
+      \field{title}{Early Diagnosis of Type 2 Diabetes Based on Near-Infrared Spectroscopy Combined With Machine Learning and Aquaphotomics}
+      \field{volume}{8}
+      \field{year}{2020}
+      \field{pages}{1133}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fchem.2020.580489
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/article/10.3389/fchem.2020.580489
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/article/10.3389/fchem.2020.580489
+      \endverb
+    \endentry
     \entry{ramsay_functional_2005}{book}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=82c1bfad20df6fc9b773259966b21729}{%
