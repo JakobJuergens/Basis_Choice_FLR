@@ -2,8 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-Archive
-Paper
+Archive/
+Paper/**
 !Paper/RMbibliography.bib
 !Paper/main.tex
 !Paper/main.pdf
