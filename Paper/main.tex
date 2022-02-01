@@ -66,7 +66,7 @@ style=authoryear-comp,
 	x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]
 \end{equation}
 		
-			 This measurement set can be viewed as set of discretized approximations of the underlying true process which could be the absorption of the Near-infrared spectrum which we will use for the simulation and application. This continuous underlying process for which 
+			 This measurement set can be viewed as set of discretized approximations of the underlying true process which could be the absorption of the Near-infrared (NIR) spectrum which will be used for the simulation and application. NIR-spectroscopy uses the near-infrared region of the electromagnetic spectrum (780nm to 2500nm) to measure the absorption of its waves on a sample to analyse the interaction of each other. {\color{green} For more details refer to the appendix SECTION ??!??!}. This continuous underlying process for which 
  $x_i(t)$ exists $\forall t \in [T_1, T_2]$ is only observed at the discrete measurement points. This dataset can then be used to perform Functional Linear Regression (FLR) on a scalar response variable. To conduct functional linear regression, several new concepts and methods need to be considered and explained that distinguish it multivariate linear regression.
 %	 In economics, one application could be the regression of stock market correlations on the Global Crisis Index (GCI) to where the regression allows to assess the relationship between the correlation and the GCI at every point within a window (cf. \cite{Das_2019}).\\
 The focus of this paper is to introduce FLR in a scalar-on-function setting. We will be using the standard FLR framework, which relates functional predictors to a scalar response as follows:
@@ -135,27 +135,31 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	
 	\subsection{Hilbert Space of Square-Integrable Functions}
-	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure.\\
+	Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
 	
 	\begin{equation}
-		\lvert \lvert f \rvert \rvert^2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
+		{\color{orange} \lvert \lvert f \rvert \rvert^2 =} \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
-	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined. Its inner product is defined as
+	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined.\\
+	Its inner product is defined as
 	
 	\begin{equation}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	 $\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis without loss of generality. We also focus on the interval $[0,1]$ for the purpose of this paper. The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
+	The Hilbert space of square integrable functions on $[0,1]$ {\color{orange} (instead, $\mathbb{L}^2[0,1]$)} is the function space that is most often used for theoretical considerations in functional data analysis  {\color{orange} without loss of generality}. 
 	
 	%Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
+	
+	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
 	
 	\begin{equation}
 	\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
 	\end{equation}
 	
-	where $\Omega$ is a sample space. The realized $f(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
+	The realized $f(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	
 	\subsection{Bases of $\mathbb{L}^2$} % Maybe change title due to monomial and bspline basis not ful;filling this property
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
@@ -412,24 +416,7 @@ The polynomial of the form
 		Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
 	\end{equation}
 
-	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
-	
-	\begin{equation}
-		Y = \begin{pmatrix}
-				y_1 \\ \vdots \\ y_n
-			\end{pmatrix}, \quad
-		Z = \begin{pmatrix}
-				1 & \tilde{Z}_{1,1} & \dots & \tilde{Z}_{1,J} \\
-				\vdots & \vdots & \ddots & \vdots \\
-				1 & \tilde{Z}_{n,1} & \dots & \tilde{Z}_{n,J}
-			\end{pmatrix}
-	\end{equation}
-	
-	Then an OLS estimator can be calculated in the usual way to obtain an estimate for the values of $\alpha$ and $b_j$ and an estimate of the coefficient function can be derived accordingly.
-	
-	\begin{equation}
-		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
-	\end{equation}
+	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression.
 	
 	\subsubsection{Estimation using Functional Principal Components}
 	
@@ -477,25 +464,6 @@ The polynomial of the form
 		\end{split}
 	\end{equation}
 
-	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
-	
-	\begin{equation}
-		Y = \begin{pmatrix}
-			y_1 \\ \vdots \\ y_n
-			\end{pmatrix}, \quad
-		Z = \begin{pmatrix}
-			1 & \tilde{\xi}^{1,L}_{1} & \dots & \tilde{\xi}^{M,L}_{1} \\
-			\vdots & \vdots & \ddots & \vdots \\
-			1 & \tilde{\xi}^{1,L}_{n} & \dots & \tilde{\xi}^{M,L}_{n}
-			\end{pmatrix}
-	\end{equation}
-	
-	We can then derive the following estimators.
-	
-	\begin{equation}
-			\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\tilde{\beta}}^{m,L} = \tilde{b}^{L,M}_{m+1}
-	\end{equation}
-	
 	%\subsection{Detailed Draft}
 	%\begin{itemize}
 	%	\item Motivate random functions from introduction and the general concept of random variables
@@ -600,8 +568,7 @@ The polynomial of the form
     \end{equation}
     \vspace{0.2cm}\\
     
-    The bumpy function, $f_2(t)$, was generated by referring to \cite{cardot_bumpyfunction_2002}. 
-    Both functions were created such that the inner product $\langle NIR_{sim}, f \rangle, f \in \{f_1(t), f_2(t)\}$ creates responses similar to the original octane ratings of the gasoline dataset. 
+    The bumpy function, $f_2(t)$, was generated by referring to \cite{cardot_bumpyfunction_2002}. The smooth function $f_1(t)$ follows \cite{Reiss_2007b} and its inner product $\langle NIR_{sim}, f_1 \rangle$ creates responses that are similar to the original octane numbers of the gasoline dataset. 
 
 		\vspace{0.1cm}
 		\begin{figure}
@@ -645,9 +612,7 @@ The polynomial of the form
 		 The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
 		
 	
-	\subsection{Results}
-	{\color{green}DESCRIBE RESULTS: make paragraph for each setup? so 6 paragraphs? Like this: }
-	
+	\subsection{Results}	
 	
 	\subsubsection{Basis Expansion Regression}
 	The following results origin from the \hyperref[basis_exp_transf]{\textbf{Estimation using Basis-Representation}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
@@ -707,6 +672,10 @@ The smooth function $f_1$ requires only 5(4) Bspline basis functions, for the hi
 	
 	\newpage
 	\section{Appendix}
+	
+	\subsection{Near-infrared (NIR) Spectroscopy}
+	NIR- spectroscopy is a spectroscopic method that uses the near-infrared region of the electromagnetic spectrum (From 780 nm to 2500 nm). It therefore measures the absorption and interaction of this spectrum of radiation with the sample. NIR-spectroscopy is not only faster and cheaper than the standard test procedure – another big advantage is that it does not need a reagent and thus does not destroy the sample. It is used for analysis in different sectors and fields, like the agrochemical industry but also in healthcare. Its non-invasive nature makes it also to an asset for medical applications like the monitoring of diabetes in which NIR-spectroscopy is able to detect the worsening of the blood glucose metabolic dysfunction (cf . \cite{FR_li_et_al_2020}). In the context of this paper, the gasoline dataset which is used for the simulation and the application is constructed using NIR spectroscopy. According to \cite{Bohacs_Ovadi_Salgo1998} NIR-spectroscopy is a feasible method for the analysis of gasoline since most of the absorption that is observed within the described interval of wavelengths is due to overtones and interactions of the radiation with chemical combinations (eg.: carbon–hydrogen, carbon–carbon, carbon–oxygen, carbonyl associated groups, aromatic stretching, and deformation vibration of the hydrocarbon molecules). While this paper focuses on the prediction of the octane number of gasoline, other research focuses  on different properties of gasoline such as the olefin, naphtaenic and aromatic content (Parisi et al. 1990, as cited in \cite{Bohacs_Ovadi_Salgo1998}) or the distillation characktersitics (Pauls 1985, as cited in \cite{Bohacs_Ovadi_Salgo1998})
+
 	
 	\subsection{Basis Plots}
 	
