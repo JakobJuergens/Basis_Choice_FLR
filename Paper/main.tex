@@ -573,7 +573,28 @@ The polynomial of the form
 	%\end{itemize}
 
 	\subsection{Motivation}
-	For the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. NIR- spectroscopy allows to analyse samples of gasoline much faster, cheaper and with the same reproducibility as standard tests while not destroying the sample (cf. \cite{Bohacs_Ovadi_Salgo1998}). We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
+	
+	
+	
+	In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.	
+	
+	
+	 To exploit the regularity of the curves of the spectra, we introduced different basis functions and demonstrated the importance of the truncation parameter $\mathcal{K}$ for the estimation in SECTION HERE. For the simulation study, we rely on the introduced estimation strategies with the introduced basis functions and focus on choosing the truncation parameter $\mathcal{K}$ as well as the number of FPC, which is as well affected by $\mathcal{K}$, by ten fold cross-validation. While cross-validation is common for selecting $\mathcal{K}$, the number of FPC in practice is often truncated after a prespecified amount of explained variability \cite{kokoszka_introduction_2017}, which might not be optimal since FPC with smaller eigenvalues may have greater influence on the prediction \cite{Jolliffe_1982}. 
+	 
+	 This setup is opposing to the often used penalized functional regression as described by \citep{Goldsmith_2011} in which an explicit smoothness constraint $\lambda$ is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $K$ sufficiently high. This would avoid the heavy computing of validating the best value for $K$ which we will conduct in the simulation. To provide intuition in this approach, let 
+	 \begin{equation}
+	 	PSSE_\lambda(\alpha, \beta) = \sum_{i = 1}^{N} (Y_i -\alpha -\int_0^1 \beta(t)X_i(t)dt)^2 + \lambda * \int (D^m\beta(t))^2 dt
+	 \end{equation}
+	 denote the penalized residual sum of squares as notated by \cite{ramsay_functional_2005} for the derivative of order $m$. A typical choice is the second derivative as highly variable functions are expected to yield large second derivatives and therefore a larger penalty. The smoothing parameter $\lambda$ is set to minimize the $PSSE_\lambda(\alpha, \beta)$, which can be archived by different criteria as shown in \cite{ThomasLee_2003}
+	 
+	 
+	 
+	 
+		
+	%While this paper and its simulation does not touch upon the topic of roughness penalties in estimation and their selection, other simulations focus e.g. on choosing the knots of penalized splines (David Ruppert 2000) or the important choice of the smoothing parameter selection method (Thomas C.M. Lee, 2002). An overview about other variable selections methods for functional regression with an origin in the multivariate regression setting can be found in( G. Aneiros, S. Novo and P. Vieu)
+	
+	
+	%In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
 	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated bspline basis which is created using 50 knots. These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drawn from a multivariate normal $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$. Finally, we obtain the generated curves $NIR_{sim}$
