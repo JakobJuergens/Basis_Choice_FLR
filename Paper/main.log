@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  2 FEB 2022 21:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  2 FEB 2022 22:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -903,10 +903,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 152.
 
-[5] [6] [7] [8] [9]
-Underfull \vbox (badness 1062) has occurred while \output is active []
-
- [10]
+[5] [6] [7] [8] [9] [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
@@ -1004,11 +1001,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22581 strings out of 478353
- 392099 string characters out of 5852101
+ 22579 strings out of 478353
+ 392083 string characters out of 5852101
  1156100 words of memory out of 5000000
  40060 multiletter control sequences out of 15000+600000
- 423142 words of font info for 174 fonts, out of 8000000 for 9000
+ 423082 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,2668b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
@@ -1031,7 +1028,7 @@ r8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/
 type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (28 pages, 1813305 bytes).
+Output written on main.pdf (28 pages, 1813713 bytes).
 PDF statistics:
  686 PDF objects out of 1000 (max. 8388607)
  596 compressed objects within 6 object streams

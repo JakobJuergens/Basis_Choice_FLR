@@ -178,7 +178,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 
 	
 	\paragraph{Fourier Basis}
-	The Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
+	Fourier series basically decomposes a periodic function with a weighted summation of trigonometric funtions. Imagine that an arbitrary function in $\mathbb{L}^2[0,1]$ has one or more cycles between 0 and 1, and we can then apply the Fourier series to approximate the function for smoothing. As the series was originated from the amplitude-phase form regarding cosine functions, it can be rewritten by sine and cosine form through a simple trigonometry formula. That is why the Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
 		\begin{cases}
@@ -188,7 +188,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		\end{cases}
 	\end{equation}
 	
-	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthogonal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  {\color{blue} Motivate from fourier series}
+	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthonormal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  {\color{blue} Motivate from fourier series}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
 	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
@@ -273,7 +273,7 @@ As in the finite dimensional setting, the concept of identically distributed and
 		X(\omega)(t) = \mu(t) + \sum_{m \in \mathbb{N}} \xi^m(\omega) \nu^m(t), \quad \xi^m(\omega) =  \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation}
 	
-	where the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of ({\ref{HSKernal}}). The $\xi^{m}(\omega)$ satisfy following properties. %of the following equation.
+	where the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of ({\ref{HSKernal}}). The random variables $\xi^{m}(\omega)$ satisfy following properties. %of the following equation.
 	
 	%\begin{equation}
 	%	{\color{orange} [K \nu](t) =}\int_{0}^{1}c(t,s)\nu(s) \mathrm{d}s = \lambda \nu(t)
