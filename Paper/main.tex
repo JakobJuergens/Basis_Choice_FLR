@@ -332,9 +332,17 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	
 	\begin{equation}\label{score_approx}
+			\hat{\xi}_{i}^m = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s
+	\end{equation}
+
+	And we can define the following objects:
+	
+	\begin{equation}
 		\begin{split}
-			\hat{\xi}_{i}^m & = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s \\
-			& \approx \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] =: \tilde{\xi}^{m,L}_{i}
+			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] \\
+			\delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} = \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s \\
+			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) \quad \quad \quad
+			\delta_{\nu, m}^L(t) := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
 		\end{split}
 	\end{equation}
 	
@@ -403,8 +411,8 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega)
 			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} a_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
 			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j = 1}^{J} b_j  \phi_j(s) + \delta_{\beta}^{J}(s)\right)} {\color{red}\left(\sum_{k = 1}^K a_k(\omega)  \psi_k(s) + \delta_{X}^{K}(\omega)(s)\right)} \right]\mathrm{d}s + \epsilon(\omega)\\
-			& = \alpha + \sum_{j = 1}^J b_j \left[\sum_{k = 1}^K d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s
-			 + \sum_{k = 1}^{K} a_k  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega)
+			& = \alpha + \sum_{j = 1}^J b_j \left[\sum_{k = 1}^K a_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s\\
+			& \quad \quad + \sum_{k = 1}^{K} a_k(\omega)  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
@@ -449,9 +457,9 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\begin{equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} \beta(s) \mathrm{d}s + \epsilon(\omega)
-			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathbb{N}} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
-			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathbb{N}} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
-			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathbb{N}} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
+			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m = 1}^{\infty} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
+			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m = 1}^{\infty} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
+			= {\color{teal}\bar{\alpha}} + \sum_{m = 1}^{\infty} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
@@ -477,16 +485,43 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		\end{split}
 	\end{equation}
 
-	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coefficient function at the same parameter $L$ that was used for the approximation of the principal components and scores. The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation.
+	Truncating the basis used for expansion of the coefficient function already introduces an approximation error.
+	
+	\begin{equation}\label{fpcr_reg_both_expansions}
+		\begin{split}
+			y_i &= \alpha + \int_{0}^{1} \left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right) {\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} \mathrm{d}s + \epsilon_i\\
+			&= \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{J}(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j = 1}^{J} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] \\
+			& \quad \quad + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \int_{0}^{1}\hat{\nu}^m(s) \delta_{\beta}^{J}(s) \mathrm{d}s \right] + \epsilon_i
+		\end{split}
+	\end{equation}
+
+	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coefficient function at the same parameter $L$ that was used for the approximation of the principal components and scores.
+	
+	For convenience, define the following notation:
+	
+	\begin{equation}
+		\tilde{\alpha}^L = \alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{L}(s) \hat{\mu}(s) \mathrm{d}s
+	\end{equation}
+	
+	Then Equation \ref{fpcr_reg_both_expansions} can be expressed as follows.
 	
 	\begin{equation}
 		\begin{split}
-			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon_i \\
-			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon_i \\
-			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon_i
-			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon_i
+			y_i & = \tilde{\alpha}^L
+			+ \sum_{m \in \mathcal{M}} \left[ \left(\tilde{\xi}^{m,L}_{i} + \delta_{\xi, i}^{m, L} \right) \sum_{j = 1}^{L} b_j \int_{0}^{1} \left(\tilde{\nu}^{m,L}(s) + \delta_{\nu, m}^L(s) \right) \phi_j(s) \mathrm{d}s \right] 
+			+ \epsilon_i \\
+			& = \tilde{\alpha}^L
+			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right] \\
+			& \quad \quad + \sum_{m \in \mathcal{M}} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m \in \mathcal{M}} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right]
+			+ \epsilon_i \\
+			& \approx \tilde{\alpha}^L
+			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
 		\end{split}
 	\end{equation}
+
+	The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation.
 
 	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
 	
