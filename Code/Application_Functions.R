@@ -192,8 +192,12 @@ fourier_appl_function <- function(rep, fold_size, seed, even_basis = FALSE, debu
   # set up grid
   grid <- seq(0, 1, length.out = 401)
   
-  # specify number of basis functions that should be considered
-  n_basis <- seq(from = 4, to = 15, by = 1)
+  # specfiy number of basis functions that should be considered
+  if (even_basis == TRUE) {
+    n_basis <- seq(from = 1, to = 19, by = 1)
+  } else {
+    n_basis <- seq(from = 1, to = 19, by = 2)
+  }
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -356,7 +360,7 @@ fourier_appl_function <- function(rep, fold_size, seed, even_basis = FALSE, debu
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", n_basis[j], " b-spline basis functions.",
+            "Problem occured in run ", i, " for ", n_basis[j], " fourier basis functions.",
             " Error message: ", cond
           ))
         }
@@ -384,7 +388,7 @@ monomial_appl_function <- function(rep, fold_size, seed, debug = FALSE) {
   grid <- seq(0, 1, length.out = 401)
   
   # specify number of basis functions that should be considered
-  n_basis <- seq(from = 4, to = 15, by = 1)
+  n_basis <- seq(from = 1, to = 6, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -534,7 +538,7 @@ monomial_appl_function <- function(rep, fold_size, seed, debug = FALSE) {
         error = function(cond) {
           # in Case an error occurs issue a warning with the corresponding message
           warning(paste0(
-            "Problem occured in run ", i, " for ", n_basis[j], " b-spline basis functions.",
+            "Problem occured in run ", i, " for ", n_basis[j], " monomial functions.",
             " Error message: ", cond
           ))
         }

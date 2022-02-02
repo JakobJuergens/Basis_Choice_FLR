@@ -12,15 +12,15 @@ suppressMessages(library(caret))
 source("Application_Functions.R")
 
 ### Run Application for basis expansion
-bspline_appl <- bspline_appl_function(fold_size = 5, rep = 250, seed = 100, debug = TRUE)
+bspline_appl <- bspline_appl_function(fold_size = 5, rep = 1000, seed = 100, debug = TRUE)
 saveRDS(object = bspline_appl, file = 'Results/Paper/Application/bspline_appl.RDS')
 write_csv(x = bspline_appl, file = 'Results/Paper/Application/bspline_appl.csv')
 
-fourier_appl <- fourier_appl_function(fold_size = 5, rep = 250, seed = 100, even_basis = FALSE, debug = TRUE)
+fourier_appl <- fourier_appl_function(fold_size = 5, rep = 1000, seed = 100, even_basis = FALSE, debug = TRUE)
 saveRDS(object = fourier_appl, file = 'Results/Paper/Application/fourier_appl.RDS')
 write_csv(x = fourier_appl, file = 'Results/Paper/Application/fourier_appl.csv')
 
-monomial_appl <- monomial_appl_function(fold_size = 5, rep = 250, seed = 100, debug = TRUE)
+monomial_appl <- monomial_appl_function(fold_size = 5, rep = 1000, seed = 100, debug = TRUE)
 saveRDS(object = monomial_appl, file = 'Results/Paper/Application/monomial_appl.RDS')
 write_csv(x = monomial_appl, file = 'Results/Paper/Application/monomial_appl.csv')
 
