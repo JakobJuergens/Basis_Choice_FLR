@@ -864,8 +864,7 @@ It is characterized by the following properties.
 
 	\section{Proofs}
 	\subsection{Lemma} \label{Proof1}
-	{\color{orange} We might put the below theorems for KL. The deterministic basis expansions are pretty clear about why we can use the truncation version by itself. In contrast, I feel like that for the case of KL it does not. And in the centered case?} 
-	The coefficients $\xi_{j}$ satisfy the following:
+	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu_j\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi_{j}$ of basis functions satisfy the following properties:
 	\begin{enumerate}
 		\item $\mathbb{E}[\xi_{j}] = 0$
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
@@ -873,26 +872,14 @@ It is characterized by the following properties.
 	\end{enumerate}
 	
 	\begin{proof}
-		To obtain the first result, we can show that
-		\begin{equation}
-			\begin{split}
-				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt \biggr\rbrack\\
-				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
-				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt\\
-				= & \mu(t) \int_{0}^{1} \nu_{j}(t)\\
-				= & \mu(t) \langle \nu_{j}(t), 1 \rangle = 0
-			\end{split}
-		\end{equation}
-		where the constant function is always an eigenfunction of the operater $K$. It leads the inner product to 0 due to orthonormality of eigenfunctions. {\color{red} Another way to prove or use centered mean}
-		For the case of centered process
+		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)dP(\omega)$. To obtain the first result, we can show that
 		\begin{equation}\label{Lemma1}
 			\begin{split}
 				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
 				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
 				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \int_{\Omega} F(t) dP(\omega) \nu_{j}(t) dt\\
-				= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt = 0
+				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu_{j}(t) dt\\
+				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu_{j}(t) dt = 0
 			\end{split}
 		\end{equation}
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
@@ -908,19 +895,23 @@ It is characterized by the following properties.
 				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
 			\end{split}
 		\end{equation}
-		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the other two properties.
+		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the above two properties.
 		\begin{equation}\label{Lemma3}
 			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
+		\end{equation}
+		The original process also has the same properties as the centered one since
+		\begin{equation}
+			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{j=1}^{\infty}\xi_{j}\nu_{j}(t)
 		\end{equation}
 	\end{proof}
 	
 	
-	\subsection{Karhunen-Lo\'{e}ve expansion} \label{Proof2}
-	Let $F : [0,1]  \rightarrow \mathbb{R}$ be a centered mean-square continuous stochastic process with $F \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{i}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
+	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{j}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
-		F(t) = \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
+		X(t) = \mu(t) + \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
 	\end{equation}
-	where coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} F(t)(\omega) \nu_{j}(t)dt$ and satisfy the following conditions.
+	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} X(t)(\omega) \nu_{j}(t)dt$. These coefficients satisfy the following conditions.
 	\begin{enumerate}
 		\item $\mathbb{E}[\xi_{j}] = 0$
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
@@ -928,11 +919,12 @@ It is characterized by the following properties.
 	\end{enumerate}
 	
 	\begin{proof}
-		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the fact that $\xi_{j}(\omega) = \int_{0}^{1} F(\omega)(t) \nu_{j}(t)dt$ satisfy the three conclusions by Lemma. We prove it by considering
+		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the solution that $\xi_{j}(\omega) = \int_{0}^{1} X(\omega)(t) \nu_{j}(t)dt$ satisfy the three conclusions by Lemma \ref{Proof1}, We prove this expansion by considering
 		\begin{equation}
-			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+			= \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
 		\end{equation}
-		
+		where $F(t)$ is the centered process of $X(t)$.
 		Once it is shown that $\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = 0$ uniformly in [0,1], the proof is completed.
 		\begin{equation}\label{Thr1}
 			\begin{split}
@@ -941,13 +933,15 @@ It is characterized by the following properties.
 			\end{split}
 		\end{equation}
 		
-		Now, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}),
+		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since F(t) is the centered process. Now, take the second term
 		\begin{equation}\label{Thr2}
 			\begin{split}
-				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} \xi_{j}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} \bigg(\int_{0}^{1} F_{s}\nu_{i}(s)ds\bigg) \xi_{j}(t) \right]\\
-				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} \mathbb{E}[F(t)F(s)]\nu_{j}(s)ds\bigg)\nu_{j}\\
-				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} c(t,s) \nu_{j}(s)ds\bigg)\nu_{j}\\
-				= & \sum_{j=1}^{n}[K\nu_{j}](t)\nu_{j} = \sum_{j=1}^{n}\lambda_{j}\nu_{j}^{2}
+				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} {\color{red}\xi_{j}}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} {\color{red}\bigg(\int_{0}^{1} F(s)\nu_{j}(s)ds\bigg)} \nu_{j}(t) \right]\\
+				= & \mathbb{E} \left[ \sum_{j=1}^{n} \bigg(\int_{0}^{1} F(t)F(s)\nu_{j}(s)ds\bigg) \nu_{j}(t) \right]\\
+				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu_{j}(s)ds\bigg)\nu_{j}(t)\\
+				= & \sum_{j=1}^{n} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu_{j}(s)ds\bigg)}\nu_{j}(t)\\
+				= & \sum_{j=1}^{n}{\color{teal}[K\nu_{j}](t)}\nu_{j}(t) \\
+				= &\sum_{j=1}^{n}{\color{teal}\lambda_{j}\nu_{j}(t)}\nu_{j}(t) = \sum_{j=1}^{n}\lambda_{j}\nu_{j}(t)^{2}
 			\end{split}
 		\end{equation} 
 		
