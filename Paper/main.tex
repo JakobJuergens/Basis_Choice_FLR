@@ -160,25 +160,24 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	
 	\paragraph{Monomial Basis}
-	{\color{red} No shift parameter in implementation in fda.} Every result of monomial basis expansion is the Taylor series of some function. 
-	This is the basis that is needed to build polynomials, one of the best-known ways to expand a function. The polynomial of the form 
+	{\color{red} No shift parameter in implementation in fda.}  Monomial bases are trivially decompositions of every polynomial function. The class of non-polynomial but enough many differentiable functions can be apporximated by Taylor series, a special type of power series. From these concepts, a function can be smooth by a power series. The bases construct 
 
 	\begin{equation}
-		x(t) = \sum_{i \in \mathcal{I}} c_i(t -w)^{i}
+		x(t) = \sum_{i \in \mathcal{I}} c_i(t - \alpha)^{i}
 	\end{equation}
-	can be expressed as a finite linear combination of the monomials $(t - w)^{i}$ with coefficient $c_i$ which form the basis 
+	 which forms the basis 
 	
 	\begin{equation}
-		\phi_{i}^{M}(t) = (t-w)^k \quad i \in \mathcal{I}
+		\phi_{i}^{M}(t) = (t-\alpha)^k \quad i \in \mathcal{I}
 	\end{equation}
-	The single basis function $1$ within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). {\color{blue} Taylor expansion as motivation}\\ 
-	The shift parameter $w$ usually is specified to be the center of the interval subject to approximation.
-	 Problems of collinearity arise for higher degrees since the monomial basis becomes more correlated as the degrees increase. This restricts the number of degrees and therefore the use of this basis: For simple functions this may be useful, but the small number of degrees makes it impossible to capture pronounced local peculiarities and leads to undesirable behaviour at the tails. (cf. \cite{ramsay_functional_2005})
+	The first order function within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). {\color{blue} Taylor expansion as motivation}\\ 
+	The shift parameter $\alpha$ is specified to be the center of the interval subject to approximation.
+	 There exists problems of collinearity of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. Therefore, regarding the use, this may be useful for relatively simple functions. However, the small number of degrees makes it impossible to capture pronounced local peculiarities {\color{orange} (Isn't it good as thinking of the Taylor? The use of MB for local expansion? Need to check.)} and leads to undesirable behaviour at the tails such as Taylor expansion. (cf. \cite{ramsay_functional_2005})
 
 
 	
 	\paragraph{Fourier Basis}
-	Fourier series basically decomposes a periodic function with a weighted summation of trigonometric funtions. Imagine that an arbitrary function in $\mathbb{L}^2[0,1]$ has one or more cycles between 0 and 1, and we can then apply the Fourier series to approximate the function for smoothing. As the series was originated from the amplitude-phase form regarding cosine functions, it can be rewritten by sine and cosine form through a simple trigonometry formula. That is why the Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
+	Fourier series basically decomposes a periodic function with a weighted summation of trigonometric funtions. Imagine that an arbitrary function in $\mathbb{L}^2[0,1]$ has one or more cycles between 0 and 1, and we can then apply the Fourier series to approximate the function for smoothing. As the series originated from the amplitude-phase form regarding cosine functions, it can be rewritten by sine and cosine form through a simple trigonometry formula, which restricts the use of an odd number of Fourier basis functions. That is why the Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
 		\begin{cases}
