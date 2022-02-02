@@ -60,11 +60,7 @@ style=authoryear-comp,
 	\end{itemize}	
 	Functional Data Analysis (FDA) is {\color{red} (roots in the 1940s Grenander and Karhunen)} gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, but only FDA allows extracting the information given by the smoothness of the underlying process of the functional data (cf. \cite{levitin_introduction_2007}).
 	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).\\
-	 Consider the case of a dataset which is containing observations of an underlying continuous process, measured at some discrete points $t_{j,i}$: 
 	 
-\begin{equation}
-	x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]
-\end{equation}
 		
 			 This measurement set can be viewed as set of discretized approximations of the underlying true process which could be the absorption of the Near-infrared (NIR) spectrum which will be used for the simulation and application. NIR-spectroscopy uses the near-infrared region of the electromagnetic spectrum (780nm to 2500nm) to measure the absorption of its waves on a sample to analyse the interaction of each other. {\color{green} For more details refer to the appendix SECTION ??!??!}. This continuous underlying process for which 
  $x_i(t)$ exists $\forall t \in [T_1, T_2]$ is only observed at the discrete measurement points. This dataset can then be used to perform Functional Linear Regression (FLR) on a scalar response variable. To conduct functional linear regression, several new concepts and methods need to be considered and explained that distinguish it multivariate linear regression.
@@ -157,7 +153,8 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	
 	The realized $f(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	
-	\subsection{Bases of $\mathbb{L}^2$} % Maybe change title due to monomial and bspline basis not ful;filling this property
+	\subsection{Bases of $\mathbb{L}^2$} 
+	{\color{red} Maybe change title due to monomial and bspline basis not fulfilling this property.}
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
 	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$.
@@ -167,11 +164,12 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	
 	\paragraph{Monomial Basis}
+	{\color{red} No shift parameter in implementation in fda.}
 This is the basis that is needed to build polynomials, one of the best-known ways to expand a function.
 The polynomial of the form 
 
 	\begin{equation}
-		x(t) = \sum_{i = 0, i \in \mathcal{I}} c_i(t -w)^{i}
+		x(t) = \sum_{i \in \mathcal{I}} c_i(t -w)^{i}
 	\end{equation}
 	can be expressed as a finite linear combination of the monomials $(t - w)^{i}$ with coefficient $c_i$ which form the basis 
 	
@@ -198,7 +196,7 @@ The polynomial of the form
 	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthogonal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  {\color{blue} Motivate from fourier series}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
-	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $S_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
+	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
 
 	\begin{equation}
 		\begin{split}
@@ -225,19 +223,27 @@ The polynomial of the form
 	where $\delta(t)$ is the truncation error. The number $L$ is subjectively chosen but we can fix the nubmer through a more reasonable method, Cross-Validation, which minimizes Mean Squared Error (MSE). 
 	
 	\subsection{Functional Data Sets}
+	
+	Consider the case of a dataset which is containing observations of an underlying continuous process, measured at some discrete points $t_{j,i}$: 
+	
+	\begin{equation}
+		x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]
+	\end{equation}
+	
 	In functional data analysis the concept of a data set can include not only realizations of scalar random variables, but also realizations of random functions. In the following, all random functions are assumed to realize in $\mathbb{L}^2$. As in the finite dimensional setting the concept of identically distributed and independent data is important. This concept generalizes intuitively to the case of functional data using the concepts for general random variables. {\color{red} Explain this better!}\\
 	An example of one such data set could be a set of $n$ independent realizations of a Wiener-process and $n$ associated scalar variables that could be subject of a regression analysis with respect to the corresponding realizations of the Wiener process. A definition and a plotted example for the Wiener process are given in \ref{Wiener}.
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
-	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $V(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(V(\omega)) = \mu_V$ and $Cov(V(\omega)) = \Sigma_V$. Then $\Sigma_V$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_V = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
+	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. 
+	%To motivate it, recall the representation of a random vector derived from the spectral decomposition of its covariance matrix. Let therefore $V(\omega)$ be a random vector realizing in $\mathbb{R}^{p}$ with $\mathbb{E}(V(\omega)) = \mu_V$ and $Cov(V(\omega)) = \Sigma_V$. Then $\Sigma_V$ can be expressed in terms of its Eigenvalues and orthonormal Eigenvectors as $\Sigma_V = \Gamma \Lambda \Gamma'$ using its Eigendecomposition.\\
 	
-	This decomposition can be used to express the random vector $V(\omega)$ in the following way.
+	%This decomposition can be used to express the random vector $V(\omega)$ in the following way.
 	
-	\begin{equation}
-		V(\omega) = \mu_V + \Gamma \Lambda^{\frac{1}{2}} D(\omega) = \mu_V + \sum_{i = 1}^{p} \sqrt{\lambda_i} D_i(\omega) \gamma_i
-	\end{equation}
+	%\begin{equation}
+	%	V(\omega) = \mu_V + \Gamma \Lambda^{\frac{1}{2}} D(\omega) = \mu_V + \sum_{i = 1}^{p} \sqrt{\lambda_i} D_i(\omega) \gamma_i
+	%\end{equation}
 	
-	where $D(\omega)$ is a random vector with $\mathbb{E}(D(\omega)) = 0_p$ and $Cov(D(\omega)) = \mathbb{I}_p$.\\
+	%where $D(\omega)$ is a random vector with $\mathbb{E}(D(\omega)) = 0_p$ and $Cov(D(\omega)) = \mathbb{I}_p$.\\
 	
 	To obtain the analogous concept for a random function, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2[0,1]$. Therefore, let $X: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function.
 	Then the mean and covariance functions of $X$ are defined as follows.
@@ -249,10 +255,10 @@ The polynomial of the form
 	\begin{equation}\label{CovarianceFunction}
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
-	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
-	\begin{equation}
-		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
-	\end{equation}
+	%where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
+	%\begin{equation}
+%		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
+%	\end{equation}
 	
 	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
 	
@@ -264,7 +270,7 @@ The polynomial of the form
 	%Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
-		X(\omega)(t) = \mu(t) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(t)
+		X(\omega)(t) = \mu(t) + \sum_{m \in \mathbb{R}} \xi^m(\omega) \nu^m(t)
 	\end{equation}
 	
 	where the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
@@ -298,7 +304,7 @@ The polynomial of the form
 		\hat{c}(t,s) = \frac{1}{n} \sum_{i = 1}^{n} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
 	\end{equation}
 	
-	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m \in \mathcal{M}\}$ for $\{(\lambda^m, \nu^m) \: \vert \: i \in \mathcal{M}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{M}$.}
+	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m \in \mathcal{M}\}$ for $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{M}$.}
 	
 	\begin{equation}
 		\int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t)
@@ -435,9 +441,9 @@ The polynomial of the form
 	\begin{equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} \beta(s) \mathrm{d}s + \epsilon(\omega)
-			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathcal{M}} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
-			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathcal{M}} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
-			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathcal{M}} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
+			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathbb{N}} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
+			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathbb{N}} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
+			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathbb{N}} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
