@@ -55,7 +55,7 @@ for (i in 100:149) {
 }
 
 # Jona
-for (j in 2:4) {
+for (j in 4:4) {
   for (i in 100:149) {
     test_bspline_fpcr <- fpcr_function(
       rep = 100, my_data = NULL, n_obs = 200, nharm = j, seed = i, debug = TRUE

@@ -7,7 +7,7 @@ library(fda)
 # setup for plot generation
 n_points <- 1000
 knots <- seq(from = 0, to = 1, length.out = 8)
-order <- 3
+order <- 4
 
 # Create points for calculation of basis functions
 points <- seq(from = 0, to = 1, length.out = n_points)
