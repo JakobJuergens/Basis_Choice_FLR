@@ -677,6 +677,8 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic bspline basis-function $\{5,6,...,18\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
 		 To obtain valid out of sample properties for the FPCR, within each of the ten 10 fold cross-validation splits, we first calculate the Functional Principal Components of the trainig-set $\mathcal{T}$ for each curve. These scores are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation:
 		 
+		 {\color{blue} We should mention how we derived the original principal components. (bspline basis and number of basis functions and harmonics.) As we chose a high number for both to capture all features of the data set. As we explain the approximations for the estimation, this question could come up, so we have to make it specific.}
+		 
 	\begin{equation}
 		\begin{split}
 			\hat{\xi}_{i}^{m, \mathcal{H}} &=  \int_{0}^{1} {\color{red} \left(X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)\right)} {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
