@@ -322,6 +322,67 @@
       \endverb
       \keyw{cost of reproduction,life span,life table,longevity extension,male–female mortality,sex–mortality differentials}
     \endentry
+    \entry{Goldsmith_2011}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=1e725b50859e5359bb3c22b54ab55ddf}{%
+           family={Goldsmith},
+           familyi={G\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=1c797ff65d3c9ec2852a33ed35b03388}{%
+           family={Bobb},
+           familyi={B\bibinitperiod},
+           given={Jennifer},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3957322d290a7f8c9d1720ba655a36de}{%
+           family={Crainiceanu},
+           familyi={C\bibinitperiod},
+           given={Ciprian\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=02718c3a6f8c62a612ee950406ac15bf}{%
+           family={Caffo},
+           familyi={C\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f6d5ffec97df1c023f0b85b8494d2363}{%
+           family={Reich},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{adb6a37d1fb0084bbd59fb0180c96201}
+      \strng{fullhash}{848e1b7aae88e899694d1797f2a55046}
+      \strng{bibnamehash}{adb6a37d1fb0084bbd59fb0180c96201}
+      \strng{authorbibnamehash}{adb6a37d1fb0084bbd59fb0180c96201}
+      \strng{authornamehash}{adb6a37d1fb0084bbd59fb0180c96201}
+      \strng{authorfullhash}{848e1b7aae88e899694d1797f2a55046}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We develop fast fitting methods for generalized functional linear models. The functional predictor is projected onto a large number of smooth eigenvectors and the coefficient function is estimated using penalized spline regression; confidence intervals based on the mixed model framework are obtained. Our method can be applied to many functional data designs including functions measured with and without error, sparsely or densely sampled. The methods also extend to the case of multiple functional predictors or functional predictors with a natural multilevel structure. The approach can be implemented using standard mixed effects software and is computationally fast. The methodology is motivated by a study of white-matter demyelination via diffusion tensor imaging (DTI). The aim of this study is to analyze differences between various cerebral white-matter tract property measurements of multiple sclerosis (MS) patients and controls. While the statistical developments proposed here were motivated by the DTI study, the methodology is designed and presented in generality and is applicable to many other areas of scientific research. An online appendix provides R implementations of all simulations.}
+      \field{issn}{1061-8600}
+      \field{journaltitle}{Journal of computational and graphical statistics : a joint publication of American Statistical Association, Institute of Mathematical Statistics, Interface Foundation of North America}
+      \field{number}{4}
+      \field{title}{Penalized Functional Regression}
+      \field{volume}{20}
+      \field{year}{2011}
+      \field{pages}{830\bibrangedash 851}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1198/jcgs.2010.10007
+      \endverb
+      \verb{file}
+      \verb Goldsmith:C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\Goldsmith.pdf:pdf
+      \endverb
+    \endentry
     \entry{Bohacs_Ovadi_Salgo1998}{article}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=075cb86652d5e3f8dd59cc70be34ca5a}{%
@@ -477,6 +538,43 @@
       \verb 10.1214/08-AOS641
       \endverb
       \keyw{62J99;Dantzig selector;functional linear regression;Interpretable regression;lasso}
+    \endentry
+    \entry{Jolliffe_1982}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2d87c65d6bc93daaaf4c9f1e98b5e53a}{%
+           family={Jolliffe},
+           familyi={J\bibinitperiod},
+           given={Ian\bibnamedelima T.},
+           giveni={I\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2d87c65d6bc93daaaf4c9f1e98b5e53a}
+      \strng{fullhash}{2d87c65d6bc93daaaf4c9f1e98b5e53a}
+      \strng{bibnamehash}{2d87c65d6bc93daaaf4c9f1e98b5e53a}
+      \strng{authorbibnamehash}{2d87c65d6bc93daaaf4c9f1e98b5e53a}
+      \strng{authornamehash}{2d87c65d6bc93daaaf4c9f1e98b5e53a}
+      \strng{authorfullhash}{2d87c65d6bc93daaaf4c9f1e98b5e53a}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Summary The use of principal components in regression has received a lot of attention in the literature in the past few years, and the topic is now beginning to appear in textbooks. Along with the use of principal component regression there appears to have been a growth in the misconception that the principal components with small eigenvalues will very rarely be of any use in regression. The purpose of this note is to demonstrate that these components can be as important as those with large variance. This is illustrated with four examples, three of which have already appeared in the literature.}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series C (Applied Statistics)}
+      \field{number}{3}
+      \field{title}{A Note on the Use of Principal Components in Regression}
+      \field{volume}{31}
+      \field{year}{1982}
+      \field{pages}{300\bibrangedash 303}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.2307/2348005
+      \endverb
+      \verb{file}
+      \verb https://rss.onlinelibrary.wiley.com/doi/abs/10.2307/2348005
+      \endverb
+      \keyw{principal component analysis;regression}
     \endentry
     \entry{kokoszka_introduction_2017}{book}{}
       \name{author}{2}{}{%
@@ -814,6 +912,38 @@
       \endverb
       \verb{url}
       \verb https://www.springer.com/gp/book/9780387878362
+      \endverb
+    \endentry
+    \entry{ThomasLee_2003}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=9cf6b5b496126563bb0129d5e0e22403}{%
+           family={{Thomas C.M. Lee}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{9cf6b5b496126563bb0129d5e0e22403}
+      \strng{fullhash}{9cf6b5b496126563bb0129d5e0e22403}
+      \strng{bibnamehash}{9cf6b5b496126563bb0129d5e0e22403}
+      \strng{authorbibnamehash}{9cf6b5b496126563bb0129d5e0e22403}
+      \strng{authornamehash}{9cf6b5b496126563bb0129d5e0e22403}
+      \strng{authorfullhash}{9cf6b5b496126563bb0129d5e0e22403}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational Statistics {\&} Data Analysis}
+      \field{number}{1-2}
+      \field{title}{Smoothing parameterselection forsmoothing splines: a simulation study}
+      \field{volume}{42}
+      \field{year}{2003}
+      \field{pages}{139\bibrangedash 148}
+      \range{pages}{10}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0167-9473(02)00159-7
+      \endverb
+      \verb{file}
+      \verb SmoothingSplinesParameterSelection, Thomas Lee:C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\SmoothingSplinesParameterSelection, Thomas Lee.pdf:pdf
       \endverb
     \endentry
   \enddatalist
