@@ -80,7 +80,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. {\color{orange} How about hereby restricting the $\mathbb{F} = \mathbb{R}$, otherwise we would need to put something additional at 4.}A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
+	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. In the following we restrict our analysis to the case of $\mathbb{F} = \mathbb{R}$. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -92,7 +92,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{multicols}
 
 	A vector space with an associated inner product is called an inner product space. {\color{red}[verbatim quote!]}
-	The inner product naturally defines a norm and an associated distance on the vector space as follows. In the following we restrict our analysis to the case of $\mathbb{F} = \mathbb{R}$.
+	The inner product naturally defines a norm and an associated distance on the vector space as follows.
 	
 	\begin{equation}
 		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}}
@@ -130,7 +130,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		x \approx \sum_{j = 1}^{K}{\langle x, s_j \rangle}s_j
 	\end{equation}
 	
-	\subsection{Hilbert Space of Square-Integrable Functions}
+	\subsection{Hilbert Space of Square-Integrable Functions{\color{orange} $\mathbb{L}^2[0,1]$ space and Random Function}}
 	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
 	
 	\begin{equation}
@@ -143,17 +143,15 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis without loss of generality. We also focus on the interval [0,1] for the purpose of this paper.	The random function defined on $\mathbb{L}^2[0,1]$ can be represented as
-	
+	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis without loss of generality. We also focus on the interval [0,1] for the purpose of this paper.	A random function defined on $\mathbb{L}^2[0,1]$ can be represented as
+	a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ which is defined on a common probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample sapce with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$. The realized $X(\omega)(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	%Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
 	
-	\begin{equation}
-	\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
-	\end{equation}
+	%\begin{equation}
+	%\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
+	%\end{equation}
 	
-	The realized $f(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
-	
-	\subsection{Bases of $\mathbb{L}^2$} 
+	\subsection{Bases of $\mathbb{L}^2$ {\color{orange}Basis Representation for Functions}} 
 	{\color{red} Maybe change title due to monomial and bspline basis not fulfilling this property.}
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
@@ -164,9 +162,8 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	
 	\paragraph{Monomial Basis}
-	{\color{red} No shift parameter in implementation in fda.}
-This is the basis that is needed to build polynomials, one of the best-known ways to expand a function.
-The polynomial of the form 
+	{\color{red} No shift parameter in implementation in fda.} Every result of monomial basis expansion is the Taylor series of some function. 
+	This is the basis that is needed to build polynomials, one of the best-known ways to expand a function. The polynomial of the form 
 
 	\begin{equation}
 		x(t) = \sum_{i \in \mathcal{I}} c_i(t -w)^{i}
@@ -255,12 +252,12 @@ The polynomial of the form
 	\begin{equation}\label{CovarianceFunction}
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
-	%where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
-	%\begin{equation}
-%		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
-%	\end{equation}
+	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
+	\begin{equation}
+		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
+	\end{equation}
 	
-	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
+	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator(cf. \cite{alexanderian_KLexpansion_2015}). Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
 	
 	%\begin{enumerate}
 	%\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
@@ -270,7 +267,7 @@ The polynomial of the form
 	%Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
-		X(\omega)(t) = \mu(t) + \sum_{m \in \mathbb{R}} \xi^m(\omega) \nu^m(t)
+		X(\omega)(t) = \mu(t) + \sum_{m \in \mathbb{R}} \xi^m(\omega) \nu^m(t), \quad \xi^m(\omega) =  \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation}
 	
 	where the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
@@ -321,20 +318,32 @@ The polynomial of the form
 		\hat{\xi}_i^m(\omega) = \langle x_i - \hat{\mu}, \hat{\nu}^m\rangle = \int_{0}^{1} \left(x_i(s) - \hat{\mu}(s)\right) \hat{\nu}^m(s) \mathrm{d}s
 	\end{equation}
 	
-	In reality these calculations are often done using basis representations of both the functional principal components $\hat{\nu}^m$ and the observations $x_i(t)$ leading to the following representation.
+	In reality these calculations are often done using basis representations of both the functional principal components $\hat{\nu}^m$ and the observations $x_i(t)$ leading to the following representation. For the sake of clarity the following equation assumes that the bases used for the expansion of both the observations and the coefficient function are true bases of $\mathbb{L}^2[0,1]$ and can therefore be used to express the corresponding objects exactly.
 	
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
 			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
 			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			& = \sum_{j \in \mathcal{I}} \left[ a_{i,j}\sum_{k \in \mathcal{L}} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right] \approx \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right]
+			& = \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{J} a_{i,j} \phi_j(s) + \delta_i^J(s)\right)} {\color{blue}\left(\sum_{k = 1}^{K} b_{k}^m \psi_{k}(s) + \delta_{\beta}^K(s)\right)} \mathrm{d}s \\
+			& = \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \delta_i^J(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{J} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^K(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
 	
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	
 	\begin{equation}\label{score_approx}
-		\hat{\xi}_{i}^m \approx \sum_{j = 1}^{L} \left[ a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s\right] =: \tilde{\xi}^{m,L}_{i}
+			\hat{\xi}_{i}^m = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s
+	\end{equation}
+
+	And we can define the following objects:
+	
+	\begin{equation}
+		\begin{split}
+			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] \\
+			\delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} = \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s \\
+			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) \quad \quad \quad
+			\delta_{\nu, m}^L(t) := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
+		\end{split}
 	\end{equation}
 	
 	\subsection{Scalar-on-Function Regression}
@@ -369,10 +378,10 @@ The polynomial of the form
 	Similar to the finite dimensional setting, an interesting question is how to estimate the unknown function $\beta(t)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite dimensional objects is not possible. Therefore, other options have to be considered.
 	
 	\subsubsection{Estimation using Basis-Representation}
-	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathbb{N}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
+	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
 	
 	\begin{equation}
-		\beta(t) = \sum_{j = 1}^{\infty} b_j \phi_j(t)
+		\beta(t) = \sum_{j \in \mathcal{I}} b_j \phi_j(t)
 	\end{equation}
 	
 	This enables us to write equation \ref{DGP} with $\beta(t)$ represented in this way to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.
@@ -389,7 +398,10 @@ The polynomial of the form
 	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on what is possibly a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $L$ can be used to make this problem tractable with typical theory from multivariate regression while staying reasonably accurate.
 	
 	\begin{equation}
-			Y(\omega) \approx \alpha + \sum_{j = 1}^{L} b_j Z_j(\omega) + \epsilon(\omega)
+		\begin{split}
+			Y(\omega) & = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) X(\omega)(s) \mathrm{d}s +  \int_{0}^{1} \delta_{\beta}^{J}(s) X(\omega)(s) \mathrm{d}s + \epsilon(\omega)
+		\end{split}
 	\end{equation}
 
 	In practice it is common to not only express the coefficient function in terms of a basis but also the observations. Therefore two bases ($\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and $\left(\psi_k(t)\right)_{k \in \mathcal{L}}$) and two corresponding truncation parameters ($J$ and $K$) can be chosen. This leads to the following representation.
@@ -397,22 +409,26 @@ The polynomial of the form
 	\begin{equation}\label{basis_exp_transf}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega)
-			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} d_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
-			& = \alpha + \sum_{j \in \mathcal{I}} b_j \left[\sum_{k \in \mathcal{L}} d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \epsilon(\omega) 
-			\approx \alpha + \sum_{j = 1}^{J} \left[b_j \sum_{k = 1}^{K}  d_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \epsilon(\omega)
+			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} a_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
+			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j = 1}^{J} b_j  \phi_j(s) + \delta_{\beta}^{J}(s)\right)} {\color{red}\left(\sum_{k = 1}^K a_k(\omega)  \psi_k(s) + \delta_{X}^{K}(\omega)(s)\right)} \right]\mathrm{d}s + \epsilon(\omega)\\
+			& = \alpha + \sum_{j = 1}^J b_j \left[\sum_{k = 1}^K a_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s\\
+			& \quad \quad + \sum_{k = 1}^{K} a_k(\omega)  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
 	A typical choice in this scenario is to use the same functional basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for both the coefficient function and the approximation of the observations. Defining the following notation 
 
 	\begin{equation}
-			\tilde{Z}_j(\omega) = \sum_{k = 1}^{L} \left[d_k(\omega) \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
+			\tilde{Z}_j(\omega) = \sum_{k = 1}^{L} \left[a_k(\omega) \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
 	\end{equation}
 
 	This leads to a considerable simplification of Equation \ref{basis_exp_transf}.
 	
 	\begin{equation}\label{simplified_model_basis_equation}
-		Y(\omega) \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
+		\begin{split}
+			Y(\omega) &= \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s + \sum_{k = 1}^{K} a_k  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega) \\
+			& \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
+		\end{split}
 	\end{equation}
 
 		A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
@@ -441,9 +457,9 @@ The polynomial of the form
 	\begin{equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} \beta(s) \mathrm{d}s + \epsilon(\omega)
-			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m \in \mathbb{N}} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
-			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathbb{N}} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
-			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathbb{N}} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
+			= \alpha + \int_{0}^{1} {\color{red}\left(\mu(s) + \sum_{m = 1}^{\infty} \xi^m(\omega) \nu^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon(\omega)\\
+			&= {\color{teal}\alpha + \int_{0}^{1} \mu(s) \beta(s) \mathrm{d}s} + \sum_{m = 1}^{\infty} \xi^m(\omega) {\color{violet}\int_{0}^{1} \nu^m(s) \beta(s) \mathrm{d}s} + \epsilon(\omega)
+			= {\color{teal}\bar{\alpha}} + \sum_{m = 1}^{\infty} \xi^m(\omega) {\color{violet}\beta^m} + \epsilon(\omega)
 		\end{split}
 	\end{equation}
 
@@ -469,16 +485,43 @@ The polynomial of the form
 		\end{split}
 	\end{equation}
 
-	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coefficient function at the same parameter $L$ that was used for the approximation of the principal components and scores. The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation.
+	Truncating the basis used for expansion of the coefficient function already introduces an approximation error.
+	
+	\begin{equation}\label{fpcr_reg_both_expansions}
+		\begin{split}
+			y_i &= \alpha + \int_{0}^{1} \left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right) {\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} \mathrm{d}s + \epsilon_i\\
+			&= \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{J}(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j = 1}^{J} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] \\
+			& \quad \quad + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \int_{0}^{1}\hat{\nu}^m(s) \delta_{\beta}^{J}(s) \mathrm{d}s \right] + \epsilon_i
+		\end{split}
+	\end{equation}
+
+	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coefficient function at the same parameter $L$ that was used for the approximation of the principal components and scores.
+	
+	For convenience, define the following notation:
+	
+	\begin{equation}
+		\tilde{\alpha}^L = \alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{L}(s) \hat{\mu}(s) \mathrm{d}s
+	\end{equation}
+	
+	Then Equation \ref{fpcr_reg_both_expansions} can be expressed as follows.
 	
 	\begin{equation}
 		\begin{split}
-			y_i & \approx {\color{teal}\alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s} +  \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} {\color{blue}\hat{\nu}^{m,L}(s)} \phi_j(s) \mathrm{d}s \right] + \epsilon_i \\
-			& \approx {\color{teal} \tilde{\alpha}} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1}{\color{blue}\left(\sum_{k = 1}^{L} n_{k}^m \phi_{k}(s)\right)} \phi_j(s) \mathrm{d}s \right] + \epsilon_i \\
-			& \approx \tilde{\alpha} + \sum_{m  = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} \left[ b_j \sum_{k = 1}^{L} n_{k}^m \int_{0}^{1} \phi_{k}(s) \phi_j(s) \mathrm{d}s \right]} \right]+ \epsilon_i
-			= \tilde{\alpha} + \sum_{m  = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\tilde{\beta}^{m,L}}+ \epsilon_i
+			y_i & = \tilde{\alpha}^L
+			+ \sum_{m \in \mathcal{M}} \left[ \left(\tilde{\xi}^{m,L}_{i} + \delta_{\xi, i}^{m, L} \right) \sum_{j = 1}^{L} b_j \int_{0}^{1} \left(\tilde{\nu}^{m,L}(s) + \delta_{\nu, m}^L(s) \right) \phi_j(s) \mathrm{d}s \right] 
+			+ \epsilon_i \\
+			& = \tilde{\alpha}^L
+			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right] \\
+			& \quad \quad + \sum_{m \in \mathcal{M}} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m \in \mathcal{M}} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right]
+			+ \epsilon_i \\
+			& \approx \tilde{\alpha}^L
+			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
 		\end{split}
 	\end{equation}
+
+	The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation.
 
 	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
 	
@@ -579,13 +622,13 @@ The polynomial of the form
 	In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.	
 	
 	
-	 To exploit the regularity of the curves of the spectra, we introduced different basis functions and demonstrated the importance of the truncation parameter $\mathcal{K}$ for the estimation in SECTION HERE. For the simulation study, we rely on the introduced estimation strategies with the introduced basis functions and focus on choosing the truncation parameter $\mathcal{K}$ as well as the number of FPC, which is as well affected by $\mathcal{K}$, by ten fold cross-validation. While cross-validation is common for selecting $\mathcal{K}$, the number of FPC in practice is often truncated after a prespecified amount of explained variability \cite{kokoszka_introduction_2017}, which might not be optimal since FPC with smaller eigenvalues may have greater influence on the prediction (c.f \cite{Jolliffe_1982}). 
+	 To exploit the regularity of the curves of the spectra, we introduced different basis functions and demonstrated the importance of the truncation parameter $\mathcal{K}$ for the estimation in SECTION HERE. For the simulation study, we rely on the introduced estimation strategies with the introduced basis functions and focus on choosing the truncation parameter $\mathcal{K}$ as well as the number of FPC, which is as well affected by $\mathcal{K}$, by ten fold cross-validation. While cross-validation is common for selecting $\mathcal{K}$, the number of FPC in practice is often truncated after a prespecified amount of explained variability \cite{kokoszka_introduction_2017}, which might not be optimal since FPC with smaller eigenvalues may have greater influence on the prediction \cite{Jolliffe_1982}. 
 	 
-	 This setup is opposing to the often used penalized functional regression as described by \cite{Goldsmith_2011} in which an explicit smoothness constraint $\lambda$ is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $K$ sufficiently high. This would avoid the heavy computing of validating the best value for $K$ which we will conduct in the simulation. To provide intuition in this approach, let 
+	 This setup is opposing to the often used penalized functional regression as described by \citep{Goldsmith_2011} in which an explicit smoothness constraint $\lambda$ is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $K$ sufficiently high. This would avoid the heavy computing of validating the best value for $K$ which we will conduct in the simulation. To provide intuition in this approach, let 
 	 \begin{equation}
 	 	PSSE_\lambda(\alpha, \beta) = \sum_{i = 1}^{N} (Y_i -\alpha -\int_0^1 \beta(t)X_i(t)dt)^2 + \lambda * \int (D^m\beta(t))^2 dt
 	 \end{equation}
-	 denote the penalized residual sum of squares as notated by \cite{ramsay_functional_2005} for the derivative of order $m$. A typical choice is the second derivative as highly variable functions are expected to yield large second derivatives and therefore a larger penalty. The smoothing parameter $\lambda$ is set to minimize the $PSSE_\lambda(\alpha, \beta)$, which can be archived by different criteria as shown in \cite{ThomasLee_2003}.
+	 denote the penalized residual sum of squares as notated by \cite{ramsay_functional_2005} for the derivative of order $m$. A typical choice is the second derivative as highly variable functions are expected to yield large second derivatives and therefore a larger penalty. The smoothing parameter $\lambda$ is set to minimize the $PSSE_\lambda(\alpha, \beta)$, which can be archived by different criteria as shown in \cite{ThomasLee_2003}
 	 
 	 
 	 
@@ -654,6 +697,8 @@ The polynomial of the form
 		
 		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic bspline basis-function $\{5,6,...,18\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
 		 To obtain valid out of sample properties for the FPCR, within each of the ten 10 fold cross-validation splits, we first calculate the Functional Principal Components of the trainig-set $\mathcal{T}$ for each curve. These scores are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation:
+		 
+		 {\color{blue} We should mention how we derived the original principal components. (bspline basis and number of basis functions and harmonics.) As we chose a high number for both to capture all features of the data set. As we explain the approximations for the estimation, this question could come up, so we have to make it specific.}
 		 
 	\begin{equation}
 		\begin{split}
@@ -842,8 +887,7 @@ It is characterized by the following properties.
 
 	\section{Proofs}
 	\subsection{Lemma} \label{Proof1}
-	{\color{orange} We might put the below theorems for KL. The deterministic basis expansions are pretty clear about why we can use the truncation version by itself. In contrast, I feel like that for the case of KL it does not. And in the centered case?} 
-	The coefficients $\xi_{j}$ satisfy the following:
+	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu_j\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi_{j}$ of basis functions satisfy the following properties:
 	\begin{enumerate}
 		\item $\mathbb{E}[\xi_{j}] = 0$
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
@@ -851,25 +895,14 @@ It is characterized by the following properties.
 	\end{enumerate}
 	
 	\begin{proof}
-		To obtain the first result, we can show that
-		\begin{equation}
-			\begin{split}
-				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt \biggr\rbrack\\
-				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
-				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt\\
-				= & \mu(t) \int_{0}^{1} \nu_{j}(t)\\
-				= & \mu(t) \langle \nu_{j}(t), 1 \rangle = 0
-			\end{split}
-		\end{equation}
-		where the constant function is always an eigenfunction of the operater $K$. It leads the inner product to 0 due to orthonormality of eigenfunctions. {\color{red} Another way to prove or use centered mean}
-		For the case of centered process
+		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)dP(\omega)$. To obtain the first result, we can show that
 		\begin{equation}\label{Lemma1}
 			\begin{split}
 				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
 				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
 				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \mathbb{E}[F(t)] \nu_{j}(t) dt = 0
+				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu_{j}(t) dt\\
+				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu_{j}(t) dt = 0
 			\end{split}
 		\end{equation}
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
@@ -878,26 +911,30 @@ It is characterized by the following properties.
 			\begin{split}
 				\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
 				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu_{j}(s) \nu_{k}(t) ds dt\\
-				= & \int_{0}^{1} \left(\int_{0}^{1}c(s,t)\nu_{j}(s)ds \right) \nu_{k}(t) dt \\
-				= & \int_{0}^{1}[K\nu_{j}](t)\nu_{k}(t)dt\\
+				= & \int_{0}^{1} \int_{0}^{1} {\color{red}\mathbb{E}[{F(s)F(t)}]} \nu_{j}(s) \nu_{k}(t) ds dt\\
+				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu_{j}(s)ds \right)} \nu_{k}(t) dt \\
+				= & \int_{0}^{1}{\color{red}[K\nu_{j}](t)}\nu_{k}(t)dt\\
 				= & \langle K \nu_{j}, \nu_{k} \rangle\\
 				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
 			\end{split}
 		\end{equation}
-		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the other two properties.
+		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the above two properties.
 		\begin{equation}\label{Lemma3}
 			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
+		\end{equation}
+		The original process also has the same properties as the centered one since
+		\begin{equation}
+			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{j=1}^{\infty}\xi_{j}\nu_{j}(t)
 		\end{equation}
 	\end{proof}
 	
 	
-	\subsection{Karhunen-Lo\'{e}ve expansion} \label{Proof2}
-	Let $F : [0,1]  \rightarrow \mathbb{R}$ be a centered mean-square continuous stochastic process with $F \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{i}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
+	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{j}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
-		F(t) = \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
+		X(t) = \mu(t) + \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
 	\end{equation}
-	where coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} F(t)(\omega) \nu_{j}(t)dt$ and satisfy the following conditions.
+	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} (X(t)(\omega) - \mu(t)) \nu_{j}(t)dt$. These coefficients satisfy the following conditions.
 	\begin{enumerate}
 		\item $\mathbb{E}[\xi_{j}] = 0$
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
@@ -905,11 +942,12 @@ It is characterized by the following properties.
 	\end{enumerate}
 	
 	\begin{proof}
-		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the fact that $\xi_{j}(\omega) = \int_{0}^{1} F(\omega)(t) \nu_{j}(t)dt$ satisfy the three conclusions by Lemma. We prove it by considering
+		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the reminder that $\xi_{j}(\omega)$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
 		\begin{equation}
-			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+			= \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
 		\end{equation}
-		
+		where $F(t)$ is the centered process of $X(t)$.
 		Once it is shown that $\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = 0$ uniformly in [0,1], the proof is completed.
 		\begin{equation}\label{Thr1}
 			\begin{split}
@@ -918,13 +956,15 @@ It is characterized by the following properties.
 			\end{split}
 		\end{equation}
 		
-		Now, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}),
+		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since F(t) is the centered process. Now, take the second term
 		\begin{equation}\label{Thr2}
 			\begin{split}
-				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} \xi_{j}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} \bigg(\int_{0}^{1} F_{s}\nu_{i}(s)ds\bigg) \xi_{j}(t) \right]\\
-				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} \mathbb{E}[F(t)F(s)]\nu_{j}(s)ds\bigg)\nu_{j}\\
-				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} c(t,s) \nu_{j}(s)ds\bigg)\nu_{j}\\
-				= & \sum_{j=1}^{n}[K\nu_{j}](t)\nu_{j} = \sum_{j=1}^{n}\lambda_{j}\nu_{j}^{2}
+				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} {\color{red}\xi_{j}}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} {\color{red}\bigg(\int_{0}^{1} F(s)\nu_{j}(s)ds\bigg)} \nu_{j}(t) \right]\\
+				= & \mathbb{E} \left[ \sum_{j=1}^{n} \bigg(\int_{0}^{1} F(t)F(s)\nu_{j}(s)ds\bigg) \nu_{j}(t) \right]\\
+				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu_{j}(s)ds\bigg)\nu_{j}(t)\\
+				= & \sum_{j=1}^{n} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu_{j}(s)ds\bigg)}\nu_{j}(t)\\
+				= & \sum_{j=1}^{n}{\color{teal}[K\nu_{j}](t)}\nu_{j}(t) \\
+				= &\sum_{j=1}^{n}{\color{teal}\lambda_{j}\nu_{j}(t)}\nu_{j}(t) = \sum_{j=1}^{n}\lambda_{j}\nu_{j}(t)^{2}
 			\end{split}
 		\end{equation} 
 		
