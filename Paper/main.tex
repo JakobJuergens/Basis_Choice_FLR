@@ -254,10 +254,10 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	where the $c(t,s)$ are Hilbert-Shmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
 	\begin{equation}
-		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
+		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
 	\end{equation}
 	
-	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator. Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
+	Then, the operator $K$ has orthonormal basis functions $\nu_{i} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda_{i}$ for all $i$ since it is a positive compact self-adjoint operator(cf. \cite{alexanderian_KLexpansion_2015}). Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
 	
 	%\begin{enumerate}
 	%\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
@@ -267,7 +267,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	%Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi_{j}) \geq Var(\xi_{k})$ for all $j > k$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. {\color{orange} The proofs are provided at \ref{Proof1} and \ref{Proof2}.}
 	
 	\begin{equation}\label{KarhunenLoeve}
-		X(\omega)(t) = \mu(t) + \sum_{m \in \mathbb{R}} \xi^m(\omega) \nu^m(t)
+		X(\omega)(t) = \mu(t) + \sum_{m \in \mathbb{R}} \xi^m(\omega) \nu^m(t), \quad \xi^m(\omega) =  \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation}
 	
 	where the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of the following equation.
@@ -911,7 +911,7 @@ It is characterized by the following properties.
 	\begin{equation}
 		X(t) = \mu(t) + \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
 	\end{equation}
-	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} X(t)(\omega) \nu_{j}(t)dt$. These coefficients satisfy the following conditions.
+	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} (X(t)(\omega) - \mu(t)) \nu_{j}(t)dt$. These coefficients satisfy the following conditions.
 	\begin{enumerate}
 		\item $\mathbb{E}[\xi_{j}] = 0$
 		\item $\mathbb{E}[\xi_{j} \xi_{k}] = \lambda_{j}$, if $j = k$, otherwise 0
@@ -919,7 +919,7 @@ It is characterized by the following properties.
 	\end{enumerate}
 	
 	\begin{proof}
-		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the solution that $\xi_{j}(\omega) = \int_{0}^{1} X(\omega)(t) \nu_{j}(t)dt$ satisfy the three conclusions by Lemma \ref{Proof1}, We prove this expansion by considering
+		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the reminder that $\xi_{j}(\omega)$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
 		\begin{equation}
 			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
 			= \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
