@@ -87,6 +87,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {8.2}Theorem (Karhunen-Lo\'{e}ve expansion)}{24}{subsection.8.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Bibliography}{26}{section.9}%
+\contentsline {section}{\numberline {9}Bibliography}{27}{section.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Affidavit}{28}{section.10}%
+\contentsline {section}{\numberline {10}Affidavit}{29}{section.10}%

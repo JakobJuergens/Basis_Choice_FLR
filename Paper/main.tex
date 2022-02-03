@@ -889,7 +889,7 @@ It is characterized by the following properties.
 
 	\section{Proofs}
 	\subsection{Lemma} \label{Proof1}
-	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu_j\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi_{j}$ of basis functions satisfy the following properties:
+	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu^m\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi^{m}$ of basis functions satisfy the following properties:
 	\begin{enumerate}
 		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
 		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$% if $m \neq n$
@@ -900,90 +900,95 @@ It is characterized by the following properties.
 		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)dP(\omega)$. To obtain the first result, we can show that
 		\begin{equation}\label{Lemma1}
 			\begin{split}
-				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
-				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
-				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu_{j}(t) dt\\
-				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu_{j}(t) dt = 0
+				\mathbb{E}[\xi^m] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
+				= & \int_{\Omega} \int_{0}^{1} F(t) \nu^m(t) dt dP(\omega)\\
+				= & \int_{0}^{1} \int_{\Omega} F(t) \nu^m(t) dP(\omega) dt \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu^m(t) dt\\
+				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu^m(t) dt = 0
 			\end{split}
 		\end{equation}
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
 		The second claim is proved as:
 		\begin{equation}\label{Lemma2}
 			\begin{split}
-				\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
-				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} {\color{red}\int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu_{j}(s)} \nu_{k}(t) {\color{red}ds} dt\\
-				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu_{j}(s)ds \right)} \nu_{k}(t) dt \\
-				= & \int_{0}^{1}{\color{red}[K\nu_{j}](t)}\nu_{k}(t)dt\\
-				= & \langle K \nu_{j}, \nu_{k} \rangle\\
-				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \delta_{j,k}\lambda_{j}
+				\mathbb{E} [\xi^m \xi^n] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu^m(s)ds \int_{0}^{1} F(t) \nu^n(t)dt  \biggr\rbrack\\
+				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu^m(s) F(t) \nu^n(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} {\color{red}\int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu^m(s)} \nu^n(t) {\color{red}ds} dt\\
+				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu^m(s)ds \right)} \nu^n(t) dt \\
+				= & \int_{0}^{1}{\color{red}[K\nu^m](t)}\nu^n(t)dt\\
+				= & \langle K \nu^m, \nu^n \rangle\\
+				= & \langle \lambda^m \nu^m, \nu^n \rangle = \delta^{m,n}\lambda^{m}
 			\end{split}
 		\end{equation}
-		where $\delta_{j,k} = 1$ if $j = k$, otherwise 0. The result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the above two properties.
+		where $\delta^{m,n} = 1$ if $m = n$, otherwise 0. The result is produced from orthonormaility of the eigenfunctions.
+		\begin{equation}
+			Cov\left(\xi^m, \xi^n\right) = \mathbb{E}[\xi^m \xi^n] - \mathbb{E}[\xi^m]\mathbb{E}[\xi^n] = \delta^{m,n}\lambda^{m}
+		\end{equation}
+		where $\mathbb{E}[\xi^m] = \mathbb{E}[\xi^n] = 0$ as the first property.
+		The last assertion is confirmed from the above two properties.
 		\begin{equation}\label{Lemma3}
-			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
+			Var[\xi^m] = \mathbb{E}\left[(\xi^m - \mathbb{E}[\xi^m])^{2}\right] = \mathbb{E}[(\xi^m)^{2}] =\lambda^m
 		\end{equation}
 		The original process also has the same properties as the centered one since
 		\begin{equation}
-			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{j=1}^{\infty}\xi_{j}\nu_{j}(t)
+			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{m=1}^{\infty}\xi^m\nu^m(t)
 		\end{equation}
 	\end{proof}
 	
 	
 	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
-	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{j}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
-		X(t) = \mu(t) + \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
+		X(t) = \mu(t) + \sum_{m=1}^{\infty} \xi^m \nu^m(t),
 	\end{equation}
-	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} (X(t)(\omega) - \mu(t)) \nu_{j}(t)dt$. These coefficients satisfy the following conditions.
+	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)dt$. These coefficients satisfy the following conditions.
 	\begin{enumerate}
 		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
 		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$ %if $m \neq n$
 		\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
 	\end{enumerate}
 	\begin{proof}
-		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the reminder that $\xi_{j}(\omega)$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
+		We know that $K$ has a complete set of eigenfunctions ${\nu^m}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda^m$. With the reminder that $\xi^m$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
 		\begin{equation}
-			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
-			= \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+			\epsilon_{N}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
+			= \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
 		\end{equation}
 		where $F(t)$ is the centered process of $X(t)$.
-		Once it is shown that $\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = 0$ uniformly in [0,1], the proof is completed.
+		Once it is shown that $\lim\limits_{N \rightarrow \infty} \epsilon_{N}(t) = 0$ uniformly in [0,1], the proof is completed.
 		\begin{equation}\label{Thr1}
 			\begin{split}
-				\epsilon_{n}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} 	\nu_{j}(t)\bigg)^2 \right]\\
-				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{j=1}^{n}\xi_{j}\nu_{j}(t)\bigg] + \mathbb{E}\bigg[\sum_{j=1}^{n}\sum_{k=1}^{n}\xi_{j}\xi_{k}\nu_{j}(t)\nu_{k}(t)\bigg]
+				\epsilon_{N}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m 	\nu^m(t)\bigg)^2 \right]\\
+				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{m=1}^{N}\xi^m\nu^m(t)\bigg] + \mathbb{E}\bigg[\sum_{m=1}^{N}\sum_{n=1}^{N}\xi^m\xi^n\nu^m(t)\nu^n(t)\bigg]
 			\end{split}
 		\end{equation}
 		
 		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since F(t) is the centered process. Now, take the second term
 		\begin{equation}\label{Thr2}
 			\begin{split}
-				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} {\color{red}\xi_{j}}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} {\color{red}\bigg(\int_{0}^{1} F(s)\nu_{j}(s)ds\bigg)} \nu_{j}(t) \right]\\
-				= & \mathbb{E} \left[ \sum_{j=1}^{n} \bigg(\int_{0}^{1} F(t)F(s)\nu_{j}(s)ds\bigg) \nu_{j}(t) \right]\\
-				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu_{j}(s)ds\bigg)\nu_{j}(t)\\
-				= & \sum_{j=1}^{n} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu_{j}(s)ds\bigg)}\nu_{j}(t)\\
-				= & \sum_{j=1}^{n}{\color{teal}[K\nu_{j}](t)}\nu_{j}(t) \\
-				= &\sum_{j=1}^{n}{\color{teal}\lambda_{j}\nu_{j}(t)}\nu_{j}(t) = \sum_{j=1}^{n}\lambda_{j}\nu_{j}(t)^{2}
+				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)ds\bigg)} \nu^m(t) \right]\\
+				= & \mathbb{E} \left[ \sum_{m=1}^{N} \bigg(\int_{0}^{1} F(t)F(s)\nu^m(s)ds\bigg) \nu^m(t) \right]\\
+				= & \sum_{m=1}^{N} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu^m(s)ds\bigg)\nu^m(t)\\
+				= & \sum_{m=1}^{N} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu^m(s)ds\bigg)}\nu^m(t)\\
+				= & \sum_{m=1}^{N}{\color{teal}[K\nu^m](t)}\nu^m(t) \\
+				= &\sum_{m=1}^{N}{\color{teal}\lambda^m\nu^m(t)}\nu^m(t) = \sum_{m=1}^{N}\lambda^m\nu^m(t)^{2}
 			\end{split}
 		\end{equation} 
 		
 		where the covariance function $c(t,s)$ has the Hilbert-Shmidt operator as in (\ref{HSKernal}). It turns out the product of the eigenfunction and the corresponding eigenvalue. For the last term, we derive from (\ref{Lemma2}) that
 		\begin{equation}\label{Thr3}
 			\begin{split}
-				\mathbb{E}\bigg[\sum_{j=1}^{n} \sum_{k=1}^{n} \xi_{j} \xi_{k} \nu_{j}(t) \nu_{k}(t)\bigg] = & \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}[\xi_{j} \xi_{k}] \nu_{j}(t) \nu_{k}(t)\\
-				= & \sum_{j=1}^{n} \sum_{k=1}^{n} \delta_{jk} \lambda_{j} \nu_{j}(t) \nu_{k}(t) = 		\sum_{j=1}^{n} \lambda_{j} \nu_{j}(t)^{2}
+				\mathbb{E}\bigg[\sum_{m=1}^{N} \sum_{m=1}^{N} \xi^m \xi^m \nu^m(t) \nu^n(t)\bigg] = & \sum_{m=1}^{N} \sum_{m=1}^{N} \mathbb{E}[\xi^m \xi_{k}] \nu^m(t) \nu^n(t)\\
+				= & \sum_{m=1}^{N} \sum_{n=1}^{N} \delta^{m,n} \lambda^m \nu^m(t) \nu^n(t) = 		\sum_{m=1}^{N} \lambda^m \nu^m(t)^{2}
 			\end{split}	
 		\end{equation}
-		where $\delta_{jk} = 1$ if $j=k$, otherwise 0. Therefore, by (\ref{Thr1}), (\ref{Thr2}), and (\ref{Thr3}) we obtain
+		where $\delta_{m,n} = 1$ if $m=n$, otherwise 0. Therefore, by (\ref{Thr1}), (\ref{Thr2}), and (\ref{Thr3}) we obtain
 		\begin{equation}
-			\epsilon_{n}(t) = c(t,t) - \sum_{j=1}^{n} \lambda_{j} \nu_{j}(t) \nu_{j}(t)
+			\epsilon_{N}(t) = c(t,t) - \sum_{m=1}^{N} \lambda^m \nu^m(t) \nu^m(t)
 		\end{equation}
 		
 		implementing Mercer's Theorem this proof is concluded by
 		\begin{equation}
-			\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right] = 0
+			\lim\limits_{N \rightarrow \infty} \epsilon_{N}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right] = 0
 		\end{equation}
 	\end{proof}
 
