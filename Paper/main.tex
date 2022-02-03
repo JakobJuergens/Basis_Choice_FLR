@@ -176,9 +176,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^k \quad i \in \mathcal{I}
 	\end{equation}
-	The first order function within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). {\color{blue} Taylor expansion as motivation}\\ 
-	The shift parameter $\alpha$ is specified to be the center of the interval subject to approximation.
-	 There exists problems of collinearity of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. Therefore, regarding the use, this may be useful for relatively simple functions. However, the small number of degrees makes it impossible to capture pronounced local peculiarities {\color{orange} (Isn't it good as thinking of the Taylor? The use of MB for local expansion? Need to check.)} and leads to undesirable behavior at the tails such as Taylor expansion. (cf. \cite{ramsay_functional_2005})
+	where the shift parameter $\alpha$ is specified to be the center of the interval subject to approximation. The first order function within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). There exist collinearity problems of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. Therefore, regarding the use, this may be useful for relatively simple functions. However, the lower order monomial function makes it impracticable to capture pronounced local peculiarities. Moreover, it leads to an undesirable behavior at the tails such as Taylor expansion. (cf. \cite{ramsay_functional_2005})
 
 
 	

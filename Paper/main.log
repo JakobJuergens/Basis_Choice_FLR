@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  3 FEB 2022 22:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  3 FEB 2022 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -891,12 +891,16 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 126.
 
-[5] [6] [7] [8] [9] [10] [11] [12]
+[5]
+Underfull \vbox (badness 1622) has occurred while \output is active []
+
+ [6]
+[7] [8] [9] [10] [11] [12]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13]
 [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 664--666
+Underfull \hbox (badness 10000) in paragraph at lines 662--664
 
  []
 
@@ -904,41 +908,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 664--666
 File: ../Graphics/smooth_function.png Graphic file (type png)
 <use ../Graphics/smooth_function.png>
 Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 67
-4.
+2.
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
 <../Graphics/bumpy_function.png, id=378, 509.65407pt x 324.46219pt>
 File: ../Graphics/bumpy_function.png Graphic file (type png)
 <use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 680
+Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 678
 .
 (pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
 [17 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 728--730
+Underfull \hbox (badness 10000) in paragraph at lines 726--728
 
  []
 
 [18]
 
 LaTeX Warning: Hyper reference `fpc_exp_transf' on page 19 undefined on input l
-ine 737.
+ine 735.
 
 [19] [20] [21]
 <../Graphics/Fourier_Basis.pdf, id=428, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 791.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 789.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 <../Graphics/Bspline_Basis.pdf, id=429, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 796.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 794.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
 <../Graphics/Monomial_Basis.pdf, id=430, 1445.4pt x 578.16pt>
 File: ../Graphics/Monomial_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Monomial_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 801
+Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 799
 .
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [22 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf> <../Graphi
@@ -978,7 +982,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  22610 strings out of 478353
  392686 string characters out of 5852101
- 1183373 words of memory out of 5000000
+ 1184373 words of memory out of 5000000
  40072 multiletter control sequences out of 15000+600000
  423205 words of font info for 176 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1003,7 +1007,7 @@ r8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/
 type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (32 pages, 499321 bytes).
+Output written on main.pdf (32 pages, 499176 bytes).
 PDF statistics:
  698 PDF objects out of 1000 (max. 8388607)
  605 compressed objects within 7 object streams
