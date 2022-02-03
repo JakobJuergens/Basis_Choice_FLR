@@ -588,24 +588,6 @@ bspline_fpcr_appl_function <- function(rep, fold_size, nharm, seed, debug = FALS
     .f = function(j) create.bspline.basis(rangeval = c(0, 1), nbasis = j, norder = 4)
   )
   
-  # prepare objects for functional linear regression
-  betafdPar1 <- fdPar(fd(0, create.constant.basis(c(0, 1))))
-  
-  betafdPar2_list <- map(
-    .x = 1:length(n_basis),
-    .f = function(i) fdPar(basis_functions[[i]])
-  )
-  
-  betalist_list <- map(
-    .x = 1:length(n_basis),
-    .f = function(i) {
-      list(
-        const = betafdPar1,
-        smooth_basis = betafdPar2_list[[i]]
-      )
-    }
-  )
-  
   # loop over repetitions
   for (i in 1:rep) {
     if (debug) {
@@ -787,24 +769,6 @@ fourier_fpcr_appl_function <- function(rep, fold_size, nharm, seed, even_basis =
     )
   }
   
-  # prepare objects for functional linear regression
-  betafdPar1 <- fdPar(fd(0, create.constant.basis(c(0, 1))))
-  
-  betafdPar2_list <- map(
-    .x = 1:length(n_basis),
-    .f = function(i) fdPar(basis_functions[[i]])
-  )
-  
-  betalist_list <- map(
-    .x = 1:length(n_basis),
-    .f = function(i) {
-      list(
-        const = betafdPar1,
-        smooth_basis = betafdPar2_list[[i]]
-      )
-    }
-  )
-  
   # loop over repetitions
   for (i in 1:rep) {
     if (debug) {
@@ -966,24 +930,6 @@ monomial_fpcr_appl_function <- function(rep, fold_size, nharm, seed, debug = FAL
   basis_functions <- map(
     .x = n_basis,
     .f = function(j) create.monomial.basis(rangeval = c(0, 1), nbasis = j)
-  )
-  
-  # prepare objects for functional linear regression
-  betafdPar1 <- fdPar(fd(0, create.constant.basis(c(0, 1))))
-  
-  betafdPar2_list <- map(
-    .x = 1:length(n_basis),
-    .f = function(i) fdPar(basis_functions[[i]])
-  )
-  
-  betalist_list <- map(
-    .x = 1:length(n_basis),
-    .f = function(i) {
-      list(
-        const = betafdPar1,
-        smooth_basis = betafdPar2_list[[i]]
-      )
-    }
   )
   
   # loop over repetitions
