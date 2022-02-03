@@ -52,12 +52,7 @@ style=authoryear-comp,
 		\end{itemize}
 	
 	\section{Introduction}
-	
-	\begin{itemize}
-		\item Describe the idea of regressing a scalar on functional data
-		\item Describing the difference to multiple linear regression intuitively
-		\item Giving an intuitive example
-	\end{itemize}	
+		
 	Functional Data Analysis (FDA) is {\color{red} (roots in the 1940s Grenander and Karhunen)} gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, but only FDA allows extracting the information given by the smoothness of the underlying process of the functional data (cf. \cite{levitin_introduction_2007}).
 	 As \cite{kokoszka_introduction_2017} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves (cf. \cite[S.~17]{kokoszka_introduction_2017}).
 	 
@@ -74,8 +69,8 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	 Estimation of $\beta(s)$ is inherently an infinite-dimensional problem. In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. We report the results of the Monte-Carlo simulation regarding these three different methods in Section 3. Finally, in Section 4, we test the prediction of FLR in a real-world setting. {\color{red} (We may put some simple descriptions of results about each of MC and Application)}
 
 	\section{Theory}
-	In multivariate regression, data is often observed in the form of elements from the Euclidean space, $\mathbb{R}^p$. To understand functional linear regression and the differences between the methods presented in this paper, it is therefore necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
-	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite dimensional space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
+	In multivariate regression, data is often observed in the form of elements from Euclidean space, $\mathbb{R}^p$. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite dimensional space. To understand functional linear regression and the differences between the methods presented in this paper, it is therefore necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
+	A typical case known to every undergraduate student of economics is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
 	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. In the following we restrict our analysis to the case of $\mathbb{F} = \mathbb{R}$. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
@@ -135,23 +130,24 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		\lvert \lvert f \rvert \rvert_2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
-	All functions $f$ satisfying the above condition are called square-integrable functions. Moreover, it ensures that a random function has a finite second moment so that the variance and the covariance function can be defined. Its inner product is defined as
+	%All functions $f$ satisfying the above condition are called square-integrable functions. 
+	This ensures that a random function has a finite second moment so that the variance and covariance functions can be defined. Its inner product is defined as
 	
 	\begin{equation}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis without loss of generality. We also focus on the interval [0,1] for the purpose of this paper.	A random function defined on $\mathbb{L}^2[0,1]$ can be represented as
-	a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ which is defined on a common probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample sapce with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$. The realized $X(\omega)(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
+	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis but analogous constructions can be made for every closed interval of $\mathbb{R}$. 
+	%Therefore, we focus on the interval $[0,1]$ without loss of generality for the purpose of this paper. 
+	A random function defined on $\mathbb{L}^2[0,1]$ is a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ defined on a common probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample space with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$. The realized $X(\omega)(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	%Trivially, it is possible to extend this to other closed intervals on the reals line, but there are also more complex generalizations. For the purpose of this paper we will focus on the typical case and assume that random functions are random variables realizing in $\mathbb{L}^2$ for some closed interval of the real numbers. 
 	
 	%\begin{equation}
 	%\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
 	%\end{equation}
 	
-	\subsection{Bases of $\mathbb{L}^2$ {\color{orange}Basis Representation for Functions}} 
-	{\color{red} Maybe change title due to monomial and bspline basis not fulfilling this property.}
-	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Two examples of bases that are often used in practice to express / approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
+	\subsection{Representing a Function in terms of a Basis} 
+	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Three examples of bases that are often used in practice to approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
 	Both of these can be used to express or in the case of the b-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$.
 	
@@ -172,12 +168,12 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 	The first order function within the monomial basis system, for $k=0$, is called the constant basis system (cf. \cite{horvath_inference_2012}). {\color{blue} Taylor expansion as motivation}\\ 
 	The shift parameter $\alpha$ is specified to be the center of the interval subject to approximation.
-	 There exists problems of collinearity of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. Therefore, regarding the use, this may be useful for relatively simple functions. However, the small number of degrees makes it impossible to capture pronounced local peculiarities {\color{orange} (Isn't it good as thinking of the Taylor? The use of MB for local expansion? Need to check.)} and leads to undesirable behaviour at the tails such as Taylor expansion. (cf. \cite{ramsay_functional_2005})
+	 There exists problems of collinearity of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. Therefore, regarding the use, this may be useful for relatively simple functions. However, the small number of degrees makes it impossible to capture pronounced local peculiarities {\color{orange} (Isn't it good as thinking of the Taylor? The use of MB for local expansion? Need to check.)} and leads to undesirable behavior at the tails such as Taylor expansion. (cf. \cite{ramsay_functional_2005})
 
 
 	
 	\paragraph{Fourier Basis}
-	Fourier series basically decomposes a periodic function with a weighted summation of trigonometric funtions. Imagine that an arbitrary function in $\mathbb{L}^2[0,1]$ has one or more cycles between 0 and 1, and we can then apply the Fourier series to approximate the function for smoothing. As the series originated from the amplitude-phase form regarding cosine functions, it can be rewritten by sine and cosine form through a simple trigonometry formula, which restricts the use of an odd number of Fourier basis functions. That is why the Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
+	Fourier series basically decomposes a periodic function with a weighted summation of trigonometric functions. Imagine that an arbitrary function in $\mathbb{L}^2[0,1]$ has one or more cycles between 0 and 1, and we can then apply the Fourier series to approximate the function for smoothing. As the series originated from the amplitude-phase form regarding cosine functions, it can be rewritten by sine and cosine form through a simple trigonometry formula, which restricts the use of an odd number of Fourier basis functions. That is why the Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
 		\begin{cases}
@@ -187,7 +183,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		\end{cases}
 	\end{equation}
 	
-	Therefore, its basis functions inherits a repeating behaviour which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthonormal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  {\color{blue} Motivate from fourier series}
+	Therefore, its basis functions inherits a repeating behavior which is useful to expand functions that represent an periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthonormal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, resulting generally in uniformly smooth expansions.  {\color{blue} Motivate from Fourier series}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Additionally, at each $\tau_l$ the the polynomials on neighbouring subintervals must match derivatives up to order $m-2$.
 	A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
@@ -218,22 +214,16 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	
 	\subsection{Functional Data Sets}
 	
-	Consider the case of a dataset which is containing observations of an underlying continuous process, measured at some discrete points $t_{j,i}$: 
+	Consider the case of a data set containing observations $X_i(t)$ of a random function $X(\omega)(t)$, measured at discrete points $t_{j,i}$: 
 	
 	\begin{equation}
 		x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]
 	\end{equation}
 	
-	This measurement set can be viewed as set of discretized approximations of the underlying functional process:
- $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at the discrete measurement points. 
-As in the finite dimensional setting, the concept of identically distributed and independent data is important. This concept generalizes intuitively to the case of functional data using the concepts for general random variables which is needed to conduct inference. {\color{red} Explain this better!}\\  The introduced concept of basis expansion of functions allow to express each observation $x_1$ as a realization of $X_1$, a random function of $\mathbb{L}^2[0,1]$. 
- 
-	%In functional data analysis the concept of a data set can include not only realizations of scalar random variables, but also realizations of random functions. In the following, all random functions are assumed to realize in $\mathbb{L}^2$.
+ 	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points. Therefore, this can be seen as set of discretized approximations of the realizations of a random function.
+	As in the finite dimensional setting, the concept of identically distributed and independent data is important. This concept generalizes to the case of functional data using the concepts for general random variables.
 	 
-	An example of such a dataset could be the dataset of 60 NIR-spectra of gasoline samples. Together with a set of responses, this then can be used to perform FLR, as will be subject of the simulation and application.	 
-		 
-	% COMMENT: Maybe mention both NIR and WienerProcess? 
-	%An example of one such data set could be a set of $n$ independent realizations of a Wiener-process and $n$ associated scalar variables that could be subject of a regression analysis with respect to the corresponding realizations of the Wiener process. A definition and a plotted example for the Wiener process are given in \ref{Wiener}.
+	An example of such a data set could be the data set of 60 NIR-spectra of gasoline samples. Together with a set of responses, this then can be used to perform functional linear regression, as will be subject of the simulation and application.	 
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To obtain the analogous concept for a random function, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2[0,1]$. Therefore, let $X: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function. Then the mean and covariance functions of $X$ are defined as follows.
@@ -337,15 +327,13 @@ As in the finite dimensional setting, the concept of identically distributed and
 	\end{equation}
 
 	And we can define the following objects:
-	
-	\begin{equation}
-		\begin{split}
-			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] \\
-			\delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} = \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s \\
-			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) \quad \quad \quad
-			\delta_{\nu, m}^L(t) := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
-		\end{split}
-	\end{equation}
+
+		\begin{align}
+			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] 
+			& \delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} \\
+			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) 
+			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
+		\end{align}	
 	
 	\subsection{Scalar-on-Function Regression}
 	In the simple scalar setting one of the most important tools in econometrics is the linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. For reference assume a data generating process as follows. {\color{red} Structure is bad... This will be changed.}
@@ -787,6 +775,7 @@ The smooth function $f_1$ requires only 5(4) Bspline basis functions, for the hi
 	\subsection{Near-infrared (NIR) Spectroscopy}
 	NIR- spectroscopy is a spectroscopic method that uses the near-infrared region of the electromagnetic spectrum (From 780 nm to 2500 nm). It therefore measures the absorption and interaction of this spectrum of radiation with the sample. NIR-spectroscopy is not only faster and cheaper than the standard test procedure – another big advantage is that it does not need a reagent and thus does not destroy the sample. It is used for analysis in different sectors and fields, like the agrochemical industry but also in healthcare. Its non-invasive nature makes it also to an asset for medical applications like the monitoring of diabetes in which NIR-spectroscopy is able to detect the worsening of the blood glucose metabolic dysfunction (cf . \cite{FR_li_et_al_2020}). In the context of this paper, the gasoline dataset which is used for the simulation and the application is constructed using NIR spectroscopy. According to \cite{Bohacs_Ovadi_Salgo1998} NIR-spectroscopy is a feasible method for the analysis of gasoline since most of the absorption that is observed within the described interval of wavelengths is due to overtones and interactions of the radiation with chemical combinations (eg.: carbon–hydrogen, carbon–carbon, carbon–oxygen, carbonyl associated groups, aromatic stretching, and deformation vibration of the hydrocarbon molecules). While this paper focuses on the prediction of the octane number of gasoline, other research focuses  on different properties of gasoline such as the olefin, naphtaenic and aromatic content (Parisi et al. 1990, as cited in \cite{Bohacs_Ovadi_Salgo1998}) or the distillation characktersitics (Pauls 1985, as cited in \cite{Bohacs_Ovadi_Salgo1998})
 
+	\newpage
 	
 	\subsection{Basis Plots}
 	
@@ -807,26 +796,6 @@ The smooth function $f_1$ requires only 5(4) Bspline basis functions, for the hi
 
 \newpage
 \include{tables.tex}
-
-
-
-\subsection{Wiener Process}\label{Wiener}
-A Wiener process $W_t$ is a real-valued continuous-time stochastic process {\color{red} ... This is wikipedia, look for right citation!}
-It is characterized by the following properties.
-
-\begin{multicols}{2}
-	\begin{enumerate}
-		\item $W_0 = 0$
-		\item $\forall t > 0 W_{t+u} - W_t \perp\!\!\!\perp W_s \forall s \leq t$
-		\item $W_{t+u} - W_t \sim \mathcal{N}(0,u)$
-		\item $W_t$ is continuous in $t$
-	\end{enumerate}
-\end{multicols}
-
-\begin{figure}[H]\label{Wiener_plot}
-	\includegraphics[width = \textwidth]{../Graphics/Wiener_plot.pdf}
-	\caption{25 i.i.d. realizations of a Wiener Process on $[0,1]$}
-\end{figure}
 
 	\section{Proofs}
 	\subsection{Lemma} \label{Proof1}
