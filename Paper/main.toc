@@ -49,7 +49,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Bspline Basis}{17}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{17}{section*.8}%
+\contentsline {paragraph}{Fourier Basis}{18}{section*.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {4.4.2}Functional Principal Component Regression}{18}{subsubsection.4.4.2}%
 \defcounter {refsection}{0}\relax 
