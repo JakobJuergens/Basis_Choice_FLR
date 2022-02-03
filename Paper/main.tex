@@ -146,6 +146,16 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	%\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
 	%\end{equation}
 	
+	\subsection{Functional Data Set}
+	Consider the case of a data set containing observations $x_i$ of a random function $X$, measured at discrete points $t_{i,j}$: 
+	
+	\begin{equation}
+		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
+	\end{equation}
+	
+	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points. As it can be seen, the measurmant points can be differentiated through each sample. However, this is not a primary interest of this paper, and, therefore, we consider the case where every measurement point exists evenly, namely, that $t_{i,j}$ and $J_i$ are identical for all $i$. In principal, the recorded functional data can be seen as a set of discretized realizations of a random function since it is finitely countable. The several basis systems to make the functional data smooth is introduced from the next sub-chapter.\\
+	As in the finite dimensional setting, the concept of identically distributed and independent data is important for the functional data analysis. The random functions share the identical and independent distribution, which makes the statistical inferential procedures possible. An example of such a data set could be the data set of 60 N
+	
 	\subsection{Representing a Function in terms of a Basis} 
 	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Three examples of bases that are often used in practice to approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
 	
@@ -213,17 +223,15 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$. The number $L$ can be chosen subjectively, but also through applying a data-driven method like Cross-Validation, which aims to minimize the Mean Squared Error (MSE) or other criteria. The significance of this choice of truncation becomes more evident in {\color{green} Link estimation} and is the subject of the simulation study.
 	
 	\subsection{Functional Data Sets}
-	
-	Consider the case of a data set containing observations $X_i(t)$ of a random function $X(\omega)(t)$, measured at discrete points $t_{j,i}$: 
+	{\color{orange} Move this part below 3.2?}
+	Consider the case of a data set containing observations $x_i$ of a random function $X$, measured at discrete points $t_{i,j}$: 
 	
 	\begin{equation}
-		x_{i}(t_{j,i}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{j,i} \in [T_1, T_2]
+		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
 	\end{equation}
 	
- 	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points. Therefore, this can be seen as set of discretized approximations of the realizations of a random function.
-	As in the finite dimensional setting, the concept of identically distributed and independent data is important. This concept generalizes to the case of functional data using the concepts for general random variables.
-	 
-	An example of such a data set could be the data set of 60 NIR-spectra of gasoline samples. Together with a set of responses, this then can be used to perform functional linear regression, as will be subject of the simulation and application.	 
+	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points. As it can be seen, the measurmant points can be differentiated through each sample. However, this is not a primary interest of this paper, and, therefore, we consider the case where every measurement point exists evenly, namely, that $t_{i,j}$ and $J_i$ are identical for all $i$. In principal, the recorded functional data can be seen as a set of discretized realizations of a random function since it is finitely countable. The several basis systems to make the functional data smooth is introduced from the next sub-chapter.\\
+	As in the finite dimensional setting, the concept of identically distributed and independent data is important for the functional data analysis. The random functions share the identical and independent distribution, which makes the statistical inferential procedures possible. An example of such a data set could be the data set of 60 NIR-spectra of gasoline samples in which each spectra was randomly selected and evenly measured.	 
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function realizing in $\mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To obtain the analogous concept for a random function, it is necessary to define the covariance function of a random function realizing in $\mathbb{L}^2[0,1]$. Therefore, let $X: \Omega \mapsto \mathbb{L}^2[0,1]$ be such a random function. Then the mean and covariance functions of $X$ are defined as follows.

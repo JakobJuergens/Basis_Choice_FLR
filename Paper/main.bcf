@@ -2371,13 +2371,12 @@
     <bcf:citekey order="24">Reiss_2007b</bcf:citekey>
     <bcf:citekey order="25">cardot_bumpyfunction_2002</bcf:citekey>
     <bcf:citekey order="26">Reiss_2007b</bcf:citekey>
-    <bcf:citekey order="27">shonkwiler_explorations_2009</bcf:citekey>
-    <bcf:citekey order="28">carey_life_2002</bcf:citekey>
-    <bcf:citekey order="29">James.2009</bcf:citekey>
-    <bcf:citekey order="30">FR_li_et_al_2020</bcf:citekey>
+    <bcf:citekey order="27">carey_life_2002</bcf:citekey>
+    <bcf:citekey order="28">James.2009</bcf:citekey>
+    <bcf:citekey order="29">FR_li_et_al_2020</bcf:citekey>
+    <bcf:citekey order="30">Bohacs_Ovadi_Salgo1998</bcf:citekey>
     <bcf:citekey order="31">Bohacs_Ovadi_Salgo1998</bcf:citekey>
     <bcf:citekey order="32">Bohacs_Ovadi_Salgo1998</bcf:citekey>
-    <bcf:citekey order="33">Bohacs_Ovadi_Salgo1998</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
