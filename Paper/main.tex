@@ -912,14 +912,14 @@ It is characterized by the following properties.
 			\begin{split}
 				\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
 				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \int_{0}^{1} {\color{red}\mathbb{E}[{F(s)F(t)}]} \nu_{j}(s) \nu_{k}(t) ds dt\\
+				= & \int_{0}^{1} {\color{red}\int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu_{j}(s)} \nu_{k}(t) {\color{red}ds} dt\\
 				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu_{j}(s)ds \right)} \nu_{k}(t) dt \\
 				= & \int_{0}^{1}{\color{red}[K\nu_{j}](t)}\nu_{k}(t)dt\\
 				= & \langle K \nu_{j}, \nu_{k} \rangle\\
-				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
+				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \delta_{j,k}\lambda_{j}
 			\end{split}
 		\end{equation}
-		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the above two properties.
+		where $\delta_{j,k} = 1$ if $j = k$, otherwise 0. The result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the above two properties.
 		\begin{equation}\label{Lemma3}
 			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
 		\end{equation}
