@@ -210,11 +210,11 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.}	
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
-	As above-mentioned, the realized curves can be estimated with basis functions. For the basis expansion, it is technically possible to use all basis functions $b_{j \in \mathcal{I}}$ to fit an completely unbiased estimate. This is not efficient since the expansion with too many basis functions introduces high amounts of variance in pronounced local variations of the curves or can even led to the approximation of noise in the sample curves, which possibly interrupts the analysis. On the other hand, the important information on the curves could be missed with a too-small number of basis functions. This discussion is subject to the Bias-Variance Tradeoff and challenges the researcher to seek a point at which they truncate the basis function in order to remove noise and, at the same time, do not introduce to much bias by maintaining significant fluctuations of the curves. The basis expansion with truncation is defined by
+	As above-mentioned, the realized curves can be estimated with basis functions. For the basis expansion, it is technically possible to use all basis functions $\phi_{j \in \mathcal{I}}$ to fit an completely unbiased estimate. This is not efficient since the expansion with too many basis functions introduces high amounts of variance in pronounced local variations of the curves or can even led to the approximation of noise in the sample curves, which possibly interrupts the analysis. On the other hand, the important information on the curves could be missed with a too-small number of basis functions. In that sense, this discussion is subject to the Bias-Variance Tradeoff. It challenges the researcher to seek a point at which they truncate the basis function to remove noise and, at the same time, not to introduce too much bias by maintaining significant fluctuations of the curves. The basis expansion with truncation is defined by
 	\begin{equation}
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
-	where $\delta(t)$ is the truncation error. The number $L$ can be chosen subjectively, but also trough the application of a data-driven method like Cross-Validation, which aims to minimize the Mean Squared Error (MSE) or another criteria. The significance of this choice of truncation becomes more evident in {\color{green} Link estimation} and is subject of the simulation study.
+	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$. The number $L$ can be chosen subjectively, but also through applying a data-driven method like Cross-Validation, which aims to minimize the Mean Squared Error (MSE) or other criteria. The significance of this choice of truncation becomes more evident in {\color{green} Link estimation} and is the subject of the simulation study.
 	
 	\subsection{Functional Data Sets}
 	
@@ -696,9 +696,10 @@ As in the finite dimensional setting, the concept of identically distributed and
 			\end{split}
 		\end{equation}
 		
-		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic bspline basis-function $\{5,6,...,18\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction RMSE calculated by 10 fold cross-validation.
+		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic bspline basis-function $\{5,6,...,18\}$ and fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction MSE calculated by 10 fold cross-validation.
 		 To obtain valid out of sample properties for the FPCR, within each of the ten 10 fold cross-validation splits, we first calculate the Functional Principal Components of the trainig-set $\mathcal{T}$ for each curve. These scores are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation:
 		 
+		 {\color{orange}I guess we don't use the scores of the training set to estimate scores of test set but eigenfunction of traningset..}
 		 {\color{blue} We should mention how we derived the original principal components. (bspline basis and number of basis functions and harmonics.) As we chose a high number for both to capture all features of the data set. As we explain the approximations for the estimation, this question could come up, so we have to make it specific.}
 		 
 	\begin{equation}
@@ -720,7 +721,7 @@ As in the finite dimensional setting, the concept of identically distributed and
 	The following results origin from the \hyperref[basis_exp_transf]{\textbf{Estimation using Basis-Representation}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
 	
 	\paragraph{Monomial Basis}
-	Due to the high collinearity of these basis, simulations were conducted up until the sixth monomial basis, excluding the first one since this just represents a constant. As outlined in {\color{green} Link chapter}, they seem suited for $f_1$ and show a better performance in the simulations than bsplines for this coefficient function, but show the weakest performance for the coefficient function $f_2$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. The outlined weakness due to collinearity is especially pronounced in $f_2,Y_1$; for the high noise setup, $f_2, Y_2$ this weakness is still visible, but less strongly pronounced.
+	Due to the high collinearity of these basis{(\color{orange} How about stressing the higher order? Are they already highly correlated at lower orders?)}, simulations were conducted up until the sixth monomial basis, excluding the first one since this just represents a constant. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$ and show a better performance than bsplines for this coefficient function, but show the weakest performance for the coefficient function $f_2$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2, Y_2$ this weakness is still visible, but less strongly pronounced.
 	
 	\paragraph{Bspline Basis}
 	Simulations with bspline basis functions were possible from 5 to 18, since from 18 onwards the simulations were running into problems concerning {\color{green} what happend here exactly?}
@@ -828,7 +829,7 @@ It is characterized by the following properties.
 
 	\section{Proofs}
 	\subsection{Lemma} \label{Proof1}
-	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu_j\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi_{j}$ of basis functions satisfy the following properties:
+	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu^m\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi^{m}$ of basis functions satisfy the following properties:
 	\begin{enumerate}
 		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
 		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$% if $m \neq n$
@@ -839,90 +840,95 @@ It is characterized by the following properties.
 		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)dP(\omega)$. To obtain the first result, we can show that
 		\begin{equation}\label{Lemma1}
 			\begin{split}
-				\mathbb{E}[\xi_{j}] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
-				= & \int_{\Omega} \int_{0}^{1} F(t) \nu_{j}(t) dt dP(\omega)\\
-				= & \int_{0}^{1} \int_{\Omega} F(t) \nu_{j}(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu_{j}(t) dt\\
-				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu_{j}(t) dt = 0
+				\mathbb{E}[\xi^m] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
+				= & \int_{\Omega} \int_{0}^{1} F(t) \nu^m(t) dt dP(\omega)\\
+				= & \int_{0}^{1} \int_{\Omega} F(t) \nu^m(t) dP(\omega) dt \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu^m(t) dt\\
+				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu^m(t) dt = 0
 			\end{split}
 		\end{equation}
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
 		The second claim is proved as:
 		\begin{equation}\label{Lemma2}
 			\begin{split}
-				\mathbb{E} [\xi_{j} \xi_{k}] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu_{j}(s)ds \int_{0}^{1} F(t) \nu_{k}(t)dt  \biggr\rbrack\\
-				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu_{j}(s) F(t) \nu_{k}(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} \int_{0}^{1} {\color{red}\mathbb{E}[{F(s)F(t)}]} \nu_{j}(s) \nu_{k}(t) ds dt\\
-				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu_{j}(s)ds \right)} \nu_{k}(t) dt \\
-				= & \int_{0}^{1}{\color{red}[K\nu_{j}](t)}\nu_{k}(t)dt\\
-				= & \langle K \nu_{j}, \nu_{k} \rangle\\
-				= & \langle \lambda_{j} \nu_{j}, \nu_{k} \rangle = \lambda_{j} \quad \text{if $j = k$, otherwise 0}
+				\mathbb{E} [\xi^m \xi^n] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu^m(s)ds \int_{0}^{1} F(t) \nu^n(t)dt  \biggr\rbrack\\
+				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu^m(s) F(t) \nu^n(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} {\color{red}\int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu^m(s)} \nu^n(t) {\color{red}ds} dt\\
+				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu^m(s)ds \right)} \nu^n(t) dt \\
+				= & \int_{0}^{1}{\color{red}[K\nu^m](t)}\nu^n(t)dt\\
+				= & \langle K \nu^m, \nu^n \rangle\\
+				= & \langle \lambda^m \nu^m, \nu^n \rangle = \delta^{m,n}\lambda^{m}
 			\end{split}
 		\end{equation}
-		where the result is produced from orthonormaility of the eigenfunctions. The last assertion is confirmed from the above two properties.
+		where $\delta^{m,n} = 1$ if $m = n$, otherwise 0. The result is produced from orthonormaility of the eigenfunctions.
+		\begin{equation}
+			Cov\left(\xi^m, \xi^n\right) = \mathbb{E}[\xi^m \xi^n] - \mathbb{E}[\xi^m]\mathbb{E}[\xi^n] = \delta^{m,n}\lambda^{m}
+		\end{equation}
+		where $\mathbb{E}[\xi^m] = \mathbb{E}[\xi^n] = 0$ as the first property.
+		The last assertion is confirmed from the above two properties.
 		\begin{equation}\label{Lemma3}
-			Var[\xi_{i}] = \mathbb{E}\left[(\xi_{i} - \mathbb{E}[\xi_{i}])^{2}\right] = \mathbb{E}[\xi_{i}^{2}] = \lambda_{i}
+			Var[\xi^m] = \mathbb{E}\left[(\xi^m - \mathbb{E}[\xi^m])^{2}\right] = \mathbb{E}[(\xi^m)^{2}] =\lambda^m
 		\end{equation}
 		The original process also has the same properties as the centered one since
 		\begin{equation}
-			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{j=1}^{\infty}\xi_{j}\nu_{j}(t)
+			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{m=1}^{\infty}\xi^m\nu^m(t)
 		\end{equation}
 	\end{proof}
 	
 	
 	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
-	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi_{j}}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
-		X(t) = \mu(t) + \sum_{j=1}^{\infty} \xi_{j} \nu_{j}(t),
+		X(t) = \mu(t) + \sum_{m=1}^{\infty} \xi^m \nu^m(t),
 	\end{equation}
-	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi_{j}$ are given by $\xi_{j}(\omega) = \int_{0}^{1} (X(t)(\omega) - \mu(t)) \nu_{j}(t)dt$. These coefficients satisfy the following conditions.
+	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)dt$. These coefficients satisfy the following conditions.
 	\begin{enumerate}
 		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
 		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$ %if $m \neq n$
 		\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
 	\end{enumerate}
 	\begin{proof}
-		We know that $K$ has a complete set of eigenvectors ${\nu_{j}}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda_{j}$. With the reminder that $\xi_{j}(\omega)$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
+		We know that $K$ has a complete set of eigenfunctions ${\nu^m}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda^m$. With the reminder that $\xi^m$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
 		\begin{equation}
-			\epsilon_{n}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
-			= \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right]
+			\epsilon_{N}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
+			= \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
 		\end{equation}
 		where $F(t)$ is the centered process of $X(t)$.
-		Once it is shown that $\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = 0$ uniformly in [0,1], the proof is completed.
+		Once it is shown that $\lim\limits_{N \rightarrow \infty} \epsilon_{N}(t) = 0$ uniformly in [0,1], the proof is completed.
 		\begin{equation}\label{Thr1}
 			\begin{split}
-				\epsilon_{n}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} 	\nu_{j}(t)\bigg)^2 \right]\\
-				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{j=1}^{n}\xi_{j}\nu_{j}(t)\bigg] + \mathbb{E}\bigg[\sum_{j=1}^{n}\sum_{k=1}^{n}\xi_{j}\xi_{k}\nu_{j}(t)\nu_{k}(t)\bigg]
+				\epsilon_{N}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m 	\nu^m(t)\bigg)^2 \right]\\
+				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{m=1}^{N}\xi^m\nu^m(t)\bigg] + \mathbb{E}\bigg[\sum_{m=1}^{N}\sum_{n=1}^{N}\xi^m\xi^n\nu^m(t)\nu^n(t)\bigg]
 			\end{split}
 		\end{equation}
 		
 		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since F(t) is the centered process. Now, take the second term
 		\begin{equation}\label{Thr2}
 			\begin{split}
-				\mathbb{E} \bigg[ F(t) \sum_{j=1}^{n} {\color{red}\xi_{j}}\nu_{j}(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{j=1}^{n} {\color{red}\bigg(\int_{0}^{1} F(s)\nu_{j}(s)ds\bigg)} \nu_{j}(t) \right]\\
-				= & \mathbb{E} \left[ \sum_{j=1}^{n} \bigg(\int_{0}^{1} F(t)F(s)\nu_{j}(s)ds\bigg) \nu_{j}(t) \right]\\
-				= & \sum_{j=1}^{n} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu_{j}(s)ds\bigg)\nu_{j}(t)\\
-				= & \sum_{j=1}^{n} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu_{j}(s)ds\bigg)}\nu_{j}(t)\\
-				= & \sum_{j=1}^{n}{\color{teal}[K\nu_{j}](t)}\nu_{j}(t) \\
-				= &\sum_{j=1}^{n}{\color{teal}\lambda_{j}\nu_{j}(t)}\nu_{j}(t) = \sum_{j=1}^{n}\lambda_{j}\nu_{j}(t)^{2}
+				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)ds\bigg)} \nu^m(t) \right]\\
+				= & \mathbb{E} \left[ \sum_{m=1}^{N} \bigg(\int_{0}^{1} F(t)F(s)\nu^m(s)ds\bigg) \nu^m(t) \right]\\
+				= & \sum_{m=1}^{N} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu^m(s)ds\bigg)\nu^m(t)\\
+				= & \sum_{m=1}^{N} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu^m(s)ds\bigg)}\nu^m(t)\\
+				= & \sum_{m=1}^{N}{\color{teal}[K\nu^m](t)}\nu^m(t) \\
+				= &\sum_{m=1}^{N}{\color{teal}\lambda^m\nu^m(t)}\nu^m(t) = \sum_{m=1}^{N}\lambda^m\nu^m(t)^{2}
 			\end{split}
 		\end{equation} 
 		
 		where the covariance function $c(t,s)$ has the Hilbert-Shmidt operator as in (\ref{HSKernal}). It turns out the product of the eigenfunction and the corresponding eigenvalue. For the last term, we derive from (\ref{Lemma2}) that
 		\begin{equation}\label{Thr3}
 			\begin{split}
-				\mathbb{E}\bigg[\sum_{j=1}^{n} \sum_{k=1}^{n} \xi_{j} \xi_{k} \nu_{j}(t) \nu_{k}(t)\bigg] = & \sum_{j=1}^{n} \sum_{k=1}^{n} \mathbb{E}[\xi_{j} \xi_{k}] \nu_{j}(t) \nu_{k}(t)\\
-				= & \sum_{j=1}^{n} \sum_{k=1}^{n} \delta_{jk} \lambda_{j} \nu_{j}(t) \nu_{k}(t) = 		\sum_{j=1}^{n} \lambda_{j} \nu_{j}(t)^{2}
+				\mathbb{E}\bigg[\sum_{m=1}^{N} \sum_{m=1}^{N} \xi^m \xi^m \nu^m(t) \nu^n(t)\bigg] = & \sum_{m=1}^{N} \sum_{m=1}^{N} \mathbb{E}[\xi^m \xi_{k}] \nu^m(t) \nu^n(t)\\
+				= & \sum_{m=1}^{N} \sum_{n=1}^{N} \delta^{m,n} \lambda^m \nu^m(t) \nu^n(t) = 		\sum_{m=1}^{N} \lambda^m \nu^m(t)^{2}
 			\end{split}	
 		\end{equation}
-		where $\delta_{jk} = 1$ if $j=k$, otherwise 0. Therefore, by (\ref{Thr1}), (\ref{Thr2}), and (\ref{Thr3}) we obtain
+		where $\delta_{m,n} = 1$ if $m=n$, otherwise 0. Therefore, by (\ref{Thr1}), (\ref{Thr2}), and (\ref{Thr3}) we obtain
 		\begin{equation}
-			\epsilon_{n}(t) = c(t,t) - \sum_{j=1}^{n} \lambda_{j} \nu_{j}(t) \nu_{j}(t)
+			\epsilon_{N}(t) = c(t,t) - \sum_{m=1}^{N} \lambda^m \nu^m(t) \nu^m(t)
 		\end{equation}
 		
 		implementing Mercer's Theorem this proof is concluded by
 		\begin{equation}
-			\lim\limits_{n \rightarrow \infty} \epsilon_{n}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{j=1}^{n} \xi_{j} \nu_{j}(t)\bigg)^2 \right] = 0
+			\lim\limits_{N \rightarrow \infty} \epsilon_{N}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right] = 0
 		\end{equation}
 	\end{proof}
 
