@@ -70,7 +70,7 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 
 	\section{Theory}
 	In multivariate regression, data is often observed in the form of elements from Euclidean space, $\mathbb{R}^p$. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite dimensional space. To understand functional linear regression and the differences between the methods presented in this paper, it is therefore necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics are random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
-	A typical case known to every undergraduate student of economics in less formal detail is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
+	A typical case known to every undergraduate student of economics is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
 	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. In the following we restrict our analysis to the case of $\mathbb{F} = \mathbb{R}$. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
@@ -327,15 +327,13 @@ The focus of this paper is to introduce FLR in a scalar-on-function setting. We 
 	\end{equation}
 
 	And we can define the following objects:
-	
-	\begin{equation}
-		\begin{split}
-			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] \\
-			\delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} = \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s \\
-			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) \quad \quad \quad
-			\delta_{\nu, m}^L(t) := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
-		\end{split}
-	\end{equation}
+
+		\begin{align}
+			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] 
+			& \delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} \\
+			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) 
+			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
+		\end{align}	
 	
 	\subsection{Scalar-on-Function Regression}
 	In the simple scalar setting one of the most important tools in econometrics is the linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. For reference assume a data generating process as follows. {\color{red} Structure is bad... This will be changed.}
