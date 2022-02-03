@@ -1270,8 +1270,8 @@ fpcr_monomial_function <- function(rep, my_data = NULL, n_obs, nharm, seed, debu
             
             # calculate integrals over pairwise products of basis functions
             # and save in provided matrix
-            for (l in 1:length(n_basis[j])) {
-              for (k in 1:length(n_basis[j])) {
+            for (l in 1:n_basis[j]) {
+              for (k in 1:n_basis[j]) {
                 integral_matrix[l, k] <- integrate(function(t) {
                   approx(
                     x = tmp_grid,
