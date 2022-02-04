@@ -27,7 +27,7 @@ style=authoryear-comp,
 \parindent=0pt
 
 \begin{document}
-	\title{{\LARGE Model Selection for Scalar-on-Function Regression \\ with Applications to Near-Infrared Spectroscopy}}
+	\title{{\LARGE Basis Choice for Scalar-on-Function Regression \\ with Applications to Near-Infrared Spectroscopy}}
 	\author{Jonghun Baek, Jakob R. Juergens, Jonathan Willnow}
 	\date{11.02.2022}
 	\maketitle
@@ -398,7 +398,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 
-		A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
+	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
 	
 	\begin{equation}
 		Y = \begin{pmatrix}
@@ -416,6 +416,8 @@ style=authoryear-comp,
 	\begin{equation}
 		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
 	\end{equation}
+
+	The performance of this estimation procedure depends in part on the quality of the approximation in Equation \ref{simplified_model_basis_equation}. Therefore, it is interesting to think about when the approximation error is small... {\color{red}Continue Here Jakob!!!}
 	
 	\subsubsection{Estimation using Functional Principal Components}
 	
@@ -508,6 +510,8 @@ style=authoryear-comp,
 	\begin{equation}
 		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\tilde{\beta}}^{m,L} = \tilde{b}^{L,M}_{m+1}
 	\end{equation}
+
+	As in the previous case, the performance of this estimation depends the quality of the approximation made during the derivation of this estimator. Therefore, it is interesting to think about when these errors are small... {\color{red}Continue Here Jakob!!!}
 
 	\subsection{Literature}
 	\begin{itemize}
