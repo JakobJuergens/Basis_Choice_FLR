@@ -156,15 +156,14 @@ style=authoryear-comp,
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis, such as, for example, many inferential procedures. One example could be a set of NIR absorption spectra of gasoline samples in which curves are observed at a shared set of wavelengths and each sample stemming from the same production can be seen as a realization of the same random process.
 	
 	\subsection{Representing a Function in terms of a Basis} 
-	As previously described, a basis of a Hilbert space can be used to express elements of the space using the corresponding Fourier expansion. Three examples of bases that are often used in practice to approximate elements of $\mathbb{L}^2[0,1]$  are explained in the following.
-	
-	Both of these can be used to express or in the case of the B-spline basis approximate elements of $\mathbb{L}^2[0,1]$ as a weighted sum of basis functions. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express / approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$.
+	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express or approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
 	
 	\begin{equation}
-		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_{j}(\omega_0) \phi_j(t)
+		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
 	\end{equation}
-
-	{\color{red}We should give a reference for how to obtain these coefficients and say that for the purpose of this paper we will treat this as a black box.}
+	
+	One very important question in this context is how the coefficients $a_j \quad j \in \mathcal{I}$ are derived given a function $x(t)$. For the purposes of this paper, this process will remain a blackbox, but detailed information on the derivation of these coefficients can be found in {\color{red} ADD CITATION!!!} \\
+	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following.	
 	
 	\paragraph{Monomial Basis}
 	{\color{red} No shift parameter in implementation in fda.} The Monomial basis are trivially decompositions of every polynomial function. The class of non-polynomial but enough many differentiable functions can be approximated by Taylor series, a special type of power series. From these concepts, a function can be smooth by a power series. The bases construct 
@@ -198,7 +197,9 @@ style=authoryear-comp,
 		\end{cases}
 	\end{equation}
 
-	Therefore, its elements inherit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthonormal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
+	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process over the period $T$. Additionally, the Fourier basis is suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
+	
+	{\color{blue}I don't get this... Isn't the basis defined independently from the data set? Why is this dependent on the measuring points? "rephrasing \cite{ramsay_functional_2005}, the Fourier basis is orthonormal when the values $t_j$ are equally spaced within $T$."} 
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Typically, knots are placed on an equidistant grid, but deviations from this principle can prove advantageous in atypical settings. Additionally, at each $\tau_l$, the polynomials on neighboring subintervals must match derivatives up to order $m-2$ at the boundary. However, it is sensible to place multiple knots at the same value to replicate specific properties of the data structure. A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
 	
