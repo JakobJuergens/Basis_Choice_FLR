@@ -77,29 +77,13 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Wahrscheinlichkeitstheorie und Grundzüge der Maßtheorie von Heinz Bauer wurde am 18. Mai 2020 von De Gruyter veröffentlicht.}
       \field{isbn}{978-3-11-231316-9}
       \field{month}{5}
-      \field{note}{Publication Title: Wahrscheinlichkeitstheorie und Grundzüge der Maßtheorie}
       \field{title}{Wahrscheinlichkeitstheorie und {Grundzüge} der {Maßtheorie}}
-      \field{urlday}{13}
-      \field{urlmonth}{11}
-      \field{urlyear}{2021}
       \field{year}{2020}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.1515/9783112313169
       \endverb
-      \verb{file}
-      \verb Full Text PDF:/home/jjuergens/Zotero/storage/FMYVVQ2R/Bauer - 2020 - Wahrscheinlichkeitstheorie und Grundzüge der Maßth.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://www.degruyter.com/document/doi/10.1515/9783112313169/html
-      \endverb
-      \verb{url}
-      \verb https://www.degruyter.com/document/doi/10.1515/9783112313169/html
-      \endverb
-      \keyw{Maßtheorie,Messtheorie,Wahrscheinlichkeitsrechnung,Wahrscheinlichkeitstheorie}
     \endentry
     \entry{de_boor_practical_1978}{book}{}
       \name{author}{1}{}{%
@@ -133,9 +117,6 @@
       \verb{doi}
       \verb 10.2307/2006241
       \endverb
-      \verb{file}
-      \verb Full Text PDF:/home/jjuergens/Zotero/storage/ARNZI28H/de Boor - 1978 - A Practical Guide to Spline.pdf:application/pdf
-      \endverb
     \endentry
     \entry{cai_prediction_2006}{article}{}
       \name{author}{2}{}{%
@@ -164,34 +145,18 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{There has been substantial recent work on methods for estimating the slope function in linear regression for functional data analysis. However, as in the case of more conventional finite-dimensional regression, much of the practical interest in the slope centers on its application for the purpose of prediction, rather than on its significance in its own right. We show that the problems of slope-function estimation, and of prediction from an estimator of the slope function, have very different characteristics. While the former is intrinsically nonparametric, the latter can be either nonparametric or semiparametric. In particular, the optimal mean-square convergence rate of predictors is n−1, where n denotes sample size, if the predictand is a sufficiently smooth function. In other cases, convergence occurs at a polynomial rate that is strictly slower than n−1. At the boundary between these two regimes, the mean-square convergence rate is less than n−1 by only a logarithmic factor. More generally, the rate of convergence of the predicted value of the mean response in the regression model, given a particular value of the explanatory variable, is determined by a subtle interaction among the smoothness of the predictand, of the slope function in the model, and of the autocovariance function for the distribution of explanatory variables.}
-      \field{issn}{0090-5364, 2168-8966}
       \field{journaltitle}{The Annals of Statistics}
       \field{month}{10}
       \field{note}{Publisher: Institute of Mathematical Statistics}
       \field{number}{5}
       \field{title}{Prediction in functional linear regression}
-      \field{urlday}{24}
-      \field{urlmonth}{10}
-      \field{urlyear}{2021}
       \field{volume}{34}
       \field{year}{2006}
-      \field{urldateera}{ce}
       \field{pages}{2159\bibrangedash 2179}
       \range{pages}{21}
       \verb{doi}
       \verb 10.1214/009053606000000830
       \endverb
-      \verb{file}
-      \verb Full Text PDF:/home/jjuergens/Zotero/storage/7CC7733R/Cai and Hall - 2006 - Prediction in functional linear regression.pdf:application/pdf;Snapshot:/home/jjuergens/Zotero/storage/TFP58STD/009053606000000830.html:text/html
-      \endverb
-      \verb{urlraw}
-      \verb https://projecteuclid.org/journals/annals-of-statistics/volume-34/issue-5/Prediction-in-functional-linear-regression/10.1214/009053606000000830.full
-      \endverb
-      \verb{url}
-      \verb https://projecteuclid.org/journals/annals-of-statistics/volume-34/issue-5/Prediction-in-functional-linear-regression/10.1214/009053606000000830.full
-      \endverb
-      \keyw{62G20,62J05,bootstrap,Covariance,Dimension reduction,eigenfunction,eigenvalue,eigenvector,Functional data analysis,intercept,minimax,optimal convergence rate,principal components analysis,rate of convergence,slope,smoothing,spectral decomposition}
     \endentry
     \entry{cardot_bumpyfunction_2002}{article}{}
       \name{author}{1}{}{%
@@ -214,8 +179,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{This paper introduces a new nonparametric estimator based on penalized regression splines for linear operator equations when the data are noisy. A local roughness penalty that relies on local support properties of B-splines is introduced in order to deal with spatial heterogeneity of the function to be estimated. This estimator is shown to be consistent under weak conditions on the asymptotic behaviour of the singular values of the linear operator. Furthermore, in the usual nonparametric settings, it is shown to attain optimal rates of convergence. Then its good performances are confirmed by means of a simulation study.}
-      \field{issn}{0047-259X}
       \field{journaltitle}{Journal of Multivariate Analysis}
       \field{number}{1}
       \field{title}{Spatially Adaptive Splines for Statistical Linear Inverse Problems}
@@ -226,13 +189,6 @@
       \verb{doi}
       \verb https://doi.org/10.1006/jmva.2001.1994
       \endverb
-      \verb{urlraw}
-      \verb https://www.sciencedirect.com/science/article/pii/S0047259X01919943
-      \endverb
-      \verb{url}
-      \verb https://www.sciencedirect.com/science/article/pii/S0047259X01919943
-      \endverb
-      \keyw{linear inverse problems,integral equations,deconvolution,regularization,local roughness penalties,spatially adaptive estimators,regression splines,convergence}
     \endentry
     \entry{carey_life_2002}{article}{}
       \name{author}{7}{}{%
@@ -294,33 +250,16 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{The purpose of this study was to investigate medfly longevity and reproduction across a broad spectrum of diet restriction using a protocol similar to those applied in most rodent studies. Age-specific reproduction and age of death were monitored for 1200 adult males and 1200 females, each individually maintained on one of 12 diets from ad libitum to 30\% of ad libitum. Diet was provided in a fixed volume of solution that was fully consumed each day, ensuring control of total nutrient consumption for every fly. Contrary to expectation and precedence, increased longevity was not observed at any level of diet restriction. Among females, reproduction continued across all diet levels despite the cost in terms of increased mortality. Among males, life expectancy exceeded that of females at most diet levels. However, in both sexes, mortality increased more sharply and the pattern of survival changed abruptly once the diet level fell to 50\% of ad libitum or below, even though the energetic demands of egg production has no obvious counterpart in males. We believe that a more complete picture of the life table response to dietary restriction will emerge when studies are conducted on a wider range of species and include both sexes, more levels of diet, and the opportunity for mating and reproduction.}
-      \field{issn}{1474-9726}
       \field{journaltitle}{Aging Cell}
-      \field{note}{\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1046/j.1474-9728.2002.00019.x}
       \field{number}{2}
       \field{title}{Life history response of {Mediterranean} fruit flies to dietary restriction}
-      \field{urlday}{24}
-      \field{urlmonth}{10}
-      \field{urlyear}{2021}
       \field{volume}{1}
       \field{year}{2002}
-      \field{urldateera}{ce}
       \field{pages}{140\bibrangedash 148}
       \range{pages}{9}
       \verb{doi}
       \verb 10.1046/j.1474-9728.2002.00019.x
       \endverb
-      \verb{file}
-      \verb Snapshot:/home/jjuergens/Zotero/storage/QH2SR9WQ/j.1474-9728.2002.00019.html:text/html;Full Text PDF:/home/jjuergens/Zotero/storage/SGDFHJAD/Carey et al. - 2002 - Life history response of Mediterranean fruit flies.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1474-9728.2002.00019.x
-      \endverb
-      \verb{url}
-      \verb https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1474-9728.2002.00019.x
-      \endverb
-      \keyw{cost of reproduction,life span,life table,longevity extension,male–female mortality,sex–mortality differentials}
     \endentry
     \entry{Goldsmith_2011}{article}{}
       \name{author}{5}{}{%
@@ -367,8 +306,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{We develop fast fitting methods for generalized functional linear models. The functional predictor is projected onto a large number of smooth eigenvectors and the coefficient function is estimated using penalized spline regression; confidence intervals based on the mixed model framework are obtained. Our method can be applied to many functional data designs including functions measured with and without error, sparsely or densely sampled. The methods also extend to the case of multiple functional predictors or functional predictors with a natural multilevel structure. The approach can be implemented using standard mixed effects software and is computationally fast. The methodology is motivated by a study of white-matter demyelination via diffusion tensor imaging (DTI). The aim of this study is to analyze differences between various cerebral white-matter tract property measurements of multiple sclerosis (MS) patients and controls. While the statistical developments proposed here were motivated by the DTI study, the methodology is designed and presented in generality and is applicable to many other areas of scientific research. An online appendix provides R implementations of all simulations.}
-      \field{issn}{1061-8600}
       \field{journaltitle}{Journal of computational and graphical statistics : a joint publication of American Statistical Association, Institute of Mathematical Statistics, Interface Foundation of North America}
       \field{number}{4}
       \field{title}{Penalized Functional Regression}
@@ -378,9 +315,6 @@
       \range{pages}{22}
       \verb{doi}
       \verb 10.1198/jcgs.2010.10007
-      \endverb
-      \verb{file}
-      \verb Goldsmith:C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\Goldsmith.pdf:pdf
       \endverb
     \endentry
     \entry{Bohacs_Ovadi_Salgo1998}{article}{}
@@ -401,16 +335,12 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{The test measurements used for the analysis ofgasoline quality are mostly complicated standard procedures which are time consuming and which require special equipment, large volume of samples and specialists. The standard test methods could be partly replaced with non-destructive near infrared (NIR) spectroscopic measurements which are fast and less expensive. The aim of this paper is to present a feasible procedure for the prediction of quality pa- rameters ofgasoline from its NIR spectrum in a large and very diverse sample set. 350 commercially available gaso- line samples were collected from July 1996. The samples covered summer and winter grades of normal, super and superplus unleaded gasolines with minimumRON requirements of 91, 95 and 98, respectively. These fuels covered a wide range of samples from very different sources including Hungarian and foreign refineries and pumps. An InfraPrime Lab Analyser (Bran+Luebbe) with high quality optical fibres in combination with multivariate cali- bration (PLSR) was used to determine 12 different chemical and physical properties ofgasolines including reseach octane number (RON), motor octane number (MON), benzene, methyl-tertier-buthyl-ether (MTBE), sulphur con- tent, distillation characteristics, Reid vapour pressure (RVP) and density at 15°C. The developed NIRmethods pre- dicted four important gasoline properties (RON, MON, benzene and MTBE content) with reproducibilities equivalent to the standard test procedures. The standard errors of prediction were 0.34 for RON, 0.30 for MON, 0.13{\%}(vv--1) for benzene and 0.21{\%}(vv--1) forMTBE content. The correlation coefficients were better than 0.970 in these calibrations. Calibrations developed for other gasoline properties showed poor correlation coefficients and allowed each parameter to be predicted only with higher standard error than the reference values. The NIR meth- ods described are suitable for routine selection measurements in large series of gasoline samples.}
       \field{journaltitle}{Journal of near infrared spectroscopy.}
       \field{title}{Prediction of Gasoline Properties with near Infrared Spectroscopy}
       \field{volume}{6}
       \field{year}{1998}
       \field{pages}{341\bibrangedash 348}
       \range{pages}{8}
-      \verb{file}
-      \verb Prediction-of-Gasoline-Properties-with-near-Infrared-Spectroscopy:C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\Prediction-of-Gasoline-Properties-with-near-Infrared-Spectroscopy.pdf:pdf
-      \endverb
     \endentry
     \entry{horvath_inference_2012}{book}{}
       \name{author}{2}{}{%
@@ -445,7 +375,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{This book presents recently developed statistical methods and theory required for the application of the tools of functional data analysis to problems arising in geosciences, finance, economics and biology. It is concerned with inference based on second order statistics, especially those related to the functional principal component analysis. While it covers inference for independent and identically distributed functional data, its distinguishing feature is an in depth coverage of dependent functional data structures, including functional time series and spatially indexed functions. Specific inferential problems studied include two sample inference, change point analysis, tests for dependence in data and model residuals and functional prediction. All procedures are described algorithmically, illustrated on simulated and real data sets, and supported by a complete asymptotic theory. The book can be read at two levels. Readers interested primarily in methodology will find detailed descriptions of the methods and examples of their application. Researchers interested also in mathematical foundations will find carefully developed theory. The organization of the chapters makes it easy for the reader to choose an appropriate focus. The book introduces the requisite, and frequently used, Hilbert space formalism in a systematic manner. This will be useful to graduate or advanced undergraduate students seeking a self-contained introduction to the subject. Advanced researchers will find novel asymptotic arguments.}
       \field{isbn}{978-1-4614-3655-3}
       \field{month}{5}
       \field{note}{Google-Books-ID: OVezLB\_\_ZpYC}
@@ -486,7 +415,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Theoretical Foundations of Functional Data Analysis, with an Introduction to Linear Operators provides a uniquely broad compendium of the key mathematical concepts and results that are relevant for the theoretical development of functional data analysis (FDA).The self–contained treatment of selected topics of functional analysis and operator theory includes reproducing kernel Hilbert spaces, singular value decomposition of compact operators on Hilbert spaces and perturbation theory for both self–adjoint and non self–adjoint operators. The probabilistic foundation for FDA is described from the perspective of random elements in Hilbert spaces as well as from the viewpoint of continuous time stochastic processes. Nonparametric estimation approaches including kernel and regularized smoothing are also introduced. These tools are then used to investigate the properties of estimators for the mean element, covariance operators, principal components, regression function and canonical correlations. A general treatment of canonical correlations in Hilbert spaces naturally leads to FDA formulations of factor analysis, regression, MANOVA and discriminant analysis.This book will provide a valuable reference for statisticians and other researchers interested in developing or understanding the mathematical aspects of FDA. It is also suitable for a graduate level special topics course.}
       \field{isbn}{978-1-118-76256-1}
       \field{month}{3}
       \field{note}{Google-Books-ID: om9uBwAAQBAJ}
@@ -528,7 +456,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Annals of Statistics, 2009, Vol.37, No.5A, 2083-2108}
-      \field{issn}{0090-5364}
       \field{journaltitle}{The Annals of Statistics}
       \field{number}{5A}
       \field{title}{Functional linear regression that's interpretable}
@@ -537,7 +464,6 @@
       \verb{doi}
       \verb 10.1214/08-AOS641
       \endverb
-      \keyw{62J99;Dantzig selector;functional linear regression;Interpretable regression;lasso}
     \endentry
     \entry{Jolliffe_1982}{article}{}
       \name{author}{1}{}{%
@@ -560,7 +486,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Summary The use of principal components in regression has received a lot of attention in the literature in the past few years, and the topic is now beginning to appear in textbooks. Along with the use of principal component regression there appears to have been a growth in the misconception that the principal components with small eigenvalues will very rarely be of any use in regression. The purpose of this note is to demonstrate that these components can be as important as those with large variance. This is illustrated with four examples, three of which have already appeared in the literature.}
       \field{journaltitle}{Journal of the Royal Statistical Society: Series C (Applied Statistics)}
       \field{number}{3}
       \field{title}{A Note on the Use of Principal Components in Regression}
@@ -571,10 +496,6 @@
       \verb{doi}
       \verb 10.2307/2348005
       \endverb
-      \verb{file}
-      \verb https://rss.onlinelibrary.wiley.com/doi/abs/10.2307/2348005
-      \endverb
-      \keyw{principal component analysis;regression}
     \endentry
     \entry{kokoszka_introduction_2017}{book}{}
       \name{author}{2}{}{%
@@ -613,7 +534,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Introduction to Functional Data Analysis provides a concise textbook introduction to the field. It explains how to analyze functional data, both at exploratory and inferential levels. It also provides a systematic and accessible exposition of the methodology and the required mathematical framework. The book can be used as textbook for a semester-long course on FDA for advanced undergraduate or MS statistics majors, as well as for MS and PhD students in other disciplines, including applied mathematics, environmental science, public health, medical research, geophysical sciences and economics. It can also be used for self-study and as a reference for researchers in those fields who wish to acquire solid understanding of FDA methodology and practical guidance for its implementation. Each chapter contains plentiful examples of relevant R code and theoretical and data analytic problems. The material of the book can be roughly divided into four parts of approximately equal length: 1) basic concepts and techniques of FDA, 2) functional regression models, 3) sparse and dependent functional data, and 4) introduction to the Hilbert space framework of FDA. The book assumes advanced undergraduate background in calculus, linear algebra, distributional probability theory, foundations of statistical inference, and some familiarity with R programming. Other required statistics background is provided in scalar settings before the related functional concepts are developed. Most chapters end with references to more advanced research for those who wish to gain a more in-depth understanding of a specific topic.}
       \field{edition}{1}
       \field{isbn}{978-1-4987-4634-2}
       \field{month}{8}
@@ -659,7 +579,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Psychologists and behavioural scientists are increasingly collecting data that are drawn from continuous underlying processes. We describe a set of quantitative methods, Functional Data Analysis (FDA), which can answer a number of questions that traditional statistical approaches cannot. These methods are applicable for analyzing many datasets that are common in experimental psychology, including time series data, repeated measures, and data distributed over time or space as in neuroimaging experiments. The primary advantage of FDA is that it allows the researcher to ask questions about when in a time series differences may exist between two or more sets of observations. We discuss functional correlations, principal components, the derivatives of functional curves, and analysis of variances models. (PsycINFO Database Record (c) 2012 APA, all rights reserved)}
       \field{journaltitle}{Canadian Psychology/Psychologie canadienne}
       \field{month}{8}
       \field{title}{Introduction to {Functional} {Data} {Analysis}}
@@ -669,9 +588,6 @@
       \range{pages}{21}
       \verb{doi}
       \verb 10.1037/cp2007014
-      \endverb
-      \verb{file}
-      \verb Full Text PDF:/home/jjuergens/Zotero/storage/LBCJRPIW/Levitin et al. - 2007 - Introduction to Functional Data Analysis.pdf:application/pdf
       \endverb
     \endentry
     \entry{FR_li_et_al_2020}{article}{}
@@ -743,8 +659,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Early diagnosis is important to reduce the incidence and mortality rate of diabetes. The feasibility of early diagnosis of diabetes was studied via near-infrared spectra (NIRS) combined with a support vector machine (SVM) and aquaphotomics.}
-      \field{issn}{2296-2646}
       \field{journaltitle}{Frontiers in Chemistry}
       \field{title}{Early Diagnosis of Type 2 Diabetes Based on Near-Infrared Spectroscopy Combined With Machine Learning and Aquaphotomics}
       \field{volume}{8}
@@ -753,12 +667,6 @@
       \range{pages}{1}
       \verb{doi}
       \verb 10.3389/fchem.2020.580489
-      \endverb
-      \verb{urlraw}
-      \verb https://www.frontiersin.org/article/10.3389/fchem.2020.580489
-      \endverb
-      \verb{url}
-      \verb https://www.frontiersin.org/article/10.3389/fchem.2020.580489
       \endverb
     \endentry
     \entry{ramsay_functional_2005}{book}{}
@@ -797,24 +705,13 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{Scientists and others today often collect samples of curves and other functional observations. This monograph presents many ideas and techniques for such data. Included are expressions in the functional domain of such classics as linear regression, principal components analysis, linear modeling, and canonical correlation analysis, as well as specifically functional techniques such as curve registration and principal differential analysis. Data arising in real applications are used throughout for both motivation and illustration, showing how functional approaches allow us to see new things, especially by exploiting the smoothness of the processes generating the data. The data sets exemplify the wide scope of functional data analysis; they are drawn from growth analysis, meteorology, biomechanics, equine science, economics, and medicine. The book presents novel statistical technology, much of it based on the authors’ own research work, while keeping the mathematical level widely accessible. It is designed to appeal to students, to applied data analysts, and to experienced researchers; it will have value both within statistics and across a broad spectrum of other fields. This second edition is aimed at a wider range of readers, and especially those who would like to apply these techniques to their research problems. It complements the authors' other recent volume Applied Functional Data Analysis: Methods and Case Studies. In particular, there is an extended coverage of data smoothing and other matters arising in the preliminaries to a functional data analysis. The chapters on the functional linear model and modeling of the dynamics of systems through the use of differential equations and principal differential analysis have been completely rewritten and extended to include new developments. Other chapters have been revised substantially, often to give more weight to examples and practical considerations. Jim Ramsay is Professor of Psychology at McGill University and is an international authority on many aspects of multivariate analysis. He was President of the Statistical Society of Canada in 2002-3 and holds the Society’s Gold Medal for his work in functional data analysis. Bernard Silverman is Master of St Peter’s College and Professor of Statistics at Oxford University. He was President of the Institute of Mathematical Statistics in 2000–1. He is a Fellow of the Royal Society. His main specialty is in computational statistics, and he is the author or editor of several highly regarded books in this area.}
       \field{edition}{2}
       \field{isbn}{978-0-387-40080-8}
       \field{series}{Springer {Series} in {Statistics}}
       \field{title}{Functional {Data} {Analysis}}
-      \field{urlday}{23}
-      \field{urlmonth}{10}
-      \field{urlyear}{2021}
       \field{year}{2005}
-      \field{urldateera}{ce}
       \verb{doi}
       \verb 10.1007/b98888
-      \endverb
-      \verb{urlraw}
-      \verb https://www.springer.com/de/book/9780387400808
-      \endverb
-      \verb{url}
-      \verb https://www.springer.com/de/book/9780387400808
       \endverb
     \endentry
     \entry{Reiss_2007b}{article}{}
@@ -844,7 +741,6 @@
       \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{issn}{0162-1459}
       \field{journaltitle}{Journal of the American Statistical Association}
       \field{number}{479}
       \field{title}{Functional Principal Component Regression and Functional Partial Least Squares}
@@ -854,64 +750,6 @@
       \range{pages}{13}
       \verb{doi}
       \verb 10.1198/016214507000000527
-      \endverb
-      \verb{file}
-      \verb Functional Principal Component Regression and Functional Partial Least Squares (2):C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\Functional Principal Component Regression and Functional Partial Least Squares (2).pdf:pdf
-      \endverb
-    \endentry
-    \entry{shonkwiler_explorations_2009}{book}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=138c8d5acb1f0ecf9a61982c1b0880d1}{%
-           family={Shonkwiler},
-           familyi={S\bibinitperiod},
-           given={Ronald\bibnamedelima W.},
-           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=9783caeec239744853615b5ccb84f378}{%
-           family={Mendivil},
-           familyi={M\bibinitperiod},
-           given={Franklin},
-           giveni={F\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{language}{1}{%
-        {en}%
-      }
-      \list{location}{1}{%
-        {New York}%
-      }
-      \list{publisher}{1}{%
-        {Springer-Verlag}%
-      }
-      \strng{namehash}{6e201426c5ade24c0ad49e2391234db7}
-      \strng{fullhash}{6e201426c5ade24c0ad49e2391234db7}
-      \strng{bibnamehash}{6e201426c5ade24c0ad49e2391234db7}
-      \strng{authorbibnamehash}{6e201426c5ade24c0ad49e2391234db7}
-      \strng{authornamehash}{6e201426c5ade24c0ad49e2391234db7}
-      \strng{authorfullhash}{6e201426c5ade24c0ad49e2391234db7}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Monte Carlo methods are among the most used and useful computational tools available today, providing efficient and practical algorithims to solve a wide range of scientific and engineering problems. Applications covered in this book include optimization, finance, statistical mechanics, birth and death processes, and gambling systems. Explorations in Monte Carlo Methods provides a hands-on approach to learning this subject. Each new idea is carefully motivated by a realistic problem, thus leading from questions to theory via examples and numerical simulations. Programming exercises are integrated throughout the text as the primary vehicle for learning the material. Each chapter ends with a large collection of problems illustrating and directing the material. This book is suitable as a textbook for students of engineering and the sciences, as well as mathematics. The problem-oriented approach makes it ideal for an applied course in basic probability and for a more specialized course in Monte Carlo methods. Topics include probability distributions, counting combinatorial objects, simulated annealing, genetic algorithms, option pricing, gamblers ruin, statistical mechanics, sampling, and random number generation.}
-      \field{isbn}{978-0-387-87836-2}
-      \field{series}{Undergraduate {Texts} in {Mathematics}}
-      \field{title}{Explorations in {Monte} {Carlo} {Methods}}
-      \field{urlday}{23}
-      \field{urlmonth}{10}
-      \field{urlyear}{2021}
-      \field{year}{2009}
-      \field{urldateera}{ce}
-      \verb{doi}
-      \verb 10.1007/978-0-387-87837-9
-      \endverb
-      \verb{urlraw}
-      \verb https://www.springer.com/gp/book/9780387878362
-      \endverb
-      \verb{url}
-      \verb https://www.springer.com/gp/book/9780387878362
       \endverb
     \endentry
     \entry{ThomasLee_2003}{article}{}
@@ -942,11 +780,9 @@
       \verb{doi}
       \verb https://doi.org/10.1016/S0167-9473(02)00159-7
       \endverb
-      \verb{file}
-      \verb SmoothingSplinesParameterSelection, Thomas Lee:C\:\\Users\\Jonathan\\Desktop\\CITAVI_RM_STATS\\Citavi Attachments\\SmoothingSplinesParameterSelection, Thomas Lee.pdf:pdf
-      \endverb
     \endentry
   \enddatalist
+  \missing{deboor_2001}
 \endrefsection
 \endinput
 
