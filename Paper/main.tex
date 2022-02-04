@@ -66,7 +66,7 @@ style=authoryear-comp,
  
 	 Here, $X(\omega)$ is a random function, $Y(\omega)$ is the response variable and $\beta(s)$ the coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. As in the framework of scalar linear regression, estimating $\beta(t)$ is particularly interesting for prediction or inference. \\
 	 
-	 In Section \ref{Theory}, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using using two different approaches. Section \ref{Simulation} contains a description of structure and results of a Monte-Carlo Simulation aimed at choosing an appropriate functional basis for the previously mentioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In section \ref{Outlook} we then give an outlook on possible extensions for this paper and describe limitations of our approach.
+	 In Section \ref{Theory}, after introducing the necessary theoretical concepts, we describe two methods of estimating a scalar coefficient function using using the concepts of basis expansion and functional principal component analysis. Section \ref{Simulation} contains a description of structure and results of a Monte-Carlo Simulation aimed at choosing an appropriate functional basis for the previously mentioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In section \ref{Outlook} we then give an outlook on possible extensions for this paper and describe limitations of our approach.
 
 	\section{Theory}\label{Theory}
 	In multivariate regression, data is often observed in the form of elements from Euclidean space, $\mathbb{R}^p$. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite-dimensional space. Therefore, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics is random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
@@ -123,7 +123,7 @@ style=authoryear-comp,
 		x \approx \sum_{j = 1}^{K}{\langle x, s_j \rangle}s_j
 	\end{equation}
 	
-	\subsection{Hilbert Space of Square-Integrable Functions{\color{orange} Random Function in $\mathbb{L}^2[0,1]$ space}}
+	\subsection{Random Functions in the Hilbert Space of Square-Integrable Functions}
 	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
 	
 	\begin{equation}
@@ -165,17 +165,22 @@ style=authoryear-comp,
 	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following.	
 	
 	\paragraph{Monomial Basis}
-	{\color{red} No shift parameter in implementation in fda.} The Monomial basis are trivially decompositions of every polynomial function. The class of non-polynomial but enough many differentiable functions can be approximated by Taylor series, a special type of power series. From these concepts, a function can be smooth by a power series. The bases construct 
-
-	\begin{equation}
-		x(t) = \sum_{i \in \mathcal{I}} c_i(t - \alpha)^{i}
+	{\color{red} No shift parameter in implementation in fda.} The Monomial basis are trivially decompositions of every polynomial function. 	
+	
+	For functions that fall into the class of entire functions, we can express the function as a potentially infinite sum of weighted monomials. Let $f(t)$ be an entire function, e.g. the exponential function or a trigonometric function, then we can write the following.
+	
+	\begin{equation}\label{Taylor_expansion}
+		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}}{i!}
 	\end{equation}
-	 which forms the basis 
+	
+	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion can oftenlead to reasonable approximations around a specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
 	
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^i, \quad i \in \mathcal{I}
 	\end{equation}
-	where the shift parameter $\alpha$ is specified to be the center of the interval subject to approximation. The first order function within the monomial basis system, for $k=0$, is called the constant basis (cf. \cite{horvath_inference_2012}). There exist collinearity problems of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. However, the lower order monomial function makes it impracticable to capture pronounced local peculiarities. It finally leads to an undesirable behavior at the tails such as Taylor expansion (cf. \cite{ramsay_functional_2005}). Therefore, regarding the use, this may be useful for relatively simple functions.
+
+	Due to the chosen implementation for our simulation, we will limit our paper to the case of $\alpha = 0$. However, a different choice of $\alpha$ could lead to improvements in performance of the monomial basis in later parts of this paper.
+	There exist collinearity problems of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. However, the lower order monomial function makes it impracticable to capture pronounced local peculiarities. It finally leads to an undesirable behavior at the tails such as Taylor expansion (cf. \cite{ramsay_functional_2005}). Therefore, regarding the use, this may be useful for relatively simple functions.
 	
 	\paragraph{Fourier Basis}
 	In the same way the monomial basis corresponds to the Taylor expansion, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function $s(x)$ defined on the interval $[0,1]$.
