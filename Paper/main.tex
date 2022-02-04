@@ -64,7 +64,7 @@ style=authoryear-comp,
 	 	\qquad i = 1, ..., n
 	 \end{equation}
  
-	 Here, $X(\omega)$ is a random function, $Y(\omega)$ is the response variable and $\beta(s)$ the coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. As in the well-known framework of scalar linear regression, this is motivated by an interest in $\beta(t)$ for prediction or inference. \\
+	 Here, $X(\omega)$ is a random function, $Y(\omega)$ is the response variable and $\beta(s)$ the coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. As in the framework of scalar linear regression, estimating $\beta(t)$ is particularly interesting for prediction or inference. \\
 	 
 	 {\color{red} This has to be updated.}
 	 In Section 2, after introducing the necessary theoretical concepts, we describe three methods of estimating a scalar coefficient function using a concept called truncated basis expansion. We report the results of the Monte-Carlo simulation regarding these three different methods in Section 3. Finally, in Section 4, we test the prediction of FLR in a real-world setting. 
@@ -180,7 +180,15 @@ style=authoryear-comp,
 	where the shift parameter $\alpha$ is specified to be the center of the interval subject to approximation. The first order function within the monomial basis system, for $k=0$, is called the constant basis (cf. \cite{horvath_inference_2012}). There exist collinearity problems of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. However, the lower order monomial function makes it impracticable to capture pronounced local peculiarities. It finally leads to an undesirable behavior at the tails such as Taylor expansion (cf. \cite{ramsay_functional_2005}). Therefore, regarding the use, this may be useful for relatively simple functions.
 	
 	\paragraph{Fourier Basis}
-	Fourier series decomposes a periodic function with a weighted sum of trigonometric functions. Imagine that an arbitrary function in $\mathbb{L}^2[0,1]$ has one or more cycles between $0$ and $1$, and we can then apply the Fourier series to approximate the function for smoothing. As the series originated from the amplitude-phase form regarding cosine functions, it can be rewritten by sine and cosine form through a simple trigonometry formula, which restricts the use of an odd number of Fourier basis functions. That is why the Fourier basis for $\mathbb{L}^2[0,1]$ is given by the following sequence of functions defined on $[0,1]$.
+	In the same way the monomial basis corresponds to the Taylor expansion, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function $s(x)$ defined on the interval $[0,1]$.
+	
+	\begin{equation}\label{Fourier_Series}
+		s(x) = \frac{A_0}{2} + \sum_{i = 1}^{\infty} A_n \cos(2\pi n x - \phi_n) = \frac{a_0}{2} + \sum_{i = 1}^{\infty}\left[a_n \cos(2\pi n x) + b_n \sin(2\pi n x)\right]
+	\end{equation}
+	
+	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift. Therefore, rewriting the series in the sine-cosine form through a simple trigonometry formula as shown above is necessary. Due to this origin of the Fourier basis it is reasonable to restrict the number of Fourier basis functions to odd numbered values.
+	The Fourier basis for $\mathbb{L}^2[0,1]$ is thus given by the following sequence of functions defined on $[0,1]$ directly corresponding to the terms of the sine-cosine form of the Fourier series.
+	
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
 		\begin{cases}
@@ -189,6 +197,7 @@ style=authoryear-comp,
 			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
 		\end{cases}
 	\end{equation}
+
 	Therefore, its elements inherit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process over the period $T$. Rephrasing from \cite{ramsay_functional_2005}, the Fourier basis functions are orthonormal when the values $t_j$ are equally spaced within $T$. This basis is suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Typically, knots are placed on an equidistant grid, but deviations from this principle can prove advantageous in atypical settings. Additionally, at each $\tau_l$, the polynomials on neighboring subintervals must match derivatives up to order $m-2$ at the boundary. However, it is sensible to place multiple knots at the same value to replicate specific properties of the data structure. A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
@@ -536,7 +545,7 @@ style=authoryear-comp,
 	This setup is opposing to the often used penalized functional regression as described by \cite{Goldsmith_2011} in which an explicit smoothness constraint $\lambda$ is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $K$ sufficiently high. This would avoid the heavy computing of validating the best value for $K$, which we will conduct in the simulation. To provide intuition in this approach, let 
 	
 	 \begin{equation}
-	 	PSSE_\lambda(\alpha, \beta) = \sum_{i = 1}^{N} (Y_i -\alpha -\int_0^1 \beta(t)X_i(t)dt)^2 + \lambda * \int (D^m\beta(t))^2 dt
+	 	PSSE_\lambda(\alpha, \beta) = \sum_{i = 1}^{N} \left[ Y_i -\alpha -\int_0^1 \beta(t)X_i(t)dt \right]^2 + \lambda \int \left[D^m\beta(t)\right]^2 dt
 	 \end{equation}
  
 	 denote the penalized residual sum of squares as notated by \cite{ramsay_functional_2005} for the derivative of order $m$. A typical choice is the second derivative as highly variable functions are expected to yield large second derivatives and therefore a larger penalty. The smoothing parameter $\lambda$ is set to minimize the $PSSE_\lambda(\alpha, \beta)$, which can be archived by different criteria as shown in \cite{ThomasLee_2003}.
