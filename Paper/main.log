@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  4 FEB 2022 15:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  4 FEB 2022 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -985,13 +985,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22540 strings out of 478353
- 391199 string characters out of 5852101
+ 22542 strings out of 478353
+ 391215 string characters out of 5852101
  1184341 words of memory out of 5000000
  40031 multiletter control sequences out of 15000+600000
- 421473 words of font info for 160 fonts, out of 8000000 for 9000
+ 421524 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,23n,63p,1216b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,23n,63p,1258b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-di
@@ -1012,7 +1012,7 @@ r8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/
 type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (31 pages, 578274 bytes).
+Output written on main.pdf (31 pages, 578340 bytes).
 PDF statistics:
  676 PDF objects out of 1000 (max. 8388607)
  584 compressed objects within 6 object streams
