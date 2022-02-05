@@ -9,11 +9,11 @@ source("data_generator.R")
 
 ###### original functions #####
 f_1 <- function(t) {
-  return(2 * sin(0.5 * pi * t) + 4 * sin(1.5 * pi * t) + 5 * sin(2.5 * pi * t))
+  return(401*(2 * sin(0.5 * pi * t) + 4 * sin(1.5 * pi * t) + 5 * sin(2.5 * pi * t)))
 }
 
 f_2 <- function(t) {
-  return(1.5 * exp(-0.5 * (t - 0.3)^2 / 0.02^2) - 4 * exp(-0.5 * (t - 0.45)^2 / 0.015^2) + 8 * exp(-0.5 * (t - 0.6)^2 / 0.02^2) - exp(-0.5 * (t - 0.8)^2 / 0.03^2))
+  return(401*(1.5 * exp(-0.5 * (t - 0.3)^2 / 0.02^2) - 4 * exp(-0.5 * (t - 0.45)^2 / 0.015^2) + 8 * exp(-0.5 * (t - 0.6)^2 / 0.02^2) - exp(-0.5 * (t - 0.8)^2 / 0.03^2)))
 }
 
 # grid for plotting
@@ -303,22 +303,22 @@ fReg_coef_2_2 <- map(
 ##### and bind to data.frame #####
 beta_hat_1_1 <- as_tibble(list.cbind(map(
   .x = 1:3,
-  .f = function(i) (eval_bases_1_1[[i]] %*% fReg_coef_1_1[[i]]) / 401
+  .f = function(i) (eval_bases_1_1[[i]] %*% fReg_coef_1_1[[i]]) # / 401
 )))
 
 beta_hat_1_2 <- as_tibble(list.cbind(map(
   .x = 1:3,
-  .f = function(i) (eval_bases_1_2[[i]] %*% fReg_coef_1_2[[i]]) / 401
+  .f = function(i) (eval_bases_1_2[[i]] %*% fReg_coef_1_2[[i]]) # / 401
 )))
 
 beta_hat_2_1 <- as_tibble(list.cbind(map(
   .x = 1:3,
-  .f = function(i) (eval_bases_2_1[[i]] %*% fReg_coef_2_1[[i]]) / 401
+  .f = function(i) (eval_bases_2_1[[i]] %*% fReg_coef_2_1[[i]]) # / 401
 )))
 
 beta_hat_2_2 <- as_tibble(list.cbind(map(
   .x = 1:3,
-  .f = function(i) (eval_bases_2_2[[i]] %*% fReg_coef_2_2[[i]]) / 401
+  .f = function(i) (eval_bases_2_2[[i]] %*% fReg_coef_2_2[[i]]) # / 401
 )))
 
 names(beta_hat_1_1) <- c("B-Spline", "Monomial", "Fourier")
@@ -513,7 +513,7 @@ pca_reg_coef_2_2 <- map(
 # and put into tibbles for plotting #####
 pca_beta_est_1_1 <- as_tibble(list.cbind(map(
   .x = 1:9,
-  .f = function(i) t(pca_reg_coef_1_1[[i]] %*% t(pc_values_1_1[[i]])) / 401
+  .f = function(i) t(pca_reg_coef_1_1[[i]] %*% t(pc_values_1_1[[i]])) # / 401
 )))
 
 colnames(pca_beta_est_1_1) <- c(
@@ -524,7 +524,7 @@ colnames(pca_beta_est_1_1) <- c(
 
 pca_beta_est_1_2 <- as_tibble(list.cbind(map(
   .x = 1:9,
-  .f = function(i) t(pca_reg_coef_1_2[[i]] %*% t(pc_values_1_2[[i]])) / 401
+  .f = function(i) t(pca_reg_coef_1_2[[i]] %*% t(pc_values_1_2[[i]])) # / 401
 )))
 
 colnames(pca_beta_est_1_2) <- c(
@@ -535,7 +535,7 @@ colnames(pca_beta_est_1_2) <- c(
 
 pca_beta_est_2_1 <- as_tibble(list.cbind(map(
   .x = 1:9,
-  .f = function(i) t(pca_reg_coef_2_1[[i]] %*% t(pc_values_2_1[[i]])) / 401
+  .f = function(i) t(pca_reg_coef_2_1[[i]] %*% t(pc_values_2_1[[i]])) # / 401
 )))
 
 colnames(pca_beta_est_2_1) <- c(
@@ -546,7 +546,7 @@ colnames(pca_beta_est_2_1) <- c(
 
 pca_beta_est_2_2 <- as_tibble(list.cbind(map(
   .x = 1:9,
-  .f = function(i) t(pca_reg_coef_2_2[[i]] %*% t(pc_values_2_2[[i]])) / 401
+  .f = function(i) t(pca_reg_coef_2_2[[i]] %*% t(pc_values_2_2[[i]])) # / 401
 )))
 
 colnames(pca_beta_est_2_2) <- c(
@@ -653,7 +653,7 @@ basis_expansion_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_1_1.pdf", plot = basis_expansion_plot_1_1,
@@ -671,7 +671,7 @@ basis_expansion_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_1_2.pdf", plot = basis_expansion_plot_1_2,
@@ -689,7 +689,7 @@ basis_expansion_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_2_1.pdf", plot = basis_expansion_plot_2_1,
@@ -707,7 +707,7 @@ basis_expansion_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_2_2.pdf", plot = basis_expansion_plot_2_2,
@@ -726,7 +726,7 @@ fpcr_nharm2_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf", plot = fpcr_nharm2_plot_1_1,
@@ -744,7 +744,7 @@ fpcr_nharm2_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf", plot = fpcr_nharm2_plot_1_2,
@@ -762,7 +762,7 @@ fpcr_nharm2_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf", plot = fpcr_nharm2_plot_2_1,
@@ -780,7 +780,7 @@ fpcr_nharm2_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf", plot = fpcr_nharm2_plot_2_2,
@@ -799,7 +799,7 @@ fpcr_nharm3_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf", plot = fpcr_nharm3_plot_1_1,
@@ -817,7 +817,7 @@ fpcr_nharm3_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf", plot = fpcr_nharm3_plot_1_2,
@@ -835,7 +835,7 @@ fpcr_nharm3_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf", plot = fpcr_nharm3_plot_2_1,
@@ -853,7 +853,7 @@ fpcr_nharm3_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf", plot = fpcr_nharm3_plot_2_2,
@@ -872,7 +872,7 @@ fpcr_nharm4_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf", plot = fpcr_nharm4_plot_1_1,
@@ -890,7 +890,7 @@ fpcr_nharm4_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf", plot = fpcr_nharm4_plot_1_2,
@@ -908,7 +908,7 @@ fpcr_nharm4_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf", plot = fpcr_nharm4_plot_2_1,
@@ -926,7 +926,7 @@ fpcr_nharm4_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
   ) +
-  guides(color = guide_legend(override.aes = list(lwd = 5)))
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf", plot = fpcr_nharm4_plot_2_2,

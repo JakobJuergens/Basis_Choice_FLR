@@ -1,11 +1,11 @@
 library(tidyverse)
 
 f1 <- function(t){
-  return(2*sin(0.5*pi*t) + 4*sin(1.5*pi*t) + 5*sin(2.5*pi*t))
+  return(401*(2*sin(0.5*pi*t) + 4*sin(1.5*pi*t) + 5*sin(2.5*pi*t)))
 }
 
 f2 <- function(t){
-  return(1.5 * exp(-0.5 * (t - 0.3)^2 / 0.02^2) - 4 * exp(-0.5 * (t - 0.45)^2 / 0.015^2) + 8 * exp(-0.5 * (t - 0.6)^2 / 0.02^2) - exp(-0.5 * (t - 0.8)^2 / 0.03^2))
+  return(401*(1.5 * exp(-0.5 * (t - 0.3)^2 / 0.02^2) - 4 * exp(-0.5 * (t - 0.45)^2 / 0.015^2) + 8 * exp(-0.5 * (t - 0.6)^2 / 0.02^2) - exp(-0.5 * (t - 0.8)^2 / 0.03^2)))
 }
 
 grid <- seq(0, 1, length.out = 1000)
