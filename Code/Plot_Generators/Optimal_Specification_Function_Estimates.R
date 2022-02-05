@@ -612,14 +612,14 @@ plot_tibble_1_2 <- cbind(
 plot_tibble_2_1 <- cbind(
   tibble(
     x = plot_grid,
-    f1 = f_2(plot_grid)
+    f2 = f_2(plot_grid)
   ),
   beta_hat_2_1,
   pca_beta_est_2_1
 ) %>%
   pivot_longer(cols = !x, names_to = "Curve", values_to = "y") %>%
   mutate(Curve = factor(Curve, levels = c(
-    "f1", "B-Spline", "Monomial", "Fourier",
+    "f2", "B-Spline", "Monomial", "Fourier",
     "bspline_nharm2", "bspline_nharm3", "bspline_nharm4",
     "monomial_nharm2", "monomial_nharm3", "monomial_nharm4",
     "fourier_nharm2", "fourier_nharm3", "fourier_nharm4"
@@ -628,14 +628,14 @@ plot_tibble_2_1 <- cbind(
 plot_tibble_2_2 <- cbind(
   tibble(
     x = plot_grid,
-    f1 = f_2(plot_grid)
+    f2 = f_2(plot_grid)
   ),
   beta_hat_2_2,
   pca_beta_est_2_2
 ) %>%
   pivot_longer(cols = !x, names_to = "Curve", values_to = "y") %>%
   mutate(Curve = factor(Curve, levels = c(
-    "f1", "B-Spline", "Monomial", "Fourier",
+    "f2", "B-Spline", "Monomial", "Fourier",
     "bspline_nharm2", "bspline_nharm3", "bspline_nharm4",
     "monomial_nharm2", "monomial_nharm3", "monomial_nharm4",
     "fourier_nharm2", "fourier_nharm3", "fourier_nharm4"
@@ -651,7 +651,7 @@ basis_expansion_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -668,7 +668,7 @@ basis_expansion_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -677,7 +677,7 @@ ggsave(
 )
 
 basis_expansion_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
-  filter(Curve %in% c("f1", "B-Spline", "Monomial", "Fourier"))) +
+  filter(Curve %in% c("f2", "B-Spline", "Monomial", "Fourier"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -685,7 +685,7 @@ basis_expansion_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -694,7 +694,7 @@ ggsave(
 )
 
 basis_expansion_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
-  filter(Curve %in% c("f1", "B-Spline", "Monomial", "Fourier"))) +
+  filter(Curve %in% c("f2", "B-Spline", "Monomial", "Fourier"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -702,7 +702,7 @@ basis_expansion_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -720,7 +720,7 @@ fpcr_nharm2_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -737,7 +737,7 @@ fpcr_nharm2_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -746,7 +746,7 @@ ggsave(
 )
 
 fpcr_nharm2_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm2", "monomial_nharm2", "fourier_nharm2"))) +
+                                 filter(Curve %in% c("f2", "bspline_nharm2", "monomial_nharm2", "fourier_nharm2"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -754,7 +754,7 @@ fpcr_nharm2_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -763,7 +763,7 @@ ggsave(
 )
 
 fpcr_nharm2_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm2", "monomial_nharm2", "fourier_nharm2"))) +
+                                 filter(Curve %in% c("f2", "bspline_nharm2", "monomial_nharm2", "fourier_nharm2"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -771,7 +771,7 @@ fpcr_nharm2_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -789,7 +789,7 @@ fpcr_nharm3_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -806,7 +806,7 @@ fpcr_nharm3_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -815,7 +815,7 @@ ggsave(
 )
 
 fpcr_nharm3_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm3", "monomial_nharm3", "fourier_nharm3"))) +
+                                 filter(Curve %in% c("f2", "bspline_nharm3", "monomial_nharm3", "fourier_nharm3"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -823,7 +823,7 @@ fpcr_nharm3_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -832,7 +832,7 @@ ggsave(
 )
 
 fpcr_nharm3_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm3", "monomial_nharm3", "fourier_nharm3"))) +
+                                 filter(Curve %in% c("f2", "bspline_nharm3", "monomial_nharm3", "fourier_nharm3"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -840,7 +840,7 @@ fpcr_nharm3_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -858,7 +858,7 @@ fpcr_nharm4_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -875,7 +875,7 @@ fpcr_nharm4_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -884,7 +884,7 @@ ggsave(
 )
 
 fpcr_nharm4_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm4", "monomial_nharm4", "fourier_nharm4"))) +
+                                 filter(Curve %in% c("f2", "bspline_nharm4", "monomial_nharm4", "fourier_nharm4"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -892,7 +892,7 @@ fpcr_nharm4_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
@@ -901,7 +901,7 @@ ggsave(
 )
 
 fpcr_nharm4_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm4", "monomial_nharm4", "fourier_nharm4"))) +
+                                 filter(Curve %in% c("f2", "bspline_nharm4", "monomial_nharm4", "fourier_nharm4"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -909,7 +909,7 @@ fpcr_nharm4_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.title = element_text(size = 40),
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
-    legend.text = element_text(size = 20)
+    legend.text = element_text(size = 40)
   )
 
 ggsave(
