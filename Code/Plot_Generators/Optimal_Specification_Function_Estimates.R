@@ -652,11 +652,12 @@ basis_expansion_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_1_1.pdf", plot = basis_expansion_plot_1_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 basis_expansion_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
@@ -669,11 +670,12 @@ basis_expansion_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_1_2.pdf", plot = basis_expansion_plot_1_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 basis_expansion_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
@@ -686,11 +688,12 @@ basis_expansion_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_2_1.pdf", plot = basis_expansion_plot_2_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 basis_expansion_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
@@ -703,11 +706,12 @@ basis_expansion_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/basis_expansion_2_2.pdf", plot = basis_expansion_plot_2_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 ##### generate plots for fpcr nharm = 2 #####
@@ -721,11 +725,12 @@ fpcr_nharm2_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf", plot = fpcr_nharm2_plot_1_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm2_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
@@ -738,11 +743,12 @@ fpcr_nharm2_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf", plot = fpcr_nharm2_plot_1_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm2_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
@@ -755,11 +761,12 @@ fpcr_nharm2_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf", plot = fpcr_nharm2_plot_2_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm2_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
@@ -772,11 +779,12 @@ fpcr_nharm2_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf", plot = fpcr_nharm2_plot_2_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 ##### generate plots for fpcr nharm = 3 #####
@@ -790,11 +798,12 @@ fpcr_nharm3_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf", plot = fpcr_nharm3_plot_1_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm3_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
@@ -807,11 +816,12 @@ fpcr_nharm3_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf", plot = fpcr_nharm3_plot_1_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm3_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
@@ -824,11 +834,12 @@ fpcr_nharm3_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf", plot = fpcr_nharm3_plot_2_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm3_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
@@ -841,11 +852,12 @@ fpcr_nharm3_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf", plot = fpcr_nharm3_plot_2_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 ##### generate plots for fpcr nharm = 3 #####
@@ -859,11 +871,12 @@ fpcr_nharm4_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf", plot = fpcr_nharm4_plot_1_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm4_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
@@ -876,11 +889,12 @@ fpcr_nharm4_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf", plot = fpcr_nharm4_plot_1_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm4_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
@@ -893,11 +907,12 @@ fpcr_nharm4_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf", plot = fpcr_nharm4_plot_2_1,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
 
 fpcr_nharm4_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
@@ -910,9 +925,10 @@ fpcr_nharm4_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
     axis.text = element_text(size = 40),
     legend.title = element_text(size = 48),
     legend.text = element_text(size = 40)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 5)))
 
 ggsave(
   filename = "../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf", plot = fpcr_nharm4_plot_2_2,
-  width = 20, height = 8, units = "in", dpi = 600
+  width = 20, height = 12, units = "in", dpi = 600
 )
