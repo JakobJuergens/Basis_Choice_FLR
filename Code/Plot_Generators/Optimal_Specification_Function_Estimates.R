@@ -648,9 +648,9 @@ basis_expansion_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -665,9 +665,9 @@ basis_expansion_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -682,9 +682,9 @@ basis_expansion_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -699,9 +699,9 @@ basis_expansion_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -717,9 +717,9 @@ fpcr_nharm2_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -734,9 +734,9 @@ fpcr_nharm2_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -751,9 +751,9 @@ fpcr_nharm2_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -768,9 +768,9 @@ fpcr_nharm2_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -786,9 +786,9 @@ fpcr_nharm3_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -803,9 +803,9 @@ fpcr_nharm3_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -820,9 +820,9 @@ fpcr_nharm3_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -837,9 +837,9 @@ fpcr_nharm3_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -855,9 +855,9 @@ fpcr_nharm4_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -872,9 +872,9 @@ fpcr_nharm4_plot_1_2 <- ggplot(data = plot_tibble_1_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -889,9 +889,9 @@ fpcr_nharm4_plot_2_1 <- ggplot(data = plot_tibble_2_1 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
@@ -906,9 +906,9 @@ fpcr_nharm4_plot_2_2 <- ggplot(data = plot_tibble_2_2 %>%
   theme_light() +
   theme(
     legend.position = "bottom",
-    axis.title = element_text(size = 20),
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 24),
+    axis.title = element_text(size = 40),
+    axis.text = element_text(size = 40),
+    legend.title = element_text(size = 48),
     legend.text = element_text(size = 20)
   )
 
