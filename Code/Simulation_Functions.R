@@ -144,7 +144,7 @@ bspline_function <- function(rep, my_data = NULL, n_obs, seed, debug = FALSE) {
             
             # multiply
             coefficient_matrix_1_1 <- map(.x = 1:n_elem_fold,
-                    .f = function(i) est_coef_1_1 %*% obs_test_coefs[,i])
+                                          .f = function(i) est_coef_1_1 %*% obs_test_coefs[,i])
             coefficient_matrix_1_2 <- map(.x = 1:n_elem_fold,
                                           .f = function(i) est_coef_1_2 %*% obs_test_coefs[,i])
             coefficient_matrix_2_1 <- map(.x = 1:n_elem_fold,
