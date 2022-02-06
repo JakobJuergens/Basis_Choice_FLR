@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  4 FEB 2022 16:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  6 FEB 2022 12:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -845,15 +845,7 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
 
-(./main.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                deboor_2001
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+(./main.bbl)
 Package biblatex Info: Reference section=0 on input line 29.
 Package biblatex Info: Reference segment=0 on input line 29.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
@@ -878,77 +870,72 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [2] [3] [4]
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 127.
+ []
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 127.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 127.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 127.
-
-[5] [6] [7] [8] [9] [10] [11] [12]
+[3] [4] [5] [6] [7]
+<../Graphics/basis_expansions.pdf, id=265, 1445.4pt x 578.16pt>
+File: ../Graphics/basis_expansions.pdf Graphic file (type pdf)
+<use ../Graphics/basis_expansions.pdf>
+Package pdftex.def Info: ../Graphics/basis_expansions.pdf  used on input line 2
+33.
+(pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
+ [8 <../Graphics/basis_expansions.pdf>] [9] [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-[14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 569--571
+ [11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
+[13] [14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 586--588
 
  []
 
-<../Graphics/smooth_function.png, id=368, 509.65407pt x 324.46219pt>
-File: ../Graphics/smooth_function.png Graphic file (type png)
-<use ../Graphics/smooth_function.png>
-Package pdftex.def Info: ../Graphics/smooth_function.png  used on input line 57
-9.
-(pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-<../Graphics/bumpy_function.png, id=369, 509.65407pt x 324.46219pt>
-File: ../Graphics/bumpy_function.png Graphic file (type png)
-<use ../Graphics/bumpy_function.png>
-Package pdftex.def Info: ../Graphics/bumpy_function.png  used on input line 585
-.
-(pdftex.def)             Requested size: 241.84843pt x 153.96765pt.
-[16 <../Graphics/smooth_function.png> <../Graphics/bumpy_function.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 628--629
+<../Graphics/f1_plot.pdf, id=380, 1445.4pt x 867.24pt>
+File: ../Graphics/f1_plot.pdf Graphic file (type pdf)
+<use ../Graphics/f1_plot.pdf>
+Package pdftex.def Info: ../Graphics/f1_plot.pdf  used on input line 596.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/f2_plot.pdf, id=381, 1445.4pt x 867.24pt>
+File: ../Graphics/f2_plot.pdf Graphic file (type pdf)
+<use ../Graphics/f2_plot.pdf>
+Package pdftex.def Info: ../Graphics/f2_plot.pdf  used on input line 602.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+[16 <../Graphics/f1_plot.pdf> <../Graphics/f2_plot.pdf>] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 645--646
 
  []
 
-[17]
 
 LaTeX Warning: Hyper reference `fpc_exp_transf' on page 18 undefined on input l
-ine 633.
+ine 650.
 
 [18] [19]
-<../Graphics/FinderSD.jpg, id=413, 1505.625pt x 1004.25188pt>
+<../Graphics/FinderSD.jpg, id=434, 1505.625pt x 1004.25188pt>
 File: ../Graphics/FinderSD.jpg Graphic file (type jpg)
 <use ../Graphics/FinderSD.jpg>
-Package pdftex.def Info: ../Graphics/FinderSD.jpg  used on input line 683.
+Package pdftex.def Info: ../Graphics/FinderSD.jpg  used on input line 698.
 (pdftex.def)             Requested size: 483.69687pt x 322.6237pt.
  [20 <../Graphics/FinderSD.jpg>]
-<../Graphics/Fourier_Basis.pdf, id=421, 1445.4pt x 578.16pt>
+<../Graphics/Fourier_Basis.pdf, id=442, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 694.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 709.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Bspline_Basis.pdf, id=422, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=443, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 699.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 714.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Monomial_Basis.pdf, id=423, 1445.4pt x 578.16pt>
+<../Graphics/Monomial_Basis.pdf, id=444, 1445.4pt x 578.16pt>
 File: ../Graphics/Monomial_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Monomial_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 704
+Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 719
 .
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [21 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf> <../Graphi
@@ -957,65 +944,179 @@ cs/Monomial_Basis.pdf>]
 
  (./tables.tex) [22
 
-] [23] [24] [25] [26
+] [23] [24] [25] [26]
+<../Graphics/Curve_Estimates/basis_expansion_1_1.pdf, id=502, 1445.4pt x 867.24
+pt>
+File: ../Graphics/Curve_Estimates/basis_expansion_1_1.pdf Graphic file (type pd
+f)
+<use ../Graphics/Curve_Estimates/basis_expansion_1_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_1_1.pdf  u
+sed on input line 732.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/basis_expansion_1_2.pdf, id=503, 1445.4pt x 867.24
+pt>
+File: ../Graphics/Curve_Estimates/basis_expansion_1_2.pdf Graphic file (type pd
+f)
+<use ../Graphics/Curve_Estimates/basis_expansion_1_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_1_2.pdf  u
+sed on input line 737.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/basis_expansion_2_1.pdf, id=504, 1445.4pt x 867.24
+pt>
+File: ../Graphics/Curve_Estimates/basis_expansion_2_1.pdf Graphic file (type pd
+f)
+<use ../Graphics/Curve_Estimates/basis_expansion_2_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_2_1.pdf  u
+sed on input line 746.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/basis_expansion_2_2.pdf, id=505, 1445.4pt x 867.24
+pt>
+File: ../Graphics/Curve_Estimates/basis_expansion_2_2.pdf Graphic file (type pd
+f)
+<use ../Graphics/Curve_Estimates/basis_expansion_2_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_2_2.pdf  u
+sed on input line 751.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf, id=506, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf  used 
+on input line 760.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf, id=507, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf  used 
+on input line 765.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf, id=508, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf  used 
+on input line 774.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf, id=509, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf  used 
+on input line 779.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf, id=510, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf  used 
+on input line 788.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf, id=511, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf  used 
+on input line 793.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+ [27
 
 
-]
+ <../Graphics/Curve_Estimates/basis_expansion_1_1.pdf> <../Graphics/Curve_Estim
+ates/basis_expansion_1_2.pdf> <../Graphics/Curve_Estimates/basis_expansion_2_1.
+pdf> <../Graphics/Curve_Estimates/basis_expansion_2_2.pdf> <../Graphics/Curve_E
+stimates/fpcr_nharm2_1_1.pdf> <../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf>
+ <../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf> <../Graphics/Curve_Estimates
+/fpcr_nharm2_2_2.pdf>]
+<../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf, id=561, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf  used 
+on input line 802.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf, id=562, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf  used 
+on input line 807.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf, id=563, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf  used 
+on input line 816.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf, id=564, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf  used 
+on input line 821.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf, id=565, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf  used 
+on input line 830.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+<../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf, id=566, 1445.4pt x 867.24pt>
+File: ../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf Graphic file (type pdf)
+<use ../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf>
+Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf  used 
+on input line 835.
+(pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
+ [28 <../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf> <../Graphics/Curve_Estim
+ates/fpcr_nharm3_1_2.pdf> <../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf> <..
+/Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf> <../Graphics/Curve_Estimates/fpc
+r_nharm4_1_1.pdf> <../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf> <../Graphic
+s/Curve_Estimates/fpcr_nharm4_2_1.pdf> <../Graphics/Curve_Estimates/fpcr_nharm4
+_2_2.pdf>] [29]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [27]
-[28]
+ [30]
+[31]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [29] [30] [31] (./main.aux (./tables.aux))
+ [32] [33] (./main.aux (./tables.aux))
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 87798015B3C968E952A147178F6D6800;6039.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                main
-(biblatex)                and rerun LaTeX afterwards.
-
+(rerunfilecheck)             Checksum: 7D07E7F4044837753B21C572D4C6028F;6128.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22542 strings out of 478353
- 391215 string characters out of 5852101
- 1184341 words of memory out of 5000000
- 40031 multiletter control sequences out of 15000+600000
- 421524 words of font info for 161 fonts, out of 8000000 for 9000
+ 22702 strings out of 478353
+ 397808 string characters out of 5852101
+ 1194591 words of memory out of 5000000
+ 40148 multiletter control sequences out of 15000+600000
+ 423213 words of font info for 170 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,23n,63p,1258b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c
-:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fo
-nts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/
-type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (31 pages, 578340 bytes).
+ 60i,23n,63p,1197b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
+st, replaced by a fixed one
+
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/cm-super/sfrm1095.pfb>
+Output written on main.pdf (33 pages, 1053929 bytes).
 PDF statistics:
- 676 PDF objects out of 1000 (max. 8388607)
- 584 compressed objects within 6 object streams
- 189 named destinations out of 1000 (max. 500000)
- 35631 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 816 PDF objects out of 1000 (max. 8388607)
+ 687 compressed objects within 7 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 37764 words of extra memory for PDF output out of 42996 (max. 10000000)
 

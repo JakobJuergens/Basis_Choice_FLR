@@ -1,17 +1,15 @@
 [0] Config.pm:311> INFO - This is Biber 2.16
 [0] Config.pm:314> INFO - Logfile is 'main.blg'
-[204] biber-MSWIN32:340> INFO - === 
-[275] Biber.pm:415> INFO - Reading 'main.bcf'
-[503] Biber.pm:952> INFO - Found 19 citekeys in bib section 0
-[532] Biber.pm:4340> INFO - Processing section 0
-[555] Biber.pm:4531> INFO - Looking for bibtex format file 'RMbibliography.bib' for section 0
-[629] bibtex.pm:1689> INFO - LaTeX decoding ...
-[686] bibtex.pm:1494> INFO - Found BibTeX data source 'RMbibliography.bib'
-[974] Utils.pm:395> WARN - I didn't find a database entry for 'deboor_2001' (section 0)
-[1049] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1049] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1049] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[1049] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
-[1127] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1161] bbl.pm:757> INFO - Output to main.bbl
-[1162] Biber.pm:128> INFO - WARNINGS: 1
+[526] biber-MSWIN32:340> INFO - === 
+[733] Biber.pm:415> INFO - Reading 'main.bcf'
+[954] Biber.pm:952> INFO - Found 18 citekeys in bib section 0
+[975] Biber.pm:4340> INFO - Processing section 0
+[1078] Biber.pm:4531> INFO - Looking for bibtex format file 'RMbibliography.bib' for section 0
+[1273] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1411] bibtex.pm:1494> INFO - Found BibTeX data source 'RMbibliography.bib'
+[2133] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[2133] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[2133] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[2134] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[2378] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[2439] bbl.pm:757> INFO - Output to main.bbl
