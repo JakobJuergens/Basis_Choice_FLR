@@ -19,7 +19,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{B-spline Basis}{7}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}Approximation and Smoothing via Basis Truncation}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}Approximation and Smoothing via Basis Truncation}{8}{subsection.2.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.6}Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}{8}{subsection.2.6}%
 \defcounter {refsection}{0}\relax 
@@ -29,13 +29,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.7.2}Estimation using Functional Principal Components}{13}{subsubsection.2.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.8}Literature}{14}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.8}Literature}{15}{subsection.2.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Simulation Study}{15}{section.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}Motivation}{15}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Generating Similar Curves}{15}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Generating Similar Curves}{16}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Simulation setup}{16}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
@@ -43,46 +43,52 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.4.1}Basis Expansion Regression}{17}{subsubsection.3.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{17}{section*.7}%
+\contentsline {paragraph}{Monomial Basis}{18}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{B-spline Basis}{17}{section*.8}%
+\contentsline {paragraph}{B-spline Basis}{18}{section*.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Fourier Basis}{18}{section*.9}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.4.2}Functional Principal Component Regression}{18}{subsubsection.3.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{18}{section*.10}%
+\contentsline {paragraph}{Monomial Basis}{19}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{B-spline Basis}{18}{section*.11}%
+\contentsline {paragraph}{B-spline Basis}{19}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{18}{section*.12}%
+\contentsline {paragraph}{Fourier Basis}{19}{section*.12}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.4.3}Interpretation and Relevance for Application}{19}{subsubsection.3.4.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Application}{19}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Literature}{19}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}Interpretation of Results}{20}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Outlook}{19}{section.5}%
+\contentsline {subsection}{\numberline {4.2}Literature}{20}{subsection.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Literature}{19}{subsection.5.1}%
+\contentsline {section}{\numberline {5}Outlook}{20}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Appendix}{20}{section.6}%
+\contentsline {subsection}{\numberline {5.1}Limitations}{20}{subsection.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Near-infrared (NIR) Spectroscopy}{20}{subsection.6.1}%
+\contentsline {subsection}{\numberline {5.2}Possible Extensions}{20}{subsection.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Basis Plots}{21}{subsection.6.2}%
+\contentsline {subsection}{\numberline {5.3}Literature}{20}{subsection.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Simulation Study Results}{22}{subsection.6.3}%
+\contentsline {section}{\numberline {6}Appendix}{21}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Curve Estimates for Chosen Specifications}{27}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.1}Near-infrared (NIR) Spectroscopy}{21}{subsection.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Proofs}{29}{section.7}%
+\contentsline {subsection}{\numberline {6.2}Basis Plots}{22}{subsection.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Lemma}{29}{subsection.7.1}%
+\contentsline {subsection}{\numberline {6.3}Simulation Study Results}{23}{subsection.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Theorem (Karhunen-Lo\'{e}ve expansion)}{30}{subsection.7.2}%
+\contentsline {subsection}{\numberline {6.4}Curve Estimates for Chosen Specifications}{28}{subsection.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Bibliography}{32}{section.8}%
+\contentsline {section}{\numberline {7}Proofs}{30}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Affidavit}{33}{section.9}%
+\contentsline {subsection}{\numberline {7.1}Lemma}{30}{subsection.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {7.2}Theorem (Karhunen-Lo\'{e}ve expansion)}{31}{subsection.7.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Bibliography}{33}{section.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}Affidavit}{35}{section.9}%

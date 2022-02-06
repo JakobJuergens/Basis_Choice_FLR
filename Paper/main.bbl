@@ -261,6 +261,48 @@
       \verb 10.1046/j.1474-9728.2002.00019.x
       \endverb
     \endentry
+    \entry{Dattoli_2001}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=331113effc1f22c018a1a79dc245b08e}{%
+           family={Dattoli},
+           familyi={D\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=18af73f07d570c29f6af80fd41698e8b}{%
+           family={Ricci},
+           familyi={R\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=721bf1b5beacdd1e2f512515e239aff6}{%
+           family={Cesarano},
+           familyi={C\bibinitperiod},
+           given={Clemente},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2b2ce71656b41d0b7d0d187ada9aab29}
+      \strng{fullhash}{2b2ce71656b41d0b7d0d187ada9aab29}
+      \strng{bibnamehash}{2b2ce71656b41d0b7d0d187ada9aab29}
+      \strng{authorbibnamehash}{2b2ce71656b41d0b7d0d187ada9aab29}
+      \strng{authornamehash}{2b2ce71656b41d0b7d0d187ada9aab29}
+      \strng{authorfullhash}{2b2ce71656b41d0b7d0d187ada9aab29}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International Journal of Nonlinear Sciences and Numerical Simulation}
+      \field{month}{01}
+      \field{title}{A Note on Legendre Polynomials}
+      \field{volume}{2}
+      \field{year}{2001}
+      \verb{doi}
+      \verb 10.1515/IJNSNS.2001.2.4.365
+      \endverb
+    \endentry
     \entry{Goldsmith_2011}{article}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=1e725b50859e5359bb3c22b54ab55ddf}{%
