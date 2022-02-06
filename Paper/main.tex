@@ -53,7 +53,7 @@ style=authoryear-comp,
 
 	\section{Introduction}
 		
-	Functional Data Analysis (FDA), which has its roots in the work of Ulf Grenander and Kari Karhunen, is gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, FDA has advantages in that it allows extracting information given by properties such as the smoothness of the underlying process or its derivatives (cf. \cite{levitin_introduction_2007}).	As \cite{kokoszka_introduction_2017} describe, using methods from FDA should be considered when one variables or units of a given data set can be seen as smooth curves or functions.	 
+	Functional Data Analysis (FDA), which has its roots in the work of Ulf Grenander and Kari Karhunen, is gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, FDA has advantages in that it allows extracting information given by properties such as the smoothness of the underlying process or its derivatives (cf. \cite{levitin_introduction_2007}).	As \cite{kokoszka_introduction_2017} describe, using methods from FDA should be considered when one variable of a given data set can be seen as smooth curves or functions.	 
 	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of light in the Near-infrared (NIR) spectrum by chemical samples, an example which will be used in later parts of this paper.\footnote{For more details on Near-Infrared-Spectroscopy, refer to the section on Near-Infrared-Spectroscopy in the Appendix.}  
 	This paper introduces Functional Linear Regression in a scalar-on-function setting relating functional predictors to a scalar response as described by Equation \ref{DGP1}.
 	 
@@ -336,6 +336,8 @@ style=authoryear-comp,
 			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) 
 			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
 		\end{align}	
+	
+	This method of deriving or approximating the eigenfunctions and scores from a data set is introduced in \cite{ramsay_functional_2005} (chapter 8.4.2) and implemented in the R-package fda. The following considerations and results of the simulation study might therefore serve as information about the performance of this method in a scenario where a limited number of basis functions is provided to the method.
 	
 	\subsection{Scalar-on-Function Regression}
 	In the simple scalar setting, one of the most important tools in econometrics is linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. For reference, assume a data generating process as follows.
