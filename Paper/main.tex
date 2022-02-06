@@ -322,7 +322,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
-	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
+	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the curves for both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	
 	\begin{equation}\label{score_approx}
 			\hat{\xi}_{i}^m = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s
@@ -563,15 +563,14 @@ style=authoryear-comp,
 	%In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated B-spline basis which is created using 50 knots. These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, thus, the new realizations for the scores are drawn from a multivariate normal distribution $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{J}\right)' \sim \mathcal{N}(0_J, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_J))$. Finally, we obtain the generated curves $NIR_{sim}$
+	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated cubic B-spline basis which is created using 50 knots. In the R implementation of the fda package that is used, these 50 knots account for 52 basis functions (50+4-2). These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, so the new realizations for the scores are drawn from a multivariate normal distribution $\tilde{\xi} = \left(\tilde{\xi}_{1},\: \dots \:, \tilde{\xi}_{M}\right)' \sim \mathcal{N}(0_M, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_M))$. Finally, we obtain the generated curves $NIR_{sim}$
 	
-	{\color{blue} This has to be more precise. We don't really use $\hat{\nu}_j(t)$ but $\tilde{\nu}^{m,L}(t)$ for a large $L$.}
 	
 	\begin{equation}
-		\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{j = 1}^{J} \tilde{\xi}_j(\omega) \hat{\nu}_j(t)
+		\tilde{X}(\omega)(t) = \hat{\mu}(t) + \sum_{m = 1}^{M} \tilde{\xi}_m(\omega) \tilde{\nu}^{m,L}(t)
 	\end{equation}
 	
-	where $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\hat{\nu}_j(t)$ are approximated as vectors in $\mathbb{R}^{401}$.
+	where $\tilde{X}(\omega)(t)$, $\hat{\mu}(t)$ and $\tilde{\nu}^{m,L}(t)$  are approximated as vectors in $\mathbb{R}^{401}$ for $L =$ 30 eigenfunctions.
     
     \subsection{Simulation setup}
 	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions,  $f_1(t)$ and  $f_2(t)$, are created that differ in their smoothness, to compare the introduced methods with differing true coefficient functions:
@@ -632,35 +631,46 @@ style=authoryear-comp,
 		 The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
 		
 	\subsection{Results}	
-	
+	The discussed results and figures of $\hat{\beta}$ for the simulation can be found in the appendix. 
 	\subsubsection{Basis Expansion Regression}
 	The following results origin from the \hyperref[basis_exp_transf]{\textbf{Estimation using Basis-Representation}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
 	
 	\paragraph{Monomial Basis}
-	Due to the in the number of basis functions increasing collinearity of these basis functions, simulations were conducted up until the sixth monomial basis. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$ and show a better performance than B-splines for this coefficient function, but show the weakest performance for the coefficient function $f_2$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2, Y_2$ this weakness is still visible, but less pronounced.
+	Due to the in the number of basis functions increasing collinearity of these basis functions, simulations were conducted up until the sixth monomial basis, which already shows signs of numerical instability. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$. The monomial basis shows a better performance than B-splines for this coefficient function. A hypothesis for this could be that $f_1$ resembles an entire function, which can be well approximated with a power series. In case of $f_2$, this basis shows the weakest performance out of all basis, which is visible in figure 9 and 10, where it seems like $\hat{\beta}$ is not changing in the amount of noise and shows exaggerated behaviour at the boundaries. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2,Y_2$ this weakness is still visible, but less pronounced.
 	
 	\paragraph{B-spline Basis}
 	Simulations with B-spline basis functions were possible from 5 to 18, since from 18 onwards the simulations were running into problems concerning {\color{green} what happened here exactly?}
-	The smooth function $f_1$ requires only 5(4) B-spline basis functions, for the high(low) signal-to-noise ratio to obtain the best fit for the B-spline basis, which performs the worst for $f_1$. For $f_2$, 11(6) B-spline basis functions are needed for the high(low) signal-to-noise ratios. For $f_2$, the B-spline basis functions outperform the monomial basis but come second to the Fourier basis.
+	The smooth function $f_1$ requires only 5(4) B-spline basis functions, for the high(low) signal-to-noise ratio to obtain the best fit for the B-spline basis, which performs the worst for $f_1$. An explanation might be its exaggerated behaviour at the boundaries and the exaggeration of the peculiarities of $f_1$ (figure 7 and 8), which is especially pronounced for the higher noise responses. For $f_2$, 11(6) B-spline basis functions are chosen for the high(low) signal-to-noise ratios. For $f_2$, the B-spline basis functions outperform the monomial basis but come second to the Fourier basis. While the basis seems to recognize the peculiarities in $f_2,Y_1$, it seems to struggle with it for the noisy responses in $f_2,Y_2$ (figure 9 and 10).
 	
 	\paragraph{Fourier Basis}
-	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for the bumpy function $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number to account for the higher noise in the response variable. The Fourier basis functions perform the best in each setup for the basis expansion regression. When recalling $f_1$ and $f_2$, both, but especially $f_1$ shows similar curvature order across the domain which contributes to the strong performance of this basis.	\\
+	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number of basis functions, which could be to account for the higher noise in the response variable. The Fourier basis functions perform the best for each setup for the basis expansion regression. Several reasons could contribute to this: First, especially $f_1$ shows similar curvature order across the domain while the curvature of $f_2$, while changing, does not display any eradic jumps. Second, both functions feature periodic behaviour. Third, $f_2$ does have the same value at the start- and the end of the interval.	\\
 	
-	For all specifications, the effect of the Bias-Variance tradeoff can be observed: The function $f_1$ is rather smooth and little bias introduced when choosing a small number of basis functions. For $f_2$, higher number of basis functions are needed, resulting from the inherent peculiarities of $f_2$. We can choose a higher number of basis functions since the amount of bias is decreasing faster in the number of basis functions than the variance is increasing compared to $f_1$. 
+	A possible explanation applicable for all the specifications might be the effect of the Bias-Variance tradeoff and the following hypothesis: The function $f_1$ is rather simple. meaning that little bias is introduced when choosing a small number of basis functions. For $f_2$, a higher number of basis functions is needed, resulting from the inherent peculiarities of $f_2$. This results in higher numbers of basis functions since the amount of bias is decreasing faster in the number of basis functions than the variance is increasing compared to $f_1$. 
 
 	\subsubsection{Functional Principal Component Regression}
-	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{\textbf{Estimation using Functional Principal Components}}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function.
+	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC´s as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC´s $n_{FPC} \in \{2, 3, 4 \}$. 
 	
 	\paragraph{Monomial Basis}
-	TBD
+	For $f_1$, the cross-validated MSE is decreasing in the increasing number of FPC´s and chosen basis functions for both the setup with the high, and the low signal-to-noise ratio (4,5,6 basis functions for $n_{FPC} \in \{2, 3, 4 \}$). In the setup using $f_2$ we also observe a decreasing MSE in the number of FPC, but a different behaviour of the chosen basis functions: While the model selects 10 basis functions for $f_2,Y_1$ and $f_2,Y_2$ using 2 FPC, it only selects 6 for the same two specifications using 3 FPC and 8 for $f_2,Y_1$ and $f_2,Y_2$ with 4 FPC. This might be surprising, since one might assume that the number of basis functions is increasing in $n_{FPC}$ since more basis functions led to less smoothing and therefore more variability in the expanded curves that might be exploited by the FPC´s. The monomial basis shows the weakest performance for all three basis functions in each setting.
 	\paragraph{B-spline Basis}
-	For $f_1,Y_1$, the CV suggests a better model with a higher number of FPC's. While the number of basis functions stays at five for two and three used FPC, it increases to six basis functions for $nharm$ = 4. In $f_1,Y_1$, the cross-validated MSE is only slightly affected by the number of FPC's, but lowest for $nharm$ = 3, indicating the possibility of over-fitting for four FPC's. $f_2,Y_1$ shows the strongest decrease of MSE in increasing FPC's of all FPCR models fitted with B-splines (0.69614, 0.42504, 0.09497 for 2,3,4 FPC's). For $f_2,Y_2$ the same holds true as in the setup with $f_2$ and the high signal-to-noise ratio, but less pronounced. Similar to the two setups with $f_1$, the cross-validated number of basis functions is increasing in the number of FPC's (4,6,8 for 2,3,4 FPC's)\\
-	The results overall might indicate that a higher number of FPC's has a strong effect in the setup with a high signal-to-noise ratio while not reducing as much error in the setting with the higher noise.
+	For $f_1,Y_1$, the CV suggests a better model with a higher number of FPC's. While the number of basis functions stays at five for two and three used FPC, it increases to six basis functions for $nharm$ = 4. In $f_1,Y_1$, the cross-validated MSE is only slightly affected by $n_{FPC}$, but lowest for $n_{FPC}$ = 3, indicating the possibility of over-fitting for $n_{FPC}$ = 4. $f_2,Y_1$ shows a decrease of MSE in increasing $n_{FPC}$. The same holds true in the setup with $f_2$ and the high signal-to-noise ratio with the decrease being similar in absolute terms. Similar to the two setups with $f_1$, the cross-validated number of basis functions for $f_2$ is increasing in the number of FPC's (4,6,8 for $n_{FPC} \in \{2, 3, 4 \}$)\\
+
 	
 	\paragraph{Fourier Basis}
-	We observe similar behavior as for the FPCR using B-splines. In $f_1,Y_1$, the MSE is decreasing in the number of FPC's while the results in $f_1,Y_2$ might indicate overfitting when using four FPC's. Since it was not possible to calculate the cross-validated MSE for three basis functions for four FPC's, the increasing number of basis functions as seen in the FPCR with B-splines can not be observed here. $f_2,Y_1$ displays the greatest decline of MSE in the increasing number of FPC's. The same behavior can be seen in $f_2,Y_2$, but less pronounced. Both configurations of $f_2$ are using 5,15,7 basis functions for 2,3,4 FPC's: This behavior opposes to the previously reported increasing nature of basis functions in the number of FPC's.
+	We observe similar behaviour as for the FPCR using B-splines. In $f_1,Y_1$, the MSE is decreasing in $n_{FPC}$ while the results in $f_1,Y_2$ might indicate overfitting when using four FPC's. Since it is not possible to calculate the cross-validated MSE for three basis functions for $n_{FPC}$ = 4, the increasing number of basis functions as seen in the FPCR with B-splines can not be observed here for sure. $f_2,Y_1$ displays the greatest relative decline of MSE in the increasing number of FPC's, but in absolut values, therefore acknowledging the higher noise responses for $f_2,Y2$, the decline if MSE is similar to the decline observed for $f_2,Y_2$. Both configurations of $f_2$ are using 5,15,7 basis functions for $n_{FPC} \in \{2, 3, 4 \}$: This behaviour in increasing $n_{FPC}$ opposes the previously reported behaviour of the monomial basis and the increasing nature of the B-splines basis functions.
+	
+	
+	
+	
 	
 	\subsubsection{Interpretation and Relevance for Application}
+	
+	Adress problem of monomials again --> (This could be solved using orthogonal polynomials like Legendre polynomials, see \citep{Dattoli_2001})
+	
+	Adress numerical instability?
+	
+	maybee both in paragraph under results instead of here?
+	
 	
 	%\subsection{Literature}
 	%\begin{itemize}
@@ -669,12 +679,15 @@ style=authoryear-comp,
 	%\end{itemize}
 
 	\section{Application}\label{Application}
-		The application uses the methods from the previous sections to predict the octane ratings of the introduced gasoline dataset. The simulation study will contribute towards the reading of the results. 
+		The application uses the methods from the previous sections to predict the octane ratings of the introduced gasoline dataset.
+		Although the simulation study granted valuable insights in the different methods in the four different settings, it is not enough for determining the method and choice of basis of the application since there is still too much uncertainty involved. To point out some sources of uncertainty: First, we do not know the true coefficient function. The insights from just two functions, $f_1$ and $f_2$, is not enough to draw any conclusion. Second, we do not know anything about the signal-to-noise ratios of the octane rating. Third, we made assumptions about the distribution of $\tilde{\xi}$ that are not relate-able to this real-life application where we not know this distribution. We will run all specification again for the gasoline dataset, but the results from the simulation study will contribute towards the reading of the results. The application is designed similar to the simulation study: The 60 spectra of the gasoline dataset will be used to regress them on the reported octane numbers and evaluate the results as prediction MSE using 10 fold cross-validation. In total, we conducted 1000 repetitions for each setting.
 		\begin{itemize}
 			\item {\color{green} incorporate results of simulation study: 					number of basis, components, etc...}
 			\item point out difficulties estimating sderror
 			\item describe setup and results
 		\end{itemize}
+	\subsection{Interpretation of Results}
+	
 	
 	\subsection{Literature}
 	\begin{itemize}
