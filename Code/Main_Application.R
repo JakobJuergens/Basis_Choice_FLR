@@ -30,8 +30,8 @@ for (j in 2:4) {
     fold_size = 5, rep = 1000,
     seed = 100, nharm = j, debug = TRUE
   )
-  saveRDS(object = bspline_fpcr_appl, file = paste0("Results/Paper/Application/bspline_fpcr_nharm", j, "_appl.RDS"))
-  write_csv(x = bspline_fpcr_appl, file = paste0("Results/Paper/Application/bspline_fpcr_nharm", j, "_appl.csv"))
+  saveRDS(object = bspline_fpcr_appl, file = paste0("Results/Paper/Application/bspline_fpcr_nharm", j, "_appl_additional.RDS"))
+  write_csv(x = bspline_fpcr_appl, file = paste0("Results/Paper/Application/bspline_fpcr_nharm", j, "_appl_additional.csv"))
 }
 
 for (j in 2:4) {
@@ -40,8 +40,8 @@ for (j in 2:4) {
     seed = 100, nharm = j,
     even_basis = FALSE, debug = TRUE
   )
-  saveRDS(object = fourier_fpcr_appl, file = paste0("Results/Paper/Application/fourier_fpcr_nharm", j, "_appl.RDS"))
-  write_csv(x = fourier_fpcr_appl, file = paste0("Results/Paper/Application/fourier_fpcr_nharm", j, "_appl.csv"))
+  saveRDS(object = fourier_fpcr_appl, file = paste0("Results/Paper/Application/fourier_fpcr_nharm", j, "_appl_additional.RDS.RDS"))
+  write_csv(x = fourier_fpcr_appl, file = paste0("Results/Paper/Application/fourier_fpcr_nharm", j, "_appl_additional.RDS.csv"))
 }
 
 for (j in 2:4) {
@@ -49,6 +49,6 @@ for (j in 2:4) {
     fold_size = 5, rep = 1000,
     seed = 100, nharm = j, debug = TRUE
   )
-  saveRDS(object = monomial_fpcr_appl, file = paste0("Results/Paper/Application/monomial_fpcr_nharm", j, "_appl.RDS"))
-  write_csv(x = monomial_fpcr_appl, file = paste0("Results/Paper/Application/monomial_fpcr_nharm", j, "_appl.csv"))
+  saveRDS(object = monomial_fpcr_appl, file = paste0("Results/Paper/Application/monomial_fpcr_nharm", j, "_appl_additional.RDS.RDS"))
+  write_csv(x = monomial_fpcr_appl, file = paste0("Results/Paper/Application/monomial_fpcr_nharm", j, "_appl_additional.RDS.csv"))
 }
