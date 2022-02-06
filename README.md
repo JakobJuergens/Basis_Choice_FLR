@@ -1,4 +1,4 @@
-# Model Selection for Scalar-on-Function Regression with Applications to Near-Infrared Spectroscopy
+# Basis Choice for Scalar-on-Function Regression with Applications to Near-Infrared Spectroscopy
 
 This is the final project for the **Research Module in Econometrics and Statistics** (Winter Semester 2021/2022) of [Jonghun Baek](https://github.com/Hun-baek), [Jakob R. Juergens](https://jakobjuergens.com/), and [Jonathan Willnow](https://github.com/JonathanWillnow).
 This course is part of the Master of Science Economics at the University of Bonn and was supervised by Prof. Dr. Dominik Liebl and Dr. Christopher Walsh.
