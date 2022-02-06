@@ -648,10 +648,10 @@ style=authoryear-comp,
 	A possible explanation applicable for all the specifications might be the effect of the Bias-Variance tradeoff and the following hypothesis: The function $f_1$ is rather simple. meaning that little bias is introduced when choosing a small number of basis functions. For $f_2$, a higher number of basis functions is needed, resulting from the inherent peculiarities of $f_2$. This results in higher numbers of basis functions since the amount of bias is decreasing faster in the number of basis functions than the variance is increasing compared to $f_1$. 
 
 	\subsubsection{Functional Principal Component Regression}
-	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC´s as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC´s $n_{FPC} \in \{2, 3, 4 \}$. 
+	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{\textbf{Estimation using Functional Principal Components}}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC's as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC's $n_{FPC} \in \{2, 3, 4 \}$. 
 	
 	\paragraph{Monomial Basis}
-	For $f_1$, the cross-validated MSE is decreasing in the increasing number of FPC´s and chosen basis functions for both the setup with the high, and the low signal-to-noise ratio (4,5,6 basis functions for $n_{FPC} \in \{2, 3, 4 \}$). In the setup using $f_2$ we also observe a decreasing MSE in the number of FPC, but a different behaviour of the chosen basis functions: While the model selects 10 basis functions for $f_2,Y_1$ and $f_2,Y_2$ using 2 FPC, it only selects 6 for the same two specifications using 3 FPC and 8 for $f_2,Y_1$ and $f_2,Y_2$ with 4 FPC. This might be surprising, since one might assume that the number of basis functions is increasing in $n_{FPC}$ since more basis functions led to less smoothing and therefore more variability in the expanded curves that might be exploited by the FPC´s. The monomial basis shows the weakest performance for all three basis functions in each setting.
+	For $f_1$, the cross-validated MSE is decreasing in the increasing number of FPC's and chosen basis functions for both the setup with the high, and the low signal-to-noise ratio (4,5,6 basis functions for $n_{FPC} \in \{2, 3, 4 \}$). In the setup using $f_2$ we also observe a decreasing MSE in the number of FPC, but a different behaviour of the chosen basis functions: While the model selects 10 basis functions for $f_2,Y_1$ and $f_2,Y_2$ using 2 FPC, it only selects 6 for the same two specifications using 3 FPC and 8 for $f_2,Y_1$ and $f_2,Y_2$ with 4 FPC. This might be surprising, since one might assume that the number of basis functions is increasing in $n_{FPC}$ since more basis functions led to less smoothing and therefore more variability in the expanded curves that might be exploited by the FPC's. The monomial basis shows the weakest performance for all three basis functions in each setting.
 	\paragraph{B-spline Basis}
 	For $f_1,Y_1$, the CV suggests a better model with a higher number of FPC's. While the number of basis functions stays at five for two and three used FPC, it increases to six basis functions for $nharm$ = 4. In $f_1,Y_1$, the cross-validated MSE is only slightly affected by $n_{FPC}$, but lowest for $n_{FPC}$ = 3, indicating the possibility of over-fitting for $n_{FPC}$ = 4. $f_2,Y_1$ shows a decrease of MSE in increasing $n_{FPC}$. The same holds true in the setup with $f_2$ and the high signal-to-noise ratio with the decrease being similar in absolute terms. Similar to the two setups with $f_1$, the cross-validated number of basis functions for $f_2$ is increasing in the number of FPC's (4,6,8 for $n_{FPC} \in \{2, 3, 4 \}$)\\
 
@@ -853,17 +853,25 @@ style=authoryear-comp,
 	\end{figure}
 
 	\section{Proofs}
+	
 	\cite{alexanderian_KLexpansion_2015} was referred for the following proofs.
+	
 	\subsection{Lemma} \label{Proof1}
 	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu^m\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi^{m}$ corresponding to eigenfunctions $\nu^m$ satisfy the following properties:
-	\begin{enumerate}
-		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
-		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$% if $m \neq n$
-		\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
-	\end{enumerate}
+	
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
+			\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$% if $m \neq n$
+			\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
+		\end{enumerate}
+	\end{multicols}
+
 	Remind that $\delta^{m,n} = 0$ if $m \neq n$, otherwise 1.
+	
 	\begin{proof}
 		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)dP(\omega)$. To obtain the first result, we can show that
+		
 		\begin{equation}\label{Lemma1}
 			\begin{split}
 				\mathbb{E}[\xi^m] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
@@ -873,8 +881,10 @@ style=authoryear-comp,
 				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu^m(t) dt = 0
 			\end{split}
 		\end{equation}
+	
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
 		The second claim is proved as:
+		
 		\begin{equation}\label{Lemma2}
 			\begin{split}
 				\mathbb{E} [\xi^m \xi^n] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu^m(s)ds \int_{0}^{1} F(t) \nu^n(t)dt  \biggr\rbrack\\
@@ -886,41 +896,59 @@ style=authoryear-comp,
 				= & \langle \lambda^m \nu^m, \nu^n \rangle = \delta^{m,n}\lambda^{m}
 			\end{split}
 		\end{equation}
+	
 		where $\delta^{m,n} = 1$ if $m = n$, otherwise 0. The result is produced from orthonormality of the eigenfunctions.
+		
 		\begin{equation}
 			Cov\left(\xi^m, \xi^n\right) = \mathbb{E}[\xi^m \xi^n] - \mathbb{E}[\xi^m]\mathbb{E}[\xi^n] = \delta^{m,n}\lambda^{m}
 		\end{equation}
+	
 		where $\mathbb{E}[\xi^m] = \mathbb{E}[\xi^n] = 0$ as the first property.
 		The last assertion is confirmed from the above two properties.
+		
 		\begin{equation}\label{Lemma3}
 			Var[\xi^m] = \mathbb{E}\left[(\xi^m - \mathbb{E}[\xi^m])^{2}\right] = \mathbb{E}[(\xi^m)^{2}] =\lambda^m
 		\end{equation}
+	
 		The original process $X(t)$ also has the same properties as the centered one since
+		
 		\begin{equation}
 			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{m=1}^{\infty}\xi^m\nu^m(t)
 		\end{equation}
+	
 	\end{proof}
 	
 	
 	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
+	
 	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process, namely, $\lim\limits_{\epsilon \rightarrow 0} \mathbb{E}[(X(t+\epsilon) - X(t))^2]$ = 0, such that $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	
 	\begin{equation}
 		X(t) = \mu(t) + \sum_{m=1}^{\infty} \xi^m \nu^m(t),
 	\end{equation}
+
 	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)dt$. These coefficients satisfy the following conditions.
-	\begin{enumerate}
-		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
-		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$ %if $m \neq n$
-		\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
-	\end{enumerate}
+	
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
+			\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$ %if $m \neq n$
+			\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
+		\end{enumerate}
+	\end{multicols}
+
 	\begin{proof}
+		
 		Let $K$ be a Hilbert-Schmidt operator as in \ref{HSKernal}.We know that $K$ has a complete set of eigenfunctions ${\nu^m}$ in $\mathbb{L}^{2}[0,1]$  and non-negative eigenvalues $\lambda^m$ since $K$ is a positive compact self-adjoint operator. With the reminder that $\xi^m$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
+		
 		\begin{equation}
 			\epsilon_{N}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
 			= \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
 		\end{equation}
+	
 		where $F(t)$ is the centered process of $X(t)$.
 		Once it is shown that $\lim\limits_{N \rightarrow \infty} \epsilon_{N}(t) = 0$ uniformly in [0,1], the proof is completed.
+		
 		\begin{equation}\label{Thr1}
 			\begin{split}
 				\epsilon_{N}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m 	\nu^m(t)\bigg)^2 \right]\\
@@ -929,6 +957,7 @@ style=authoryear-comp,
 		\end{equation}
 		
 		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since $F(t)$ is the centered process. Now, take the second term
+		
 		\begin{equation}\label{Thr2}
 			\begin{split}
 				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)ds\bigg)} \nu^m(t) \right]\\
@@ -941,21 +970,26 @@ style=authoryear-comp,
 		\end{equation} 
 		
 		where the covariance function $c(t,s)$ has the Hilbert-Schmidt operator as in (\ref{HSKernal}). It turns out the product of the eigenfunction and the corresponding eigenvalue. For the last term, we derive from (\ref{Lemma2}) that
+		
 		\begin{equation}\label{Thr3}
 			\begin{split}
 				\mathbb{E}\bigg[\sum_{m=1}^{N} \sum_{m=1}^{N} \xi^m \xi^m \nu^m(t) \nu^n(t)\bigg] = & \sum_{m=1}^{N} \sum_{m=1}^{N} \mathbb{E}[\xi^m \xi_{k}] \nu^m(t) \nu^n(t)\\
 				= & \sum_{m=1}^{N} \sum_{n=1}^{N} \delta^{m,n} \lambda^m \nu^m(t) \nu^n(t) = 		\sum_{m=1}^{N} \lambda^m \nu^m(t)^{2}
 			\end{split}	
 		\end{equation}
+	
 		where $\delta_{m,n} = 1$ if $m=n$, otherwise 0. Therefore, by (\ref{Thr1}), (\ref{Thr2}), and (\ref{Thr3}) we obtain
+		
 		\begin{equation}
 			\epsilon_{N}(t) = c(t,t) - \sum_{m=1}^{N} \lambda^m \nu^m(t) \nu^m(t)
 		\end{equation}
 		
 		implementing Mercer's Theorem this proof is concluded by
+		
 		\begin{equation}
 			\lim\limits_{N \rightarrow \infty} \epsilon_{N}(t) = \lim\limits_{n \rightarrow \infty} \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right] = 0
 		\end{equation}
+	
 	\end{proof}
 
 	\newpage
