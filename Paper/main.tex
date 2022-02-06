@@ -43,37 +43,35 @@ style=authoryear-comp,
 	
 	\newpage
 	
-	\section{Colour Guide}
-		\begin{itemize}
-			\item {\color{red} RED}: is for general comments for your own text
-			\item {\color{green} GREEN}: is for Jona's comments
-			\item {\color{orange} ORANGE}: is for Jonghun's comments
-			\item {\color{blue} BLUE}: is for Jakob's comments
-		\end{itemize}
-	
+%	\section{Colour Guide}
+%		\begin{itemize}
+%			\item {\color{red} RED}: is for general comments for your own text
+%			\item {\color{green} GREEN}: is for Jona's comments
+%			\item {\color{orange} ORANGE}: is for Jonghun's comments
+%			\item {\color{blue} BLUE}: is for Jakob's comments
+%		\end{itemize}
+
 	\section{Introduction}
 		
-	Functional Data Analysis (FDA) is {\color{red} (roots in the 1940s Grenander and Karhunen)} gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, only FDA allows extracting the information given by the smoothness of the underlying process of the functional data (cf. \cite{levitin_introduction_2007}).
-	As \cite{kokoszka_introduction_2017} {\color{red}(page ca. 17)} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves .
-	 
-	In functional data analysis, the concept of a data set includes both realizations of scalar random variables and realizations of random functions. These could be the absorption of the Near-infrared (NIR) spectrum, which will be used in later parts of this paper. NIR-spectroscopy uses the near-infrared region of the electromagnetic spectrum (780nm to 2500nm) to measure the absorption of light at different wavelengths in a sample. \footnote{For more details, refer to the section on Near-Infrared-Spectroscopy in the Appendix.}  This dataset can then be used, for example, to predict a scalar response variable. To conduct functional linear regression, we need to consider several new concepts and methods that distinguish it from multivariate linear regression.
+	Functional Data Analysis (FDA), which has its roots in the work of Ulf Grenander and Kari Karhunen, is gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, FDA has advantages in that it allows extracting information given by properties such as the smoothness of the underlying process or its derivatives (cf. \cite{levitin_introduction_2007}).	As \cite{kokoszka_introduction_2017} describe, using methods from FDA should be considered when one variable of a given data set can be seen as smooth curves or functions.	 
+	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of light in the Near-infrared (NIR) spectrum by chemical samples, an example which will be used in later parts of this paper.\footnote{For more details on Near-Infrared-Spectroscopy, refer to the section on Near-Infrared-Spectroscopy in the Appendix.}  
 	This paper introduces Functional Linear Regression in a scalar-on-function setting relating functional predictors to a scalar response as described by Equation \ref{DGP1}.
 	 
 	 \begin{equation}\label{DGP1}
 	 	Y(\omega) = \alpha + \int_{0}^{1}{X(\omega)(s)\beta(s) \mathrm{d}s} + \epsilon(\omega),
-	 	\qquad i = 1, ..., n
+	 	\qquad i = 1, ..., N
 	 \end{equation}
  
-	 Here, $X(\omega)$ is a random function, $Y(\omega)$ is the response variable and $\beta(s)$ the coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. As in the framework of scalar linear regression, estimating $\beta(t)$ is particularly interesting for prediction or inference. \\
-	 
-	 In Section \ref{Theory}, after introducing the necessary theoretical concepts, we describe two methods of estimating a scalar coefficient function using using the concepts of basis expansion and functional principal component analysis. Section \ref{Simulation} contains a description of structure and results of a Monte-Carlo Simulation aimed at choosing an appropriate functional basis for the previously mentioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In section \ref{Outlook} we then give an outlook on possible extensions for this paper and describe limitations of our approach.
+	Here, $X(\omega)$ is a random function, $Y(\omega)$ is a scalar response variable and $\beta(t)$ is a coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. This paper then introduces two distinct ways of estimating $\beta(t)$ using approximations dependent on a parameter choice and explores the selection of these parameters using cross validation.\\
+		 
+	In Section \ref{Theory}, after introducing the necessary theoretical concepts, we describe two methods of estimating a scalar coefficient function using using the concepts of basis expansion and functional principal component analysis. Section \ref{Simulation} contains a description of structure and results of a Monte-Carlo Simulation aimed at choosing an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook} we then give an outlook on possible extensions for this paper and describe limitations of our approach.
 
 	\section{Theory}\label{Theory}
 	In multivariate regression, data is often observed in the form of elements from Euclidean space, $\mathbb{R}^p$. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite-dimensional space. Therefore, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics is random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
 	A typical case known to every undergraduate student of economics is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more theoretical considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	Let $\mathbb{V}$ be a vector space over some field of scalars $\mathbb{F}$. In the following we restrict our analysis to the case of $\mathbb{F} = \mathbb{R}$. A function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{F}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{F}$ the following properties hold.
+	In the following we restrict our analysis to vector spaces over $\mathbb{R}$ but more a general formalization including other fields is possible. Let $\mathbb{V}$ be a vector space over $\mathbb{R}$.  Then, a function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{R}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -172,7 +170,7 @@ style=authoryear-comp,
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
 	\end{equation}
 	
-	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion can often lead to reasonable approximations around a specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
+	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can often lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
 	
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^i, \quad i \in \mathcal{I}
@@ -185,7 +183,7 @@ style=authoryear-comp,
 	In the same way the monomial basis corresponds to the Taylor expansion, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function $s(x)$ defined on the interval $[0,1]$.
 	
 	\begin{equation}\label{Fourier_Series}
-		s(x) = \frac{A_0}{2} + \sum_{i = 1}^{\infty} A_n \cos(2\pi n x - \phi_n) = \frac{a_0}{2} + \sum_{i = 1}^{\infty}\left[a_n \cos(2\pi n x) + b_n \sin(2\pi n x)\right]
+		s(x) = \frac{A_0}{2} + \sum_{i = 1}^{\infty} A_n \cos(2\pi i x - \phi_n) = \frac{a_0}{2} + \sum_{i = 1}^{\infty}\left[a_i \cos(2\pi i x) + b_i \sin(2\pi i x)\right]
 	\end{equation}
 	
 	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift. Therefore, rewriting the series in the sine-cosine form through a simple trigonometry formula as shown above is necessary. Due to this origin of the Fourier basis it is reasonable to restrict the number of Fourier basis functions to odd numbered values.
@@ -202,9 +200,11 @@ style=authoryear-comp,
 
 	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process over the period $T$. Additionally, the Fourier basis is suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
 	
-	{\color{blue}I don't get this... Isn't the basis defined independently from the data set? Why is this dependent on the measuring points? "rephrasing \cite{ramsay_functional_2005}, the Fourier basis is orthonormal when the values $t_j$ are equally spaced within $T$."} 
+	%{\color{blue}I don't get this... Isn't the basis defined independently from the data set? Why is this dependent on the measuring points? "rephrasing \cite{ramsay_functional_2005}, the Fourier basis is orthonormal when the values $t_j$ are equally spaced within $T$."} 
 
-	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Typically, knots are placed on an equidistant grid, but deviations from this principle can prove advantageous in atypical settings. Additionally, at each $\tau_l$, the polynomials on neighboring subintervals must match derivatives up to order $m-2$ at the boundary. However, it is sensible to place multiple knots at the same value to replicate specific properties of the data structure. A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
+	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Typically, knots are placed on an equidistant grid leading to polynomials on neighboring subintervals matching derivatives up to order $m-2$ at the boundary knot $\tau_l$. However, in some settings it can be sensible to place multiple knots at the same value to replicate specific properties of the data structure. This allows for a reduced number of matching derivatives at the corresponding knots. For the purposes of this paper, we will focus on the case of equidistant knots without multiplicity at inner knots.\\
+	
+	B-splines were developed by \cite{de_boor_practical_1978} and are defined by a recursive procedure. Let $\phi_{l,m}^{BS}(x) \quad l \in \{1,\dots,L-1\}$ be a B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and inner knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
 	
 	\begin{equation}
 		\begin{split}
@@ -217,12 +217,10 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
+	As this equation references knots that are not defined by the original vector of knots, implementations of this algorithm typically repeat the knots at the boundaries of the interval, $\tau_0$ and $\tau_L$ an additional $m$ times. This padding of the knot vector then allows to calculate every object that is needed for the definition of the chosen basis.\\
+	
 	This, however, does not really lead to a basis of $\mathbb{L}^2[0,1]$ as the closed span of this finite sequence of functions is not equal to $\mathbb{L}^2[0,1]$. To focus on specific approximation errors in the later parts of this paper, we will, however, assume that a B-spline basis representation of a function in $\mathbb{L}^2[0,1]$ will serve as a sufficient approximation for an appropriately chosen number of B-spline basis functions. 
 	Even though, this approach is not theoretically exact, in practice, this is often a reasonable approach and yields satisfactory results in cases where the functional form of B-splines makes them an appropriate approximation tool. 
-
-	
-	{\color{red}Explain what happens when $l+m+1 > L$ !!!(I don't get it)\\
-		Additionally, modify for multiple knots at the boundaries to get better behavior at the boundaries. Needs some more explanation.(adressed)}	
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
 	As mentioned above, the realized curves can be expressed in terms of a chosen functional basis. For this expansion, it is technically possible to use a complete basis of $\mathbb{L}^2[0,1]$. In many cases this is not a desirable approach as the expansion with too many basis functions introduces high amounts of variance in pronounced local variations of the curves or can even led to the approximation of noise in the sample curves, which possibly interrupts the analysis. {\color{red} Therefore, methods such as acceleration penalties have to be employed to smooth the function.} On the other hand, important information on the curves could be missed by using a number of basis functions that is too small. In that sense, this discussion is subject to the Bias-Variance tradeoff. It challenges the researcher to seek a point at which they truncate the basis function to remove noise and, at the same time, not to introduce too much bias by maintaining significant fluctuations of the curves. The basis expansion with truncation is defined by
@@ -230,6 +228,11 @@ style=authoryear-comp,
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
 	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$. The number $L$ can be chosen subjectively, but also through applying a data-driven method like Cross-Validation, which aims to minimize the Mean Squared Error (MSE) or other criteria. The significance of this choice of truncation becomes more evident in {\color{green} Link estimation} and is the subject of the simulation study. 
+	
+	\begin{figure}[H]
+		\includegraphics[width=\textwidth]{../Graphics/basis_expansions.pdf}
+		\caption{B-spline Approximations of NIR Absorption Spectra with different Basis Truncation Parameters}
+	\end{figure}
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function $X: \Omega \mapsto \mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To do so, it is necessary to define the mean and covariance functions of $X(\omega)$.
@@ -242,7 +245,7 @@ style=authoryear-comp,
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 
-	where the $c(t,s)$ are Hilbert-Schmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be the integral operater on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
+	where the $c(t,s)$ are Hilbert-Schmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be a Hilberst-Shmidt operator on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
 	
 	\begin{equation}\label{HSKernal}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
@@ -284,14 +287,14 @@ style=authoryear-comp,
 	Define the following sample analogs for the mean and covariance functions.
 	
 	\begin{equation}
-		\hat{\mu}(t) = \frac{1}{n}\sum_{i = 1}^{n}x_i(t)
+		\hat{\mu}(t) = \frac{1}{N}\sum_{i = 1}^{N}x_i(t)
 	\end{equation}
 	
 	\begin{equation}
-		\hat{c}(t,s) = \frac{1}{n} \sum_{i = 1}^{n} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
+		\hat{c}(t,s) = \frac{1}{N} \sum_{i = 1}^{N} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
 	\end{equation}
 	
-	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m \in \mathcal{M}\}$ for $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ as the solutions of the following equation. {\color{red} I think the number of principal components has to be smaller then the number of observations. So I can give more information about $\mathcal{M}$.}
+	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m = 1, \dots, N-1\}$ for $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ as the solutions of the following equation. As in the case of ordinary principal components, the number of eigenfunctions corresponding to non-zero eigenvalues is limited (cf. chapter 8.2.3 \cite{ramsay_functional_2005}). As each curve is infinite dimensional, there is no upper limit to this number due to the dimensionality. However the number of curves still imposes an upper limit of $N-1$ non-zero eigenvalues, where $N$ is the number of curves in the data set.
 	
 	\begin{equation}
 		\int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t)
@@ -300,7 +303,7 @@ style=authoryear-comp,
 	This naturally leads to the following representation.
 	
 	\begin{equation}
-		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{{\color{red} !!!}} \hat{\xi}_{i}^{m} \hat{\nu}^{m}(t)
+		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{N-1} \hat{\xi}_{i}^{m} \hat{\nu}^{m}(t)
 	\end{equation}
 	where the $\hat{\xi}_{i}^m$ are derived as 
 	
@@ -334,6 +337,8 @@ style=authoryear-comp,
 			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
 		\end{align}	
 	
+	This method of deriving or approximating the eigenfunctions and scores from a data set is introduced in \cite{ramsay_functional_2005} (chapter 8.4.2) and implemented in the R-package fda. The following considerations and results of the simulation study might therefore serve as information about the performance of this method in a scenario where a limited number of basis functions is provided to the method.
+	
 	\subsection{Scalar-on-Function Regression}
 	In the simple scalar setting, one of the most important tools in econometrics is linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. For reference, assume a data generating process as follows.
 	
@@ -357,7 +362,7 @@ style=authoryear-comp,
 	
 	Where $\beta(t)$ is an unknown coefficient function. Similar to the finite-dimensional setting, an interesting question is how to estimate $\beta(t)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite-dimensional objects is not possible. Therefore, other options have to be considered.
 	
-	\subsubsection{Estimation using Basis-Representation}
+	\subsubsection{Estimation using Basis-Representation}\label{basis_exp_transf}
 	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
 	
 	\begin{equation}
@@ -386,7 +391,7 @@ style=authoryear-comp,
 
 	In practice it is common to not only express the coefficient function in terms of a basis but also the observations. Therefore two bases ($\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and $\left(\psi_k(t)\right)_{k \in \mathcal{L}}$) and two corresponding truncation parameters ($J$ and $K$) can be chosen. This leads to the following representation.
 	
-	\begin{equation}\label{basis_exp_transf}
+	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega)
 			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} a_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
@@ -420,7 +425,7 @@ style=authoryear-comp,
 		Z = \begin{pmatrix}
 			1 & \tilde{Z}_{1,1} & \dots & \tilde{Z}_{1,J} \\
 			\vdots & \vdots & \ddots & \vdots \\
-			1 & \tilde{Z}_{n,1} & \dots & \tilde{Z}_{n,J}
+			1 & \tilde{Z}_{N,1} & \dots & \tilde{Z}_{N,J}
 		\end{pmatrix}
 	\end{equation}
 	
@@ -432,7 +437,7 @@ style=authoryear-comp,
 
 	The performance of this estimation procedure depends in part on the quality of the approximation in Equation \ref{simplified_model_basis_equation}. Therefore, it is interesting to think about when the approximation error is small... {\color{red}Continue Here Jakob!!!}
 	
-	\subsubsection{Estimation using Functional Principal Components}
+	\subsubsection{Estimation using Functional Principal Components}\label{fpc_exp_transf}
 	
 	Using the Karhunen-Lo\'{e}ve Expansion to represent $X(\omega)$, it is also possible to express the data generating process in a slightly different way.
 	
@@ -450,9 +455,9 @@ style=authoryear-comp,
 	\begin{equation}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} \beta(s) \mathrm{d}s + \epsilon_i
-			= \alpha + \int_{0}^{1} {\color{red}\left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^m_i \hat{\nu}^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon_i\\
-			&= {\color{teal}\alpha + \int_{0}^{1} \hat{\mu}(s) \beta(s) \mathrm{d}s} + \sum_{m \in \mathcal{M}} \hat{\xi}^m_i {\color{violet}\int_{0}^{1} \hat{\nu}^m(s) \beta(s) \mathrm{d}s} + \epsilon_i
-			= {\color{teal}\bar{\alpha}} + \sum_{m \in \mathcal{M}} \hat{\xi}^m_i {\color{violet}\hat{\beta}^m} + \epsilon_i
+			= \alpha + \int_{0}^{1} {\color{red}\left(\hat{\mu}(s) + \sum_{m = 1}^{N-1} \hat{\xi}^m_i \hat{\nu}^m(s)\right)} \beta(s) \mathrm{d}s + \epsilon_i\\
+			&= {\color{teal}\alpha + \int_{0}^{1} \hat{\mu}(s) \beta(s) \mathrm{d}s} + \sum_{m = 1}^{N-1} \hat{\xi}^m_i {\color{violet}\int_{0}^{1} \hat{\nu}^m(s) \beta(s) \mathrm{d}s} + \epsilon_i
+			= {\color{teal}\bar{\alpha}} + \sum_{m = 1}^{N-1} \hat{\xi}^m_i {\color{violet}\hat{\beta}^m} + \epsilon_i
 		\end{split}
 	\end{equation}
 	
@@ -461,9 +466,9 @@ style=authoryear-comp,
 	\begin{equation}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon_i
-			= \alpha + \int_{0}^{1} {\color{red}\left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right)} {\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} \mathrm{d}s + \epsilon_i\\
-			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \hat{\mu}(s) + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j \in \mathcal{I}} b_j \hat{\nu}^m(s) \phi_j(s) \right] \right] \mathrm{d}s + \epsilon_i \\
-			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j \in \mathcal{I}} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
+			= \alpha + \int_{0}^{1} {\color{red}\left(\hat{\mu}(s) + \sum_{m = 1}^{N-1} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right)} {\color{blue}\left(\sum_{j \in \mathcal{I}} b_j \phi_j(s)\right)} \mathrm{d}s + \epsilon_i\\
+			&= \alpha + \int_{0}^{1} \left[ \sum_{j \in \mathcal{I}} b_j \phi_j(s) \hat{\mu}(s) + \sum_{m = 1}^{N-1} \left[ \hat{\xi}^m_i \sum_{j \in \mathcal{I}} b_j \hat{\nu}^m(s) \phi_j(s) \right] \right] \mathrm{d}s + \epsilon_i \\
+			&= \alpha + \sum_{j \in \mathcal{I}} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m = 1}^{N-1} \left[ \hat{\xi}^m_i \sum_{j \in \mathcal{I}} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
 		\end{split}
 	\end{equation}
 
@@ -471,9 +476,9 @@ style=authoryear-comp,
 	
 	\begin{equation}\label{fpcr_reg_both_expansions}
 		\begin{split}
-			y_i &= \alpha + \int_{0}^{1} \left(\hat{\mu}(s) + \sum_{m \in \mathcal{M}} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right) {\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} \mathrm{d}s + \epsilon_i\\
-			&= \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{J}(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \sum_{j = 1}^{J} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] \\
-			& \quad \quad + \sum_{m \in \mathcal{M}} \left[ \hat{\xi}^m_i \int_{0}^{1}\hat{\nu}^m(s) \delta_{\beta}^{J}(s) \mathrm{d}s \right] + \epsilon_i
+			y_i &= \alpha + \int_{0}^{1} \left(\hat{\mu}(s) + \sum_{m = 1}^{N-1} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right) {\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} \mathrm{d}s + \epsilon_i\\
+			&= \alpha + \sum_{j = 1}^{J} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{J}(s) \hat{\mu}(s) \mathrm{d}s + \sum_{m = 1}^{N-1} \left[ \hat{\xi}^m_i \sum_{j = 1}^{J} b_j \int_{0}^{1}\hat{\nu}^m(s) \phi_j(s) \mathrm{d}s \right] \\
+			& \quad \quad + \sum_{m = 1}^{N-1} \left[ \hat{\xi}^m_i \int_{0}^{1}\hat{\nu}^m(s) \delta_{\beta}^{J}(s) \mathrm{d}s \right] + \epsilon_i
 		\end{split}
 	\end{equation}
 
@@ -490,16 +495,16 @@ style=authoryear-comp,
 	\begin{equation}
 		\begin{split}
 			y_i & = \tilde{\alpha}^L
-			+ \sum_{m \in \mathcal{M}} \left[ \left(\tilde{\xi}^{m,L}_{i} + \delta_{\xi, i}^{m, L} \right) \sum_{j = 1}^{L} b_j \int_{0}^{1} \left(\tilde{\nu}^{m,L}(s) + \delta_{\nu, m}^L(s) \right) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m = 1}^{N-1} \left[ \left(\tilde{\xi}^{m,L}_{i} + \delta_{\xi, i}^{m, L} \right) \sum_{j = 1}^{L} b_j \int_{0}^{1} \left(\tilde{\nu}^{m,L}(s) + \delta_{\nu, m}^L(s) \right) \phi_j(s) \mathrm{d}s \right] 
 			+ \epsilon_i \\
 			& = \tilde{\alpha}^L
-			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
-			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right] \\
-			& \quad \quad + \sum_{m \in \mathcal{M}} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
-			+ \sum_{m \in \mathcal{M}} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right]
+			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right] \\
+			& \quad \quad + \sum_{m = 1}^{N-1} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m = 1}^{N-1} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right]
 			+ \epsilon_i \\
 			& \approx \tilde{\alpha}^L
-			+ \sum_{m \in \mathcal{M}} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
+			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
 		\end{split}
 	\end{equation}
 
@@ -514,7 +519,7 @@ style=authoryear-comp,
 		Z = \begin{pmatrix}
 			1 & \tilde{\xi}^{1,L}_{1} & \dots & \tilde{\xi}^{M,L}_{1} \\
 			\vdots & \vdots & \ddots & \vdots \\
-			1 & \tilde{\xi}^{1,L}_{n} & \dots & \tilde{\xi}^{M,L}_{n}
+			1 & \tilde{\xi}^{1,L}_{N} & \dots & \tilde{\xi}^{M,L}_{N}
 		\end{pmatrix}
 	\end{equation}
 	
@@ -848,8 +853,9 @@ style=authoryear-comp,
 	\end{figure}
 
 	\section{Proofs}
+	\cite{alexanderian_KLexpansion_2015} was referred for the following proofs.
 	\subsection{Lemma} \label{Proof1}
-	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu^m\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi^{m}$ of basis functions satisfy the following properties:
+	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu^m\}$ as (\ref{KarhunenLoeve}). The coefficients $\xi^{m}$ corresponding to eigenfunctions $\nu^m$ satisfy the following properties:
 	\begin{enumerate}
 		\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
 		\item $Cov\left(\xi^m(\omega), \xi^n(\omega)\right) = \delta^{m,n}\lambda^m$% if $m \neq n$
@@ -880,7 +886,7 @@ style=authoryear-comp,
 				= & \langle \lambda^m \nu^m, \nu^n \rangle = \delta^{m,n}\lambda^{m}
 			\end{split}
 		\end{equation}
-		where $\delta^{m,n} = 1$ if $m = n$, otherwise 0. The result is produced from orthonormaility of the eigenfunctions.
+		where $\delta^{m,n} = 1$ if $m = n$, otherwise 0. The result is produced from orthonormality of the eigenfunctions.
 		\begin{equation}
 			Cov\left(\xi^m, \xi^n\right) = \mathbb{E}[\xi^m \xi^n] - \mathbb{E}[\xi^m]\mathbb{E}[\xi^n] = \delta^{m,n}\lambda^{m}
 		\end{equation}
@@ -889,7 +895,7 @@ style=authoryear-comp,
 		\begin{equation}\label{Lemma3}
 			Var[\xi^m] = \mathbb{E}\left[(\xi^m - \mathbb{E}[\xi^m])^{2}\right] = \mathbb{E}[(\xi^m)^{2}] =\lambda^m
 		\end{equation}
-		The original process also has the same properties as the centered one since
+		The original process $X(t)$ also has the same properties as the centered one since
 		\begin{equation}
 			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{m=1}^{\infty}\xi^m\nu^m(t)
 		\end{equation}
@@ -897,7 +903,7 @@ style=authoryear-comp,
 	
 	
 	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
-	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process with $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
+	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process, namely, $\lim\limits_{\epsilon \rightarrow 0} \mathbb{E}[(X(t+\epsilon) - X(t))^2]$ = 0, such that $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	\begin{equation}
 		X(t) = \mu(t) + \sum_{m=1}^{\infty} \xi^m \nu^m(t),
 	\end{equation}
@@ -908,7 +914,7 @@ style=authoryear-comp,
 		\item $Var\left(\xi^m(\omega)\right) = \lambda^m$
 	\end{enumerate}
 	\begin{proof}
-		We know that $K$ has a complete set of eigenfunctions ${\nu^m}$ in $\mathbb{L}^{2}[0,1]$ and non-negative eigenvalues $\lambda^m$. With the reminder that $\xi^m$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
+		Let $K$ be a Hilbert-Schmidt operator as in \ref{HSKernal}.We know that $K$ has a complete set of eigenfunctions ${\nu^m}$ in $\mathbb{L}^{2}[0,1]$  and non-negative eigenvalues $\lambda^m$ since $K$ is a positive compact self-adjoint operator. With the reminder that $\xi^m$ satisfy the three conclusions by Lemma \ref{Proof1}, we prove this expansion by considering
 		\begin{equation}
 			\epsilon_{N}(t) := \mathbb{E} \left[\bigg( X(t) -\mu(t)- \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
 			= \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m \nu^m(t)\bigg)^2 \right]
@@ -922,7 +928,7 @@ style=authoryear-comp,
 			\end{split}
 		\end{equation}
 		
-		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since F(t) is the centered process. Now, take the second term
+		Here, $\mathbb{E}[F(t)^{2}] = c(t,t)$ as in (\ref{CovarianceFunction}) since $F(t)$ is the centered process. Now, take the second term
 		\begin{equation}\label{Thr2}
 			\begin{split}
 				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)ds\bigg)} \nu^m(t) \right]\\

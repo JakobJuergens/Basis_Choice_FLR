@@ -85,10 +85,10 @@ label[1] <- "Real Line"
 basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength,color=K)) +
   geom_line()+
   xlab('Wavelength in nm') +
-  ylab('Spectrum') +
+  ylab('Absorption') +
   scale_color_discrete(breaks=c('K=0','K=5','K=10','K=30','K=50','K=100'), 
                        labels=label)+
-  ggtitle('Basis expansions according to the different number of B-spline basis functions') +
+  #ggtitle('Basis expansions according to the different number of B-spline basis functions') +
   theme_light() +
   theme(
     legend.position = "bottom",
@@ -102,6 +102,6 @@ basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength,color=K)) +
 # save plot in appropriate folder
 ggsave(
   filename = "../Graphics/basis_expansions.pdf", plot = basis_exp_plot,
-  width = 20, height = 12, units = "in", dpi = 600
+  width = 20, height = 8, units = "in", dpi = 600
 )
   
