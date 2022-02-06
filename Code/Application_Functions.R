@@ -566,7 +566,7 @@ bspline_fpcr_appl_function <- function(rep, fold_size, nharm, seed, debug = FALS
   grid <- seq(0, 1, length.out = 401)
   
   # specify number of basis functions that should be considered
-  n_basis <- seq(from = 4, to = 15, by = 1)
+  n_basis <- seq(from = 16, to = 25, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
@@ -733,7 +733,7 @@ fourier_fpcr_appl_function <- function(rep, fold_size, nharm, seed, even_basis =
   if (even_basis == TRUE) {
     n_basis <- seq(from = 1, to = 19, by = 1)
   } else {
-    n_basis <- seq(from = 1, to = 19, by = 2)
+    n_basis <- seq(from = 21, to = 31, by = 2)
   }
   
   # set up container for averaged cross validation scores
@@ -910,7 +910,7 @@ monomial_fpcr_appl_function <- function(rep, fold_size, nharm, seed, debug = FAL
   grid <- seq(0, 1, length.out = 401)
   
   # specify number of basis functions that should be considered
-  n_basis <- seq(from = 2, to = 12, by = 1)
+  n_basis <- seq(from = 13, to = 25, by = 1)
   
   # set up container for averaged cross validation scores
   CV_container <- as.data.frame(
