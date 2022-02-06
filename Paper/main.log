@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  6 FEB 2022 12:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  6 FEB 2022 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -882,60 +882,60 @@ File: ../Graphics/basis_expansions.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../Graphics/basis_expansions.pdf  used on input line 2
 33.
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
- [8 <../Graphics/basis_expansions.pdf>] [9] [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
+ [8 <../Graphics/basis_expansions.pdf>] [9] [10] [11]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
-[13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 586--588
+Underfull \vbox (badness 1990) has occurred while \output is active []
+
+ [13]
+[14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 588--590
 
  []
 
-<../Graphics/f1_plot.pdf, id=380, 1445.4pt x 867.24pt>
+<../Graphics/f1_plot.pdf, id=381, 1445.4pt x 867.24pt>
 File: ../Graphics/f1_plot.pdf Graphic file (type pdf)
 <use ../Graphics/f1_plot.pdf>
-Package pdftex.def Info: ../Graphics/f1_plot.pdf  used on input line 596.
+Package pdftex.def Info: ../Graphics/f1_plot.pdf  used on input line 598.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/f2_plot.pdf, id=381, 1445.4pt x 867.24pt>
+<../Graphics/f2_plot.pdf, id=382, 1445.4pt x 867.24pt>
 File: ../Graphics/f2_plot.pdf Graphic file (type pdf)
 <use ../Graphics/f2_plot.pdf>
-Package pdftex.def Info: ../Graphics/f2_plot.pdf  used on input line 602.
+Package pdftex.def Info: ../Graphics/f2_plot.pdf  used on input line 604.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
 [16 <../Graphics/f1_plot.pdf> <../Graphics/f2_plot.pdf>] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 645--646
+Underfull \hbox (badness 10000) in paragraph at lines 647--648
 
  []
 
 
 LaTeX Warning: Hyper reference `fpc_exp_transf' on page 18 undefined on input l
-ine 650.
+ine 652.
 
 [18] [19]
-<../Graphics/FinderSD.jpg, id=434, 1505.625pt x 1004.25188pt>
+<../Graphics/FinderSD.jpg, id=435, 1505.625pt x 1004.25188pt>
 File: ../Graphics/FinderSD.jpg Graphic file (type jpg)
 <use ../Graphics/FinderSD.jpg>
-Package pdftex.def Info: ../Graphics/FinderSD.jpg  used on input line 698.
+Package pdftex.def Info: ../Graphics/FinderSD.jpg  used on input line 700.
 (pdftex.def)             Requested size: 483.69687pt x 322.6237pt.
  [20 <../Graphics/FinderSD.jpg>]
-<../Graphics/Fourier_Basis.pdf, id=442, 1445.4pt x 578.16pt>
+<../Graphics/Fourier_Basis.pdf, id=443, 1445.4pt x 578.16pt>
 File: ../Graphics/Fourier_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Fourier_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 709.
+Package pdftex.def Info: ../Graphics/Fourier_Basis.pdf  used on input line 711.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Bspline_Basis.pdf, id=443, 1445.4pt x 578.16pt>
+<../Graphics/Bspline_Basis.pdf, id=444, 1445.4pt x 578.16pt>
 File: ../Graphics/Bspline_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Bspline_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 714.
+Package pdftex.def Info: ../Graphics/Bspline_Basis.pdf  used on input line 716.
 
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
-<../Graphics/Monomial_Basis.pdf, id=444, 1445.4pt x 578.16pt>
+<../Graphics/Monomial_Basis.pdf, id=445, 1445.4pt x 578.16pt>
 File: ../Graphics/Monomial_Basis.pdf Graphic file (type pdf)
 <use ../Graphics/Monomial_Basis.pdf>
-Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 719
+Package pdftex.def Info: ../Graphics/Monomial_Basis.pdf  used on input line 721
 .
 (pdftex.def)             Requested size: 483.69687pt x 193.47527pt.
  [21 <../Graphics/Fourier_Basis.pdf> <../Graphics/Bspline_Basis.pdf> <../Graphi
@@ -945,73 +945,73 @@ cs/Monomial_Basis.pdf>]
  (./tables.tex) [22
 
 ] [23] [24] [25] [26]
-<../Graphics/Curve_Estimates/basis_expansion_1_1.pdf, id=502, 1445.4pt x 867.24
+<../Graphics/Curve_Estimates/basis_expansion_1_1.pdf, id=503, 1445.4pt x 867.24
 pt>
 File: ../Graphics/Curve_Estimates/basis_expansion_1_1.pdf Graphic file (type pd
 f)
 <use ../Graphics/Curve_Estimates/basis_expansion_1_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_1_1.pdf  u
-sed on input line 732.
+sed on input line 734.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/basis_expansion_1_2.pdf, id=503, 1445.4pt x 867.24
+<../Graphics/Curve_Estimates/basis_expansion_1_2.pdf, id=504, 1445.4pt x 867.24
 pt>
 File: ../Graphics/Curve_Estimates/basis_expansion_1_2.pdf Graphic file (type pd
 f)
 <use ../Graphics/Curve_Estimates/basis_expansion_1_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_1_2.pdf  u
-sed on input line 737.
+sed on input line 739.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/basis_expansion_2_1.pdf, id=504, 1445.4pt x 867.24
+<../Graphics/Curve_Estimates/basis_expansion_2_1.pdf, id=505, 1445.4pt x 867.24
 pt>
 File: ../Graphics/Curve_Estimates/basis_expansion_2_1.pdf Graphic file (type pd
 f)
 <use ../Graphics/Curve_Estimates/basis_expansion_2_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_2_1.pdf  u
-sed on input line 746.
+sed on input line 748.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/basis_expansion_2_2.pdf, id=505, 1445.4pt x 867.24
+<../Graphics/Curve_Estimates/basis_expansion_2_2.pdf, id=506, 1445.4pt x 867.24
 pt>
 File: ../Graphics/Curve_Estimates/basis_expansion_2_2.pdf Graphic file (type pd
 f)
 <use ../Graphics/Curve_Estimates/basis_expansion_2_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/basis_expansion_2_2.pdf  u
-sed on input line 751.
+sed on input line 753.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf, id=506, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf, id=507, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf  used 
-on input line 760.
+on input line 762.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf, id=507, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf, id=508, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf  used 
-on input line 765.
+on input line 767.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf, id=508, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf, id=509, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf  used 
-on input line 774.
+on input line 776.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf, id=509, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf, id=510, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm2_2_2.pdf  used 
-on input line 779.
+on input line 781.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf, id=510, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf, id=511, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf  used 
-on input line 788.
+on input line 790.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf, id=511, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf, id=512, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_1_2.pdf  used 
-on input line 793.
+on input line 795.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
  [27
 
@@ -1022,41 +1022,41 @@ pdf> <../Graphics/Curve_Estimates/basis_expansion_2_2.pdf> <../Graphics/Curve_E
 stimates/fpcr_nharm2_1_1.pdf> <../Graphics/Curve_Estimates/fpcr_nharm2_1_2.pdf>
  <../Graphics/Curve_Estimates/fpcr_nharm2_2_1.pdf> <../Graphics/Curve_Estimates
 /fpcr_nharm2_2_2.pdf>]
-<../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf, id=561, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf, id=562, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf  used 
-on input line 802.
+on input line 804.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf, id=562, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf, id=563, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm3_2_2.pdf  used 
-on input line 807.
+on input line 809.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf, id=563, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf, id=564, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf  used 
-on input line 816.
+on input line 818.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf, id=564, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf, id=565, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf  used 
-on input line 821.
+on input line 823.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf, id=565, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf, id=566, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_2_1.pdf  used 
-on input line 830.
+on input line 832.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
-<../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf, id=566, 1445.4pt x 867.24pt>
+<../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf, id=567, 1445.4pt x 867.24pt>
 File: ../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf Graphic file (type pdf)
 <use ../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf>
 Package pdftex.def Info: ../Graphics/Curve_Estimates/fpcr_nharm4_2_2.pdf  used 
-on input line 835.
+on input line 837.
 (pdftex.def)             Requested size: 241.84843pt x 145.09984pt.
  [28 <../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf> <../Graphics/Curve_Estim
 ates/fpcr_nharm3_1_2.pdf> <../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf> <..
@@ -1064,7 +1064,7 @@ ates/fpcr_nharm3_1_2.pdf> <../Graphics/Curve_Estimates/fpcr_nharm3_2_1.pdf> <..
 r_nharm4_1_1.pdf> <../Graphics/Curve_Estimates/fpcr_nharm4_1_2.pdf> <../Graphic
 s/Curve_Estimates/fpcr_nharm4_2_1.pdf> <../Graphics/Curve_Estimates/fpcr_nharm4
 _2_2.pdf>] [29]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 7907) has occurred while \output is active []
 
  [30]
 [31]
@@ -1083,10 +1083,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22702 strings out of 478353
- 397808 string characters out of 5852101
- 1194591 words of memory out of 5000000
- 40148 multiletter control sequences out of 15000+600000
+ 22704 strings out of 478353
+ 397830 string characters out of 5852101
+ 1194600 words of memory out of 5000000
+ 40150 multiletter control sequences out of 15000+600000
  423213 words of font info for 170 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,23n,63p,1197b,1727s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1113,10 +1113,10 @@ xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (33 pages, 1053929 bytes).
+Output written on main.pdf (33 pages, 1053397 bytes).
 PDF statistics:
- 816 PDF objects out of 1000 (max. 8388607)
- 687 compressed objects within 7 object streams
+ 819 PDF objects out of 1000 (max. 8388607)
+ 690 compressed objects within 7 object streams
  205 named destinations out of 1000 (max. 500000)
  37764 words of extra memory for PDF output out of 42996 (max. 10000000)
 
