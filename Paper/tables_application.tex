@@ -1,0 +1,142 @@
+% extrernal file for all tables Tables
+
+
+\subsection{Application Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{table}[htb]
+%			\centering
+%			\caption{Best Model Tabel - tmp}
+%				\begin{tabular}{lllllll}
+%					\cline{1-5}
+%					 \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}               & \textbf{model} &  \\ \cline{1-5}
+%5     & 3     & 5     & 5     & monomial basis  \\
+%5     & 4     & 11    & 6     & bspline basis   \\
+%5     & 3     & 9     & 7     & fourier basis   \\
+%4     & 4     & 10    & 10    & monomial fpcr 2 \\
+%5     & 5     & 6     & 6     & monomial fpcr 3 \\
+%6     & 6     & 8     & 8     & monomial fpcr 4 \\
+%5     & 5     & 4     & 4     & bspline fpcr 2  \\
+%5     & 5     & 6     & 6     & bspline fpcr 3  \\
+%6     & 6     & 23    & 23    & bspline fpcr 4  \\
+%3     & 3     & 5     & 5     & fourier fcpr 2  \\
+%3     & 3     & 15    & 15    & fourier fpcr 3  \\
+%5     & 5     & 7     & 7     & fourier fpcr 4 
+%\end{tabular}
+%\end{table}
+
+%\vspace{0.5cm}	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+
+
+	\begin{table}[htb]
+			\centering
+			\caption{Application Results Basis Expansion Regression}
+				\begin{tabular}{|lll|lll|}
+\hline
+Monomial & B-Spline & Fourier                      & \textbf{n\_basis} & \textbf{fold\_size} & \textbf{n\_folds} \\ \hline
+2.29641  &          & \multicolumn{1}{l|}{}        & 2       & 5         & 12      \\
+2.11258  &          & \multicolumn{1}{l|}{2.07767} & 3       & 5         & 12      \\
+0.73444  & 0.73444  & \multicolumn{1}{l|}{}        & 4       & 5         & 12      \\
+{\color[HTML]{FE0000} 0.24181}  & 0.2544   & \multicolumn{1}{l|}{0.07430} & 5       & 5         & 12      \\
+8.88013  & 0.08621  & \multicolumn{1}{l|}{}        & 6       & 5         & 12      \\
+         & 0.11177  & \multicolumn{1}{l|}{0.05021} & 7       & 5         & 12      \\
+         & 0.05012  & \multicolumn{1}{l|}{}        & 8       & 5         & 12      \\
+         & 0.07465  & \multicolumn{1}{l|}{{\color[HTML]{FE0000} 0.04808}} & 9       & 5         & 12      \\
+         & {\color[HTML]{FE0000} 0.04574}  & \multicolumn{1}{l|}{}        & 10      & 5         & 12      \\
+         & 0.05629  & \multicolumn{1}{l|}{0.05456} & 11      & 5         & 12      \\
+         & 0.05291  & \multicolumn{1}{l|}{}        & 12      & 5         & 12      \\
+         & 0.06083  & \multicolumn{1}{l|}{0.05558} & 13      & 5         & 12      \\
+         & 0.06926  & \multicolumn{1}{l|}{}        & 14      & 5         & 12      \\
+         & 0.09058  & \multicolumn{1}{l|}{0.07920} & 15      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{}        & 16      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{0.06161} & 17      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{}        & 18      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{0.10976} & 19      & 5         & 12      \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+
+
+	\begin{table}[htb]
+			\centering
+			\caption{Application Results Monomial FPCR}
+				\begin{tabular}{|lll|lll|}
+\hline
+2 FPC & 3 FPC & 4 FPC                      & \textbf{n\_basis} & \textbf{fold\_size} & \textbf{n\_folds} \\ \hline
+2.29642                        &                                &                                & 2       & 5         & 12      \\
+{\color[HTML]{FE0000} 2.17648} & 2.11259                        &                                & 3       & 5         & 12      \\
+2.21978                        & 2.17702                        & 0.73432                        & 4       & 5         & 12      \\
+2.21854                        & 2.23061                        & 2.35328                        & 5       & 5         & 12      \\
+2.21896                        & {\color[HTML]{FE0000} 1.98803} & 0.84386                        & 6       & 5         & 12      \\
+2.23156                        & 2.07872                        & 0.85358                        & 7       & 5         & 12      \\
+2.19982                        & 2.25104                        & 0.11363                        & 8       & 5         & 12      \\
+2.24343                        & 2.21964                        & 0.11476                        & 9       & 5         & 12      \\
+2.18792                        & 2.11694                        & 0.12084                        & 10      & 5         & 12      \\
+2.20919                        & 2.15677                        & {\color[HTML]{FE0000} 0.08986} & 11      & 5         & 12      \\
+2.27197                        & 2.21142                        & 0.14176                        & 12      & 5         & 12  \\ \hline   
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+
+
+% in progress
+{\color{red} Application BSpline FPCR still in progress}
+\begin{table}[htb]
+			\centering
+			\caption{Application Results B-spline FPCR}
+				\begin{tabular}{|lll|lll|}
+\hline
+Monomial & B-Spline & Fourier                      & \textbf{n\_basis} & \textbf{fold\_size} & \textbf{n\_folds} \\ \hline
+2.29641  &          & \multicolumn{1}{l|}{}        & 2       & 5         & 12      \\
+2.11258  &          & \multicolumn{1}{l|}{2.07767} & 3       & 5         & 12      \\
+0.73444  & 0.73444  & \multicolumn{1}{l|}{}        & 4       & 5         & 12      \\
+{\color[HTML]{FE0000} 0.24181}  & 0.2544   & \multicolumn{1}{l|}{0.07430} & 5       & 5         & 12      \\
+8.88013  & 0.08621  & \multicolumn{1}{l|}{}        & 6       & 5         & 12      \\
+         & 0.11177  & \multicolumn{1}{l|}{0.05021} & 7       & 5         & 12      \\
+         & 0.05012  & \multicolumn{1}{l|}{}        & 8       & 5         & 12      \\
+         & 0.07465  & \multicolumn{1}{l|}{{\color[HTML]{FE0000} 0.04808}} & 9       & 5         & 12      \\
+         & {\color[HTML]{FE0000} 0.04574}  & \multicolumn{1}{l|}{}        & 10      & 5         & 12      \\
+         & 0.05629  & \multicolumn{1}{l|}{0.05456} & 11      & 5         & 12      \\
+         & 0.05291  & \multicolumn{1}{l|}{}        & 12      & 5         & 12      \\
+         & 0.06083  & \multicolumn{1}{l|}{0.05558} & 13      & 5         & 12      \\
+         & 0.06926  & \multicolumn{1}{l|}{}        & 14      & 5         & 12      \\
+         & 0.09058  & \multicolumn{1}{l|}{0.07920} & 15      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{}        & 16      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{0.06161} & 17      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{}        & 18      & 5         & 12      \\
+         &          & \multicolumn{1}{l|}{0.10976} & 19      & 5         & 12      \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+
+
+\begin{table}[htb]
+			\centering
+			\caption{Application Results Fourier FPCR}
+				\begin{tabular}{|lll|lll|}
+\hline
+2 FPC & 3 FPC & 4 FPC                       & \textbf{n\_basis} & \textbf{fold\_size} & \textbf{n\_folds} \\ \hline
+{\color[HTML]{FE0000} 2.13234} & 2.07788                        &                               & 3       & 5         & 12      \\
+2.26267                        & 0.21409                        & 0.19585                       & 5       & 5         & 12      \\
+2.15572                        & 0.06414                        & {\color[HTML]{FE0000} 0.0435} & 7       & 5         & 12      \\
+2.16344                        & {\color[HTML]{FE0000} 0.05448} & 0.05256                       & 9       & 5         & 12      \\
+2.16087                        & 0.06795                        & 0.05276                       & 11      & 5         & 12      \\
+2.13984                        & 0.05848                        & 0.05154                       & 13      & 5         & 12      \\
+2.17941                        & 0.14014                        & 0.06486                       & 15      & 5         & 12      \\
+2.16465                        & 0.28983                        & 0.05143                       & 17      & 5         & 12      \\
+2.18426                        & 0.43575                        & 0.05255                       & 19      & 5         & 12  	\\ \hline   
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+

@@ -33,6 +33,7 @@ style=authoryear-comp,
 	\maketitle
 	\vspace{1.5 cm}
 	\begin{center}
+		University of Bonn \\
 		Research Module in Econometrics and Statistics \\
 		Winter Semester 2021/2022
 	\end{center}
@@ -636,7 +637,7 @@ style=authoryear-comp,
 	The following results origin from the \hyperref[basis_exp_transf]{\textbf{Estimation using Basis-Representation}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
 	
 	\paragraph{Monomial Basis}
-	Due to the in the number of basis functions increasing collinearity of these basis functions, simulations were conducted up until the sixth monomial basis, which already shows signs of numerical instability. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$. The monomial basis shows a better performance than B-splines for this coefficient function. A hypothesis for this could be that $f_1$ resembles an entire function, which can be well approximated with a power series. In case of $f_2$, this basis shows the weakest performance out of all basis, which is visible in figure 9 and 10, where it seems like $\hat{\beta}$ is not changing in the amount of noise and shows exaggerated behaviour at the boundaries. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2,Y_2$ this weakness is still visible, but less pronounced.
+	Due to the in the number of basis functions increasing collinearity of these basis functions, simulations were conducted up until the sixth monomial basis, which already shows signs of numerical instability. This could be solved using orthogonal polynomials like Legendre polynomials, see \cite{Dattoli_2001}. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$. The monomial basis shows a better performance than B-splines for this coefficient function. A hypothesis for this could be that $f_1$ resembles an entire function, which can be well approximated with a power series. In case of $f_2$, this basis shows the weakest performance out of all basis, which is visible in figure 9 and 10, where it seems like $\hat{\beta}$ is not changing in the amount of noise and shows exaggerated behaviour at the boundaries. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2,Y_2$ this weakness is still visible, but less pronounced.
 	
 	\paragraph{B-spline Basis}
 	Simulations with B-spline basis functions were possible from 5 to 18, since from 18 onwards the simulations were running into problems concerning {\color{green} what happened here exactly?}
@@ -679,13 +680,8 @@ style=authoryear-comp,
 	%\end{itemize}
 
 	\section{Application}\label{Application}
-		The application uses the methods from the previous sections to predict the octane ratings of the introduced gasoline dataset.
-		Although the simulation study granted valuable insights in the different methods in the four different settings, it is not enough for determining the method and choice of basis of the application since there is still too much uncertainty involved. To point out some sources of uncertainty: First, we do not know the true coefficient function. The insights from just two functions, $f_1$ and $f_2$, is not enough to draw any conclusion. Second, we do not know anything about the signal-to-noise ratios of the octane rating. Third, we made assumptions about the distribution of $\tilde{\xi}$ that are not relate-able to this real-life application where we not know this distribution. We will run all specification again for the gasoline dataset, but the results from the simulation study will contribute towards the reading of the results. The application is designed similar to the simulation study: The 60 spectra of the gasoline dataset will be used to regress them on the reported octane numbers and evaluate the results as prediction MSE using 10 fold cross-validation. In total, we conducted 1000 repetitions for each setting.
-		\begin{itemize}
-			\item {\color{green} incorporate results of simulation study: 					number of basis, components, etc...}
-			\item point out difficulties estimating sderror
-			\item describe setup and results
-		\end{itemize}
+		The application uses the methods and insights from the previous sections to predict the octane ratings of the introduced gasoline dataset.
+		Although the simulation study granted valuable insights in the different methods in four different settings, it is not enough to determine the method and choice of basis of the application from those insights, since there is still too much uncertainty involved. To point out some sources of uncertainty: First, opposing to the simulations study, we do not know the true coefficient function. The insights from just two functions, $f_1$ and $f_2$, is not enough to draw any conclusion. Second, we do not know anything about the signal-to-noise ratios of the measured octane numbers. Third, we made assumptions about the distribution of $\xi$ that are not relateable to this real-life application where we not know this distribution, neither can we infer something about it. We will run all specification again for the gasoline dataset, but the results from the simulation study will contribute towards the reading of the results. The application is designed similar to the simulation study: The 60 spectra of the gasoline dataset will be used to regress them on the reported octane numbers and evaluate the results as prediction MSE using 10 fold cross-validation. In total, we conducted 1000 repetitions for each setting.
 	\subsection{Interpretation of Results}
 	
 	
@@ -740,7 +736,7 @@ style=authoryear-comp,
 	\end{figure}
 
 \newpage
-\include{tables.tex}
+\include{tables_simulation.tex}
 	
 	\subsection{Curve Estimates for Chosen Specifications}
 	
@@ -855,6 +851,12 @@ style=authoryear-comp,
 			\caption{FPC Regression, 4 harmonics - $f_2, Y_2$}
 		\end{minipage}
 	\end{figure}
+
+
+\newpage
+\include{tables_application.tex}
+
+
 
 	\section{Proofs}
 	
