@@ -43,20 +43,18 @@ style=authoryear-comp,
 	
 	\newpage
 	
-	\section{Colour Guide}
-		\begin{itemize}
-			\item {\color{red} RED}: is for general comments for your own text
-			\item {\color{green} GREEN}: is for Jona's comments
-			\item {\color{orange} ORANGE}: is for Jonghun's comments
-			\item {\color{blue} BLUE}: is for Jakob's comments
-		\end{itemize}
-	
+%	\section{Colour Guide}
+%		\begin{itemize}
+%			\item {\color{red} RED}: is for general comments for your own text
+%			\item {\color{green} GREEN}: is for Jona's comments
+%			\item {\color{orange} ORANGE}: is for Jonghun's comments
+%			\item {\color{blue} BLUE}: is for Jakob's comments
+%		\end{itemize}
+
 	\section{Introduction}
 		
-	Functional Data Analysis (FDA) is {\color{red} (roots in the 1940s Grenander and Karhunen)} gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, only FDA allows extracting the information given by the smoothness of the underlying process of the functional data (cf. \cite{levitin_introduction_2007}).
-	As \cite{kokoszka_introduction_2017} {\color{red}(page ca. 17)} describe, FDA should be considered when one can view variables or units of a given data set as smooth curves or functions and the interest is in analyzing samples of curves .
-	 
-	In functional data analysis, the concept of a data set includes both realizations of scalar random variables and realizations of random functions. These could be the absorption of the Near-infrared (NIR) spectrum, which will be used in later parts of this paper. NIR-spectroscopy uses the near-infrared region of the electromagnetic spectrum (780nm to 2500nm) to measure the absorption of light at different wavelengths in a sample. \footnote{For more details, refer to the section on Near-Infrared-Spectroscopy in the Appendix.}  This dataset can then be used, for example, to predict a scalar response variable. To conduct functional linear regression, we need to consider several new concepts and methods that distinguish it from multivariate linear regression.
+	Functional Data Analysis (FDA), which has its roots in the work of Ulf Grenander and Kari Karhunen, is gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, FDA has advantages in that it allows extracting information given by properties such as the smoothness of the underlying process or its derivatives (cf. \cite{levitin_introduction_2007}).	As \cite{kokoszka_introduction_2017} describe, using methods from FDA should be considered when one variables or units of a given data set can be seen as smooth curves or functions.	 
+	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of light in the Near-infrared (NIR) spectrum by chemical samples, an example which will be used in later parts of this paper.\footnote{For more details on Near-Infrared-Spectroscopy, refer to the section on Near-Infrared-Spectroscopy in the Appendix.}  
 	This paper introduces Functional Linear Regression in a scalar-on-function setting relating functional predictors to a scalar response as described by Equation \ref{DGP1}.
 	 
 	 \begin{equation}\label{DGP1}
@@ -64,9 +62,9 @@ style=authoryear-comp,
 	 	\qquad i = 1, ..., n
 	 \end{equation}
  
-	 Here, $X(\omega)$ is a random function, $Y(\omega)$ is the response variable and $\beta(s)$ the coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. As in the framework of scalar linear regression, estimating $\beta(t)$ is particularly interesting for prediction or inference. \\
-	 
-	 In Section \ref{Theory}, after introducing the necessary theoretical concepts, we describe two methods of estimating a scalar coefficient function using using the concepts of basis expansion and functional principal component analysis. Section \ref{Simulation} contains a description of structure and results of a Monte-Carlo Simulation aimed at choosing an appropriate functional basis for the previously mentioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In section \ref{Outlook} we then give an outlook on possible extensions for this paper and describe limitations of our approach.
+	Here, $X(\omega)$ is a random function, $Y(\omega)$ is a scalar response variable and $\beta(t)$ is a coefficient function. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating $\beta(t)$ is inherently infinite-dimensional. This paper then introduces two distinct ways of estimating $\beta(t)$ using approximations dependent on a parameter choice and explores the selection of these parameters using cross validation.\\
+		 
+	In Section \ref{Theory}, after introducing the necessary theoretical concepts, we describe two methods of estimating a scalar coefficient function using using the concepts of basis expansion and functional principal component analysis. Section \ref{Simulation} contains a description of structure and results of a Monte-Carlo Simulation aimed at choosing an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook} we then give an outlook on possible extensions for this paper and describe limitations of our approach.
 
 	\section{Theory}\label{Theory}
 	In multivariate regression, data is often observed in the form of elements from Euclidean space, $\mathbb{R}^p$. However, the statistics derived from infinite-dimensional random functions cannot be defined on a finite-dimensional space. Therefore, it is necessary to introduce some concepts and extend known aspects of linear regression theory to include functional objects. One integral concept in inferential statistics is random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space.\\
@@ -172,7 +170,7 @@ style=authoryear-comp,
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
 	\end{equation}
 	
-	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion can often lead to reasonable approximations around a specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
+	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can often lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
 	
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^i, \quad i \in \mathcal{I}
@@ -202,7 +200,7 @@ style=authoryear-comp,
 
 	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process over the period $T$. Additionally, the Fourier basis is suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
 	
-	{\color{blue}I don't get this... Isn't the basis defined independently from the data set? Why is this dependent on the measuring points? "rephrasing \cite{ramsay_functional_2005}, the Fourier basis is orthonormal when the values $t_j$ are equally spaced within $T$."} 
+	%{\color{blue}I don't get this... Isn't the basis defined independently from the data set? Why is this dependent on the measuring points? "rephrasing \cite{ramsay_functional_2005}, the Fourier basis is orthonormal when the values $t_j$ are equally spaced within $T$."} 
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Typically, knots are placed on an equidistant grid, but deviations from this principle can prove advantageous in atypical settings. Additionally, at each $\tau_l$, the polynomials on neighboring subintervals must match derivatives up to order $m-2$ at the boundary. However, it is sensible to place multiple knots at the same value to replicate specific properties of the data structure. A B-spline is a spline belonging to a basis system developed by \cite{de_boor_practical_1978}. Let $\phi_{l,m}^{BS}(x) \quad l = 1,\dots,L-1$ be the B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
 	
@@ -230,6 +228,11 @@ style=authoryear-comp,
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
 	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$. The number $L$ can be chosen subjectively, but also through applying a data-driven method like Cross-Validation, which aims to minimize the Mean Squared Error (MSE) or other criteria. The significance of this choice of truncation becomes more evident in {\color{green} Link estimation} and is the subject of the simulation study. 
+	
+	\begin{figure}[H]
+		\includegraphics[width=\textwidth]{../Graphics/basis_expansions.pdf}
+		\caption{B-spline Approximations of NIR Absorption Spectra with different Basis Truncation Parameters}
+	\end{figure}
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function $X: \Omega \mapsto \mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To do so, it is necessary to define the mean and covariance functions of $X(\omega)$.
