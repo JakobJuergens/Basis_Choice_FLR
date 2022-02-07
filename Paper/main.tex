@@ -626,11 +626,20 @@ style=authoryear-comp,
 
 	\section{Application}\label{Application}
 		The application uses the methods and insights from the previous sections to predict the octane ratings of the introduced gasoline dataset.
-		Although the simulation study granted valuable insights in the different methods in four different settings, it is not enough to determine the method and choice of basis of the application, since there is too much uncertainty involved. To point out some sources of uncertainty: First, opposing to the simulation setup, we do not know the true coefficient function. The insights from just two functions, $f_1$ and $f_2$, is not enough to draw any conclusion. Second, we have no information about the signal-to-noise ratios of the measured octane numbers. Third, we made assumptions about the distribution of $\xi$ that are not relateable to this real-life application where we not know this distribution, neither can we infer something about it. 
+		Although the simulation study granted valuable insights in the different methods in four different settings, it is not enough to determine the method and choice of basis of the application, since there is too much uncertainty involved. To point out some sources of uncertainty: First, opposing to the simulation setup, we do not know the true coefficient function. Visual inspection fuels the hypothesis that $NIR$ looks closer to $f_2$ than to $f_1$ but the insights from two functions are not enough to draw any conclusion. Second, we have no information about the signal-to-noise ratios of the measured octane numbers. Third, we made assumptions about the distribution of $\xi$ that are not relateable to this real-life application where we not know this distribution, neither can we infer something about it. 
 		Therefore, we will run all specification again for the gasoline dataset and use the results of the simulation study towards the reading of the results. The application is designed similar to the simulation study: The 60 spectra of the gasoline dataset will be used to regress them on the reported octane numbers and evaluate the results as prediction MSE using 12 fold cross-validation with 5 elements per fold. In total, we conducted 1000 repetitions for each setting.
+		
+
 		
 	\subsection{Interpretation of Results}
 		\subsubsection{Basis Expansion Regression}
+		\paragraph{Monomial Basis} 
+		The cross-validated MSPE selects 5 basis functions, as three out of the four setups in the simulation study. However, we must exercise caution since the results from $L$=6 onwards appear to display signs of numerical instability.
+		
+		\paragraph{B-Spline Basis}
+		The lowest MSPE is reported for 10 basis functions, most similar to $f_2,Y_1$. Although no convex behaviour can be observed, as for $f_2,Y_1$ the MSPE stays relatively small from 8 basis functions onwards.
+		
+		\paragraph{Fourier Basis}
 		\subsubsection{Functional Principal Component Regression}
 		As for the simulation study, the 
 	
