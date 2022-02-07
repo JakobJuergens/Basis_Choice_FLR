@@ -627,14 +627,16 @@ style=authoryear-comp,
 	\subsection{Results}	
 	The discussed results and figures of $\hat{\beta}(t)$ for the simulation can be found in the appendix. 
 	\subsubsection{Basis Expansion Regression}
-	The following results origin from the \hyperref[basis_exp_transf]{\textbf{Estimation using Basis-Representation}}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
+	The following results origin from the \hyperref[basis_exp_transf]{Estimation using Basis-Representation}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
 	
 	\paragraph{Monomial Basis}
 	Due to the in the number of basis functions increasing collinearity of these basis functions, simulations were conducted up until the sixth monomial basis, which already shows signs of numerical instability. This could be solved using orthogonal polynomials like Legendre polynomials, see \cite{Dattoli_2001}. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$. The monomial basis shows a better performance than B-splines for this coefficient function. A hypothesis for this could be that $f_1$ resembles an entire function, which can be well approximated with a power series. In case of $f_2$, this basis shows the weakest performance out of all basis, which is visible in figure 9 and 10, where it seems like $\hat{\beta}$ is not changing in the amount of noise and shows exaggerated behaviour at the boundaries. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2,Y_2$ this weakness is still visible, but less pronounced.
+	\vspace{-0.2cm}
 	
 	\paragraph{B-spline Basis}
 	Simulations with B-spline basis functions were possible from 5 to 18, since from 18 onwards the simulations were running into problems concerning {\color{green} what happened here exactly?}
 	The smooth function $f_1$ requires only 5(4) B-spline basis functions, for the high(low) signal-to-noise ratio to obtain the best fit for the B-spline basis, which performs the worst for $f_1$. An explanation might be its exaggerated behaviour at the boundaries and the exaggeration of the peculiarities of $f_1$ (figure 7 and 8), which is especially pronounced for the higher noise responses. For $f_2$, 11(6) B-spline basis functions are chosen for the high(low) signal-to-noise ratios. For $f_2$, the B-spline basis functions outperform the monomial basis but come second to the Fourier basis. While the basis seems to recognize the peculiarities in $f_2,Y_1$, it seems to struggle with it for the noisy responses in $f_2,Y_2$ (figure 9 and 10).
+	\vspace{-0.2cm}
 	
 	\paragraph{Fourier Basis}
 	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number of basis functions, which could be to account for the higher noise in the response variable. The Fourier basis functions perform the best for each setup for the basis expansion regression. Several reasons could contribute to this: First, especially $f_1$ shows similar curvature order across the domain while the curvature of $f_2$, while changing, does not display any eradic jumps. Second, both functions feature periodic behaviour. Third, $f_2$ does have the same value at the start- and the end of the interval.	\\
@@ -642,20 +644,19 @@ style=authoryear-comp,
 	A possible explanation applicable for all the specifications might be the effect of the Bias-Variance tradeoff and the following hypothesis: The function $f_1$ is rather simple. meaning that little bias is introduced when choosing a small number of basis functions. For $f_2$, a higher number of basis functions is needed, resulting from the inherent peculiarities of $f_2$. This results in higher numbers of basis functions since the amount of bias is decreasing faster in the number of basis functions than the variance is increasing compared to $f_1$. 
 
 	\subsubsection{Functional Principal Component Regression}
-	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{\textbf{Estimation using Functional Principal Components}}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC's as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC's $n_{FPC} \in \{2, 3, 4 \}$. 
+	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC's as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC's $n_{FPC} \in \{2, 3, 4 \}$. 
 	
 	\paragraph{Monomial Basis}
 	For $f_1$, the cross-validated MSE is decreasing in the increasing number of FPC's and chosen basis functions for both the setup with the high, and the low signal-to-noise ratio (4,5,6 basis functions for $n_{FPC} \in \{2, 3, 4 \}$). In the setup using $f_2$ we also observe a decreasing MSE in the number of FPC, but a different behaviour of the chosen basis functions: While the model selects 10 basis functions for $f_2,Y_1$ and $f_2,Y_2$ using 2 FPC, it only selects 6 for the same two specifications using 3 FPC and 8 for $f_2,Y_1$ and $f_2,Y_2$ with 4 FPC. This might be surprising, since one might assume that the number of basis functions is increasing in $n_{FPC}$ since more basis functions led to less smoothing and therefore more variability in the expanded curves that might be exploited by the FPC's. The monomial basis shows the weakest performance for all three basis functions in each setting.
+	\vspace{-0.2cm}
+	
 	\paragraph{B-spline Basis}
-	For $f_1,Y_1$, the CV suggests a better model with a higher number of FPC's. While the number of basis functions stays at five for two and three used FPC, it increases to six basis functions for $nharm$ = 4. In $f_1,Y_1$, the cross-validated MSE is only slightly affected by $n_{FPC}$, but lowest for $n_{FPC}$ = 3, indicating the possibility of over-fitting for $n_{FPC}$ = 4. $f_2,Y_1$ shows a decrease of MSE in increasing $n_{FPC}$. The same holds true in the setup with $f_2$ and the high signal-to-noise ratio with the decrease being similar in absolute terms. Similar to the two setups with $f_1$, the cross-validated number of basis functions for $f_2$ is increasing in the number of FPC's (4,6,8 for $n_{FPC} \in \{2, 3, 4 \}$)\\
-
+	For $f_1,Y_1$, the CV suggests a better model with a higher number of FPC's. While the number of basis functions stays at five for two and three used FPC, it increases to six basis functions for $nharm$ = 4. In $f_1,Y_1$, the cross-validated MSE is only slightly affected by $n_{FPC}$, but lowest for $n_{FPC}$ = 3, indicating the possibility of over-fitting for $n_{FPC}$ = 4. $f_2,Y_1$ shows a decrease of MSE in increasing $n_{FPC}$. The same holds true in the setup with $f_2$ and the high signal-to-noise ratio with the decrease being similar in absolute terms. Similar to the two setups with $f_1$, the cross-validated number of basis functions for $f_2$ is increasing in the number of FPC's (4,6,8 for $n_{FPC} \in \{2, 3, 4 \}$)
+	\vspace{-0.2cm}
 	
 	\paragraph{Fourier Basis}
 	We observe similar behaviour as for the FPCR using B-splines. In $f_1,Y_1$, the MSE is decreasing in $n_{FPC}$ while the results in $f_1,Y_2$ might indicate overfitting when using four FPC's. Since it is not possible to calculate the cross-validated MSE for three basis functions for $n_{FPC}$ = 4, the increasing number of basis functions as seen in the FPCR with B-splines can not be observed here for sure. $f_2,Y_1$ displays the greatest relative decline of MSE in the increasing number of FPC's, but in absolut values, therefore acknowledging the higher noise responses for $f_2,Y2$, the decline if MSE is similar to the decline observed for $f_2,Y_2$. Both configurations of $f_2$ are using 5,15,7 basis functions for $n_{FPC} \in \{2, 3, 4 \}$: This behaviour in increasing $n_{FPC}$ opposes the previously reported behaviour of the monomial basis and the increasing nature of the B-splines basis functions.
-	
-	
-	
-	
+	\vspace{-0.2cm}	
 	
 	\subsubsection{Interpretation and Relevance for Application}
 	
@@ -691,19 +692,23 @@ style=authoryear-comp,
 	\subsection{Limitations}
 	
 	\paragraph{Insights from Simulation cannot be Extended to More General Functions}
+	\vspace{-0.2cm}
 	
 	\paragraph{Collinearity Problems in Basis Expansion Regression}
 	As already described in the section on the simulation study, the basis expansion regression was in part limited by the numerical instability of the estimation procedure. This is mainly due to an increase in collinearity of the derived regressor matrix shown in Definition \ref{regressor_mat_1}. This problem is inherent to basis systems whose functions are not pairwise orthogonal, such as the monomial or B-splines bases, but gets more pronounced the more functions we add to the basis system and the higher the correlation between those functions. \\
 	The numeric instability of the inversion of this matrix makes the estimates unreliable and therefore can make this approach infeasible for non-orthogonal bases in settings where the characteristics of the data set demand a higher number of basis functions than is feasible due to the properties of the estimation procedure.
+	\vspace{-0.2cm}
 	
 	\paragraph{Low Number of Basis Functions in FPCR Regression}
 	Another limitation of the exploration into functional principal component regression is the low number of principal component specifications used in this paper. As the simulation and application showed, the number of basis functions does not seem to be the deciding factor for the performance of this method as long as an appropriately high number of basis functions is provided. 
 	A more significant factor seems to be the number of principal components available for the linear regression which in itself could be subject to choice according to cross validation.
+	\vspace{-0.2cm}
 	
 	\subsection{Possible Extensions}
 	
 	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
 	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials. Due to their orthogonality the problems of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
+	\vspace{-0.2cm}
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
 	
