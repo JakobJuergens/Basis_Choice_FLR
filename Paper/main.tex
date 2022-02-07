@@ -181,13 +181,13 @@ style=authoryear-comp,
 	There exist collinearity problems of this basis system since the monomial basis functions become more correlated to each other as the degrees increase, which would result in numerically unstable situation. This restricts the number of basis functions. However, the lower order monomial function makes it impracticable to capture pronounced local peculiarities. It finally leads to an undesirable behavior at the tails such as Taylor expansion (cf. \cite{ramsay_functional_2005}). Therefore, regarding the use, this may be useful for relatively simple functions.
 	
 	\paragraph{Fourier Basis}
-	In the same way the monomial basis corresponds to the Taylor expansion, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function $s(x)$ defined on the interval $[0,1]$.
+	In the same way the monomial basis is connected to the Taylor series, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function with a period of 1.
 	
 	\begin{equation}\label{Fourier_Series}
 		s(x) = \frac{A_0}{2} + \sum_{i = 1}^{\infty} A_n \cos(2\pi i x - \phi_n) = \frac{a_0}{2} + \sum_{i = 1}^{\infty}\left[a_i \cos(2\pi i x) + b_i \sin(2\pi i x)\right]
 	\end{equation}
 	
-	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift. Therefore, rewriting the series in the sine-cosine form through a simple trigonometry formula as shown above is necessary. Due to this origin of the Fourier basis it is reasonable to restrict the number of Fourier basis functions to odd numbered values.
+	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift. Therefore, rewriting the series in the sine-cosine form through a simple trigonometry formula as shown above is necessary. Due to this origin of the Fourier basis it is reasonable to restrict the number of Fourier basis functions to odd numbered values to stay true to the expansion in amplitude-phase form.
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is thus given by the following sequence of functions defined on $[0,1]$ directly corresponding to the terms of the sine-cosine form of the Fourier series.
 	
 	\begin{equation}
@@ -199,13 +199,11 @@ style=authoryear-comp,
 		\end{cases}
 	\end{equation}
 
-	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process over the period $T$. Additionally, the Fourier basis is suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
-	
-	%{\color{blue}I don't get this... Isn't the basis defined independently from the data set? Why is this dependent on the measuring points? "rephrasing \cite{ramsay_functional_2005}, the Fourier basis is orthonormal when the values $t_j$ are equally spaced within $T$."} 
+	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process. Additionally, the Fourier basis is especially suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions.
 
-	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing the interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. Typically, knots are placed on an equidistant grid leading to polynomials on neighboring subintervals matching derivatives up to order $m-2$ at the boundary knot $\tau_l$. However, in some settings it can be sensible to place multiple knots at the same value to replicate specific properties of the data structure. This allows for a reduced number of matching derivatives at the corresponding knots. For the purposes of this paper, we will focus on the case of equidistant knots without multiplicity at inner knots.\\
+	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing an interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. If there are no multiplicities in the set of these knots, the polynomials on neighboring subintervals are matching derivatives up to order $m-2$ at the boundary knot $\tau_l$. A typical case of this that is often used in practive is an equidistant grid of knots. In some settings, however, it can be sensible to place multiple knots at the same value to replicate specific properties of the data structure allowing for a reduced number of matching derivatives at the corresponding knots. For the purposes of this paper, we will focus on the case of equidistant knots without multiplicity at inner knots.\\
 	
-	B-splines were developed by \cite{de_boor_practical_1978} and are defined by a recursive procedure. Let $\phi_{l,m}^{BS}(x) \quad l \in \{1,\dots,L-1\}$ be a B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and inner knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
+	B-splines are a specific system of spline functions developed by \cite{de_boor_practical_1978} and are defined by a recursive procedure. Let $\phi_{l,m}^{BS}(x) \quad l \in \{1,\dots,L-1\}$ be a B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and inner knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
 	
 	\begin{equation}
 		\begin{split}
@@ -532,16 +530,13 @@ style=authoryear-comp,
 
 	As in the previous case, the performance of this estimation depends the quality of the approximation made during the derivation of this estimator. Therefore, it is interesting to think about when these errors are small... {\color{red}Continue Here Jakob!!!}
 
-	\subsection{Literature}
-	\begin{itemize}
-		\item \cite{alexanderian_KLexpansion_2015}
-		\item \cite{kokoszka_introduction_2017}
-		\item \cite{hsing_theoretical_2015}
-		\item \cite{ramsay_functional_2005}
-		\item \cite{horvath_inference_2012}
-		\item \cite{cai_prediction_2006}
-		\item \cite{levitin_introduction_2007}
-	\end{itemize}
+	\nocite{alexanderian_KLexpansion_2015}
+	\nocite{kokoszka_introduction_2017}
+	\nocite{hsing_theoretical_2015}
+	\nocite{ramsay_functional_2005}
+	\nocite{horvath_inference_2012}
+	\nocite{cai_prediction_2006}
+	\nocite{levitin_introduction_2007}
 
 	\section{Simulation Study}\label{Simulation}
 
@@ -685,21 +680,26 @@ style=authoryear-comp,
 	\subsection{Interpretation of Results}
 	
 	
-	\subsection{Literature}
-	\begin{itemize}
-		\item \cite{carey_life_2002}
-	\end{itemize}
+	\nocite{carey_life_2002}
 
 	\section{Outlook}\label{Outlook}
 	
 	\subsection{Limitations}
 	
+	\paragraph{Insights from Simulation cannot be Extended to More General Functions}
+	
+	\paragraph{Collinearity Problems in Basis Expansion Regression}
+	
+	\paragraph{Low Number of Basis Functions in FPCR Regression}
+	
 	\subsection{Possible Extensions}
 	
-	\subsection{Literature}
-	\begin{itemize}
-		\item \cite{James.2009} (shape-restrictions)
-	\end{itemize}
+	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
+	
+	\paragraph{Comparison to Penalty Based Smoothing Procedures}
+	
+	
+	\nocite{James.2009} %(shape-restrictions)
 	
 	\newpage
 	\section{Appendix}
@@ -753,7 +753,7 @@ style=authoryear-comp,
 			\caption{Basis Expansion Regression - $f_1, Y_2$}
 		\end{minipage}
 	\end{figure}
-
+	
 	\begin{figure}[H]
 		\centering
 		\begin{minipage}{.5\textwidth}
@@ -767,7 +767,7 @@ style=authoryear-comp,
 			\caption{Basis Expansion Regression - $f_2, Y_2$}
 		\end{minipage}
 	\end{figure}
-
+	
 	\begin{figure}[H]
 		\centering
 		\begin{minipage}{.5\textwidth}
@@ -795,8 +795,8 @@ style=authoryear-comp,
 			\caption{FPC Regression, 2 harmonics - $f_2, Y_2$}
 		\end{minipage}
 	\end{figure}
-
-		\begin{figure}[H]
+	
+	\begin{figure}[H]
 		\centering
 		\begin{minipage}{.5\textwidth}
 			\centering
@@ -823,8 +823,8 @@ style=authoryear-comp,
 			\caption{FPC Regression, 3 harmonics - $f_2, Y_2$}
 		\end{minipage}
 	\end{figure}
-
-		\begin{figure}[H]
+	
+	\begin{figure}[H]
 		\centering
 		\begin{minipage}{.5\textwidth}
 			\centering
@@ -855,8 +855,6 @@ style=authoryear-comp,
 
 \newpage
 \include{tables_application.tex}
-
-
 
 	\section{Proofs}
 	
@@ -1003,7 +1001,6 @@ style=authoryear-comp,
 	\section{Bibliography}
 	\printbibliography[heading=none]	
 	
-	\newpage
 	\section{Affidavit}
 	
 	\vspace{2cm}
