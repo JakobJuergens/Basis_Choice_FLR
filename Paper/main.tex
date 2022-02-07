@@ -248,8 +248,7 @@ style=authoryear-comp,
 	\begin{equation}\label{HSKernal}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
 	\end{equation}
-	
-	Then, the operator $K$ has orthonormal basis functions $\nu^{m} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda^{m}$ for all $m$ since it is a positive compact self-adjoint operator (cf. \cite{alexanderian_KLexpansion_2015}). Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
+	More exact definitions are provided at \ref{def_HS}. Then, the operator $K$ has orthonormal basis functions $\nu^{m} \in \mathbb{L}^{2}[0,1]$ corresponding to eigenvalues $\lambda^{m}$ for all $m$ since it is a positive compact self-adjoint operator (cf. \cite{alexanderian_KLexpansion_2015}). Moreover, $K$ holds that the eigenvalues can be ordered in nonincreasing order as follows $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ where the superscript is not the power but index. Therefore, the functions $X$ are approximated enough well by first few principal components since the order of them are sorted in descending order of eigenvalues corresponding to the eigenfunctions (e.g. $Var(\xi^{m}) \geq Var(\xi^{n})$ for all $m < n$). Theoretical considerations lead to the result that $X$ can be represented in the following form, called its Karhunen-Lo\'{e}ve expansion. The proofs are provided at \ref{Proof1} and \ref{Proof2}.
 	
 	%\begin{enumerate}
 	%\item The eigenspaces corresponding to distinct eigenvalues are mutually orthogonal.
@@ -867,9 +866,37 @@ style=authoryear-comp,
 \newpage
 \include{tables_application.tex}
 
-	\section{Proofs}
+	\section{Definition and Proofs}
+	\cite{alexanderian_KLexpansion_2015} was referred for the following definitions and proofs.
 	
-	\cite{alexanderian_KLexpansion_2015} was referred for the following proofs.
+	\subsection{Definition (Hilbert-Schmidt Operator)}\label{def_HS}
+	Given a bounded domain $\mathcal{A} \subset \mathbb{R}^n$, we call a function $c : \mathcal{A} \times \mathcal{A} \rightarrow \mathbb{R}$ a Hilbert-Schmidt kernel if
+	\begin{equation}
+		\int_{\mathcal{A}} \int_{\mathcal{A}} \vert c(x,y) \vert ^2 dx dy < \infty
+	\end{equation}
+	where $c \in \mathbb{L}^2(\mathcal{A} \times \mathcal{A})$. Let $K$ be an integral operator on $\mathbb{L}^2(\mathcal{A})$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^2(\mathcal{A})$, by
+	
+	\begin{equation}
+		[K\nu](x) = \int_{\mathcal{A}} c(x,y) \nu(y) dy
+	\end{equation}
+	When an integral operator $K$ is linear and bounded, it is called a Hilbert-Schmidt operator. The linearity of the operator $K$ is simply proved. Additionaly assume that $\alpha, \beta \in \mathbb{R}$ and $\theta \in \mathbb{L}^2(\mathcal{A})$.
+	\begin{equation}
+		\begin{split}
+			[K (\alpha \nu + \beta \theta)](x) =& \int_{\mathcal{A}} c(x,y)(\alpha \nu(y) + \beta \theta(y)) dy\\
+			= & \int_{\mathcal{A}} c(x,y) \alpha \nu(y) dy + \int_{\mathcal{A}} c(x,y) \beta \theta(y) dy\\
+			= & \alpha\int_{\mathcal{A}} c(x,y) \nu (y) dy + \beta\int_{\mathcal{A}} c(x,y) \theta (y) dy\\
+			= & \alpha[K\nu](x) + \beta[K\theta](x)
+		\end{split}
+	\end{equation}
+	For boundedness of the oprator $K$,
+	\begin{equation}
+		\begin{split}
+			\Vert K\nu \Vert^{2}_{\mathbb{L}^2(\mathcal{A})} = & \int_{\mathcal{A}} \biggl\vert [K\nu](x) \biggr\vert^2 dx\\
+			= &\int_{\mathcal{A}} \biggl\vert \int_{\mathcal{A}}c(x,y)\nu(y)dy \biggr\vert^2dx\\
+			\leq & \int_{\mathcal{A}}\biggl(\int_{\mathcal{A}}\vert c(x,y) \vert^2dy\biggr) \biggl(\int_{\mathcal{A}}\vert \nu(y) \vert ^2 dy \biggr)dx \quad \text{(Cauchy-Schwarz)}\\
+			= & \Vert c \Vert_{\mathbb{L}^2(\mathcal{A} \times \mathcal{A})}\Vert \nu \Vert_{\mathbb{L}^2} < \infty
+		\end{split}
+	\end{equation}
 	
 	\subsection{Lemma} \label{Proof1}
 	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the eigenfunctions $\{\nu^m\}$ as Equation \ref{KarhunenLoeve}. The coefficients $\xi^{m}$ corresponding to eigenfunctions $\nu^m$ satisfy the following properties:
