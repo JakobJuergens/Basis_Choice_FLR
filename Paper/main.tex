@@ -563,7 +563,7 @@ style=authoryear-comp,
 	%In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves from the gasoline dataset, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated cubic B-spline basis which is created using 50 knots. In the R implementation of the fda package that is used, these 50 knots account for 52 basis functions (50+4-2). These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, so the new realizations for the scores are drawn from a multivariate normal distribution $\mathring{\xi} = \left(\mathring{\xi}_{1},\: \dots \:, \mathring{\xi}_{M}\right)' \sim \mathcal{N}(0_M, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_M))$. Finally, we obtain the generated curves $NIR_{sim}$
+	To avoid small sample problems, we generated 200 similar curves, $NIR_{sim}$, from the spectra of the gasoline dataset, $NIR$, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated cubic B-spline basis which is created using 50 knots. In the R implementation of the fda package that is used, these 50 knots account for 52 basis functions (50+4-2). These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, so the new realizations for the scores are drawn from a multivariate normal distribution $\mathring{\xi} = \left(\mathring{\xi}_{1},\: \dots \:, \mathring{\xi}_{M}\right)' \sim \mathcal{N}(0_M, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_M))$. Finally, we obtain the generated curves $NIR_{sim}$
 	
 	
 	\begin{equation}
@@ -610,8 +610,8 @@ style=authoryear-comp,
 		
 		\begin{equation}
 			\begin{split}
-				Y_{1,f} & = \langle NIR, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR, f\rangle)}{0.9} - var(\langle NIR, f\rangle)\biggr\rbrack \\
-				Y_{2,f} & = \langle NIR, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR, f\rangle)}{0.6} - var(\langle NIR, f\rangle)\biggr\rbrack
+				Y_{1,f} & = \langle NIR, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR_{sim}, f\rangle)}{0.9} - var(\langle NIR_{sim}, f\rangle)\biggr\rbrack \\
+				Y_{2,f} & = \langle NIR_{sim}, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR_{sim}, f\rangle)}{0.6} - var(\langle NIR_{sim}, f\rangle)\biggr\rbrack
 			\end{split}
 		\end{equation}
 		
@@ -620,13 +620,13 @@ style=authoryear-comp,
 		 
 		\begin{equation}
 			\begin{split}
-				\hat{\xi}_{i}^{m, \mathcal{H}} &\approx  \int_{0}^{1} {\color{red} \left(X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)\right)} {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
+				\hat{\xi}_{i}^{m, \mathcal{H},L} &\approx  \int_{0}^{1} {\color{red} \left(X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)\right)} {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
 			    = \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{L} a_{i,j}^{\mathcal{H}} \phi_j(s)\right)} {\color{blue}\left(\sum_{k = 1}^{L} b_{k}^{m, \mathcal{T}} \phi_{k}(s)\right)} \mathrm{d}s \\
 				 &\approx \sum_{j = 1}^{L} \left[ a_{i,j}^{\mathcal{H}}\sum_{k = 1}^{L}  b_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
 			\end{split}
 		\end{equation}
 	
-		with truncation parameter $m$.
+		with truncation parameter $L$.
 		\vspace{0.2cm}
 	
 		The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
@@ -634,7 +634,7 @@ style=authoryear-comp,
 	\subsection{Results}	
 	The discussed results and figures of $\hat{\beta}(t)$ for the simulation can be found in the appendix. 
 	\subsubsection{Basis Expansion Regression}
-	The following results origin from the \hyperref[basis_exp_transf]{Estimation using Basis-Representation}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. 
+	The following results origin from the \hyperref[basis_exp_transf]{Estimation using Basis-Representation}, in which we transform the observed functions to perform regression of a scalar on a countable sequence of regressors, which is then tractable with typical multivariate regression theory. examining the results, it appears that the cross-validated MSPE inherets a convex nature in the increasing basis functions.
 	
 	\paragraph{Monomial Basis}
 	Due to the in the number of basis functions increasing collinearity of these basis functions, simulations were conducted up until the sixth monomial basis, which already shows signs of numerical instability. This could be solved using orthogonal polynomials like Legendre polynomials, see \cite{Dattoli_2001}. For reasons outlined in {\color{green} Link chapter}, they seem suited for $f_1$. The monomial basis shows a better performance than B-splines for this coefficient function. A hypothesis for this could be that $f_1$ resembles an entire function, which can be well approximated with a power series. In case of $f_2$, this basis shows the weakest performance out of all basis, which is visible in figure 9 and 10, where it seems like $\hat{\beta}$ is not changing in the amount of noise and shows exaggerated behaviour at the boundaries. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) monomial basis functions for the high(low) signal-to-noise ratios. This weakness is especially pronounced in the setup $f_2,Y_1$; for the high noise setup, $f_2,Y_2$ this weakness is still visible, but less pronounced.
@@ -648,10 +648,10 @@ style=authoryear-comp,
 	\paragraph{Fourier Basis}
 	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number of basis functions, which could be to account for the higher noise in the response variable. The Fourier basis functions perform the best for each setup for the basis expansion regression. Several reasons could contribute to this: First, especially $f_1$ shows similar curvature order across the domain while the curvature of $f_2$, while changing, does not display any eradic jumps. Second, both functions feature periodic behaviour. Third, $f_2$ does have the same value at the start- and the end of the interval.	\\
 	
-	A possible explanation applicable for all the specifications might be the effect of the Bias-Variance tradeoff and the following hypothesis: The function $f_1$ is rather simple. meaning that little bias is introduced when choosing a small number of basis functions. For $f_2$, a higher number of basis functions is needed, resulting from the inherent peculiarities of $f_2$. This results in higher numbers of basis functions since the amount of bias is decreasing faster in the number of basis functions than the variance is increasing compared to $f_1$. 
+
 
 	\subsubsection{Functional Principal Component Regression}
-	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC's as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC's $n_{FPC} \in \{2, 3, 4 \}$. 
+	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC's as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC's $n_{FPC} \in \{2, 3, 4 \}$. As will be described, it seems that neither a convex behaviour of the MSPE, nor a clear relationship can be observed between the increasing number of basis function and the number of FPC's.
 	
 	\paragraph{Monomial Basis}
 	For $f_1$, the cross-validated MSE is decreasing in the increasing number of FPC's and chosen basis functions for both the setup with the high, and the low signal-to-noise ratio (4,5,6 basis functions for $n_{FPC} \in \{2, 3, 4 \}$). In the setup using $f_2$ we also observe a decreasing MSE in the number of FPC, but a different behaviour of the chosen basis functions: While the model selects 10 basis functions for $f_2,Y_1$ and $f_2,Y_2$ using 2 FPC, it only selects 6 for the same two specifications using 3 FPC and 8 for $f_2,Y_1$ and $f_2,Y_2$ with 4 FPC. This might be surprising, since one might assume that the number of basis functions is increasing in $n_{FPC}$ since more basis functions led to less smoothing and therefore more variability in the expanded curves that might be exploited by the FPC's. The monomial basis shows the weakest performance for all three basis functions in each setting.
@@ -666,12 +666,17 @@ style=authoryear-comp,
 	\vspace{-0.2cm}	
 	
 	\subsubsection{Interpretation and Relevance for Application}
+	A possible explanation applicable for all setups using Basis Expansion Regression might be the effect of the Bias-Variance tradeoff and the following hypothesis: For the function $f_1$ it might be that little bias is introduced when choosing a small number of basis functions. For $f_2$, a higher number of basis functions is needed, resulting from the inherent peculiarities of $f_2$. This results in higher numbers of basis functions since the amount of bias is decreasing faster in the number of basis functions than the variance is increasing compared to $f_1$. The uncovered and described convex behaviour of the MSPE also might partly attributed by the bias-variance tradeoff. This could not be observed for the FPCR where no clear relationship between the basis functions and the number of FPC was observed. An hypothesis for this would be that the results for the FPCR are mostly driven by the selected FPC´s. To examine this hypothesis, additional simulations were conducted with a large truncation parameter $L$ for $n_{FPC} \in \{2, 3, 4 \}$, which seem to support this claim (LINK TO APPENDIX). 
 	
-	Adress problem of monomials again --> (This could be solved using orthogonal polynomials like Legendre polynomials, see \cite{Dattoli_2001})
+	%Keeping \cite{Jolliffe_1982} in mind, we ....(refer to problematic of missing insights in pysics / chemistry?)
 	
-	Adress numerical instability?
 	
-	maybee both in paragraph under results instead of here?
+	
+	%Adress problem of monomials again --> (This could be solved using orthogonal polynomials like Legendre polynomials, see \cite{Dattoli_2001})
+	
+	%Adress numerical instability?
+	
+	%maybee both in paragraph under results instead of here?
 	
 	
 	%\subsection{Literature}
@@ -688,6 +693,7 @@ style=authoryear-comp,
 	\subsection{Interpretation of Results}
 		\subsubsection{Basis Expansion Regression}
 		\subsubsection{Functional Principal Component Regression}
+		As for the simulation study, the 
 	
 	
 	
