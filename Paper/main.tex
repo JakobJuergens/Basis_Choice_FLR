@@ -19,12 +19,6 @@ backend=biber,
 style=authoryear-comp,
 ]{biblatex}
 
-\setlength{\abovedisplayskip}{3pt}
-\setlength{\belowdisplayskip}{7pt}
-
-\setlength{\abovedisplayshortskip}{3pt}
-\setlength{\belowdisplayshortskip}{7pt}
-
 
 \newcommand{\independent}{\perp\!\!\!\!\perp} 
 
@@ -50,13 +44,11 @@ style=authoryear-comp,
 	
 	\newpage
 	
-%	\section{Colour Guide}
-%		\begin{itemize}
-%			\item {\color{red} RED}: is for general comments for your own text
-%			\item {\color{green} GREEN}: is for Jona's comments
-%			\item {\color{orange} ORANGE}: is for Jonghun's comments
-%			\item {\color{blue} BLUE}: is for Jakob's comments
-%		\end{itemize}
+	\setlength{\abovedisplayskip}{0.4cm}
+	\setlength{\belowdisplayskip}{0.4cm}
+
+	\setlength{\abovedisplayshortskip}{0.2cm}
+	\setlength{\belowdisplayshortskip}{0.4cm}
 
 	\section{Introduction}
 		
@@ -86,17 +78,12 @@ style=authoryear-comp,
 
 	A vector space with an associated inner product is called an inner product space. {\color{red}[verbatim quote!]}
 	The inner product naturally defines a norm and an associated distance on the vector space.
-	
 	\begin{equation}
-		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}}
-	\end{equation}
-
-	\begin{equation}
+		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}} \quad \text{and} \quad 
 		d(v_1, v_2) = {\langle v_2 - v_1, v_2 - v_1 \rangle}^{\frac{1}{2}}
 	\end{equation}
 	
 	If the inner product space is complete with respect to the induced distance, it is called a Hilbert space, denoted $\mathbb{H}$ in the following. To extend the known concept of a basis in a finite dimensional space to the potentially infinite Hilbert spaces, it is necessary to define the closed span of a sequence of elements of $\mathbb{H}$. Recall that the span of a set of vectors $S \subseteq \mathbb{R}^P$ is given by
-	
 	\begin{equation}
 		span(S) = \left\{\sum_{i = 1}^{k} \lambda_i v_i \: \bigg\vert \: k \in \mathbb{N}, \: v_i \in S, \: \lambda_i \in \mathbb{R} \right\}
 	\end{equation}
@@ -112,26 +99,22 @@ style=authoryear-comp,
 	\end{multicols}
 
 	As in the case of a Banach space, each element of a Hilbert space can be expressed in terms of a corresponding basis. This can be done using a Fourier expansion of an element $x \in \mathbb{H}$ w.r.t. a basis $S = \{s_n\}$ as follows.
-	
 	\begin{equation}
 		x = \sum_{j = 1}^{\infty}{\langle x, s_j \rangle}s_j
 	\end{equation}
 	
 	As can be seen, differing from the case of Banach spaces, these representations can be limits of series as previously hinted at by using the closed span of the basis. As using an infinite number of basis functions is infeasible in applied contexts, an intuitive way to approximate elements of a Hilbert space is to use a truncated series.
-	
 	\begin{equation}
 		x \approx \sum_{j = 1}^{K}{\langle x, s_j \rangle}s_j
 	\end{equation}
 	
 	\subsection{Random Functions in the Hilbert Space of Square-Integrable Functions}
 	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
-	
 	\begin{equation}
 		\lvert \lvert f \rvert \rvert_2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
 	This ensures that a random function has a finite second moment so that the variance and covariance functions can be defined. Its inner product is defined.
-	
 	\begin{equation}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
@@ -140,13 +123,8 @@ style=authoryear-comp,
 	%Therefore, we focus on the interval $[0,1]$ without loss of generality for the purpose of this paper. 
 	A random function defined on $\mathbb{L}^2[0,1]$ is a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ defined on a common probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample space with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$. The realized $X(\omega)(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
 	
-	%\begin{equation}
-	%\{f(t,\omega) : t \in [0, 1], \omega \in \Omega\}
-	%\end{equation}
-	
 	\subsection{Functional Data Sets}
 	Consider the case of a data set containing observations $x_i$ of a random function $X$, measured at discrete points $t_{i,j}$: 
-	
 	\begin{equation}
 		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
 	\end{equation}
@@ -156,7 +134,6 @@ style=authoryear-comp,
 	
 	\subsection{Representing a Function in terms of a Basis} 
 	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express or approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
-	
 	\begin{equation}
 		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
 	\end{equation}
@@ -166,30 +143,27 @@ style=authoryear-comp,
 	
 	\paragraph{Monomial Basis}
 	For functions that fall into the class of entire functions, we can express the function as a potentially infinite sum of weighted monomials. Let $f(t)$ be an entire function, e.g. a polynomial, the exponential function or a trigonometric function, then we can express it in the following form.
-	
 	\begin{equation}\label{Taylor_expansion}
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
 	\end{equation}
 	
 	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can often lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
-	
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^i, \quad i \in \mathcal{I}
 	\end{equation}
 
 	Due to the chosen implementation for our simulation, we will limit our paper to the case of $\alpha = 0$. However, a different choice of $\alpha$ could lead to improvements in performance of the monomial basis in later parts of this paper.
 	As the monomials are not pariwise orthogonal, this basis is also prone to Collinearity problems, which can result in numerically unstable estimates. This restricts the number of basis functions that can be used in the estimation procedures limiting its ability to capture pronounced local peculiarities. It can also lead to undesirable behavior away from the point of evaluation of the monomials (cf. \cite{ramsay_functional_2005}).
+	\vspace{-0.2cm}
 	
 	\paragraph{Fourier Basis}
 	In the same way the monomial basis is connected to the Taylor series, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function with a period of 1.
-	
 	\begin{equation}\label{Fourier_Series}
 		s(x) = \frac{A_0}{2} + \sum_{i = 1}^{\infty} A_n \cos(2\pi i x - \phi_n) = \frac{a_0}{2} + \sum_{i = 1}^{\infty}\left[a_i \cos(2\pi i x) + b_i \sin(2\pi i x)\right]
 	\end{equation}
 	
 	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift. Therefore, rewriting the series in the sine-cosine form through a simple trigonometry formula as shown above is necessary. Due to this origin of the Fourier basis it is reasonable to restrict the number of Fourier basis functions to odd numbered values to stay true to the expansion in amplitude-phase form.
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is thus given by the following sequence of functions defined on $[0,1]$ directly corresponding to the terms of the sine-cosine form of the Fourier series.
-	
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
 		\begin{cases}
@@ -200,11 +174,11 @@ style=authoryear-comp,
 	\end{equation}
 
 	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process. Additionally, the Fourier basis is especially suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions. {\color{red} Citation}
+	\vspace{-0.2cm}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing an interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. If there are no multiplicities in the set of these knots, the polynomials on neighboring subintervals are matching derivatives up to order $m-2$ at the boundary knot $\tau_l$. A typical case of this that is often used in practive is an equidistant grid of knots. In some settings, however, it can be sensible to place multiple knots at the same value to replicate specific properties of the data structure allowing for a reduced number of matching derivatives at the corresponding knots. For the purposes of this paper, we will focus on the case of equidistant knots without multiplicity at inner knots.\\
 	
 	B-splines are a specific system of spline functions developed by \cite{de_boor_practical_1978} and are defined by a recursive procedure. Let $\phi_{l,m}^{BS}(x) \quad l \in \{1,\dots,L-1\}$ be a B-spline of order $m$ for an interval $[\tau_0, \tau_L]$ and inner knots $\{\tau_l \: \vert \: l = 1,\dots, L-1\}$, then it is defined by the Cox-de Boor recursion formula as follows. 
-	
 	\begin{equation}
 		\begin{split}
 			\phi_{l,0}^{BS}(x) = &
@@ -225,7 +199,6 @@ style=authoryear-comp,
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
 	As mentioned above, the realized curves can be expressed in terms of a chosen functional basis. For this expansion, it is technically possible to use a complete basis of $\mathbb{L}^2[0,1]$. In many cases this is not a desirable approach as the expansion with too many basis functions introduces high amounts of variance in pronounced local variations of the curves or can even led to the approximation of noise in the sample curves, which possibly interrupts the analysis. {\color{red} Therefore, methods such as acceleration penalties have to be employed to smooth the function.} On the other hand, important information on the curves could be missed by using a number of basis functions that is too small. In that sense, this discussion is subject to the Bias-Variance tradeoff. It challenges the researcher to seek a point at which they truncate the basis function to remove noise and, at the same time, not to introduce too much bias by maintaining significant fluctuations of the curves. The basis expansion with truncation is given by Equation \ref{basis_exp}.
-	
 	\begin{equation}\label{basis_exp}
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
@@ -240,17 +213,14 @@ style=authoryear-comp,
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a realization of a random function $X: \Omega \mapsto \mathbb{L}^2[0,1]$, it is possible to represent this realization in terms of its generating stochastic process. To do so, it is necessary to define the mean and covariance functions of $X(\omega)$.
-	
 	\begin{equation}\label{MeanFunction}
 		\mu(t) = \mathbb{E}\left[ X(\omega)(t) \right]
 	\end{equation}
-	
 	\begin{equation}\label{CovarianceFunction}
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 
 	where the $c(t,s)$ are Hilbert-Schmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be a Hilberst-Schmidt operator on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
-	
 	\begin{equation}\label{HSKernal}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
 	\end{equation}
@@ -288,34 +258,29 @@ style=authoryear-comp,
 
 	In the scalar setting, a similar consideration leads to the concept of principal components, which can be extended to the functional setting. Let $\{x_1(t), \dots, x_n(t)\}$ be a set of i.i.d. realizations generated by a random function $X(\omega) \mapsto \mathbb{L}^2[0,1]$.
 	Define the following sample analogs for the mean and covariance functions.
-	
 	\begin{equation}
 		\hat{\mu}(t) = \frac{1}{N}\sum_{i = 1}^{N}x_i(t)
 	\end{equation}
-	
 	\begin{equation}
 		\hat{c}(t,s) = \frac{1}{N} \sum_{i = 1}^{N} \left(x_i(t) - \hat{\mu}(t)\right) \left(x_i(s) - \hat{\mu}(s)\right)
 	\end{equation}
 	
 	With these it is possible to derive a set of sample analogs $\{(\hat{\lambda}^m, \hat{\nu}^m) \: \vert \: m = 1, \dots, N-1\}$ for $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ as the solutions of the following equation. As in the case of ordinary principal components, the number of eigenfunctions corresponding to non-zero eigenvalues is limited (cf. chapter 8.2.3 \cite{ramsay_functional_2005}). As each curve is infinite dimensional, there is no upper limit to this number due to the dimensionality. However the number of curves still imposes an upper limit of $N-1$ non-zero eigenvalues, where $N$ is the number of curves in the data set.
-	
 	\begin{equation}
 		\int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t)
 	\end{equation}
 	
 	This naturally leads to the following representation.
-	
 	\begin{equation}
 		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{N-1} \hat{\xi}_{i}^{m} \hat{\nu}^{m}(t)
 	\end{equation}
+
 	where the $\hat{\xi}_{i}^m$ are derived as 
-	
 	\begin{equation}
 		\hat{\xi}_i^m(\omega) = \langle x_i - \hat{\mu}, \hat{\nu}^m\rangle = \int_{0}^{1} \left(x_i(s) - \hat{\mu}(s)\right) \hat{\nu}^m(s) \mathrm{d}s
 	\end{equation}
 	
 	In reality, these calculations are often done using basis representations of both the functional principal components $\hat{\nu}^m$ and the observations $x_i(t)$ leading to the following representation. For the sake of clarity, the following equation assumes that the bases used for the expansion of both the observations and the coefficient function are true bases of $\mathbb{L}^2[0,1]$ and can therefore be used to express the corresponding objects exactly.
-	\vspace{-0.1cm}
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
 			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
@@ -326,13 +291,11 @@ style=authoryear-comp,
 	\end{equation}
 	
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the curves for both the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
-	
 	\begin{equation}\label{score_approx}
 			\hat{\xi}_{i}^m = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s
 	\end{equation}
 
 	And we can define the following objects:
-
 		\begin{align}
 			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] 
 			& \delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} \\
@@ -344,21 +307,18 @@ style=authoryear-comp,
 	
 	\subsection{Scalar-on-Function Regression}
 	In the simple scalar setting, one of the most important tools in econometrics is linear regression. Its goal is twofold: to gain information about the dependency between variables, but also to allow for prediction. To motivate the jump from multivariate regression to scalar-on-function regression, assume first a data generating process as follows.
-	
 	\begin{equation}
 		Y = X\beta + \epsilon
 	\end{equation}
 	
 	Here, $Y$ is the vector of response variables, $X$ is the matrix containing the corresponding regressors in its columns and $\beta = (\beta_0, \beta_1, \: \dots, \beta_p)'$ is the vector containing the unknown coefficients.
 	In this finite dimensional setting one important question is how to estimate the unknown coefficients $\beta$. The most well known estimator in all of econometrics, the Ordinary Least Squares (OLS) estimator, fulfills this purpose under a set of assumptions.
-	
 	\begin{equation}
 		\hat{\beta}_{OLS} = (X'X)^{-1}X'Y
 	\end{equation}
 	
 	The concept of linear regression can be extended to a setting of functional data, where a scalar response variable is assumed to be dependent of a functional regressor. 
 	Even though integrating over the product of an observation with the coefficient function is not the only functional that can be used to create a data generating process involving functional observations, it is the most typical as it naturally extends the intuition from multiple linear regression to the realm of infinite-dimensional objects. Therefore, we will always assume a data generating process as follows in this paper.
-	
 	\begin{equation}\label{DGP}
 		Y(\omega) = \alpha + \int_{0}^{1} \beta(s)X(\omega)(s) \mathrm{d}s + \epsilon(\omega)
 	\end{equation}
@@ -367,13 +327,11 @@ style=authoryear-comp,
 	
 	\subsubsection{Estimation using Basis-Representation}\label{basis_exp_transf}
 	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
-	
 	\begin{equation}
 		\beta(t) = \sum_{j \in \mathcal{I}} b_j \phi_j(t)
 	\end{equation}
 	
 	This enables us to write equation \ref{DGP} with $\beta(t)$ represented in this way to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.
-	
 	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega)
@@ -384,7 +342,6 @@ style=authoryear-comp,
 	\end{equation}
 	
 	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on what is possibly a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $J$ can be used to make this problem tractable if we assume that the approximation error created by this truncation is small.
-	
 	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} X(\omega)(s) \right]\mathrm{d}s + \epsilon(\omega) \\
@@ -393,7 +350,6 @@ style=authoryear-comp,
 	\end{equation}
 
 	In practice it is common to not only express the coefficient function in terms of a basis but also the observations. Therefore two bases ($\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and $\left(\psi_k(t)\right)_{k \in \mathcal{L}}$) and two corresponding truncation parameters ($J$ and $K$) can be chosen. This leads to the following representation.
-	
 	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} {\color{red}X(\omega)(s)}\mathrm{d}s + \epsilon(\omega)
@@ -405,13 +361,11 @@ style=authoryear-comp,
 	\end{equation}
 
 	A typical choice in this scenario is to use the same functional basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for both the coefficient function and the approximation of the observations. Defining the following notation 
-
 	\begin{equation}
 			\tilde{Z}_j(\omega) = \sum_{k = 1}^{L} \left[a_k(\omega) \int_{0}^{1} \phi_j(s) \phi_k(s) \mathrm{d}s \right] \quad j = 1, \dots, L
 	\end{equation}
 
 	This leads to a considerable simplification of Equation \ref{basis_exp_transf}.
-	
 	\begin{equation}\label{simplified_model_basis_equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s + \sum_{k = 1}^{K} a_k  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega) \\
@@ -420,7 +374,6 @@ style=authoryear-comp,
 	\end{equation}
 
 	A model in the form of Equation \ref{simplified_model_basis_equation} naturally lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
-	
 	\begin{equation}\label{regressor_mat_1}
 		Y = \begin{pmatrix}
 			y_1 \\ \vdots \\ y_n
@@ -433,7 +386,6 @@ style=authoryear-comp,
 	\end{equation}
 	
 	Then an OLS estimator can be calculated in the usual way to obtain an estimate for the values of $\alpha$ and $b_j$ and an estimate of the coefficient function can be derived accordingly.
-	
 	\begin{equation}
 		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
 	\end{equation}
@@ -443,7 +395,6 @@ style=authoryear-comp,
 	\subsubsection{Estimation using Functional Principal Components}\label{fpc_exp_transf}
 	
 	Using the Karhunen-Lo\'{e}ve Expansion to represent $X(\omega)$, it is also possible to express the data generating process in a slightly different way.
-	
 	\begin{equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} \beta(s) \mathrm{d}s + \epsilon(\omega)
@@ -454,7 +405,6 @@ style=authoryear-comp,
 	\end{equation}
 
 	As these theoretical Eigenfunctions and Eigenvalues are typically unknown, the corresponding equation in sample analogs is more interesting as a representation of an observation.
-	
 	\begin{equation}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} \beta(s) \mathrm{d}s + \epsilon_i
@@ -465,7 +415,6 @@ style=authoryear-comp,
 	\end{equation}
 	
 	This, however, is a simplification for the purposes of real-world estimation as in most implementations, the coefficient function and the principal components are also expressed or derived in terms of a basis that can be chosen freely. Introducing both concepts one step at a time leads to the following complication if we first introduce an expansion of the coefficient function.
-
 	\begin{equation}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon_i
@@ -476,7 +425,6 @@ style=authoryear-comp,
 	\end{equation}
 
 	Truncating the basis used for expansion of the coefficient function already introduces an approximation error.
-	\vspace{-0.1cm}
 	\begin{equation}\label{fpcr_reg_both_expansions}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} \left(\hat{\mu}(s) + \sum_{m = 1}^{N-1} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right) {\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} \mathrm{d}s + \epsilon_i\\
@@ -488,13 +436,11 @@ style=authoryear-comp,
 	If we additionally derive and approximate the principal components and corresponding scores using a truncated basis representation as in Equation \ref{score_approx} we obtain the following. To not complicate things more than necessary, the following equation assumes that the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ was used in the derivation of the principal components and the expansion of the coefficient function. Additionally, the following approximation also truncates the basis for the expansion of the coefficient function at the same parameter $L$ that was used for the approximation of the principal components and scores.
 	
 	For convenience, define the following notation:
-	
 	\begin{equation}
 		\tilde{\alpha}^L = \alpha + \sum_{j = 1}^{L} b_j \int_{0}^{1} \phi_j(s) \hat{\mu}(s) \mathrm{d}s + \int_{0}^{1} \delta_{\beta}^{L}(s) \hat{\mu}(s) \mathrm{d}s
 	\end{equation}
 	
 	Then Equation \ref{fpcr_reg_both_expansions} can be expressed as follows.
-
 	\begin{equation}
 		\begin{split}
 			y_i & = \tilde{\alpha}^L
@@ -511,10 +457,16 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 
-	The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation. {\color{red} Write equation with limited number of principal components. Truncation parameter M instead of N-1}
-
-	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
+	The parameter $M \in \{1, \dots, N-1\}$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation. Using only $M$ functional principal components therefore leads to the following approximation.
+	\begin{equation}
+		y_i \approx \tilde{\alpha}^L
+		+ \sum_{m = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s} \right] + \epsilon_i 
+		= \tilde{\alpha}^L
+		+ \sum_{m = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\bar{b}^{m,L}} + \epsilon_i
+	\end{equation}
 	
+
+	As in the previous section, this equation lends itself for estimation with OLS and we can define the following objects.
 	\begin{equation}
 		Y = \begin{pmatrix}
 			y_1 \\ \vdots \\ y_n
@@ -526,10 +478,9 @@ style=authoryear-comp,
 		\end{pmatrix}
 	\end{equation}
 	
-	We can then derive the following estimators.
-	
+	We can then derive the following estimator for $\tilde{\alpha}^L$ and $\bar{b}^{m,L} \quad m = 1, \dots, M$
 	\begin{equation}
-		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\tilde{\beta}}^{m,L} = \tilde{b}^{L,M}_{m+1}
+		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1}
 	\end{equation}
 
 	As in the previous case, the performance of this estimation depends the quality of the approximation made during the derivation of this estimator. Therefore, it is interesting to think about when these errors are small... {\color{red}Continue Here Jakob!!!}
@@ -551,7 +502,6 @@ style=authoryear-comp,
 	To exploit the regularity of the curves of the spectra, we introduced different basis functions in {\color{green} Link} and demonstrated the importance of the truncation parameter $K$ for the estimation in {\color{green} Link}. For the simulation study, we rely on the introduced estimation strategies with the introduced basis functions and focus on selecting the truncation parameter $K$ as well as the number of FPC, which is as well affected by $K$, by ten-fold cross-validation using the prediction mean-squared error. While cross-validation is common for selecting $K$, the number of FPC in practice is often truncated after a specified amount of explained variability \cite{kokoszka_introduction_2017}, which might not be optimal since FPC with smaller eigenvalues may have greater influence on the prediction (c.f \cite{Jolliffe_1982}). This might apply to this simulation too since certain eigenfunctions could correspond to certain chemical combinations and overtones in the absorption bands of the spectrum that could have high predictive power, but explain only little variability {\color{green} Link to NIR}.
 	 
 	This setup is opposing to the often used penalized functional regression as described by \cite{Goldsmith_2011} in which an explicit smoothness constraint $\lambda$ is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $K$ sufficiently high. This would avoid the heavy computing of validating the best value for $K$, which we will conduct in the simulation. To provide intuition in this approach, let 
-	
 	 \begin{equation}
 	 	PSSE_\lambda(\alpha, \beta) = \sum_{i = 1}^{N} \left[ Y_i -\alpha -\int_0^1 \beta(t)X_i(t)dt \right]^2 + \lambda \int \left[D^m\beta(t)\right]^2 dt
 	 \end{equation}
@@ -574,22 +524,18 @@ style=authoryear-comp,
     
     \subsection{Simulation setup}
 	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions,  $f_1(t)$ and  $f_2(t)$, are created that differ in their smoothness, to compare the introduced methods with differing true coefficient functions:
-	
 	\begin{equation}
     	f_1(t) = 401 \left[ 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t) \right]
     \end{equation}
-
     \begin{equation}
     	\begin{split}
     		f_2(t) = 401  \Bigg[ & 1.5 \exp{\left(\frac{-0.5(t-0.3)^2}{0.02^2}\right)} - 4 \exp{\left(\frac{-0.5(t-0.45)^2}{0.015^2}\right)} \\
     				 & + 8 \exp{\left(\frac{-0.5(t-0.6)^2}{0.02^2}\right)} -  \exp{\left(\frac{-0.5(t-0.8)^2}{0.03^2}\right)} \Bigg]
     	\end{split}
     \end{equation}
-    \vspace{0.2cm}\\
     
     The bumpy function, $f_2(t)$, was generated by referring to \cite{cardot_bumpyfunction_2002}. The smooth function $f_1(t)$ follows \cite{Reiss_2007b} and its inner product $\langle NIR_{sim}, f_1 \rangle$ creates responses that are similar to the original octane numbers of the gasoline dataset. 
 
-		\vspace{0.1cm}
 		\begin{figure}
 			\centering
 			\begin{minipage}{.5\textwidth}
@@ -606,8 +552,7 @@ style=authoryear-comp,
 			\end{minipage}
 		\end{figure}
 		
-		 Two different error-terms $\epsilon$ were created by first generating an $i.i.d.$ standard normal error term and then multiplying it by two error variations $\sigma_e $. The error variations represent different signal-to-noise ratios to test the methods with low and high amounts of noise. They are created such that the squared multiple correlation coefficient $R^2 = var(\langle X, f\rangle) / (var(\langle X, f\rangle) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error terms are then used to generate two sets of responses for $f \in \{f_1(t), f_2(t)\}$
-		
+		 Two different error-terms $\epsilon$ were created by first generating an $i.i.d.$ standard normal error term and then multiplying it by two error variations $\sigma_e $. The error variations represent different signal-to-noise ratios to test the methods with low and high amounts of noise. They are created such that the squared multiple correlation coefficient $R^2 = var(\langle X, f\rangle) / (var(\langle X, f\rangle) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error terms are then used to generate two sets of responses for $f \in \{f_1(t), f_2(t)\}$	
 		\begin{equation}
 			\begin{split}
 				Y_{1,f} & = \langle NIR, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR_{sim}, f\rangle)}{0.9} - var(\langle NIR_{sim}, f\rangle)\biggr\rbrack \\
@@ -617,7 +562,6 @@ style=authoryear-comp,
 		
 		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations for the simulations, using the two true coefficient functions and the two sets of responses. These four combinations are then used with a different number of monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic B-spline basis-function $\{5,6,...,18\}$ and Fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach. For the evaluation, we used the prediction MSE calculated by 10 fold cross-validation.
 		To obtain valid out of sample properties for the FPCR, within each of the ten ten-fold cross-validation splits, we first calculate the first $nharm$ FPC's for $nharm \in \{2,3,4\}$ of the training set $\mathcal{T}$ for each curve $i \in \{1,2, \dots, 200\}$, which was smoothed with the respective basis function specification. The obtained eigenfunctions $\nu^{m,\mathcal{T}}$ are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation
-		 
 		\begin{equation}
 			\begin{split}
 				\hat{\xi}_{i}^{m, \mathcal{H},L} &\approx  \int_{0}^{1} {\color{red} \left(X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)\right)} {\color{blue}\hat{\nu}^{m, \mathcal{T}} }\mathrm{d}s) 
@@ -647,11 +591,6 @@ style=authoryear-comp,
 	
 	\paragraph{Fourier Basis}
 	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for $f_2$, 9(7) for the setup with the high(low) signal-to-noise ratio. With the low signal-to-noise ratio, the simulation chooses a smaller number of basis functions, which could be to account for the higher noise in the response variable. The Fourier basis functions perform the best for each setup for the basis expansion regression. Several reasons could contribute to this: First, especially $f_1$ shows similar curvature order across the domain while the curvature of $f_2$, while changing, does not display any eradic jumps. Second, both functions feature periodic behaviour. Third, $f_2$ does have the same value at the start- and the end of the interval.	\\
-	
-
-
-	\subsubsection{Functional Principal Component Regression}
-	The model which is used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. Additionally to the selection of the truncation parameter $K$, the choice of the number of FPC's adds to the complexity of the model since the eigenvalues and -functions from the decomposition are influenced by the choice of $K$ that was used to approximate the function. But since the FPCR is ultimately estimated with a linear model with the FPC's as regressors, the degree of freedom of these models is not affected by $K$, but only by the number of FPC's $n_{FPC} \in \{2, 3, 4 \}$. As will be described, it seems that neither a convex behaviour of the MSPE, nor a clear relationship can be observed between the increasing number of basis function and the number of FPC's.
 	
 	\paragraph{Monomial Basis}
 	For $f_1$, the cross-validated MSE is decreasing in the increasing number of FPC's and chosen basis functions for both the setup with the high, and the low signal-to-noise ratio (4,5,6 basis functions for $n_{FPC} \in \{2, 3, 4 \}$). In the setup using $f_2$ we also observe a decreasing MSE in the number of FPC, but a different behaviour of the chosen basis functions: While the model selects 10 basis functions for $f_2,Y_1$ and $f_2,Y_2$ using 2 FPC, it only selects 6 for the same two specifications using 3 FPC and 8 for $f_2,Y_1$ and $f_2,Y_2$ with 4 FPC. This might be surprising, since one might assume that the number of basis functions is increasing in $n_{FPC}$ since more basis functions led to less smoothing and therefore more variability in the expanded curves that might be exploited by the FPC's. The monomial basis shows the weakest performance for all three basis functions in each setting.
@@ -695,9 +634,7 @@ style=authoryear-comp,
 		\subsubsection{Functional Principal Component Regression}
 		As for the simulation study, the 
 	
-	
-	
-	
+
 	%\nocite{carey_life_2002}
 
 	\section{Outlook}\label{Outlook}
@@ -720,10 +657,11 @@ style=authoryear-comp,
 	\subsection{Possible Extensions}
 	
 	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
-	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials. Due to their orthogonality the problems of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
+	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials. Due to their orthogonality, the problem of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
 	\vspace{-0.2cm}
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
+	In contrast to the more typical approach of using a large but often arbitrary number of basis functions and smoothing using a penalty term involving for example the second derivative of the curve, this paper focuses on smoothing by using a smaller number of basis functions. As a next step to the analysis of this paper, it would be interesting to compare both methods to see in which settings different approaches to smoothing perform better and if a possible combination of both approaches could be advantageous.
 	\vspace{-0.2cm}
 	
 	\paragraph{Larger Range for the Number of Basis Functions for FPCR}
@@ -776,8 +714,9 @@ style=authoryear-comp,
 		\caption{Legendre Polynomials of degree 0 to 7}
 	\end{figure}
 
-\include{tables_simulation.tex}
+	\input{tables_simulation.tex}
 	
+	\newpage
 	\subsection{Curve Estimates for Chosen Specifications}
 	
 	\begin{figure}[H]
@@ -892,11 +831,11 @@ style=authoryear-comp,
 		\end{minipage}
 	\end{figure}
 
-
 \newpage
-\include{tables_application.tex}
+\input{tables_application.tex}
 
-	\section{Definition and Proofs}
+	\newpage
+	\section{Definitions and Proofs}
 	\cite{alexanderian_KLexpansion_2015} was referred for the following definitions and proofs.
 	
 	\subsection{Definition (Hilbert-Schmidt Operator)}\label{def_HS}

@@ -55,14 +55,14 @@ for (i in 100:149) {
 }
 
 # Jona
-for (j in 4:4) {
-  for (i in 100:149) {
+for (j in 2:7) {
+  for (i in 100:109) {
     test_bspline_fpcr <- fpcr_function(
       rep = 100, my_data = NULL, n_obs = 200, nharm = j, seed = i, debug = TRUE
     )
     saveRDS(
       object = test_bspline_fpcr,
-      file = paste0("Results/Paper/Partial/pca_bspline_nharm", j, "_sim_partial/rep100_n_obs200_seed", i, ".RDS")
+      file = paste0("Results/Paper/High_Num_bsplines_fpcr_partial/nharm", j, "_rep100_n_obs200_seed", i, ".RDS")
     )
   }
 }
@@ -82,7 +82,7 @@ for (j in 2:4) {
 }
 
 # Jonghun
-for (j in 4:4) {
+for (j in 2:4) {
   for (i in 100:149) {
     test_monomial_fpcr <- fpcr_monomial_function(
       rep = 100, my_data = NULL, n_obs = 200, nharm = j, seed = i, debug = TRUE
