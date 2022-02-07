@@ -227,11 +227,12 @@ style=authoryear-comp,
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
 
-	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$. The number $L$ can be chosen subjectively, but also through applying a data-driven method such as Cross-Validation. The influence of this truncation on the prediction accuracy of different estimates is the subject of the simulation study. {\color{red} Add text for figure}
-	
+	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$. The number $L$ can be chosen subjectively, but also through applying a data-driven method such as Cross-Validation. Figure \ref{Different_Expansions} shows the effect of choosing different truncation parameters for the case of the Near-Infrared Spectroscopy dataset which is used in the later parts of this paper and exemplifies the tradeoffs that are at the core of the parameter choice.
+			
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{../Graphics/basis_expansions.pdf}
 		\caption{B-spline Approximations of NIR Absorption Spectra with different Basis Truncation Parameters}
+		\label{Different_Expansions}
 	\end{figure}
 	
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
@@ -340,27 +341,27 @@ style=authoryear-comp,
 	This method of deriving or approximating the eigenfunctions and scores from a data set is introduced in \cite{ramsay_functional_2005} (chapter 8.4.2) and implemented in the R-package fda. The following considerations and results of the simulation study might therefore serve as information about the performance of this method in a scenario where a limited number of basis functions is provided to the method.
 	
 	\subsection{Scalar-on-Function Regression}
-	In the simple scalar setting, one of the most important tools in econometrics is linear regression. Its goal is to predict the value of a dependent variable given a set of associated variables. For reference, assume a data generating process as follows.
+	In the simple scalar setting, one of the most important tools in econometrics is linear regression. Its goal is twofold: to gain information about the dependency between variables, but also to allow for prediction. To motivate the jump from multivariate regression to scalar-on-function regression, assume first a data generating process as follows.
 	
 	\begin{equation}
 		Y = X\beta + \epsilon
 	\end{equation}
 	
-	Where $Y$ is the vector of response variables, $X$ is the matrix containing the corresponding regressors in its columns and $\beta = (\beta_0, \beta_1, \: \dots, \beta_p)'$ is the vector containing the unknown coefficients.
+	Here, $Y$ is the vector of response variables, $X$ is the matrix containing the corresponding regressors in its columns and $\beta = (\beta_0, \beta_1, \: \dots, \beta_p)'$ is the vector containing the unknown coefficients.
 	In this finite dimensional setting one important question is how to estimate the unknown coefficients $\beta$. The most well known estimator in all of econometrics, the Ordinary Least Squares (OLS) estimator, fulfills this purpose under a set of assumptions.
 	
 	\begin{equation}
 		\hat{\beta}_{OLS} = (X'X)^{-1}X'Y
 	\end{equation}
 	
-	The concept of linear regression can be extended to a setting of functional data, where a scalar response variable is supposed to be predicted from a functional variable. 
+	The concept of linear regression can be extended to a setting of functional data, where a scalar response variable is assumed to be dependent of a functional regressor. 
 	Even though integrating over the product of an observation with the coefficient function is not the only functional that can be used to create a data generating process involving functional observations, it is the most typical as it naturally extends the intuition from multiple linear regression to the realm of infinite-dimensional objects. Therefore, we will always assume a data generating process as follows in this paper.
 	
 	\begin{equation}\label{DGP}
 		Y(\omega) = \alpha + \int_{0}^{1} \beta(s)X(\omega)(s) \mathrm{d}s + \epsilon(\omega)
 	\end{equation}
 	
-	Where $\beta(t)$ is an unknown coefficient function. Similar to the finite-dimensional setting, an interesting question is how to estimate $\beta(t)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite-dimensional objects is not possible. Therefore, other options have to be considered.
+	Here, $\beta(t)$ is an unknown coefficient function. Similar to the finite-dimensional setting, an interesting question is how to estimate $\beta(t)$ given a data set containing realizations of a random function and associated scalar response variables. However, a simple extension of the OLS estimator to allow for infinite-dimensional objects is not possible. Therefore, other options have to be considered.
 	
 	\subsubsection{Estimation using Basis-Representation}\label{basis_exp_transf}
 	The most common way to make this problem tractable is via a basis representation of $\beta(t)$. Therefore, let $\{b_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis of $\mathbb{L}^2[0,1]$ and represent $\beta(t)$ in terms of this basis.
@@ -380,7 +381,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
-	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on what is possibly a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $L$ can be used to make this problem tractable with typical theory from multivariate regression while staying reasonably accurate.
+	This representation translates the original problem of regressing a scalar on a continuously observed function to a problem where a scalar is regressed on what is possibly a countably infinite sequence of regressors. Using a truncation of the basis at some parameter $J$ can be used to make this problem tractable if we assume that the approximation error created by this truncation is small.
 	
 	\begin{equation}
 		\begin{split}
@@ -416,7 +417,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 
-	A model in the form of Equation \ref{simplified_model_basis_equation} lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
+	A model in the form of Equation \ref{simplified_model_basis_equation} naturally lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
 	
 	\begin{equation}
 		Y = \begin{pmatrix}
