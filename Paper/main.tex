@@ -159,7 +159,7 @@ style=authoryear-comp,
 	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are shown in Part \ref{Basis_Plots} of the Appendix.
 	
 	\paragraph{Monomial Basis}
-	For functions that fall into the class of entire functions, we can express the function as a potentially infinite sum of weighted monomials. Let $f(t)$ be an entire function, e.g. a polynomial, the exponential function or a trigonometric function, then we can write the following.
+	For functions that fall into the class of entire functions, we can express the function as a potentially infinite sum of weighted monomials. Let $f(t)$ be an entire function, e.g. a polynomial, the exponential function or a trigonometric function, then we can express it in the following form.
 	
 	\begin{equation}\label{Taylor_expansion}
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
@@ -172,7 +172,7 @@ style=authoryear-comp,
 	\end{equation}
 
 	Due to the chosen implementation for our simulation, we will limit our paper to the case of $\alpha = 0$. However, a different choice of $\alpha$ could lead to improvements in performance of the monomial basis in later parts of this paper.
-	Collinearity problems arise since the monomials become more correlated to each other as their degree increases, which can result in numerically unstable calculations. This restricts the number of basis functions that can be used in the estimation procedures limiting its ability to capture pronounced local peculiarities. It can also lead to undesirable behavior away from the point of evaluation of the monomials (cf. \cite{ramsay_functional_2005}).
+	As the monomials are not pariwise orthogonal, this basis is also prone to Collinearity problems, which can result in numerically unstable estimates. This restricts the number of basis functions that can be used in the estimation procedures limiting its ability to capture pronounced local peculiarities. It can also lead to undesirable behavior away from the point of evaluation of the monomials (cf. \cite{ramsay_functional_2005}).
 	
 	\paragraph{Fourier Basis}
 	In the same way the monomial basis is connected to the Taylor series, the Fourier basis corresponds to the Fourier series. The Fourier series can be used to decompose a periodic function into a weighted sum of trigonometric functions. Equation \ref{Fourier_Series} shows an example for a periodic function with a period of 1.
@@ -243,7 +243,7 @@ style=authoryear-comp,
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 
-	where the $c(t,s)$ are Hilbert-Schmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be a Hilberst-Shmidt operator on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
+	where the $c(t,s)$ are Hilbert-Schmidt Kernels defined through $c : [0,1] \times [0,1] \rightarrow \mathbb{R}$. Let $K$ be a Hilberst-Schmidt operator on $\mathbb{L}^{2}[0,1]$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$, by
 	
 	\begin{equation}\label{HSKernal}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
@@ -703,6 +703,7 @@ style=authoryear-comp,
 	\subsection{Possible Extensions}
 	
 	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
+	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials. Due to their orthogonality the problems of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
 	
@@ -749,7 +750,11 @@ style=authoryear-comp,
 		\caption{Monomial basis functions of degree 0 to 7}
 	\end{figure}
 
-\newpage
+	\begin{figure}[H]\label{Legendre_basis}
+		\includegraphics[width = \textwidth]{../Graphics/Legendre_Plot.pdf}
+		\caption{Legendre Polynomials of degree 0 to 7}
+	\end{figure}
+
 \include{tables_simulation.tex}
 	
 	\subsection{Curve Estimates for Chosen Specifications}
@@ -1043,7 +1048,7 @@ style=authoryear-comp,
 	\section{Bibliography}
 	\printbibliography[heading=none]	
 	
-	\section{Affidavit}
+	\section*{Affidavit}
 	
 	\vspace{2cm}
 	"I hereby confirm that the work presented has been performed and
