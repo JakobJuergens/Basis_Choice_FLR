@@ -457,7 +457,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 
-	The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation. Using only $M$ functional principal components therefore leads to the following approximation.
+	The parameter $M \in \{1, \dots, N-1\}$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation. Using only $M$ functional principal components therefore leads to the following approximation.
 	\begin{equation}
 		y_i \approx \tilde{\alpha}^L
 		+ \sum_{m = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s} \right] + \epsilon_i 
@@ -466,7 +466,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 
-	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
+	As in the previous section, this equation lends itself for estimation with OLS and we can define the following objects.
 	\begin{equation}
 		Y = \begin{pmatrix}
 			y_1 \\ \vdots \\ y_n
@@ -833,7 +833,7 @@ style=authoryear-comp,
 \input{tables_application.tex}
 
 	\newpage
-	\section{Definition and Proofs}
+	\section{Definitions and Proofs}
 	\cite{alexanderian_KLexpansion_2015} was referred for the following definitions and proofs.
 	
 	\subsection{Definition (Hilbert-Schmidt Operator)}\label{def_HS}
