@@ -19,6 +19,12 @@ backend=biber,
 style=authoryear-comp,
 ]{biblatex}
 
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{7pt}
+
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{7pt}
+
 
 \newcommand{\independent}{\perp\!\!\!\!\perp} 
 
@@ -309,7 +315,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 	In reality, these calculations are often done using basis representations of both the functional principal components $\hat{\nu}^m$ and the observations $x_i(t)$ leading to the following representation. For the sake of clarity, the following equation assumes that the bases used for the expansion of both the observations and the coefficient function are true bases of $\mathbb{L}^2[0,1]$ and can therefore be used to express the corresponding objects exactly.
-	
+	\vspace{-0.1cm}
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
 			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
@@ -470,7 +476,7 @@ style=authoryear-comp,
 	\end{equation}
 
 	Truncating the basis used for expansion of the coefficient function already introduces an approximation error.
-	
+	\vspace{-0.1cm}
 	\begin{equation}\label{fpcr_reg_both_expansions}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} \left(\hat{\mu}(s) + \sum_{m = 1}^{N-1} \hat{\xi}^{m}_i \hat{\nu}^{m}(s)\right) {\color{blue}\left(\sum_{j = 1}^{J} b_j \phi_j(s) + \delta_{\beta}^{J}(s)\right)} \mathrm{d}s + \epsilon_i\\
@@ -488,7 +494,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 	Then Equation \ref{fpcr_reg_both_expansions} can be expressed as follows.
-	
+
 	\begin{equation}
 		\begin{split}
 			y_i & = \tilde{\alpha}^L
@@ -619,10 +625,11 @@ style=authoryear-comp,
 				 &\approx \sum_{j = 1}^{L} \left[ a_{i,j}^{\mathcal{H}}\sum_{k = 1}^{L}  b_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
 			\end{split}
 		\end{equation}
+	
 		with truncation parameter $m$.
 		\vspace{0.2cm}
 	
-		 The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
+		The simulation was done with R (version...). In total, 5000 repetitions were done for each set of simulations. 
 		
 	\subsection{Results}	
 	The discussed results and figures of $\hat{\beta}(t)$ for the simulation can be found in the appendix. 
@@ -711,13 +718,16 @@ style=authoryear-comp,
 	\vspace{-0.2cm}
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
+	\vspace{-0.2cm}
 	
 	\paragraph{Larger Range for the Number of Basis Functions for FPCR}
+	\vspace{-0.2cm}
 	
 	\paragraph{Larger Range for the Number of Principal Components}
+	\vspace{-0.2cm}
 	
 	\paragraph{Input from Physics Analysis}
-	
+	\vspace{-0.2cm}
 	
 	\nocite{James.2009} %(shape-restrictions)
 	
