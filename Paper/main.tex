@@ -415,7 +415,7 @@ style=authoryear-comp,
 
 	A model in the form of Equation \ref{simplified_model_basis_equation} naturally lends itself to be estimated using theory from multivariate linear regression. Define therefore the following objects
 	
-	\begin{equation}
+	\begin{equation}\label{regressor_mat_1}
 		Y = \begin{pmatrix}
 			y_1 \\ \vdots \\ y_n
 		\end{pmatrix}, \quad
@@ -693,8 +693,12 @@ style=authoryear-comp,
 	\paragraph{Insights from Simulation cannot be Extended to More General Functions}
 	
 	\paragraph{Collinearity Problems in Basis Expansion Regression}
+	As already described in the section on the simulation study, the basis expansion regression was in part limited by the numerical instability of the estimation procedure. This is mainly due to an increase in collinearity of the derived regressor matrix shown in Definition \ref{regressor_mat_1}. This problem is inherent to basis systems whose functions are not pairwise orthogonal, such as the monomial or B-splines bases, but gets more pronounced the more functions we add to the basis system and the higher the correlation between those functions. \\
+	The numeric instability of the inversion of this matrix makes the estimates unreliable and therefore can make this approach infeasible for non-orthogonal bases in settings where the characteristics of the data set demand a higher number of basis functions than is feasible due to the properties of the estimation procedure.
 	
 	\paragraph{Low Number of Basis Functions in FPCR Regression}
+	Another limitation of the exploration into functional principal component regression is the low number of principal component specifications used in this paper. As the simulation and application showed, the number of basis functions does not seem to be the deciding factor for the performance of this method as long as an appropriately high number of basis functions is provided. 
+	A more significant factor seems to be the number of principal components available for the linear regression which in itself could be subject to choice according to cross validation.
 	
 	\subsection{Possible Extensions}
 	
