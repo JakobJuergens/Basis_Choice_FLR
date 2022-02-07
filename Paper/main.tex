@@ -457,7 +457,14 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 
-	The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation. {\color{red} Write equation with limited number of principal components. Truncation parameter M instead of N-1}
+	The parameter $M$ corresponds to the chosen number of principal components and therefore constitutes another choice in the approximation. Using only $M$ functional principal components therefore leads to the following approximation.
+	\begin{equation}
+		y_i \approx \tilde{\alpha}^L
+		+ \sum_{m = 1}^{M} \left[ \tilde{\xi}^{m,L}_{i} {\color{red}\sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s} \right] + \epsilon_i 
+		= \tilde{\alpha}^L
+		+ \sum_{m = 1}^{M} \tilde{\xi}^{m,L}_{i} {\color{red}\bar{b}^{m,L}} + \epsilon_i
+	\end{equation}
+	
 
 	As in the previous section, this equation again lends itself for estimation with OLS. Define the following objects:
 	\begin{equation}
@@ -471,9 +478,9 @@ style=authoryear-comp,
 		\end{pmatrix}
 	\end{equation}
 	
-	We can then derive the following estimators.
+	We can then derive the following estimator for $\tilde{\alpha}^L$ and $\bar{b}^{m,L} \quad m = 1, \dots, M$
 	\begin{equation}
-		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\tilde{\beta}}^{m,L} = \tilde{b}^{L,M}_{m+1}
+		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1}
 	\end{equation}
 
 	As in the previous case, the performance of this estimation depends the quality of the approximation made during the derivation of this estimator. Therefore, it is interesting to think about when these errors are small... {\color{red}Continue Here Jakob!!!}
@@ -648,10 +655,11 @@ style=authoryear-comp,
 	\subsection{Possible Extensions}
 	
 	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
-	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials. Due to their orthogonality the problems of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
+	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials. Due to their orthogonality, the problem of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
 	\vspace{-0.2cm}
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
+	In contrast to the more typical approach of using a large but often arbitrary number of basis functions and smoothing using a penalty term involving for example the second derivative of the curve, this paper focuses on smoothing by using a smaller number of basis functions. As a next step to the analysis of this paper, it would be interesting to compare both methods to see in which settings different approaches to smoothing perform better and if a possible combination of both approaches could be advantageous.
 	\vspace{-0.2cm}
 	
 	\paragraph{Larger Range for the Number of Basis Functions for FPCR}
