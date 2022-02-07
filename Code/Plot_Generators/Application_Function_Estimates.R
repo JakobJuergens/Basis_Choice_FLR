@@ -201,8 +201,8 @@ ggsave(
 )
 
 ##### generate plots for fpcr nharm = 2 #####
-fpcr_nharm2_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm2", "monomial_nharm2", "fourier_nharm2"))) +
+fpcr_nharm2_plot <- ggplot(data = plot_tibble %>%
+                                 filter(Curve %in% c("bspline_nharm2", "monomial_nharm2", "fourier_nharm2"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -215,13 +215,13 @@ fpcr_nharm2_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
-  filename = "../Graphics/Curve_Estimates/fpcr_nharm2_1_1.pdf", plot = fpcr_nharm2_plot_1_1,
+  filename = "../Graphics/Appl_Curve_Estimates/fpcr_nharm2.pdf", plot = fpcr_nharm2_plot,
   width = 20, height = 12, units = "in", dpi = 600
 )
 
 ##### generate plots for fpcr nharm = 3 #####
-fpcr_nharm3_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm3", "monomial_nharm3", "fourier_nharm3"))) +
+fpcr_nharm3_plot <- ggplot(data = plot_tibble %>%
+                                 filter(Curve %in% c("bspline_nharm3", "monomial_nharm3", "fourier_nharm3"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -234,13 +234,13 @@ fpcr_nharm3_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
-  filename = "../Graphics/Curve_Estimates/fpcr_nharm3_1_1.pdf", plot = fpcr_nharm3_plot_1_1,
+  filename = "../Graphics/Appl_Curve_Estimates/fpcr_nharm3.pdf", plot = fpcr_nharm3_plot,
   width = 20, height = 12, units = "in", dpi = 600
 )
 
 ##### generate plots for fpcr nharm = 4 #####
-fpcr_nharm4_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
-                                 filter(Curve %in% c("f1", "bspline_nharm4", "monomial_nharm4", "fourier_nharm4"))) +
+fpcr_nharm4_plot <- ggplot(data = plot_tibble %>%
+                                 filter(Curve %in% c("bspline_nharm4", "monomial_nharm4", "fourier_nharm4"))) +
   geom_line(aes(x = x, y = y, col = Curve)) +
   theme_light() +
   theme(
@@ -253,6 +253,6 @@ fpcr_nharm4_plot_1_1 <- ggplot(data = plot_tibble_1_1 %>%
   guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 ggsave(
-  filename = "../Graphics/Curve_Estimates/fpcr_nharm4_1_1.pdf", plot = fpcr_nharm4_plot_1_1,
+  filename = "../Graphics/Appl_Curve_Estimates/fpcr_nharm4.pdf", plot = fpcr_nharm4_plot,
   width = 20, height = 12, units = "in", dpi = 600
 )

@@ -17,7 +17,7 @@ NIR <- as.matrix(gasoline$NIR)
 # set up parameters
 n_basis_fun <- 20
 n_order <- 4
-n_harm <- 5
+n_harm <- 6
 stepsize <- 0.1
 
 # generate fitting functional basis (b-spline basis)

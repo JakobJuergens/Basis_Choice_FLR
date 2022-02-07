@@ -256,7 +256,6 @@ fReg_2_2 <- map(
 )
 
 ##### extract intercepts parameters from basis expansion models #####
-
 fReg_interc_1_1 <- map(
   .x = fReg_1_1,
   .f = function(model) model$betaestlist$const$fd$coefs[1]
@@ -278,7 +277,6 @@ fReg_interc_2_2 <- map(
 )
 
 ##### extract coefficients from basis expansion models #####
-
 fReg_coef_1_1 <- map(
   .x = fReg_1_1,
   .f = function(model) model$betaestlist$smooth_basis$fd$coefs
