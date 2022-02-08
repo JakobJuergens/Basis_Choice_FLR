@@ -33,7 +33,7 @@
 	\begin{table}[H]
 			\centering
 			\caption{Monomial Basis Expansion Regression}
-				\begin{tabular}{lllllll}
+				\begin{tabular}{l|llllll}
 					\cline{1-5}
 					 \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}               & \textbf{n\_basis} &  \\ \cline{1-5}
 7.17723                       & 131.92717                        & 0.89367                        & 2.58395                        & 2       \\
@@ -332,5 +332,27 @@
 4.21112                        & 130.44645                        & 0.09965                        & 1.81164                        & 15      \\
 4.2129                         & 130.45091                        & 0.08775                        & 1.79975                        & 17      \\
 4.21884                        & 130.45501                        & 0.09032                        & 1.80229                        & 19     
+\end{tabular}
+\end{table}
+
+
+	\begin{table}[H]
+			\centering
+			\caption{B-Splines FPCR additional run for high $L$}
+				\begin{tabular}{llllll}
+\hline
+\textbf{n\_FPC} & \boldmath{$f_1, Y_1$}                 & \boldmath{$f_1, Y_2$}                  & \boldmath{$f_2, Y_1$}                    & \boldmath{$f_2, Y_2$}                 & \textbf{n\_basis} \\ \hline
+2   & 12.01215 & 136.37917 & 0.74396 & 2.45234 & 50      \\
+2   & 12.63307 & 136.79449 & 0.73227 & 2.43754 & 70      \\ \hline
+3   & 4.98379  & 130.27154 & 0.62033 & 2.33437 & 50      \\
+3   & 6.70572  & 131.58072 & 0.69647 & 2.40584 & 70      \\ \hline
+4   & 4.33014  & 130.23059 & 0.08985 & 1.81309 & 50      \\
+4   & 5.81452  & 131.05453 & 0.26875 & 1.9835  & 70      \\ \hline
+5   & 4.07164  & 130.68035 & 0.06323 & 1.79676 & 50      \\
+5   & 5.083    & 131.08668 & 0.22106 & 1.94707 & 70      \\ \hline
+6   & 3.70117  & 131.04066 & 0.06245 & 1.80571 & 50      \\
+6   & 5.62771  & 132.62722 & 0.23593 & 1.97606 & 70      \\ \hline
+7   & 3.69911  & 131.80298 & 0.05566 & 1.8068  & 50      \\
+7   & 5.37466  & 133.80644 & 0.27455 & 2.03417 & 70     
 \end{tabular}
 \end{table}
