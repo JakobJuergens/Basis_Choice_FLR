@@ -222,7 +222,7 @@ style=authoryear-comp,
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 
-	where the $c: [0,1] \times [0,1] \rightarrow \mathbb{R}$ are Hilbert-Schmidt Kernels and $K$ is a corresponding Hilbert-Schmidt operator\footnote{Definitions of Hilbert-Schmidt Kernels and Operators are provided in Appendix \ref{def_HS}.} $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$ defined by
+	where the $c: [0,1] \times [0,1] \rightarrow \mathbb{R}$ are Hilbert-Schmidt Kernels and $K$ is a corresponding Hilbert-Schmidt integral operator\footnote{Definitions of Hilbert-Schmidt Kernel and Integral Operator are provided in Appendix \ref{def_HS}.} $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$ defined by
 	\begin{equation}\label{HSKernal}
 		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
 	\end{equation}
@@ -881,7 +881,7 @@ style=authoryear-comp,
 	\section{Definitions and Proofs}
 	\cite{alexanderian_KLexpansion_2015} was referred for the following definitions and proofs.
 	
-	\subsection{Definition (Hilbert-Schmidt Operator)}\label{def_HS}
+	\subsection{Definition (Hilbert-Schmidt Integral Operator)}\label{def_HS}
 	Given a bounded domain $\mathcal{A} \subset \mathbb{R}^n$, we call a function $c : \mathcal{A} \times \mathcal{A} \rightarrow \mathbb{R}$ a Hilbert-Schmidt kernel if
 	\begin{equation}
 		\int_{\mathcal{A}} \int_{\mathcal{A}} \vert c(x,y) \vert ^2 dx dy < \infty
