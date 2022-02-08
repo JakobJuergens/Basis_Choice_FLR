@@ -82,7 +82,7 @@ NIR_data = rbind(NIR,NIR_plot5,NIR_plot10,NIR_plot30,NIR_plot50,NIR_plot100)
 label <- paste0("K=",c(0,5,10,30,50,100))
 label[1] <- "Real Line"
 
-basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength,color=K)) +
+basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength, color=K)) +
   geom_line()+
   xlab('Wavelength in nm') +
   ylab('Absorption') +
@@ -97,7 +97,8 @@ basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength,color=K)) +
     axis.text = element_text(size = 20),
     legend.title = element_text(size = 24),
     legend.text = element_text(size = 20)
-  )
+  ) +
+  guides(color = guide_legend(override.aes = list(lwd = 10)))
 
 # save plot in appropriate folder
 ggsave(
