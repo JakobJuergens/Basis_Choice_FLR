@@ -152,6 +152,7 @@
       \field{title}{Prediction in functional linear regression}
       \field{volume}{34}
       \field{year}{2006}
+      \true{nocite}
       \field{pages}{2159\bibrangedash 2179}
       \range{pages}{21}
       \verb{doi}
@@ -188,77 +189,6 @@
       \range{pages}{20}
       \verb{doi}
       \verb https://doi.org/10.1006/jmva.2001.1994
-      \endverb
-    \endentry
-    \entry{carey_life_2002}{article}{}
-      \name{author}{7}{}{%
-        {{un=0,uniquepart=base,hash=2b3e6f89abb212aea01168497597c94a}{%
-           family={Carey},
-           familyi={C\bibinitperiod},
-           given={James\bibnamedelima R.},
-           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=ac90ace88925185ece0cf0116488f0fb}{%
-           family={Liedo},
-           familyi={L\bibinitperiod},
-           given={Pablo},
-           giveni={P\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=26257821dc294941b855cb23d251af06}{%
-           family={Harshman},
-           familyi={H\bibinitperiod},
-           given={Lawrence},
-           giveni={L\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=f5acec98b29ee91fa6b08b85a6a0adad}{%
-           family={Zhang},
-           familyi={Z\bibinitperiod},
-           given={Ying},
-           giveni={Y\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=9ad62fbb452f711d6f27e73e9b612ebe}{%
-           family={Müller},
-           familyi={M\bibinitperiod},
-           given={Hans-Georg},
-           giveni={H\bibinithyphendelim G\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=bf2d5acde626d5ec3acf23697700df7d}{%
-           family={Partridge},
-           familyi={P\bibinitperiod},
-           given={Linda},
-           giveni={L\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=aa884172ef3f1964c2ce99286817647e}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Jane-Ling},
-           giveni={J\bibinithyphendelim L\bibinitperiod},
-           givenun=0}}%
-      }
-      \list{language}{1}{%
-        {en}%
-      }
-      \strng{namehash}{7e5c26b84c274e113a7d431b512a8f19}
-      \strng{fullhash}{ee8f6192a7d58e417cdce2434d569199}
-      \strng{bibnamehash}{7e5c26b84c274e113a7d431b512a8f19}
-      \strng{authorbibnamehash}{7e5c26b84c274e113a7d431b512a8f19}
-      \strng{authornamehash}{7e5c26b84c274e113a7d431b512a8f19}
-      \strng{authorfullhash}{ee8f6192a7d58e417cdce2434d569199}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Aging Cell}
-      \field{number}{2}
-      \field{title}{Life history response of {Mediterranean} fruit flies to dietary restriction}
-      \field{volume}{1}
-      \field{year}{2002}
-      \field{pages}{140\bibrangedash 148}
-      \range{pages}{9}
-      \verb{doi}
-      \verb 10.1046/j.1474-9728.2002.00019.x
       \endverb
     \endentry
     \entry{Dattoli_2001}{article}{}
@@ -421,6 +351,7 @@
       \field{month}{5}
       \field{title}{Inference for {Functional} {Data} with {Applications}}
       \field{year}{2012}
+      \true{nocite}
       \keyw{Business \& Economics / Statistics,Mathematics / Probability \& Statistics / General,Mathematics / Probability \& Statistics / Stochastic Processes}
     \endentry
     \entry{hsing_theoretical_2015}{book}{}
@@ -500,6 +431,7 @@
       \field{title}{Functional linear regression that's interpretable}
       \field{volume}{37}
       \field{year}{2009}
+      \true{nocite}
       \verb{doi}
       \verb 10.1214/08-AOS641
       \endverb
