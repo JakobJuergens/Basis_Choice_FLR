@@ -53,19 +53,19 @@ style=authoryear-comp,
 	\section{Introduction}
 		
 	Functional Data Analysis (FDA), which has its roots in the work of Ulf Grenander and Kari Karhunen, is gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, FDA has advantages in that it allows extracting information given by properties such as the smoothness of the underlying process or its derivatives (cf. \cite{levitin_introduction_2007}).	As \cite{kokoszka_introduction_2017} describe, using methods from FDA should be considered when one variable of a given data set can be seen as smooth curves or functions.	 
-	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of light in the Near-infrared (NIR) spectrum by chemical samples.\footnote{For more details on Near-Infrared-Spectroscopy, refer to the section on Near-Infrared-Spectroscopy in the Appendix.}
+	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of light in the Near-infrared (NIR) spectrum by chemical samples.\footnote{For more details on Near-Infrared-Spectroscopy, refer to the Section on Near-Infrared-Spectroscopy in the Appendix.}
 	
 	This paper introduces Functional Linear Regression in a scalar-on-function setting. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating an unknown coefficient function is inherently infinite-dimensional. 
-	We then introduce two distinct ways of translating this infinite-dimensional problem into a finite-dimensional problem that can addressed using theory from multivariate regression. First, a so-called basis expansion of the coefficient function and second, functional principal component regression. Both of these methods are dependent on a parameter choice called a truncation parameter for a functional basis and this paper focuses on exploring the selection of these parameters using cross validation.\\
+	We then introduce two distinct ways of translating this infinite-dimensional problem into a finite-dimensional problem that can be addressed using theory from multivariate regression: First, a so-called basis expansion of the coefficient function, and second, functional principal component regression. Both of these methods are dependent on a parameter choice called a truncation parameter for a functional basis, and this paper focuses on exploring the selection of these parameters using cross-validation.\\
 	
-	In Section \ref{Theory}, we introduce the necessary theoretical concepts, describe the estimation procedures and address the theoretical importance of the truncation parameter. Section \ref{Simulation} contains a description of structure and results of our Monte-Carlo Simulation which is aimed at choosing an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook} we give an outlook on possible extensions for this paper and describe limitations of our approach.
+	In Section \ref{Theory}, we introduce the necessary theoretical concepts, describe the estimation procedures, and address the theoretical importance of the truncation parameter. Section \ref{Simulation} contains a description of our Monte-Carlo Simulation, which aims to provide information on how to choose an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook}, we give an outlook on possible extensions for this paper and describe the limitations of our approach.
 
 	\section{Theory}\label{Theory}
-	To allow for scalar-on-function regression, it is necessary to extend some concepts from multivariate regression to the realm of infinite-dimensional objects, as the statistics derived from infinite-dimensional random functions cannot be defined on a finite-dimensional space. One integral concept that has to be defined is a random function as a special case of a random variable. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space. 
-	The typical case for a random variable realizing i $\mathbb{R}$ is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition for the concept of a random function, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more in-depth considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015} and chapters 4.4 and 4.6 from \cite{kokoszka_introduction_2017}. 
+	To allow for scalar-on-function regression, it is necessary to extend some concepts from multivariate regression to the realm of infinite-dimensional objects, as the statistics derived from infinite-dimensional random functions cannot be defined on a finite-dimensional space. One integral concept that must be defined is random functions as a special case of random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space. 
+	The typical case for a random variable realizing in $\mathbb{R}$ is $(\Omega', \mathcal{A'}) = (\mathbb{R}, \mathcal{B})$, where $\mathcal{B}$ is the canonical $\sigma$-algebra on the real numbers. As a first intuition for the concept of a random function, it is possible to imagine a similar concept where a random variable does not realize as an element of the real numbers but as a function in a function space. A formalization of this idea makes some more in-depth considerations necessary. The following theoretical introduction closely follows chapters 2.3 and 2.4 from \cite{hsing_theoretical_2015} and chapters 4.4 and 4.6 from \cite{kokoszka_introduction_2017}. 
 	
 	\subsection{Inner Products and Hilbert Spaces}
-	In the following we restrict our analysis to vector spaces over $\mathbb{R}$ but more a general formalization including other fields is possible. Let $\mathbb{V}$ be a vector space over $\mathbb{R}$.  Then, a function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{R}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
+	The first concept we will introduce is the concept of Hilbert spaces. To do so, we start from inner product spaces but restrict our analysis to vector spaces over $\mathbb{R}$ for the sake of clarity. Let $\mathbb{V}$ be a vector space over $\mathbb{R}$.  Then, a function $\langle \cdot, \cdot \rangle : \mathbb{V} \times  \mathbb{V} \rightarrow \mathbb{R}$ is called an inner product, if $\forall v, v_1, v_2 \in \mathbb{V}$ and $a_1, a_2 \in \mathbb{R}$ the following properties hold.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -76,20 +76,18 @@ style=authoryear-comp,
 		\end{enumerate}
 	\end{multicols}
 
-	A vector space with an associated inner product is called an inner product space. {\color{red}[verbatim quote!]}
-	The inner product naturally defines a norm and an associated distance on the vector space.
+	A vector space with an associated inner product is called an inner product space and the inner product defines a norm and an associated distance on the vector space.
 	\begin{equation}
 		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}} \quad \text{and} \quad 
 		d(v_1, v_2) = {\langle v_2 - v_1, v_2 - v_1 \rangle}^{\frac{1}{2}}
 	\end{equation}
 	
-	If the inner product space is complete with respect to the induced distance, it is called a Hilbert space, denoted $\mathbb{H}$ in the following. To extend the known concept of a basis in a finite dimensional space to the potentially infinite Hilbert spaces, it is necessary to define the closed span of a sequence of elements of $\mathbb{H}$. Recall that the span of a set of vectors $S \subseteq \mathbb{R}^P$ is given by
+	If the inner product space is complete with respect to the induced distance, it is called a Hilbert space, denoted $\mathbb{H}$ in the following. To extend the known concept of a basis in a finite dimensional space to potentially infinite Hilbert spaces, it is necessary to define the closed span of a sequence of elements of $\mathbb{H}$. Recall that the span of a set of vectors $S \subseteq \mathbb{R}^P$ is given by
 	\begin{equation}
 		span(S) = \left\{\sum_{i = 1}^{k} \lambda_i v_i \: \bigg\vert \: k \in \mathbb{N}, \: v_i \in S, \: \lambda_i \in \mathbb{R} \right\}
 	\end{equation}
 			
-	The closed span $\overline{span}(S)$ of a sequence $S$ in $\mathbb{H}$ is defined as the closure of the span with respect to the distance induced by the norm. $S$ is called a basis of $\mathbb{H}$ if $\overline{span}(S) = \mathbb{H}$. \\
-	It is called an orthonormal basis if, in addition, the following properties hold. 
+	The closed span $\overline{span}(S)$ of a sequence $S$ in $\mathbb{H}$ is defined as the closure of the span with respect to the distance induced by the norm and $S$ is called a basis of $\mathbb{H}$ if $\overline{span}(S) = \mathbb{H}$.	It is called an orthonormal basis if, in addition, the following properties hold. 
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -103,34 +101,35 @@ style=authoryear-comp,
 		x = \sum_{j = 1}^{\infty}{\langle x, s_j \rangle}s_j
 	\end{equation}
 	
-	As can be seen, differing from the case of Banach spaces, these representations can be limits of series as previously hinted at by using the closed span of the basis. As using an infinite number of basis functions is infeasible in applied contexts, an intuitive way to approximate elements of a Hilbert space is to use a truncated series.
+	Differing from the case of Banach spaces, these representations can be limits of series. As using an infinite number of basis functions is infeasible in applied contexts, an intuitive way to approximate elements in a Hilbert space is to use a truncated series.
 	\begin{equation}
 		x \approx \sum_{j = 1}^{K}{\langle x, s_j \rangle}s_j
 	\end{equation}
 	
 	\subsection{Random Functions in the Hilbert Space of Square-Integrable Functions}
-	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$ denoted $\mathbb{L}^2[0,1]$. To define it, look first at the measure space given by $([0,1], \mathcal{B}, \mu)$ where $\mathcal{B}$ is the Borel $\sigma$-algebra on $[0,1]$ and $\mu$ is the Lebesgue-measure. Then $\mathbb{L}^2[0,1]$ is the collection of all measurable functions $f$ on $[0,1]$ that fulfill the following condition.
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$. Denoted by $\mathbb{L}^2[0,1]$, this space is consists of all $\mu$-measurable functions $f(t)$ on $[0,1]$ that fulfill the following condition in which $\mu$ denotes the Lebesgue-measure.
 	\begin{equation}
 		\lvert \lvert f \rvert \rvert_2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
 	
-	This ensures that a random function has a finite second moment so that the variance and covariance functions can be defined. Its inner product is defined.
-	\begin{equation}
+	This ensures that a random function has a finite second moment so that the variance and covariance functions can be defined. The inner product of $\mathbb{L}^2[0,1]$ is defined by Equation \ref{inner_prod}.
+	\begin{equation}\label{inner_prod}
 		\langle f_1, f_2 \rangle = \int_{0}^{1} f_1 f_2 \mathrm{d}\mu.
 	\end{equation}
 	
-	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations in functional data analysis, but analogous constructions can be made for every closed interval of $\mathbb{R}$. 
-	%Therefore, we focus on the interval $[0,1]$ without loss of generality for the purpose of this paper. 
-	A random function defined on $\mathbb{L}^2[0,1]$ is a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ defined on a common probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample space with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$. The realized $X(\omega)(t)$ for every $t \in [0,1]$ is called a sample curve for the process. The collection of such sample curves constitutes a functional data set.
+	$\mathbb{L}^2[0,1]$ is the function space that is most often used for theoretical considerations, but analogous constructions can be made for every closed interval of $\mathbb{R}$. 
+	A random function on $\mathbb{L}^2[0,1]$ can then be defined formally as a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ defined on a probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample space with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$.
 	
 	\subsection{Functional Data Sets}
-	Consider the case of a data set containing observations $x_i$ of a random function $X$, measured at discrete points $t_{i,j}$: 
+	If we take a random function $X(\omega)$ as defined in the previous section, then realizations $x(t)$ of $X(\omega)(t)$ are called sample curves of the random function. The presence of functional observations in a data set is what defines functional data sets. However, in reality realizations of random functions are not typically observed in their functional form. Instead, each curve is observed at a discrete and typically large set of measurements points. Consider the case of a data set containing observations $x_i(t)$ of a random function $X(\omega)$
 	\begin{equation}
 		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
 	\end{equation}
 	
-	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points. The measurement points can be different for each sample. However, this is not a primary interest of this paper, and, therefore, we consider the case where curves are observed at a shared set of measuring points. In principle, these measurements can be seen as a discretized approximation of a realization of a random function. It causes necessities to represent the functional data with respect to some expansion technique. One technique to make the functional data smooth, truncated basis expansion, is introduced in the following sections.\\
-	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis, such as, for example, many inferential procedures. One example could be a set of NIR absorption spectra of gasoline samples in which curves are observed at a shared set of wavelengths and each sample stemming from the same production can be seen as a realization of the same random process.
+	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$. These measurement points can be different for each sample curve. However, in this paper, we only consider the case where curves share their measuring points. 
+	To work with functional data obtained in this form using the unique capabilities of functional data analysis, it is necessary to restore its functional structure. Therefore, methods such as basis representations, which are introduced in the following parts of the Theory Section, are necessary.\\
+	
+	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself.
 	
 	\subsection{Representing a Function in terms of a Basis} 
 	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express or approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
@@ -1031,7 +1030,7 @@ style=authoryear-comp,
 		
 		\begin{equation}\label{Thr3}
 			\begin{split}
-				\mathbb{E}\bigg[\sum_{m=1}^{N} \sum_{m=1}^{N} \xi^m \xi^m \nu^m(t) \nu^n(t)\bigg] = & \sum_{m=1}^{N} \sum_{m=1}^{N} \mathbb{E}[\xi^m \xi_{k}] \nu^m(t) \nu^n(t)\\
+				\mathbb{E}\bigg[\sum_{m=1}^{N} \sum_{n=1}^{N} \xi^m \xi^n \nu^m(t) \nu^n(t)\bigg] = & \sum_{m=1}^{N} \sum_{n=1}^{N} \mathbb{E}[\xi^m \xi^n] \nu^m(t) \nu^n(t)\\
 				= & \sum_{m=1}^{N} \sum_{n=1}^{N} \delta^{m,n} \lambda^m \nu^m(t) \nu^n(t) = 		\sum_{m=1}^{N} \lambda^m \nu^m(t)^{2}
 			\end{split}	
 		\end{equation}
