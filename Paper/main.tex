@@ -132,7 +132,7 @@ style=authoryear-comp,
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself.
 	
 	\subsection{Representing a Function in terms of a Basis} 
-	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be the basis used to express or approximate a realization $X(\omega_0) = x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
+	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis used to express or approximate a realization $x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
 	\begin{equation}
 		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
 	\end{equation}
@@ -141,18 +141,19 @@ style=authoryear-comp,
 	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are shown in Part \ref{Basis_Plots} of the Appendix.
 	
 	\paragraph{Monomial Basis}
-	For functions that fall into the class of entire functions, we can express the function as a potentially infinite sum of weighted monomials. Let $f(t)$ be an entire function, e.g. a polynomial, the exponential function or a trigonometric function, then we can express it in the following form.
+	A very simple idea to approximate functions in $\mathbb{L}^2[0,1]$ is to take inspiration from the well known Taylor expansion and to use monomials of increasing degree as a basis. For entire functions $f(t)$, e.g. polynomials, the exponential function or trigonometric functions, we can express the function as a potentially infinite, converging sum of weighted monomials.
 	\begin{equation}\label{Taylor_expansion}
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
 	\end{equation}
 	
-	But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can often lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis to approximate functions in $\mathbb{L}^2[0,1]$. As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
+	However, the monomials are only a basis for the space of entire functions and not for $\mathbb{L}^2[0,1]$. But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis for approximation. \\
+	As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^i, \quad i \in \mathcal{I}
 	\end{equation}
 
-	Due to the chosen implementation for our simulation, we will limit our paper to the case of $\alpha = 0$. However, a different choice of $\alpha$ could lead to improvements in performance of the monomial basis in later parts of this paper.
-	As the monomials are not pariwise orthogonal, this basis is also prone to Collinearity problems, which can result in numerically unstable estimates. This restricts the number of basis functions that can be used in the estimation procedures limiting its ability to capture pronounced local peculiarities. It can also lead to undesirable behavior away from the point of evaluation of the monomials (cf. \cite{ramsay_functional_2005}).
+	Due to the implementation of our simulation, we will limit our paper to the case of $\alpha = 0$. However, a different choice of $\alpha$ could lead to improvements in performance of the monomial basis.
+	As the monomials are not pairwise orthogonal, this basis is prone to collinearity problems, which can result in numerically unstable estimates. This restricts the number of basis functions that can be used in the estimation procedures limiting its ability to capture pronounced local peculiarities. These problems will be addressed in more detail in later parts of this paper. The limitation to a low number of monomials can additionally lead to undesirable behavior away from the point of evaluation (cf. \cite{ramsay_functional_2005}).
 	\vspace{-0.2cm}
 	
 	\paragraph{Fourier Basis}
@@ -161,7 +162,8 @@ style=authoryear-comp,
 		s(x) = \frac{A_0}{2} + \sum_{i = 1}^{\infty} A_n \cos(2\pi i x - \phi_n) = \frac{a_0}{2} + \sum_{i = 1}^{\infty}\left[a_i \cos(2\pi i x) + b_i \sin(2\pi i x)\right]
 	\end{equation}
 	
-	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift. Therefore, rewriting the series in the sine-cosine form through a simple trigonometry formula as shown above is necessary. Due to this origin of the Fourier basis it is reasonable to restrict the number of Fourier basis functions to odd numbered values to stay true to the expansion in amplitude-phase form.
+	In its classical form, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift parameter. Therefore, rewriting the series in the sine-cosine form as shown above is necessary. 
+	
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is thus given by the following sequence of functions defined on $[0,1]$ directly corresponding to the terms of the sine-cosine form of the Fourier series.
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
@@ -172,7 +174,7 @@ style=authoryear-comp,
 		\end{cases}
 	\end{equation}
 
-	Its elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process. Additionally, the Fourier basis is especially suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions. {\color{red} Citation}
+	To stay true to the original amplitude-phase form it is reasonable to restrict the number of Fourier basis functions to odd numbered values. The Fourier basis' elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process. Additionally, the Fourier basis is especially suitable to expand functions with a similar curvature order across the domain, generally resulting in uniformly smooth expansions. {\color{red} Citation}
 	\vspace{-0.2cm}
 
 	\paragraph{B-spline Basis} Following chapter 3.5 from \cite{ramsay_functional_2005}, splines are defined by first dividing an interval of interest $[\tau_0, \tau_L]$ into $L$ subintervals of non-negative length divided by a non-decreasing sequence of points $(\tau_l)_{l = 1,\dots, L-1}$ called knots. On each subinterval, a spline is a polynomial of chosen order $m = n+1$ where $n$ is its degree. If there are no multiplicities in the set of these knots, the polynomials on neighboring subintervals are matching derivatives up to order $m-2$ at the boundary knot $\tau_l$. A typical case of this that is often used in practive is an equidistant grid of knots. In some settings, however, it can be sensible to place multiple knots at the same value to replicate specific properties of the data structure allowing for a reduced number of matching derivatives at the corresponding knots. For the purposes of this paper, we will focus on the case of equidistant knots without multiplicity at inner knots.\\
