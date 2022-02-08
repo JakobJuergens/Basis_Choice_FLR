@@ -9,7 +9,7 @@ library(tidyverse)
 data(gasoline)
 NIR <- gasoline$NIR
 
-my_basis <- create.bspline.basis(rangeval = c(0,1), nbasis = 50, norder = 4)
+my_basis <- create.bspline.basis(rangeval = c(0,1), nbasis = 100, norder = 4)
 
 NIR_func <- smooth.basis(argvals = seq(0, 1, length.out = 401), 
                          y = t(NIR), fdParobj = my_basis)
