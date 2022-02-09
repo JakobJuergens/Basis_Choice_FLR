@@ -59,9 +59,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Application}{20}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Interpretation of Results}{20}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}Interpretation of Results}{21}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Basis Expansion Regression}{20}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Basis Expansion Regression}{21}{subsubsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {4.1.2}Functional Principal Component Regression}{21}{subsubsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
@@ -71,7 +71,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Collinearity Problems in Basis Expansion Regression}{21}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Low Number of Basis Functions in FPCR Regression}{21}{section*.16}%
+\contentsline {paragraph}{Low Number of Basis Functions in FPCR Regression}{22}{section*.16}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}{22}{section*.18}%
 \defcounter {refsection}{0}\relax 
@@ -103,6 +103,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.2}Lemma}{36}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.3}Theorem (Karhunen-Lo\'{e}ve expansion)}{37}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.3}Theorem (Karhunen-Lo\'{e}ve Expansion)}{37}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {8}Bibliography}{40}{section.8}%
