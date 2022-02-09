@@ -57,7 +57,7 @@ style=authoryear-comp,
 	\section{Introduction}
 		
 	Functional Data Analysis (FDA), which has its roots in the work of Ulf Grenander and Kari Karhunen, is gaining more attention as researchers from different fields collect data that is functional in nature. Although classical statistical methods can often process this data, FDA has advantages in that it allows extracting information given by properties such as the smoothness of the underlying process or its derivatives (cf. \cite{levitin_introduction_2007}).	As \cite{kokoszka_introduction_2017} describe, using methods from FDA should be considered when one variable of a given data set can be seen as smooth curves or functions.	 
-	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of electromagnetic radiation in the Near-infrared (NIR) spectrum by chemical samples.\footnote{For more details on Near-Infrared-Spectroscopy, refer to the \hyperref[NIR]{Section on Near-Infrared-Spectroscopy in the Appendix.}}
+	Therefore, data sets in FDA can include both realizations of scalar random variables and realizations of random functions. Examples of such curves are the absorption curves of electromagnetic radiation in the Near-infrared (NIR) spectrum by chemical samples.\footnote{For more details on Near-Infrared-Spectroscopy, refer to Appendix \ref{NIR}.}
 	
 	This paper introduces Functional Linear Regression in a scalar-on-function setting. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating an unknown coefficient function is inherently infinite-dimensional. 
 	We then introduce two distinct ways of translating this infinite-dimensional problem into a finite-dimensional problem that can be addressed using theory from multivariate regression: First, a so-called basis expansion of the coefficient function, and second, functional principal component regression. Both of these methods are dependent on a parameter choice called a truncation parameter for a functional basis, and this paper focuses on exploring the selection of these parameters using cross-validation.\\
@@ -80,7 +80,7 @@ style=authoryear-comp,
 		\end{enumerate}
 	\end{multicols}
 
-	A vector space with an associated inner product is called an inner product space and the inner product defines a norm and an associated distance on the vector space.
+	A vector space with an associated inner product is called an inner product space, and the inner product defines a norm and an associated distance on the vector space.
 	\begin{equation}
 		\lvert \lvert v \rvert \rvert = {\langle v, v \rangle}^{\frac{1}{2}} \quad \text{and} \quad 
 		d(v_1, v_2) = {\langle v_2 - v_1, v_2 - v_1 \rangle}^{\frac{1}{2}}
@@ -92,7 +92,6 @@ style=authoryear-comp,
 	\end{equation}
 			
 	The closed span $\overline{span}(S)$ of a sequence $S$ in $\mathbb{H}$ is defined as the closure of the span with respect to the distance induced by the norm and $S$ is called a basis of $\mathbb{H}$ if $\overline{span}(S) = \mathbb{H}$.	It is called an orthonormal basis if, in addition, the following properties hold. 
-	
 	\begin{multicols}{2}
 		\begin{enumerate}
 			\item $\langle v_i, v_j \rangle = 0 \quad \forall v_i, v_j \in S $ for $i \neq j$
@@ -125,13 +124,13 @@ style=authoryear-comp,
 	A random function on $\mathbb{L}^2[0,1]$ can then be defined formally as a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ defined on a probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample space with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$.
 	
 	\subsection{Functional Data Sets}
-	If we take a random function $X(\omega)$ as defined in the previous section, then realizations $x(t)$ of $X(\omega)(t)$ are called sample curves of the random function. The presence of functional observations in a data set is what defines functional data sets. In reality however,  realizations of random functions are not typically observed in their functional form. Instead, each curve is observed at a discrete and typically large set of measurements points. Consider the case of a data set containing observations $x_i(t)$ of a random function $X(\omega)$
+	If we take a random function $X(\omega)$ as defined in the previous section, then realizations $x(t)$ of $X(\omega)(t)$ are called sample curves of the random function. The presence of functional observations in a data set defines functional data sets. However,  realizations of random functions are not typically observed in their functional form. Instead, each curve is observed at a discrete and typically large set of measurements points. Consider the case of a data set containing observations $x_i(t)$ of a random function $X(\omega)$
 	\begin{equation}
 		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
 	\end{equation}
 	
-	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$.  These measurement points can be different for each sample curve. In this paper, we only consider the case where curves share their measuring points.
-	To work with functional data obtained in this form using the unique capabilities of functional data analysis, it is necessary to restore its functional structure. Therefore, methods such as basis representations will be introduced in the following parts of the Theory Section.\\
+	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$. These measurement points can be different for each sample curve. In this paper, we only consider the case where curves share their measuring points.
+	To use the unique capabilities of functional data analysis with functional data obtained in this form, it is necessary to restore its functional structure. Therefore, methods such as basis representations will be introduced in the following parts of the Theory Section.\\
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself. More information about this example can be found in Appendix \ref{NIR}.
 	
 	\subsection{Representing a Function in terms of a Basis}\label{bases}
@@ -140,12 +139,12 @@ style=authoryear-comp,
 		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
 	\end{equation}
 	
-	One very important question in this context is how the coefficients $a_j \quad j \in \mathcal{I}$ are derived given a function $x(t)$. For the purposes of this paper, this process will remain a blackbox, but detailed information on the derivation of these coefficients can be found in chapter 4 of \cite{ramsay_functional_2005}.
+	One very important question in this context is how the coefficients $a_j \quad j \in \mathcal{I}$ are derived given a function $x(t)$. For the purposes of this paper, this process will remain a black box, but detailed information on the derivation of these coefficients can be found in chapter 4 of \cite{ramsay_functional_2005}.
 	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are found in Section \ref{Basis_Plots} of the Appendix.
 	\vspace{-0.2cm}
 	
 	\paragraph{Monomial Basis}\label{Monomial_basis}
-	A very simple idea to approximate functions in $\mathbb{L}^2[0,1]$ is to take inspiration from the well known Taylor expansion and to use monomials of increasing degree as a basis. For entire functions $f(t)$, e.g. polynomials, the exponential function or trigonometric functions, we can express the function as a potentially infinite, but converging sum of weighted monomials.
+	A straightforward idea to approximate functions in $\mathbb{L}^2[0,1]$ is to take inspiration from the well known Taylor expansion and to use monomials of increasing degree as a basis. For entire functions $f(t)$, e.g. polynomials, the exponential function or trigonometric functions, we can express the function as a potentially infinite, but converging sum of weighted monomials.
 	\begin{equation}\label{Taylor_expansion}
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
 	\end{equation}
@@ -554,13 +553,13 @@ style=authoryear-comp,
 			\end{split}
 		\end{equation}
 		
-		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations, using the two true coefficient functions and the two error terms. These four combinations are then used with a different number of Monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic B-spline basis-function $\{5,6,...,18\}$ and Fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach.
-		% For the evaluation, we used the prediction MSE calculated by 10 fold cross-validation.
-		To obtain valid out of sample properties for the FPCR, within each of the ten ten-fold cross-validation splits, we first calculated the first $n_{FPC}$ FPC's for $n_{FPC} \in \{2,3,4\}$ of the training set $\mathcal{T}$, which was prior smoothed with the respective basis function specification. The approximated Eigenfunctions $\tilde{\nu}^{m, L, \mathcal{T}}$ are then used to estimate the scores of the holdout set $\mathcal{H}$, $\check{\xi}_{i}^{m, L, \mathcal{H}}$  by the equation
+		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations, using the two true coefficient functions and the two error terms. These four combinations are then used with a different number of Monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic B-spline basis-function $\{5,6,...,18\}$ and Fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach.\\
+
+		To obtain valid out of sample properties for the FPCR, within each of the ten ten-fold cross-validation splits, we first calculated the first $n_{FPC}$ FPC's for $n_{FPC} \in \{2,3,4\}$ of the training set $\mathcal{T}$, which was smoothed with the respective basis function specification. The approximated Eigenfunctions $\tilde{\nu}^{m, L, \mathcal{T}}$ are then used to estimate the scores of the holdout set $\mathcal{H}$, $\check{\xi}_{i}^{m, L, \mathcal{H}}$  by the equation
 		\begin{equation}
 			\check{\xi}_{i}^{m, \mathcal{H},L}
 			= \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{L} a_{i,j}^{\mathcal{H}} \phi_j(s)\right)} {\color{blue}\left(\sum_{k = 1}^{L} d_{k}^{m, L, \mathcal{T}} \phi_{k}(s)\right)} \mathrm{d}s
-		    \approx \sum_{j = 1}^{L} \left[ a_{i,j}^{\mathcal{H}}\sum_{k = 1}^{L}  d_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
+		    = \sum_{j = 1}^{L} \left[ a_{i,j}^{\mathcal{H}}\sum_{k = 1}^{L}  d_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
 		\end{equation}
 		where 
 		\begin{equation}
@@ -579,7 +578,7 @@ style=authoryear-comp,
 	The discussed results and figures of $\hat{\beta}(t)$ for the simulation can be found in Appendix \ref{Tables_sim} and \ref{Estimates_sim}.
 	 
 	\subsubsection{Basis Expansion Regression}
-	The following results origin from the \hyperref[basis_exp_transf]{Estimation using Basis-Representation}, in which we transform the smooth curves to perform scalar-on-function regression. Examining the results, it appears that the cross-validated MSPE inherits a convex nature in the increasing basis functions.
+	The following results originate from the \hyperref[basis_exp_transf]{Estimation using Basis-Representation}, in which we transform the smooth curves to perform scalar-on-function regression. Examining the results, it appears that the cross-validated MSPE exhibits a convex behavior in the number of basis functions.
 	
 	\paragraph{Monomial Basis}
 	Due to the in the number of Monomial basis functions increasing collinearity, simulations were conducted up until the sixth monomial, which already shows signs of numerical instability. For reasons outlined in \ref{Monomial_basis}, they seem suited for $f_1$ where it shows a better performance than B-splines for this assumed true coefficient function. A hypothesis for this could be that $f_1$ is an entire function, which can be well approximated with a power series. In case of $f_2$, this basis shows the weakest performance out of all basis, for which the plots in Figures \ref{basis_expansion_2_1} and \ref{basis_expansion_2_2} provide evidence. It seems like $\hat{\beta}(t)$ is not changing in the amount of noise and shows exaggerated behaviour at the boundaries. This weakness is especially pronounced in the MSPE for $f_2,Y_1$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) Monomial basis functions for the high(low) signal-to-noise ratio. 
@@ -649,13 +648,13 @@ style=authoryear-comp,
 	\vspace{-0.2cm}
 	
 	\paragraph{Low Number of Basis Functions in FPCR Regression}
-	As the simulation and application showed, the number of basis functions does not seem to be the deciding factor for the performance of FPCR, apart from the additional simulations which reported signs of undersmoothing for larger values of $L$. A more significant factor seems to be the number of FPC's available for the linear regression. This paper selects these components in order of their explanatory power of the variability around the mean function. For reasons outlined in Section \ref{sim_motivation} it might be better to make the selection of the FPC´s subject to some criteria such as cross validation or base their choice on insights and expertise from the respective field.
+	As the simulation and application showed, the number of basis functions does not seem to be the deciding factor for the performance of FPCR, apart from the additional simulations which reported signs of undersmoothing for larger values of $L$. A more significant factor seems to be the number of FPC's available for the linear regression. This paper selects these components in order of their explanatory power of the variability around the mean function. For reasons outlined in Section \ref{sim_motivation} it might be better to make the selection of the FPC's subject to some criteria such as cross validation or base their choice on insights and expertise from the respective field.
 	\vspace{-0.2cm}
 	
 	\subsection*{Possible Extensions}
 	
 	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
-	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the Monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials (cf. \citep{Dattoli_2001}). Due to their orthogonality, the problem of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
+	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the Monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials (cf. \cite{Dattoli_2001}). Due to their orthogonality, the problem of collinearity in the regressor matrix are greatly reduced which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix section \ref{Basis_Plots}.
 	\vspace{-0.2cm}
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
