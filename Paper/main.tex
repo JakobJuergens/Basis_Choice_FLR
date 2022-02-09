@@ -886,28 +886,28 @@ style=authoryear-comp,
 	\subsection{Definition (Hilbert-Schmidt Integral Operator)}\label{def_HS}
 	Given a bounded domain $\mathcal{A} \subset \mathbb{R}^n$, we call a function $c : \mathcal{A} \times \mathcal{A} \rightarrow \mathbb{R}$ a Hilbert-Schmidt kernel if
 	\begin{equation}
-		\int_{\mathcal{A}} \int_{\mathcal{A}} \vert c(x,y) \vert ^2 dx dy < \infty
+		\int_{\mathcal{A}} \int_{\mathcal{A}} \vert c(x,y) \vert ^2 \mathrm{d}x \mathrm{d}y < \infty
 	\end{equation}
 	where $c \in \mathbb{L}^2(\mathcal{A} \times \mathcal{A})$. Let $K$ be an integral operator on $\mathbb{L}^2(\mathcal{A})$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^2(\mathcal{A})$, by
 	
 	\begin{equation}
-		[K\nu](x) = \int_{\mathcal{A}} c(x,y) \nu(y) dy
+		[K\nu](x) = \int_{\mathcal{A}} c(x,y) \nu(y) \mathrm{d}y
 	\end{equation}
 	When an integral operator $K$ is linear and bounded, it is called a Hilbert-Schmidt operator. The linearity of the operator $K$ is simply proved. Additionaly assume that $\alpha, \beta \in \mathbb{R}$ and $\theta \in \mathbb{L}^2(\mathcal{A})$.
 	\begin{equation}
 		\begin{split}
-			[K (\alpha \nu + \beta \theta)](x) =& \int_{\mathcal{A}} c(x,y)(\alpha \nu(y) + \beta \theta(y)) dy\\
-			= & \int_{\mathcal{A}} c(x,y) \alpha \nu(y) dy + \int_{\mathcal{A}} c(x,y) \beta \theta(y) dy\\
-			= & \alpha\int_{\mathcal{A}} c(x,y) \nu (y) dy + \beta\int_{\mathcal{A}} c(x,y) \theta (y) dy\\
+			[K (\alpha \nu + \beta \theta)](x) =& \int_{\mathcal{A}} c(x,y)(\alpha \nu(y) + \beta \theta(y)) \mathrm{d}y\\
+			= & \int_{\mathcal{A}} c(x,y) \alpha \nu(y) \mathrm{d}y + \int_{\mathcal{A}} c(x,y) \beta \theta(y) \mathrm{d}y\\
+			= & \alpha\int_{\mathcal{A}} c(x,y) \nu (y) \mathrm{d}y + \beta\int_{\mathcal{A}} c(x,y) \theta (y) \mathrm{d}y\\
 			= & \alpha[K\nu](x) + \beta[K\theta](x)
 		\end{split}
 	\end{equation}
 	For boundedness of the oprator $K$,
 	\begin{equation}
 		\begin{split}
-			\Vert K\nu \Vert^{2}_{\mathbb{L}^2(\mathcal{A})} = & \int_{\mathcal{A}} \biggl\vert [K\nu](x) \biggr\vert^2 dx\\
-			= &\int_{\mathcal{A}} \biggl\vert \int_{\mathcal{A}}c(x,y)\nu(y)dy \biggr\vert^2dx\\
-			\leq & \int_{\mathcal{A}}\biggl(\int_{\mathcal{A}}\vert c(x,y) \vert^2dy\biggr) \biggl(\int_{\mathcal{A}}\vert \nu(y) \vert ^2 dy \biggr)dx \quad \text{(Cauchy-Schwarz)}\\
+			\Vert K\nu \Vert^{2}_{\mathbb{L}^2(\mathcal{A})} = & \int_{\mathcal{A}} \biggl\vert [K\nu](x) \biggr\vert^2 \mathrm{d}x\\
+			= &\int_{\mathcal{A}} \biggl\vert \int_{\mathcal{A}}c(x,y)\nu(y)\mathrm{d}y \biggr\vert^2\mathrm{d}x\\
+			\leq & \int_{\mathcal{A}}\biggl(\int_{\mathcal{A}}\vert c(x,y) \vert^2\mathrm{d}y\biggr) \biggl(\int_{\mathcal{A}}\vert \nu(y) \vert ^2 \mathrm{d}y \biggr)\mathrm{d}x \quad \text{(Cauchy-Schwarz)}\\
 			= & \Vert c \Vert_{\mathbb{L}^2(\mathcal{A} \times \mathcal{A})}\Vert \nu \Vert_{\mathbb{L}^2} < \infty
 		\end{split}
 	\end{equation}
@@ -923,18 +923,19 @@ style=authoryear-comp,
 		\end{enumerate}
 	\end{multicols}
 
-	Remind that $\delta^{m,n} = 0$ if $m \neq n$, otherwise 1.
+	where $\delta^{m,n} = 0$ if $m \neq n$, otherwise 1.
 	
 	\begin{proof}
-		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)dP(\omega)$. To obtain the first result, we can show that
+		Assume that $F(t)$ is the centered process of $X(t)$, namely, $F(t) = X(t) - \int_{\Omega}X(t)\mathrm{d}P(\omega)$. To obtain the first result, we can show that
 		
 		\begin{equation}\label{Lemma1}
 			\begin{split}
-				\mathbb{E}[\xi^m] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)dt\biggr\rbrack\\
-				= & \int_{\Omega} \int_{0}^{1} F(t) \nu^m(t) dt dP(\omega)\\
-				= & \int_{0}^{1} \int_{\Omega} F(t) \nu^m(t) dP(\omega) dt \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) dP(\omega)} \nu^m(t) dt\\
-				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu^m(t) dt = 0
+				\mathbb{E}[\xi^m] = & \mathbb{E} \biggl\lbrack \int_{0}^{1} F(t) \nu_{j}(t)\mathrm{d}t\biggr\rbrack\\
+				= & \int_{\Omega} \int_{0}^{1} F(t) \nu^m(t) \mathrm{d}t \mathrm{d}P(\omega)\\
+				= & \int_{0}^{1} \int_{\Omega} F(t) \nu^m(t) \mathrm{d}P(\omega) \mathrm{d}t \quad
+				\text{(Fubini)}\\
+				= & \int_{0}^{1} {\color{red}\int_{\Omega} F(t) \mathrm{d}P(\omega)} \nu^m(t) \mathrm{d}t\\
+				= & \int_{0}^{1} {\color{red}\mathbb{E}[F(t)]} \nu^m(t) \mathrm{d}t = 0
 			\end{split}
 		\end{equation}
 	
@@ -943,11 +944,11 @@ style=authoryear-comp,
 		
 		\begin{equation}\label{Lemma2}
 			\begin{split}
-				\mathbb{E} [\xi^m \xi^n] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu^m(s)ds \int_{0}^{1} F(t) \nu^n(t)dt  \biggr\rbrack\\
-				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu^m(s) F(t) \nu^n(t) ds dt} \biggr\rbrack \quad \text{(Fubini)}\\
-				= & \int_{0}^{1} {\color{red}\int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu^m(s)} \nu^n(t) {\color{red}ds} dt\\
-				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu^m(s)ds \right)} \nu^n(t) dt \\
-				= & \int_{0}^{1}{\color{red}[K\nu^m](t)}\nu^n(t)dt\\
+				\mathbb{E} [\xi^m \xi^n] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu^m(s)\mathrm{d}s \int_{0}^{1} F(t) \nu^n(t)\mathrm{d}t  \biggr\rbrack\\
+				= & \mathbb{E} \biggl\lbrack {\int_{0}^{1} \int_{0}^{1} F(s) \nu^m(s) F(t) \nu^n(t) \mathrm{d}s \mathrm{d}t} \biggr\rbrack \quad \text{(Fubini)}\\
+				= & \int_{0}^{1} {\color{red}\int_{0}^{1} \mathbb{E}[{F(s)F(t)}] \nu^m(s)} \nu^n(t) {\color{red}\mathrm{d}s} \mathrm{d}t\\
+				= & \int_{0}^{1} {\color{red}\left(\int_{0}^{1}c(s,t)\nu^m(s)\mathrm{d}s \right)} \nu^n(t) \mathrm{d}t \\
+				= & \int_{0}^{1}{\color{red}[K\nu^m](t)}\nu^n(t)\mathrm{d}t\\
 				= & \langle K \nu^m, \nu^n \rangle\\
 				= & \langle \lambda^m \nu^m, \nu^n \rangle = \delta^{m,n}\lambda^{m}
 			\end{split}
@@ -983,7 +984,7 @@ style=authoryear-comp,
 		X(t) = \mu(t) + \sum_{m=1}^{\infty} \xi^m \nu^m(t),
 	\end{equation}
 
-	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)dt$. These coefficients satisfy the following conditions.
+	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)\mathrm{d}t$. These coefficients satisfy the following conditions.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -1016,10 +1017,10 @@ style=authoryear-comp,
 		
 		\begin{equation}\label{Thr2}
 			\begin{split}
-				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)ds\bigg)} \nu^m(t) \right]\\
-				= & \mathbb{E} \left[ \sum_{m=1}^{N} \bigg(\int_{0}^{1} F(t)F(s)\nu^m(s)ds\bigg) \nu^m(t) \right]\\
-				= & \sum_{m=1}^{N} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu^m(s)ds\bigg)\nu^m(t)\\
-				= & \sum_{m=1}^{N} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu^m(s)ds\bigg)}\nu^m(t)\\
+				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)\mathrm{d}s\bigg)} \nu^m(t) \right]\\
+				= & \mathbb{E} \left[ \sum_{m=1}^{N} \bigg(\int_{0}^{1} F(t)F(s)\nu^m(s)\mathrm{d}s\bigg) \nu^m(t) \right]\\
+				= & \sum_{m=1}^{N} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu^m(s)\mathrm{d}s\bigg)\nu^m(t)\\
+				= & \sum_{m=1}^{N} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu^m(s)\mathrm{d}s\bigg)}\nu^m(t)\\
 				= & \sum_{m=1}^{N}{\color{teal}[K\nu^m](t)}\nu^m(t) \\
 				= &\sum_{m=1}^{N}{\color{teal}\lambda^m\nu^m(t)}\nu^m(t) = \sum_{m=1}^{N}\lambda^m\nu^m(t)^{2}
 			\end{split}
