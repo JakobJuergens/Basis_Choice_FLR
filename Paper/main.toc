@@ -37,7 +37,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3}Simulation setup}{16}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Results}{17}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}Results}{18}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.4.1}Basis Expansion Regression}{18}{subsubsection.3.4.1}%
 \defcounter {refsection}{0}\relax 
@@ -67,25 +67,19 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}Outlook}{21}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Limitations}{21}{subsection.5.1}%
+\contentsline {paragraph}{Insights from Simulation cannot be Extended to More General Functions}{21}{section*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Insights from Simulation cannot be Extended to More General Functions}{21}{section*.13}%
+\contentsline {paragraph}{Collinearity Problems in Basis Expansion Regression}{21}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Collinearity Problems in Basis Expansion Regression}{21}{section*.14}%
+\contentsline {paragraph}{Low Number of Basis Functions in FPCR Regression}{21}{section*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Low Number of Basis Functions in FPCR Regression}{21}{section*.15}%
+\contentsline {paragraph}{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}{22}{section*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Possible Extensions}{21}{subsection.5.2}%
+\contentsline {paragraph}{Comparison to Penalty Based Smoothing Procedures}{22}{section*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}{21}{section*.16}%
+\contentsline {paragraph}{Larger Range for the Number of Specifications for FPCR}{22}{section*.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Comparison to Penalty Based Smoothing Procedures}{22}{section*.17}%
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Larger Range for the Number of Basis Functions for FPCR}{22}{section*.18}%
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Larger Range for the Number of Principal Components}{22}{section*.19}%
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Input from Physics Analysis}{22}{section*.20}%
+\contentsline {paragraph}{Input from Physics}{22}{section*.21}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}Appendix}{23}{section.6}%
 \defcounter {refsection}{0}\relax 
@@ -95,11 +89,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.3}Simulation Study Results}{25}{subsection.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Simulation - Coefficient Function Estimates}{31}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.4}Additional Simulation}{30}{subsection.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5}Application Results}{33}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.5}Simulation - Coefficient Function Estimates}{31}{subsection.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6}Application - Coefficient Function Estimates}{35}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.6}Application Results}{33}{subsection.6.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.7}Application - Coefficient Function Estimates}{35}{subsection.6.7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7}Definitions and Proofs}{35}{section.7}%
 \defcounter {refsection}{0}\relax 
