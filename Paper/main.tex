@@ -129,7 +129,6 @@ style=authoryear-comp,
 	
 	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$.  These measurement points can be different for each sample curve. However, in this paper, we only consider the case where curves share their measuring points.
 	To work with functional data obtained in this form using the unique capabilities of functional data analysis, it is necessary to restore its functional structure. Therefore, methods such as basis representations, which are introduced in the following parts of the Theory Section, are necessary.\\
-	
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself. More information about this example can be found in Appendix \ref{NIR}.
 	
 	\subsection{Representing a Function in terms of a Basis}\label{bases}
@@ -140,6 +139,7 @@ style=authoryear-comp,
 	
 	One very important question in this context is how the coefficients $a_j \quad j \in \mathcal{I}$ are derived given a function $x(t)$. For the purposes of this paper, this process will remain a blackbox, but detailed information on the derivation of these coefficients can be found in chapter 4 of \cite{ramsay_functional_2005}.
 	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are shown in Part \ref{Basis_Plots} of the Appendix.
+	\vspace{-0.2cm}
 	
 	\paragraph{Monomial Basis}\label{Monomial_basis}
 	A very simple idea to approximate functions in $\mathbb{L}^2[0,1]$ is to take inspiration from the well known Taylor expansion and to use monomials of increasing degree as a basis. For entire functions $f(t)$, e.g. polynomials, the exponential function or trigonometric functions, we can express the function as a potentially infinite, but converging sum of weighted monomials.
@@ -165,6 +165,7 @@ style=authoryear-comp,
 	
 	Typically, the series is represented in the so called amplitude-phase form. This, however, is impractical for the estimation procedures shown in the later parts of this paper due to the phase shift parameter. Therefore, rewriting the series in the sine-cosine form as shown above is necessary.	
 	The Fourier basis for $\mathbb{L}^2[0,1]$ is thus given by the following sequence of functions defined on $[0,1]$ directly corresponding to the terms of the sine-cosine form of the Fourier series.
+	
 	\begin{equation}
 		\phi_{i}^{F}(x) = 
 		\begin{cases}
@@ -173,7 +174,6 @@ style=authoryear-comp,
 			\sqrt{2} \sin(\pi (i-1)x) & \text{otherwise}
 		\end{cases}
 	\end{equation}
-
 	To stay true to the original amplitude-phase form it is reasonable to restrict the number of Fourier basis functions to odd numbered values. The Fourier basis' elements exhibit a cyclical behavior which is useful to expand functions that represent a periodic or seasonal underlying process. The Fourier basis is especially suitable to expand functions with a similar curvature across the domain, generally resulting in uniformly smooth expansions. (cf. \cite{ramsay_functional_2005})
 	\vspace{-0.2cm}
 
@@ -191,10 +191,8 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
-	As this equation references knots that are not defined by the original vector of knots, implementations of this algorithm typically repeat the knots at the boundaries of the interval, $\tau_0$ and $\tau_L$ an additional $m$ times. This padding of the knot vector then allows to calculate every object that is needed for the definition of the basis over the original set of knots.\\
-	
+	As this equation references knots that are not defined by the original vector of knots, implementations of this algorithm typically repeat the knots at the boundaries of the interval, $\tau_0$ and $\tau_L$ an additional $m$ times. This padding of the knot vector then allows to calculate every object that is needed for the definition of the basis over the original set of knots.\\	
 	This, however, does not lead to a basis of $\mathbb{L}^2[0,1]$ as the closed span of this finite sequence of functions is not equal to $\mathbb{L}^2[0,1]$. To focus on specific approximation errors in the later parts of this paper, we will, however, assume that a B-spline basis representation of a function in $\mathbb{L}^2[0,1]$ will serve as a sufficient approximation for an appropriately chosen number of B-spline basis functions. 
-	
 	As the B-spline basis does not have infinitely many elements as the full Monomial or Fourier bases do, it is slightly misleading to speak of truncating the B-spline basis at a truncation parameter $L$ in later parts of this paper. For the sake of keeping the notation reasonably concise, we will still keep this notation. However, by convention, truncating a B-spline basis at truncation parameter $L$ shall mean using a B-spline basis consisting of $L$ functions from this point on.
 	
 	\subsection{Approximation and Smoothing via Basis Truncation}
@@ -244,7 +242,6 @@ style=authoryear-comp,
 
 	As in the well known setting of principal component analysis, the Eigenvalues correspond to the variance in the random function that is explained by the corresponding Eigenfunction. 
 	Therefore, ordering the the Eigenfunctions according to their their corresponding Eigenvalues $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ is useful for approximation purposes. Due to this property a functional observation can often be approximated well by using a limited number of the Eigenfunctions of its generating random process. Moreover, our data generating process for the simulation study is based on this property as explained in Section \ref{similar_curves}.\\
-	
 	In the scalar setting, a similar consideration leads to the concept of principal components, which can be extended to the functional setting. Let $\{x_1(t), \dots, x_n(t)\}$ be a set of i.i.d. realizations generated by a random function $X(\omega) \mapsto \mathbb{L}^2[0,1]$.
 	Define the following sample analogs for the mean and covariance functions.
 	\begin{equation}
@@ -265,12 +262,10 @@ style=authoryear-comp,
 	\begin{equation}
 		x_i(t) = \hat{\mu}(t) + \sum_{j = 1}^{N-1} \hat{\xi}_{i}^{m} \hat{\nu}^{m}(t)
 	\end{equation}
-
 	where the $\hat{\xi}_{i}^m$ are derived as 
 	\begin{equation}
 		\hat{\xi}_i^m(\omega) = \langle x_i - \hat{\mu}, \hat{\nu}^m\rangle = \int_{0}^{1} \left(x_i(s) - \hat{\mu}(s)\right) \hat{\nu}^m(s) \mathrm{d}s
 	\end{equation}
-	
 	In reality, these calculations are often implemented using basis representations of both the functional principal components $\hat{\nu}^m$ and the observations $x_i(t)$ leading to the following representation. For the sake of clarity, the following equation assumes that the bases used for the expansion of both the observations and the coefficient function are true bases of $\mathbb{L}^2[0,1]$ and can therefore be used to express the corresponding objects exactly.
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
@@ -281,7 +276,6 @@ style=authoryear-comp,
 			& \quad + \sum_{j = 1}^{J} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\nu}^{m,K}(s) \mathrm{d}s + \int_{0}^{1} \delta_i^J(s) \delta_{\nu}^{m,K}(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
-	
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	\begin{equation}\label{score_approx}
 		\begin{split}
@@ -289,7 +283,6 @@ style=authoryear-comp,
 			& \quad + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s + \int_{0}^{1} \delta_i^L(s) \delta_{\beta}^L(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
-
 	And we can define the following objects:
 		\begin{align}
 			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s \right] 
@@ -325,8 +318,8 @@ style=authoryear-comp,
 	\begin{equation}
 		\beta(t) = \sum_{j \in \mathcal{I}} b_j \phi_j(t)
 	\end{equation}
-	
 	This enables us to write equation \ref{DGP} using this representation to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.
+	
 	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega)
