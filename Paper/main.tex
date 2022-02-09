@@ -471,7 +471,7 @@ style=authoryear-comp,
 		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\beta}(t) = \sum_{m = 1}^{M} \tilde{b}_{m + 1}^{L,M} \tilde{\nu}^{m,L}(t)
 	\end{equation}
 
-	As in the previous case, the performance of this estimation depends in parts on the quality of the approximation made during the derivation of this estimator. {\color{red}Continue Here Jakob!!!}
+	As in the previous case, the performance of this estimation depends in parts on the quality of the approximation made during the derivation of this estimator. Here, the interactions are even more complicated. Even though the approximations exhibit smaller errors when a larger number of basis functions is used, the interplay of smoothing in the construction of the functional principal components and the choice of a number of FPC's to be used in the linear regression makes the behavior of this estimator difficult to predict. 
 
 	\nocite{alexanderian_KLexpansion_2015}
 	\nocite{kokoszka_introduction_2017}
@@ -580,7 +580,7 @@ style=authoryear-comp,
 	\vspace{-0.2cm}
 	
 	\paragraph{B-spline Basis}
-	Simulations with B-spline basis functions were possible from 4 to 18 since from 18 onwards, the simulations were running into problems of numerical instability {\color{orange} since the functions are inherently not orthogonal to each other}.
+	Simulations with B-spline basis functions were possible from 4 to 18 since from 18 onward, the simulations were running into problems of numerical instability {\color{orange} since the functions are inherently not orthogonal to each other}.
 	Function $f_1$ requires 5(4) B-spline basis functions for the high(low) signal-to-noise ratio to obtain the best fit for the B-spline basis and shows the worst performance of the three bases. An explanation might be its overripe behavior at the boundaries and the exaggeration of the peculiarities of $f_1$ (Figures \ref{basis_expansion_1_1} and \ref{basis_expansion_1_2}), which is especially pronounced for the lower signal-to-noise ratio. For $f_2$, 11(6) B-spline basis functions are chosen for the high(low) signal-to-noise ratio. The B-spline basis outperforms the Monomial basis in $f_2$ but comes second to the Fourier basis. While the basis seems to recognize the peculiarities in $f_2,Y_1$, it seems to struggle for the noisy responses in $f_2,Y_2$ (Figures \ref{basis_expansion_2_1} and \ref{basis_expansion_2_2}). With the low signal-to-noise ratio in the responses, the simulation chooses a smaller number of basis functions, which could prevent fitting this scalar noise using $\hat{\beta}(t)$.
 	\vspace{-0.2cm}
 	
