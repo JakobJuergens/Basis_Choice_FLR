@@ -276,9 +276,9 @@ style=authoryear-comp,
 		\begin{split}
 			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
 			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} d_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			& = \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{J} a_{i,j} \phi_j(s) + \delta_i^J(s)\right)} {\color{blue}\left(\sum_{k = 1}^{K} d_{k}^m \psi_{k}(s) + \delta_{\nu, m}^K(s)\right)} \mathrm{d}s \\
+			& = \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{J} a_{i,j} \phi_j(s) + \delta_i^J(s)\right)} {\color{blue}\left(\sum_{k = 1}^{K} d_{k}^m \psi_{k}(s) + \delta_{\nu}^{m,K}(s)\right)} \mathrm{d}s \\
 			& = \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} d_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{K} d_{k}^m \int_{0}^{1} \delta_i^J(s) \psi_{k}(s) \mathrm{d}s \\
-			& \quad + \sum_{j = 1}^{J} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\nu, m}^K(s) \mathrm{d}s + \int_{0}^{1} \delta_i^J(s) \delta_{\nu, m}^K(s) \mathrm{d}s
+			& \quad + \sum_{j = 1}^{J} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\nu}^{m,K}(s) \mathrm{d}s + \int_{0}^{1} \delta_i^J(s) \delta_{\nu}^{m,K}(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
 	
@@ -295,7 +295,7 @@ style=authoryear-comp,
 			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s \right] 
 			& \delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} \\
 			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} d_{k}^m \phi_{k}(t) 
-			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
+			& \delta_{\nu}^{m, L}(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
 		\end{align}	
 	
 	This method of deriving or approximating the Eigenfunctions and scores from a data set is introduced in \cite{ramsay_functional_2005} (chapter 8.4.2) and implemented in the R-package fda. The following considerations and results of the simulation study might therefore serve as information about the performance of this method in a scenario where a limited number of basis functions is provided to the method instead of using more conventional smoothing approaches.
@@ -440,13 +440,13 @@ style=authoryear-comp,
 	\begin{equation}
 		\begin{split}
 			y_i & = \tilde{\alpha}^L
-			+ \sum_{m = 1}^{N-1} \left[ \left(\tilde{\xi}^{m,L}_{i} + \delta_{\xi, i}^{m, L} \right) \sum_{j = 1}^{L} b_j \int_{0}^{1} \left(\tilde{\nu}^{m,L}(s) + \delta_{\nu, m}^L(s) \right) \phi_j(s) \mathrm{d}s \right] 
+			+ \sum_{m = 1}^{N-1} \left[ \left(\tilde{\xi}^{m,L}_{i} + \delta_{\xi, i}^{m, L} \right) \sum_{j = 1}^{L} b_j \int_{0}^{1} \left(\tilde{\nu}^{m,L}(s) + \delta_{\nu}^{m,L}(s) \right) \phi_j(s) \mathrm{d}s \right] 
 			+ \epsilon_i \\
 			& = \tilde{\alpha}^L
 			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
-			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right] \\
+			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] \\
 			& \quad \quad + \sum_{m = 1}^{N-1} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] 
-			+ \sum_{m = 1}^{N-1} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu, m}^L(s) \phi_j(s) \mathrm{d}s \right]
+			+ \sum_{m = 1}^{N-1} \left[ \delta_{\xi, i}^{m, L} \sum_{j = 1}^{L} b_j \int_{0}^{1} \delta_{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right]
 			+ \epsilon_i \\
 			& \approx \tilde{\alpha}^L
 			+ \sum_{m = 1}^{N-1} \left[ \tilde{\xi}^{m,L}_{i} \sum_{j = 1}^{L} b_j \int_{0}^{1} \tilde{\nu}^{m,L}(s) \phi_j(s) \mathrm{d}s \right] + \epsilon_i
