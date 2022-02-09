@@ -379,7 +379,7 @@ style=authoryear-comp,
 		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
 	\end{equation}
 
-	The performance of this estimation procedure depends in part on the quality of the approximation in Equation \ref{simplified_model_basis_equation}. Therefore, it is interesting to think about when the approximation error is small... {\color{red}Continue Here Jakob!!!}
+	The performance of this estimation procedure depends in part on the quality of the approximation in Equation \ref{simplified_model_basis_equation}. Therefore, it is interesting to think about when the approximation error is small. Due to the nature of a basis representation, the approximation error can only decrease with an increasing number of basis functions. However, contrary to this effect are the potential benefits of introducing some amount of smoothing into the procedure, making it not intuitively clear, what the effects of different choices for the number of basis functions might be. 
 	
 	\subsubsection{Estimation using Functional Principal Components}\label{fpc_exp_transf}
 	
@@ -402,8 +402,8 @@ style=authoryear-comp,
 			= {\color{teal}\bar{\alpha}} + \sum_{m = 1}^{N-1} \hat{\xi}^m_i {\color{violet}\hat{\beta}^m} + \epsilon_i
 		\end{split}
 	\end{equation}
-	
-	This, however, is a simplification for the purposes of real-world estimation as in most implementations, the coefficient function and the principal components are also expressed or derived in terms of a basis that can be chosen freely. Introducing both concepts one step at a time leads to the following complication if we first introduce an expansion of the coefficient function.
+
+	This, however, is a simplification as in most implementations, the coefficient function and the principal components are also expressed or derived in terms of a basis. Introducing both concepts one step at a time leads to the following complication if we first introduce an expansion of the coefficient function.
 	\begin{equation}
 		\begin{split}
 			y_i &= \alpha + \int_{0}^{1} {\color{red}x_i(s)} {\color{blue}\beta(s)} \mathrm{d}s + \epsilon_i
@@ -471,7 +471,7 @@ style=authoryear-comp,
 		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\beta}(t) = \sum_{m = 1}^{M} \tilde{b}_{m + 1}^{L,M} \tilde{\nu}^{m,L}(t)
 	\end{equation}
 
-	As in the previous case, the performance of this estimation depends the quality of the approximation made during the derivation of this estimator. Therefore, it is interesting to think about when these errors are small... {\color{red}Continue Here Jakob!!!}
+	As in the previous case, the performance of this estimation depends in parts on the quality of the approximation made during the derivation of this estimator. {\color{red}Continue Here Jakob!!!}
 
 	\nocite{alexanderian_KLexpansion_2015}
 	\nocite{kokoszka_introduction_2017}
@@ -976,7 +976,7 @@ style=authoryear-comp,
 	\end{proof}
 	
 	
-	\subsection{Theorem (Karhunen-Lo\'{e}ve expansion)} \label{Proof2}
+	\subsection{Theorem (Karhunen-Lo\'{e}ve Expansion)} \label{Proof2}
 	
 	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process, namely, $\lim\limits_{\epsilon \rightarrow 0} \mathbb{E}[(X(t+\epsilon) - X(t))^2]$ = 0, such that $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
 	
