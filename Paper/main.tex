@@ -552,15 +552,23 @@ style=authoryear-comp,
 		
 		where $Z \sim \mathcal{N}(0,1)$. In total, we created four combinations, using the two true coefficient functions and the two error terms. These four combinations are then used with a different number of Monomial basis functions $ \in \{1,2, \dots, 6\}$, cubic B-spline basis-function $\{5,6,...,18\}$ and Fourier functions $\{1,3,...,25\}$ to predict the generated responses using the basis expansion approach and the FPCR approach.
 		% For the evaluation, we used the prediction MSE calculated by 10 fold cross-validation.
-		To obtain valid out of sample properties for the FPCR, within each of the ten ten-fold cross-validation splits, we first calculate the first $n_{FPC}$ FPC's for $n_{FPC} \in \{2,3,4\}$ of the training set $\mathcal{T}$, which was prior smoothed with the respective basis function specification. The obtained Eigenfunctions $\nu^{m,\mathcal{T}}$ are then used to estimate the scores of the holdout set $\mathcal{H}$, $\hat{\xi}_{i}^{m, \mathcal{H}}$  by the equation
+		To obtain valid out of sample properties for the FPCR, within each of the ten ten-fold cross-validation splits, we first calculated the first $n_{FPC}$ FPC's for $n_{FPC} \in \{2,3,4\}$ of the training set $\mathcal{T}$, which was prior smoothed with the respective basis function specification. The approximated Eigenfunctions $\tilde{\nu}^{m, L, \mathcal{T}}$ are then used to estimate the scores of the holdout set $\mathcal{H}$, $\check{\xi}_{i}^{m, L, \mathcal{H}}$  by the equation
+		\begin{equation}
+			\check{\xi}_{i}^{m, \mathcal{H},L}
+			= \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{L} a_{i,j}^{\mathcal{H}} \phi_j(s)\right)} {\color{blue}\left(\sum_{k = 1}^{L} d_{k}^{m, L, \mathcal{T}} \phi_{k}(s)\right)} \mathrm{d}s
+		    \approx \sum_{j = 1}^{L} \left[ a_{i,j}^{\mathcal{H}}\sum_{k = 1}^{L}  d_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
+		\end{equation}
+		where 
 		\begin{equation}
 			\begin{split}
-				\hat{\xi}_{i}^{m, \mathcal{H},L} & =  \int_{0}^{1} {\color{red} \left(X_{i}^{\mathcal{H}}(s) - \hat{\mu}^{\mathcal{T}}(s)\right)} {\color{blue}\tilde{\nu}^{m, L, \mathcal{T}} }\mathrm{d}s) 
-			    \approx \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{L} a_{i,j}^{\mathcal{H}} \phi_j(s)\right)} {\color{blue}\left(\sum_{k = 1}^{L} d_{k}^{m, \mathcal{T}} \phi_{k}(s)\right)} \mathrm{d}s \\
-				 &\approx \sum_{j = 1}^{L} \left[ a_{i,j}^{\mathcal{H}}\sum_{k = 1}^{L}  d_{k}^{m, \mathcal{T}} \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s\right]
+				{\color{red} \left(X_{i}^{\mathcal{H}}(t) - \hat{\mu}^{\mathcal{T}}(t)\right)} 
+				&= {\color{red}\sum_{j \in \mathcal{L}} a_{i,j}^{\mathcal{H}} \phi_j(t)}
+				= {\color{red}\sum_{j = 1}^{L} a_{i,j}^{\mathcal{H}} \phi_j(t) + \delta_{i}^{L, \mathcal{H}}(t)}
+				\approx {\color{red}\sum_{j = 1}^{L} a_{i,j}^{\mathcal{H}} \phi_j(t)} \\
+				{\color{blue}\tilde{\nu}^{m, L, \mathcal{T}} } &= {\color{blue}\sum_{k = 1}^{L} d_{k}^{m, L, \mathcal{T}} \phi_{k}(s)}
 			\end{split}
 		\end{equation}
-	
+		
 		with truncation parameter $L$. In total, 5000 repetitions were conducted for each specified model, basis system and basis function. The models are denoted as a combination of the function $f \in \{f_1(t), f_2(t)\}$	and created responses $Y \in \{Y_1, Y_2\}$.
 		
 	\subsection{Results}	
