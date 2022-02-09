@@ -127,7 +127,7 @@ style=authoryear-comp,
 		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
 	\end{equation}
 	
-	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$. These measurement points can be different for each sample curve. However, in this paper, we only consider the case where curves share their measuring points. 
+	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$. {\color{orange} May we put the link to the figure 4 by footnote?} These measurement points can be different for each sample curve. However, in this paper, we only consider the case where curves share their measuring points.
 	To work with functional data obtained in this form using the unique capabilities of functional data analysis, it is necessary to restore its functional structure. Therefore, methods such as basis representations, which are introduced in the following parts of the Theory Section, are necessary.\\
 	
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself.
@@ -139,7 +139,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 	One very important question in this context is how the coefficients $a_j \quad j \in \mathcal{I}$ are derived given a function $x(t)$. For the purposes of this paper, this process will remain a blackbox, but detailed information on the derivation of these coefficients can be found in {\color{red} ADD CITATION!!!} \\
-	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are shown in Part \ref{Basis_Plots} of the Appendix.
+	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper {\color{orange} link with specify?} are explained in the following. {\color{orange}or Each unique feature of the basis systems is used to interpret results of simulation study and application of this study. with link} Diagrams showing a number of basis functions from these bases are shown in Part \ref{Basis_Plots} of the Appendix.
 	
 	\paragraph{Monomial Basis}
 	A very simple idea to approximate functions in $\mathbb{L}^2[0,1]$ is to take inspiration from the well known Taylor expansion and to use monomials of increasing degree as a basis. For entire functions $f(t)$, e.g. polynomials, the exponential function or trigonometric functions, we can express the function as a potentially infinite, but converging sum of weighted monomials.
@@ -205,7 +205,7 @@ style=authoryear-comp,
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
 
-	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$.  $L$ can be chosen subjectively, but also through applying data-driven methods such as Cross-Validation. Figure \ref{Different_Expansions} shows the effect of choosing different numbers of basis functions for one observation of the Near-Infrared Spectroscopy data set which is used in the later parts of this paper and exemplifies the tradeoffs that are at the core of the truncation parameter choice.
+	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$.  {\color{orange} The theoretical progress is also precisely shown at one eqution(link).} $L$ can be chosen subjectively, but also through applying data-driven methods such as Cross-Validation. Figure \ref{Different_Expansions} shows the effect of choosing different numbers of basis functions for one observation of the Near-Infrared Spectroscopy data set which is used in the later parts of this paper and exemplifies the tradeoffs that are at the core of the truncation parameter choice.
 			
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{../Graphics/basis_expansions.pdf}
@@ -243,7 +243,7 @@ style=authoryear-comp,
 	\end{multicols}
 
 	As in the well known setting of principal component analysis, the Eigenvalues correspond to the variance in the random function that is explained by the corresponding Eigenfunction. 
-	Therefore, ordering the the Eigenfunctions according to their their corresponding Eigenvalues $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ is useful for approximation purposes. Due to this property a functional observation can often be approximated well by using a limited number of the Eigenfunctions of its generating random process.\\
+	Therefore, ordering the the Eigenfunctions according to their their corresponding Eigenvalues $\lambda^{1} \geq \lambda^{2} \geq \dots \geq 0$ is useful for approximation purposes. Due to this property a functional observation can often be approximated well by using a limited number of the Eigenfunctions of its generating random process. {\color{orange} Moreover, our data generating process is also based on this property.}\\
 	
 	In the scalar setting, a similar consideration leads to the concept of principal components, which can be extended to the functional setting. Let $\{x_1(t), \dots, x_n(t)\}$ be a set of i.i.d. realizations generated by a random function $X(\omega) \mapsto \mathbb{L}^2[0,1]$.
 	Define the following sample analogs for the mean and covariance functions.
@@ -281,7 +281,7 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 	
-	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
+	{\color{orange} For the last equation, shouldn't it be approx including following equations regarding truncation error term? or delta times delta is so small that we can neglect(maybe not true)..?} In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	\begin{equation}\label{score_approx}
 			\hat{\xi}_{i}^m = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s
 	\end{equation}
