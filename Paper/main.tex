@@ -285,14 +285,14 @@ style=authoryear-comp,
 	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	\begin{equation}\label{score_approx}
 		\begin{split}
-			\hat{\xi}_{i}^m &= \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} d_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} d_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s \\
+			\hat{\xi}_{i}^m &= \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} d_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} d_{k}^m \int_{0}^{1} \delta_i^L(s) \phi_{k}(s) \mathrm{d}s \\
 			& \quad + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s + \int_{0}^{1} \delta_i^L(s) \delta_{\beta}^L(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
 
 	And we can define the following objects:
 		\begin{align}
-			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] 
+			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \phi_{k}(s)\mathrm{d}s \right] 
 			& \delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} \\
 			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} d_{k}^m \phi_{k}(t) 
 			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
@@ -351,7 +351,7 @@ style=authoryear-comp,
 			 = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j \in \mathcal{I}} b_j  \phi_j(s)\right)} {\color{red}\left(\sum_{k \in \mathcal{L}} a_k(\omega)  \psi_k(s)\right)} \right]\mathrm{d}s + \epsilon(\omega) \\
 			& = \alpha + \int_{0}^{1}\left[{\color{blue}\left(\sum_{j = 1}^{J} b_j  \phi_j(s) + \delta_{\beta}^{J}(s)\right)} {\color{red}\left(\sum_{k = 1}^K a_k(\omega)  \psi_k(s) + \delta_{X}^{K}(\omega)(s)\right)} \right]\mathrm{d}s + \epsilon(\omega)\\
 			& = \alpha + \sum_{j = 1}^J b_j \left[\sum_{k = 1}^K a_k(\omega) \int_{0}^{1} \phi_j(s) \psi_k(s) \mathrm{d}s\right] + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s\\
-			& \quad \quad + \sum_{k = 1}^{K} a_k(\omega)  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega)
+			& \quad \quad + \sum_{k = 1}^{K} a_k(\omega)  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega) + \int_{0}^{1}  \delta_{\beta}^{J}(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
 
@@ -363,7 +363,8 @@ style=authoryear-comp,
 	this leads to a considerable simplification of Equation \ref{basis_exp_transf}.
 	\begin{equation}\label{simplified_model_basis_equation}
 		\begin{split}
-			Y(\omega) &= \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \sum_{j = 1}^{J} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{K}(\omega)(s) \mathrm{d}s + \sum_{k = 1}^{K} a_k  \int_{0}^{1} \delta_{\beta}^{J}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega) \\
+			Y(\omega) &= \alpha + \sum_{j = 1}^{L} b_j \tilde{Z}_j(\omega) + \sum_{j = 1}^{L} b_j  \int_{0}^{1} \phi_j(s) \delta_{X}^{L}(\omega)(s) \mathrm{d}s\\
+			& \quad + \sum_{k = 1}^{L} a_k  \int_{0}^{1} \delta_{\beta}^{L}(s)\phi_j(s) \mathrm{d}s + \epsilon(\omega) + \int_{0}^{1}  \delta_{\beta}^{L}(s) \delta_{X}^{L}(\omega)(s) \mathrm{d}s + \epsilon(\omega)\\
 			& \approx \alpha + \sum_{j = 1}^{J} b_j \tilde{Z}_j(\omega) + \epsilon(\omega)
 		\end{split}
 	\end{equation}
