@@ -62,7 +62,7 @@ style=authoryear-comp,
 	This paper introduces Functional Linear Regression in a scalar-on-function setting. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating an unknown coefficient function is inherently infinite-dimensional. 
 	We then introduce two distinct ways of translating this infinite-dimensional problem into a finite-dimensional problem that can be addressed using theory from multivariate regression: First, a so-called basis expansion of the coefficient function, and second, functional principal component regression. Both of these methods are dependent on a parameter choice called a truncation parameter for a functional basis, and this paper focuses on exploring the selection of these parameters using cross-validation.\\
 	
-	In Section \ref{Theory}, we introduce the necessary theoretical concepts, describe the estimation procedures, and address the theoretical importance of the truncation parameter. Section \ref{Simulation} contains a description of our Monte-Carlo Simulation, which aims to provide information on how to choose an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of Octane values of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook}, we give an outlook on possible extensions for this paper and describe the limitations of our approach.
+	In Section \ref{Theory}, we introduce the necessary theoretical concepts, describe the estimation procedures, and address the theoretical importance of the truncation parameter. Section \ref{Simulation} contains a description of our Monte-Carlo Simulation, which aims to provide information on how to choose an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} then uses the insights from theory and simulation to choose an appropriate basis for the estimation of octane numbers of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook}, we give an outlook on possible extensions for this paper and describe the limitations of our approach.
 
 	\section{Theory}\label{Theory}
 	To allow for scalar-on-function regression, it is necessary to extend some concepts from multivariate regression to the realm of infinite-dimensional objects, as the statistics derived from infinite-dimensional random functions cannot be defined on a finite-dimensional space. One integral concept that must be defined is random functions as a special case of random variables. Paraphrasing a definition by \cite{bauer_wahrscheinlichkeitstheorie_2020}, a random variable $X:\Omega \rightarrow \Omega'$ is an $\mathcal{A} \text{-} \mathcal{A'} \text{-measurable}$ function, where $(\Omega, \mathcal{A}, P)$ is a probability space and $(\Omega', \mathcal{A'})$ is a measure space. 
@@ -95,7 +95,7 @@ style=authoryear-comp,
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
-			\item $\langle v_i, v_j \rangle = 0 \quad \forall v_i, v_j \in S \quad i \neq j$
+			\item $\langle v_i, v_j \rangle = 0 \quad \forall v_i, v_j \in S $ for $i \neq j$
 			\item $\lvert \lvert v \rvert \rvert = 1 \quad \forall v \in S$
 		\end{enumerate}
 	\end{multicols}
@@ -111,7 +111,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 	\subsection{Random Functions in the Hilbert Space of Square-Integrable Functions}
-	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$. Denoted by $\mathbb{L}^2[0,1]$, this space is consists of all $\mu$-measurable functions $f(t)$ on $[0,1]$ that fulfill the following condition in which $\mu$ denotes the Lebesgue-measure.
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$. Denoted by $\mathbb{L}^2[0,1]$, this space consists of all $\mu$-measurable functions $f(t)$ on $[0,1]$ that fulfill the following condition in which $\mu$ denotes the Lebesgue-measure.
 	\begin{equation}
 		\lvert \lvert f \rvert \rvert_2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
@@ -125,23 +125,23 @@ style=authoryear-comp,
 	A random function on $\mathbb{L}^2[0,1]$ can then be defined formally as a function $X : \Omega \rightarrow \mathbb{L}^2[0,1]$ defined on a probability space $(\Omega, \mathcal{A}, P)$ where $\Omega$ is a sample space with $\sigma$-algebra $\mathcal{A}$ and a probability space $P$.
 	
 	\subsection{Functional Data Sets}
-	If we take a random function $X(\omega)$ as defined in the previous section, then realizations $x(t)$ of $X(\omega)(t)$ are called sample curves of the random function. The presence of functional observations in a data set is what defines functional data sets. However, in reality realizations of random functions are not typically observed in their functional form. Instead, each curve is observed at a discrete and typically large set of measurements points. Consider the case of a data set containing observations $x_i(t)$ of a random function $X(\omega)$
+	If we take a random function $X(\omega)$ as defined in the previous section, then realizations $x(t)$ of $X(\omega)(t)$ are called sample curves of the random function. The presence of functional observations in a data set is what defines functional data sets. In reality however,  realizations of random functions are not typically observed in their functional form. Instead, each curve is observed at a discrete and typically large set of measurements points. Consider the case of a data set containing observations $x_i(t)$ of a random function $X(\omega)$
 	\begin{equation}
 		x_{i}(t_{i,j}) \in \mathbb{R}, \quad i = 1,\: \dots\: ,N, \; j = 1, \: \dots \:, J_i, \; t_{i,j} \in [T_1, T_2]
 	\end{equation}
 	
-	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$.  These measurement points can be different for each sample curve. However, in this paper, we only consider the case where curves share their measuring points.
-	To work with functional data obtained in this form using the unique capabilities of functional data analysis, it is necessary to restore its functional structure. Therefore, methods such as basis representations, which are introduced in the following parts of the Theory Section, are necessary.\\
+	Each curve $x_i(t)$ exists $\forall t \in [T_1, T_2]$, but is only observed at discrete measurement points $t_{i,j}$.  These measurement points can be different for each sample curve. In this paper, we only consider the case where curves share their measuring points.
+	To work with functional data obtained in this form using the unique capabilities of functional data analysis, it is necessary to restore its functional structure. Therefore, methods such as basis representations will be introduced in the following parts of the Theory Section.\\
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself. More information about this example can be found in Appendix \ref{NIR}.
 	
 	\subsection{Representing a Function in terms of a Basis}\label{bases}
-	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis used to express or approximate a realization $x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
+	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis used to express or approximate a realization $x(t)$ of $X(\omega)$. The following equation shows how a basis can be used to express a function as a weighted sum of its elements.
 	\begin{equation}
 		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
 	\end{equation}
 	
 	One very important question in this context is how the coefficients $a_j \quad j \in \mathcal{I}$ are derived given a function $x(t)$. For the purposes of this paper, this process will remain a blackbox, but detailed information on the derivation of these coefficients can be found in chapter 4 of \cite{ramsay_functional_2005}.
-	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are shown in Part \ref{Basis_Plots} of the Appendix.
+	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing a number of basis functions from these bases are found in Section \ref{Basis_Plots} of the Appendix.
 	\vspace{-0.2cm}
 	
 	\paragraph{Monomial Basis}\label{Monomial_basis}
@@ -150,7 +150,7 @@ style=authoryear-comp,
 		f(t) = \sum_{i = 1}^{\infty}a_i t^i \quad \text{where} \quad a_i = \frac{f^{(i)}(0)}{i!}
 	\end{equation}
 	
-	However, the monomials are only a basis for the space of entire functions and not for $\mathbb{L}^2[0,1]$. But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis for approximation. \\
+	The monomials are only a basis for the space of entire functions and not for $\mathbb{L}^2[0,1]$. But even for functions that do not fall into this category, like the logarithm, using a truncated Taylor expansion around a chosen point can lead to reasonable approximations around this specific point or even on $\mathbb{R}$ as a whole. From this idea, it is natural to use the monomials as a potential basis for approximation. \\
 	As in the case of the Taylor expansion, it is not necessary to approximate a function around zero as shown above, instead one can introduce a shift parameter. This shift parameter $\alpha$ is often chosen such that the monomials are evaluated at the center point of the domain of the function.
 	\begin{equation}
 		\phi_{i}^{M}(t) = (t-\alpha)^i, \quad i \in \mathcal{I}
@@ -639,7 +639,7 @@ style=authoryear-comp,
 	\subsection*{Limitations}
 	
 	\paragraph{Insights from Simulation cannot be Extended to More General Functions}
-	As described, the properties of the two used functions $f \in \{f_1(t), f_2(t)\}$ influence the results. Although the resulting MSPE and visual inspection provided some evidence to support the hypothesis that the true coefficient function of $NIR$ might be similar to $f_2$, several other factors that were not asserted could also have caused this. Therefore, this simulation is not sufficient to base a reasonable claim concerning more general true coefficient functions on it.
+	As described, the properties of the two used functions $f \in \{f_1(t), f_2(t)\}$ influence the results. Although the resulting MSPE and visual inspection provided some evidence to support the hypothesis that the true coefficient function of $NIR$ might be similar to $f_2$, several other factors that were not asserted could also have caused this. Therefore, this simulation is not sufficient to base a reasonable claim concerning more general true coefficient functions, as we would assume them in other applications, on it.
 	\vspace{-0.2cm}
 	
 	\paragraph{Collinearity Problems in Basis Expansion Regression}
@@ -676,7 +676,7 @@ style=authoryear-comp,
 	\section{Appendix}
 	
 	\subsection{Near-infrared (NIR) Spectroscopy}\label{NIR}
-	NIR- spectroscopy is a spectroscopic method that uses the near-infrared region of the electromagnetic spectrum (From 780 nm to 2500 nm). It, therefore, measures the absorption and interaction of this spectrum of radiation with the sample. NIR-spectroscopy is not only faster and cheaper than the standard test procedure – another significant advantage is that it does not need a reagent and thus does not destroy the sample. It is used for analysis in different sectors and fields, like the agrochemical industry and healthcare. Its non-invasive nature makes it also an asset for medical applications like the monitoring of diabetes in which NIR-spectroscopy can detect the worsening of the blood glucose metabolic dysfunction (cf . \cite{FR_li_et_al_2020}). \\
+	NIR- spectroscopy is a spectroscopic method that uses the near-infrared region of the electromagnetic spectrum (From 780 nm to 2500 nm). It measures the absorption and interaction of this spectrum of radiation with the sample. NIR-spectroscopy is not only faster and cheaper than the standard test procedure – another significant advantage is that it does not need a reagent and thus does not destroy the sample. It is used for analysis in different sectors and fields, like the agrochemical industry and healthcare. Its non-invasive nature makes it also an asset for medical applications like the monitoring of diabetes in which NIR-spectroscopy can detect the worsening of the blood glucose metabolic dysfunction (cf . \cite{FR_li_et_al_2020}). \\
 	In the context of this paper, the gasoline data set which is used for the simulation and the application is constructed using NIR spectroscopy. According to \cite{Bohacs_Ovadi_Salgo1998} NIR-spectroscopy is a feasible method for the analysis of gasoline since most of the absorption that is observed within the described interval of wavelengths is due to overtones and interactions of the radiation with chemical combinations (carbon–hydrogen, carbon–carbon, carbon–oxygen, carbonyl associated groups, aromatic stretching, and deformation vibration of the hydrocarbon molecules). While this paper focuses on the prediction of the octane number of gasoline, other research focuses  on different properties of gasoline such as the olefin, naphtaenic and aromatic content (Parisi et al. 1990, as cited in \cite{Bohacs_Ovadi_Salgo1998}) or the distillation characteristics (Pauls 1985, as cited in \cite{Bohacs_Ovadi_Salgo1998})
 	\vspace{0.5cm}
 
