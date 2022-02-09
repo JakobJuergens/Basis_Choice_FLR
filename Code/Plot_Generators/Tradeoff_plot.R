@@ -68,25 +68,25 @@ NIR_plot100 <- as.data.frame(NIR_plot100)
 
 NIR <- cbind(as.data.frame(NIR[,1]),NIR_seq)
 colnames(NIR) = c('wavelength','time')
-plot(NIR[,wavelength])
+#plot(NIR[,wavelength])
 
-NIR$'K' = 'K=0'
-NIR_plot5$'K' = 'K=5'
-NIR_plot10$'K' = 'K=10'
-NIR_plot30$'K' = 'K=30'
-NIR_plot50$'K' = 'K=50'
-NIR_plot100$'K' = 'K=100'
+NIR$'L' = 'L=0'
+NIR_plot5$'L' = 'L=5'
+NIR_plot10$'L' = 'L=10'
+NIR_plot30$'L' = 'L=30'
+NIR_plot50$'L' = 'L=50'
+NIR_plot100$'L' = 'L=100'
 
 NIR_data = rbind(NIR,NIR_plot5,NIR_plot10,NIR_plot30,NIR_plot50,NIR_plot100)
 
-label <- paste0("K=",c(0,5,10,30,50,100))
+label <- paste0("L=",c(0,5,10,30,50,100))
 label[1] <- "Real Line"
 
-basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength, color=K)) +
+basis_exp_plot <- ggplot(data = NIR_data, aes(x=time, y=wavelength, color=L)) +
   geom_line()+
   xlab('Wavelength in nm') +
   ylab('Absorption') +
-  scale_color_discrete(breaks=c('K=0','K=5','K=10','K=30','K=50','K=100'), 
+  scale_color_discrete(breaks=c('L=0','L=5','L=10','L=30','L=50','L=100'), 
                        labels=label)+
   #ggtitle('Basis expansions according to the different number of B-spline basis functions') +
   theme_light() +
