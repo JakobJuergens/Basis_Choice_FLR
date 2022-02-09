@@ -275,22 +275,26 @@ style=authoryear-comp,
 	\begin{equation}\label{FPCA_basis_expansion}
 		\begin{split}
 			\hat{\xi}_{i}^m & = \int_{0}^{1} {\color{red}\left( x_i(s) - \hat{\mu}(s)\right)} {\color{blue}\hat{\nu}^m(s)} \mathrm{d}s
-			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} b_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
-			& = \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{J} a_{i,j} \phi_j(s) + \delta_i^J(s)\right)} {\color{blue}\left(\sum_{k = 1}^{K} b_{k}^m \psi_{k}(s) + \delta_{\beta}^K(s)\right)} \mathrm{d}s \\
-			& = \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \delta_i^J(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{J} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^K(s) \mathrm{d}s
+			= \int_{0}^{1} {\color{red}\left(\sum_{j \in \mathcal{I}} a_{i,j} \phi_j(s)\right)} {\color{blue}\left(\sum_{k \in \mathcal{L}} d_{k}^m \psi_{k}(s)\right)} \mathrm{d}s \\
+			& = \int_{0}^{1} {\color{red}\left(\sum_{j = 1}^{J} a_{i,j} \phi_j(s) + \delta_i^J(s)\right)} {\color{blue}\left(\sum_{k = 1}^{K} d_{k}^m \psi_{k}(s) + \delta_{\beta}^K(s)\right)} \mathrm{d}s \\
+			& = \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} d_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{K} d_{k}^m \int_{0}^{1} \delta_i^J(s) \psi_{k}(s) \mathrm{d}s \\
+			& \quad + \sum_{j = 1}^{J} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^K(s) \mathrm{d}s + \int_{0}^{1} \delta_i^J(s) \delta_{\beta}^K(s) \mathrm{d}s
 		\end{split}
 	\end{equation}
 	
-	{\color{orange} For the last equation, shouldn't it be approx including following equations regarding truncation error term? or delta times delta is so small that we can neglect(maybe not true)..?} In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
+	In practice, a typical choice is to use the same basis $\left(\phi_j(t)\right)_{j \in \mathcal{I}}$ and the same truncation parameter $L$ for the basis expansion of the demeaned observations $\left(x_i(t) - \hat{\mu}(t)\right)$ and the functional principal components $\hat{\nu}^m$. This leads to the following simplification of Equation \ref{FPCA_basis_expansion}.
 	\begin{equation}\label{score_approx}
-			\hat{\xi}_{i}^m = \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} b_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s
+		\begin{split}
+			\hat{\xi}_{i}^m &= \sum_{j = 1}^{L} \left[a_{i,j}\sum_{k = 1}^{L} d_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] +  \sum_{k = 1}^{L} d_{k}^m \int_{0}^{1} \delta_i^L(s) \psi_{k}(s) \mathrm{d}s \\
+			& \quad + \sum_{j = 1}^{L} a_{i,j} \int_{0}^{1}\phi_j(s) \delta_{\beta}^L(s) \mathrm{d}s + \int_{0}^{1} \delta_i^L(s) \delta_{\beta}^L(s) \mathrm{d}s
+		\end{split}
 	\end{equation}
 
 	And we can define the following objects:
 		\begin{align}
 			\tilde{\xi}^{m,L}_{i} & := \sum_{j = 1}^{J} \left[a_{i,j}\sum_{k = 1}^{K} b_{k}^m \int_{0}^{1} \phi_j(s) \psi_{k}(s)\mathrm{d}s \right] 
 			& \delta_{\xi, i}^L & := \hat{\xi}_{i}^m - \tilde{\xi}^{m,L}_{i} \\
-			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} b_{k}^m \phi_{k}(t) 
+			\tilde{\nu}^{m,L}(t) & := \sum_{k = 1}^{L} d_{k}^m \phi_{k}(t) 
 			& \delta_{\nu, m}^L(t) & := \hat{\nu}^m(t) - \tilde{\nu}^{m,L}(t)
 		\end{align}	
 	
