@@ -132,7 +132,7 @@ style=authoryear-comp,
 	
 	As in the finite-dimensional setting, the concept of identically distributed and independent data is important for many aspects of functional data analysis. One example of i.i.d. curves could be Near-Infrared absorption spectra of gasoline samples where each sample is produced by the same production process and can therefore be interpreted as a realization of and i.i.d. random process itself.
 	
-	\subsection{Representing a Function in terms of a Basis} 
+	\subsection{Representing a Function in terms of a Basis}\label{bases}
 	As previously described, a basis of a Hilbert space can be used to express its elements using the corresponding Fourier expansion. Let therefore $\{\phi_i(t) \: \vert \: i \in \mathcal{I}\}$ be a basis used to express or approximate a realization $x(t)$ of $X(\omega)$. Then the following equation shows how a basis can be used to express a function as a weighted sum of its elements.
 	\begin{equation}
 		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
@@ -205,7 +205,7 @@ style=authoryear-comp,
 		X(\omega_0) = x(t) = \sum_{j \in \mathcal{I}} A_j(\omega_0) \phi_j(t) = \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t) + \delta(t) \approx \sum_{j = 1}^{L} A_j(\omega_0) \phi_j(t)
 	\end{equation}
 
-	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$.  $L$ can be chosen subjectively, but also through applying data-driven methods such as Cross-Validation. Figure \ref{Different_Expansions} shows the effect of choosing different numbers of basis functions for one observation of the Near-Infrared Spectroscopy dataset which is used in the later parts of this paper and exemplifies the tradeoffs that are at the core of the truncation parameter choice.
+	where $\delta(t)$ is the truncation error and $L \leq \max\limits_{j \in \mathcal{I}}(j)$ for all $L \in \mathcal{I}$.  $L$ can be chosen subjectively, but also through applying data-driven methods such as Cross-Validation. Figure \ref{Different_Expansions} shows the effect of choosing different numbers of basis functions for one observation of the Near-Infrared Spectroscopy data set which is used in the later parts of this paper and exemplifies the tradeoffs that are at the core of the truncation parameter choice.
 			
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{../Graphics/basis_expansions.pdf}
@@ -296,7 +296,7 @@ style=authoryear-comp,
 	
 	This method of deriving or approximating the Eigenfunctions and scores from a data set is introduced in \cite{ramsay_functional_2005} (chapter 8.4.2) and implemented in the R-package fda. The following considerations and results of the simulation study might therefore serve as information about the performance of this method in a scenario where a limited number of basis functions is provided to the method.
 	
-	\subsection{Scalar-on-Function Regression}
+	\subsection{Scalar-on-Function Regression}\label{Scalar_on_function_regression}
 	In the simple scalar setting, one of the most important tools in econometrics is linear regression. Its goal is twofold: to gain information about the dependency between variables, but also to allow for prediction. To motivate the jump from multivariate regression to scalar-on-function regression, assume a data generating process as follows.
 	\begin{equation}
 		Y = X\beta + \epsilon
@@ -488,9 +488,9 @@ style=authoryear-comp,
 
 	\subsection{Motivation}
 	
-	In the simulation study, we deviate from the standard simulation setting. Instead of generating data from scratch, we use the gasoline data, which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.	
+	In the simulation study, we deviate from the standard simulation setting. Instead of generating data from scratch, we use the gasoline data, which consists of 60 samples of Near-infrared (NIR) absorption spectra measured in increments of 2 nm from 900 to 1,700 nm, and a response variable, the octane rating. We chose this setup to improve the approach towards the application in which we predict the octane ratings from the gasoline data set.	
 	
-	To exploit the regularity of the curves of the spectra, we introduced different basis functions in {\color{green} Link} and demonstrated the importance of the truncation parameter $K$ for the estimation in {\color{green} Link}. For the simulation study, we rely on the introduced estimation strategies with the introduced basis functions and focus on selecting the truncation parameter $K$ as well as the number of FPC, which is as well affected by $K$, by ten-fold cross-validation using the prediction mean-squared error. While cross-validation is common for selecting $K$, the number of FPC in practice is often truncated after a specified amount of explained variability \cite{kokoszka_introduction_2017}, which might not be optimal since FPC with smaller Eigenvalues may have greater influence on the prediction (c.f \cite{Jolliffe_1982}). This might apply to this simulation too since certain Eigenfunctions could correspond to certain chemical combinations and overtones in the absorption bands of the spectrum that could have high predictive power, but explain only little variability {\color{green} Link to NIR}.
+	To exploit the regularity of the curves of the spectra, we introduced different basis functions in Section \ref{bases} and demonstrated the importance of the truncation parameter $K$ for the estimation in Section \ref{Scalar_on_function_regression}. For the simulation study, we rely on the introduced estimation strategies with the introduced basis functions and focus on choosing the truncation parameter $K$ as well as the number of FPC's, which is possibly affected by $K$, by ten-fold cross-validation using the prediction mean-squared error. {\color{red} This is incorrect, nearly nobody does this.} While cross-validation is common for selecting $K$, the number of FPC's is in practice chosen by using the lowest number of FPC's that explain a specified amount of variability \cite{kokoszka_introduction_2017}, which might not be optimal since FPC's with smaller Eigenvalues may have greater influence on the prediction (c.f \cite{Jolliffe_1982}). This might apply to this simulation too since certain Eigenfunctions could correspond to certain chemical combinations and overtones in the absorption bands of the spectrum that could have high predictive power, but explain only little variability in the NIR curves shown in Appendix \ref{NIR}.\\
 	 
 	This setup is opposing to the often used penalized functional regression as described by \cite{Goldsmith_2011} in which an explicit smoothness constraint $\lambda$ is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $K$ sufficiently high. This would avoid the heavy computing of validating the best value for $K$, which we will conduct in the simulation. To provide intuition in this approach, let 
 	 \begin{equation}
@@ -501,10 +501,10 @@ style=authoryear-comp,
 		
 	%While this paper and its simulation does not touch upon the topic of roughness penalties in estimation and their selection, other simulations focus e.g. on choosing the knots of penalized splines (David Ruppert 2000) or the important choice of the smoothing parameter selection method (Thomas C.M. Lee, 2002). An overview about other variable selections methods for functional regression with an origin in the multivariate regression setting can be found in( G. Aneiros, S. Novo and P. Vieu)
 		
-	%In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline dataset.
+	%In the simulation study, we deviate from the standard simulation setting. Instead of generating data by ourselves, we use the gasoline data which consists of 60 samples of Near-infrared (NIR) spectra measured by 2-nm from 900 to 1,700 nm, and a response variable,  the octane rating. We chose this setup to improve the approach towards the application in which we  predict the octane ratings from the gasoline data set.
 	
 	\subsection{Generating Similar Curves}
-	To avoid small sample problems, we generated 200 similar curves, $NIR_{sim}$, from the spectra of the gasoline dataset, $NIR$, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated cubic B-spline basis which is created using 50 knots. In the R implementation of the fda package that is used, these 50 knots account for 52 basis functions (50+4-2). These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, so the new realizations for the scores are drawn from a multivariate normal distribution $\mathring{\xi} = \left(\mathring{\xi}_{1},\: \dots \:, \mathring{\xi}_{M}\right)' \sim \mathcal{N}(0_M, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_M))$. Finally, we obtain the generated curves $NIR_{sim}$
+	To avoid small sample problems, we generated 200 similar curves, $NIR_{sim}$, from the spectra of the gasoline data set, $NIR$, motivated by \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. First, the initial curves are expressed in terms of a generated cubic B-spline basis which is created using 50 knots. In the R implementation of the fda package that is used, these 50 knots account for 52 basis functions (50+4-2). These smooth curves are then centered, before applying the \hyperlink{KL}{Karhunen-Lo\'{e}ve Expansion}. It is assumed that the scores follow a normal distribution, so the new realizations for the scores are drawn from a multivariate normal distribution $\mathring{\xi} = \left(\mathring{\xi}_{1},\: \dots \:, \mathring{\xi}_{M}\right)' \sim \mathcal{N}(0_M, \; diag(\hat{\lambda}_1,\: \dots\:, \hat{\lambda}_M))$. Finally, we obtain the generated curves $NIR_{sim}$
 	
 	
 	\begin{equation}
@@ -525,7 +525,7 @@ style=authoryear-comp,
     	\end{split}
     \end{equation}
     
-    The bumpy function, $f_2(t)$, was generated by referring to \cite{cardot_bumpyfunction_2002}. The smooth function $f_1(t)$ follows \cite{Reiss_2007b} and its inner product $\langle NIR_{sim}, f_1 \rangle$ creates responses that are similar to the original octane numbers of the gasoline dataset. 
+    The bumpy function, $f_2(t)$, was generated by referring to \cite{cardot_bumpyfunction_2002}. The smooth function $f_1(t)$ follows \cite{Reiss_2007b} and its inner product $\langle NIR_{sim}, f_1 \rangle$ creates responses that are similar to the original octane numbers of the gasoline data set. 
 
 		\begin{figure}
 			\centering
@@ -608,9 +608,9 @@ style=authoryear-comp,
 
 
 	\section{Application}\label{Application}
-		The application uses the methods and insights from the previous sections to predict the octane ratings of the introduced gasoline dataset.
+		The application uses the methods and insights from the previous sections to predict the octane ratings of the introduced gasoline data set.
 		Although the simulation study granted valuable insights in the different methods in four different settings, it is not enough to determine the method and choice of basis of the application, since there is too much uncertainty involved. To point out some sources of uncertainty: First, opposing to the simulation setup, we do not know the true coefficient function. Visual inspection fuels the hypothesis that the estimated coefficient functions for $NIR$ look closer to $f_2$ than to $f_1$ but the insights from two functions are not sufficient to draw any conclusion. Second, we have no information about the signal-to-noise ratios of the measured octane numbers. Third, to generate similar curves, we made assumptions about the distribution of $\mathring{\xi}$ that are not relatable to this real-life application where we not know this distribution. 
-		Therefore, we will run all specification again for the gasoline dataset and use the results of the simulation study towards the reading of the results. The application is designed similar to the simulation study: The 60 spectra of the gasoline dataset will be used to regress them on the reported octane numbers and evaluate the results as prediction MSE using 12 fold cross-validation with 5 elements per fold. In total, we conducted 1000 repetitions for each setting.
+		Therefore, we will run all specification again for the gasoline data set and use the results of the simulation study towards the reading of the results. The application is designed similar to the simulation study: The 60 spectra of the gasoline data set will be used to regress them on the reported octane numbers and evaluate the results as prediction MSE using 12 fold cross-validation with 5 elements per fold. In total, we conducted 1000 repetitions for each setting.
 		
 
 		
@@ -665,9 +665,9 @@ style=authoryear-comp,
 	\newpage
 	\section{Appendix}
 	
-	\subsection{Near-infrared (NIR) Spectroscopy}
+	\subsection{Near-infrared (NIR) Spectroscopy}\label{NIR}
 	NIR- spectroscopy is a spectroscopic method that uses the near-infrared region of the electromagnetic spectrum (From 780 nm to 2500 nm). It, therefore, measures the absorption and interaction of this spectrum of radiation with the sample. NIR-spectroscopy is not only faster and cheaper than the standard test procedure – another significant advantage is that it does not need a reagent and thus does not destroy the sample. It is used for analysis in different sectors and fields, like the agrochemical industry and healthcare. Its non-invasive nature makes it also an asset for medical applications like the monitoring of diabetes in which NIR-spectroscopy can detect the worsening of the blood glucose metabolic dysfunction (cf . \cite{FR_li_et_al_2020}). \\
-	In the context of this paper, the gasoline dataset which is used for the simulation and the application is constructed using NIR spectroscopy. According to \cite{Bohacs_Ovadi_Salgo1998} NIR-spectroscopy is a feasible method for the analysis of gasoline since most of the absorption that is observed within the described interval of wavelengths is due to overtones and interactions of the radiation with chemical combinations (carbon–hydrogen, carbon–carbon, carbon–oxygen, carbonyl associated groups, aromatic stretching, and deformation vibration of the hydrocarbon molecules). While this paper focuses on the prediction of the octane number of gasoline, other research focuses  on different properties of gasoline such as the olefin, naphtaenic and aromatic content (Parisi et al. 1990, as cited in \cite{Bohacs_Ovadi_Salgo1998}) or the distillation characteristics (Pauls 1985, as cited in \cite{Bohacs_Ovadi_Salgo1998})
+	In the context of this paper, the gasoline data set which is used for the simulation and the application is constructed using NIR spectroscopy. According to \cite{Bohacs_Ovadi_Salgo1998} NIR-spectroscopy is a feasible method for the analysis of gasoline since most of the absorption that is observed within the described interval of wavelengths is due to overtones and interactions of the radiation with chemical combinations (carbon–hydrogen, carbon–carbon, carbon–oxygen, carbonyl associated groups, aromatic stretching, and deformation vibration of the hydrocarbon molecules). While this paper focuses on the prediction of the octane number of gasoline, other research focuses  on different properties of gasoline such as the olefin, naphtaenic and aromatic content (Parisi et al. 1990, as cited in \cite{Bohacs_Ovadi_Salgo1998}) or the distillation characteristics (Pauls 1985, as cited in \cite{Bohacs_Ovadi_Salgo1998})
 	\vspace{0.5cm}
 
 	\begin{figure}[H]
