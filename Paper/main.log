@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  10 FEB 2022 00:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.12)  10 FEB 2022 00:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1187,7 +1187,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
  [40] [41] [42] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D7EF757935DA654A3EFEF181468A03A3;7401.
+(rerunfilecheck)             Checksum: DE1EE7B823DCA51B0EDC2BD32D410E00;7544.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
@@ -1195,7 +1195,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  22963 strings out of 478353
  402961 string characters out of 5852101
- 1172764 words of memory out of 5000000
+ 1172864 words of memory out of 5000000
  40360 multiletter control sequences out of 15000+600000
  422907 words of font info for 169 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1227,7 +1227,7 @@ fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2021/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (42 pages, 1490736 bytes).
+Output written on main.pdf (42 pages, 1490819 bytes).
 PDF statistics:
  969 PDF objects out of 1000 (max. 8388607)
  819 compressed objects within 9 object streams

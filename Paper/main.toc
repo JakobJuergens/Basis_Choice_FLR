@@ -101,7 +101,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.1}Definition (Hilbert-Schmidt Integral Operator)}{35}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Lemma}{36}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.2}Lemma (Three Traits of Scores)}{36}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.3}Theorem (Karhunen-Lo\'{e}ve Expansion)}{37}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
