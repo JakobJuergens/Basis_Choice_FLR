@@ -2355,31 +2355,30 @@
     <bcf:citekey order="8">ramsay_functional_2005</bcf:citekey>
     <bcf:citekey order="9">ramsay_functional_2005</bcf:citekey>
     <bcf:citekey order="10">de_boor_practical_1978</bcf:citekey>
-    <bcf:citekey order="11">alexanderian_KLexpansion_2015</bcf:citekey>
-    <bcf:citekey order="12">ramsay_functional_2005</bcf:citekey>
-    <bcf:citekey order="13">ramsay_functional_2005</bcf:citekey>
-    <bcf:citekey order="14">alexanderian_KLexpansion_2015</bcf:citekey>
-    <bcf:citekey order="15">kokoszka_introduction_2017</bcf:citekey>
-    <bcf:citekey order="16">hsing_theoretical_2015</bcf:citekey>
-    <bcf:citekey order="17">ramsay_functional_2005</bcf:citekey>
-    <bcf:citekey order="18" nocite="1">horvath_inference_2012</bcf:citekey>
-    <bcf:citekey order="19" nocite="1">cai_prediction_2006</bcf:citekey>
-    <bcf:citekey order="20">levitin_introduction_2007</bcf:citekey>
-    <bcf:citekey order="21">kokoszka_introduction_2017</bcf:citekey>
-    <bcf:citekey order="22">Jolliffe_1982</bcf:citekey>
-    <bcf:citekey order="23">Goldsmith_2011</bcf:citekey>
-    <bcf:citekey order="24">ramsay_functional_2005</bcf:citekey>
-    <bcf:citekey order="25">ThomasLee_2003</bcf:citekey>
-    <bcf:citekey order="26">Reiss_2007b</bcf:citekey>
-    <bcf:citekey order="27">cardot_bumpyfunction_2002</bcf:citekey>
-    <bcf:citekey order="28">Reiss_2007b</bcf:citekey>
-    <bcf:citekey order="29">Dattoli_2001</bcf:citekey>
-    <bcf:citekey order="30" nocite="1">James.2009</bcf:citekey>
-    <bcf:citekey order="31">FR_li_et_al_2020</bcf:citekey>
+    <bcf:citekey order="11">Goldsmith_2011</bcf:citekey>
+    <bcf:citekey order="12">ThomasLee_2003</bcf:citekey>
+    <bcf:citekey order="13">alexanderian_KLexpansion_2015</bcf:citekey>
+    <bcf:citekey order="14">ramsay_functional_2005</bcf:citekey>
+    <bcf:citekey order="15">ramsay_functional_2005</bcf:citekey>
+    <bcf:citekey order="16">alexanderian_KLexpansion_2015</bcf:citekey>
+    <bcf:citekey order="17">kokoszka_introduction_2017</bcf:citekey>
+    <bcf:citekey order="18">hsing_theoretical_2015</bcf:citekey>
+    <bcf:citekey order="19">ramsay_functional_2005</bcf:citekey>
+    <bcf:citekey order="20" nocite="1">horvath_inference_2012</bcf:citekey>
+    <bcf:citekey order="21" nocite="1">cai_prediction_2006</bcf:citekey>
+    <bcf:citekey order="22">levitin_introduction_2007</bcf:citekey>
+    <bcf:citekey order="23">kokoszka_introduction_2017</bcf:citekey>
+    <bcf:citekey order="24">Jolliffe_1982</bcf:citekey>
+    <bcf:citekey order="25">Reiss_2007b</bcf:citekey>
+    <bcf:citekey order="26">cardot_bumpyfunction_2002</bcf:citekey>
+    <bcf:citekey order="27">Reiss_2007b</bcf:citekey>
+    <bcf:citekey order="28">Dattoli_2001</bcf:citekey>
+    <bcf:citekey order="29" nocite="1">James.2009</bcf:citekey>
+    <bcf:citekey order="30">FR_li_et_al_2020</bcf:citekey>
+    <bcf:citekey order="31">Bohacs_Ovadi_Salgo1998</bcf:citekey>
     <bcf:citekey order="32">Bohacs_Ovadi_Salgo1998</bcf:citekey>
     <bcf:citekey order="33">Bohacs_Ovadi_Salgo1998</bcf:citekey>
-    <bcf:citekey order="34">Bohacs_Ovadi_Salgo1998</bcf:citekey>
-    <bcf:citekey order="35">alexanderian_KLexpansion_2015</bcf:citekey>
+    <bcf:citekey order="34">alexanderian_KLexpansion_2015</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

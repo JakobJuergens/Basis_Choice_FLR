@@ -1,108 +1,106 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Theory}{3}{section.2}%
+\contentsline {section}{\numberline {2}Theory}{1}{section.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Inner Products and Hilbert Spaces}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.1}Inner Products and Hilbert Spaces}{2}{subsection.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Random Functions in the Hilbert Space of Square-Integrable Functions}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Random Functions in the Hilbert Space of Square-Integrable Functions}{2}{subsection.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Functional Data Sets}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Functional Data Sets}{3}{subsection.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Representing a Function in terms of a Basis}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Representing a Function in terms of a Basis}{3}{subsection.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{6}{section*.2}%
+\contentsline {paragraph}{Monomial Basis}{4}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{6}{section*.3}%
+\contentsline {paragraph}{Fourier Basis}{4}{section*.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{B-spline Basis}{7}{section*.4}%
+\contentsline {paragraph}{B-spline Basis}{5}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}Approximation and Smoothing via Basis Truncation}{8}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.5}Approximation and Smoothing via Basis Truncation}{5}{subsection.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.6}Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}{9}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.6}Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}{7}{subsection.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.7}Scalar-on-Function Regression}{11}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.7}Scalar-on-Function Regression}{9}{subsection.2.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.7.1}Estimation using Basis-Representation}{12}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.1}Estimation using Basis-Representation}{10}{subsubsection.2.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.7.2}Estimation using Functional Principal Components}{13}{subsubsection.2.7.2}%
+\contentsline {subsubsection}{\numberline {2.7.2}Estimation using Functional Principal Components}{12}{subsubsection.2.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Simulation Study}{15}{section.3}%
+\contentsline {section}{\numberline {3}Simulation Study}{14}{section.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Motivation}{15}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}Motivation}{14}{subsection.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Generating Similar Curves}{16}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Generating Similar Curves}{14}{subsection.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Simulation setup}{16}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Simulation setup}{14}{subsection.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Results}{18}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}Results}{16}{subsection.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1}Basis Expansion Regression}{18}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.1}Basis Expansion Regression}{16}{subsubsection.3.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{18}{section*.7}%
+\contentsline {paragraph}{Monomial Basis}{16}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{B-spline Basis}{18}{section*.8}%
+\contentsline {paragraph}{B-spline Basis}{16}{section*.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{18}{section*.9}%
+\contentsline {paragraph}{Fourier Basis}{16}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2}Functional Principal Component Regression}{18}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2}Functional Principal Component Regression}{17}{subsubsection.3.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Monomial Basis}{19}{section*.10}%
+\contentsline {paragraph}{Monomial Basis}{17}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{B-spline Basis}{19}{section*.11}%
+\contentsline {paragraph}{B-spline Basis}{17}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Fourier Basis}{19}{section*.12}%
+\contentsline {paragraph}{Fourier Basis}{17}{section*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.3}Interpretation and Relevance for Application}{19}{subsubsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.5}Interpretation and Relevance for Application}{17}{subsection.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Application}{20}{section.4}%
+\contentsline {section}{\numberline {4}Application}{18}{section.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Interpretation of Results}{21}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}Interpretation of Results}{19}{subsection.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Basis Expansion Regression}{21}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Basis Expansion Regression}{19}{subsubsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Functional Principal Component Regression}{21}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2}Functional Principal Component Regression}{19}{subsubsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Outlook}{21}{section.5}%
+\contentsline {section}{\numberline {5}Outlook}{19}{section.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Insights from Simulation cannot be Extended to More General Functions}{21}{section*.14}%
+\contentsline {paragraph}{Insights from Simulation cannot be Extended to More General Functions}{19}{section*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Collinearity Problems in Basis Expansion Regression}{21}{section*.15}%
+\contentsline {paragraph}{Collinearity Problems in Basis Expansion Regression}{20}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Low Number of Basis Functions in FPCR Regression}{22}{section*.16}%
+\contentsline {paragraph}{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}{20}{section*.17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}{22}{section*.18}%
+\contentsline {paragraph}{Comparison to Penalty Based Smoothing Procedures}{20}{section*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Comparison to Penalty Based Smoothing Procedures}{22}{section*.19}%
+\contentsline {paragraph}{Larger Range for the Number of Specifications for FPCR}{20}{section*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Larger Range for the Number of Specifications for FPCR}{22}{section*.20}%
+\contentsline {paragraph}{Input from Physics}{20}{section*.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Input from Physics}{22}{section*.21}%
+\contentsline {section}{\numberline {6}Appendix}{21}{section.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Appendix}{23}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Near-infrared (NIR) Spectroscopy}{21}{subsection.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Near-infrared (NIR) Spectroscopy}{23}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Basis Plots}{22}{subsection.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Basis Plots}{24}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Simulation Study Results}{23}{subsection.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Simulation Study Results}{25}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Additional Simulation}{28}{subsection.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Additional Simulation}{30}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Simulation - Coefficient Function Estimates}{29}{subsection.6.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5}Simulation - Coefficient Function Estimates}{31}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Application Results}{31}{subsection.6.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6}Application Results}{33}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Application - Coefficient Function Estimates}{33}{subsection.6.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.7}Application - Coefficient Function Estimates}{35}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Definitions and Proofs}{33}{section.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Definitions and Proofs}{35}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Definition (Hilbert-Schmidt Integral Operator)}{33}{subsection.7.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Definition (Hilbert-Schmidt Integral Operator)}{35}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Lemma (Three Traits of Scores)}{34}{subsection.7.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Lemma (Three Traits of Scores)}{36}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Theorem (Karhunen-Lo\'{e}ve Expansion)}{35}{subsection.7.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.3}Theorem (Karhunen-Lo\'{e}ve Expansion)}{37}{subsection.7.3}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Bibliography}{40}{section.8}%
+\contentsline {section}{\numberline {8}Bibliography}{38}{section.8}%

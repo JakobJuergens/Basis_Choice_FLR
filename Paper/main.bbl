@@ -78,7 +78,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-3-11-231316-9}
-      \field{month}{5}
       \field{title}{Wahrscheinlichkeitstheorie und {Grundzüge} der {Maßtheorie}}
       \field{year}{2020}
       \verb{doi}
@@ -110,8 +109,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{month}{1}
-      \field{note}{Journal Abbreviation: Applied Mathematical Sciences, New York: Springer, 1978 Publication Title: Applied Mathematical Sciences, New York: Springer, 1978}
-      \field{title}{A {Practical} {Guide} to {Spline}}
+      \field{note}{Applied Mathematical Sciences, New York: Springer, 1978}
+      \field{title}{A {Practical} {Guide} to {Splines}}
       \field{volume}{Volume 27}
       \field{year}{1978}
       \verb{doi}
@@ -146,7 +145,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Annals of Statistics}
-      \field{month}{10}
       \field{note}{Publisher: Institute of Mathematical Statistics}
       \field{number}{5}
       \field{title}{Prediction in functional linear regression}
@@ -329,9 +327,6 @@
            giveni={P\bibinitperiod},
            givenun=0}}%
       }
-      \list{language}{1}{%
-        {en}%
-      }
       \list{publisher}{1}{%
         {Springer Science \& Business Media}%
       }
@@ -348,7 +343,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-1-4614-3655-3}
-      \field{month}{5}
       \field{title}{Inference for {Functional} {Data} with {Applications}}
       \field{year}{2012}
       \true{nocite}
@@ -368,9 +362,6 @@
            given={Randall},
            giveni={R\bibinitperiod},
            givenun=0}}%
-      }
-      \list{language}{1}{%
-        {en}%
       }
       \list{publisher}{1}{%
         {John Wiley \& Sons}%
@@ -483,9 +474,6 @@
            giveni={M\bibinitperiod},
            givenun=0}}%
       }
-      \list{language}{1}{%
-        {Englisch}%
-      }
       \list{location}{1}{%
         {Boca Raton}%
       }
@@ -507,9 +495,40 @@
       \field{labeltitlesource}{title}
       \field{edition}{1}
       \field{isbn}{978-1-4987-4634-2}
-      \field{month}{8}
       \field{title}{Introduction to {Functional} {Data} {Analysis}}
       \field{year}{2017}
+    \endentry
+    \entry{ThomasLee_2003}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=87a095feba834611575192f8ceee16dd}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Thomas\bibnamedelima C.M.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{87a095feba834611575192f8ceee16dd}
+      \strng{fullhash}{87a095feba834611575192f8ceee16dd}
+      \strng{bibnamehash}{87a095feba834611575192f8ceee16dd}
+      \strng{authorbibnamehash}{87a095feba834611575192f8ceee16dd}
+      \strng{authornamehash}{87a095feba834611575192f8ceee16dd}
+      \strng{authorfullhash}{87a095feba834611575192f8ceee16dd}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computational Statistics {\&} Data Analysis}
+      \field{number}{1-2}
+      \field{title}{Smoothing parameter selection for smoothing splines: a simulation study}
+      \field{volume}{42}
+      \field{year}{2003}
+      \field{pages}{139\bibrangedash 148}
+      \range{pages}{10}
+      \verb{doi}
+      \verb https://doi.org/10.1016/S0167-9473(02)00159-7
+      \endverb
     \endentry
     \entry{levitin_introduction_2007}{article}{}
       \name{author}{4}{}{%
@@ -655,9 +674,6 @@
            giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod},
            givenun=0}}%
       }
-      \list{language}{1}{%
-        {en}%
-      }
       \list{location}{1}{%
         {New York}%
       }
@@ -721,35 +737,6 @@
       \range{pages}{13}
       \verb{doi}
       \verb 10.1198/016214507000000527
-      \endverb
-    \endentry
-    \entry{ThomasLee_2003}{article}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9cf6b5b496126563bb0129d5e0e22403}{%
-           family={{Thomas C.M. Lee}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{9cf6b5b496126563bb0129d5e0e22403}
-      \strng{fullhash}{9cf6b5b496126563bb0129d5e0e22403}
-      \strng{bibnamehash}{9cf6b5b496126563bb0129d5e0e22403}
-      \strng{authorbibnamehash}{9cf6b5b496126563bb0129d5e0e22403}
-      \strng{authornamehash}{9cf6b5b496126563bb0129d5e0e22403}
-      \strng{authorfullhash}{9cf6b5b496126563bb0129d5e0e22403}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Computational Statistics {\&} Data Analysis}
-      \field{number}{1-2}
-      \field{title}{Smoothing parameterselection forsmoothing splines: a simulation study}
-      \field{volume}{42}
-      \field{year}{2003}
-      \field{pages}{139\bibrangedash 148}
-      \range{pages}{10}
-      \verb{doi}
-      \verb https://doi.org/10.1016/S0167-9473(02)00159-7
       \endverb
     \endentry
   \enddatalist
