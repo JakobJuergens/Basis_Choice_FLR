@@ -234,9 +234,9 @@ style=authoryear-comp,
 		c(t,s) = \mathbb{E}\big[ \left( X(\omega)(t) - \mu(t) \right) \left( X(\omega)(s) - \mu(s) \right) \big]
 	\end{equation}
 
-	Here, the $c: [0,1] \times [0,1] \rightarrow \mathbb{R}$ are Hilbert-Schmidt Kernels and $K$ is a corresponding Hilbert-Schmidt integral operator\footnote{Definitions of Hilbert-Schmidt Kernel and Integral Operator are provided in Appendix \ref{def_HS}.} $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$ defined by
+	Here, the $c: [0,1] \times [0,1] \rightarrow \mathbb{R}$ are Hilbert-Schmidt Kernels and $K$ is a corresponding Hilbert-Schmidt integral operator\footnote{Definitions of Hilbert-Schmidt Kernel and Integral Operator are provided in Appendix \ref{def_HS}.} $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^{2}[0,1]$ defined by the following equation.
 	\begin{equation}\label{HSKernal}
-		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds = \lambda \nu(t)
+		[K \nu](t) = \int_{0}^{1}c(t,s) \nu(s)ds
 	\end{equation}
 
 	The operator $K$ has orthonormal basis functions $\nu^{m} \in \mathbb{L}^{2}[0,1]$, each corresponding to an Eigenvalue $\lambda^{m}$ (cf. \cite{alexanderian_KLexpansion_2015}).
@@ -245,7 +245,7 @@ style=authoryear-comp,
 		X(\omega)(t) = \mu(t) + \sum_{m = 1}^{\infty} \xi^m(\omega) \nu^m(t), \quad \xi^m(\omega) =  \int_{0}^{1} \left(X(\omega)(s) - \mu(s)\right) \nu^m(s) \mathrm{d}s
 	\end{equation}
 
-	Here, the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of Equation \ref{HSKernal} and the random variables $\xi^{m}(\omega)$, which are called scores, satisfy the following properties.
+	Here, the $\nu^m$ are defined by the countable set of solutions $\{(\lambda^m, \nu^m) \: \vert \: m \in \mathbb{N}\}$ of $[K \nu](t) = \lambda \nu(t)$. The random variables $\xi^{m}(\omega)$, which are called scores, satisfy the following properties.
 	\begin{multicols}{2}
 		\begin{enumerate}
 			\item $\mathbb{E}\left[\xi^m(\omega)\right] = 0$
@@ -271,7 +271,7 @@ style=authoryear-comp,
 		\int_{0}^{1}\hat{c}(t,s)\hat{\nu}(s) \mathrm{d}s = \hat{\lambda} \hat{\nu}(t)
 	\end{equation}
 
-	In the following, we will call the $\hat{\nu}^m(t)$ Functional Principal Components (FPC's) to distinguish the sample analogs from the theoretical Eigenfunctions $\nu^m(t)$. As in the case of ordinary principal components, the number of functional principal components corresponding to non-zero Eigenvalues is limited (cf. \cite{ramsay_functional_2005}). As each curve is infinite-dimensional, there is no upper limit to this number due to the dimensionality. However, the number of curves still imposes an upper limit of $N-1$ non-zero Eigenvalues, where $N$ is the number of curves in the data set. A second upper limit is given by the number $L$ of basis functions available in the derivation of the FPC's. Define therefore $\mathcal{O} := \min(N-1, L)$.
+	In the following, we will call the $\hat{\nu}^m(t)$ Functional Principal Components (FPC's) to distinguish the sample analogs from the theoretical Eigenfunctions $\nu^m(t)$. As in the case of ordinary principal components, the number of FPC's corresponding to non-zero Eigenvalues is limited (cf. \cite{ramsay_functional_2005}). As each curve is infinite-dimensional, there is no upper limit to this number due to the dimensionality. However, the number of curves still imposes an upper limit of $N-1$ non-zero Eigenvalues, where $N$ is the number of curves in the data set. A second upper limit is given by the number $L$ of basis functions available in the derivation of the FPC's. Define therefore $\mathcal{O} := \min(N-1, L)$.
 	In case the number of FPC's is limited by $L$, an exact representation of the functional observations is impossible, introducing an approximation error. For the purposes of this paper, we will not address this error and assume that an exact representation is possible. Using this assumption, $\mathcal{O}$ is implicitly assumed to always equal $N-1$.
 	
 	These sample analogs naturally lead to the following representation of each sample curve $x_i(t)$.
