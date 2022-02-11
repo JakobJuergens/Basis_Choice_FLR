@@ -552,7 +552,7 @@ style=authoryear-comp,
 			\end{minipage}
 		\end{figure}
 		
-		 We created two different error-terms by generating an i.i.d. standard normal error term 	$Z \sim \mathcal{N}(0,1)$ and multiplying it by two error variations $\sigma_e $. The error variations represent different signal-to-noise ratios of the responses to test the methods with low and high amounts of noise in the responses. They are created such that the squared multiple correlation coefficient $R^2 = var(\langle X, f\rangle) / (var(\langle X, f\rangle) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error terms are then used to generate two sets of responses for $f \in \{f_1(t), f_2(t)\}$.	
+		 We created two different error-terms by generating i.i.d. standard normal errors  $Z \sim \mathcal{N}(0,1)$ and multiplying it by two error variations $\sigma_e $. The error variations represent different signal-to-noise ratios of the responses to test the methods with low and high amounts of noise in the responses. They are created such that the squared multiple correlation coefficient $R^2 = var(\langle X, f\rangle) / (var(\langle X, f\rangle) + \sigma^2_{e})$ is equal to 0.9 and 0.6. The two error terms are then used to generate two sets of responses for $f \in \{f_1(t), f_2(t)\}$.	
 		\begin{equation}
 			\begin{split}
 				Y_{1,f} & = \langle NIR_{sim}, f\rangle + Z  \biggl\lbrack\frac{var(\langle NIR_{orig}, f\rangle)}{0.9} - var(\langle NIR_{orig}, f\rangle)\biggr\rbrack \\
