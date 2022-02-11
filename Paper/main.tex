@@ -65,7 +65,7 @@ style=authoryear-comp,
 	Examples of such curves are the absorption curves of electromagnetic radiation in the Near-infrared (NIR) spectrum by chemical samples.\footnote{For more details on Near-Infrared-Spectroscopy, refer to Appendix \ref{NIR}.}
 	
 	This paper introduces Functional Linear Regression in a scalar-on-function setting. The distinct feature of this framework is that the regressor is a function, which makes a different approach to estimation necessary because the problem of estimating an unknown coefficient function is inherently infinite-dimensional. 
-	We introduce two ways of translating this infinite-dimensional problem into a finite-dimensional problem that can be addressed using theory from multivariate regression: First, a so-called basis expansion of the coefficient function, and second, functional principal component regression. Both methods depend on a parameter called a truncation parameter for a functional basis, and this paper focuses on exploring the selection of these parameters using cross-validation.\\
+	We introduce two ways of translating this infinite-dimensional problem into a finite-dimensional problem that can be addressed using theory from multivariate regression: First, a so-called basis expansion of the coefficient function, and second, Functional Principal Component Regression (FPCR). Both methods depend on a parameter called a truncation parameter for a functional basis, and this paper focuses on exploring the selection of these parameters using cross-validation.\\
 	
 	In Section \ref{Theory}, we introduce the necessary theoretical concepts, describe the estimation procedures, and address the theoretical importance of the truncation parameter. Section \ref{Simulation} contains a description of our Monte-Carlo Simulation, which aims to provide information on how to choose an appropriate functional basis and truncation parameter for the aforementioned methods. The application in Section \ref{Application} uses the insights from theory and simulation to choose an appropriate basis for the estimation of octane numbers of gasoline samples based on Near-Infrared absorption curves. In Section \ref{Outlook}, we describe the limitations of our approach and give an outlook on possible extensions for this paper.
 
@@ -104,7 +104,7 @@ style=authoryear-comp,
 		\end{enumerate}
 	\end{multicols}
 
-	Each element of a Hilbert space can be expressed in terms of a corresponding basis. Using a Fourier expansion of an element $x \in \mathbb{H}$ w.r.t. a basis $S = \{s_n\}$ leads to the following representation.
+	Each element of a Hilbert space can be expressed in terms of a corresponding basis. Using a Fourier expansion of an element $x \in \mathbb{H}$ with respect to a basis $S = \{s_n\}$ leads to the following representation.
 	\begin{equation}
 		x = \sum_{j = 1}^{\infty}{\langle x, s_j \rangle}s_j
 	\end{equation}
@@ -115,7 +115,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 	\subsection{Random Functions in the Hilbert Space of Square-Integrable Functions}\label{L_2}
-	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$, but analogous constructions can be made for different domains. Denoted by $\mathbb{L}^2[0,1]$, this space consists of all $\mu$-measurable functions $f(t)$ on $[0,1]$ that fulfill the following condition in which $\mu$ denotes the Lebesgue-measure.
+	In functional data analysis, one Hilbert space of particular importance is the space of square-integrable functions on $[0,1]$, but analogous constructions can be made for different domains. Denoted by $\mathbb{L}^2[0,1]$, this space consists of all Lebesgue-measurable functions $f(t)$ on $[0,1]$ that fulfill the following condition.
 	\begin{equation}
 		\lvert \lvert f \rvert \rvert_2 = \int_{0}^{1} \lvert f \rvert^2 \mathrm{d}\mu < \infty
 	\end{equation}
@@ -143,10 +143,10 @@ style=authoryear-comp,
 		x(t) = \sum_{j \in \mathcal{I}} a_j \phi_j(t) 
 	\end{equation}
 	
-	One very important question in this context is how the coefficients $a_j$ for $j \in \mathcal{I}$ are derived for a given function $x(t)$. For the purposes of this paper, this process will remain a black box, but detailed information on the derivation of these coefficients can be found in chapter 4 of \cite{ramsay_functional_2005}.
-	Three examples of bases often used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing these bases are found in Section \ref{Basis_Plots} of the Appendix.
-	\vspace{-0.2cm}
+	One important question in this context is how the coefficients $a_j$ for $j \in \mathcal{I}$ are derived for a given function $x(t)$. In this paper, this process will remain a black box, but detailed information on the derivation of these coefficients can be found in chapter 4 of \cite{ramsay_functional_2005}.
+	Three examples of bases used to approximate elements of $\mathbb{L}^2[0,1]$ in practice and in the later parts of this paper are explained in the following. Diagrams showing these bases are found in Appendix \ref{Basis_Plots}.
 	
+	\newpage
 	\paragraph{Monomial Basis}\label{Monomial_basis}
 	A straightforward idea to approximate functions in $\mathbb{L}^2[0,1]$ is to take inspiration from the well-known Taylor expansion and to use the monomials as a basis. For entire functions $f(t)$, such as polynomials, the exponential function, or trigonometric functions, we can express the function as a potentially infinite but converging sum of weighted monomials.
 	\begin{equation}\label{Taylor_expansion}
@@ -204,12 +204,13 @@ style=authoryear-comp,
 	\subsection{Approximation and Smoothing via Basis Truncation}
 	Realized curves from a data set can be expressed in terms of a chosen functional basis. For this expansion, it is possible to use a complete basis of $\mathbb{L}^2[0,1]$. In many cases, this is not a desirable approach as this expansion can introduce high amounts of variance or even lead to the approximation of noise in the sample curves, the latter being a typical case of overfitting. To combat this problem, smoothing methods such as acceleration penalties are employed to enforce a degree of smoothness in the analyzed curves. On the other hand, important information on the curves could be missed by oversmoothing the data, giving too much weight to a chosen penalty term leading to oversmoothing and loss of valuable information. This is a typical occurrence of the Bias-Variance tradeoff.\\
 	
-	A typical setup is described by \cite{Goldsmith_2011} in which an explicit smoothness term is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting the $L$ sufficiently high. To provide intuition for this approach, let 
+	\newpage
+	A usual setup is described by \cite{Goldsmith_2011} in which an explicit smoothing term is used to tune the smoothness of the estimator $\hat{\beta}(t)$ while setting setting the number of basis functions sufficiently high. To provide intuition for this approach, let 
 	\begin{equation}
 		PSSE_\lambda(\alpha, \beta) = \sum_{i = 1}^{N} \left[ Y_i -\alpha -\int_0^1 \beta(t)X_i(t)dt \right]^2 + \lambda \int \left[D^m\beta(t)\right]^2 dt
 	\end{equation}
 	
-	denote the penalized residual sum of squares as notated by \cite{ramsay_functional_2005} for the derivative of order $m$. A typical choice is the second derivative, as highly variable functions are expected to exhibit large second derivatives and therefore a larger penalty. The smoothing parameter $\lambda$ is set to minimize the $PSSE_\lambda(\alpha, \beta)$, which can be archived by different criteria as shown in \cite{ThomasLee_2003}.
+	denote the penalized residual sum of squares for the derivative of order $m$. A typical choice is the second derivative, as highly variable functions are expected to exhibit large second derivatives and therefore a larger penalty. The smoothing parameter $\lambda$ is set to minimize the $PSSE_\lambda(\alpha, \beta)$, which can be achieved by different criteria as shown in \cite{ThomasLee_2003}.
 	
 	A different approach is to enforce smoothing by limiting the number of basis functions in the approximation of the functional objects. Here, the parameter of choice is not a weighting term for the penalty but the number of basis functions. Exploring this alternative smoothing method in two different estimation procedures is the main focus of this paper. A truncated basis expansion as described above is given in Equation \ref{basis_exp}.
 	\begin{equation}\label{basis_exp}
@@ -224,6 +225,7 @@ style=authoryear-comp,
 		\label{Different_Expansions}
 	\end{figure}
 	
+	\newpage
 	\subsection{Karhunen-Lo\'{e}ve Expansion and Empirical Eigenbases}\hypertarget{KL}{}
 	Given a random function $X: \Omega \mapsto \mathbb{L}^2[0,1]$, it is possible to represent its realizations in terms of the stochastic process. To do so, we define the mean and covariance functions of $X(\omega)$.
 	\begin{equation}\label{MeanFunction}
@@ -336,7 +338,7 @@ style=authoryear-comp,
 	\begin{equation}
 		\beta(t) = \sum_{j \in \mathcal{I}} b_j \phi_j(t)
 	\end{equation}
-	This enables us to write equation \ref{DGP} using this representation to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.	
+	This enables us to write Equation \ref{DGP} using this representation to obtain a formulation as a sum of scalar random variables $Z_j(\omega)$.	
 	\begin{equation}
 		\begin{split}
 			Y(\omega) & = \alpha + \int_{0}^{1} {\color{blue}\beta(s)} X(\omega)(s)\mathrm{d}s + \epsilon(\omega)
@@ -381,8 +383,7 @@ style=authoryear-comp,
 	\end{equation}
 
 	A model in the form of Equation \ref{simplified_model_basis_equation} naturally lends itself to be estimated using theory from multivariate linear regression. 
-	
-	Define therefore the following objects
+	Define therefore the following objects.
 	\begin{equation}\label{regressor_mat_1}
 		Y = \begin{pmatrix}
 			y_1 \\ \vdots \\ y_n
@@ -399,11 +400,13 @@ style=authoryear-comp,
 		b^L = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{L+1} \quad \hat{\alpha} = b_{1}^{L} \quad \hat{\beta}^L(t) = \sum_{j = 1}^{J} b_{j+1}^L \phi_j(t)
 	\end{equation}
 
-	The performance of this estimation procedure depends in part on the quality of the approximation in Equation \ref{simplified_model_basis_equation}. Due to the nature of basis representations, the approximation error can only decrease with an increasing number of basis functions. Contrary to this effect, we have the potential benefits of introducing some amount of smoothing into the procedure. Because of this tradeoff, it is intuitively unclear, what the effects of different choices for the number of basis functions might be. 
+	The performance of this estimation procedure depends in part on the quality of the approximation in Equation \ref{simplified_model_basis_equation}. Due to the nature of basis representations, the overall approximation error $\delta(t)$ can only decrease with the number of basis functions. However, in specific points $t_0$ which might coincide with high predictive power for the response, the error $\delta(t_0)$ could increase, potentially increasing the prediction error.
+	In addition, we have the potential benefits of  smoothing such as reducing the potential of overfitting functional noise and reducing the degrees of freedom in the estimation. Because of this tradeoff between a reduction in the overall approximation error and beneficial smoothing properties, increasing the number of basis function and thereby decreasing the approximation error is not necessarily beneficial for the prediction accuracy. 
+	Therefore, the behavior of the estimator when changing the truncation parameter $L$ is not intuitively clear even if we stay in the same basis system.
 	
 	\subsubsection{Estimation using Functional Principal Components}\label{fpc_exp_transf}
 	
-	Using the Karhunen-Lo\'{e}ve Expansion to represent $X(\omega)$, it is also possible to express the data generating process in terms of the Eigenfunctions of $X(\omega)(t)$.
+	Using the Karhunen-Lo\'{e}ve Expansion to represent $X(\omega)$, it is also possible to express the data generating process in terms of the Eigenfunctions of $X(\omega)$.
 	\begin{equation}
 		\begin{split}
 			Y(\omega) &= \alpha + \int_{0}^{1} {\color{red}X(\omega)(s)} \beta(s) \mathrm{d}s + \epsilon(\omega)
@@ -413,7 +416,6 @@ style=authoryear-comp,
 		\end{split}
 	\end{equation}
 
-	\newpage
 	As these theoretical Eigenfunctions and Eigenvalues are unknown, the corresponding equation in sample analogs is more interesting as a representation of an observation.
 	\begin{equation}
 		\begin{split}
@@ -491,7 +493,7 @@ style=authoryear-comp,
 		\tilde{b}^{L,M} = \left(Z'Z\right)^{-1}Z'Y \in \mathbb{R}^{M+1} \quad \hat{\tilde{\alpha}} = \tilde{b}_{1}^{L,M} \quad \hat{\beta}(t) = \sum_{m = 1}^{M} \tilde{b}_{m + 1}^{L,M} \tilde{\nu}^{m,L}(t)
 	\end{equation}
 
-	As in the previous case, the performance of this estimation depends in parts on the quality of the approximation made during the derivation of this estimator. Here, the interactions are even more complicated. Even though the approximations exhibit smaller errors when a larger number of basis functions is used, the interplay of smoothing in the construction of the functional principal components and the choice of a number of FPC's to be used in the linear regression makes the behavior of this estimator difficult to predict. 
+	As in the previous case, the performance of this estimation depends in parts on the quality of the approximations in the derivation of this estimator. The interactions are even more complex. Even though the approximations exhibit smaller errors when a larger number of basis functions is used, the interplay of the chosen way of smoothing in the construction of the FPC's and the choice of a number of FPC's used in the linear regression makes the behavior of this estimator difficult to predict. 
 
 	\nocite{alexanderian_KLexpansion_2015}
 	\nocite{kokoszka_introduction_2017}
@@ -505,8 +507,8 @@ style=authoryear-comp,
 
 	\subsection{Motivation}\label{sim_motivation}
 	
-	Instead of generating data from scratch, we use the gasoline data set from R package \textit{refund}, which consists of 60 samples of Near-infrared (NIR) absorption curves measured in increments of 2 nm from 900 to 1,700 nm, and a response variable, the octane number. We chose this setup to improve the approach towards the application in which we predict the octane numbers from the gasoline data set.	
-	We introduced different bases in Section \ref{bases} and demonstrated the importance of the truncation parameter $L$ for the estimation in Section \ref{Scalar_on_function_regression}. For the simulation study, we rely on the estimation strategies with the introduced bases and focus on choosing the truncation parameter $L$ as well as the number of FPC's by ten-fold CV using the Mean-Squared Prediction Error (MSPE).
+	Instead of generating data from scratch, we use the gasoline data set from R package \textit{refund}, which consists of 60 samples of Near-infrared absorption curves measured in increments of 2 nm from 900 to 1,700 nm, and a response variable, the octane number. We chose this setup to improve the approach towards the application in which we predict the octane numbers from the gasoline data set.	
+	We introduced different bases in Section \ref{bases} and demonstrated the importance of the truncation parameter $L$ for the estimation in Section \ref{Scalar_on_function_regression}. For the simulation study, we use Basis Expansion Regression and Functional Principal Component Regression (FPCR) with the introduced bases and focus on choosing the truncation parameter $L$ as well as the number of FPC's by ten-fold CV using the Mean-Squared Prediction Error (MSPE).
 	
 	In practice, the number of FPC's is often chosen by using the lowest number that explains a specified proportion of variance of the smoothed curves (cf. \cite{kokoszka_introduction_2017}). This might not be optimal since FPC's with smaller Eigenvalues may have a more significant influence on the prediction (cf. \cite{Jolliffe_1982}). In this simulation certain Eigenfunctions could correspond to certain chemical compounds and vibration overtones in the absorption bands of the spectrum that could have high predictive power, but explain only little variability in the NIR curves shown in Appendix \ref{NIR}.
 	
@@ -521,6 +523,7 @@ style=authoryear-comp,
     
     \subsection{Simulation setup}
 	The simulation study follows \cite{Reiss_2007b} as a guideline. Two different true coefficient functions,  $f_1(t)$ and  $f_2(t)$, that differ in their smoothness, are created to compare our methods with differing true coefficient functions.
+	
 	\begin{equation}
     	f_1(t) = 401 \left[ 2\sin(0.5\pi t) + 4\sin(1.5 \pi t) + 5\sin(2.5 \pi t) \right]
     \end{equation}
@@ -583,10 +586,10 @@ style=authoryear-comp,
 	The discussed results and figures of $\hat{\beta}(t)$ for the simulation can be found in Appendix \ref{Tables_sim} and \ref{Estimates_sim}.
 	 
 	\subsubsection{Basis Expansion Regression}
-	The following results originate from the \hyperref[basis_exp_transf]{Estimation using Basis-Representation}, in which we transform the smooth curves to perform scalar-on-function regression. Examining the results, it appears that the cross-validated MSPE exhibits a convex behavior in the number of basis functions for all bases.
+	These results follow from the model introduced in Section \ref{basis_exp_transf}, in which we transform the smoothed curves to perform scalar-on-function regression. Examining the results, it appears that the cross-validated MSPE exhibits a convex behavior in the number of basis functions for all bases.
 	
 	\paragraph{Monomial Basis}
-	Due to the increasing collinearity problems for higher numbers of Monomial basis functions, simulations were conducted up until the sixth monomial, which already shows signs of numerical instability. For reasons outlined in \ref{Monomial_basis}, they seem suited for $f_1$, where it shows a better performance than B-splines. A hypothesis for this could be that $f_1$ is an entire function, which can be well approximated with a power series. In the case of $f_2$, this basis shows the weakest performance out of all bases, for which Figures \ref{basis_expansion_2_1} and \ref{basis_expansion_2_2} provide visual evidence. It seems like $\hat{\beta}(t)$ is not changing in the amount of noise and shows exaggerated behavior at the boundaries. This weakness is especially pronounced in the MSPE for $f_2,Y_1$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) Monomial basis functions for the high(low) signal-to-noise ratio. 
+	Due to the increasing collinearity problems for higher numbers of Monomial basis functions, simulations were conducted up until the sixth monomial, which already shows signs of numerical instability. For reasons outlined in Section \ref{Monomial_basis}, they seem suited for $f_1$, where it shows a better performance than B-splines. A hypothesis for this could be that $f_1$ is an entire function, which can be well approximated with a power series. In the case of $f_2$, this basis shows the weakest performance out of all bases, for which Figures \ref{basis_expansion_2_1} and \ref{basis_expansion_2_2} provide visual evidence. It seems like $\hat{\beta}(t)$ is not changing in the amount of noise and shows exaggerated behavior at the boundaries. This weakness is especially pronounced in the MSPE for $f_2,Y_1$. For $f_1$, the simulation selects 5(3) and for $f_2$ 5(5) Monomial basis functions for the high (low) signal-to-noise ratio. 
 	\vspace{-0.2cm}
 	
 	\paragraph{B-spline Basis}
@@ -595,34 +598,35 @@ style=authoryear-comp,
 	\vspace{-0.2cm}
 	
 	\paragraph{Fourier Basis}
-	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for $f_2$, 9(7) for the setup with the high (low) signal-to-noise ratio. As for the B-splines basis, the simulation chooses a smaller number of basis functions for the noisy responses and a higher number for the high signal-to-noise responses. The Fourier basis performs the best for each setup for the basis expansion regression. Several reasons could contribute to this. First, especially $f_1$ shows similar curvature across the domain while the curvature of $f_2$ does at least not display any erratic jumps. Second, both functions feature periodic behavior. Third, $f_2$ does have the same value at the start- and the end of the interval, lending itself to a periodic representation.
+	For $f_1$, the simulation chooses a smaller number of Fourier basis functions, 5(3) and a higher number for $f_2$, 9(7) for the setup with the high (low) signal-to-noise ratio. As for the B-splines basis, the simulation chooses a smaller number of basis functions for the noisy responses and a higher number for the high signal-to-noise responses. The Fourier basis performs the best for each setup for the Basis Expansion Regression. Several reasons could contribute to this. First, especially $f_1$ shows similar curvature across the domain while the curvature of $f_2$ does at least not display any erratic jumps. Second, both functions feature periodic behavior. Third, $f_2$ does have the same value at the start- and the end of the interval, lending itself to a periodic representation.
 	\vspace{-0.2cm}
 	
 	\subsubsection{Functional Principal Component Regression}
-	The model used for the FPCR is described in \hyperref[fpc_exp_transf]{Estimation using Functional Principal Components}. The selection of the truncation parameter $L$ is difficult since the approximated Eigenfunctions from the decomposition are influenced by the choice of $L$. In addition, the choice of the number of FPC's adds to the complexity of the model. Some eigenfunctions, which might contain important information, could correspond to small Eigenvalues and, therefore, be omitted as described in Section \ref{sim_motivation}. But since the FPCR is ultimately estimated with a linear model containing the corresponding scores as regressors, the relevant degrees of freedom in the estimation of the ultimate model are not affected by $L$, but only by $n_{FPC} \in \{2, 3, 4 \}$. It seems that neither a convex behavior of the MSPE nor any clear relationship can be observed between the number of basis functions and the number of FPC's. This might be because this dependency is too complex to draw conclusions with this simulation study. Therefore, we will limit ourselves to a brief description. In this simulation, the cross-validated choice of basis functions indicates that the FPCR might not take the differing signal-to-noise ratios of the responses into account. This is indicated by the fact that the same number of basis functions is chosen for the different signal-to-noise ratios. A possible explanation might be that the FPC's, which affect the relevant degrees of freedom, are solely calculated from the smoothed curves, not considering the responses.
+	The model used for the FPCR is described in Section \ref{fpc_exp_transf}. The selection of the truncation parameter $L$ is difficult since the approximated Eigenfunctions from the decomposition are influenced by the choice of $L$. In addition, the choice of the number of FPC's adds to the complexity of the model. Some eigenfunctions, which might contain important information, could correspond to small Eigenvalues and, therefore, be omitted as described in Section \ref{sim_motivation}. But since the FPCR is ultimately estimated with a linear model containing the corresponding scores as regressors, the relevant degrees of freedom in the estimation of the ultimate model are not affected by $L$, but only by $n_{FPC} \in \{2, 3, 4 \}$. It seems that neither a convex behavior of the MSPE nor any clear relationship can be observed between the number of basis functions and the number of FPC's. This might be because this dependency is too complex to draw conclusions with this simulation study. Therefore, we will limit ourselves to a brief description. In this simulation, the cross-validated choice of basis functions indicates that the FPCR might not take the differing signal-to-noise ratios of the responses into account. This is indicated by the fact that the same number of basis functions is chosen for the different signal-to-noise ratios. A possible explanation might be that the FPC's, which affect the relevant degrees of freedom, are solely calculated from the smoothed curves, not considering the responses.
 	
 	\paragraph{Monomial Basis}
-	For $f_1,Y_1$, the cross-validated MSPE seems to decrease in the number of FPC's and chosen basis functions for both the high and the low signal-to-noise ratio ($4,5,6$ basis functions for $n_{FPC} = 2, 3, 4$). For the noisy responses of $f_1,Y_2$ we find sign of overfitting for $n_{FPC}$ = 4. In  $f_2$, we also observe a decreasing MSPE in the number of FPC's, but no clear relationship for the chosen basis functions. The Monomial basis shows the weakest performance for all three bases in each setting.
+	For $f_1,Y_1$, the cross-validated MSPE seems to decrease in the number of FPC's and chosen basis functions for both the high and the low signal-to-noise ratio ($4,5,6$ basis functions for $n_{FPC} = 2, 3, 4$). For the noisy responses of $f_1,Y_2$ we find signs of overfitting for $n_{FPC}$ = 4. In  $f_2$, we also observe a decreasing MSPE in the number of FPC's, but no clear relationship for the chosen basis functions. The Monomial basis shows the weakest performance out of all three bases in each setting.
 	\vspace{-0.2cm}
 	
 	\paragraph{B-spline Basis}
-	For $f_1,Y_1$, the MSPE suggests that models with a higher number of FPC's perform better. While the number of basis functions stays at five for $n_{FPC} = 2,3$, it increases to 6 basis functions for $n_{FPC} = 4$. In $f_1,Y_2$, the cross-validated MSPE is only slightly affected by $n_{FPC}$, but lowest for $n_{FPC} = 3$, indicating the possibility of overfitting for $n_{FPC} = 4$. Similar to the two setups with $f_1$, the chosen number of basis functions for $f_2$ is increasing in the number of FPC's (4, 6, 23 for $n_{FPC} = 2, 3, 4$)
+	For $f_1,Y_1$, the MSPE suggests that models with a higher number of FPC's perform better. While the number of basis functions stays at five for $n_{FPC} = 2,3$, it increases to 6 basis functions for $n_{FPC} = 4$. In $f_1,Y_2$, the cross-validated MSPE is only slightly affected by $n_{FPC}$, but lowest for $n_{FPC} = 3$, indicating the possibility of overfitting for $n_{FPC} = 4$. Similar to the two setups with $f_1$, the chosen number of basis functions for $f_2$ is increasing in the number of FPC's (4, 6, 23 for $n_{FPC} = 2, 3, 4$).
 	\vspace{-0.2cm}
 	
 	\paragraph{Fourier Basis}
-	In $f_1,Y_1$, the MSPE decreases in $n_{FPC}$ while the results in $f_1,Y_2$ might indicate overfitting when using $n_{FPC} = 4$. Both specifications using $f_1$ select the lowest number of basis  possible. $f_2,Y_1$ displays the greatest relative decline of MSPE in the increasing number of FPC's, but in absolute values, therefore acknowledging the higher noise responses for $f_2,Y2$, the decline of MSPE is similar to the decline observed for $f_2,Y_2$. Both configurations of $f_2$ use 5, 15 and 7 basis functions for $n_{FPC} = 2, 3, 4$. The basis shows the lowest MSPE for all four settings.
+	In $f_1,Y_1$, the MSPE decreases in $n_{FPC}$ while the results in $f_1,Y_2$ might indicate overfitting for $n_{FPC} = 4$. Both specifications using $f_1$ select the lowest number of basis functions possible. This is interesting as the number of FPC's puts a binding lower bound on the number of basis functions used in their construction. An exploration of the implications of this fact is out of the scope of this paper. Both configurations of $f_2$ use 5, 15 and 7 basis functions for $n_{FPC} = 2, 3, 4$. The basis shows the lowest MSPE for all four settings.
 	\vspace{-0.2cm}	
 	
-	\subsubsection{Interpretation and Relevance for Application}
+	\subsection{Interpretation and Relevance for Application}
 	A possible explanation applicable to the setups performing Basis Expansion Regression might be the effect of the Bias-Variance tradeoff and the following hypothesis: For $f_1$, only little bias seems to be introduced when choosing a small number of basis functions. For $f_2$, a higher number of basis functions seems appropriate. This could result from the inherent peculiarities of $f_2$ that are more pronounced with higher $L$, therefore choosing higher numbers of basis functions since the bias is decreasing faster than the variance is increasing in the number of basis functions compared to $f_1$. The described convex behavior of the MSPE might also be partially attributable to the bias-variance tradeoff.  
+	This convex behavior was not observed for the FPCR where no clear relationship between the basis functions and the number of FPC's could be found. The MSPE of FPCR seems to be comparatively more stable when changing the number of basis functions than for Basis Expansion Regression. It seems like the chosen number of FPC's is more significant, especially for the two high signal-to-noise ratio settings which display a higher absolute and relative decrease of MSPE in $n_{FPC}$.\\
 	
-	This convex behavior was not observed for the FPCR where no clear relationship between the basis functions and the number of FPC's could be found. The MSPE of FPCR seems to be comparatively more stable when changing the number of basis functions than for basis expansion regression. It seems like the chosen number of FPC's is more significant, especially for the two high signal-to-noise ratio settings which display a higher relative decrease of MSPE in $n_{FPC}$. To examine this relationship further, we conducted additional simulations (Appendix \ref{Tables_sim_additional}) for B-spline basis specifications with a large truncation parameter $L \in \{50, 70\}$ for $n_{FPC} \in \{2, \dots, 7 \}$. We can find potential signs of overfitting in all setups for $L = 70$. For $L = 50$, signs of overfitting can be observed for the setups with the noisy responses. The additional simulations revealed evidence for a relationship from $n_{FPC} = 3$ onwards for all setups. For $n_{FPC} \in \{3, \dots, 7 \}$, the ten-fold cross-validated MSPE is always lower for 50 than for 70 basis functions which might be the first sign of an $L$ that is chosen too large and creates undersmoothing. Following this, it seems that once a sufficient number of basis functions is used to expand the curves, FPCR with B-splines performs better using a lower number of basis functions. While a higher number of $n_{FPC}$ decreases the MSPE of $f_1,Y_1$ and $f_2,Y_1$ for $L = 50$ compared to the main simulations, this holds not true for the two setups with noisy responses. This strengthens our hypothesis of the high significance of $n_{FPC}$ for the high signal-to-noise ratio setup. For $n_{FPC} \in \{2, 3, 4 \}$, the additional B-splines simulations perform worse for these high number of basis functions compared to the main simulation.  This might indicate beneficial attributes of a lower truncation parameter in settings with a lower number of $n_{FPC}$.
+	To examine this relationship further, we conducted additional simulations (Appendix \ref{Tables_sim_additional}) for B-spline basis specifications with a large truncation parameter $L \in \{50, 70\}$ for $n_{FPC} \in \{2, \dots, 7 \}$. We can find potential signs of overfitting in all setups for $L = 70$. For $L = 50$, signs of overfitting can be observed for the setups with the noisy responses. The additional simulations revealed evidence for a relationship from $n_{FPC} = 3$ onwards for all setups. For $n_{FPC} \in \{3, \dots, 7 \}$, the ten-fold cross-validated MSPE is always lower for 50 than for 70 basis functions. This might be the first sign of an $L$ that is chosen too large and creates undersmoothing. It seems that once a sufficient number of basis functions is used to expand the curves, FPCR with B-splines performs better using a lower number of basis functions. While a higher number of $n_{FPC}$ decreases the MSPE of $f_1,Y_1$ and $f_2,Y_1$ for $L = 50$ compared to the main simulations, this does not hold true for the two setups with noisy responses. This strengthens our hypothesis of the high importance of $n_{FPC}$ for the high signal-to-noise ratio setup. For $n_{FPC} \in \{2, 3, 4 \}$, the additional B-splines simulations perform worse for these high number of basis functions compared to the main simulation.  This might indicate beneficial attributes of a lower truncation parameter in settings with a lower number of $n_{FPC}$.
 	
 	\section{Application}\label{Application}
 		Our application uses the methods and insights from the previous sections to predict the octane numbers of the gasoline data set.
 		Although the simulation study granted valuable insights into the different methods in our four different settings, it is not enough to determine the optimal method and choice of basis for the application since there is too much uncertainty involved. To point out some sources of uncertainty: First, differing from the simulation setup, we do not know the true coefficient function. Visual inspection of the estimated coefficient functions shown in Appendix \ref{Estimates_Appl} fuels the hypothesis that the real coefficient function might be more similar to $f_2$ than to $f_1$, but the insights from the two functions are not sufficient to draw any conclusion. Second, we have no information about the signal-to-noise ratio of the measured octane numbers. Third, to generate similar curves, we made assumptions about the distribution of $\mathring{\xi}$ that are not applicable in this application where we do not know their distribution.
 		 
-		Therefore, we rerun all specifications for the gasoline data set and use the results of the simulation study to improve our understanding of the results. The application is designed analogously to the simulation study: The 60 spectra of the gasoline data set are used to estimate a coefficient function, predict the reported octane numbers, and evaluate the results via MSPE using 12 fold CV with 5 elements per fold. In total, we conducted 1000 repetitions for each setting, choosing different fold partitions for each run. Over all specifications, the best-performing model is FPCR using 4 FPC's built on 7 Fourier basis functions (0.0435), followed by basis expansion regression using 10 B-spline basis functions (0.04574).
+		Therefore, we rerun all specifications for the gasoline data set and use the results of the simulation study to improve our understanding of the results. The application is designed analogously to the simulation study: The 60 spectra of the gasoline data set are used to estimate a coefficient function, predict the reported octane numbers, and evaluate the results via MSPE using 12 fold CV with 5 elements per fold. In total, we conducted 1000 repetitions for each setting, choosing different fold partitions for each run. Over all specifications, the best-performing model is FPCR using 4 FPC's built on 7 Fourier basis functions (0.0435), followed by Basis Expansion Regression using 10 B-spline basis functions (0.04574).
 		
 
 		
@@ -645,14 +649,14 @@ style=authoryear-comp,
 	\vspace{-0.2cm}
 	
 	\paragraph{Collinearity Problems in Basis Expansion Regression}
-	Except for the Fourier basis, the basis expansion regression was in part limited by the numerical instability of the estimation procedure. This is mainly due to an increase in collinearity of the derived regressor matrix shown in Definition \ref{regressor_mat_1}. This problem is inherent to basis systems whose functions are not pairwise orthogonal, such as the Monomial or B-splines bases, but gets more pronounced the more functions we add to the basis system and the higher the correlation between those functions.
+	Except for the Fourier basis, the Basis Expansion Regression was in part limited by the numerical instability of the estimation procedure. This is mainly due to an increase in collinearity of the derived regressor matrix shown in Definition \ref{regressor_mat_1}. This problem is inherent to basis systems whose functions are not pairwise orthogonal, such as the Monomial or B-splines bases, but gets more pronounced the more functions we add to the basis system and the higher the correlation between those functions.
 	The numeric instability of the inversion of this matrix makes the estimates unreliable and therefore can make this approach infeasible for non-orthogonal bases in settings where the characteristics of the data set demand a higher number of basis functions than is feasible due to the properties of the estimation procedure.
 	\vspace{-0.2cm}
 	
 	\subsection*{Possible Extensions}
 	
 	\paragraph{Orthogonal Polynomials to Solve Collinearity Problems of Monomial Basis}
-	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the Monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials (cf. \cite{Dattoli_2001}). Due to their orthogonality, the problem of collinearity in the regressor matrix is greatly reduced, which could allow for larger numbers of basis functions in the basis expansion regression approach. The first eight Legendre polynomials are shown in Appendix \ref{Basis_Plots}.
+	To address the collinearity problems described earlier, one possible idea would be to use a system of pair-wise orthogonal polynomials as a basis instead of the Monomial basis. One example is the system of Legendre polynomials which are orthogonal by construction and have the same closed span as the monomials (cf. \cite{Dattoli_2001}). Due to their orthogonality, the problem of collinearity in the regressor matrix is greatly reduced, which could allow for larger numbers of basis functions in the Basis Expansion Regression approach. The first eight Legendre polynomials are shown in Appendix \ref{Basis_Plots}.
 	\vspace{-0.2cm}
 	
 	\paragraph{Comparison to Penalty Based Smoothing Procedures}
