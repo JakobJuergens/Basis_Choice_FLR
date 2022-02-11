@@ -3,7 +3,6 @@
 \usepackage[hmargin=2cm, vmargin=2cm]{geometry}
 \usepackage{microtype}
 \usepackage{graphicx}
-\usepackage{hyperref}
 \usepackage[english]{babel}
 \usepackage{setspace}
 \usepackage{xcolor}
@@ -12,7 +11,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
-\usepackage{hyperref}
+\usepackage[hidelinks=true]{hyperref}
 \usepackage{overpic}
 \usepackage[font=small,skip=2pt]{caption}
 \usepackage[
@@ -890,20 +889,21 @@ style=authoryear-comp,
 	\end{figure}
 	
 	\section{Definitions and Proofs}
-	\cite{alexanderian_KLexpansion_2015} was referred for the following definitions and proofs.
+	The following proofs are adapted from \cite{alexanderian_KLexpansion_2015}.
 	
 	\subsection{Definition (Hilbert-Schmidt Integral Operator)}\label{def_HS}
 	Given a bounded domain $\mathcal{A} \subset \mathbb{R}^n$, we call a function $c : \mathcal{A} \times \mathcal{A} \rightarrow \mathbb{R}$ a Hilbert-Schmidt kernel if
 	\begin{equation}
 		\int_{\mathcal{A}} \int_{\mathcal{A}} \vert c(x,y) \vert ^2 \mathrm{d}x \mathrm{d}y < \infty
 	\end{equation}
-	where $c \in \mathbb{L}^2(\mathcal{A} \times \mathcal{A})$. Let $K$ be an integral operator on $\mathbb{L}^2(\mathcal{A})$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^2(\mathcal{A})$, by
-	
-	\begin{equation}
+	where $c \in \mathbb{L}^2(\mathcal{A} \times \mathcal{A})$. Let $K$ be an integral operator on $\mathbb{L}^2(\mathcal{A})$ such that $K : \nu \rightarrow K \nu$ for $\nu \in \mathbb{L}^2(\mathcal{A})$, defined by Equation \ref{HS_OP}.
+	\begin{equation}\label{HS_OP}
 		[K\nu](x) = \int_{\mathcal{A}} c(x,y) \nu(y) \mathrm{d}y
 	\end{equation}
-	When an integral operator $K$ is linear and bounded, it is called a Hilbert-Schmidt operator. The linearity of the operator $K$ is simply proved. Additionaly assume that $\alpha, \beta \in \mathbb{R}$ and $\theta \in \mathbb{L}^2(\mathcal{A})$.
-	\begin{equation}
+
+	When an integral operator $K$ is linear and bounded, it is called a Hilbert-Schmidt integral operator. The linearity of the operator $K$ is proved as shown in Equation \ref{Linearity}. Additionally, assume that $\alpha, \beta \in \mathbb{R}$ and $\theta \in \mathbb{L}^2(\mathcal{A})$.
+	
+	\begin{equation}\label{Linearity}
 		\begin{split}
 			[K (\alpha \nu + \beta \theta)](x) =& \int_{\mathcal{A}} c(x,y)(\alpha \nu(y) + \beta \theta(y)) \mathrm{d}y\\
 			= & \int_{\mathcal{A}} c(x,y) \alpha \nu(y) \mathrm{d}y + \int_{\mathcal{A}} c(x,y) \beta \theta(y) \mathrm{d}y\\
@@ -911,7 +911,7 @@ style=authoryear-comp,
 			= & \alpha[K\nu](x) + \beta[K\theta](x)
 		\end{split}
 	\end{equation}
-	For boundedness of the oprator $K$,
+	For boundedness of the operator $K$ we need to show the following.
 	\begin{equation}
 		\begin{split}
 			\Vert K\nu \Vert^{2}_{\mathbb{L}^2(\mathcal{A})} = & \int_{\mathcal{A}} \biggl\vert [K\nu](x) \biggr\vert^2 \mathrm{d}x\\
@@ -922,7 +922,7 @@ style=authoryear-comp,
 	\end{equation}
 	
 	\subsection{Lemma (Three Traits of Scores)} \label{Proof1}
-	The curves $X(t) \in \mathbb{L}^2[0,1]$ is expanded by the Eigenfunctions $\{\nu^m\}$ as Equation \ref{KarhunenLoeve}. The coefficients $\xi^{m}$ corresponding to Eigenfunctions $\nu^m$ satisfy the following properties:
+	The random function $X(t)$ realizing in $\mathbb{L}^2[0,1]$ is expanded by its Eigenfunctions $\{\nu^m\}$ as shown in Equation \ref{KarhunenLoeve}. The coefficients $\xi^{m}$ corresponding to Eigenfunctions $\nu^m$ satisfy the following properties:
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -949,8 +949,8 @@ style=authoryear-comp,
 		\end{equation}
 	
 		where $\mathbb{E}[F(t)]$ is 0 since $F(t)$ is a centered process.
-		The second claim is proved as:
 		
+		The second claim is proved as
 		\begin{equation}\label{Lemma2}
 			\begin{split}
 				\mathbb{E} [\xi^m \xi^n] = & \mathbb{E}  \biggl\lbrack \int_{0}^{1} F(s) \nu^m(s)\mathrm{d}s \int_{0}^{1} F(t) \nu^n(t)\mathrm{d}t  \biggr\rbrack\\
@@ -969,17 +969,15 @@ style=authoryear-comp,
 			Cov\left(\xi^m, \xi^n\right) = \mathbb{E}[\xi^m \xi^n] - \mathbb{E}[\xi^m]\mathbb{E}[\xi^n] = \delta^{m,n}\lambda^{m}
 		\end{equation}
 	
-		where $\mathbb{E}[\xi^m] = \mathbb{E}[\xi^n] = 0$ as the first property.
-		The last assertion is confirmed from the above two properties.
-		
+		where $\mathbb{E}[\xi^m] = \mathbb{E}[\xi^n] = 0$ as shown in the first property.
+		The last assertion is confirmed from the two properties above.
 		\begin{equation}\label{Lemma3}
 			Var[\xi^m] = \mathbb{E}\left[(\xi^m - \mathbb{E}[\xi^m])^{2}\right] = \mathbb{E}[(\xi^m)^{2}] =\lambda^m
 		\end{equation}
 	
 		The original process $X(t)$ also has the same properties as the centered one since
-		
 		\begin{equation}
-			X(t) = F(t) + \mathbb{E}[X(t)] = \mu(t) + \sum_{m=1}^{\infty}\xi^m\nu^m(t)
+			X(t) = \mathbb{E}[X(t)] + F(t) = \mu(t) + \sum_{m=1}^{\infty}\xi^m\nu^m(t)
 		\end{equation}
 	
 	\end{proof}
@@ -987,13 +985,16 @@ style=authoryear-comp,
 	
 	\subsection{Theorem (Karhunen-Lo\'{e}ve Expansion)} \label{Proof2}
 	
-	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process, namely, $\lim\limits_{\epsilon \rightarrow 0} \mathbb{E}[(X(t+\epsilon) - X(t))^2]$ = 0, such that $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$,
-	
+	Let $X : [0,1]  \rightarrow \mathbb{R}$ be a mean-square continuous stochastic process, meaning 
+	\begin{equation}
+		\lim\limits_{\epsilon \rightarrow 0} \mathbb{E}[(X(t+\epsilon) - X(t))^2] = 0
+	\end{equation}
+	such that $X \in \mathbb{L}^{2}[0,1]$. Then there exists a basis ${\xi^m}$ of $\mathbb{L}^2[0,1]$ such that for all $t \in [0,1]$ we have the following representation.
 	\begin{equation}
 		X(t) = \mu(t) + \sum_{m=1}^{\infty} \xi^m \nu^m(t),
 	\end{equation}
 
-	where $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)\mathrm{d}t$. These coefficients satisfy the following conditions.
+	Here, $\mu(t)$ is the mean function of $X(t)$ and coefficients $\xi^m$ are given by $\int_{0}^{1} (X(t) - \mu(t)) \nu^m(t)\mathrm{d}t$. These coefficients satisfy the following conditions.
 	
 	\begin{multicols}{2}
 		\begin{enumerate}
@@ -1017,8 +1018,8 @@ style=authoryear-comp,
 		
 		\begin{equation}\label{Thr1}
 			\begin{split}
-				\epsilon_{N}(t) = &\mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m 	\nu^m(t)\bigg)^2 \right]\\
-				= & \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{m=1}^{N}\xi^m\nu^m(t)\bigg] + \mathbb{E}\bigg[\sum_{m=1}^{N}\sum_{n=1}^{N}\xi^m\xi^n\nu^m(t)\nu^n(t)\bigg]
+				\epsilon_{N}(t) &= \mathbb{E} \left[\bigg( F(t) - \sum_{m=1}^{N} \xi^m 	\nu^m(t)\bigg)^2 \right]\\
+				&= \mathbb{E}[F(t)^{2}] - 2\mathbb{E}\bigg[F(t)\sum_{m=1}^{N}\xi^m\nu^m(t)\bigg] + \mathbb{E}\bigg[\sum_{m=1}^{N}\sum_{n=1}^{N}\xi^m\xi^n\nu^m(t)\nu^n(t)\bigg]
 			\end{split}
 		\end{equation}
 		
@@ -1026,16 +1027,16 @@ style=authoryear-comp,
 		
 		\begin{equation}\label{Thr2}
 			\begin{split}
-				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] = & \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)\mathrm{d}s\bigg)} \nu^m(t) \right]\\
-				= & \mathbb{E} \left[ \sum_{m=1}^{N} \bigg(\int_{0}^{1} F(t)F(s)\nu^m(s)\mathrm{d}s\bigg) \nu^m(t) \right]\\
-				= & \sum_{m=1}^{N} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu^m(s)\mathrm{d}s\bigg)\nu^m(t)\\
-				= & \sum_{m=1}^{N} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu^m(s)\mathrm{d}s\bigg)}\nu^m(t)\\
-				= & \sum_{m=1}^{N}{\color{teal}[K\nu^m](t)}\nu^m(t) \\
-				= &\sum_{m=1}^{N}{\color{teal}\lambda^m\nu^m(t)}\nu^m(t) = \sum_{m=1}^{N}\lambda^m\nu^m(t)^{2}
+				\mathbb{E} \bigg[ F(t) \sum_{m=1}^{N} {\color{red}\xi^m}\nu^m(t) \bigg] &= \mathbb{E} \left[ F(t) \sum_{m=1}^{N} {\color{red}\bigg(\int_{0}^{1} F(s)\nu^m(s)\mathrm{d}s\bigg)} \nu^m(t) \right]\\
+				&= \mathbb{E} \left[ \sum_{m=1}^{N} \bigg(\int_{0}^{1} F(t)F(s)\nu^m(s)\mathrm{d}s\bigg) \nu^m(t) \right]\\
+				&= \sum_{m=1}^{N} \bigg(\int_{0}^{1} {\color{blue}\mathbb{E}[F(t)F(s)]}\nu^m(s)\mathrm{d}s\bigg)\nu^m(t)\\
+				&= \sum_{m=1}^{N} {\color{teal}\bigg(\int_{0}^{1} {\color{blue}c(t,s)} \nu^m(s)\mathrm{d}s\bigg)}\nu^m(t)\\
+				&= \sum_{m=1}^{N}{\color{teal}[K\nu^m](t)}\nu^m(t) \\
+				&= \sum_{m=1}^{N}{\color{teal}\lambda^m\nu^m(t)}\nu^m(t) = \sum_{m=1}^{N}\lambda^m\nu^m(t)^{2}
 			\end{split}
 		\end{equation} 
 		
-		where the covariance function $c(t,s)$ has the Hilbert-Schmidt operator as in Equation \ref{HSKernal}. It turns out the product of the Eigenfunction and the corresponding Eigenvalue. For the last term, we derive from Equation \ref{Lemma2} that
+		where the covariance function $c(t,s)$ has the Hilbert-Schmidt operator as in Equation \ref{HSKernal}. For the last term, we derive from Equation \ref{Lemma2} that
 		
 		\begin{equation}\label{Thr3}
 			\begin{split}
@@ -1044,8 +1045,9 @@ style=authoryear-comp,
 			\end{split}	
 		\end{equation}
 	
-		where $\delta_{m,n} = 1$ if $m=n$, otherwise 0. Therefore, by Equations \ref{Thr1}, \ref{Thr2}, and \ref{Thr3} we obtain
+		where $\delta_{m,n} = 1$ if $m=n$, otherwise 0. 
 		
+		Therefore, by Equations \ref{Thr1}, \ref{Thr2}, and \ref{Thr3} we obtain
 		\begin{equation}
 			\epsilon_{N}(t) = c(t,t) - \sum_{m=1}^{N} \lambda^m \nu^m(t) \nu^m(t)
 		\end{equation}
