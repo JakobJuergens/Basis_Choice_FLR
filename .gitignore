@@ -3,7 +3,27 @@
 .RData
 .Ruserdata
 Archive/
-Paper/main.**
-!Paper/RMbibliography.bib
-!Paper/main.tex
-!Paper/main.pdf
+
+# LaTeX build directories
+/build/
+Presentation/build/
+
+# LaTeX intermediate files
+*.aux
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# Jupyter-generated files
+.ipynb_checkpoints/
